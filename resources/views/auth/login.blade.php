@@ -11,7 +11,7 @@ Login
         <div class="mb-3">
             <label class="mb-1"><strong>Email</strong></label>
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="hallo@email.com">
+                value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="hello@example.com">
 
             @error('email')
             <span class="invalid-feedback" role="alert">
