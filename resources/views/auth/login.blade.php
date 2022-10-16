@@ -36,7 +36,7 @@ Login
                 <div class="form-check custom-checkbox ms-1">
                     <input type="checkbox" class="form-check-input" name="remember" id="remember" {{ old('remember')
                         ? 'checked' : '' }}>
-                    <label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
+                    <label class="form-check-label" for="remember">Remember my preference</label>
                 </div>
             </div>
             <div class="mb-3">
