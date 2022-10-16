@@ -62,3 +62,8 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# untuk menu role dan middleware tinggal packagist
+user role tersedia: superuser, it, lppm, tendik, dosen
+dan ada permission role untuk yang bisa di pakai, di dbseed userrolepermissionseed bisa di buka jika lupa
+bisa di manfaatkan untuk @can(read konfigurasi) misal
