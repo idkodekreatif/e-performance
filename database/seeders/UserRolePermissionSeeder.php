@@ -79,36 +79,43 @@ class UserRolePermissionSeeder extends Seeder
             $permission = Permission::create(['name' => 'create role']);
             $permission = Permission::create(['name' => 'update role']);
             $permission = Permission::create(['name' => 'delete role']);
+            $permission = Permission::create(['name' => 'read konfigurasi']);
 
             $role_it->givePermissionTo('read role');
             $role_it->givePermissionTo('create role');
             $role_it->givePermissionTo('update role');
             $role_it->givePermissionTo('delete role');
+            $role_it->givePermissionTo('read konfigurasi');
 
             $role_superuser->givePermissionTo('read role');
             $role_superuser->givePermissionTo('create role');
             $role_superuser->givePermissionTo('update role');
             $role_superuser->givePermissionTo('delete role');
+            $role_superuser->givePermissionTo('read konfigurasi');
 
             $role_lppm->givePermissionTo('read role');
             $role_lppm->givePermissionTo('create role');
             $role_lppm->givePermissionTo('update role');
             $role_lppm->givePermissionTo('delete role');
+            $role_lppm->givePermissionTo('read konfigurasi');
 
             $role_hrd->givePermissionTo('read role');
             $role_hrd->givePermissionTo('create role');
             $role_hrd->givePermissionTo('update role');
             $role_hrd->givePermissionTo('delete role');
+            $role_hrd->givePermissionTo('read konfigurasi');
 
             $role_tendik->givePermissionTo('read role');
             $role_tendik->givePermissionTo('create role');
             $role_tendik->givePermissionTo('update role');
             $role_tendik->givePermissionTo('delete role');
+            $role_tendik->givePermissionTo('read konfigurasi');
 
             $role_dosen->givePermissionTo('read role');
             $role_dosen->givePermissionTo('create role');
             $role_dosen->givePermissionTo('update role');
             $role_dosen->givePermissionTo('delete role');
+            $role_dosen->givePermissionTo('read konfigurasi');
 
             $dosen->assignRole('dosen');
             $tendik->assignRole('tendik');
