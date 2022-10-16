@@ -31,6 +31,20 @@ Register
             @enderror
         </div>
         <div class="mb-3">
+            <label class="mb-1"><strong>Role</strong></label>
+            <select class="default-select form-control wide mb-3" name="role">
+                <option>Select</option>
+                <option value="dosen">Dosen</option>
+                <option value="tendik">Tendik</option>
+            </select>
+
+            @error('role')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label class="mb-1"><strong>Password</strong></label>
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                 name="password" required autocomplete="new-password" placeholder="password">

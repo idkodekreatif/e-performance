@@ -26,16 +26,16 @@ class UserRolePermissionSeeder extends Seeder
         DB::beginTransaction();
         try {
             // membuat name user
-            $dosen = User::create(array_merge([
-                'email' => 'dosen@ikbis.ac.id',
-                'name' => 'dosen',
-                'password' => bcrypt('dosen123456')
+            $superuser = User::create(array_merge([
+                'email' => 'superuser@ikbis.ac.id',
+                'name' => 'superuser',
+                'password' => bcrypt('SuperUser276')
             ], $default_user_value));
 
-            $tendik = User::create(array_merge([
-                'email' => 'tendik@ikbis.ac.id',
-                'name' => 'tendik',
-                'password' => bcrypt('tendik123456')
+            $it = User::create(array_merge([
+                'email' => 'it@ikbis.ac.id',
+                'name' => 'it',
+                'password' => bcrypt('IT87654321')
             ], $default_user_value));
 
             $hrd = User::create(array_merge([
@@ -50,17 +50,21 @@ class UserRolePermissionSeeder extends Seeder
                 'password' => bcrypt('lppm123456')
             ], $default_user_value));
 
-            $superuser = User::create(array_merge([
-                'email' => 'superuser@ikbis.ac.id',
-                'name' => 'superuser',
-                'password' => bcrypt('SuperUser276')
+            $dosen = User::create(array_merge([
+                'email' => 'dosen@ikbis.ac.id',
+                'name' => 'dosen',
+                'password' => bcrypt('dosen123456')
             ], $default_user_value));
 
-            $it = User::create(array_merge([
-                'email' => 'it@ikbis.ac.id',
-                'name' => 'it',
-                'password' => bcrypt('IT87654321')
+            $tendik = User::create(array_merge([
+                'email' => 'tendik@ikbis.ac.id',
+                'name' => 'tendik',
+                'password' => bcrypt('tendik123456')
             ], $default_user_value));
+
+
+
+
 
             // membuat role user
             $role_dosen = Role::create(['name' => 'dosen']);
