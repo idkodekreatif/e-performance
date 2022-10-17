@@ -1,4 +1,4 @@
-<x-app-layout title="Form Input Point Itikad">
+<x-app-layout title="Form Input Point A">
     @push('style')
 
     @endpush

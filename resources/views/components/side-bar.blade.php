@@ -34,7 +34,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('point-A') }}">Point A</a></li>
-                    <li><a href="form-wizard.html">Point B</a></li>
+                    <li><a href="{{ route('point-B') }}">Point B</a></li>
                     <li><a href="form-ckeditor.html">Point C</a></li>
                     <li><a href="form-pickers.html">Point D</a></li>
                     <li><a href="form-validation.html">Point E</a></li>
