@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\InputPoint\PointBController;
+use App\Http\Controllers\InputPoint\PointCController;
+use App\Http\Controllers\InputPoint\PointDController;
+use App\Http\Controllers\InputPoint\PointEController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['role:superuser|it']], function () {
     Route::get('/point-A', [App\Http\Controllers\InputPoint\PointAController::class, 'index'])->name('point-A');
+    Route::get('/point-B', [PointBController::class, 'index'])->name('point-B');
+    Route::get('/point-C', [PointCController::class, 'index'])->name('point-C');
+    Route::get('/point-D', [PointDController::class, 'index'])->name('point-D');
+    Route::get('/point-E', [PointEController::class, 'index'])->name('point-E');
 });

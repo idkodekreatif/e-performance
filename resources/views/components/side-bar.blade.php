@@ -1,20 +1,12 @@
 <div class="dlabnav">
     <div class="dlabnav-scroll">
         <ul class="metismenu" id="menu">
-            <li><a href=" javascript:void()" aria-expanded="false">
+            <li><a href="{{ route('home') }}" aria-expanded="false">
                     <i class="fas fa-home"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
 
-            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-                    <i class="fas fa-info-circle"></i>
-                    <span class="nav-text">Apps</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="app-profile.html">Profile</a></li>
-                </ul>
-            </li>
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-chart-line"></i>
                     <span class="nav-text">Charts</span>
@@ -34,10 +26,10 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('point-A') }}">Point A</a></li>
-                    <li><a href="form-wizard.html">Point B</a></li>
-                    <li><a href="form-ckeditor.html">Point C</a></li>
-                    <li><a href="form-pickers.html">Point D</a></li>
-                    <li><a href="form-validation.html">Point E</a></li>
+                    <li><a href="{{ route('point-B') }}">Point B</a></li>
+                    <li><a href="{{ route('point-C') }}">Point C</a></li>
+                    <li><a href="{{ route('point-D') }}">Point D</a></li>
+                    <li><a href="{{ route('point-E') }}">Point E</a></li>
                     <li><a href="form-validation.html">Upload Bukti</a></li>
                 </ul>
             </li>
@@ -46,8 +38,18 @@
                     <span class="nav-text">Table</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
+                    <li><a href="table-bootstrap-basic.html">User & Role</a></li>
                     <li><a href="table-datatable-basic.html">Datatable</a></li>
+                </ul>
+            </li>
+
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="nav-text">Maintenain</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="app-profile.html">User Control</a></li>
+                    <li><a href="app-profile.html">Activity Log</a></li>
                 </ul>
             </li>
         </ul>
@@ -77,7 +79,7 @@
         </div>
 
         <div class="copyright">
-            <p><strong>Fillow Saas Admin</strong> © {{ date('Y') }} All Rights Reserved</p>
+            <p><strong>Institut Kesehatan & Bisnis Surabaya</strong> © {{ date('Y') }} All Rights Reserved</p>
             <p class="fs-12">Made with <span class="heart"></span> by IKBIS</p>
         </div>
     </div>
