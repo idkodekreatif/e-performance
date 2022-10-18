@@ -37,7 +37,7 @@
                     <li><a href="{{ route('point-B') }}">Point B</a></li>
                     <li><a href="{{ route('point-C') }}">Point C</a></li>
                     <li><a href="{{ route('point-D') }}">Point D</a></li>
-                    <li><a href="form-validation.html">Point E</a></li>
+                    <li><a href="{{ route('point-E') }}">Point E</a></li>
                     <li><a href="form-validation.html">Upload Bukti</a></li>
                 </ul>
             </li>
@@ -46,7 +46,7 @@
                     <span class="nav-text">Table</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
+                    <li><a href="table-bootstrap-basic.html">User & Role</a></li>
                     <li><a href="table-datatable-basic.html">Datatable</a></li>
                 </ul>
             </li>
@@ -77,7 +77,7 @@
         </div>
 
         <div class="copyright">
-            <p><strong>Fillow Saas Admin</strong> © {{ date('Y') }} All Rights Reserved</p>
+            <p><strong>Institut Kesehatan & Bisnis Surabaya</strong> © {{ date('Y') }} All Rights Reserved</p>
             <p class="fs-12">Made with <span class="heart"></span> by IKBIS</p>
         </div>
     </div>
