@@ -12,12 +12,12 @@
                     <span class="nav-text">Charts</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="chart-flot.html">Flot</a></li>
-                    <li><a href="chart-morris.html">Morris</a></li>
-                    <li><a href="chart-chartjs.html">Chartjs</a></li>
-                    <li><a href="chart-chartist.html">Chartist</a></li>
-                    <li><a href="chart-sparkline.html">Sparkline</a></li>
-                    <li><a href="chart-peity.html">Peity</a></li>
+                    <li><a href="javascript:void()">Flot</a></li>
+                    <li><a href="javascript:void()">Morris</a></li>
+                    <li><a href="javascript:void()">Chartjs</a></li>
+                    <li><a href="javascript:void()">Chartist</a></li>
+                    <li><a href="javascript:void()">Sparkline</a></li>
+                    <li><a href="javascript:void()">Peity</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -30,7 +30,7 @@
                     <li><a href="{{ route('point-C') }}">Point C</a></li>
                     <li><a href="{{ route('point-D') }}">Point D</a></li>
                     <li><a href="{{ route('point-E') }}">Point E</a></li>
-                    <li><a href="form-validation.html">Upload Bukti</a></li>
+                    <li><a href="javascript:void()">Upload Bukti</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -38,8 +38,8 @@
                     <span class="nav-text">Table</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="table-bootstrap-basic.html">Point</a></li>
-                    <li><a href="table-datatable-basic.html">Datatable</a></li>
+                    <li><a href="javascript:void()">Point</a></li>
+                    <li><a href="javascript:void()">Datatable</a></li>
                 </ul>
             </li>
 
@@ -49,7 +49,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('usercontrol') }}">User Control</a></li>
-                    <li><a href="app-profile.html">Activity Log</a></li>
+                    <li><a href="javascript:void()">Activity Log</a></li>
                 </ul>
             </li>
         </ul>
