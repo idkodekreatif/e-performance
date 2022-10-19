@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControlUserController;
 use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
@@ -33,4 +34,5 @@ Route::group(['middleware' => ['role:superuser|it']], function () {
     Route::get('/point-C', [PointCController::class, 'index'])->name('point-C');
     Route::get('/point-D', [PointDController::class, 'index'])->name('point-D');
     Route::get('/point-E', [PointEController::class, 'index'])->name('point-E');
+    Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
 });

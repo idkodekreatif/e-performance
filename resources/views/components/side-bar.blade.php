@@ -38,7 +38,7 @@
                     <span class="nav-text">Table</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="table-bootstrap-basic.html">User & Role</a></li>
+                    <li><a href="table-bootstrap-basic.html">Point</a></li>
                     <li><a href="table-datatable-basic.html">Datatable</a></li>
                 </ul>
             </li>
@@ -48,7 +48,7 @@
                     <span class="nav-text">Maintenain</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="app-profile.html">User Control</a></li>
+                    <li><a href="{{ route('usercontrol') }}">User Control</a></li>
                     <li><a href="app-profile.html">Activity Log</a></li>
                 </ul>
             </li>
