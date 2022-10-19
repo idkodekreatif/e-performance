@@ -71,9 +71,9 @@
                 <span class="fs-12">20/45</span>
             </div>
             <div class="progress default-progress">
-                <div class="progress-bar bg-gradientf progress-animated" style="width: 45%; height:10px;"
+                <div class="progress-bar bg-gradientf progress-animated" style="width: 50%; height:10px;"
                     role="progressbar">
-                    <span class="sr-only">45% Complete</span>
+                    <span class="sr-only">50% Complete</span>
                 </div>
             </div>
         </div>
