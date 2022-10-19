@@ -4,6 +4,12 @@
     @endpush
 
     <div class="col-xl col-lg">
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Point B</a></li>
+            </ol>
+        </div>
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Point B</h4>
