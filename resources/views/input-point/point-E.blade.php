@@ -51,7 +51,11 @@
                                             organisasi yang lalu</td>
                                         <td>Tidak diperhitungkan</td>
                                         <td>Dosen sedang menjabat sebagai Pejabat Struktural non Akademik</td>
-                                        <td rowspan="2">SK Rektor</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                Rektor</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -73,7 +77,11 @@
                                         <td>Dosen menginisiasi >1 MoU dalam 1 tahun penilaian</td>
                                         <td>Dosen menginisiasi 1 MoA dalam 1 tahun penilaian</td>
                                         <td>Dosen menginisiasi >1 MoA dalam 1 tahun penilaian</td>
-                                        <td rowspan="2">MoU yang dihasilkan</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload MoU yang
+                                                dihasilkan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -96,7 +104,11 @@
                                         <td>1 kali terlibat dalam Satgas</td>
                                         <td>2 kali terlibat dalam Satgas</td>
                                         <td> >2 kali terlibat dalam Satgas</td>
-                                        <td rowspan="2">SK Rektor</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                SK Rektor</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -119,7 +131,11 @@
                                         <td>1 kali terlibat dalam Satgas</td>
                                         <td>2 kali terlibat dalam Satgas</td>
                                         <td> >2 kali terlibat dalam Satgas</td>
-                                        <td rowspan="2">SK Rektor</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                SK Rektor</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -142,7 +158,11 @@
                                         <td>1 kali terlibat dalam Satgas</td>
                                         <td>2 kali terlibat dalam Satgas</td>
                                         <td> >2 kali terlibat dalam Satgas</td>
-                                        <td rowspan="2">SK Rektor</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                SK Rektor</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -163,7 +183,11 @@
                                         <td>Tidak sama sekali</td>
                                         <td colspan="3">Tidak diperhitungkan</td>
                                         <td> Sedang menjadi Mentor</td>
-                                        <td rowspan="2">SK Mentor/ Dosen Senior</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                SK Mentor/ Dosen Senior</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -191,7 +215,11 @@
                                         <td>Dosen bergelar S2</td>
                                         <td>Dosen bergelar S2 dan sedang studi lanjut</td>
                                         <td>Dosen bergelar S3</td>
-                                        <td rowspan="2">Fotokopi ijazah terakhir</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                Fotokopi ijazah terakhir</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -218,7 +246,11 @@
                                         </td>
                                         <td>Membimbing tesis dan/ atau disertasi sebagai pembimbing utama >4 lulusan
                                         </td>
-                                        <td rowspan="2">SK Pembimbingan</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                SK Pembimbingan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -244,7 +276,11 @@
                                         </td>
                                         <td>Dosen memiliki lebih dari 1 sertifikat profesi
                                         </td>
-                                        <td rowspan="2">Sertifikat Profesi</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                Sertifikat Profesi</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -270,7 +306,11 @@
                                         <td>Dosen sedang mengikuti kursus/telah mengikuti kursus dalam Tahun Akademik
                                             penilaian
                                         </td>
-                                        <td rowspan="2">SK Kursus/ kegiatan sejenis</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload
+                                                SK Kursus/ kegiatan sejenis</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>

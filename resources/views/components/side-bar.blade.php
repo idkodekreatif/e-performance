@@ -30,7 +30,6 @@
                     <li><a href="{{ route('point-C') }}">Point C</a></li>
                     <li><a href="{{ route('point-D') }}">Point D</a></li>
                     <li><a href="{{ route('point-E') }}">Point E</a></li>
-                    <li><a href="javascript:void()">Upload Bukti</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
