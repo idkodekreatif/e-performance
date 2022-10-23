@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <table class="table table-bordered border-2 table-sm text-center table-sm">
+                        <table class="table table-bordered border-2 text-center">
                             <thead>
                                 <tr>
                                     <td rowspan="2">No</td>
@@ -46,32 +46,28 @@
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
                                         <td>Nilai rerata < 2.00 (KURANG)</td>
-                                        <td>Nilai rerata>=2.00 - < 3.00 </td>
-                                        <td>Nilai rerata >=3.00 - < 3.60 </td>
-                                        <td>Nilai rerata >=3.60 - < 3.80 </td>
-                                        <td>Nilai rerata >=3.80 - 4.00</td>
-                                        <td rowspan="2">Hasil evaluasi perkuliahan</td>
-                                        <td rowspan="2" class="bg-warning"><input
-                                                class="form-control form-control-sm mis" id="mis" type="number"
-                                                placeholder="Point"></td>
-                                        <td rowspan="2"><input class="form-control form-control-sm gpa" id="gpa"
-                                                type="number" placeholder="Point"></td>
-                                        <td rowspan="2"><input class="form-control form-control-sm hasil"
-                                                id="resultScore" type="number" placeholder="Point"></td>
+                                        <td>Nilai rerata>=2.00 - < 3.00 (CUKUP) </td>
+                                        <td>Nilai rerata >=3.00 - < 3.60 (BAIK)</td>
+                                        <td>Nilai rerata >=3.60 - < 3.80 (SANGAT BAIK)</td>
+                                        <td>Nilai rerata >=3.80 - 4.00
+                                            (ISTIMEWA)</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Hasil
+                                                evaluasi perkuliahan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
+                                        <td rowspan="2" class="bg-warning"></td>
+                                        <td rowspan="2"></td>
+                                        <td rowspan="2"></td>
                                     </tr>
                                     <tr>
                                         <td>A.1</td>
                                         <td>Nilai rerata evaluasi perkuliahan untuk sem. Gasal - sem. Genap</td>
-                                        <td><input class="form-control form-control-sm point1" id="point1" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point2" id="point2" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point3" id="point3" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point4" id="point4" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point5" id="point5" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
+                                        <td><input type="radio" name="optradio" value="1"></td>
+                                        <td><input type="radio" name="optradio" value="2"></td>
+                                        <td><input type="radio" name="optradio" value="3"></td>
+                                        <td><input type="radio" name="optradio" value="4"></td>
+                                        <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
 
                                     <tr>
@@ -81,7 +77,11 @@
                                         <td>Menyusun untuk 25% - 50% dari mata kuliah yang diasuh</td>
                                         <td>Menyusun untuk 51% - 75% dari mata kuliah yang diasuh</td>
                                         <td>Menyusun untuk lebih dari 75% mata kuliah yang diasuh</td>
-                                        <td rowspan="2">Checklist RPS dari Prodi</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Checklist
+                                                RPS dari Prodi</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -105,7 +105,11 @@
                                         <td>Mengampu mata kuliah dengan total 9 - 11 sks</td>
                                         <td>Mengampu mata kuliah dengan rata-rata 12-13 sks atau lebih, per semester
                                         </td>
-                                        <td rowspan="2">Jumlah SKS</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Jumlah
+                                                SKS</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -127,7 +131,11 @@
                                         <td>Membimbing 2 - 3 mata kuliah dengan tugas akhir seminar</td>
                                         <td>Membimbing 4 mata kuliah dengan tugas akhir seminar</td>
                                         <td>Membimbing >4 mata kuliah dengan tugas akhir seminar</td>
-                                        <td rowspan="2">SK Pembimbing dan Keterangan Prodi</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                Pembimbing dan Keterangan Prodi</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -152,7 +160,11 @@
                                         <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (5 - 7 mahasiswa)</td>
                                         <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (8 - 10 mahasiswa, atau lebih)
                                         </td>
-                                        <td rowspan="2">SK Pembimbingan</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                Pembimbingan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -176,7 +188,11 @@
                                         <td>Membimbing skripsi sebagai pembimbing pendamping (>8 lulusan)</td>
                                         <td>Membimbing skripsi sebagai pembimbing utama (1 - 8 lulusan)</td>
                                         <td>Membimbing skripsi sebagai pembimbing utama (>8 lulusan)</td>
-                                        <td rowspan="2">SK Pembimbingan</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                Pembimbingan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -199,7 +215,11 @@
                                         <td>Dosen menjadi anggota penguji (> 8 mahasiswa)</td>
                                         <td>Dosen menjadi Ketua Penguji (1 - 8 mahasiswa)</td>
                                         <td>Dosen menjadi Ketua Penguji (> 8 mahasiswa)</td>
-                                        <td rowspan="2">SK penunjukkan sebagai penguji</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                penunjukkan sebagai penguji</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -221,8 +241,12 @@
                                         <td>Menjadi pembimbing akademik (9 - 10 mahasiswa)</td>
                                         <td>Menjadi pembimbing akademik (11 - 12 mahasiswa)</td>
                                         <td>Menjadi pembimbing akademik (>12 mahasiswa)</td>
-                                        <td rowspan="2">SK Dosen Pembimbing Akademik
-                                            (Dosen PA/Dosen Wali)</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK Dosen
+                                                Pembimbing Akademik
+                                                (Dosen PA/Dosen Wali)</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -248,7 +272,11 @@
                                         <td>Tidak diperhitungkan</td>
                                         <td>100% jumlah mahasiswa yang dibimbingnya lancar
                                             (Jumlah mahasiswa melanjutkan studi/lulus = 100%)</td>
-                                        <td rowspan="2">Keterangan dari Prodi dan BAAK</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Keterangan
+                                                dari Prodi dan BAAK</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -272,7 +300,11 @@
                                         <td>Menjadi penasihat akademik dan pembina 1 kegiatan kemahasiswaan</td>
                                         <td>Menjadi penasihat akademik dan pembina kegiatan kemahasiswaan lebih dari 1
                                         </td>
-                                        <td rowspan="2">Keterangan dari Prodi</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Keterangan
+                                                dari Prodi</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -300,14 +332,18 @@
                                         <td>Metode baru yang diusulkan telah disetujui dan diimplementasikan dalam PT /
                                             Fakultas / Prodinya
                                         </td>
-                                        <td rowspan="2">Bukti tertulis terkait metode pembelajaran baru yang telah
-                                            disampaikan</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti
+                                                tertulis terkait metode pembelajaran baru yang telah
+                                                disampaikan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">A.11</td>
+                                        <td>A.11</td>
                                         <td>Dosen berhasil menemukan metode pembelajaran yang inovatif, dilengkapi
                                             dengan media pembelajaran dan evaluasi
                                             pembelajaran yang tertulis dan tersimpan dalam perpustakaan IKBIS.
@@ -319,6 +355,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -356,14 +393,18 @@
                                             teks serta diterbitkan secara resmi dan
                                             disebarluaskan
                                         </td>
-                                        <td rowspan="2">Bukti fisik bahan pengajaran yang dihasilkan, dan jumlah mata
-                                            kuliah diperhitungkan</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                bahan pengajaran yang dihasilkan, dan jumlah mata
+                                                kuliah diperhitungkan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">A.12</td>
+                                        <td>A.12</td>
                                         <td>Dosen mengembangkan bahan pengajaran sebagai hasil pengembangan inovatif
                                             materi substansi pengajaran
                                         </td>
@@ -374,6 +415,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -408,7 +450,11 @@
                                         <td>Sedang menjabat sebagai Wakil Rektor/Direktur Pascasarjana/Dekan
                                             Fakultas/Ketua Lembaga</td>
                                         <td>Sedang menjabat sebagai Rektor</td>
-                                        <td rowspan="2">SK Pengangkatan sebagai Pejabat Struktural</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                Pengangkatan sebagai Pejabat Struktural</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>

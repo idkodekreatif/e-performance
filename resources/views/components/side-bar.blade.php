@@ -30,7 +30,6 @@
                     <li><a href="{{ route('point-C') }}">Point C</a></li>
                     <li><a href="{{ route('point-D') }}">Point D</a></li>
                     <li><a href="{{ route('point-E') }}">Point E</a></li>
-                    <li><a href="javascript:void()">Upload Bukti</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -71,9 +70,9 @@
                 <span class="fs-12">20/45</span>
             </div>
             <div class="progress default-progress">
-                <div class="progress-bar bg-gradientf progress-animated" style="width: 45%; height:10px;"
+                <div class="progress-bar bg-gradientf progress-animated" style="width: 50%; height:10px;"
                     role="progressbar">
-                    <span class="sr-only">45% Complete</span>
+                    <span class="sr-only">50% Complete</span>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <table class="table table-bordered border-2 table-sm text-center table-sm">
+                        <table class="table table-bordered border-2 text-center">
                             <thead>
                                 <tr>
                                     <td rowspan="2">No</td>
@@ -51,14 +51,17 @@
                                         <td>Menjadi anggota/pengurus dalam organisasi tingkat nasional</td>
                                         <td>Menjadi anggota/pengurus dalam organisasi tingkat internasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik kartu anggota atau akses ke jurnal/website tertentu
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                kartu anggota atau akses ke jurnal/website tertentu</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.1</td>
+                                        <td>C.1</td>
                                         <td>Dosen berperan sebagai pengurus atau anggota organisasi sosial
                                             kemasyarakatan (termasuk RT, RW, parpol, organisasi
                                             keagamaan, dll)
@@ -70,6 +73,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -103,15 +107,18 @@
                                         <td>Menjadi Pengurus Inti (Sekretaris / Bendahara / Wakil Ketua)</td>
                                         <td>Menjadi Ketua Umum Organisasi / Penasihat / Penanggungjawab
                                         </td>
-                                        <td rowspan="2">SK Pengangkatan dosen sebagai pengurus dalam organisasi
-                                            kemasyarakatan tertentu
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                Pengangkatan dosen sebagai pengurus dalam organisasi
+                                                kemasyarakatan tertentu</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.2</td>
+                                        <td>C.2</td>
                                         <td>Peranan dosen dalam organisasi sosial kemasyarakatan
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -121,6 +128,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -154,15 +162,18 @@
                                         </td>
                                         <td>Pernah menyampaikan orasi ilmiah lebih dari 1 kali di luar IKBIS sendiri
                                         </td>
-                                        <td rowspan="2">Bukti fisik undangan/surat keterangan telah melakukan orasi
-                                            ilmiah, dan makalah yang disampaikan
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                undangan/surat keterangan telah melakukan orasi
+                                                ilmiah, dan makalah yang disampaikan</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.3</td>
+                                        <td>C.3</td>
                                         <td>Dosen menyampaikan orasi ilmiah dalam forum-forum kegiatan tradisi akademik
                                             seperti dies natalis, wisuda, simposium
                                             nasional, dll
@@ -174,6 +185,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah orasi ilmiah (>1)</td>
                                         <td></td>
                                         <td></td>
@@ -208,16 +220,19 @@
                                         </td>
                                         <td>menjadi pembicara/instruktur/pengaja/juri dalam kegiatan tingkat nasional
                                         </td>
-                                        <td rowspan="2">Surat Tugas atau SK atau sertifikat yang menandakan dosen telah
-                                            berperan serta dalam kegiatan pengabdian kepada
-                                            masyarakat
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat Tugas
+                                                atau SK atau sertifikat yang menandakan dosen telah
+                                                berperan serta dalam kegiatan pengabdian kepada
+                                                masyarakat</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.4</td>
+                                        <td>C.4</td>
                                         <td>Dosen menjadi pembicara, instruktur ,pengajar pada seminar, lokakarya,
                                             dan
                                             aktivitas belajar mengajar untuk pengembangan
@@ -231,6 +246,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kegiatan yang dilakukan</td>
                                         <td></td>
                                         <td></td>
@@ -266,16 +282,19 @@
                                         </td>
                                         <td>Menjadi pembicara utama dalam suatu seminar/diskusi panel yang dilaksanakan
                                         </td>
-                                        <td rowspan="2">Surat Tugas atau SK atau sertifikat yang menandakan dosen telah
-                                            berperan serta dalam kegiatan pengabdian kepada
-                                            masyarakat
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat Tugas
+                                                atau SK atau sertifikat yang menandakan dosen telah
+                                                berperan serta dalam kegiatan pengabdian kepada
+                                                masyarakat</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.5</td>
+                                        <td>C.5</td>
                                         <td>Peranan dosen dalam kegiatan seminar/lokakarya dan aktivitas belajar
                                             mengajar untuk pengembangan suatu lembaga sosial
                                             kemasyarakatan di dalam/luar IKBIS, baik masyarakat umum maupun masyarakat
@@ -288,6 +307,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah ormas yang diikuti</td>
                                         <td></td>
                                         <td></td>
@@ -323,14 +343,17 @@
                                         </td>
                                         <td>Memberikan konsultasi kepada organisasi kemasyarakatan tingkat nasional
                                         </td>
-                                        <td rowspan="2">Surat Keterangan dari organisasi yang memanfaatkan jasa dosen
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat
+                                                Keterangan dari organisasi yang memanfaatkan jasa dosen</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.6</td>
+                                        <td>C.6</td>
                                         <td>Dosen memberikan pelayanan konsultasi untuk meningkatkan kesejahteraan
                                             masyarakat (sifatnya nirlaba)
                                         </td>
@@ -341,6 +364,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah ormas yang dilayani</td>
                                         <td></td>
                                         <td></td>
@@ -376,14 +400,17 @@
                                         </td>
                                         <td>Menyusun panduan dan disebarluaskan pada masyarakat nasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik panduan praktis
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                panduan praktis</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.7</td>
+                                        <td>C.7</td>
                                         <td>Dosen menulis karya pengabdian kepada masyarakat dalam bentuk panduan
                                             praktis/terapan untuk dapat dimanfaatkan oleh
                                             masyarakat dan tidak dipublikasikan
@@ -395,6 +422,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah karya yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -431,14 +459,17 @@
                                         <td>Karya dosen dipublikasikan di tingkat internasional dalam
                                             jurnal/buku/prosiding
                                         </td>
-                                        <td rowspan="2">Bukti fisik buku/makalah/artikel yang dipublikasikan
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                buku/makalah/artikel yang dipublikasikan</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.8</td>
+                                        <td>C.8</td>
                                         <td>Dosen menulis karya pengabdian kepada masyarakat dalam bentuk panduan
                                             praktis/terapan untuk dapat dimanfaatkan oleh
                                             masyarakat dan tidak dipublikasikan
@@ -450,6 +481,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah karya yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -485,14 +517,17 @@
                                         </td>
                                         <td>Melaksanakan kegiatan praktik nyata di tingkat nasional
                                         </td>
-                                        <td rowspan="2">Laporan kegiatan pengabdian masyarakat
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Laporan
+                                                kegiatan pengabdian masyarakat</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">C.9</td>
+                                        <td>C.9</td>
                                         <td>Dosen melaksanakan implementasi pendidikan dan penelitian melalui praktik
                                             nyata di lapangan untuk dimanfaatkan kepada
                                             masyarakat
@@ -504,6 +539,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kegiatan yang dilakukan</td>
                                         <td></td>
                                         <td></td>

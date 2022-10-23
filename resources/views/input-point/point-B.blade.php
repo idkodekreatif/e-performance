@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <table class="table table-bordered border-2 table-sm text-center table-sm">
+                        <table class="table table-bordered border-2 text-center">
                             <thead>
                                 <tr>
                                     <td rowspan="2">No</td>
@@ -54,15 +54,19 @@
                                         <td>Metode baru yang diusulkan telah disetujui dan diimplementasikan dalam PT /
                                             Fakultas / Prodinya
                                         </td>
-                                        <td rowspan="2"> 1, Sertifikat Hak Cipta <br>
-                                            2, Formulir Pendaftaran Permohonan Paten <br>
-                                            3, Sertifikat Hak Paten</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload <br> 1,
+                                                Sertifikat Hak Cipta <br>
+                                                2, Formulir Pendaftaran Permohonan Paten <br>
+                                                3, Sertifikat Hak Paten</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.1</td>
+                                        <td>B.1</td>
                                         <td>Dosen memiliki karya yang telah dipatenkan atau diakui secara nasional
                                             maupun internasional
                                         </td>
@@ -73,6 +77,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -105,13 +110,17 @@
                                         <td>Diterbitkan dan diedarkan secara nasional</td>
                                         <td>Diterbitkan dan diedarkan secara Internasional
                                         </td>
-                                        <td rowspan="2"> Bukti fisik monograf</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                monograf</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.2</td>
+                                        <td>B.2</td>
                                         <td>Dosen menghasilkan monograf yang relevan dengan bidang kelimuan
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -121,6 +130,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -153,13 +163,17 @@
                                         <td>Diterbitkan dan diedarkan secara nasional</td>
                                         <td>Diterbitkan dan diedarkan secara Internasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik buku referensi</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                buku referensi</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.3</td>
+                                        <td>B.3</td>
                                         <td>Dosen menghasilkan buku referensi yang relevan dengan bidang keilmuan
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -169,6 +183,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -201,7 +216,11 @@
                                         <td>Satu kali sebagai penulis utama/tunggal</td>
                                         <td>Lebih dari satu kali sebagai penulis utama/tunggal
                                         </td>
-                                        <td rowspan="2">Bukti fisik monograf/buku</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                monograf/buku</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -226,14 +245,18 @@
                                         <td>sudah ada konfirmasi untuk dimuat / sedang dalam revisi</td>
                                         <td>telah dimuat dalam jurnal ilmiah internasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik jurnal ilmiah internasional dan bukti penerimaan
-                                            naskah</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                jurnal ilmiah internasional dan bukti penerimaan
+                                                naskah</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.5</td>
+                                        <td>B.5</td>
                                         <td>Dosen menulis artikel yang diterbitkan dalam Jurnal Ilmiah Internasional
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -243,6 +266,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -276,14 +300,18 @@
                                         <td>sudah ada konfirmasi untuk dimuat / sedang dalam revisi</td>
                                         <td>telah dimuat dalam jurnal ilmiah nasional terakreditasi
                                         </td>
-                                        <td rowspan="2">Bukti fisik jurnal ilmiah nasional terakreditasi dan bukti
-                                            penerimaan naskah</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                jurnal ilmiah nasional terakreditasi dan bukti
+                                                penerimaan naskah</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.6</td>
+                                        <td>B.6</td>
                                         <td>Dosen menulis artikel yang diterbitkan dalam Jurnal Ilmiah nasional
                                             terakreditasi
                                         </td>
@@ -294,6 +322,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -327,14 +356,18 @@
                                         <td>1 - 2 karya dimuat dalam jurnal ilmiah nasional tidak terakreditasi</td>
                                         <td>3 karya dimuat dalam jurnal ilmiah tidak terakreditasi
                                         </td>
-                                        <td rowspan="2">Bukti fisik jurnal ilmiah nasional tidak terakreditasi dan bukti
-                                            penerimaan naskah</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                jurnal ilmiah nasional tidak terakreditasi dan bukti
+                                                penerimaan naskah</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.7</td>
+                                        <td>B.7</td>
                                         <td>Dosen menulis artikel yang diterbitkan dalam Jurnal Ilmiah Nasional tidak
                                             terakreditasi / Jurnal Ilmiah Nasional
                                             ber-ISSN
@@ -346,6 +379,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kelebihan karya artikel (>3 karya)</td>
                                         <td></td>
                                         <td></td>
@@ -376,9 +410,16 @@
                                         <td>satu kali sebagai anggota penulis</td>
                                         <td>Lebih dari 1 kali sebagai anggota penulis</td>
                                         <td>Satu kali sebagai penulis utama/tunggal</td>
-                                        <td>Lebih dari satu kali sebagai penulis utama/tunggal
+                                        <td>
+                                            Lebih dari
+                                            satu kali sebagai penulis utama/tunggal
+
                                         </td>
-                                        <td rowspan="2">Bukti fisik jurnal</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                jurnal</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -407,13 +448,17 @@
                                         <td>makalah telah ditampilkan dan bukti sertifikat maupun prosiding telah
                                             diterima lengkap, jumlah makalah = 2
                                         </td>
-                                        <td rowspan="2">Bukti fisik sertifikat dan prosiding seminar</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                sertifikat dan prosiding seminar</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.9</td>
+                                        <td>B.9</td>
                                         <td>Dosen membuat makalah dipresentasikan dalam seminar dan dimuat dalam
                                             prosiding internasional
                                         </td>
@@ -424,6 +469,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kelebihan karya makalah (>2 makalah)</td>
                                         <td></td>
                                         <td></td>
@@ -461,13 +507,17 @@
                                         <td>makalah telah ditampilkan dan bukti sertifikat maupun prosiding telah
                                             diterima lengkap, jumlah makalah 3 - 4
                                         </td>
-                                        <td rowspan="2">Bukti fisik sertifikat dan prosiding seminar</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                sertifikat dan prosiding seminar</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.10</td>
+                                        <td>B.10</td>
                                         <td>Dosen membuat makalah dipresentasikan dalam seminar dan dimuat dalam
                                             prosiding nasional/lokal
                                         </td>
@@ -478,6 +528,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kelebihan karya makalah (>4 makalah)</td>
                                         <td></td>
                                         <td></td>
@@ -515,13 +566,17 @@
                                         <td>poster telah ditampilkan dan bukti sertifikat telah diterima lengkap, jumlah
                                             poster = 2
                                         </td>
-                                        <td rowspan="2">Bukti fisik sertifikat dan prosiding seminar</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                sertifikat dan prosiding seminar</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.11</td>
+                                        <td>B.11</td>
                                         <td>Dosen membuat POSTER dipresentasikan dalam seminar dan prosiding
                                             internasional
                                         </td>
@@ -532,6 +587,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kelebihan karya poster (>2 poster)</td>
                                         <td></td>
                                         <td></td>
@@ -569,13 +625,17 @@
                                         <td>poster telah ditampilkan dan bukti sertifiakat telah diterima lengkap,
                                             jumlah poster 3 - 4
                                         </td>
-                                        <td rowspan="2">Bukti fisik sertifikat dan prosiding seminar</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                sertifikat dan prosiding seminar</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.12</td>
+                                        <td>B.12</td>
                                         <td>Dosen membuat POSTER dipresentasikan dalam seminar dan prosiding Nasional
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -585,6 +645,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kelebihan karya poster (>4 poster)</td>
                                         <td></td>
                                         <td></td>
@@ -619,13 +680,17 @@
                                         <td>Opini telah diterbitkan dalam koran/majalah nasional</td>
                                         <td>Opini telah diterbitkan dalam koran/majalah internasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik koran/majalah populer/umum</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                koran/majalah populer/umum</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.13</td>
+                                        <td>B.13</td>
                                         <td>Dosen menulis opini dalam Koran/Majalah populer / umum
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -635,6 +700,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -669,13 +735,17 @@
                                         <td>Hasil penelitian digunakan untuk kepentingan nasional</td>
                                         <td>Hasil penelitian/pemikiran digunakan untuk kepentingan internasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik buku yang telah disimpan di Perpustakaan PT</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                buku yang telah disimpan di Perpustakaan PT</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.14</td>
+                                        <td>B.14</td>
                                         <td>Dosen menghasilkan penelitian/pemikiran yang tidak dipublikasikan, tapi
                                             digunakan untuk kepentingan tertentu (dibukukan
                                             dan disimpan dalam perpustakaan PT)
@@ -687,6 +757,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -722,14 +793,18 @@
                                         <td>Proposal penelitian dengan dana hibah nasional (DIKTI/BRIN/dll)</td>
                                         <td>Proposal penelitian dengan dana hibah internasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik proposal dan bukti fisik surat/surel penerimaan
-                                            proposal</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                proposal dan bukti fisik surat/surel penerimaan
+                                                proposal</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.15</td>
+                                        <td>B.15</td>
                                         <td>Dosen membuat proposal penelitian, karya/desain teknologi, seni dan sastra
                                             dengan dana hibah
                                         </td>
@@ -740,6 +815,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -772,8 +848,12 @@
                                         <td>Satu kali sebagai peneliti utama/tunggal</td>
                                         <td>lebih dari 1 kali sebagai peneliti utama/tunggal
                                         </td>
-                                        <td rowspan="2">Bukti fisik proposal dan bukti fisik surat/surel penerimaan
-                                            proposal</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                proposal dan bukti fisik surat/surel penerimaan
+                                                proposal</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
@@ -800,14 +880,18 @@
                                         <td>Dosen sedang melaksanakan penelitian dengan dana hibah nasional</td>
                                         <td>Dosen sedang melaksanakan penelitian dengan dana hibah internasional
                                         </td>
-                                        <td rowspan="2">Bukti fisik surat kontrak penelitian/surat penerimaan dana
-                                            hibah, dan jurnal penelitian</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                surat kontrak penelitian/surat penerimaan dana
+                                                hibah, dan jurnal penelitian</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">B.17</td>
+                                        <td>B.17</td>
                                         <td>Dosen melakukan penelitian dengan dana hibah
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -817,6 +901,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
@@ -849,8 +934,12 @@
                                         <td>Satu kali sebagai peneliti utama/tunggal</td>
                                         <td>lebih dari 1 kali sebagai peneliti utama/tunggal
                                         </td>
-                                        <td rowspan="2">Bukti fisik proposal dan bukti fisik surat/surel penerimaan
-                                            proposal</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                                proposal dan bukti fisik surat/surel penerimaan
+                                                proposal</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
