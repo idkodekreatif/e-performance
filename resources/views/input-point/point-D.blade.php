@@ -50,7 +50,11 @@
                                         <td>Menjadi anggota senat Institusi</td>
                                         <td>Menjadi Ketua/Sekretaris Senat fakultas</td>
                                         <td>Menjadi Ketua/Sekretaris Senat Institusi</td>
-                                        <td rowspan="2">SK Yayasan yang menyatakan keanggotaan dalam Senat Akademik</td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK Yayasan
+                                                yang menyatakan keanggotaan dalam Senat Akademik</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
                                         <td rowspan="2" class="bg-warning"><input
                                                 class="form-control form-control-sm mis" id="mis" type="number"
                                                 placeholder="Point"></td>
@@ -62,16 +66,11 @@
                                     <tr>
                                         <td>D.1</td>
                                         <td>Dosen menjadi ketua, sekretaris atau anggota senat fakultas/Institusi</td>
-                                        <td><input class="form-control form-control-sm point1" id="point1" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point2" id="point2" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point3" id="point3" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point4" id="point4" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
-                                        <td><input class="form-control form-control-sm point5" id="point5" type="number"
-                                                min="0" max="5" placeholder="Point"></td>
+                                        <td><input type="radio" name="optradio" value="1"></td>
+                                        <td><input type="radio" name="optradio" value="2"></td>
+                                        <td><input type="radio" name="optradio" value="3"></td>
+                                        <td><input type="radio" name="optradio" value="4"></td>
+                                        <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
 
                                     <tr>
@@ -82,14 +81,17 @@
                                         <td>Terlibat dalam Kepanitiaan Kegiatan Nasional</td>
                                         <td>Terlibat dalam Kepanitiaan Kegiatan Internasional
                                         </td>
-                                        <td rowspan="2">SK atau Surat Tugas yang menyatakan keanggotaan dosen
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK atau
+                                                Surat Tugas yang menyatakan keanggotaan dosen</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.2</td>
+                                        <td>D.2</td>
                                         <td>Dosen menjadi anggota pada kepanitiaan tertentu (terkait Tri Dharma)
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -99,6 +101,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah kepanitiaan yang diikuti</td>
                                         <td></td>
                                         <td></td>
@@ -131,15 +134,18 @@
                                         <td>Menjadi Pengurus inti (Sekretaris / Bendahara) dalam kegiatan</td>
                                         <td>Menjadi Ketua/Wakil Ketua dalam kegiatan
                                         </td>
-                                        <td rowspan="2">SK Pengangkatan dosen sebagai pengurus dalam organisasi
-                                            kemasyarakatan tertentu
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload SK
+                                                Pengangkatan dosen sebagai pengurus dalam organisasi
+                                                kemasyarakatan tertentu</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.3</td>
+                                        <td>D.3</td>
                                         <td>Peranan dosen dalam kepanitiaan tertentu
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -149,6 +155,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah peranan dosen dalam kepanitiaan</td>
                                         <td></td>
                                         <td></td>
@@ -183,14 +190,17 @@
                                         </td>
                                         <td>Sedang menjadi mitra bestari/reviewer jurnal ilmiah internasional
                                         </td>
-                                        <td rowspan="2">Surat Keterangan dan Bukti Jurnal
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat
+                                                Keterangan dan Bukti Jurnal</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.4</td>
+                                        <td>D.4</td>
                                         <td>Dosen menjadi mitra bestari/reviewer dalam jurnal ilmiah
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -200,6 +210,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah jurnal</td>
                                         <td></td>
                                         <td></td>
@@ -233,14 +244,17 @@
                                         </td>
                                         <td>Sedang menjadi redaktur/editor terbitan internasional
                                         </td>
-                                        <td rowspan="2">Surat Keterangan dan Bukti Majalah/terbitan populer lainnya
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat
+                                                Keterangan dan Bukti Majalah/terbitan populer lainnya</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.5</td>
+                                        <td>D.5</td>
                                         <td>Dosen menjadi redaktur/editor dalam suatu terbitan populer yang terkait erat
                                             dengan bidang keilmuannya
                                         </td>
@@ -251,6 +265,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah terbitan populer</td>
                                         <td></td>
                                         <td></td>
@@ -285,14 +300,17 @@
                                         </td>
                                         <td>Menjadi pengurus di tingkat internasional
                                         </td>
-                                        <td rowspan="2">Kartu Keanggotaan / Surat Keterangan anggota
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Kartu
+                                                Keanggotaan / Surat Keterangan anggota</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.6</td>
+                                        <td>D.6</td>
                                         <td>Dosen menjadi anggota organisasi asosiasi profesi, yang terkait bidang
                                             keilmuannya
                                         </td>
@@ -303,6 +321,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah organisasi asosiasi profesi</td>
                                         <td></td>
                                         <td></td>
@@ -337,15 +356,18 @@
                                         </td>
                                         <td>Menjadi anggota delegasi dalam 4 pertemuan internasional
                                         </td>
-                                        <td rowspan="2">Surat Tugas yang menyatakan dosen menjadi anggota delegasi
-                                            internasional
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat Tugas
+                                                yang menyatakan dosen menjadi anggota delegasi
+                                                internasional</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.7</td>
+                                        <td>D.7</td>
                                         <td>Dosen menjadi anggota delegasi nasional dalam pertemuan internasional
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -355,6 +377,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah (>4 pertemuan internasional)</td>
                                         <td></td>
                                         <td></td>
@@ -396,14 +419,17 @@
                                             minimal 2 kali dalam pertemuan internal / menjadi
                                             moderator di tingkat nasional
                                         </td>
-                                        <td rowspan="2">Presensi Forum Komunikasi Ilmiah dan Sertifikat Seminar
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Presensi
+                                                Forum Komunikasi Ilmiah dan Sertifikat Seminar</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.8</td>
+                                        <td>D.8</td>
                                         <td>Dosen berperan serta dalam pertemuan ilmiah (misalnya: Seminar, Simposium)
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -413,6 +439,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah pertemuan ilmiah</td>
                                         <td></td>
                                         <td></td>
@@ -448,14 +475,17 @@
                                         </td>
                                         <td>Mendapatkan tanda jasa/penghargaan tingkat internasional
                                         </td>
-                                        <td rowspan="2">Piagam Penghargaan dan atau SK yang menyertai
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Piagam
+                                                Penghargaan dan atau SK yang menyertai</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.9</td>
+                                        <td>D.9</td>
                                         <td>Dosen mendapatkan tanda jasa/penghargaan
                                         </td>
                                         <td><input type="radio" name="optradio" value="1"></td>
@@ -465,6 +495,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah tanda jasa</td>
                                         <td></td>
                                         <td></td>
@@ -500,14 +531,17 @@
                                         </td>
                                         <td>Menulis buku SMA atau setingkat
                                         </td>
-                                        <td rowspan="2">Bukti Fisik Buku
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti Fisik
+                                                Buku</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.19</td>
+                                        <td>D.10</td>
                                         <td>Dosen menulis buku pelajaran SMA ke bawah yang diterbitkan dan diedarkan
                                             secara nasional
                                         </td>
@@ -518,6 +552,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah buku yang diterbitkan</td>
                                         <td></td>
                                         <td></td>
@@ -553,14 +588,17 @@
                                         </td>
                                         <td>Berprestasi di tingkat internasional
                                         </td>
-                                        <td rowspan="2">Piagam Penghargaan dan atau SK yang menyertai
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Piagam
+                                                Penghargaan dan atau SK yang menyertai</label>
+                                            <input id="formFileSm" type="file">
                                         </td>
                                         <td rowspan="2" class="bg-warning"></td>
                                         <td rowspan="2"></td>
                                         <td rowspan="2"></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="3">D.11</td>
+                                        <td>D.11</td>
                                         <td>Dosen memiliki prestasi di bidang olah raga/kesenian/humaniora (menjadi duta
                                             besar organisasi tertentu atau negara
                                             tertentu)
@@ -572,6 +610,7 @@
                                         <td><input type="radio" name="optradio" value="5"></td>
                                     </tr>
                                     <tr>
+                                        <td rowspan="2"></td>
                                         <td>Jumlah prestasi</td>
                                         <td></td>
                                         <td></td>
