@@ -23,7 +23,7 @@
                                     <td rowspan="2">No</td>
                                     <td rowspan="2">Komponen Kompetensi</td>
                                     <td colspan="5">Skor</td>
-                                    <td rowspan="2" class="col">Bukti Pendukung</td>
+                                    <td rowspan="2">Bukti Pendukung</td>
                                     <td rowspan="2" class="bg-warning">Skor</td>
                                     <td rowspan="2">Skor/Skor maks</td>
                                     <td rowspan="2">Skor x Bobot Sub Item</td>
@@ -56,18 +56,31 @@
                                                 evaluasi perkuliahan</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorA1" type="number"
+                                                aria-label="A1" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxA1" type="number" aria-label="A1" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemA1" type="number" aria-label="A1"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>A.1</td>
                                         <td>Nilai rerata evaluasi perkuliahan untuk sem. Gasal - sem. Genap</td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="A1" name="A1" id="A1" value="1"
+                                                onclick="sumA1();">
+                                        </td>
+                                        <td><input type="radio" class="A1" name="A1" id="A1" value="2"
+                                                onclick="sumA1();">
+                                        </td>
+                                        <td><input type="radio" class="A1" name="A1" id="A1" value="3"
+                                                onclick="sumA1();">
+                                        </td>
+                                        <td><input type="radio" class="A1" name="A1" id="A1" value="4"
+                                                onclick="sumA1();">
+                                        </td>
+                                        <td><input type="radio" class="A1" name="A1" id="A1" value="5"
+                                                onclick="sumA1();">
+                                        </td>
                                     </tr>
 
                                     <tr>
@@ -512,14 +525,53 @@
     @push('JavaScript')
     {{-- <script src="{{ asset('Assets/js/Input-point/inputpoint.js') }}"></script> --}}
     <script>
-        $(document).ready(function () {
-            $("#mis").keyup(function () {
-            var totalScore = parseInt($("#point1").val()) + parseInt($("#point2").val());
-            var gpa = totalScore / 5;
-            $("#resultScore").val(totalScore);
-            $("#gpa").val(gpa);
-            });
-            });
+        // $(document).ready(function () {
+        //     $("#mis").keyup(function () {
+        //     var totalScore = parseInt($("#point1").val()) + parseInt($("#point2").val());
+        //     var gpa = totalScore / 5;
+        //     $("#resultScore").val(totalScore);
+        //     $("#gpa").val(gpa);
+        //     });
+        //     });
+
+        function sumA1(){
+            // Definisi variable point
+            var A1;
+
+
+
+            // Cek Input Radio
+            if ($("input[name='A1']:checked").val() != null) {
+            A1 = document.querySelector('input[name="A1"]:checked').value;
+            } else {
+            A1 = 0;
+            }
+
+            //Kalkulasi Nilai (TOTAL)
+            var resultSkorA1 = parseInt(A1);
+
+            var skorMaks = resultSkorA1 / 5;
+
+            var scorSubItemA1 = skorMaks * 100;
+
+            // Cek agar tidak keluar Nilai diluar Parameter
+            if (!isNaN(resultSkorA1)) {
+            // Tampilkan output pada input form
+            document.getElementById('scorA1').value = resultSkorA1;
+            }
+
+            // Cek agar tidak keluar Nilai diluar Parameter
+            if (!isNaN(skorMaks)) {
+            // Tampilkan output pada input form
+            document.getElementById('scorMaxA1').value = skorMaks;
+            }
+
+            if (!isNaN(scorSubItemA1)) {
+            document.getElementById('scorSubItemA1').value = scorSubItemA1;
+            }
+
+
+        }
     </script>
     @endpush
 </x-app-layout>
