@@ -1,13 +1,3 @@
-// $(document).ready(function () {
-//     $("#mis").keyup(function () {
-//         var totalScore =
-//             parseInt($("#point1").val()) + parseInt($("#point2").val());
-//         var gpa = totalScore / 5;
-//         $("#resultScore").val(totalScore);
-//         $("#gpa").val(gpa);
-//     });
-// });
-
 function sum() {
     // Definisi variable point
     var A1;
@@ -21,6 +11,8 @@ function sum() {
     var A9;
     var A10;
     var A11;
+    var A12;
+    var A13;
 
     // Cek Input Radio
     if ($("input[name='A1']:checked").val() != null) {
@@ -78,6 +70,16 @@ function sum() {
     } else {
         A11 = 0;
     }
+    if ($("input[name='A12']:checked").val() != null) {
+        A12 = document.querySelector('input[name="A12"]:checked').value;
+    } else {
+        A12 = 0;
+    }
+    if ($("input[name='A13']:checked").val() != null) {
+        A13 = document.querySelector('input[name="A13"]:checked').value;
+    } else {
+        A13 = 0;
+    }
 
     //Kalkulasi Nilai (SKOR)
     var SkorA1 = parseInt(A1);
@@ -91,6 +93,8 @@ function sum() {
     var SkorA9 = parseInt(A9);
     var SkorA10 = parseInt(A10);
     var SkorA11 = parseInt(A11);
+    var SkorA12 = parseInt(A12);
+    var SkorA13 = parseInt(A13);
 
     //Kalkulasi Nilai (SKOR/SKOR MAKS)
     var skorMaksA1 = SkorA1 / 5;
@@ -104,6 +108,8 @@ function sum() {
     var skorMaksA9 = SkorA9 / 5 - 1;
     var skorMaksA10 = SkorA10 / 5;
     var skorMaksA11 = SkorA11 / 5;
+    var skorMaksA12 = SkorA12 / 5;
+    var skorMaksA13 = SkorA13 / 5;
 
     //Kalkulasi Nilai (SKOR*BOBOT SUB ITEM)
     var scorSubItemA1 = ((skorMaksA1 * 10) / 100).toFixed(3);
@@ -175,6 +181,20 @@ function sum() {
     } else {
         var scorSubItemA11 = ((skorMaksA11 * 7) / 100).toFixed(3);
     }
+    //Kalkulasi Nilai (SKOR*BOBOT SUB ITEM)
+    if ($("input[name='A12']:checked").val() == 1) {
+        var num = 0;
+        var scorSubItemA12 = num.toFixed(3);
+    } else {
+        var scorSubItemA12 = ((skorMaksA12 * 7) / 100).toFixed(3);
+    }
+    //Kalkulasi Nilai (SKOR*BOBOT SUB ITEM)
+    if ($("input[name='A13']:checked").val() == 1) {
+        var num = 0;
+        var scorSubItemA13 = num.toFixed(3);
+    } else {
+        var scorSubItemA13 = ((skorMaksA13 * 10) / 100).toFixed(3);
+    }
 
     // Menampilkan nilai skor di form disabled
 
@@ -236,6 +256,16 @@ function sum() {
         // Tampilkan output pada input form skor
         document.getElementById("scorA11").value = SkorA11;
     }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(SkorA12)) {
+        // Tampilkan output pada input form skor
+        document.getElementById("scorA12").value = SkorA12;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(SkorA13)) {
+        // Tampilkan output pada input form skor
+        document.getElementById("scorA13").value = SkorA13;
+    }
 
     // Menampilkan nilai skor / Skor Maks di form disabled
 
@@ -293,6 +323,16 @@ function sum() {
     if (!isNaN(skorMaksA11)) {
         // Tampilkan output pada input form skor / skor maks
         document.getElementById("scorMaxA11").value = skorMaksA11;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(skorMaksA12)) {
+        // Tampilkan output pada input form skor / skor maks
+        document.getElementById("scorMaxA12").value = skorMaksA12;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(skorMaksA13)) {
+        // Tampilkan output pada input form skor / skor maks
+        document.getElementById("scorMaxA13").value = skorMaksA13;
     }
 
     // Menampilkan nilai skor * Bpbpt Sub Item di form disabled
@@ -352,5 +392,15 @@ function sum() {
     if (!isNaN(scorSubItemA11)) {
         // Tampilkan output pada input form skor * Bobot Sub Item
         document.getElementById("scorSubItemA11").value = scorSubItemA11;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(scorSubItemA12)) {
+        // Tampilkan output pada input form skor * Bobot Sub Item
+        document.getElementById("scorSubItemA12").value = scorSubItemA12;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(scorSubItemA13)) {
+        // Tampilkan output pada input form skor * Bobot Sub Item
+        document.getElementById("scorSubItemA13").value = scorSubItemA13;
     }
 }
