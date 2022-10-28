@@ -459,7 +459,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td> <input type="teks" name="JumlahYangDihasilkanA11_5"
+                                        <td><input type="teks" name="JumlahYangDihasilkanA11_5"
                                                 id="JumlahYangDihasilkanA11_5" onkeyup="sumForm()" required></td>
                                         <td></td>
                                         <td><input type="teks" name="JumlahSkorYangDiHasilkanA11_5"
@@ -505,45 +505,68 @@
                                                 kuliah diperhitungkan</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorA12" type="number"
+                                                aria-label="A12" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxA12" type="number" aria-label="A12" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemA12" type="number" aria-label="A12"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>A.12</td>
                                         <td>Dosen mengembangkan bahan pengajaran sebagai hasil pengembangan inovatif
                                             materi substansi pengajaran
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="A12" name="A12" id="A12" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A12" name="A12" id="A12" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A12" name="A12" id="A12" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A12" name="A12" id="A12" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A12" name="A12" id="A12" value="5"
+                                                onclick="sum();">
                                     </tr>
                                     <tr>
                                         <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanA12_3"
+                                                id="JumlahYangDihasilkanA12_3" onkeyup="sumForm()" required>
+                                        </td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanA12_4"
+                                                id="JumlahYangDihasilkanA12_4" onkeyup="sumForm()" required></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanA12_5"
+                                                id="JumlahYangDihasilkanA12_5" onkeyup="sumForm()" required></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanA12"
+                                                id="JumlahSkorYangDiHasilkanA12" disabled></td>
                                         <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahSkorA12"
+                                                id="SkorTambahanJumlahSkorA12" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
+                                        <td><input type="teks" name="SkorTambahanA12_3" id="SkorTambahanA12_3" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanA12_4" id="SkorTambahanA12_4" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanA12_5" id="SkorTambahanA12_5" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanJumlahA12" id="SkorTambahanJumlahA12"
+                                                disabled></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemA12"
+                                                id="SkorTambahanJumlahBobotSubItemA12" disabled></td>
                                     </tr>
 
                                     <tr>
@@ -561,49 +584,69 @@
                                                 Pengangkatan sebagai Pejabat Struktural</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorA13" type="number"
+                                                aria-label="A13" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxA13" type="number" aria-label="A13" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemA13" type="number" aria-label="A13"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>A.13</td>
                                         <td>Dosen menduduki jabatan struktural Akademik di perguruan tinggi
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="A13" name="A13" id="A13" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A13" name="A13" id="A13" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A13" name="A13" id="A13" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A13" name="A13" id="A13" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="A13" name="A13" id="A13" value="5"
+                                                onclick="sum();">
                                     </tr>
 
                                     <tr>
                                         <td colspan="5"></td>
                                         <td colspan="5">Total Skor Pendidikan dan Pengajaran</td>
-                                        <td>0,334</td>
+                                        <td><input type="teks" name="TotalSkorPendidikanPointA"
+                                                id="TotalSkorPendidikanPointA" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
-                                        <td colspan="2">Total Kelebihan Skor No. 9</td>
-                                        <td>0</td>
+                                        <td colspan="2">Total Kelebihan Skor No. 11</td>
+                                        <td><input type="teks" name="TotalKelebihanA11" id="TotalKelebihanA11" disabled>
+                                        </td>
                                         <td colspan="3">Nilai Pendidikan dan Pengajaran</td>
-                                        <td>11,69</td>
+                                        <td><input type="teks" name="nilaiPendidikandanPengajaran"
+                                                id="nilaiPendidikandanPengajaran" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
-                                        <td colspan="2">Total Kelebihan Skor No. 10</td>
-                                        <td>0</td>
+                                        <td colspan="2">Total Kelebihan Skor No. 12</td>
+                                        <td><input type="teks" name="TotalKelebihanA12" id="TotalKelebihanA12" disabled>
+                                        </td>
                                         <td colspan="3" rowspan="2">Nilai Tambah Pendidikan dan Pengajaran</td>
-                                        <td rowspan="2">11,69</td>
+                                        <td rowspan="2"><input type="teks" name="NilaiTambahPendidikanDanPengajaran"
+                                                id="NilaiTambahPendidikanDanPengajaran" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total Pendidikan & Pengajaran</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="NilaiTotalPendidikanDanPengajaran"
+                                                id="NilaiTotalPendidikanDanPengajaran" disabled></td>
                                     </tr>
 
                                 </form>
