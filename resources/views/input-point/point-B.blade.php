@@ -1058,16 +1058,6 @@
     </div>
 
     @push('JavaScript')
-    {{-- <script src="{{ asset('Assets/js/Input-point/inputpoint.js') }}"></script> --}}
-    <script>
-        $(document).ready(function () {
-            $("#mis").keyup(function () {
-            var totalScore = parseInt($("#point1").val()) + parseInt($("#point2").val());
-            var gpa = totalScore / 5;
-            $("#resultScore").val(totalScore);
-            $("#gpa").val(gpa);
-            });
-            });
-    </script>
+    <script src="{{ asset('Assets/js/Input-point/ScorePointBCheked.js') }}"></script>
     @endpush
 </x-app-layout>
