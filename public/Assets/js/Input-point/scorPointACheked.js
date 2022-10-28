@@ -14,6 +14,12 @@ function sum() {
     var A12;
     var A13;
 
+    // Variable Point Tambahan
+    var JumlahYangDihasilkanA11_5;
+    var JumlahYangDihasilkanA12_3;
+    var JumlahYangDihasilkanA12_4;
+    var JumlahYangDihasilkanA12_5;
+
     // Cek Input Radio
     if ($("input[name='A1']:checked").val() != null) {
         A1 = document.querySelector('input[name="A1"]:checked').value;
@@ -70,10 +76,47 @@ function sum() {
     } else {
         A11 = 0;
     }
+    // Point Tambahan
+    // Cek Nilai atau inputan ada isi atau tidak
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanA11_5']").val() != "") {
+        JumlahYangDihasilkanA11_5 = document.querySelector(
+            'input[name="JumlahYangDihasilkanA11_5"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanA11_5 = 0;
+    }
+
     if ($("input[name='A12']:checked").val() != null) {
         A12 = document.querySelector('input[name="A12"]:checked').value;
     } else {
         A12 = 0;
+    }
+    // Point Tambahan
+    // Cek Nilai atau inputan ada isi atau tidak
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanA12_3']").val() != "") {
+        JumlahYangDihasilkanA12_3 = document.querySelector(
+            'input[name="JumlahYangDihasilkanA12_3"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanA12_3 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanA12_4']").val() != "") {
+        JumlahYangDihasilkanA12_4 = document.querySelector(
+            'input[name="JumlahYangDihasilkanA12_4"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanA12_4 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanA12_5']").val() != "") {
+        JumlahYangDihasilkanA12_5 = document.querySelector(
+            'input[name="JumlahYangDihasilkanA12_5"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanA12_5 = 0;
     }
     if ($("input[name='A13']:checked").val() != null) {
         A13 = document.querySelector('input[name="A13"]:checked').value;
@@ -93,7 +136,17 @@ function sum() {
     var SkorA9 = parseInt(A9);
     var SkorA10 = parseInt(A10);
     var SkorA11 = parseInt(A11);
+    // Point Tambahan
+    // Merubah Kenilai Integer
+    // Merubah nilai menjadi Int dan di jadikan variable
+    var resultJumlahYangDihasilkanA11_5 = parseInt(JumlahYangDihasilkanA11_5);
     var SkorA12 = parseInt(A12);
+    // Point Tambahan
+    // Merubah Kenilai Integer
+    // Merubah nilai menjadi Int dan di jadikan variable
+    var resultJumlahYangDihasilkanA12_3 = parseInt(JumlahYangDihasilkanA12_3);
+    var resultJumlahYangDihasilkanA12_4 = parseInt(JumlahYangDihasilkanA12_4);
+    var resultJumlahYangDihasilkanA12_5 = parseInt(JumlahYangDihasilkanA12_5);
     var SkorA13 = parseInt(A13);
 
     //Kalkulasi Nilai (SKOR/SKOR MAKS)
@@ -181,6 +234,11 @@ function sum() {
     } else {
         var scorSubItemA11 = ((skorMaksA11 * 7) / 100).toFixed(3);
     }
+
+    // Point Tambahan
+    // jumlah input nilai akan di kalikan 3 atau sesuai rumus excel
+    var resultDibagi3A11_5 = resultJumlahYangDihasilkanA11_5 * 3;
+
     //Kalkulasi Nilai (SKOR*BOBOT SUB ITEM)
     if ($("input[name='A12']:checked").val() == 1) {
         var num = 0;
@@ -188,6 +246,13 @@ function sum() {
     } else {
         var scorSubItemA12 = ((skorMaksA12 * 7) / 100).toFixed(3);
     }
+
+    // Point Tambahan
+    // jumlah input nilai akan di kalikan 3 atau sesuai rumus excel
+    var resultDibagi05A12_3 = resultJumlahYangDihasilkanA12_3 * 0.5;
+    var resultDibagi1A12_4 = resultJumlahYangDihasilkanA12_4 * 1;
+    var resultDibagi3A12_5 = resultJumlahYangDihasilkanA12_5 * 3;
+
     //Kalkulasi Nilai (SKOR*BOBOT SUB ITEM)
     if ($("input[name='A13']:checked").val() == 1) {
         var num = 0;
@@ -196,8 +261,123 @@ function sum() {
         var scorSubItemA13 = ((skorMaksA13 * 10) / 100).toFixed(3);
     }
 
-    // Menampilkan nilai skor di form disabled
+    // Point Tambahan
+    // Menampilkan Nilai Di Form Interfaces
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDibagi3A11_5)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanA11_5").value = resultDibagi3A11_5;
+        // Skor SUM A.11 kolom Bukti Pendukung
+        document.getElementById("SkorTambahanJumlahA11_5").value =
+            resultDibagi3A11_5;
+    }
 
+    // Menampilkan hasil di bagi di baris Skor Tambahan dari jumlah Point Tambahan A.12
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDibagi05A12_3)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanA12_3").value =
+            resultDibagi05A12_3;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDibagi1A12_4)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanA12_4").value = resultDibagi1A12_4;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDibagi3A12_5)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanA12_5").value = resultDibagi3A12_5;
+    }
+
+    // SUM A.12 kolom Bukti Pendukung
+    // SUM Skor Point A.12
+    if (
+        resultDibagi05A12_3 == "" ||
+        resultDibagi1A12_4 == "" ||
+        resultDibagi3A12_5 == ""
+    ) {
+        var sumResultA12 =
+            resultDibagi05A12_3 + resultDibagi1A12_4 + resultDibagi3A12_5;
+    } else {
+        var sumResultA12 =
+            resultDibagi05A12_3 + resultDibagi1A12_4 + resultDibagi3A12_5;
+    }
+    // Menampilkan Hasil SUM Point tambahan di kolom Bukti Pendukung A.12
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(sumResultA12)) {
+        // Tampilkan output pada input form nilai
+        document.getElementById("SkorTambahanJumlahA12").value = sumResultA12;
+    }
+
+    // Point Tambahan
+    // cwk nilai apakah nilai lebih dari 3, jika iya akan di bagi 3 jika tidak akan di bagi 0
+    if (resultDibagi3A11_5 >= 3) {
+        var numA11 = 3;
+        var nilaiDibagi100A11_5 = (numA11 / 100).toFixed(3);
+    } else if (resultDibagi3A11_5 <= 3) {
+        var numA11 = 0;
+        var nilaiDibagi100A11_5 = (numA11 / 100).toFixed(3);
+    }
+    if (sumResultA12 >= 3) {
+        var numA12 = 3;
+        var nilaiDibagi100A12_5 = (numA12 / 100).toFixed(3);
+    } else if (sumResultA12 <= 3) {
+        var numA12 = sumResultA12;
+        var nilaiDibagi100A12_5 = (numA12 / 100).toFixed(3);
+    }
+
+    // Point tambahan di kolom SKOR
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(numA11)) {
+        // Tampilkan output pada input form nilai numA11
+        document.getElementById("JumlahSkorYangDiHasilkanA11_5").value = numA11;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(numA12)) {
+        // Tampilkan output pada input form nilai numA11
+        document.getElementById("JumlahSkorYangDiHasilkanA12").value = numA12;
+    }
+
+    // Point tambahan di kolom SKOR X Bobot Sub Item
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(nilaiDibagi100A11_5)) {
+        // Tampilkan output pada input form hasil pembagian num / 100
+        document.getElementById(
+            "JumlahSkorYangDiHasilkanBobotSubItemA11_5"
+        ).value = nilaiDibagi100A11_5;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(nilaiDibagi100A12_5)) {
+        // Tampilkan output pada input form hasil pembagian num / 100
+        document.getElementById("SkorTambahanJumlahSkorA12").value =
+            nilaiDibagi100A12_5;
+    }
+
+    //Kalkulasi Nilai (SUM) Point tambahan
+    var resultSumA11 =
+        parseFloat(nilaiDibagi100A11_5) + parseFloat(scorSubItemA11);
+    var resultSumA12 =
+        parseFloat(nilaiDibagi100A12_5) + parseFloat(scorSubItemA12);
+
+    // Merubah format nilai ke 0.000
+    var resultSumtoFixedA11_5 = resultSumA11.toFixed(3);
+    var resultSumtoFixedA12 = resultSumA12.toFixed(3);
+
+    // Menampilkan hasil SUM Point Tambahan + Point Pokok
+    if (!isNaN(resultSumtoFixedA11_5)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanJumlahBobotSubItemA11_5").value =
+            resultSumtoFixedA11_5;
+    }
+    if (!isNaN(resultSumtoFixedA12)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanJumlahBobotSubItemA12").value =
+            resultSumtoFixedA12;
+    }
+
+    // Pokok Point
+    // Menampilkan nilai skor di form disabled
     if (!isNaN(SkorA1)) {
         // format Point merubah ( , ) menjadi ( . )
         // var resultScorSubItemA1 = scorSubItemA1.toFixed(3).replace(".", ".");
@@ -402,5 +582,150 @@ function sum() {
     if (!isNaN(scorSubItemA13)) {
         // Tampilkan output pada input form skor * Bobot Sub Item
         document.getElementById("scorSubItemA13").value = scorSubItemA13;
+    }
+
+    // Full total Point Tambahan dan Point Pokok
+    // Perkalian Skor Kelebihan
+    // A.11
+    if (resultDibagi3A11_5 >= 3) {
+        var ResultNilaiDiKurangi3 = resultDibagi3A11_5 - 3;
+        var resultHasilTambahanA11 = (ResultNilaiDiKurangi3 * 3) / 100;
+    } else {
+        var resultHasilTambahanA11 = 0;
+    }
+    // A.12
+    if (sumResultA12 >= 3) {
+        var ResultNilaiDiKurangi3 = sumResultA12 - 3;
+        var resultHasilTambahanA12 = (ResultNilaiDiKurangi3 * 3) / 100;
+    } else {
+        var resultHasilTambahanA12 = 0;
+    }
+
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahanA11)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihanA11").value =
+            resultHasilTambahanA11;
+    }
+    if (!isNaN(resultHasilTambahanA12)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihanA12").value =
+            resultHasilTambahanA12;
+    }
+
+    // SUM result total kelebihan skor
+    if (resultHasilTambahanA11 == "" || resultHasilTambahanA12 == "") {
+        var resultTotalKelebihanSkor =
+            parseFloat(resultHasilTambahanA11) +
+            parseFloat(resultHasilTambahanA12);
+    } else {
+        var resultTotalKelebihanSkor =
+            parseFloat(resultHasilTambahanA11) +
+            parseFloat(resultHasilTambahanA12);
+    }
+
+    // TotalKelebihanSkor
+    if (!isNaN(resultTotalKelebihanSkor)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihanSkor").value =
+            resultTotalKelebihanSkor;
+    }
+    // // nilai tambah pendidikan dan pengajaran
+    if (!isNaN(resultTotalKelebihanSkor)) {
+        // Tampilkan output pada input form
+        document.getElementById("NilaiTambahPendidikanDanPengajaran").value =
+            resultTotalKelebihanSkor;
+    }
+
+    if (
+        scorSubItemA1 == "" ||
+        scorSubItemA2 == "" ||
+        scorSubItemA3 == "" ||
+        scorSubItemA4 == "" ||
+        scorSubItemA5 == "" ||
+        scorSubItemA6 == "" ||
+        scorSubItemA7 == "" ||
+        scorSubItemA8 == "" ||
+        scorSubItemA9 == "" ||
+        scorSubItemA10 == "" ||
+        resultSumtoFixedA11_5 == "" ||
+        resultSumtoFixedA12 == "" ||
+        scorSubItemA13 == ""
+    ) {
+        var sumTotal =
+            parseFloat(scorSubItemA1) +
+            parseFloat(scorSubItemA2) +
+            parseFloat(scorSubItemA3) +
+            parseFloat(scorSubItemA4) +
+            parseFloat(scorSubItemA5) +
+            parseFloat(scorSubItemA6) +
+            parseFloat(scorSubItemA7) +
+            parseFloat(scorSubItemA8) +
+            parseFloat(scorSubItemA9) +
+            parseFloat(scorSubItemA10) +
+            parseFloat(resultSumtoFixedA11_5) +
+            parseFloat(resultSumtoFixedA12) +
+            parseFloat(scorSubItemA13);
+        var sumResult = sumTotal.toFixed(3);
+    } else {
+        var sumTotal =
+            parseFloat(scorSubItemA1) +
+            parseFloat(scorSubItemA2) +
+            parseFloat(scorSubItemA3) +
+            parseFloat(scorSubItemA4) +
+            parseFloat(scorSubItemA5) +
+            parseFloat(scorSubItemA6) +
+            parseFloat(scorSubItemA7) +
+            parseFloat(scorSubItemA8) +
+            parseFloat(scorSubItemA9) +
+            parseFloat(scorSubItemA10) +
+            parseFloat(resultSumtoFixedA11_5) +
+            parseFloat(resultSumtoFixedA12) +
+            parseFloat(scorSubItemA13);
+        var sumResult = sumTotal.toFixed(3);
+    }
+
+    if (!isNaN(sumResult)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalSkorPendidikanPointA").value = sumResult;
+    }
+
+    var NilaiPendidikanDanPengajar = parseFloat(sumResult);
+    var resultNilaiPendidikanDanPengajar = NilaiPendidikanDanPengajar * 35;
+    var resultPerkalianPendidikanDanPengajar =
+        resultNilaiPendidikanDanPengajar.toFixed(2);
+
+    if (!isNaN(resultPerkalianPendidikanDanPengajar)) {
+        // Tampilkan output pada input form
+        document.getElementById("nilaiPendidikandanPengajaran").value =
+            resultPerkalianPendidikanDanPengajar;
+    }
+
+    // SUM result nilai pendidikan dan pengajaran + nilai tambah pendidikan dan pengajaran
+    if (
+        resultNilaiPendidikanDanPengajar == "" ||
+        resultTotalKelebihanSkor == ""
+    ) {
+        var ResultTotalPendidikanDanPengajaran =
+            parseFloat(resultNilaiPendidikanDanPengajar) +
+            parseFloat(resultTotalKelebihanSkor);
+    } else {
+        var ResultTotalPendidikanDanPengajaran =
+            parseFloat(resultNilaiPendidikanDanPengajar) +
+            parseFloat(resultTotalKelebihanSkor);
+    }
+
+    if (ResultTotalPendidikanDanPengajaran > 40) {
+        var num = 40;
+        var NilaiTotalPendidikanDanPengajaran = num.toFixed(2);
+    } else {
+        var NilaiTotalPendidikanDanPengajaran =
+            ResultTotalPendidikanDanPengajaran.toFixed(2);
+    }
+
+    if (!isNaN(NilaiTotalPendidikanDanPengajaran)) {
+        // Tampilkan output pada input form
+        document.getElementById("NilaiTotalPendidikanDanPengajaran").value =
+            NilaiTotalPendidikanDanPengajaran;
     }
 }
