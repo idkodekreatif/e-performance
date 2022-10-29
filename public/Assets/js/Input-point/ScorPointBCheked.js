@@ -13,6 +13,11 @@ function sum() {
     var B11;
     var B12;
     var B13;
+    var B14;
+    var B15;
+    var B16;
+    var B17;
+    var B18;
 
     // Definisi Variable Point Tambahan
     var JumlahYangDihasilkanB1_2;
@@ -35,6 +40,17 @@ function sum() {
     var JumlahYangDihasilkanB13_3;
     var JumlahYangDihasilkanB13_4;
     var JumlahYangDihasilkanB13_5;
+    var JumlahYangDihasilkanB14_2;
+    var JumlahYangDihasilkanB14_3;
+    var JumlahYangDihasilkanB14_4;
+    var JumlahYangDihasilkanB14_5;
+    var JumlahYangDihasilkanB15_3;
+    var JumlahYangDihasilkanB15_4;
+    var JumlahYangDihasilkanB15_5;
+    var JumlahYangDihasilkanB17_2;
+    var JumlahYangDihasilkanB17_3;
+    var JumlahYangDihasilkanB17_4;
+    var JumlahYangDihasilkanB17_5;
 
     // Cek Input Radio pokok point
     if ($("input[name='B1']:checked").val() != null) {
@@ -101,6 +117,31 @@ function sum() {
         B13 = document.querySelector('input[name="B13"]:checked').value;
     } else {
         B13 = 0;
+    }
+    if ($("input[name='B14']:checked").val() != null) {
+        B14 = document.querySelector('input[name="B14"]:checked').value;
+    } else {
+        B14 = 0;
+    }
+    if ($("input[name='B15']:checked").val() != null) {
+        B15 = document.querySelector('input[name="B15"]:checked').value;
+    } else {
+        B15 = 0;
+    }
+    if ($("input[name='B16']:checked").val() != null) {
+        B16 = document.querySelector('input[name="B16"]:checked').value;
+    } else {
+        B16 = 0;
+    }
+    if ($("input[name='B17']:checked").val() != null) {
+        B17 = document.querySelector('input[name="B17"]:checked').value;
+    } else {
+        B17 = 0;
+    }
+    if ($("input[name='B18']:checked").val() != null) {
+        B18 = document.querySelector('input[name="B18"]:checked').value;
+    } else {
+        B18 = 0;
     }
 
     // Cek nilai Inputan Point Tambahan
@@ -265,6 +306,94 @@ function sum() {
     } else {
         JumlahYangDihasilkanB13_5 = 0;
     }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB14_2']").val() != "") {
+        JumlahYangDihasilkanB14_2 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB14_2"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB14_2 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB14_3']").val() != "") {
+        JumlahYangDihasilkanB14_3 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB14_3"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB14_3 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB14_4']").val() != "") {
+        JumlahYangDihasilkanB14_4 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB14_4"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB14_4 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB14_5']").val() != "") {
+        JumlahYangDihasilkanB14_5 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB14_5"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB14_5 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB15_3']").val() != "") {
+        JumlahYangDihasilkanB15_3 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB15_3"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB15_3 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB15_4']").val() != "") {
+        JumlahYangDihasilkanB15_4 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB15_4"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB15_4 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB15_5']").val() != "") {
+        JumlahYangDihasilkanB15_5 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB15_5"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB15_5 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB17_2']").val() != "") {
+        JumlahYangDihasilkanB17_2 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB17_2"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB17_2 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB17_3']").val() != "") {
+        JumlahYangDihasilkanB17_3 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB17_3"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB17_3 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB17_4']").val() != "") {
+        JumlahYangDihasilkanB17_4 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB17_4"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB17_4 = 0;
+    }
+    // cek nilai apakah nilainya ada jika tidak ada maka di isi ( 0 )
+    if ($("input[name='JumlahYangDihasilkanB17_5']").val() != "") {
+        JumlahYangDihasilkanB17_5 = document.querySelector(
+            'input[name="JumlahYangDihasilkanB17_5"]'
+        ).value;
+    } else {
+        JumlahYangDihasilkanB17_5 = 0;
+    }
 
     // Merubah nilai inputan ke integer Pokok point
     //Kalkulasi Nilai (SKOR)
@@ -281,6 +410,11 @@ function sum() {
     var SkorB11 = parseInt(B11);
     var SkorB12 = parseInt(B12);
     var SkorB13 = parseInt(B13);
+    var SkorB14 = parseInt(B14);
+    var SkorB15 = parseInt(B15);
+    var SkorB16 = parseInt(B16);
+    var SkorB17 = parseInt(B17);
+    var SkorB18 = parseInt(B18);
 
     // Point Tambahan
     // Merubah Kenilai Integer
@@ -305,6 +439,17 @@ function sum() {
     var resultJumlahYangDihasilkanB13_3 = parseInt(JumlahYangDihasilkanB13_3);
     var resultJumlahYangDihasilkanB13_4 = parseInt(JumlahYangDihasilkanB13_4);
     var resultJumlahYangDihasilkanB13_5 = parseInt(JumlahYangDihasilkanB13_5);
+    var resultJumlahYangDihasilkanB14_2 = parseInt(JumlahYangDihasilkanB14_2);
+    var resultJumlahYangDihasilkanB14_3 = parseInt(JumlahYangDihasilkanB14_3);
+    var resultJumlahYangDihasilkanB14_4 = parseInt(JumlahYangDihasilkanB14_4);
+    var resultJumlahYangDihasilkanB14_5 = parseInt(JumlahYangDihasilkanB14_5);
+    var resultJumlahYangDihasilkanB15_3 = parseInt(JumlahYangDihasilkanB15_3);
+    var resultJumlahYangDihasilkanB15_4 = parseInt(JumlahYangDihasilkanB15_4);
+    var resultJumlahYangDihasilkanB15_5 = parseInt(JumlahYangDihasilkanB15_5);
+    var resultJumlahYangDihasilkanB17_2 = parseInt(JumlahYangDihasilkanB17_2);
+    var resultJumlahYangDihasilkanB17_3 = parseInt(JumlahYangDihasilkanB17_3);
+    var resultJumlahYangDihasilkanB17_4 = parseInt(JumlahYangDihasilkanB17_4);
+    var resultJumlahYangDihasilkanB17_5 = parseInt(JumlahYangDihasilkanB17_5);
 
     // Skor inputan nilai setelah di rubah ke integer di bagi 5
     //Kalkulasi Nilai (SKOR/SKOR MAKS)
@@ -321,6 +466,11 @@ function sum() {
     var skorMaksB11 = SkorB11 / 5;
     var skorMaksB12 = SkorB12 / 5;
     var skorMaksB13 = SkorB13 / 5;
+    var skorMaksB14 = SkorB14 / 5;
+    var skorMaksB15 = SkorB15 / 5;
+    var skorMaksB16 = SkorB16 / 5;
+    var skorMaksB17 = SkorB17 / 5;
+    var skorMaksB18 = SkorB18 / 5;
 
     // nilai inputan setelah di bagi sekarang di kalikan sesuai rumus excel Pokok point
     //Kalkulasi Nilai (SKOR*BOBOT SUB ITEM)
@@ -402,6 +552,36 @@ function sum() {
     } else {
         var scorSubItemB13 = ((skorMaksB13 * 2) / 100).toFixed(3);
     }
+    if ($("input[name='B14']:checked").val() == 1) {
+        var num = 0;
+        var scorSubItemB14 = num.toFixed(3);
+    } else {
+        var scorSubItemB14 = ((skorMaksB14 * 3) / 100).toFixed(3);
+    }
+    if ($("input[name='B15']:checked").val() == 1) {
+        var num = 0;
+        var scorSubItemB15 = num.toFixed(3);
+    } else {
+        var scorSubItemB15 = ((skorMaksB15 * 4) / 100).toFixed(3);
+    }
+    if ($("input[name='B16']:checked").val() == 1) {
+        var num = 0;
+        var scorSubItemB16 = num.toFixed(3);
+    } else {
+        var scorSubItemB16 = ((skorMaksB16 * 3) / 100).toFixed(3);
+    }
+    if ($("input[name='B17']:checked").val() == 1) {
+        var num = 0;
+        var scorSubItemB17 = num.toFixed(3);
+    } else {
+        var scorSubItemB17 = ((skorMaksB17 * 7) / 100).toFixed(3);
+    }
+    if ($("input[name='B18']:checked").val() == 1) {
+        var num = 0;
+        var scorSubItemB18 = num.toFixed(3);
+    } else {
+        var scorSubItemB18 = ((skorMaksB18 * 3) / 100).toFixed(3);
+    }
 
     // Point Tambahan Hasil Integer dikalikan nilai sesuai di excel
     // jumlah input nilai akan di kalikan 3 atau sesuai rumus excel
@@ -425,6 +605,17 @@ function sum() {
     var resultDikalikanB13_3 = resultJumlahYangDihasilkanB13_3 * 0.5;
     var resultDikalikanB13_4 = resultJumlahYangDihasilkanB13_4 * 0.75;
     var resultDikalikanB13_5 = resultJumlahYangDihasilkanB13_5 * 1;
+    var resultDikalikanB14_2 = resultJumlahYangDihasilkanB14_2 * 0.75;
+    var resultDikalikanB14_3 = resultJumlahYangDihasilkanB14_3 * 1;
+    var resultDikalikanB14_4 = resultJumlahYangDihasilkanB14_4 * 1.5;
+    var resultDikalikanB14_5 = resultJumlahYangDihasilkanB14_5 * 2;
+    var resultDikalikanB15_3 = resultJumlahYangDihasilkanB15_3 * 1;
+    var resultDikalikanB15_4 = resultJumlahYangDihasilkanB15_4 * 1.5;
+    var resultDikalikanB15_5 = resultJumlahYangDihasilkanB15_5 * 2;
+    var resultDikalikanB17_2 = resultJumlahYangDihasilkanB17_2 * 0.5;
+    var resultDikalikanB17_3 = resultJumlahYangDihasilkanB17_3 * 1;
+    var resultDikalikanB17_4 = resultJumlahYangDihasilkanB17_4 * 1.5;
+    var resultDikalikanB17_5 = resultJumlahYangDihasilkanB17_5 * 3;
 
     // Pokok point menampilkan hasil nilai di interfaces jumlah point point
     // Menampilkan nilai skor di form disabled
@@ -481,6 +672,26 @@ function sum() {
         // Cek agar tidak keluar Nilai diluar Parameter
         document.getElementById("scorB13").value = SkorB13;
     }
+    if (!isNaN(SkorB14)) {
+        // Cek agar tidak keluar Nilai diluar Parameter
+        document.getElementById("scorB14").value = SkorB14;
+    }
+    if (!isNaN(SkorB15)) {
+        // Cek agar tidak keluar Nilai diluar Parameter
+        document.getElementById("scorB15").value = SkorB15;
+    }
+    if (!isNaN(SkorB16)) {
+        // Cek agar tidak keluar Nilai diluar Parameter
+        document.getElementById("scorB16").value = SkorB16;
+    }
+    if (!isNaN(SkorB17)) {
+        // Cek agar tidak keluar Nilai diluar Parameter
+        document.getElementById("scorB17").value = SkorB17;
+    }
+    if (!isNaN(SkorB18)) {
+        // Cek agar tidak keluar Nilai diluar Parameter
+        document.getElementById("scorB18").value = SkorB18;
+    }
 
     // Menampilkan nilai Pokok point skor / Skor Maks di form disabled
     // Cek agar tidak keluar Nilai diluar Parameter
@@ -536,6 +747,26 @@ function sum() {
         // Tampilkan output pada input form skor / skor maks
         document.getElementById("scorMaxB13").value = skorMaksB13;
     }
+    if (!isNaN(skorMaksB14)) {
+        // Tampilkan output pada input form skor / skor maks
+        document.getElementById("scorMaxB14").value = skorMaksB14;
+    }
+    if (!isNaN(skorMaksB15)) {
+        // Tampilkan output pada input form skor / skor maks
+        document.getElementById("scorMaxB15").value = skorMaksB15;
+    }
+    if (!isNaN(skorMaksB16)) {
+        // Tampilkan output pada input form skor / skor maks
+        document.getElementById("scorMaxB16").value = skorMaksB16;
+    }
+    if (!isNaN(skorMaksB17)) {
+        // Tampilkan output pada input form skor / skor maks
+        document.getElementById("scorMaxB17").value = skorMaksB17;
+    }
+    if (!isNaN(skorMaksB18)) {
+        // Tampilkan output pada input form skor / skor maks
+        document.getElementById("scorMaxB18").value = skorMaksB18;
+    }
 
     // Menampilkan nilai Pokok point skor * Bpbpt Sub Item di form disabled
     // Cek agar tidak keluar Nilai diluar Parameter
@@ -590,6 +821,26 @@ function sum() {
     if (!isNaN(scorSubItemB13)) {
         // Tampilkan output pada input form skor * Bobot Sub Item
         document.getElementById("scorSubItemB13").value = scorSubItemB13;
+    }
+    if (!isNaN(scorSubItemB14)) {
+        // Tampilkan output pada input form skor * Bobot Sub Item
+        document.getElementById("scorSubItemB14").value = scorSubItemB14;
+    }
+    if (!isNaN(scorSubItemB15)) {
+        // Tampilkan output pada input form skor * Bobot Sub Item
+        document.getElementById("scorSubItemB15").value = scorSubItemB15;
+    }
+    if (!isNaN(scorSubItemB16)) {
+        // Tampilkan output pada input form skor * Bobot Sub Item
+        document.getElementById("scorSubItemB16").value = scorSubItemB16;
+    }
+    if (!isNaN(scorSubItemB17)) {
+        // Tampilkan output pada input form skor * Bobot Sub Item
+        document.getElementById("scorSubItemB17").value = scorSubItemB17;
+    }
+    if (!isNaN(scorSubItemB18)) {
+        // Tampilkan output pada input form skor * Bobot Sub Item
+        document.getElementById("scorSubItemB18").value = scorSubItemB18;
     }
 
     // Menampilkan hasil di kalikan di baris Skor Tambahan dari jumlah Point Tambahan B.1
@@ -700,6 +951,72 @@ function sum() {
         document.getElementById("SkorTambahanB13_5").value =
             resultDikalikanB13_5;
     }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB14_2)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB14_2").value =
+            resultDikalikanB14_2;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB14_3)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB14_3").value =
+            resultDikalikanB14_3;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB14_4)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB14_4").value =
+            resultDikalikanB14_4;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB14_5)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB14_5").value =
+            resultDikalikanB14_5;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB15_3)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB15_3").value =
+            resultDikalikanB15_3;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB15_4)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB15_4").value =
+            resultDikalikanB15_4;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB15_5)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB15_5").value =
+            resultDikalikanB15_5;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB17_2)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB17_2").value =
+            resultDikalikanB17_2;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB17_3)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB17_3").value =
+            resultDikalikanB17_3;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB17_4)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB17_4").value =
+            resultDikalikanB17_4;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(resultDikalikanB17_5)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanB17_5").value =
+            resultDikalikanB17_5;
+    }
 
     // SUM B.1 kolom Bukti Pendukung
     // SUM Skor Point B.1
@@ -775,7 +1092,7 @@ function sum() {
     } else {
         var sumResultB12 = resultDikalikanB12_5;
     }
-    // SUM Skor Point B.1
+    // SUM Skor Point B.13
     if (
         resultDikalikanB13_3 == "" ||
         resultDikalikanB13_4 == "" ||
@@ -786,6 +1103,56 @@ function sum() {
     } else {
         var sumResultB13 =
             resultDikalikanB13_3 + resultDikalikanB13_4 + resultDikalikanB13_5;
+    }
+    // SUM Skor Point B.14
+    if (
+        resultDikalikanB14_2 == "" ||
+        resultDikalikanB14_3 == "" ||
+        resultDikalikanB14_4 == "" ||
+        resultDikalikanB14_5 == ""
+    ) {
+        var sumResultB14 =
+            resultDikalikanB14_2 +
+            resultDikalikanB14_3 +
+            resultDikalikanB14_4 +
+            resultDikalikanB14_5;
+    } else {
+        var sumResultB14 =
+            resultDikalikanB14_2 +
+            resultDikalikanB14_3 +
+            resultDikalikanB14_4 +
+            resultDikalikanB14_5;
+    }
+    // SUM Skor Point B.15
+    if (
+        resultDikalikanB15_3 == "" ||
+        resultDikalikanB15_4 == "" ||
+        resultDikalikanB15_5 == ""
+    ) {
+        var sumResultB15 =
+            resultDikalikanB15_3 + resultDikalikanB15_4 + resultDikalikanB15_5;
+    } else {
+        var sumResultB15 =
+            resultDikalikanB15_3 + resultDikalikanB15_4 + resultDikalikanB15_5;
+    }
+    // SUM Skor Point B.1
+    if (
+        resultDikalikanB17_2 == "" ||
+        resultDikalikanB17_3 == "" ||
+        resultDikalikanB17_4 == "" ||
+        resultDikalikanB17_5 == ""
+    ) {
+        var sumResultB17 =
+            resultDikalikanB17_2 +
+            resultDikalikanB17_3 +
+            resultDikalikanB17_4 +
+            resultDikalikanB17_5;
+    } else {
+        var sumResultB17 =
+            resultDikalikanB17_2 +
+            resultDikalikanB17_3 +
+            resultDikalikanB17_4 +
+            resultDikalikanB17_5;
     }
 
     // Menampilkan Hasil SUM Point tambahan di kolom Bukti Pendukung B.1
@@ -844,6 +1211,21 @@ function sum() {
     if (!isNaN(sumResultB13)) {
         // Tampilkan output pada input form nilai
         document.getElementById("SkorTambahanJumlahB13").value = sumResultB13;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(sumResultB14)) {
+        // Tampilkan output pada input form nilai
+        document.getElementById("SkorTambahanJumlahB14").value = sumResultB14;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(sumResultB15)) {
+        // Tampilkan output pada input form nilai
+        document.getElementById("SkorTambahanJumlahB15").value = sumResultB15;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(sumResultB17)) {
+        // Tampilkan output pada input form nilai
+        document.getElementById("SkorTambahanJumlahB17").value = sumResultB17;
     }
 
     // Point Tambahan
@@ -920,7 +1302,7 @@ function sum() {
         var numB11 = sumResultB11;
         var nilaiDibagi100B11 = (numB11 / 100).toFixed(3);
     }
-    // B.1
+    // B.12
     if (sumResultB12 >= 1) {
         var numB12 = 1;
         var nilaiDibagi100B12 = (numB12 / 100).toFixed(3);
@@ -928,13 +1310,37 @@ function sum() {
         var numB12 = sumResultB12;
         var nilaiDibagi100B12 = (numB12 / 100).toFixed(3);
     }
-    // B.1
+    // B.13
     if (sumResultB13 >= 1) {
         var numB13 = 1;
         var nilaiDibagi100B13 = (numB13 / 100).toFixed(3);
     } else if (sumResultB13 <= 1) {
         var numB13 = sumResultB13;
         var nilaiDibagi100B13 = (numB13 / 100).toFixed(3);
+    }
+    // B.14
+    if (sumResultB14 >= 2) {
+        var numB14 = 2;
+        var nilaiDibagi100B14 = (numB14 / 100).toFixed(3);
+    } else if (sumResultB14 <= 2) {
+        var numB14 = sumResultB14;
+        var nilaiDibagi100B14 = (numB14 / 100).toFixed(3);
+    }
+    // B.15
+    if (sumResultB15 >= 2) {
+        var numB15 = 2;
+        var nilaiDibagi100B15 = (numB15 / 100).toFixed(3);
+    } else if (sumResultB15 <= 2) {
+        var numB15 = sumResultB15;
+        var nilaiDibagi100B15 = (numB15 / 100).toFixed(3);
+    }
+    // B.15
+    if (sumResultB17 >= 3) {
+        var numB17 = 3;
+        var nilaiDibagi100B17 = (numB17 / 100).toFixed(3);
+    } else if (sumResultB17 <= 3) {
+        var numB17 = sumResultB17;
+        var nilaiDibagi100B17 = (numB17 / 100).toFixed(3);
     }
 
     // Point Tambahan menampilkan hasil di interfaces skor/skor maks
@@ -984,6 +1390,21 @@ function sum() {
     if (!isNaN(numB13)) {
         // Tampilkan output pada input form nilai numA11
         document.getElementById("JumlahSkorYangDiHasilkanB13").value = numB13;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(numB14)) {
+        // Tampilkan output pada input form nilai numA11
+        document.getElementById("JumlahSkorYangDiHasilkanB14").value = numB14;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(numB15)) {
+        // Tampilkan output pada input form nilai numA11
+        document.getElementById("JumlahSkorYangDiHasilkanB15").value = numB15;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(numB17)) {
+        // Tampilkan output pada input form nilai numA11
+        document.getElementById("JumlahSkorYangDiHasilkanB17").value = numB17;
     }
 
     // Point Tambahan intefaces Skor X Bobot sub item
@@ -1045,6 +1466,24 @@ function sum() {
         document.getElementById("SkorTambahanJumlahSkorB13").value =
             nilaiDibagi100B13;
     }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(nilaiDibagi100B14)) {
+        // Tampilkan output pada input form hasil pembagian num / 100
+        document.getElementById("SkorTambahanJumlahSkorB14").value =
+            nilaiDibagi100B14;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(nilaiDibagi100B15)) {
+        // Tampilkan output pada input form hasil pembagian num / 100
+        document.getElementById("SkorTambahanJumlahSkorB15").value =
+            nilaiDibagi100B15;
+    }
+    // Cek agar tidak keluar Nilai diluar Parameter
+    if (!isNaN(nilaiDibagi100B17)) {
+        // Tampilkan output pada input form hasil pembagian num / 100
+        document.getElementById("SkorTambahanJumlahSkorB17").value =
+            nilaiDibagi100B17;
+    }
 
     //Kalkulasi Nilai (SUM) Point tambahan dan Point Pokok
     var resultSumB1 = parseFloat(nilaiDibagi100B1) + parseFloat(scorSubItemB1);
@@ -1062,6 +1501,12 @@ function sum() {
         parseFloat(nilaiDibagi100B12) + parseFloat(scorSubItemB12);
     var resultSumB13 =
         parseFloat(nilaiDibagi100B13) + parseFloat(scorSubItemB13);
+    var resultSumB14 =
+        parseFloat(nilaiDibagi100B14) + parseFloat(scorSubItemB14);
+    var resultSumB15 =
+        parseFloat(nilaiDibagi100B15) + parseFloat(scorSubItemB15);
+    var resultSumB17 =
+        parseFloat(nilaiDibagi100B17) + parseFloat(scorSubItemB17);
 
     // Merubah format nilai ke 0.000
     var resultSumtoFixedB1 = resultSumB1.toFixed(3);
@@ -1075,6 +1520,9 @@ function sum() {
     var resultSumtoFixedB11 = resultSumB11.toFixed(3);
     var resultSumtoFixedB12 = resultSumB12.toFixed(3);
     var resultSumtoFixedB13 = resultSumB13.toFixed(3);
+    var resultSumtoFixedB14 = resultSumB14.toFixed(3);
+    var resultSumtoFixedB15 = resultSumB15.toFixed(3);
+    var resultSumtoFixedB17 = resultSumB17.toFixed(3);
 
     // Result SUM Pokok Point + Point Tambahan dan di tampilkan di kolom skor X Bobot sub item baris Skor tambahan dari jumlah
     if (!isNaN(resultSumtoFixedB1)) {
@@ -1131,5 +1579,20 @@ function sum() {
         // Tampilkan output pada input form
         document.getElementById("SkorTambahanJumlahBobotSubItemB13").value =
             resultSumtoFixedB13;
+    }
+    if (!isNaN(resultSumtoFixedB14)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanJumlahBobotSubItemB14").value =
+            resultSumtoFixedB14;
+    }
+    if (!isNaN(resultSumtoFixedB15)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanJumlahBobotSubItemB15").value =
+            resultSumtoFixedB15;
+    }
+    if (!isNaN(resultSumtoFixedB17)) {
+        // Tampilkan output pada input form
+        document.getElementById("SkorTambahanJumlahBobotSubItemB17").value =
+            resultSumtoFixedB17;
     }
 }
