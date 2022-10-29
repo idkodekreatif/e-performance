@@ -448,7 +448,6 @@ function sum() {
     }
 
     // Menampilkan nilai skor / Skor Maks di form disabled
-
     // Cek agar tidak keluar Nilai diluar Parameter
     if (!isNaN(skorMaksA1)) {
         // Tampilkan output pada input form skor / skor maks
@@ -516,7 +515,6 @@ function sum() {
     }
 
     // Menampilkan nilai skor * Bpbpt Sub Item di form disabled
-
     // Cek agar tidak keluar Nilai diluar Parameter
     if (!isNaN(scorSubItemA1)) {
         // Tampilkan output pada input form skor * Bobot Sub Item

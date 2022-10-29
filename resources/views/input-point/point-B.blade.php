@@ -61,33 +61,52 @@
                                                 3, Sertifikat Hak Paten</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Hasil
+                                                evaluasi perkuliahan</label>
+                                            <input id="formFileSm" type="file">
+                                        </td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorB1" type="number"
+                                                aria-label="B1" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxB1" type="number" aria-label="B1" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemB1" type="number" aria-label="B1"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>B.1</td>
                                         <td>Dosen memiliki karya yang telah dipatenkan atau diakui secara nasional
                                             maupun internasional
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="B1" name="B1" id="B1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B1" name="B1" id="B1" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B1" name="B1" id="B1" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B1" name="B1" id="B1" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B1" name="B1" id="B1" value="5" onclick="sum();">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB1_3"
+                                                id="JumlahYangDihasilkanB1_3" onkeyup="sum()" required>
+                                        </td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB1_4"
+                                                id="JumlahYangDihasilkanB1_4" onkeyup="sum()" required></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB1_5"
+                                                id="JumlahYangDihasilkanB1_5" onkeyup="sum()" required></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanB1"
+                                                id="JumlahSkorYangDiHasilkanB1" disabled></td>
                                         <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahSkorB1"
+                                                id="SkorTambahanJumlahSkorB1" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
@@ -1058,6 +1077,6 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/Input-point/ScorePointBCheked.js') }}"></script>
+    <script src="{{ asset('Assets/js/Input-point/ScorPointBCheked.js') }}"></script>
     @endpush
 </x-app-layout>
