@@ -1273,93 +1273,112 @@
                                     <tr>
                                         <td colspan="5"></td>
                                         <td colspan="5">Total Skor Penelitian</td>
-                                        <td>0,334</td>
+                                        <td><input type="teks" name="TotalSkorPenelitianPointB"
+                                                id="TotalSkorPenelitianPointB" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 1</td>
-                                        <td>0</td>
-                                        <td colspan="3" rowspan="7">Nilai Pendidikan dan Pengajaran</td>
-                                        <td rowspan="7">11,69</td>
+                                        <td><input type="teks" name="TotalKelebihaB1" id="TotalKelebihaB1" disabled>
+                                        </td>
+                                        <td colspan="3" rowspan="7">Nilai Penelitian</td>
+                                        <td rowspan="7"><input type="teks" name="NilaiPenelitian" id="NilaiPenelitian"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 2</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB2" id="TotalKelebihaB2" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 3</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB3" id="TotalKelebihaB3" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 5</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB5" id="TotalKelebihaB5" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 6</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB6" id="TotalKelebihaB6" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 7</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB7" id="TotalKelebihaB7" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 9</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB9" id="TotalKelebihaB9" disabled>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 10</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB10" id="TotalKelebihaB10" disabled>
+                                        </td>
                                         <td colspan="3" rowspan="8">Nilai Tambah Penelitian</td>
-                                        <td rowspan="8">11,69</td>
+                                        <td rowspan="8"><input type="teks" name="NilaiTambahPenelitian"
+                                                id="NilaiTambahPenelitian" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 11</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB11" id="TotalKelebihaB11" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 12</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB12" id="TotalKelebihaB12" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 13</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB13" id="TotalKelebihaB13" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 14</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB14" id="TotalKelebihaB14" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 15</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB15" id="TotalKelebihaB15" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 17</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaB17" id="TotalKelebihaB17" disabled>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total Penelitian & Karya Ilmiah</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="NilaiTotalPenelitiandanKaryaIlmiah"
+                                                id="NilaiTotalPenelitiandanKaryaIlmiah" disabled></td>
                                     </tr>
 
                                 </form>
