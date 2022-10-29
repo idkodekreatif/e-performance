@@ -952,9 +952,12 @@
                                                 buku yang telah disimpan di Perpustakaan PT</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorB14" type="number"
+                                                aria-label="B14" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxB14" type="number" aria-label="B14" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemB14" type="number" aria-label="B14"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>B.14</td>
@@ -962,36 +965,59 @@
                                             digunakan untuk kepentingan tertentu (dibukukan
                                             dan disimpan dalam perpustakaan PT)
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="B14" name="B14" id="B14" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B14" name="B14" id="B14" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B14" name="B14" id="B14" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B14" name="B14" id="B14" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B14" name="B14" id="B14" value="5"
+                                                onclick="sum();">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB14_2"
+                                                id="JumlahYangDihasilkanB14_2" onkeyup="sum()" required></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB14_3"
+                                                id="JumlahYangDihasilkanB14_3" onkeyup="sum()" required>
+                                        </td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB14_4"
+                                                id="JumlahYangDihasilkanB14_4" onkeyup="sum()" required></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB14_5"
+                                                id="JumlahYangDihasilkanB14_5" onkeyup="sum()" required></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanB14"
+                                                id="JumlahSkorYangDiHasilkanB14" disabled></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahSkorB14"
+                                                id="SkorTambahanJumlahSkorB14" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
+                                        <td><input type="teks" name="SkorTambahanB14_2" id="SkorTambahanB14_2" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB14_3" id="SkorTambahanB14_3" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB14_4" id="SkorTambahanB14_4" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB14_5" id="SkorTambahanB14_5" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanJumlahB14" id="SkorTambahanJumlahB14"
+                                                disabled></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemB14"
+                                                id="SkorTambahanJumlahBobotSubItemB14" disabled></td>
                                     </tr>
 
                                     <tr>
@@ -1011,45 +1037,69 @@
                                                 proposal</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorB15" type="number"
+                                                aria-label="B15" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxB15" type="number" aria-label="B15" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemB15" type="number" aria-label="B15"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>B.15</td>
                                         <td>Dosen membuat proposal penelitian, karya/desain teknologi, seni dan sastra
                                             dengan dana hibah
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="B15" name="B15" id="B15" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B15" name="B15" id="B15" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B15" name="B15" id="B15" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B15" name="B15" id="B15" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B15" name="B15" id="B15" value="5"
+                                                onclick="sum();">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB15_3"
+                                                id="JumlahYangDihasilkanB15_3" onkeyup="sum()" required>
+                                        </td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB15_4"
+                                                id="JumlahYangDihasilkanB15_4" onkeyup="sum()" required></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB15_5"
+                                                id="JumlahYangDihasilkanB15_5" onkeyup="sum()" required></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanB15"
+                                                id="JumlahSkorYangDiHasilkanB15" disabled></td>
                                         <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahSkorB15"
+                                                id="SkorTambahanJumlahSkorB15" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
+                                        <td><input type="teks" name="SkorTambahanB15_3" id="SkorTambahanB15_3" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB15_4" id="SkorTambahanB15_4" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB15_5" id="SkorTambahanB15_5" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanJumlahB15" id="SkorTambahanJumlahB15"
+                                                disabled></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemB15"
+                                                id="SkorTambahanJumlahBobotSubItemB15" disabled></td>
                                     </tr>
 
                                     <tr>
@@ -1066,20 +1116,33 @@
                                                 proposal</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorB16" type="number"
+                                                aria-label="B16" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxB16" type="number" aria-label="B16" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemB16" type="number" aria-label="B16"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>B.16</td>
                                         <td>Peran Dosen dlm pembuatan proposal penelitian, karya/disain teknologi, seni
                                             dan sastra
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="B16" name="B16" id="B16" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B16" name="B16" id="B16" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B16" name="B16" id="B16" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B16" name="B16" id="B16" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B16" name="B16" id="B16" value="5"
+                                                onclick="sum();">
+                                        </td>
                                     </tr>
 
                                     <tr>
@@ -1098,44 +1161,70 @@
                                                 hibah, dan jurnal penelitian</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorB17" type="number"
+                                                aria-label="B17" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxB17" type="number" aria-label="B17" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemB17" type="number" aria-label="B17"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>B.17</td>
                                         <td>Dosen melakukan penelitian dengan dana hibah
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="B17" name="B17" id="B17" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B17" name="B17" id="B17" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B17" name="B17" id="B17" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B17" name="B17" id="B17" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B17" name="B17" id="B17" value="5"
+                                                onclick="sum();">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2"></td>
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB17_2"
+                                                id="JumlahYangDihasilkanB17_2" onkeyup="sum()" required></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB17_3"
+                                                id="JumlahYangDihasilkanB17_3" onkeyup="sum()" required>
+                                        </td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB17_4"
+                                                id="JumlahYangDihasilkanB17_4" onkeyup="sum()" required></td>
+                                        <td><input type="teks" name="JumlahYangDihasilkanB17_5"
+                                                id="JumlahYangDihasilkanB17_5" onkeyup="sum()" required></td>
                                         <td></td>
+                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanB17"
+                                                id="JumlahSkorYangDiHasilkanB17" disabled></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahSkorB17"
+                                                id="SkorTambahanJumlahSkorB17" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
+                                        <td><input type="teks" name="SkorTambahanB17_2" id="SkorTambahanB17_2" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB17_3" id="SkorTambahanB17_3" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB17_4" id="SkorTambahanB17_4" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanB17_5" id="SkorTambahanB17_5" disabled>
+                                        </td>
+                                        <td><input type="teks" name="SkorTambahanJumlahB17" id="SkorTambahanJumlahB17"
+                                                disabled></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemB17"
+                                                id="SkorTambahanJumlahBobotSubItemB17" disabled></td>
                                     </tr>
 
                                     <tr>
@@ -1152,19 +1241,32 @@
                                                 proposal</label>
                                             <input id="formFileSm" type="file">
                                         </td>
-                                        <td rowspan="2" class="bg-warning"></td>
-                                        <td rowspan="2"></td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2" class="bg-warning"><input id="scorB18" type="number"
+                                                aria-label="B18" disabled></td>
+                                        <td rowspan="2"><input id="scorMaxB18" type="number" aria-label="B18" disabled>
+                                        </td>
+                                        <td rowspan="2"><input id="scorSubItemB18" type="number" aria-label="B18"
+                                                disabled></td>
                                     </tr>
                                     <tr>
                                         <td>B.18</td>
                                         <td>Peran Dosen dalam penelitian
                                         </td>
-                                        <td><input type="radio" name="optradio" value="1"></td>
-                                        <td><input type="radio" name="optradio" value="2"></td>
-                                        <td><input type="radio" name="optradio" value="3"></td>
-                                        <td><input type="radio" name="optradio" value="4"></td>
-                                        <td><input type="radio" name="optradio" value="5"></td>
+                                        <td><input type="radio" class="B18" name="B18" id="B18" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B18" name="B18" id="B18" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B18" name="B18" id="B18" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B18" name="B18" id="B18" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="B18" name="B18" id="B18" value="5"
+                                                onclick="sum();">
+                                        </td>
                                     </tr>
 
 
