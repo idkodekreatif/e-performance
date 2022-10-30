@@ -382,7 +382,7 @@
                                         <td rowspan="2"><input id="scorMaxA10" type="number" aria-label="A10" disabled>
                                         </td>
                                         <td rowspan="2"><input id="scorSubItemA10" type="number" aria-label="A10"
-                                                onkeyup="sumForm()" disabled></td>
+                                                onkeyup="sum()" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>A.10</td>
@@ -460,7 +460,7 @@
                                         <td></td>
                                         <td></td>
                                         <td><input type="teks" name="JumlahYangDihasilkanA11_5"
-                                                id="JumlahYangDihasilkanA11_5" onkeyup="sumForm()" required></td>
+                                                id="JumlahYangDihasilkanA11_5" onkeyup="sum()" required></td>
                                         <td></td>
                                         <td><input type="teks" name="JumlahSkorYangDiHasilkanA11_5"
                                                 id="JumlahSkorYangDiHasilkanA11_5" disabled></td>
@@ -538,12 +538,12 @@
                                         <td></td>
                                         <td></td>
                                         <td><input type="teks" name="JumlahYangDihasilkanA12_3"
-                                                id="JumlahYangDihasilkanA12_3" onkeyup="sumForm()" required>
+                                                id="JumlahYangDihasilkanA12_3" onkeyup="sum()" required>
                                         </td>
                                         <td><input type="teks" name="JumlahYangDihasilkanA12_4"
-                                                id="JumlahYangDihasilkanA12_4" onkeyup="sumForm()" required></td>
+                                                id="JumlahYangDihasilkanA12_4" onkeyup="sum()" required></td>
                                         <td><input type="teks" name="JumlahYangDihasilkanA12_5"
-                                                id="JumlahYangDihasilkanA12_5" onkeyup="sumForm()" required></td>
+                                                id="JumlahYangDihasilkanA12_5" onkeyup="sum()" required></td>
                                         <td></td>
                                         <td><input type="teks" name="JumlahSkorYangDiHasilkanA12"
                                                 id="JumlahSkorYangDiHasilkanA12" disabled></td>
