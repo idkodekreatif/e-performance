@@ -752,74 +752,89 @@
                                     <tr>
                                         <td colspan="5"></td>
                                         <td colspan="5">Total Skor Pengabdian Kepada Masyarakat</td>
-                                        <td>0,334</td>
+                                        <td><input type="teks" name="TotalSkorPengabdianKepadaMasyarakat"
+                                                id="TotalSkorPengabdianKepadaMasyarakat" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 1</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC1" id="TotalKelebihaC1" disabled>
+                                        </td>
                                         <td colspan="3" rowspan="4">Nilai Pengabdian Kepada Masyarakat</td>
-                                        <td rowspan="4">11,69</td>
+                                        <td rowspan="4"><input type="teks" name="NilaiPengabdianKepadaMasyarakat"
+                                                id="NilaiPengabdianKepadaMasyarakat" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 2</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC2" id="TotalKelebihaC2" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 3</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC3" id="TotalKelebihaC3" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 4</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC4" id="TotalKelebihaC4" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 5</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC5" id="TotalKelebihaC5" disabled>
+                                        </td>
                                         <td colspan="3" rowspan="6">Nilai Tambah Penelitian</td>
-                                        <td rowspan="6">11,69</td>
+                                        <td rowspan="6">1<input type="teks" name="NilaiTambahPenelitian"
+                                                id="NilaiTambahPenelitian" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 6</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC6" id="TotalKelebihaC6" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 7</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC7" id="TotalKelebihaC7" disabled>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 8</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC8" id="TotalKelebihaC8" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 9</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaC9" id="TotalKelebihaC9" disabled>
+                                        </td>
                                     </tr>
 
 
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total Pengabdian Kepada Masyarakat</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="NilaiTotalPengabdianKepadaMasyarakat"
+                                                id="NilaiTotalPengabdianKepadaMasyarakat" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total UNSUR UTAMA</td>
-                                        <td>17.15</td>
+                                        <td>0</td>
                                     </tr>
 
                                 </form>
