@@ -852,69 +852,84 @@
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 2</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD2" id="TotalKelebihaD2" disabled>
+                                        </td>
                                         <td colspan="3" rowspan="4">Nilai Unsur Penunjang</td>
-                                        <td rowspan="4">11,69</td>
+                                        <td rowspan="4"><input type="teks" name="NilaiUnsurPenunjang"
+                                                id="NilaiUnsurPenunjang" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 3</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD3" id="TotalKelebihaD3" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 4</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD4" id="TotalKelebihaD4" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 5</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD5" id="TotalKelebihaD5" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 6</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD6" id="TotalKelebihaD6" disabled>
+                                        </td>
                                         <td colspan="3" rowspan="7">Nilai Tambah Unsur Penunjang</td>
-                                        <td rowspan="7">11,69</td>
+                                        <td rowspan="7"><input type="teks" name="NilaiTambahUnsurPenunjang"
+                                                id="NilaiTambahUnsurPenunjang" disabled></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 7</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD7" id="TotalKelebihaD7" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 8</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD8" id="TotalKelebihaD8" disabled>
+                                        </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 9</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD9" id="TotalKelebihaD9" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 10</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD10" id="TotalKelebihaD10" disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 11</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihaD11" id="TotalKelebihaD11" disabled>
+                                        </td>
                                     </tr>
 
 
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
+                                                disabled>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total Unsur Penunjang</td>
-                                        <td>0</td>
+                                        <td><input type="teks" name="ResultSumNilaiTotalUnsurPenunjang"
+                                                id="ResultSumNilaiTotalUnsurPenunjang" disabled></td>
                                     </tr>
 
                                 </form>

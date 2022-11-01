@@ -1355,4 +1355,223 @@ function sum() {
         // Tampilkan output pada input form
         document.getElementById("TotalSkorUnsurPenunjang").value = sumResult;
     }
+
+    var NilaiUnsurPenunjang = parseFloat(sumResult);
+    var UnsurPenungjang = NilaiUnsurPenunjang * 10;
+    var ResultNilaiUnsurPenunjang = UnsurPenungjang.toFixed(2);
+
+    // Hasil Nilai UnsurPenungjang * 20
+    if (!isNaN(ResultNilaiUnsurPenunjang)) {
+        // Tampilkan output pada input form
+        document.getElementById("NilaiUnsurPenunjang").value =
+            ResultNilaiUnsurPenunjang;
+    }
+
+    // Perkalian Skor Kelebihan
+    // D.2
+    if (sumResultD2 >= 2) {
+        var ResultNilaiDiKurangiD2 = sumResultD2 - 2;
+        var resultHasilTambahaD2 = (ResultNilaiDiKurangiD2 * 2) / 100;
+    } else {
+        var resultHasilTambahaD2 = 0;
+    }
+    // D.3
+    if (sumResultD3 >= 2) {
+        var ResultNilaiDiKurangiD3 = sumResultD3 - 2;
+        var resultHasilTambahaD3 = (ResultNilaiDiKurangiD3 * 2) / 100;
+    } else {
+        var resultHasilTambahaD3 = 0;
+    }
+    // D.4
+    if (sumResultD4 >= 2) {
+        var ResultNilaiDiKurangiD4 = sumResultD4 - 2;
+        var resultHasilTambahaD4 = (ResultNilaiDiKurangiD4 * 2) / 100;
+    } else {
+        var resultHasilTambahaD4 = 0;
+    }
+    // D.5
+    if (sumResultD5 >= 2) {
+        var ResultNilaiDiKurangiD5 = sumResultD5 - 2;
+        var resultHasilTambahaD5 = (ResultNilaiDiKurangiD5 * 2) / 100;
+    } else {
+        var resultHasilTambahaD5 = 0;
+    }
+    // D.6
+    if (sumResultD6 >= 2) {
+        var ResultNilaiDiKurangiD6 = sumResultD6 - 2;
+        var resultHasilTambahaD6 = (ResultNilaiDiKurangiD6 * 2) / 100;
+    } else {
+        var resultHasilTambahaD6 = 0;
+    }
+    // D.7
+    if (sumResultD7 >= 2) {
+        var ResultNilaiDiKurangiD7 = sumResultD7 - 2;
+        var resultHasilTambahaD7 = (ResultNilaiDiKurangiD7 * 2) / 100;
+    } else {
+        var resultHasilTambahaD7 = 0;
+    }
+    // D.8
+    if (sumResultD8 >= 2) {
+        var ResultNilaiDiKurangiD8 = sumResultD8 - 2;
+        var resultHasilTambahaD8 = (ResultNilaiDiKurangiD8 * 2) / 100;
+    } else {
+        var resultHasilTambahaD8 = 0;
+    }
+    // D.9
+    if (sumResultD9 >= 2) {
+        var ResultNilaiDiKurangiD9 = sumResultD9 - 2;
+        var resultHasilTambahaD9 = (ResultNilaiDiKurangiD9 * 2) / 100;
+    } else {
+        var resultHasilTambahaD9 = 0;
+    }
+    // D.10
+    if (sumResultD10 >= 2) {
+        var ResultNilaiDiKurangiD10 = sumResultD10 - 2;
+        var resultHasilTambahaD10 = (ResultNilaiDiKurangiD10 * 2) / 100;
+    } else {
+        var resultHasilTambahaD10 = 0;
+    }
+    // D.11
+    if (sumResultD11 >= 2) {
+        var ResultNilaiDiKurangiD11 = sumResultD11 - 2;
+        var resultHasilTambahaD11 = (ResultNilaiDiKurangiD11 * 2) / 100;
+    } else {
+        var resultHasilTambahaD11 = 0;
+    }
+
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD2)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD2").value = resultHasilTambahaD2;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD3)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD3").value = resultHasilTambahaD3;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD4)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD4").value = resultHasilTambahaD4;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD5)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD5").value = resultHasilTambahaD5;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD6)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD6").value = resultHasilTambahaD6;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD7)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD7").value = resultHasilTambahaD7;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD8)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD8").value = resultHasilTambahaD8;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD9)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD9").value = resultHasilTambahaD9;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD10)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD10").value =
+            resultHasilTambahaD10;
+    }
+    // Result Hasil nilai Kelebihan Skor
+    if (!isNaN(resultHasilTambahaD11)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihaD11").value =
+            resultHasilTambahaD11;
+    }
+
+    // SUM result total kelebihan skor
+    if (
+        resultHasilTambahaD2 == "" ||
+        resultHasilTambahaD3 == "" ||
+        resultHasilTambahaD4 == "" ||
+        resultHasilTambahaD5 == "" ||
+        resultHasilTambahaD6 == "" ||
+        resultHasilTambahaD7 == "" ||
+        resultHasilTambahaD8 == "" ||
+        resultHasilTambahaD9 == "" ||
+        resultHasilTambahaD10 == "" ||
+        resultHasilTambahaD11 == ""
+    ) {
+        var resultTotalKelebihanSkor =
+            parseFloat(resultHasilTambahaD2) +
+            parseFloat(resultHasilTambahaD3) +
+            parseFloat(resultHasilTambahaD4) +
+            parseFloat(resultHasilTambahaD5) +
+            parseFloat(resultHasilTambahaD6) +
+            parseFloat(resultHasilTambahaD7) +
+            parseFloat(resultHasilTambahaD8) +
+            parseFloat(resultHasilTambahaD9) +
+            parseFloat(resultHasilTambahaD10) +
+            parseFloat(resultHasilTambahaD11);
+    } else {
+        var resultTotalKelebihanSkor =
+            parseFloat(resultHasilTambahaD2) +
+            parseFloat(resultHasilTambahaD3) +
+            parseFloat(resultHasilTambahaD4) +
+            parseFloat(resultHasilTambahaD5) +
+            parseFloat(resultHasilTambahaD6) +
+            parseFloat(resultHasilTambahaD7) +
+            parseFloat(resultHasilTambahaD8) +
+            parseFloat(resultHasilTambahaD9) +
+            parseFloat(resultHasilTambahaD10) +
+            parseFloat(resultHasilTambahaD11);
+    }
+
+    var resultHasilSumKelebihanSkor = resultTotalKelebihanSkor;
+
+    // TotalKelebihanSkor
+    if (!isNaN(resultHasilSumKelebihanSkor)) {
+        // Tampilkan output pada input form
+        document.getElementById("TotalKelebihanSkor").value =
+            resultHasilSumKelebihanSkor;
+    }
+    // // nilai tambah pendidikan dan pengajaran
+    if (!isNaN(resultHasilSumKelebihanSkor)) {
+        // Tampilkan output pada input form
+        document.getElementById("NilaiTambahUnsurPenunjang").value =
+            resultHasilSumKelebihanSkor;
+    }
+
+    if (ResultNilaiUnsurPenunjang == "" || resultHasilSumKelebihanSkor == "") {
+        var ResultSumNilaiTotalUnsurPenunjang =
+            parseFloat(ResultNilaiUnsurPenunjang) +
+            parseFloat(resultHasilSumKelebihanSkor);
+    } else {
+        var ResultSumNilaiTotalUnsurPenunjang =
+            parseFloat(ResultNilaiUnsurPenunjang) +
+            parseFloat(resultHasilSumKelebihanSkor);
+    }
+
+    // if (ResultSumNilaiTotalUnsurPenunjang > 35) {
+    //     var num = 35;
+    //     var NilaiTotalPengabdianKepadaMasyarakat = num.toFixed(2);
+    // } else {
+    //     var NilaiTotalPengabdianKepadaMasyarakat =
+    //         ResultSumNilaiTotalUnsurPenunjang.toFixed(2);
+    // }
+
+    // if (!isNaN(NilaiTotalPengabdianKepadaMasyarakat)) {
+    //     // Tampilkan output pada input form
+    //     document.getElementById("NilaiTotalPengabdianKepadaMasyarakat").value =
+    //         NilaiTotalPengabdianKepadaMasyarakat;
+    // }
+
+    if (!isNaN(ResultSumNilaiTotalUnsurPenunjang)) {
+        // Tampilkan output pada input form
+        document.getElementById("ResultSumNilaiTotalUnsurPenunjang").value =
+            ResultSumNilaiTotalUnsurPenunjang;
+    }
 }
