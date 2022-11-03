@@ -203,7 +203,7 @@ function sum() {
         var scorSubItemD10 = ((skorMaksD10 * 6) / 100).toFixed(3);
     }
     //Kalkulasi Nilai (SKOR*BOBOT SUB ITEM)
-    if ($("input[name='D11']:checked").val() == 1) {
+    if ($("input[name='D11']:checked").val() == 2) {
         var num = 0;
         var scorSubItemD11 = num.toFixed(3);
     } else {

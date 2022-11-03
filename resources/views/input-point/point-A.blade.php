@@ -659,7 +659,7 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/Input-point/scorPointACheked.js') }}"></script>
-    <script src="{{ asset('Assets/js/Input-point/scorPointAForm.js') }}"></script>
+    <script src="{{ asset('Assets/js/Input-point/scorPointA.js') }}"></script>
+    {{-- <script src="{{ asset('Assets/js/Input-point/scorPointAForm.js') }}"></script> --}}
     @endpush
 </x-app-layout>
