@@ -31,11 +31,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['role:superuser|it']], function () {
     Route::group(['prefix' => "/Input-Point"], function () {
-        Route::get('/point-A', [PointAController::class, 'index'])->name('point-A');
-        Route::get('/point-B', [PointBController::class, 'index'])->name('point-B');
-        Route::get('/point-C', [PointCController::class, 'index'])->name('point-C');
-        Route::get('/point-D', [PointDController::class, 'index'])->name('point-D');
-        Route::get('/point-E', [PointEController::class, 'index'])->name('point-E');
+        Route::get('/point-A', [PointAController::class, 'create'])->name('point-A');
+        Route::post('/post-pointA', [PointAController::class, 'store'])->name('store.pointa');
+        Route::get('/point-B', [PointBController::class, 'create'])->name('point-B');
+        Route::get('/point-C', [PointCController::class, 'create'])->name('point-C');
+        Route::get('/point-D', [PointDController::class, 'create'])->name('point-D');
+        Route::get('/point-E', [PointEController::class, 'create'])->name('point-E');
     });
     Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
 });
