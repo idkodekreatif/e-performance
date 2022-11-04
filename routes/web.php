@@ -33,7 +33,10 @@ Route::group(['middleware' => ['role:superuser|it']], function () {
     Route::group(['prefix' => "/Input-Point"], function () {
         Route::get('/point-A', [PointAController::class, 'create'])->name('point-A');
         Route::post('/post-pointA', [PointAController::class, 'store'])->name('store.pointa');
+
         Route::get('/point-B', [PointBController::class, 'create'])->name('point-B');
+        Route::post('/post-pointB', [PointBController::class, 'store'])->name('store.pointb');
+
         Route::get('/point-C', [PointCController::class, 'create'])->name('point-C');
         Route::get('/point-D', [PointDController::class, 'create'])->name('point-D');
         Route::get('/point-E', [PointEController::class, 'create'])->name('point-E');
