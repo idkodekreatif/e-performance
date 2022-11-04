@@ -15,7 +15,7 @@ class PointDController extends Controller
      */
     public function index()
     {
-        return view('input-point.point-D');
+        //
     }
 
     /**
@@ -25,7 +25,7 @@ class PointDController extends Controller
      */
     public function create()
     {
-        //
+        return view('input-point.point-D');
     }
 
     /**
