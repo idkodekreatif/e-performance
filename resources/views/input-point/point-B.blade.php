@@ -105,14 +105,14 @@
                                             <td>Jumlah yang dihasilkan</td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB1_2"
-                                                    id="JumlahYangDihasilkanB1_2" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB1_2" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB1_3"
-                                                    id="JumlahYangDihasilkanB1_3" onkeyup="sum()">
+                                                    id="JumlahYangDihasilkanB1_3" onkeyup="sum()" placeholder="0">
                                             </td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB1_4"
-                                                    id="JumlahYangDihasilkanB1_4" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB1_4" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB1_5"
-                                                    id="JumlahYangDihasilkanB1_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB1_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB1"
                                                     id="JumlahSkorYangDiHasilkanB1" readonly></td>
@@ -199,9 +199,9 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB2_4"
-                                                    id="JumlahYangDihasilkanB2_4" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB2_4" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB2_5"
-                                                    id="JumlahYangDihasilkanB2_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB2_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB2"
                                                     id="JumlahSkorYangDiHasilkanB2" readonly></td>
@@ -284,9 +284,9 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB3_4"
-                                                    id="JumlahYangDihasilkanB3_4" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB3_4" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB3_5"
-                                                    id="JumlahYangDihasilkanB3_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB3_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB3"
                                                     id="JumlahSkorYangDiHasilkanB3" readonly></td>
@@ -424,7 +424,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB5_5"
-                                                    id="JumlahYangDihasilkanB5_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB5_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB5"
                                                     id="JumlahSkorYangDiHasilkanB5" readonly></td>
@@ -510,7 +510,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB6_5"
-                                                    id="JumlahYangDihasilkanB6_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB6_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB6"
                                                     id="JumlahSkorYangDiHasilkanB6" readonly></td>
@@ -598,7 +598,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB7_5"
-                                                    id="JumlahYangDihasilkanB7_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB7_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB7"
                                                     id="JumlahSkorYangDiHasilkanB7" readonly></td>
@@ -737,11 +737,11 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB9_3"
-                                                    id="JumlahYangDihasilkanB9_3" onkeyup="sum()">
+                                                    id="JumlahYangDihasilkanB9_3" onkeyup="sum()" placeholder="0">
                                             </td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB9_5"
-                                                    id="JumlahYangDihasilkanB9_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB9_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB9"
                                                     id="JumlahSkorYangDiHasilkanB9" readonly></td>
@@ -830,11 +830,11 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB10_3"
-                                                    id="JumlahYangDihasilkanB10_3" onkeyup="sum()">
+                                                    id="JumlahYangDihasilkanB10_3" onkeyup="sum()" placeholder="0">
                                             </td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB10_5"
-                                                    id="JumlahYangDihasilkanB10_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB10_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB10"
                                                     id="JumlahSkorYangDiHasilkanB10" readonly></td>
@@ -925,7 +925,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB11_5"
-                                                    id="JumlahYangDihasilkanB11_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB11_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB11"
                                                     id="JumlahSkorYangDiHasilkanB11" readonly></td>
@@ -1014,7 +1014,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB12_5"
-                                                    id="JumlahYangDihasilkanB12_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB12_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB12"
                                                     id="JumlahSkorYangDiHasilkanB12" readonly></td>
@@ -1096,12 +1096,12 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB13_3"
-                                                    id="JumlahYangDihasilkanB13_3" onkeyup="sum()">
+                                                    id="JumlahYangDihasilkanB13_3" onkeyup="sum()" placeholder="0">
                                             </td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB13_4"
-                                                    id="JumlahYangDihasilkanB13_4" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB13_4" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB13_5"
-                                                    id="JumlahYangDihasilkanB13_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB13_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB13"
                                                     id="JumlahSkorYangDiHasilkanB13" readonly></td>
@@ -1188,14 +1188,14 @@
                                             <td>Jumlah yang dihasilkan</td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB14_2"
-                                                    id="JumlahYangDihasilkanB14_2" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB14_2" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB14_3"
-                                                    id="JumlahYangDihasilkanB14_3" onkeyup="sum()">
+                                                    id="JumlahYangDihasilkanB14_3" onkeyup="sum()" placeholder="0">
                                             </td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB14_4"
-                                                    id="JumlahYangDihasilkanB14_4" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB14_4" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB14_5"
-                                                    id="JumlahYangDihasilkanB14_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB14_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB14"
                                                     id="JumlahSkorYangDiHasilkanB14" readonly></td>
@@ -1288,12 +1288,12 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB15_3"
-                                                    id="JumlahYangDihasilkanB15_3" onkeyup="sum()">
+                                                    id="JumlahYangDihasilkanB15_3" onkeyup="sum()" placeholder="0">
                                             </td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB15_4"
-                                                    id="JumlahYangDihasilkanB15_4" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB15_4" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB15_5"
-                                                    id="JumlahYangDihasilkanB15_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB15_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB15"
                                                     id="JumlahSkorYangDiHasilkanB15" readonly></td>
@@ -1432,14 +1432,14 @@
                                             <td>Jumlah yang dihasilkan</td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB17_2"
-                                                    id="JumlahYangDihasilkanB17_2" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB17_2" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB17_3"
-                                                    id="JumlahYangDihasilkanB17_3" onkeyup="sum()">
+                                                    id="JumlahYangDihasilkanB17_3" onkeyup="sum()" placeholder="0">
                                             </td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB17_4"
-                                                    id="JumlahYangDihasilkanB17_4" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB17_4" onkeyup="sum()" placeholder="0"></td>
                                             <td><input type="teks" name="JumlahYangDihasilkanB17_5"
-                                                    id="JumlahYangDihasilkanB17_5" onkeyup="sum()"></td>
+                                                    id="JumlahYangDihasilkanB17_5" onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
                                             <td><input type="teks" name="JumlahSkorYangDiHasilkanB17"
                                                     id="JumlahSkorYangDiHasilkanB17" readonly></td>

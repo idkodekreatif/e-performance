@@ -45,7 +45,7 @@ class PointBController extends Controller
         $new_data->SkorTambahanB1_2 = $request->get('SkorTambahanB1_2');
         $new_data->JumlahYangDihasilkanB1_3_in = $request->get('JumlahYangDihasilkanB1_3');
         $new_data->SkorTambahanB1_3 = $request->get('SkorTambahanB1_3');
-        $new_data->JumlahYangDihasilkanB1_4_in = $request->get('JumlahYangDihasilkanB1_3');
+        $new_data->JumlahYangDihasilkanB1_4_in = $request->get('JumlahYangDihasilkanB1_4');
         $new_data->SkorTambahanB1_4 = $request->get('SkorTambahanB1_4');
         $new_data->JumlahYangDihasilkanB1_5_in = $request->get('JumlahYangDihasilkanB1_5');
         $new_data->SkorTambahanB1_5 = $request->get('SkorTambahanB1_5');
@@ -58,7 +58,7 @@ class PointBController extends Controller
         $new_data->scorB2 = $request->get('scorB2');
         $new_data->scorMaxB2 = $request->get('scorMaxB2');
         $new_data->scorSubItemB2 = $request->get('scorSubItemB2');
-        $new_data->JumlahYangDihasilkanB2_4_in = $request->get('JumlahYangDihasilkanB2_3');
+        $new_data->JumlahYangDihasilkanB2_4_in = $request->get('JumlahYangDihasilkanB2_4');
         $new_data->SkorTambahanB2_4 = $request->get('SkorTambahanB2_4');
         $new_data->JumlahYangDihasilkanB2_5_in = $request->get('JumlahYangDihasilkanB2_5');
         $new_data->SkorTambahanB2_5 = $request->get('SkorTambahanB2_5');
@@ -71,7 +71,7 @@ class PointBController extends Controller
         $new_data->scorB3 = $request->get('scorB3');
         $new_data->scorMaxB3 = $request->get('scorMaxB3');
         $new_data->scorSubItemB3 = $request->get('scorSubItemB3');
-        $new_data->JumlahYangDihasilkanB3_4_in = $request->get('JumlahYangDihasilkanB3_3');
+        $new_data->JumlahYangDihasilkanB3_4_in = $request->get('JumlahYangDihasilkanB3_4');
         $new_data->SkorTambahanB3_4 = $request->get('SkorTambahanB3_4');
         $new_data->JumlahYangDihasilkanB3_5_in = $request->get('JumlahYangDihasilkanB3_5');
         $new_data->SkorTambahanB3_5 = $request->get('SkorTambahanB3_5');
@@ -177,7 +177,7 @@ class PointBController extends Controller
         $new_data->scorSubItemB13 = $request->get('scorSubItemB13');
         $new_data->JumlahYangDihasilkanB13_3_in = $request->get('JumlahYangDihasilkanB13_3');
         $new_data->SkorTambahanB13_3 = $request->get('SkorTambahanB13_3');
-        $new_data->JumlahYangDihasilkanB13_4_in = $request->get('JumlahYangDihasilkanB13_3');
+        $new_data->JumlahYangDihasilkanB13_4_in = $request->get('JumlahYangDihasilkanB13_4');
         $new_data->SkorTambahanB13_4 = $request->get('SkorTambahanB13_4');
         $new_data->JumlahYangDihasilkanB13_5_in = $request->get('JumlahYangDihasilkanB13_5');
         $new_data->SkorTambahanB13_5 = $request->get('SkorTambahanB13_5');
@@ -194,7 +194,7 @@ class PointBController extends Controller
         $new_data->SkorTambahanB14_2 = $request->get('SkorTambahanB14_2');
         $new_data->JumlahYangDihasilkanB14_3_in = $request->get('JumlahYangDihasilkanB14_3');
         $new_data->SkorTambahanB14_3 = $request->get('SkorTambahanB14_3');
-        $new_data->JumlahYangDihasilkanB14_4_in = $request->get('JumlahYangDihasilkanB14_3');
+        $new_data->JumlahYangDihasilkanB14_4_in = $request->get('JumlahYangDihasilkanB14_4');
         $new_data->SkorTambahanB14_4 = $request->get('SkorTambahanB14_4');
         $new_data->JumlahYangDihasilkanB14_5_in = $request->get('JumlahYangDihasilkanB14_5');
         $new_data->SkorTambahanB14_5 = $request->get('SkorTambahanB14_5');
@@ -209,7 +209,7 @@ class PointBController extends Controller
         $new_data->scorSubItemB15 = $request->get('scorSubItemB15');
         $new_data->JumlahYangDihasilkanB15_3_in = $request->get('JumlahYangDihasilkanB15_3');
         $new_data->SkorTambahanB15_3 = $request->get('SkorTambahanB15_3');
-        $new_data->JumlahYangDihasilkanB15_4_in = $request->get('JumlahYangDihasilkanB15_3');
+        $new_data->JumlahYangDihasilkanB15_4_in = $request->get('JumlahYangDihasilkanB15_4');
         $new_data->SkorTambahanB15_4 = $request->get('SkorTambahanB15_4');
         $new_data->JumlahYangDihasilkanB15_5_in = $request->get('JumlahYangDihasilkanB15_5');
         $new_data->SkorTambahanB15_5 = $request->get('SkorTambahanB15_5');
@@ -231,7 +231,7 @@ class PointBController extends Controller
         $new_data->SkorTambahanB17_2 = $request->get('SkorTambahanB17_2');
         $new_data->JumlahYangDihasilkanB17_3_in = $request->get('JumlahYangDihasilkanB17_3');
         $new_data->SkorTambahanB17_3 = $request->get('SkorTambahanB17_3');
-        $new_data->JumlahYangDihasilkanB17_4_in = $request->get('JumlahYangDihasilkanB17_3');
+        $new_data->JumlahYangDihasilkanB17_4_in = $request->get('JumlahYangDihasilkanB17_4');
         $new_data->SkorTambahanB17_4 = $request->get('SkorTambahanB17_4');
         $new_data->JumlahYangDihasilkanB17_5_in = $request->get('JumlahYangDihasilkanB17_5');
         $new_data->SkorTambahanB17_5 = $request->get('SkorTambahanB17_5');
