@@ -121,6 +121,7 @@ class PointAController extends Controller
 
         // dd($new_data_point);
         $new_data_point->save();
+        return redirect()->route('point-A');
     }
 
     /**
