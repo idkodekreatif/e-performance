@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PointE extends Model
 {
     use HasFactory;
+
+    protected $table = "point_e";
+    protected $guarded = [];
 }
