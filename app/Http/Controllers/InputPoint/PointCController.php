@@ -36,11 +36,29 @@ class PointCController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'fileC1' => 'required|mimes:pdf|max:2048',
+            'fileC2' => 'required|mimes:pdf|max:2048',
+            'fileC3' => 'required|mimes:pdf|max:2048',
+            'fileC4' => 'required|mimes:pdf|max:2048',
+            'fileC5' => 'required|mimes:pdf|max:2048',
+            'fileC6' => 'required|mimes:pdf|max:2048',
+            'fileC7' => 'required|mimes:pdf|max:2048',
+            'fileC8' => 'required|mimes:pdf|max:2048',
+            'fileC9' => 'required|mimes:pdf|max:2048',
+        ]);
+
         $new_data = new PointC();
         $new_data->C1 = $request->get('C1');
         $new_data->scorC1 = $request->get('scorC1');
         $new_data->scorMaxC1 = $request->get('scorMaxC1');
         $new_data->scorSubItemC1 = $request->get('scorSubItemC1');
+
+        if ($request->hasFile('fileC1')) {
+            $fileName = $request->file('fileC1')->store('uploads/Point-c', 'public');
+            $new_data->fileC1 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC1_2_in = $request->get('JumlahYangDihasilkanC1_2');
         $new_data->SkorTambahanC1_2 = $request->get('SkorTambahanC1_2');
         $new_data->JumlahYangDihasilkanC1_3_in = $request->get('JumlahYangDihasilkanC1_3');
@@ -58,6 +76,12 @@ class PointCController extends Controller
         $new_data->scorC2 = $request->get('scorC2');
         $new_data->scorMaxC2 = $request->get('scorMaxC2');
         $new_data->scorSubItemC2 = $request->get('scorSubItemC2');
+
+        if ($request->hasFile('fileC2')) {
+            $fileName = $request->file('fileC2')->store('uploads/Point-c', 'public');
+            $new_data->fileC2 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC2_2_in = $request->get('JumlahYangDihasilkanC2_2');
         $new_data->SkorTambahanC2_2 = $request->get('SkorTambahanC2_2');
         $new_data->JumlahYangDihasilkanC2_3_in = $request->get('JumlahYangDihasilkanC2_3');
@@ -75,6 +99,12 @@ class PointCController extends Controller
         $new_data->scorC3 = $request->get('scorC3');
         $new_data->scorMaxC3 = $request->get('scorMaxC3');
         $new_data->scorSubItemC3 = $request->get('scorSubItemC3');
+
+        if ($request->hasFile('fileC3')) {
+            $fileName = $request->file('fileC3')->store('uploads/Point-c', 'public');
+            $new_data->fileC3 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC3_4_in = $request->get('JumlahYangDihasilkanC3_4');
         $new_data->SkorTambahanC3_4 = $request->get('SkorTambahanC3_4');
         $new_data->JumlahYangDihasilkanC3_5_in = $request->get('JumlahYangDihasilkanC3_5');
@@ -88,6 +118,12 @@ class PointCController extends Controller
         $new_data->scorC4 = $request->get('scorC4');
         $new_data->scorMaxC4 = $request->get('scorMaxC4');
         $new_data->scorSubItemC4 = $request->get('scorSubItemC4');
+
+        if ($request->hasFile('fileC4')) {
+            $fileName = $request->file('fileC4')->store('uploads/Point-c', 'public');
+            $new_data->fileC4 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC4_2_in = $request->get('JumlahYangDihasilkanC4_2');
         $new_data->SkorTambahanC4_2 = $request->get('SkorTambahanC4_2');
         $new_data->JumlahYangDihasilkanC4_3_in = $request->get('JumlahYangDihasilkanC4_3');
@@ -105,6 +141,12 @@ class PointCController extends Controller
         $new_data->scorC5 = $request->get('scorC5');
         $new_data->scorMaxC5 = $request->get('scorMaxC5');
         $new_data->scorSubItemC5 = $request->get('scorSubItemC5');
+
+        if ($request->hasFile('fileC5')) {
+            $fileName = $request->file('fileC5')->store('uploads/Point-c', 'public');
+            $new_data->fileC5 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC5_2_in = $request->get('JumlahYangDihasilkanC5_2');
         $new_data->SkorTambahanC5_2 = $request->get('SkorTambahanC5_2');
         $new_data->JumlahYangDihasilkanC5_3_in = $request->get('JumlahYangDihasilkanC5_3');
@@ -122,6 +164,12 @@ class PointCController extends Controller
         $new_data->scorC6 = $request->get('scorC6');
         $new_data->scorMaxC6 = $request->get('scorMaxC6');
         $new_data->scorSubItemC6 = $request->get('scorSubItemC6');
+
+        if ($request->hasFile('fileC6')) {
+            $fileName = $request->file('fileC6')->store('uploads/Point-c', 'public');
+            $new_data->fileC6 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC6_2_in = $request->get('JumlahYangDihasilkanC6_2');
         $new_data->SkorTambahanC6_2 = $request->get('SkorTambahanC6_2');
         $new_data->JumlahYangDihasilkanC6_3_in = $request->get('JumlahYangDihasilkanC6_3');
@@ -139,6 +187,12 @@ class PointCController extends Controller
         $new_data->scorC7 = $request->get('scorC7');
         $new_data->scorMaxC7 = $request->get('scorMaxC7');
         $new_data->scorSubItemC7 = $request->get('scorSubItemC7');
+
+        if ($request->hasFile('fileC7')) {
+            $fileName = $request->file('fileC7')->store('uploads/Point-c', 'public');
+            $new_data->fileC7 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC7_2_in = $request->get('JumlahYangDihasilkanC7_2');
         $new_data->SkorTambahanC7_2 = $request->get('SkorTambahanC7_2');
         $new_data->JumlahYangDihasilkanC7_3_in = $request->get('JumlahYangDihasilkanC7_3');
@@ -156,6 +210,12 @@ class PointCController extends Controller
         $new_data->scorC8 = $request->get('scorC8');
         $new_data->scorMaxC8 = $request->get('scorMaxC8');
         $new_data->scorSubItemC8 = $request->get('scorSubItemC8');
+
+        if ($request->hasFile('fileC8')) {
+            $fileName = $request->file('fileC8')->store('uploads/Point-c', 'public');
+            $new_data->fileC8 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC8_2_in = $request->get('JumlahYangDihasilkanC8_2');
         $new_data->SkorTambahanC8_2 = $request->get('SkorTambahanC8_2');
         $new_data->JumlahYangDihasilkanC8_3_in = $request->get('JumlahYangDihasilkanC8_3');
@@ -173,6 +233,12 @@ class PointCController extends Controller
         $new_data->scorC9 = $request->get('scorC9');
         $new_data->scorMaxC9 = $request->get('scorMaxC9');
         $new_data->scorSubItemC9 = $request->get('scorSubItemC9');
+
+        if ($request->hasFile('fileC9')) {
+            $fileName = $request->file('fileC9')->store('uploads/Point-c', 'public');
+            $new_data->fileC9 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanC9_2_in = $request->get('JumlahYangDihasilkanC9_2');
         $new_data->SkorTambahanC9_2 = $request->get('SkorTambahanC9_2');
         $new_data->JumlahYangDihasilkanC9_3_in = $request->get('JumlahYangDihasilkanC9_3');
