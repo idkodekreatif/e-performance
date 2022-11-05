@@ -36,11 +36,39 @@ class PointBController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'fileB1' => 'required|mimes:pdf|max:2048',
+            'fileB2' => 'required|mimes:pdf|max:2048',
+            'fileB3' => 'required|mimes:pdf|max:2048',
+            'fileB4' => 'required|mimes:pdf|max:2048',
+            'fileB5' => 'required|mimes:pdf|max:2048',
+            'fileB6' => 'required|mimes:pdf|max:2048',
+            'fileB7' => 'required|mimes:pdf|max:2048',
+            'fileB8' => 'required|mimes:pdf|max:2048',
+            'fileB9' => 'required|mimes:pdf|max:2048',
+            'fileB10' => 'required|mimes:pdf|max:2048',
+            'fileB11' => 'required|mimes:pdf|max:2048',
+            'fileB12' => 'required|mimes:pdf|max:2048',
+            'fileB13' => 'required|mimes:pdf|max:2048',
+            'fileB14' => 'required|mimes:pdf|max:2048',
+            'fileB15' => 'required|mimes:pdf|max:2048',
+            'fileB16' => 'required|mimes:pdf|max:2048',
+            'fileB17' => 'required|mimes:pdf|max:2048',
+            'fileB18' => 'required|mimes:pdf|max:2048',
+        ]);
+
+
         $new_data = new PointB();
         $new_data->B1 = $request->get('B1');
         $new_data->scorB1 = $request->get('scorB1');
         $new_data->scorMaxB1 = $request->get('scorMaxB1');
         $new_data->scorSubItemB1 = $request->get('scorSubItemB1');
+
+        if ($request->hasFile('fileB1')) {
+            $fileName = $request->file('fileB1')->store('uploads/Point-b', 'public');
+            $new_data->fileB1 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB1_2_in = $request->get('JumlahYangDihasilkanB1_2');
         $new_data->SkorTambahanB1_2 = $request->get('SkorTambahanB1_2');
         $new_data->JumlahYangDihasilkanB1_3_in = $request->get('JumlahYangDihasilkanB1_3');
@@ -58,6 +86,12 @@ class PointBController extends Controller
         $new_data->scorB2 = $request->get('scorB2');
         $new_data->scorMaxB2 = $request->get('scorMaxB2');
         $new_data->scorSubItemB2 = $request->get('scorSubItemB2');
+
+        if ($request->hasFile('fileB2')) {
+            $fileName = $request->file('fileB2')->store('uploads/Point-b', 'public');
+            $new_data->fileB2 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB2_4_in = $request->get('JumlahYangDihasilkanB2_4');
         $new_data->SkorTambahanB2_4 = $request->get('SkorTambahanB2_4');
         $new_data->JumlahYangDihasilkanB2_5_in = $request->get('JumlahYangDihasilkanB2_5');
@@ -71,6 +105,12 @@ class PointBController extends Controller
         $new_data->scorB3 = $request->get('scorB3');
         $new_data->scorMaxB3 = $request->get('scorMaxB3');
         $new_data->scorSubItemB3 = $request->get('scorSubItemB3');
+
+        if ($request->hasFile('fileB3')) {
+            $fileName = $request->file('fileB3')->store('uploads/Point-b', 'public');
+            $new_data->fileB3 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB3_4_in = $request->get('JumlahYangDihasilkanB3_4');
         $new_data->SkorTambahanB3_4 = $request->get('SkorTambahanB3_4');
         $new_data->JumlahYangDihasilkanB3_5_in = $request->get('JumlahYangDihasilkanB3_5');
@@ -85,10 +125,21 @@ class PointBController extends Controller
         $new_data->scorMaxB4 = $request->get('scorMaxB4');
         $new_data->scorSubItemB4 = $request->get('scorSubItemB4');
 
+        if ($request->hasFile('fileB4')) {
+            $fileName = $request->file('fileB4')->store('uploads/Point-b', 'public');
+            $new_data->fileB4 = $fileName;
+        }
+
         $new_data->B5 = $request->get('B5');
         $new_data->scorB5 = $request->get('scorB5');
         $new_data->scorMaxB5 = $request->get('scorMaxB5');
         $new_data->scorSubItemB5 = $request->get('scorSubItemB5');
+
+        if ($request->hasFile('fileB5')) {
+            $fileName = $request->file('fileB5')->store('uploads/Point-b', 'public');
+            $new_data->fileB5 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB5_5_in = $request->get('JumlahYangDihasilkanB5_5');
         $new_data->SkorTambahanB5_5 = $request->get('SkorTambahanB5_5');
         $new_data->SkorTambahanJumlahB5 = $request->get('SkorTambahanJumlahB5');
@@ -100,6 +151,12 @@ class PointBController extends Controller
         $new_data->scorB6 = $request->get('scorB6');
         $new_data->scorMaxB6 = $request->get('scorMaxB6');
         $new_data->scorSubItemB6 = $request->get('scorSubItemB6');
+
+        if ($request->hasFile('fileB6')) {
+            $fileName = $request->file('fileB6')->store('uploads/Point-b', 'public');
+            $new_data->fileB6 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB6_5_in = $request->get('JumlahYangDihasilkanB6_5');
         $new_data->SkorTambahanB6_5 = $request->get('SkorTambahanB6_5');
         $new_data->SkorTambahanJumlahB6 = $request->get('SkorTambahanJumlahB6');
@@ -111,6 +168,12 @@ class PointBController extends Controller
         $new_data->scorB7 = $request->get('scorB7');
         $new_data->scorMaxB7 = $request->get('scorMaxB7');
         $new_data->scorSubItemB7 = $request->get('scorSubItemB7');
+
+        if ($request->hasFile('fileB7')) {
+            $fileName = $request->file('fileB7')->store('uploads/Point-b', 'public');
+            $new_data->fileB7 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB7_5_in = $request->get('JumlahYangDihasilkanB7_5');
         $new_data->SkorTambahanB7_5 = $request->get('SkorTambahanB7_5');
         $new_data->SkorTambahanJumlahB7 = $request->get('SkorTambahanJumlahB7');
@@ -123,10 +186,21 @@ class PointBController extends Controller
         $new_data->scorMaxB8 = $request->get('scorMaxB8');
         $new_data->scorSubItemB8 = $request->get('scorSubItemB8');
 
+        if ($request->hasFile('fileB8')) {
+            $fileName = $request->file('fileB8')->store('uploads/Point-b', 'public');
+            $new_data->fileB8 = $fileName;
+        }
+
         $new_data->B9 = $request->get('B9');
         $new_data->scorB9 = $request->get('scorB9');
         $new_data->scorMaxB9 = $request->get('scorMaxB9');
         $new_data->scorSubItemB9 = $request->get('scorSubItemB9');
+
+        if ($request->hasFile('fileB9')) {
+            $fileName = $request->file('fileB9')->store('uploads/Point-b', 'public');
+            $new_data->fileB9 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB9_3_in = $request->get('JumlahYangDihasilkanB9_3');
         $new_data->SkorTambahanB9_3 = $request->get('SkorTambahanB9_3');
         $new_data->JumlahYangDihasilkanB9_5_in = $request->get('JumlahYangDihasilkanB9_5');
@@ -140,6 +214,12 @@ class PointBController extends Controller
         $new_data->scorB10 = $request->get('scorB10');
         $new_data->scorMaxB10 = $request->get('scorMaxB10');
         $new_data->scorSubItemB10 = $request->get('scorSubItemB10');
+
+        if ($request->hasFile('fileB10')) {
+            $fileName = $request->file('fileB10')->store('uploads/Point-b', 'public');
+            $new_data->fileB10 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB10_3_in = $request->get('JumlahYangDihasilkanB10_3');
         $new_data->SkorTambahanB10_3 = $request->get('SkorTambahanB10_3');
         $new_data->JumlahYangDihasilkanB10_5_in = $request->get('JumlahYangDihasilkanB10_5');
@@ -153,6 +233,12 @@ class PointBController extends Controller
         $new_data->scorB11 = $request->get('scorB11');
         $new_data->scorMaxB11 = $request->get('scorMaxB11');
         $new_data->scorSubItemB11 = $request->get('scorSubItemB11');
+
+        if ($request->hasFile('fileB11')) {
+            $fileName = $request->file('fileB11')->store('uploads/Point-b', 'public');
+            $new_data->fileB11 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB11_5_in = $request->get('JumlahYangDihasilkanB11_5');
         $new_data->SkorTambahanB11_5 = $request->get('SkorTambahanB11_5');
         $new_data->SkorTambahanJumlahB11 = $request->get('SkorTambahanJumlahB11');
@@ -164,6 +250,12 @@ class PointBController extends Controller
         $new_data->scorB12 = $request->get('scorB12');
         $new_data->scorMaxB12 = $request->get('scorMaxB12');
         $new_data->scorSubItemB12 = $request->get('scorSubItemB12');
+
+        if ($request->hasFile('fileB12')) {
+            $fileName = $request->file('fileB12')->store('uploads/Point-b', 'public');
+            $new_data->fileB12 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB12_5_in = $request->get('JumlahYangDihasilkanB12_5');
         $new_data->SkorTambahanB12_5 = $request->get('SkorTambahanB12_5');
         $new_data->SkorTambahanJumlahB12 = $request->get('SkorTambahanJumlahB12');
@@ -175,6 +267,12 @@ class PointBController extends Controller
         $new_data->scorB13 = $request->get('scorB13');
         $new_data->scorMaxB13 = $request->get('scorMaxB13');
         $new_data->scorSubItemB13 = $request->get('scorSubItemB13');
+
+        if ($request->hasFile('fileB13')) {
+            $fileName = $request->file('fileB13')->store('uploads/Point-b', 'public');
+            $new_data->fileB13 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB13_3_in = $request->get('JumlahYangDihasilkanB13_3');
         $new_data->SkorTambahanB13_3 = $request->get('SkorTambahanB13_3');
         $new_data->JumlahYangDihasilkanB13_4_in = $request->get('JumlahYangDihasilkanB13_4');
@@ -190,6 +288,12 @@ class PointBController extends Controller
         $new_data->scorB14 = $request->get('scorB14');
         $new_data->scorMaxB14 = $request->get('scorMaxB14');
         $new_data->scorSubItemB14 = $request->get('scorSubItemB14');
+
+        if ($request->hasFile('fileB14')) {
+            $fileName = $request->file('fileB14')->store('uploads/Point-b', 'public');
+            $new_data->fileB14 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB14_2_in = $request->get('JumlahYangDihasilkanB14_2');
         $new_data->SkorTambahanB14_2 = $request->get('SkorTambahanB14_2');
         $new_data->JumlahYangDihasilkanB14_3_in = $request->get('JumlahYangDihasilkanB14_3');
@@ -207,6 +311,12 @@ class PointBController extends Controller
         $new_data->scorB15 = $request->get('scorB15');
         $new_data->scorMaxB15 = $request->get('scorMaxB15');
         $new_data->scorSubItemB15 = $request->get('scorSubItemB15');
+
+        if ($request->hasFile('fileB15')) {
+            $fileName = $request->file('fileB15')->store('uploads/Point-b', 'public');
+            $new_data->fileB15 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB15_3_in = $request->get('JumlahYangDihasilkanB15_3');
         $new_data->SkorTambahanB15_3 = $request->get('SkorTambahanB15_3');
         $new_data->JumlahYangDihasilkanB15_4_in = $request->get('JumlahYangDihasilkanB15_4');
@@ -223,10 +333,21 @@ class PointBController extends Controller
         $new_data->scorMaxB16 = $request->get('scorMaxB16');
         $new_data->scorSubItemB16 = $request->get('scorSubItemB16');
 
+        if ($request->hasFile('fileB16')) {
+            $fileName = $request->file('fileB16')->store('uploads/Point-b', 'public');
+            $new_data->fileB16 = $fileName;
+        }
+
         $new_data->B17 = $request->get('B17');
         $new_data->scorB17 = $request->get('scorB17');
         $new_data->scorMaxB17 = $request->get('scorMaxB17');
         $new_data->scorSubItemB17 = $request->get('scorSubItemB17');
+
+        if ($request->hasFile('fileB17')) {
+            $fileName = $request->file('fileB17')->store('uploads/Point-b', 'public');
+            $new_data->fileB17 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanB17_2_in = $request->get('JumlahYangDihasilkanB17_2');
         $new_data->SkorTambahanB17_2 = $request->get('SkorTambahanB17_2');
         $new_data->JumlahYangDihasilkanB17_3_in = $request->get('JumlahYangDihasilkanB17_3');
@@ -244,6 +365,11 @@ class PointBController extends Controller
         $new_data->scorB18 = $request->get('scorB18');
         $new_data->scorMaxB18 = $request->get('scorMaxB18');
         $new_data->scorSubItemB18 = $request->get('scorSubItemB18');
+
+        if ($request->hasFile('fileB18')) {
+            $fileName = $request->file('fileB18')->store('uploads/Point-b', 'public');
+            $new_data->fileB18 = $fileName;
+        }
 
         $new_data->TotalSkorPenelitianPointB = $request->get('TotalSkorPenelitianPointB');
         $new_data->TotalKelebihaB1 = $request->get('TotalKelebihaB1');

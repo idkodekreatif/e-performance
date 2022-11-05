@@ -36,17 +36,41 @@ class PointDController extends Controller
      */
     public function store(Request $request)
     {
-        $new_data = new PointD();
+        $request->validate([
+            'fileD1' => 'required|mimes:pdf|max:2048',
+            'fileD2' => 'required|mimes:pdf|max:2048',
+            'fileD3' => 'required|mimes:pdf|max:2048',
+            'fileD4' => 'required|mimes:pdf|max:2048',
+            'fileD5' => 'required|mimes:pdf|max:2048',
+            'fileD6' => 'required|mimes:pdf|max:2048',
+            'fileD7' => 'required|mimes:pdf|max:2048',
+            'fileD8' => 'required|mimes:pdf|max:2048',
+            'fileD9' => 'required|mimes:pdf|max:2048',
+            'fileD10' => 'required|mimes:pdf|max:2048',
+            'fileD11' => 'required|mimes:pdf|max:2048',
+        ]);
 
+        $new_data = new PointD();
         $new_data->D1 = $request->get('D1');
         $new_data->scorD1 = $request->get('scorD1');
         $new_data->scorMaxD1 = $request->get('scorMaxD1');
         $new_data->scorSubItemD1 = $request->get('scorSubItemD1');
 
+        if ($request->hasFile('fileD1')) {
+            $fileName = $request->file('fileD1')->store('uploads/Point-d', 'public');
+            $new_data->fileD1 = $fileName;
+        }
+
         $new_data->D2 = $request->get('D2');
         $new_data->scorD2 = $request->get('scorD2');
         $new_data->scorMaxD2 = $request->get('scorMaxD2');
         $new_data->scorSubItemD2 = $request->get('scorSubItemD2');
+
+        if ($request->hasFile('fileD2')) {
+            $fileName = $request->file('fileD2')->store('uploads/Point-d', 'public');
+            $new_data->fileD2 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD2_2_in = $request->get('JumlahYangDihasilkanD2_2');
         $new_data->SkorTambahanD2_2 = $request->get('SkorTambahanD2_2');
         $new_data->JumlahYangDihasilkanD2_3_in = $request->get('JumlahYangDihasilkanD2_3');
@@ -64,6 +88,12 @@ class PointDController extends Controller
         $new_data->scorD3 = $request->get('scorD3');
         $new_data->scorMaxD3 = $request->get('scorMaxD3');
         $new_data->scorSubItemD3 = $request->get('scorSubItemD3');
+
+        if ($request->hasFile('fileD3')) {
+            $fileName = $request->file('fileD3')->store('uploads/Point-d', 'public');
+            $new_data->fileD3 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD3_2_in = $request->get('JumlahYangDihasilkanD3_2');
         $new_data->SkorTambahanD3_2 = $request->get('SkorTambahanD3_2');
         $new_data->JumlahYangDihasilkanD3_3_in = $request->get('JumlahYangDihasilkanD3_3');
@@ -81,6 +111,12 @@ class PointDController extends Controller
         $new_data->scorD4 = $request->get('scorD4');
         $new_data->scorMaxD4 = $request->get('scorMaxD4');
         $new_data->scorSubItemD4 = $request->get('scorSubItemD4');
+
+        if ($request->hasFile('fileD4')) {
+            $fileName = $request->file('fileD4')->store('uploads/Point-d', 'public');
+            $new_data->fileD4 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD4_3_in = $request->get('JumlahYangDihasilkanD4_3');
         $new_data->SkorTambahanD4_3 = $request->get('SkorTambahanD4_3');
         $new_data->JumlahYangDihasilkanD4_4_in = $request->get('JumlahYangDihasilkanD4_4');
@@ -96,6 +132,12 @@ class PointDController extends Controller
         $new_data->scorD5 = $request->get('scorD5');
         $new_data->scorMaxD5 = $request->get('scorMaxD5');
         $new_data->scorSubItemD5 = $request->get('scorSubItemD5');
+
+        if ($request->hasFile('fileD5')) {
+            $fileName = $request->file('fileD5')->store('uploads/Point-d', 'public');
+            $new_data->fileD5 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD5_3_in = $request->get('JumlahYangDihasilkanD5_3');
         $new_data->SkorTambahanD5_3 = $request->get('SkorTambahanD5_3');
         $new_data->JumlahYangDihasilkanD5_4_in = $request->get('JumlahYangDihasilkanD5_4');
@@ -111,6 +153,12 @@ class PointDController extends Controller
         $new_data->scorD6 = $request->get('scorD6');
         $new_data->scorMaxD6 = $request->get('scorMaxD6');
         $new_data->scorSubItemD6 = $request->get('scorSubItemD6');
+
+        if ($request->hasFile('fileD6')) {
+            $fileName = $request->file('fileD6')->store('uploads/Point-d', 'public');
+            $new_data->fileD6 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD6_2_in = $request->get('JumlahYangDihasilkanD6_2');
         $new_data->SkorTambahanD6_2 = $request->get('SkorTambahanD6_2');
         $new_data->JumlahYangDihasilkanD6_3_in = $request->get('JumlahYangDihasilkanD6_3');
@@ -128,6 +176,12 @@ class PointDController extends Controller
         $new_data->scorD7 = $request->get('scorD7');
         $new_data->scorMaxD7 = $request->get('scorMaxD7');
         $new_data->scorSubItemD7 = $request->get('scorSubItemD7');
+
+        if ($request->hasFile('fileD7')) {
+            $fileName = $request->file('fileD7')->store('uploads/Point-d', 'public');
+            $new_data->fileD7 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD7_5_in = $request->get('JumlahYangDihasilkanD7_5');
         $new_data->SkorTambahanD7_5 = $request->get('SkorTambahanD7_5');
         $new_data->SkorTambahanJumlahD7 = $request->get('SkorTambahanJumlahD7');
@@ -139,6 +193,12 @@ class PointDController extends Controller
         $new_data->scorD8 = $request->get('scorD8');
         $new_data->scorMaxD8 = $request->get('scorMaxD8');
         $new_data->scorSubItemD8 = $request->get('scorSubItemD8');
+
+        if ($request->hasFile('fileD8')) {
+            $fileName = $request->file('fileD8')->store('uploads/Point-d', 'public');
+            $new_data->fileD8 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD8_3_in = $request->get('JumlahYangDihasilkanD8_3');
         $new_data->SkorTambahanD8_3 = $request->get('SkorTambahanD8_3');
         $new_data->JumlahYangDihasilkanD8_4_in = $request->get('JumlahYangDihasilkanD8_4');
@@ -154,6 +214,12 @@ class PointDController extends Controller
         $new_data->scorD9 = $request->get('scorD9');
         $new_data->scorMaxD9 = $request->get('scorMaxD9');
         $new_data->scorSubItemD9 = $request->get('scorSubItemD9');
+
+        if ($request->hasFile('fileD9')) {
+            $fileName = $request->file('fileD9')->store('uploads/Point-d', 'public');
+            $new_data->fileD9 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD9_2_in = $request->get('JumlahYangDihasilkanD9_2');
         $new_data->SkorTambahanD9_2 = $request->get('SkorTambahanD9_2');
         $new_data->JumlahYangDihasilkanD9_3_in = $request->get('JumlahYangDihasilkanD9_3');
@@ -171,6 +237,12 @@ class PointDController extends Controller
         $new_data->scorD10 = $request->get('scorD10');
         $new_data->scorMaxD10 = $request->get('scorMaxD10');
         $new_data->scorSubItemD10 = $request->get('scorSubItemD10');
+
+        if ($request->hasFile('fileD10')) {
+            $fileName = $request->file('fileD10')->store('uploads/Point-d', 'public');
+            $new_data->fileD10 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD10_3_in = $request->get('JumlahYangDihasilkanD10_3');
         $new_data->SkorTambahanD10_3 = $request->get('SkorTambahanD10_3');
         $new_data->JumlahYangDihasilkanD10_4_in = $request->get('JumlahYangDihasilkanD10_4');
@@ -186,6 +258,12 @@ class PointDController extends Controller
         $new_data->scorD11 = $request->get('scorD11');
         $new_data->scorMaxD11 = $request->get('scorMaxD11');
         $new_data->scorSubItemD11 = $request->get('scorSubItemD11');
+
+        if ($request->hasFile('fileD11')) {
+            $fileName = $request->file('fileD11')->store('uploads/Point-d', 'public');
+            $new_data->fileD11 = $fileName;
+        }
+
         $new_data->JumlahYangDihasilkanD11_3_in = $request->get('JumlahYangDihasilkanD11_3');
         $new_data->SkorTambahanD11_3 = $request->get('SkorTambahanD11_3');
         $new_data->JumlahYangDihasilkanD11_4_in = $request->get('JumlahYangDihasilkanD11_4');
