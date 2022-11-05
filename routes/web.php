@@ -41,6 +41,8 @@ Route::group(['middleware' => ['role:superuser|it']], function () {
         Route::post('/post-pointC', [PointCController::class, 'store'])->name('store.pointc');
 
         Route::get('/point-D', [PointDController::class, 'create'])->name('point-D');
+        Route::post('/post-pointD', [PointDController::class, 'store'])->name('store.pointd');
+
         Route::get('/point-E', [PointEController::class, 'create'])->name('point-E');
     });
     Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
