@@ -5,6 +5,7 @@ namespace App\Http\Controllers\InputPoint;
 use App\Http\Controllers\Controller;
 use App\Models\PointE;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PointEController extends Controller
 {
@@ -49,112 +50,125 @@ class PointEController extends Controller
             'fileE2_4' => 'required|mimes:pdf|max:2048',
         ]);
 
-        $new_data = new PointE();
-        $new_data->E1_1 = $request->get('E1_1');
-        $new_data->scorE1_1 = $request->get('scorE1_1');
-        $new_data->scorMaxE1_1 = $request->get('scorMaxE1_1');
-        $new_data->scorSubItemE1_1 = $request->get('scorSubItemE1_1');
+        DB::beginTransaction();
+        try {
+            $new_data = new PointE();
+            $new_data->E1_1 = $request->get('E1_1');
+            $new_data->scorE1_1 = $request->get('scorE1_1');
+            $new_data->scorMaxE1_1 = $request->get('scorMaxE1_1');
+            $new_data->scorSubItemE1_1 = $request->get('scorSubItemE1_1');
 
-        if ($request->hasFile('fileE1_1')) {
-            $fileName = $request->file('fileE1_1')->store('uploads/Point-e', 'public');
-            $new_data->fileE1_1 = $fileName;
+            if ($request->hasFile('fileE1_1')) {
+                $fileName = $request->file('fileE1_1')->store('uploads/Point-e', 'public');
+                $new_data->fileE1_1 = $fileName;
+            }
+
+            $new_data->E1_2 = $request->get('E1_2');
+            $new_data->scorE1_2 = $request->get('scorE1_2');
+            $new_data->scorMaxE1_2 = $request->get('scorMaxE1_2');
+            $new_data->scorSubItemE1_2 = $request->get('scorSubItemE1_2');
+
+            if ($request->hasFile('fileE1_2')) {
+                $fileName = $request->file('fileE1_2')->store('uploads/Point-e', 'public');
+                $new_data->fileE1_2 = $fileName;
+            }
+
+            $new_data->E1_3 = $request->get('E1_3');
+            $new_data->scorE1_3 = $request->get('scorE1_3');
+            $new_data->scorMaxE1_3 = $request->get('scorMaxE1_3');
+            $new_data->scorSubItemE1_3 = $request->get('scorSubItemE1_3');
+
+            if ($request->hasFile('fileE1_3')) {
+                $fileName = $request->file('fileE1_3')->store('uploads/Point-e', 'public');
+                $new_data->fileE1_3 = $fileName;
+            }
+
+            $new_data->E1_4 = $request->get('E1_4');
+            $new_data->scorE1_4 = $request->get('scorE1_4');
+            $new_data->scorMaxE1_4 = $request->get('scorMaxE1_4');
+            $new_data->scorSubItemE1_4 = $request->get('scorSubItemE1_4');
+
+            if ($request->hasFile('fileE1_4')) {
+                $fileName = $request->file('fileE1_4')->store('uploads/Point-e', 'public');
+                $new_data->fileE1_4 = $fileName;
+            }
+
+            $new_data->E1_5 = $request->get('E1_5');
+            $new_data->scorE1_5 = $request->get('scorE1_5');
+            $new_data->scorMaxE1_5 = $request->get('scorMaxE1_5');
+            $new_data->scorSubItemE1_5 = $request->get('scorSubItemE1_5');
+
+            if ($request->hasFile('fileE1_5')) {
+                $fileName = $request->file('fileE1_5')->store('uploads/Point-e', 'public');
+                $new_data->fileE1_5 = $fileName;
+            }
+
+            $new_data->E1_6 = $request->get('E1_6');
+            $new_data->scorE1_6 = $request->get('scorE1_6');
+            $new_data->scorMaxE1_6 = $request->get('scorMaxE1_6');
+            $new_data->scorSubItemE1_6 = $request->get('scorSubItemE1_6');
+
+            if ($request->hasFile('fileE1_6')) {
+                $fileName = $request->file('fileE1_6')->store('uploads/Point-e', 'public');
+                $new_data->fileE1_6 = $fileName;
+            }
+
+            $new_data->E2_1 = $request->get('E2_1');
+            $new_data->scorE2_1 = $request->get('scorE2_1');
+            $new_data->scorMaxE2_1 = $request->get('scorMaxE2_1');
+            $new_data->scorSubItemE2_1 = $request->get('scorSubItemE2_1');
+
+            if ($request->hasFile('fileE2_1')) {
+                $fileName = $request->file('fileE2_1')->store('uploads/Point-e', 'public');
+                $new_data->fileE2_1 = $fileName;
+            }
+
+            $new_data->E2_2 = $request->get('E2_2');
+            $new_data->scorE2_2 = $request->get('scorE2_2');
+            $new_data->scorMaxE2_2 = $request->get('scorMaxE2_2');
+            $new_data->scorSubItemE2_2 = $request->get('scorSubItemE2_2');
+
+            if ($request->hasFile('fileE2_2')) {
+                $fileName = $request->file('fileE2_2')->store('uploads/Point-e', 'public');
+                $new_data->fileE2_2 = $fileName;
+            }
+
+            $new_data->E2_3 = $request->get('E2_3');
+            $new_data->scorE2_3 = $request->get('scorE2_3');
+            $new_data->scorMaxE2_3 = $request->get('scorMaxE2_3');
+            $new_data->scorSubItemE2_3 = $request->get('scorSubItemE2_3');
+
+            if ($request->hasFile('fileE2_3')) {
+                $fileName = $request->file('fileE2_3')->store('uploads/Point-e', 'public');
+                $new_data->fileE2_3 = $fileName;
+            }
+
+            $new_data->E2_4 = $request->get('E2_4');
+            $new_data->scorE2_4 = $request->get('scorE2_4');
+            $new_data->scorMaxE2_4 = $request->get('scorMaxE2_4');
+            $new_data->scorSubItemE2_4 = $request->get('scorSubItemE2_4');
+
+            if ($request->hasFile('fileE2_4')) {
+                $fileName = $request->file('fileE2_4')->store('uploads/Point-e', 'public');
+                $new_data->fileE2_4 = $fileName;
+            }
+
+            $new_data->SumSkor = $request->get('SumSkor');
+            $new_data->NilaiUnsurPengabdian = $request->get('NilaiUnsurPengabdian');
+            $new_data->save();
+
+            DB::commit();
+            toast('Create new Point E successfully :)', 'success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            toast('Add Point E fail :)', 'error');
+            return redirect()->back();
         }
 
-        $new_data->E1_2 = $request->get('E1_2');
-        $new_data->scorE1_2 = $request->get('scorE1_2');
-        $new_data->scorMaxE1_2 = $request->get('scorMaxE1_2');
-        $new_data->scorSubItemE1_2 = $request->get('scorSubItemE1_2');
 
-        if ($request->hasFile('fileE1_2')) {
-            $fileName = $request->file('fileE1_2')->store('uploads/Point-e', 'public');
-            $new_data->fileE1_2 = $fileName;
-        }
-
-        $new_data->E1_3 = $request->get('E1_3');
-        $new_data->scorE1_3 = $request->get('scorE1_3');
-        $new_data->scorMaxE1_3 = $request->get('scorMaxE1_3');
-        $new_data->scorSubItemE1_3 = $request->get('scorSubItemE1_3');
-
-        if ($request->hasFile('fileE1_3')) {
-            $fileName = $request->file('fileE1_3')->store('uploads/Point-e', 'public');
-            $new_data->fileE1_3 = $fileName;
-        }
-
-        $new_data->E1_4 = $request->get('E1_4');
-        $new_data->scorE1_4 = $request->get('scorE1_4');
-        $new_data->scorMaxE1_4 = $request->get('scorMaxE1_4');
-        $new_data->scorSubItemE1_4 = $request->get('scorSubItemE1_4');
-
-        if ($request->hasFile('fileE1_4')) {
-            $fileName = $request->file('fileE1_4')->store('uploads/Point-e', 'public');
-            $new_data->fileE1_4 = $fileName;
-        }
-
-        $new_data->E1_5 = $request->get('E1_5');
-        $new_data->scorE1_5 = $request->get('scorE1_5');
-        $new_data->scorMaxE1_5 = $request->get('scorMaxE1_5');
-        $new_data->scorSubItemE1_5 = $request->get('scorSubItemE1_5');
-
-        if ($request->hasFile('fileE1_5')) {
-            $fileName = $request->file('fileE1_5')->store('uploads/Point-e', 'public');
-            $new_data->fileE1_5 = $fileName;
-        }
-
-        $new_data->E1_6 = $request->get('E1_6');
-        $new_data->scorE1_6 = $request->get('scorE1_6');
-        $new_data->scorMaxE1_6 = $request->get('scorMaxE1_6');
-        $new_data->scorSubItemE1_6 = $request->get('scorSubItemE1_6');
-
-        if ($request->hasFile('fileE1_6')) {
-            $fileName = $request->file('fileE1_6')->store('uploads/Point-e', 'public');
-            $new_data->fileE1_6 = $fileName;
-        }
-
-        $new_data->E2_1 = $request->get('E2_1');
-        $new_data->scorE2_1 = $request->get('scorE2_1');
-        $new_data->scorMaxE2_1 = $request->get('scorMaxE2_1');
-        $new_data->scorSubItemE2_1 = $request->get('scorSubItemE2_1');
-
-        if ($request->hasFile('fileE2_1')) {
-            $fileName = $request->file('fileE2_1')->store('uploads/Point-e', 'public');
-            $new_data->fileE2_1 = $fileName;
-        }
-
-        $new_data->E2_2 = $request->get('E2_2');
-        $new_data->scorE2_2 = $request->get('scorE2_2');
-        $new_data->scorMaxE2_2 = $request->get('scorMaxE2_2');
-        $new_data->scorSubItemE2_2 = $request->get('scorSubItemE2_2');
-
-        if ($request->hasFile('fileE2_2')) {
-            $fileName = $request->file('fileE2_2')->store('uploads/Point-e', 'public');
-            $new_data->fileE2_2 = $fileName;
-        }
-
-        $new_data->E2_3 = $request->get('E2_3');
-        $new_data->scorE2_3 = $request->get('scorE2_3');
-        $new_data->scorMaxE2_3 = $request->get('scorMaxE2_3');
-        $new_data->scorSubItemE2_3 = $request->get('scorSubItemE2_3');
-
-        if ($request->hasFile('fileE2_3')) {
-            $fileName = $request->file('fileE2_3')->store('uploads/Point-e', 'public');
-            $new_data->fileE2_3 = $fileName;
-        }
-
-        $new_data->E2_4 = $request->get('E2_4');
-        $new_data->scorE2_4 = $request->get('scorE2_4');
-        $new_data->scorMaxE2_4 = $request->get('scorMaxE2_4');
-        $new_data->scorSubItemE2_4 = $request->get('scorSubItemE2_4');
-
-        if ($request->hasFile('fileE2_4')) {
-            $fileName = $request->file('fileE2_4')->store('uploads/Point-e', 'public');
-            $new_data->fileE2_4 = $fileName;
-        }
-
-        $new_data->SumSkor = $request->get('SumSkor');
-        $new_data->NilaiUnsurPengabdian = $request->get('NilaiUnsurPengabdian');
-
-        $new_data->save();
-        return redirect()->route('point-E');
+        // toast('Berhasil menambahkan Point E', 'success');
+        // return redirect()->route('point-E');
     }
 
     /**

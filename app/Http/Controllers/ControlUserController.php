@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserControl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ControlUserController extends Controller
 {
@@ -14,6 +15,10 @@ class ControlUserController extends Controller
      */
     public function index()
     {
+        // $users = DB::table('users')
+        //     ->join('point_a', 'users.id', '=', 'point_a.id')
+        //     ->join('point_b', 'users.id', '=', 'point_b.id')->get();
+        // dd($users);
         return view('usermanagement.userControl');
     }
 
