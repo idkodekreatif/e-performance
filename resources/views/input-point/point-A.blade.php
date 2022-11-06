@@ -1,6 +1,16 @@
 <x-app-layout title="Form Input Point A">
     @push('style')
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     @endpush
 
     <div class="col-xl col-lg">
@@ -553,14 +563,14 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanA11_5"
+                                        <td><input type="number" name="JumlahYangDihasilkanA11_5"
                                                 id="JumlahYangDihasilkanA11_5" onkeyup="sum()" placeholder="0">
                                         </td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanA11_5"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanA11_5"
                                                 id="JumlahSkorYangDiHasilkanA11_5" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanBobotSubItemA11_5"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanBobotSubItemA11_5"
                                                 id="JumlahSkorYangDiHasilkanBobotSubItemA11_5" readonly></td>
                                         </td>
                                     </tr>
@@ -570,14 +580,15 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanA11_5" id="SkorTambahanA11_5" readonly>
+                                        <td><input type="number" name="SkorTambahanA11_5" id="SkorTambahanA11_5"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahA11_5"
+                                        <td><input type="number" name="SkorTambahanJumlahA11_5"
                                                 id="SkorTambahanJumlahA11_5" readonly>
                                         </td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemA11_5"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemA11_5"
                                                 id="SkorTambahanJumlahBobotSubItemA11_5" readonly></td>
                                     </tr>
 
@@ -590,8 +601,9 @@
                                             proses pengajaran</td>
                                         <td>Menyusun diktat, modul, model, dan petunjuk praktikum untuk membantu proses
                                             pengajaran</td>
-                                        <td>Menyusun buku ajar/buku teks untuk suatu mata kuliah, mengikuti kaidah buku
-                                            teks serta diterbitkan secara resmi dan
+                                        <td>Menyusun buku ajar/buku number untuk suatu mata kuliah, mengikuti kaidah
+                                            buku
+                                            number serta diterbitkan secara resmi dan
                                             disebarluaskan
                                         </td>
                                         <td rowspan="2">
@@ -640,37 +652,40 @@
                                         <td>Jumlah yang dihasilkan</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanA12_3"
+                                        <td><input type="number" name="JumlahYangDihasilkanA12_3"
                                                 id="JumlahYangDihasilkanA12_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanA12_4"
+                                        <td><input type="number" name="JumlahYangDihasilkanA12_4"
                                                 id="JumlahYangDihasilkanA12_4" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanA12_5"
+                                        <td><input type="number" name="JumlahYangDihasilkanA12_5"
                                                 id="JumlahYangDihasilkanA12_5" onkeyup="sum()" placeholder="0">
                                         </td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanA12"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanA12"
                                                 id="JumlahSkorYangDiHasilkanA12" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorA12"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorA12"
                                                 id="SkorTambahanJumlahSkorA12" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanA12_3" id="SkorTambahanA12_3" readonly>
+                                        <td><input type="number" name="SkorTambahanA12_3" id="SkorTambahanA12_3"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanA12_4" id="SkorTambahanA12_4" readonly>
+                                        <td><input type="number" name="SkorTambahanA12_4" id="SkorTambahanA12_4"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanA12_5" id="SkorTambahanA12_5" readonly>
+                                        <td><input type="number" name="SkorTambahanA12_5" id="SkorTambahanA12_5"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahA12" id="SkorTambahanJumlahA12"
+                                        <td><input type="number" name="SkorTambahanJumlahA12" id="SkorTambahanJumlahA12"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemA12"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemA12"
                                                 id="SkorTambahanJumlahBobotSubItemA12" readonly></td>
                                     </tr>
 
@@ -727,38 +742,40 @@
                                     <tr>
                                         <td colspan="5"></td>
                                         <td colspan="5">Total Skor Pendidikan dan Pengajaran</td>
-                                        <td><input type="teks" name="TotalSkorPendidikanPointA"
+                                        <td><input type="number" name="TotalSkorPendidikanPointA"
                                                 id="TotalSkorPendidikanPointA" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 11</td>
-                                        <td><input type="teks" name="TotalKelebihanA11" id="TotalKelebihanA11" readonly>
+                                        <td><input type="number" name="TotalKelebihanA11" id="TotalKelebihanA11"
+                                                readonly>
                                         </td>
                                         <td colspan="3">Nilai Pendidikan dan Pengajaran</td>
-                                        <td><input type="teks" name="nilaiPendidikandanPengajaran"
+                                        <td><input type="number" name="nilaiPendidikandanPengajaran"
                                                 id="nilaiPendidikandanPengajaran" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 12</td>
-                                        <td><input type="teks" name="TotalKelebihanA12" id="TotalKelebihanA12" readonly>
+                                        <td><input type="number" name="TotalKelebihanA12" id="TotalKelebihanA12"
+                                                readonly>
                                         </td>
                                         <td colspan="3" rowspan="2">Nilai Tambah Pendidikan dan Pengajaran</td>
-                                        <td rowspan="2"><input type="teks" name="NilaiTambahPendidikanDanPengajaran"
+                                        <td rowspan="2"><input type="number" name="NilaiTambahPendidikanDanPengajaran"
                                                 id="NilaiTambahPendidikanDanPengajaran" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor</td>
-                                        <td><input type="teks" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
+                                        <td><input type="number" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
                                                 readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total Pendidikan & Pengajaran</td>
-                                        <td><input type="teks" name="NilaiTotalPendidikanDanPengajaran"
+                                        <td><input type="number" name="NilaiTotalPendidikanDanPengajaran"
                                                 id="NilaiTotalPendidikanDanPengajaran" readonly></td>
                                     </tr>
                                 </tbody>

@@ -1,6 +1,16 @@
 <x-app-layout title="Form Input Point D">
     @push('style')
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     @endpush
 
     <div class="col-xl col-lg">
@@ -133,38 +143,38 @@
                                         <td rowspan="2"></td>
                                         <td>Jumlah kepanitiaan yang diikuti</td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD2_2"
-                                                id="JumlahYangDihasilkanD2_2" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD2_3"
-                                                id="JumlahYangDihasilkanD2_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD2_2"
+                                                id="JumlahYangDihasilkanD2_2" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD2_3"
+                                                id="JumlahYangDihasilkanD2_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD2_4"
-                                                id="JumlahYangDihasilkanD2_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD2_5"
-                                                id="JumlahYangDihasilkanD2_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD2_4"
+                                                id="JumlahYangDihasilkanD2_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD2_5"
+                                                id="JumlahYangDihasilkanD2_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD2"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD2"
                                                 id="JumlahSkorYangDiHasilkanD2" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD2"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD2"
                                                 id="SkorTambahanJumlahSkorD2" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD2_2" id="SkorTambahanD2_2" readonly>
+                                        <td><input type="number" name="SkorTambahanD2_2" id="SkorTambahanD2_2" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD2_3" id="SkorTambahanD2_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD2_3" id="SkorTambahanD2_3" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD2_4" id="SkorTambahanD2_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD2_4" id="SkorTambahanD2_4" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD2_5" id="SkorTambahanD2_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD2_5" id="SkorTambahanD2_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD2" id="SkorTambahanJumlahD2"
+                                        <td><input type="number" name="SkorTambahanJumlahD2" id="SkorTambahanJumlahD2"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD2"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD2"
                                                 id="SkorTambahanJumlahBobotSubItemD2" readonly></td>
                                     </tr>
 
@@ -216,38 +226,38 @@
                                         <td rowspan="2"></td>
                                         <td>Jumlah peranan dosen dalam kepanitiaan</td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD3_2"
-                                                id="JumlahYangDihasilkanD3_2" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD3_3"
-                                                id="JumlahYangDihasilkanD3_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD3_2"
+                                                id="JumlahYangDihasilkanD3_2" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD3_3"
+                                                id="JumlahYangDihasilkanD3_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD3_4"
-                                                id="JumlahYangDihasilkanD3_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD3_5"
-                                                id="JumlahYangDihasilkanD3_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD3_4"
+                                                id="JumlahYangDihasilkanD3_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD3_5"
+                                                id="JumlahYangDihasilkanD3_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD3"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD3"
                                                 id="JumlahSkorYangDiHasilkanD3" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD3"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD3"
                                                 id="SkorTambahanJumlahSkorD3" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD3_2" id="SkorTambahanD3_2" readonly>
+                                        <td><input type="number" name="SkorTambahanD3_2" id="SkorTambahanD3_2" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD3_3" id="SkorTambahanD3_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD3_3" id="SkorTambahanD3_3" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD3_4" id="SkorTambahanD3_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD3_4" id="SkorTambahanD3_4" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD3_5" id="SkorTambahanD3_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD3_5" id="SkorTambahanD3_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD3" id="SkorTambahanJumlahD3"
+                                        <td><input type="number" name="SkorTambahanJumlahD3" id="SkorTambahanJumlahD3"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD3"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD3"
                                                 id="SkorTambahanJumlahBobotSubItemD3" readonly></td>
                                     </tr>
 
@@ -301,35 +311,35 @@
                                         <td>Jumlah jurnal</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD4_3"
-                                                id="JumlahYangDihasilkanD4_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD4_3"
+                                                id="JumlahYangDihasilkanD4_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD4_4"
-                                                id="JumlahYangDihasilkanD4_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD4_5"
-                                                id="JumlahYangDihasilkanD4_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD4_4"
+                                                id="JumlahYangDihasilkanD4_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD4_5"
+                                                id="JumlahYangDihasilkanD4_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD4"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD4"
                                                 id="JumlahSkorYangDiHasilkanD4" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD4"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD4"
                                                 id="SkorTambahanJumlahSkorD4" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD4_3" id="SkorTambahanD4_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD4_3" id="SkorTambahanD4_3" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD4_4" id="SkorTambahanD4_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD4_4" id="SkorTambahanD4_4" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD4_5" id="SkorTambahanD4_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD4_5" id="SkorTambahanD4_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD4" id="SkorTambahanJumlahD4"
+                                        <td><input type="number" name="SkorTambahanJumlahD4" id="SkorTambahanJumlahD4"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD4"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD4"
                                                 id="SkorTambahanJumlahBobotSubItemD4" readonly></td>
                                     </tr>
 
@@ -383,35 +393,35 @@
                                         <td>Jumlah terbitan populer</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD5_3"
-                                                id="JumlahYangDihasilkanD5_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD5_3"
+                                                id="JumlahYangDihasilkanD5_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD5_4"
-                                                id="JumlahYangDihasilkanD5_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD5_5"
-                                                id="JumlahYangDihasilkanD5_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD5_4"
+                                                id="JumlahYangDihasilkanD5_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD5_5"
+                                                id="JumlahYangDihasilkanD5_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD5"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD5"
                                                 id="JumlahSkorYangDiHasilkanD5" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD5"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD5"
                                                 id="SkorTambahanJumlahSkorD5" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD5_3" id="SkorTambahanD5_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD5_3" id="SkorTambahanD5_3" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD5_4" id="SkorTambahanD5_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD5_4" id="SkorTambahanD5_4" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD5_5" id="SkorTambahanD5_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD5_5" id="SkorTambahanD5_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD5" id="SkorTambahanJumlahD5"
+                                        <td><input type="number" name="SkorTambahanJumlahD5" id="SkorTambahanJumlahD5"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD5"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD5"
                                                 id="SkorTambahanJumlahBobotSubItemD5" readonly></td>
                                     </tr>
 
@@ -465,38 +475,38 @@
                                         <td rowspan="2"></td>
                                         <td>Jumlah organisasi asosiasi profesi</td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD6_2"
-                                                id="JumlahYangDihasilkanD6_2" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD6_3"
-                                                id="JumlahYangDihasilkanD6_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD6_2"
+                                                id="JumlahYangDihasilkanD6_2" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD6_3"
+                                                id="JumlahYangDihasilkanD6_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD6_4"
-                                                id="JumlahYangDihasilkanD6_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD6_5"
-                                                id="JumlahYangDihasilkanD6_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD6_4"
+                                                id="JumlahYangDihasilkanD6_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD6_5"
+                                                id="JumlahYangDihasilkanD6_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD6"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD6"
                                                 id="JumlahSkorYangDiHasilkanD6" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD6"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD6"
                                                 id="SkorTambahanJumlahSkorD6" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD6_2" id="SkorTambahanD6_2" readonly>
+                                        <td><input type="number" name="SkorTambahanD6_2" id="SkorTambahanD6_2" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD6_3" id="SkorTambahanD6_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD6_3" id="SkorTambahanD6_3" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD6_4" id="SkorTambahanD6_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD6_4" id="SkorTambahanD6_4" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD6_5" id="SkorTambahanD6_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD6_5" id="SkorTambahanD6_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD6" id="SkorTambahanJumlahD6"
+                                        <td><input type="number" name="SkorTambahanJumlahD6" id="SkorTambahanJumlahD6"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD6"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD6"
                                                 id="SkorTambahanJumlahBobotSubItemD6" readonly></td>
                                     </tr>
 
@@ -553,13 +563,13 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD7_5"
-                                                id="JumlahYangDihasilkanD7_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD7_5"
+                                                id="JumlahYangDihasilkanD7_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD7"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD7"
                                                 id="JumlahSkorYangDiHasilkanD7" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD7"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD7"
                                                 id="SkorTambahanJumlahSkorD7" readonly></td>
                                     </tr>
                                     <tr>
@@ -568,13 +578,13 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD7_5" id="SkorTambahanD7_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD7_5" id="SkorTambahanD7_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD7" id="SkorTambahanJumlahD7"
+                                        <td><input type="number" name="SkorTambahanJumlahD7" id="SkorTambahanJumlahD7"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD7"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD7"
                                                 id="SkorTambahanJumlahBobotSubItemD7" readonly></td>
                                     </tr>
 
@@ -635,35 +645,35 @@
                                         <td>Jumlah pertemuan ilmiah</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD8_3"
-                                                id="JumlahYangDihasilkanD8_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD8_3"
+                                                id="JumlahYangDihasilkanD8_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD8_4"
-                                                id="JumlahYangDihasilkanD8_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD8_5"
-                                                id="JumlahYangDihasilkanD8_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD8_4"
+                                                id="JumlahYangDihasilkanD8_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD8_5"
+                                                id="JumlahYangDihasilkanD8_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD8"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD8"
                                                 id="JumlahSkorYangDiHasilkanD8" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD8"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD8"
                                                 id="SkorTambahanJumlahSkorD8" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD8_3" id="SkorTambahanD8_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD8_3" id="SkorTambahanD8_3" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD8_4" id="SkorTambahanD8_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD8_4" id="SkorTambahanD8_4" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD8_5" id="SkorTambahanD8_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD8_5" id="SkorTambahanD8_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD8" id="SkorTambahanJumlahD8"
+                                        <td><input type="number" name="SkorTambahanJumlahD8" id="SkorTambahanJumlahD8"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD8"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD8"
                                                 id="SkorTambahanJumlahBobotSubItemD8" readonly></td>
                                     </tr>
 
@@ -717,38 +727,38 @@
                                         <td rowspan="2"></td>
                                         <td>Jumlah tanda jasa</td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD9_2"
-                                                id="JumlahYangDihasilkanD9_2" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD9_3"
-                                                id="JumlahYangDihasilkanD9_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD9_2"
+                                                id="JumlahYangDihasilkanD9_2" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD9_3"
+                                                id="JumlahYangDihasilkanD9_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD9_4"
-                                                id="JumlahYangDihasilkanD9_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD9_5"
-                                                id="JumlahYangDihasilkanD9_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD9_4"
+                                                id="JumlahYangDihasilkanD9_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD9_5"
+                                                id="JumlahYangDihasilkanD9_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD9"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD9"
                                                 id="JumlahSkorYangDiHasilkanD9" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD9"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD9"
                                                 id="SkorTambahanJumlahSkorD9" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD9_2" id="SkorTambahanD9_2" readonly>
+                                        <td><input type="number" name="SkorTambahanD9_2" id="SkorTambahanD9_2" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD9_3" id="SkorTambahanD9_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD9_3" id="SkorTambahanD9_3" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD9_4" id="SkorTambahanD9_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD9_4" id="SkorTambahanD9_4" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD9_5" id="SkorTambahanD9_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD9_5" id="SkorTambahanD9_5" readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD9" id="SkorTambahanJumlahD9"
+                                        <td><input type="number" name="SkorTambahanJumlahD9" id="SkorTambahanJumlahD9"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD9"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD9"
                                                 id="SkorTambahanJumlahBobotSubItemD9" readonly></td>
                                     </tr>
 
@@ -809,35 +819,38 @@
                                         <td>Jumlah buku yang diterbitkan</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD10_3"
-                                                id="JumlahYangDihasilkanD10_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD10_3"
+                                                id="JumlahYangDihasilkanD10_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD10_4"
-                                                id="JumlahYangDihasilkanD10_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD10_5"
-                                                id="JumlahYangDihasilkanD10_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD10_4"
+                                                id="JumlahYangDihasilkanD10_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD10_5"
+                                                id="JumlahYangDihasilkanD10_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD10"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD10"
                                                 id="JumlahSkorYangDiHasilkanD10" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD10"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD10"
                                                 id="SkorTambahanJumlahSkorD10" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD10_3" id="SkorTambahanD10_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD10_3" id="SkorTambahanD10_3"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD10_4" id="SkorTambahanD10_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD10_4" id="SkorTambahanD10_4"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD10_5" id="SkorTambahanD10_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD10_5" id="SkorTambahanD10_5"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD10" id="SkorTambahanJumlahD10"
+                                        <td><input type="number" name="SkorTambahanJumlahD10" id="SkorTambahanJumlahD10"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD10"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD10"
                                                 id="SkorTambahanJumlahBobotSubItemD10" readonly></td>
                                     </tr>
 
@@ -899,35 +912,38 @@
                                         <td>Jumlah prestasi</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD11_3"
-                                                id="JumlahYangDihasilkanD11_3" onkeyup="sum()">
+                                        <td><input type="number" name="JumlahYangDihasilkanD11_3"
+                                                id="JumlahYangDihasilkanD11_3" onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD11_4"
-                                                id="JumlahYangDihasilkanD11_4" onkeyup="sum()"></td>
-                                        <td><input type="teks" name="JumlahYangDihasilkanD11_5"
-                                                id="JumlahYangDihasilkanD11_5" onkeyup="sum()"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD11_4"
+                                                id="JumlahYangDihasilkanD11_4" onkeyup="sum()" placeholder="0"></td>
+                                        <td><input type="number" name="JumlahYangDihasilkanD11_5"
+                                                id="JumlahYangDihasilkanD11_5" onkeyup="sum()" placeholder="0"></td>
                                         <td></td>
-                                        <td><input type="teks" name="JumlahSkorYangDiHasilkanD11"
+                                        <td><input type="number" name="JumlahSkorYangDiHasilkanD11"
                                                 id="JumlahSkorYangDiHasilkanD11" readonly></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahSkorD11"
+                                        <td><input type="number" name="SkorTambahanJumlahSkorD11"
                                                 id="SkorTambahanJumlahSkorD11" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Skor Tambahan dari Jumlah</td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanD11_3" id="SkorTambahanD11_3" readonly>
+                                        <td><input type="number" name="SkorTambahanD11_3" id="SkorTambahanD11_3"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD11_4" id="SkorTambahanD11_4" readonly>
+                                        <td><input type="number" name="SkorTambahanD11_4" id="SkorTambahanD11_4"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanD11_5" id="SkorTambahanD11_5" readonly>
+                                        <td><input type="number" name="SkorTambahanD11_5" id="SkorTambahanD11_5"
+                                                readonly>
                                         </td>
-                                        <td><input type="teks" name="SkorTambahanJumlahD11" id="SkorTambahanJumlahD11"
+                                        <td><input type="number" name="SkorTambahanJumlahD11" id="SkorTambahanJumlahD11"
                                                 readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="teks" name="SkorTambahanJumlahBobotSubItemD11"
+                                        <td><input type="number" name="SkorTambahanJumlahBobotSubItemD11"
                                                 id="SkorTambahanJumlahBobotSubItemD11" readonly></td>
                                     </tr>
 
@@ -935,74 +951,74 @@
                                     <tr>
                                         <td colspan="5"></td>
                                         <td colspan="5">Total Skor Unsur Penunjang</td>
-                                        <td><input type="teks" name="TotalSkorUnsurPenunjang"
+                                        <td><input type="number" name="TotalSkorUnsurPenunjang"
                                                 id="TotalSkorUnsurPenunjang" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 2</td>
-                                        <td><input type="teks" name="TotalKelebihaD2" id="TotalKelebihaD2" readonly>
+                                        <td><input type="number" name="TotalKelebihaD2" id="TotalKelebihaD2" readonly>
                                         </td>
                                         <td colspan="3" rowspan="4">Nilai Unsur Penunjang</td>
-                                        <td rowspan="4"><input type="teks" name="NilaiUnsurPenunjang"
+                                        <td rowspan="4"><input type="number" name="NilaiUnsurPenunjang"
                                                 id="NilaiUnsurPenunjang" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 3</td>
-                                        <td><input type="teks" name="TotalKelebihaD3" id="TotalKelebihaD3" readonly>
+                                        <td><input type="number" name="TotalKelebihaD3" id="TotalKelebihaD3" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 4</td>
-                                        <td><input type="teks" name="TotalKelebihaD4" id="TotalKelebihaD4" readonly>
+                                        <td><input type="number" name="TotalKelebihaD4" id="TotalKelebihaD4" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 5</td>
-                                        <td><input type="teks" name="TotalKelebihaD5" id="TotalKelebihaD5" readonly>
+                                        <td><input type="number" name="TotalKelebihaD5" id="TotalKelebihaD5" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 6</td>
-                                        <td><input type="teks" name="TotalKelebihaD6" id="TotalKelebihaD6" readonly>
+                                        <td><input type="number" name="TotalKelebihaD6" id="TotalKelebihaD6" readonly>
                                         </td>
                                         <td colspan="3" rowspan="7">Nilai Tambah Unsur Penunjang</td>
-                                        <td rowspan="7"><input type="teks" name="NilaiTambahUnsurPenunjang"
+                                        <td rowspan="7"><input type="number" name="NilaiTambahUnsurPenunjang"
                                                 id="NilaiTambahUnsurPenunjang" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 7</td>
-                                        <td><input type="teks" name="TotalKelebihaD7" id="TotalKelebihaD7" readonly>
+                                        <td><input type="number" name="TotalKelebihaD7" id="TotalKelebihaD7" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 8</td>
-                                        <td><input type="teks" name="TotalKelebihaD8" id="TotalKelebihaD8" readonly>
+                                        <td><input type="number" name="TotalKelebihaD8" id="TotalKelebihaD8" readonly>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 9</td>
-                                        <td><input type="teks" name="TotalKelebihaD9" id="TotalKelebihaD9" readonly>
+                                        <td><input type="number" name="TotalKelebihaD9" id="TotalKelebihaD9" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 10</td>
-                                        <td><input type="teks" name="TotalKelebihaD10" id="TotalKelebihaD10" readonly>
+                                        <td><input type="number" name="TotalKelebihaD10" id="TotalKelebihaD10" readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor No. 11</td>
-                                        <td><input type="teks" name="TotalKelebihaD11" id="TotalKelebihaD11" readonly>
+                                        <td><input type="number" name="TotalKelebihaD11" id="TotalKelebihaD11" readonly>
                                         </td>
                                     </tr>
 
@@ -1010,14 +1026,14 @@
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="2">Total Kelebihan Skor</td>
-                                        <td><input type="teks" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
+                                        <td><input type="number" name="TotalKelebihanSkor" id="TotalKelebihanSkor"
                                                 readonly>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total Unsur Penunjang</td>
-                                        <td><input type="teks" name="ResultSumNilaiTotalUnsurPenunjang"
+                                        <td><input type="number" name="ResultSumNilaiTotalUnsurPenunjang"
                                                 id="ResultSumNilaiTotalUnsurPenunjang" readonly></td>
                                     </tr>
                                 </tbody>
