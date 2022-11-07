@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PointA;
 use Illuminate\Http\Request;
 use Alert;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class PointAController extends Controller

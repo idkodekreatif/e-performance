@@ -15,6 +15,7 @@ class CreateRaportUserTable extends Migration
     {
         Schema::create('raport_user', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('point_a_id')->nullable();
             $table->unsignedBigInteger('point_b_id')->nullable();
             $table->unsignedBigInteger('point_c_id')->nullable();
@@ -22,6 +23,7 @@ class CreateRaportUserTable extends Migration
             $table->unsignedBigInteger('point_e_id')->nullable();
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('point_a_id')->references('id')->on('point_a');
             $table->foreign('point_b_id')->references('id')->on('point_b');
             $table->foreign('point_c_id')->references('id')->on('point_c');
@@ -38,6 +40,7 @@ class CreateRaportUserTable extends Migration
     public function down()
     {
         Schema::table('raport_user', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
             $table->dropForeign(['point_a_id']);
             $table->dropForeign(['point_b_id']);
             $table->dropForeign(['point_c_id']);
