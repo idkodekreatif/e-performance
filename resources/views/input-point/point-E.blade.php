@@ -563,16 +563,6 @@
                                                 readonly></td>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="5"></td>
-                                        <td colspan="5">Nilai Total Unsur Non-Tri Dharma</td>
-                                        <td>0,334</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="5"></td>
-                                        <td colspan="5">Nilai Kinerja Dosen</td>
-                                        <td>0,334</td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <div class="row">

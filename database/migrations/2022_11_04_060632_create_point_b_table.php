@@ -243,6 +243,9 @@ class CreatePointBTable extends Migration
             $table->string('NilaiTambahPenelitian', 20);
             $table->string('NilaiTotalPenelitiandanKaryaIlmiah', 20);
 
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

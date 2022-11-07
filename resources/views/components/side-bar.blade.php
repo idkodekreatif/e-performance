@@ -30,7 +30,7 @@
                     <li><a href="{{ route('point-C') }}">Point C</a></li>
                     <li><a href="{{ route('point-D') }}">Point D</a></li>
                     <li><a href="{{ route('point-E') }}">Point E</a></li>
-                    <li><a href="{{ route('raport') }}">Raport</a></li>
+                    <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\sumPoint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class sumPointController extends Controller
 {
-    public function __construct()
-    {
-        $this->sumPoint = new sumPoint();
-    }
+    // public function __construct()
+    // {
+    //     $this->sumPoint = new sumPoint();
+    // }
 
     /**
      * Display a listing of the resource.
@@ -20,12 +21,7 @@ class sumPointController extends Controller
      */
     public function index()
     {
-        $data = [
-            'data' => $this->sumPoint->allData(),
-        ];
-        // dd($data);
-
-        return view('input-point.raport', $data);
+        //
     }
 
     /**
@@ -92,5 +88,29 @@ class sumPointController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function raportView($user_id)
+    {
+        // $data = [
+        //     'data' => $this->sumPoint->allData(),
+        // ];
+
+        $users = DB::table('users')
+            ->leftJoin('point_a', 'users.id', '=', 'point_a.id')
+            ->leftJoin('point_b', 'users.id', '=', 'point_b.id')
+            ->leftJoin('point_c', 'users.id', '=', 'point_c.id')
+            ->leftJoin('point_d', 'users.id', '=', 'point_d.id')
+            ->leftJoin('point_e', 'users.id', '=', 'point_e.id')
+            ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
+            ->where('point_a.user_id', $user_id)
+            ->where('point_b.user_id', $user_id)
+            ->where('point_c.user_id', $user_id)
+            ->where('point_d.user_id', $user_id)
+            ->where('point_e.user_id', $user_id)
+            ->first();
+        // dd($users);
+
+        return view('input-point.raport', compact('users'));
     }
 }

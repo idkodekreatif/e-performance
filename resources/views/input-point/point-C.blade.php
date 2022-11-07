@@ -915,11 +915,6 @@
                                         <td><input type="number" name="NilaiTotalPengabdianKepadaMasyarakat"
                                                 id="NilaiTotalPengabdianKepadaMasyarakat" readonly></td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="4"></td>
-                                        <td colspan="6">Nilai Total UNSUR UTAMA</td>
-                                        <td>0</td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <div class="row">

@@ -11,4 +11,9 @@ class PointE extends Model
 
     protected $table = "point_e";
     protected $guarded = [];
+
+    public function UserId()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
