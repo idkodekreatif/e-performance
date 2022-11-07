@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserControl;
+use App\Models\sumPoint;
 use Illuminate\Http\Request;
 
 
-class ControlUserController extends Controller
+class sumPointController extends Controller
 {
+    public function __construct()
+    {
+        $this->sumPoint = new sumPoint();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,12 @@ class ControlUserController extends Controller
      */
     public function index()
     {
-        return view('usermanagement.userControl');
+        $data = [
+            'data' => $this->sumPoint->allData(),
+        ];
+        // dd($data);
+
+        return view('input-point.raport', $data);
     }
 
     /**
@@ -42,10 +52,10 @@ class ControlUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserControl  $userControl
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(UserControl $userControl)
+    public function show($id)
     {
         //
     }
@@ -53,10 +63,10 @@ class ControlUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserControl  $userControl
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserControl $userControl)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +75,10 @@ class ControlUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\UserControl  $userControl
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserControl $userControl)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +86,10 @@ class ControlUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserControl  $userControl
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserControl $userControl)
+    public function destroy($id)
     {
         //
     }

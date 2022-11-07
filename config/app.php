@@ -163,6 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         // SPatie
         Spatie\Permission\PermissionServiceProvider::class,
+        // Sweetalert
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
 
         /*
@@ -232,6 +234,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
 
     ],
 

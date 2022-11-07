@@ -17,27 +17,28 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <table class="table table-bordered border-2 table-sm text-center table-sm">
-                            <thead>
-                                <tr>
-                                    <td rowspan="2">No</td>
-                                    <td rowspan="2">Komponen Kompetensi</td>
-                                    <td colspan="5">Skor</td>
-                                    <td rowspan="2" class="col">Bukti Pendukung</td>
-                                    <td rowspan="2" class="bg-warning">Skor</td>
-                                    <td rowspan="2">Skor/Skor maks</td>
-                                    <td rowspan="2">Skor x Bobot Sub Item</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <form action="#">
+                        <form action="{{ route('store.pointe') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <table class="table table-bordered border-2 table-sm text-center table-sm">
+                                <thead>
+                                    <tr>
+                                        <td rowspan="2">No</td>
+                                        <td rowspan="2">Komponen Kompetensi</td>
+                                        <td colspan="5">Skor</td>
+                                        <td rowspan="2" class="col">Bukti Pendukung</td>
+                                        <td rowspan="2" class="bg-warning">Skor</td>
+                                        <td rowspan="2">Skor/Skor maks</td>
+                                        <td rowspan="2">Skor x Bobot Sub Item</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                     <tr>
                                         <td>E.1</td>
                                         <td colspan="10" class="text-start">PPENGABDIAN KEPADA INSTITUSI</td>
@@ -54,15 +55,22 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload SK
                                                 Rektor</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE1_1') is-invalid @enderror" name="fileE1_1"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE1_1')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE1_1" type="number"
-                                                aria-label="E1_1" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE1_1" type="number" aria-label="E1_1"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE1_1" name="scorE1_1"
+                                                type="number" aria-label="E1_1" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE1_1" name="scorMaxE1_1" type="number"
+                                                aria-label="E1_1" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE1_1" type="number" aria-label="E1_1"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE1_1" name="scorSubItemE1_1" type="number"
+                                                aria-label="E1_1" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.1.1</td>
@@ -94,15 +102,22 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload MoU yang
                                                 dihasilkan</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE1_2') is-invalid @enderror" name="fileE1_2"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE1_2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE1_2" type="number"
-                                                aria-label="E1_2" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE1_2" type="number" aria-label="E1_2"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE1_2" name="scorE1_2"
+                                                type="number" aria-label="E1_2" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE1_2" name="scorMaxE1_2" type="number"
+                                                aria-label="E1_2" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE1_2" type="number" aria-label="E1_2"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE1_2" name="scorSubItemE1_2" type="number"
+                                                aria-label="E1_2" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.1.2</td>
@@ -135,19 +150,27 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 SK Rektor</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE1_3') is-invalid @enderror" name="fileE1_3"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE1_3')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE1_3" type="number"
-                                                aria-label="E1_3" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE1_3" type="number" aria-label="E1_3"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE1_3" name="scorE1_3"
+                                                type="number" aria-label="E1_3" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE1_3" name="scorMaxE1_3" type="number"
+                                                aria-label="E1_3" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE1_3" type="number" aria-label="E1_3"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE1_3" name="scorSubItemE1_3" type="number"
+                                                aria-label="E1_3" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.1.3</td>
-                                        <td>Dosen bergabung dalam satuan tugas marketing di tingkat Program Studi maupun
+                                        <td>Dosen bergabung dalam satuan tugas marketing di tingkat Program Studi
+                                            maupun
                                             Institusi</td>
                                         <td><input type="radio" class="E1_3" name="E1_3" id="E1_3" value="1"
                                                 onclick="sum();">
@@ -176,19 +199,27 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 SK Rektor</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE1_4') is-invalid @enderror" name="fileE1_4"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE1_4')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE1_4" type="number"
-                                                aria-label="E1_4" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE1_4" type="number" aria-label="E1_4"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE1_4" name="scorE1_4"
+                                                type="number" aria-label="E1_4" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE1_4" name="scorMaxE1_4" type="number"
+                                                aria-label="E1_4" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE1_4" type="number" aria-label="E1_4"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE1_4" name="scorSubItemE1_4" type="number"
+                                                aria-label="E1_4" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.1.4</td>
-                                        <td>Dosen bergabung dalam satuan tugas non-marketing di tingkat Program Studi
+                                        <td>Dosen bergabung dalam satuan tugas non-marketing di tingkat Program
+                                            Studi
                                             maupun Institusi</td>
                                         <td><input type="radio" class="E1_4" name="E1_4" id="E1_4" value="1"
                                                 onclick="sum();">
@@ -217,19 +248,27 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 SK Rektor</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE1_5') is-invalid @enderror" name="fileE1_5"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE1_5')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE1_5" type="number"
-                                                aria-label="E1_5" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE1_5" type="number" aria-label="E1_5"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE1_5" name="scorE1_5"
+                                                type="number" aria-label="E1_5" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE1_5" name="scorMaxE1_5" type="number"
+                                                aria-label="E1_5" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE1_5" type="number" aria-label="E1_5"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE1_5" name="scorSubItemE1_5" type="number"
+                                                aria-label="E1_5" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.1.5</td>
-                                        <td>Dosen bergabung dalam kepanitiaan di tingkat Program Studi maupun Institusi
+                                        <td>Dosen bergabung dalam kepanitiaan di tingkat Program Studi maupun
+                                            Institusi
                                         </td>
                                         <td><input type="radio" class="E1_5" name="E1_5" id="E1_5" value="1"
                                                 onclick="sum();">
@@ -256,15 +295,22 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 SK Mentor/ Dosen Senior</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE1_6') is-invalid @enderror" name="fileE1_6"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE1_6')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE1_6" type="number"
-                                                aria-label="E1_6" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE1_6" type="number" aria-label="E1_6"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE1_6" name="scorE1_6"
+                                                type="number" aria-label="E1_6" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE1_6" name="scorMaxE1_6" type="number"
+                                                aria-label="E1_6" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE1_6" type="number" aria-label="E1_6"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE1_6" name="scorSubItemE1_6" type="number"
+                                                aria-label="E1_6" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.1.6</td>
@@ -302,19 +348,27 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 Fotokopi ijazah terakhir</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE2_1') is-invalid @enderror" name="fileE2_1"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE2_1')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE2_1" type="number"
-                                                aria-label="E2_1" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE2_1" type="number" aria-label="E2_1"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE2_1" name="scorE2_1"
+                                                type="number" aria-label="E2_1" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE2_1" name="scorMaxE2_1" type="number"
+                                                aria-label="E2_1" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE2_1" type="number" aria-label="E2_1"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE2_1" name="scorSubItemE2_1" type="number"
+                                                aria-label="E2_1" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.2.1</td>
-                                        <td>Gelar Akademis yang dimiliki oleh Dosen yang selaras dengan bidang ilmunya
+                                        <td>Gelar Akademis yang dimiliki oleh Dosen yang selaras dengan bidang
+                                            ilmunya
                                         </td>
                                         <td><input type="radio" class="E2_1" name="E2_1" id="E2_1" value="1"
                                                 onclick="sum();">
@@ -340,22 +394,30 @@
                                             lulusan</td>
                                         <td>Membimbing tesis dan/ atau disertasi sebagai pembimbing pendamping >4
                                             lulusan</td>
-                                        <td>Membimbing tesis dan/ atau disertasi sebagai pembimbing utama 1 - 4 lulusan
+                                        <td>Membimbing tesis dan/ atau disertasi sebagai pembimbing utama 1 - 4
+                                            lulusan
                                         </td>
                                         <td>Membimbing tesis dan/ atau disertasi sebagai pembimbing utama >4 lulusan
                                         </td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 SK Pembimbingan</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE2_2') is-invalid @enderror" name="fileE2_2"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE2_2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE2_2" type="number"
-                                                aria-label="E2_2" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE2_2" type="number" aria-label="E2_2"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE2_2" name="scorE2_2"
+                                                type="number" aria-label="E2_2" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE2_2" name="scorMaxE2_2" type="number"
+                                                aria-label="E2_2" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE2_2" type="number" aria-label="E2_2"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE2_2" name="scorSubItemE2_2" type="number"
+                                                aria-label="E2_2" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.2.2</td>
@@ -391,15 +453,22 @@
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 Sertifikat Profesi</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE2_3') is-invalid @enderror" name="fileE2_3"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE2_3')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE2_3" type="number"
-                                                aria-label="E2_3" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE2_3" type="number" aria-label="E2_3"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE2_3" name="scorE2_3"
+                                                type="number" aria-label="E2_3" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE2_3" name="scorMaxE2_3" type="number"
+                                                aria-label="E2_3" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE2_3" type="number" aria-label="E2_3"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE2_3" name="scorSubItemE2_3" type="number"
+                                                aria-label="E2_3" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.2.3</td>
@@ -429,21 +498,29 @@
                                         <td>Dosen pernah mengikuti kursus dalam 1 TA yang lalu</td>
                                         <td>Tidak diperhitungkan
                                         </td>
-                                        <td>Dosen sedang mengikuti kursus/telah mengikuti kursus dalam Tahun Akademik
+                                        <td>Dosen sedang mengikuti kursus/telah mengikuti kursus dalam Tahun
+                                            Akademik
                                             penilaian
                                         </td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload
                                                 SK Kursus/ kegiatan sejenis</label>
-                                            <input id="formFileSm" type="file">
+                                            <input class="@error('fileE2_4') is-invalid @enderror" name="fileE2_4"
+                                                id="formFileSm" type="file">
+
+                                            @error('fileE2_4')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
-                                        <td rowspan="2" class="bg-warning"><input id="scorE2_4" type="number"
-                                                aria-label="E2_4" disabled></td>
-                                        <td rowspan="2"><input id="scorMaxE2_4" type="number" aria-label="E2_4"
-                                                disabled>
+                                        <td rowspan="2" class="bg-warning"><input id="scorE2_4" name="scorE2_4"
+                                                type="number" aria-label="E2_4" readonly></td>
+                                        <td rowspan="2"><input id="scorMaxE2_4" name="scorMaxE2_4" type="number"
+                                                aria-label="E2_4" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemE2_4" type="number" aria-label="E2_4"
-                                                disabled></td>
+                                        <td rowspan="2"><input id="scorSubItemE2_4" name="scorSubItemE2_4" type="number"
+                                                aria-label="E2_4" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>E.2.4</td>
@@ -472,16 +549,18 @@
 
                                     <tr>
                                         <td colspan="5"></td>
-                                        <td colspan="5">Total Skor Unsur Pengabdian kepada Institusi dan Pengembangan
+                                        <td colspan="5">Total Skor Unsur Pengabdian kepada Institusi dan
+                                            Pengembangan
                                             Diri</td>
-                                        <td><input type="teks" name="SumSkor" id="SumSkor" disabled></td>
+                                        <td><input type="teks" name="SumSkor" id="SumSkor" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="5"></td>
-                                        <td colspan="5">Nilai Total Unsur Pengabdian kpd Institusi dan Pengembangan Diri
+                                        <td colspan="5">Nilai Total Unsur Pengabdian kpd Institusi dan Pengembangan
+                                            Diri
                                         </td>
                                         <td><input type="teks" name="NilaiUnsurPengabdian" id="NilaiUnsurPengabdian"
-                                                disabled></td>
+                                                readonly></td>
                                         </td>
                                     </tr>
                                     <tr>
@@ -494,11 +573,17 @@
                                         <td colspan="5">Nilai Kinerja Dosen</td>
                                         <td>0,334</td>
                                     </tr>
-
-
-                                </form>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="text-end">
+                                        <button type="reset" class="btn btn-danger btn-sm mb-2">Reset</button>
+                                        <button type="submit" class="btn btn-primary btn-sm mb-2">Simpan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -44,4 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function PointAId()
+    {
+        return $this->hasOne(PointA::class, 'user_id', 'id');
+    }
 }
