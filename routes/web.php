@@ -6,6 +6,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\sumPointController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,5 +47,6 @@ Route::group(['middleware' => ['role:superuser|it']], function () {
         Route::get('/point-E', [PointEController::class, 'create'])->name('point-E');
         Route::post('/post-pointE', [PointEController::class, 'store'])->name('store.pointe');
     });
+    Route::get('/raport', [sumPointController::class, 'index'])->name('raport');
     Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
 });

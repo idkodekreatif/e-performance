@@ -16,4 +16,9 @@ class PointA extends Model
     //     'A13', 'scorA13', 'scorMaxA13', 'scorSubItemA13', 'TotalSkorPendidikanPointA', 'TotalKelebihanA11', 'TotalKelebihanA12', 'TotalKelebihanSkor', 'nilaiPendidikandanPengajaran', 'NilaiTambahPendidikanDanPengajaran', 'NilaiTotalPendidikanDanPengajaran'
     // ];
     protected $guarded = [];
+
+    public function UserId()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
