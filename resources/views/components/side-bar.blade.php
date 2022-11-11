@@ -12,12 +12,13 @@
                     <span class="nav-text">Charts</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="javascript:void()">Flot</a></li>
-                    <li><a href="javascript:void()">Morris</a></li>
-                    <li><a href="{{ route('raport.chart', Auth::user()->id) }}">Chartjs</a></li>
-                    <li><a href="javascript:void()">Chartist</a></li>
+                    <li><a href="{{ route('raport.chart') }}">Laporan</a></li>
+                    {{-- <li><a href="javascript:void()">Flot</a></li>
+                    <li><a href="javascript:void()">Morris</a></li> --}}
+                    {{-- <li><a href="{{ route('raport.chart', Auth::user()->id) }}">Chartjs</a></li> --}}
+                    {{-- <li><a href="javascript:void()">Chartist</a></li>
                     <li><a href="javascript:void()">Sparkline</a></li>
-                    <li><a href="javascript:void()">Peity</a></li>
+                    <li><a href="javascript:void()">Peity</a></li> --}}
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

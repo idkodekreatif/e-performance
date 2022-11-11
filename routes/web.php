@@ -48,6 +48,7 @@ Route::group(['middleware' => ['role:superuser|it']], function () {
         Route::post('/post-pointE', [PointEController::class, 'store'])->name('store.pointe');
     });
     Route::get('/raport/view/{user_id}', [sumPointController::class, 'raportView'])->name('raport');
-    Route::get('/raport/chart/{user_id}', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
+    Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
+    // Route::get('/raport/chart/{user_id}', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
     Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
 });

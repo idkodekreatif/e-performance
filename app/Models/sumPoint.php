@@ -13,16 +13,18 @@ class sumPoint extends Model
     protected $guarded = [];
 
 
-    public function allData()
+    public function allDataChart()
     {
-        $users = DB::table('users')
-            ->leftJoin('point_a', 'users.id', '=', 'point_a.id')
-            ->leftJoin('point_b', 'users.id', '=', 'point_b.id')
-            ->leftJoin('point_c', 'users.id', '=', 'point_c.id')
-            ->leftJoin('point_d', 'users.id', '=', 'point_d.id')
-            ->leftJoin('point_e', 'users.id', '=', 'point_e.id')
+        $users = DB::table('users');
+        $data = $users
+            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran as PointA', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah as PointB', 'point_c.NilaiTotalPengabdianKepadaMasyarakat as PointC', 'point_d.ResultSumNilaiTotalUnsurPenunjang as PointD', 'point_e.NilaiUnsurPengabdian as PointE')
+            ->leftJoin('point_a', 'point_a.user_id', 'users.id')
+            ->leftJoin('point_b', 'point_b.user_id', 'users.id')
+            ->leftJoin('point_c', 'point_c.user_id', 'users.id')
+            ->leftJoin('point_d', 'point_d.user_id', 'users.id')
+            ->leftJoin('point_e', 'point_e.user_id', 'users.id')
             ->get();
         // dd($users);
-        return $users;
+        return $data;
     }
 }
