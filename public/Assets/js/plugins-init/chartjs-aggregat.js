@@ -25,18 +25,21 @@
                         labels: arrStringName,
                         datasets: [
                             {
+                                label: "Nilai Kinerja Total",
                                 data: arrStringNilaiKinerjaTotal,
                                 borderColor: "rgb(255, 170, 0)",
                                 borderWidth: "0",
                                 backgroundColor: "rgb(255, 170, 0)",
                             },
                             {
+                                label: "Standart Kinerja Total",
                                 data: arrStringStandartKinerjaTotal,
                                 borderColor: "rgb(0, 157, 255)",
                                 borderWidth: "0",
                                 backgroundColor: "rgb(0, 157, 255)",
                             },
                             {
+                                label: "Presentase Capaian Total (%)",
                                 data: arrStringresult_capaian_total,
                                 borderColor: "rgb(206, 206, 206)",
                                 borderWidth: "0",
