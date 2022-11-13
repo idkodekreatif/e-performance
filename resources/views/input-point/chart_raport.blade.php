@@ -2,19 +2,42 @@
     @push('style')
     @endpush
 
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">Simple pie chart</h4>
+    <div class="row">
+        <div class="col-xl-6 col-lg-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Basic Bar Chart</h4>
+                </div>
+                {{-- {{ dd($messagesArray) }} --}}
+                <div class="card-body">
+                    <canvas id="barChart_1"></canvas>
+                    <div id="container"></div>
+                    <div style="color: rgb(206, 206, 206)"></div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <div id="simple-pie" class="ct-chart ct-golden-section simple-pie-chart-chartist chartlist-chart"></div>
-        </div>
+    </div>
 
-        @push('JavaScript')
-        <!-- Chart Chartist plugin files -->
-        <script src="{{ asset('Assets/vendor/chartist/js/chartist.min.js') }}"></script>
-        <script src="{{ asset('Assets/vendor/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
-        <script src="{{ asset('Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
-        <script src="{{ asset('Assets/js/plugins-init/chartist-init.js') }}"></script>
-        @endpush
+    @push('JavaScript')
+    <script>
+        // var arr = @json($messagesArray);
+        var arr = {!! json_encode($messagesArray) !!}
+        var arrStringName = arr.map(obj => obj.name);
+        var arrStringNilaiKinerjaTotal = arr.map(obj => obj.NilaiKinerjaTotal);
+        var arrStringStandartKinerjaTotal = arr.map(obj => obj.StandartKinerjaTotal);
+        var arrStringresult_capaian_total = arr.map(obj => obj.result_capaian_total);
+        var arrStringPredikat = arr.map(obj => obj.predikat);
+
+        // console.log(arr);
+        // console.log(arrStringName);
+        // console.log(arrStringNilaiKinerjaTotal);
+        // console.log(arrStringStandartKinerjaTotal);
+        // console.log(arrStringresult_capaian_total);
+        // console.log(arrStringPredikat);
+    </script>
+
+    <!-- Chart ChartJS plugin files -->
+    <script src="{{ asset('Assets/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('Assets/js/plugins-init/chartjs-aggregat.js') }}"></script>
+    @endpush
 </x-app-layout>

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\sumPoint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
 class sumPointController extends Controller
 {
-    public function __construct()
-    {
-        $this->sumPoint = new sumPoint();
-    }
+    // public function __construct()
+    // {
+    //     $this->sumPoint = new sumPoint();
+    // }
 
     /**
      * Display a listing of the resource.
@@ -122,6 +121,7 @@ class sumPointController extends Controller
             ->leftJoin('point_e', 'point_e.user_id', 'users.id')
             ->get();
 
+        $messagesArray = [];
         foreach ($data as $data) {
             // GET Nilai dari database Join
             $result_data["name"] = $data->name;
@@ -135,7 +135,8 @@ class sumPointController extends Controller
             $sum_d_e = $d + $e;
             // Result SUM Nilai Akhir Nilai Kinerja total
             $sum_Kinerja_total = $a + $b + $c + $sum_d_e;
-            $result_data['NilaiKinerjaTotal'] = $sum_Kinerja_total;
+            $result_sum_Kinerja_total = number_format((float)$sum_Kinerja_total, 2, '.', '');
+            $result_data['NilaiKinerjaTotal'] = $result_sum_Kinerja_total;
 
             // Result SUM Nilai Akhir Standart Kinerja Total
             if ($sum_Kinerja_total == 0.0) {
@@ -163,16 +164,19 @@ class sumPointController extends Controller
                 $predikat = "BAIK";
             } elseif ($result_capaian_total >= 80) {
                 $predikat = "CUKUP";
+            } elseif ($result_capaian_total == 0) {
+                $predikat = "-";
             } else {
                 $predikat = "KURANG";
             }
             $result_data["predikat"] = $predikat;
 
-
+            // Result Array
             $messagesArray[] = $result_data;
         }
 
-        dd($messagesArray);
+        // dd($messagesArray);
+        // return view('input-point.chart_raport', ['messagesArray' => $messagesArray]);
         return view('input-point.chart_raport', compact('messagesArray'));
     }
 }
