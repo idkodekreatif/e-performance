@@ -23,6 +23,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'fakultas',
+        'prodi',
         'password',
     ];
 
@@ -48,5 +50,21 @@ class User extends Authenticatable
     public function PointAId()
     {
         return $this->hasOne(PointA::class, 'user_id', 'id');
+    }
+    public function PointBId()
+    {
+        return $this->hasOne(PointB::class, 'user_id', 'id');
+    }
+    public function PointCId()
+    {
+        return $this->hasOne(PointC::class, 'user_id', 'id');
+    }
+    public function PointDId()
+    {
+        return $this->hasOne(PointD::class, 'user_id', 'id');
+    }
+    public function PointEId()
+    {
+        return $this->hasOne(PointE::class, 'user_id', 'id');
     }
 }

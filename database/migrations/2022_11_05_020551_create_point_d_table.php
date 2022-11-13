@@ -190,6 +190,9 @@ class CreatePointDTable extends Migration
             $table->string('NilaiTambahUnsurPenunjang', 20);
             $table->float('ResultSumNilaiTotalUnsurPenunjang', 8, 2);
 
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

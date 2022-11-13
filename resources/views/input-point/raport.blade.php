@@ -15,39 +15,137 @@
                 <h4 class="card-title">Raport User</h4>
             </div>
             <div class="card-body">
+                @if (!empty($users->user_id))
                 <div class="table-responsive">
-                    @foreach ($data as $data)
                     <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
-                        <thead>
-                            <tr>
-                                <td>Nama</td>
-                                <td>Tendik/Dosen</td>
-                                <td>Fakultas</td>
-                                <td>Prodi</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ $data->name }}</td>
-                                <td>Tendik</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <?php
+                            $a = (float)$users->NilaiTotalPendidikanDanPengajaran;
+                            $b = (float)$users->NilaiTotalPenelitiandanKaryaIlmiah;
+                            $c = (float)$users->NilaiTotalPengabdianKepadaMasyarakat;
+                            // SUM Point ( A,B,C )
+                            $total_Ntu = $a + $b + $c;
 
-                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                            $d = (float)$users->ResultSumNilaiTotalUnsurPenunjang;
+                            $e = (float)$users->NilaiUnsurPengabdian;
+                            // SUM Point ( D,E )
+                            $total_Ntd = $d + $e;
+                            // SUM Point Nilai Kinerja Dosen
+                            $total_Nkd = $total_Ntu + $total_Ntd;
+
+                            $NtAFinalSum = $a /11.69 * 100;
+
+                            if ($NtAFinalSum >= 120) {
+                                $outputHasilPDP =  "ISTIMEWA";
+                            }elseif($NtAFinalSum >= 110) {
+                                # code...
+                                $outputHasilPDP = "SANGAT BAIK";
+                            }elseif($NtAFinalSum >= 100) {
+                                # code...
+                                $outputHasilPDP = "BAIK";
+                            }elseif ($NtAFinalSum >= 80) {
+                                # code...
+                                $outputHasilPDP = "CUKUP";
+                            }else {
+                                # code...
+                                $outputHasilPDP = "KURANG";
+                            }
+
+                                $NTiFinalSum = $b /4.26 * 100;
+
+                                if ($NTiFinalSum >= 120) {
+                                $OutputHasilPki = "ISTIMEWA";
+                                }elseif($NTiFinalSum >= 110) {
+                                # code...
+                                $OutputHasilPki = "SANGAT BAIK";
+                                }elseif($NTiFinalSum >= 100) {
+                                # code...
+                                $OutputHasilPki = "BAIK";
+                                }elseif ($NTiFinalSum >= 80) {
+                                # code...
+                                $OutputHasilPki = "CUKUP";
+                                }else {
+                                # code...
+                                $OutputHasilPki = "KURANG";
+                                }
+
+                                $NTiFinalSumPkm = $c /1.20 * 100;
+
+                                if ($NTiFinalSumPkm >= 120) {
+                                $OutputHasilPkm = "ISTIMEWA";
+                                }elseif($NTiFinalSumPkm >= 110) {
+                                # code...
+                                $OutputHasilPkm = "SANGAT BAIK";
+                                }elseif($NTiFinalSumPkm >= 100) {
+                                # code...
+                                $OutputHasilPkm = "BAIK";
+                                }elseif ($NTiFinalSumPkm >= 80) {
+                                # code...
+                                $OutputHasilPkm = "CUKUP";
+                                }else {
+                                # code...
+                                $OutputHasilPkm = "KURANG";
+                                }
+
+                                // Persentase Capaian terhadap standar (%) Point UNSUR PENUNJANG, Pengabdian institusi, dan pengembangan diri
+                                $SUMUnsurPenungjang = $total_Ntd /2.17 * 100;
+                                // Predikat
+                                if ($SUMUnsurPenungjang >= 120) {
+                                $OutputHasilUnsurPenunjang = "ISTIMEWA";
+                                }elseif($SUMUnsurPenungjang >= 110) {
+                                # code...
+                                $OutputHasilUnsurPenunjang = "SANGAT BAIK";
+                                }elseif($SUMUnsurPenungjang >= 100) {
+                                # code...
+                                $OutputHasilUnsurPenunjang = "BAIK";
+                                }elseif ($SUMUnsurPenungjang >= 80) {
+                                # code...
+                                $OutputHasilUnsurPenunjang = "CUKUP";
+                                }else {
+                                # code...
+                                $OutputHasilUnsurPenunjang = "KURANG";
+                                }
+
+                                // SUM Nilai kinerja total
+                                $SumNkt = $a + $b + $c + $total_Ntd;
+                                // SUM Nilsi standart
+                                $sum_Skt = 11.69 + 4.26 + 1.20 + 2.17;
+                                // Result nilai presentasi Capaian total (%)
+                                $result_PCT = $SumNkt / $sum_Skt * 100;
+                                // Predikat akhir
+                                if ($result_PCT >= 120) {
+                                $Result_predikat = "ISTIMEWA";
+                                }elseif($result_PCT >= 110) {
+                                # code...
+                                $Result_predikat = "SANGAT BAIK";
+                                }elseif($result_PCT >= 100) {
+                                # code...
+                                $Result_predikat = "BAIK";
+                                }elseif ($result_PCT >= 80) {
+                                # code...
+                                $Result_predikat = "CUKUP";
+                                }else {
+                                # code...
+                                $Result_predikat = "KURANG";
+                                }
+
+                            ?>
                         <tr>
                             <td>Nilai Total UNSUR UTAMA</td>
-                            <td>11</td>
+                            <td>
+                                <?php echo number_format((float)$total_Ntu, 2, '.', '')  ?>
+                            </td>
                         </tr>
                         <tr>
                             <td>Nilai Total Unsur Non-Tri Dharma</td>
-                            <td>24</td>
+                            <td>
+                                <?php echo number_format((float)$total_Ntd, 2, '.', '') ?>
+                            </td>
                         </tr>
                         <tr>
                             <td>Nilai Kinerja Dosen</td>
-                            <td>244</td>
+                            <td>
+                                <?php echo number_format((float)$total_Nkd, 2, '.', '')  ?>
+                            </td>
                         </tr>
                     </table>
 
@@ -64,52 +162,168 @@
                         <tbody>
                             <tr>
                                 <td>PENDIDIKAN DAN PENGAJARAN</td>
-                                <td>{{ $data->NilaiTotalPendidikanDanPengajaran }}</td>
+                                <td>
+                                    <?php echo number_format((float)$a, 2, '.', '') ?>
+                                </td>
                                 <td>11.69</td>
-                                <td>105.99</td>
-                                <td>Baik</td>
+                                <td>
+                                    <?php echo number_format((float)$NtAFinalSum, 2, '.', '')  ?>
+                                </td>
+                                <td>
+                                    <?php echo $outputHasilPDP ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td>PENELITIAN DAN KARYA ILMIAH</td>
-                                <td>{{ $data->NilaiTotalPenelitiandanKaryaIlmiah }}</td>
+                                <td>
+                                    <?php echo number_format((float)$b, 2, '.', '') ?>
+                                </td>
                                 <td>4.26</td>
-                                <td>100.00</td>
-                                <td>Baik</td>
+                                <td>
+                                    <?php echo number_format((float)$NTiFinalSum, 2, '.', '') ?>
+                                </td>
+                                <td>
+                                    <?php echo $OutputHasilPki ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td>PENGABDIAN KEPADA MASYARAKAT</td>
-                                <td>{{ $data->NilaiTotalPengabdianKepadaMasyarakat }}</td>
+                                <td>
+                                    <?php echo number_format((float)$c, 2, '.', '') ?>
+                                </td>
                                 <td>1.20</td>
-                                <td>100.00</td>
-                                <td>Baik</td>
+                                <td>
+                                    <?php echo number_format((float)$NTiFinalSumPkm, 2, '.', '') ?>
+                                </td>
+                                <td>
+                                    <?php echo $OutputHasilPkm ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
-                                <td>1.84</td>
+                                <td>
+                                    <?php echo number_format((float)$total_Ntd, 2, '.', '') ?>
+                                </td>
                                 <td>2.17</td>
-                                <td>84.66</td>
-                                <td>Cukup</td>
+                                <td>
+                                    <?php echo number_format((float)$SUMUnsurPenungjang, 2, '.', '') ?>
+                                </td>
+                                <td>
+                                    <?php echo $OutputHasilUnsurPenunjang ?>
+                                </td>
                             </tr>
                             <tr style="font-weight:bold">
                                 <td>NILAI KINERJA TOTAL</td>
-                                <td colspan="4">19.69</td>
+                                <td colspan="4">
+                                    <?php echo number_format((float)$SumNkt, 2, '.', '') ?>
+                                </td>
                             </tr>
                             <tr style="font-weight:bold">
                                 <td>STANDAR KINERJA TOTAL</td>
-                                <td colspan="4">19.32</td>
+                                <td colspan="4">
+                                    <?php echo number_format((float)$sum_Skt, 2, '.', '') ?>
+                                </td>
                             </tr>
                             <tr style="font-weight:bold">
                                 <td>PERSENTASE CAPAIAN TOTAL (%)</td>
-                                <td colspan="4">101.90</td>
+                                <td colspan="4">
+                                    <?php echo number_format((float)$result_PCT, 2, '.', '') ?>
+                                </td>
                             </tr>
                             <tr style="font-weight:bold">
                                 <td>PREDIKAT</td>
-                                <td colspan="4">BAIK</td>
+                                <td colspan="4">
+                                    <?php echo $Result_predikat ?>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    @endforeach
                 </div>
+
+                @else
+
+                <div class="table-responsive">
+                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                        <tr>
+                            <td>Nilai Total UNSUR UTAMA</td>
+                            <td>
+                                -
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nilai Total Unsur Non-Tri Dharma</td>
+                            <td>
+                                -
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nilai Kinerja Dosen</td>
+                            <td>
+                                -
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <td>Komponen</td>
+                                <td>Nilai Total</td>
+                                <td>Standar</td>
+                                <td>Persentase Capaian terhadap standar (%)</td>
+                                <td>Predikat</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PENDIDIKAN DAN PENGAJARAN</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>PENELITIAN DAN KARYA ILMIAH</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>PENGABDIAN KEPADA MASYARAKAT</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr style="font-weight:bold">
+                                <td>NILAI KINERJA TOTAL</td>
+                                <td colspan="4">-</td>
+                            </tr>
+                            <tr style="font-weight:bold">
+                                <td>STANDAR KINERJA TOTAL</td>
+                                <td colspan="4">-</td>
+                            </tr>
+                            <tr style="font-weight:bold">
+                                <td>PERSENTASE CAPAIAN TOTAL (%)</td>
+                                <td colspan="4">-</td>
+                            </tr>
+                            <tr style="font-weight:bold">
+                                <td>PREDIKAT</td>
+                                <td colspan="4">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @endif
+
             </div>
         </div>
     </div>

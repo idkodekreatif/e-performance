@@ -28,7 +28,7 @@
                 <div class="basic-form">
                     <div class="table-responsive">
                         <form action="{{ route('store.pointa') }}" method="POST" enctype="multipart/form-data">
-                            <table class="table table-bordered border-2 text-center">
+                            <table class="table table-responsive table-bordered border-2 text-center">
                                 <thead>
                                     <tr>
                                         <td rowspan="2">No</td>

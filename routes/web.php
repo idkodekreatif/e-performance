@@ -30,7 +30,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group(['middleware' => ['role:superuser|it']], function () {
+Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function () {
     Route::group(['prefix' => "/Input-Point"], function () {
         Route::get('/point-A', [PointAController::class, 'create'])->name('point-A');
         Route::post('/post-pointA', [PointAController::class, 'store'])->name('store.pointa');
@@ -47,6 +47,13 @@ Route::group(['middleware' => ['role:superuser|it']], function () {
         Route::get('/point-E', [PointEController::class, 'create'])->name('point-E');
         Route::post('/post-pointE', [PointEController::class, 'store'])->name('store.pointe');
     });
-    Route::get('/raport', [sumPointController::class, 'index'])->name('raport');
+    Route::get('/raport/view/{user_id}', [sumPointController::class, 'raportView'])->name('raport');
     Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
 });
+
+Route::group(
+    ['middleware' => ['role:superuser|it']],
+    function () {
+        Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
+    }
+);

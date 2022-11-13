@@ -19,6 +19,6 @@ class PointA extends Model
 
     public function UserId()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

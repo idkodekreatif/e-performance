@@ -62,10 +62,6 @@ class UserRolePermissionSeeder extends Seeder
                 'password' => bcrypt('tendik123456')
             ], $default_user_value));
 
-
-
-
-
             // membuat role user
             $role_dosen = Role::create(['name' => 'dosen']);
             $role_tendik = Role::create(['name' => 'tendik']);

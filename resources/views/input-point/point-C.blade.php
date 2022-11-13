@@ -872,7 +872,7 @@
                                         <td><input type="number" name="TotalKelebihaC5" id="TotalKelebihaC5" readonly>
                                         </td>
                                         <td colspan="3" rowspan="6">Nilai Tambah Penelitian</td>
-                                        <td rowspan="6">1<input type="number" name="NilaiTambahPenelitian"
+                                        <td rowspan="6"><input type="number" name="NilaiTambahPenelitian"
                                                 id="NilaiTambahPenelitian" readonly></td>
                                     </tr>
                                     <tr>
@@ -914,11 +914,6 @@
                                         <td colspan="6">Nilai Total Pengabdian Kepada Masyarakat</td>
                                         <td><input type="number" name="NilaiTotalPengabdianKepadaMasyarakat"
                                                 id="NilaiTotalPengabdianKepadaMasyarakat" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4"></td>
-                                        <td colspan="6">Nilai Total UNSUR UTAMA</td>
-                                        <td>0</td>
                                     </tr>
                                 </tbody>
                             </table>
