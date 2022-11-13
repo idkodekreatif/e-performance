@@ -123,6 +123,12 @@ class sumPointController extends Controller
             // $users = $users->orWhere('fakultas', 'LIKE', '%' . $request->keyword . '%');
             // $users = $users->orWhere('prodi', 'LIKE', '%' . $request->keyword . '%');
         }
+        if ($request->fakultas != null) {
+            $users = $users->where('users.fakultas', $request->fakultas);
+        }
+        if ($request->prodi != null) {
+            $users = $users->where('users.prodi', $request->prodi);
+        }
 
         $data = $users
             ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')

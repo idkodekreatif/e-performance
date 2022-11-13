@@ -872,7 +872,7 @@
                                         <td><input type="number" name="TotalKelebihaC5" id="TotalKelebihaC5" readonly>
                                         </td>
                                         <td colspan="3" rowspan="6">Nilai Tambah Penelitian</td>
-                                        <td rowspan="6">1<input type="number" name="NilaiTambahPenelitian"
+                                        <td rowspan="6"><input type="number" name="NilaiTambahPenelitian"
                                                 id="NilaiTambahPenelitian" readonly></td>
                                     </tr>
                                     <tr>

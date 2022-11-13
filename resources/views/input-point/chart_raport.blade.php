@@ -27,14 +27,32 @@
                     </select>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <select name="fakultas" id="fakultas"
+                        class="form-nice-select me-sm-2 default-select form-control wide">
+                        <option value="">-- Select Fakultas --</option>
+                        <option value="FB">Fakultas Bisnis</option>
+                        <option value="FK">Fakultas Kesehatan</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <select name="prodi" id="prodi" class="form-nice-select me-sm-2 default-select form-control wide">
+                        <option value="">-- Select Prodi --</option>
+                        <option value="GZ">S1 Gizi</option>
+                        <option value="PR">S1 Keperawatan</option>
+                        <option value="BD">D3 Kebidanan</option>
+                        <option value="MN">S1 Manajemen</option>
+                        <option value="AK">S1 Akuntansi</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary ml-2">Search</button>
                 </div>
             </div>
         </form>
     </div>
 
     <div class="row">
-        <div class="col-xl-6 col-lg-12 col-sm-12">
+        <div class="col-xl-12 col-lg-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Laporan</h4>

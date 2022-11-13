@@ -33,12 +33,43 @@ Register
         <div class="mb-3">
             <label class="mb-1"><strong>Role</strong></label>
             <select class="default-select form-control wide mb-3" name="role">
-                <option>Select</option>
+                <option>-- Select --</option>
                 <option value="dosen">Dosen</option>
-                <option value="tendik">Tendik</option>
+                {{-- <option value="tendik">Tendik</option> --}}
             </select>
 
             @error('role')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label class="mb-1"><strong>Fakultas</strong></label>
+            <select class="default-select form-control wide mb-3" name="fakultas">
+                <option>-- Select --</option>
+                <option value="FB">Fakultas Bisnis</option>
+                <option value="FK">Fakultas Kesehatan</option>
+            </select>
+
+            @error('fakultas')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label class="mb-1"><strong>Prodi</strong></label>
+            <select class="default-select form-control wide mb-3" name="prodi">
+                <option>-- Select --</option>
+                <option value="GZ">Prodi Gizi</option>
+                <option value="PR">Prodi Keperawatan</option>
+                <option value="BD">Prodi Kebidanan</option>
+                <option value="MN">Prodi Manajemen</option>
+                <option value="AK">Prodi Akuntansi</option>
+            </select>
+
+            @error('prodi')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
