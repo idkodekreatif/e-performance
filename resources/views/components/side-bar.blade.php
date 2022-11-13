@@ -6,7 +6,7 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-
+            @role('it|superuser')
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-chart-line"></i>
                     <span class="nav-text">Charts</span>
@@ -21,6 +21,7 @@
                     <li><a href="javascript:void()">Peity</a></li> --}}
                 </ul>
             </li>
+            @endrole
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-file-alt"></i>
                     <span class="nav-text">Forms</span>
@@ -34,6 +35,8 @@
                     <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>
                 </ul>
             </li>
+
+            @role('it|superuser')
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-table"></i>
                     <span class="nav-text">Table</span>
@@ -53,6 +56,7 @@
                     <li><a href="javascript:void()">Activity Log</a></li>
                 </ul>
             </li>
+            @endrole
         </ul>
         <div class="side-bar-profile">
             <div class="d-flex align-items-center justify-content-between mb-3">
