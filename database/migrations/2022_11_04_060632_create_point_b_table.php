@@ -241,7 +241,10 @@ class CreatePointBTable extends Migration
             $table->string('TotalKelebihanSkor', 20);
             $table->string('NilaiPenelitian', 20);
             $table->string('NilaiTambahPenelitian', 20);
-            $table->string('NilaiTotalPenelitiandanKaryaIlmiah', 20);
+            $table->float('NilaiTotalPenelitiandanKaryaIlmiah', 8, 2);
+
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

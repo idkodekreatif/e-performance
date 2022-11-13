@@ -178,6 +178,9 @@ class CreatePointCTable extends Migration
             $table->string('NilaiPengabdianKepadaMasyarakat', 20);
             $table->string('NilaiTambahPenelitian', 20);
             $table->float('NilaiTotalPengabdianKepadaMasyarakat', 8, 2);
+
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
