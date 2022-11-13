@@ -109,9 +109,21 @@ class sumPointController extends Controller
         return view('input-point.raport', compact('users'));
     }
 
-    public function RaportChartView()
+    public function RaportChartView(Request $request)
     {
         $users = DB::table('users');
+
+        $resultGetUsersName = DB::table('users')->get();
+
+        if ($request->keyword != null) {
+            $users = $users->orWhere('users.name', 'LIKE', '%' . $request->keyword . '%');
+        }
+        if ($request->User_Name != null) {
+            $users = $users->where('users.id', $request->User_Name);
+            // $users = $users->orWhere('fakultas', 'LIKE', '%' . $request->keyword . '%');
+            // $users = $users->orWhere('prodi', 'LIKE', '%' . $request->keyword . '%');
+        }
+
         $data = $users
             ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
             ->leftJoin('point_a', 'point_a.user_id', 'users.id')
@@ -177,6 +189,6 @@ class sumPointController extends Controller
 
         // dd($messagesArray);
         // return view('input-point.chart_raport', ['messagesArray' => $messagesArray]);
-        return view('input-point.chart_raport', compact('messagesArray'));
+        return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName'));
     }
 }
