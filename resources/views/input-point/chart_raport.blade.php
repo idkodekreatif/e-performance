@@ -8,8 +8,8 @@
         </ol>
     </div>
 
-    <div class="mb-1">
-        <form action="" method="get" class="row g-3">
+    <div class="mb-2">
+        <form action="" method="get" class="row g-5">
             <div class="d-flex justify-content-end align-items-center flex-wrap">
                 <div class="col-auto">
                     <input type="text" name="keyword" class="form-control input-default" value=""
@@ -18,7 +18,7 @@
                 <div class="col-auto">
                     <select name="User_Name" id="User_Name"
                         class="form-nice-select me-sm-2 default-select form-control wide">
-                        <option value="">-- Select User --</option>
+                        <option value="">-- Select Nama --</option>
                         @if (!empty($resultGetUsersName))
                         @foreach ($resultGetUsersName as $User_Name)
                         <option value="{{ $User_Name->id }}">{{ $User_Name->name }}</option>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xl-12 col-lg-12 col-sm-12">
+        <div class="col-xl-6 col-lg-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Laporan</h4>
