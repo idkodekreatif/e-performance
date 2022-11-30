@@ -31,9 +31,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function () {
-    Route::group(['prefix' => "/Input-Point"], function () {
+    Route::group(['prefix' => "/Point"], function () {
         Route::get('/point-A', [PointAController::class, 'create'])->name('point-A');
         Route::post('/post-pointA', [PointAController::class, 'store'])->name('store.pointa');
+        Route::get('/U/{PointId}', [PointAController::class, 'edit'])->name('edit.Point-A');
+        Route::put('/Up/{PointId}', [PointAController::class, 'update'])->name('update.Point-A');
 
         Route::get('/point-B', [PointBController::class, 'create'])->name('point-B');
         Route::post('/post-pointB', [PointBController::class, 'store'])->name('store.pointb');
