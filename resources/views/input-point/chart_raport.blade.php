@@ -52,7 +52,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xl-6 col-lg-12 col-sm-12">
+        <div class="col-xl-12 col-lg-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Laporan</h4>
