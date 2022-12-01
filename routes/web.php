@@ -26,19 +26,30 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
+// -----------------------------Home----------------------------------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function () {
-    Route::group(['prefix' => "/Point"], function () {
-        Route::get('/point-A', [PointAController::class, 'create'])->name('point-A');
-        Route::post('/post-pointA', [PointAController::class, 'store'])->name('store.pointa');
-        Route::get('/U/{PointId}', [PointAController::class, 'edit'])->name('edit.Point-A');
-        Route::put('/Up/{PointId}', [PointAController::class, 'update'])->name('update.Point-A');
 
-        Route::get('/point-B', [PointBController::class, 'create'])->name('point-B');
-        Route::post('/post-pointB', [PointBController::class, 'store'])->name('store.pointb');
+    // -----------------------------Prefix All Point----------------------------------------//
+    Route::group(['prefix' => "/Point"], function () {
+
+        // -----------------------------Point A----------------------------------------//
+        Route::controller(PointAController::class)->group(function () {
+            Route::get('/P-A', 'create')->name('point-A');
+            Route::post('/P-A/post-pointA', 'store')->name('store.pointa');
+            Route::get('/P-A/U/{PointId}', 'edit')->name('edit.Point-A');
+            Route::put('/P-A/Up/{PointId}', 'update')->name('update.Point-A');
+        });
+
+        // -----------------------------Point B----------------------------------------//
+        Route::controller(PointBController::class)->group(function () {
+            Route::get('/P-B', 'create')->name('point-B');
+            Route::post('/P-B/post-pointB', 'store')->name('store.pointb');
+            Route::get('/P-B/U/{PointId}', 'edit')->name('edit.Point-B');
+            Route::put('/P-B/Up/{PointId}', 'update')->name('update.Point-B');
+        });
 
         Route::get('/point-C', [PointCController::class, 'create'])->name('point-C');
         Route::post('/post-pointC', [PointCController::class, 'store'])->name('store.pointc');
@@ -53,6 +64,7 @@ Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function ()
     Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
 });
 
+// -----------------------------Aggregat----------------------------------------//
 Route::group(
     ['middleware' => ['role:superuser|it']],
     function () {
