@@ -39,10 +39,10 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Update Point</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('edit.Point-A', Auth::user()->id) }}">Point A</a></li>
-                            <li><a href="javascript:void()">Point B</a></li>
-                            <li><a href="javascript:void()">Point C</a></li>
-                            <li><a href="javascript:void()">Point D</a></li>
-                            <li><a href="javascript:void()">Point E</a></li>
+                            <li><a href="{{ route('edit.Point-B', Auth::user()->id) }}">Point B</a></li>
+                            <li><a href="{{ route('edit.Point-C', Auth::user()->id) }}">Point C</a></li>
+                            {{-- <li><a href="{{ route('edit.Point-D', Auth::user()->id) }}">Point D</a></li>
+                            <li><a href="{{ route('edit.Point-E', Auth::user()->id) }}">Point E</a></li> --}}
                         </ul>
                     </li>
                     <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>

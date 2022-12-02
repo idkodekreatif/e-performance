@@ -1,4 +1,4 @@
-<x-app-layout title="Form Input Point A">
+<x-app-layout title="Form Update Point A">
     @push('style')
     <style>
         input::-webkit-outer-spin-button,
@@ -16,7 +16,7 @@
     <div class="col-xl col-lg">
         <div class="row page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms Update</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Point A</a></li>
             </ol>
         </div>

@@ -602,7 +602,6 @@ class PointAController extends Controller
             ];
 
             $RecordData->update($update);
-            $RecordData =  PointA::where('user_id', $PointId)->update($update);
             DB::commit();
             toast('Update Point A successfully :)', 'success');
             return redirect()->back();
