@@ -1,4 +1,4 @@
-<x-app-layout title="Form Input Point A">
+<x-app-layout title="Form Update Point A">
     @push('style')
     <style>
         input::-webkit-outer-spin-button,

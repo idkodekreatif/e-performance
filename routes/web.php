@@ -37,31 +37,53 @@ Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function ()
 
         // -----------------------------Point A----------------------------------------//
         Route::controller(PointAController::class)->group(function () {
-            Route::get('/P-A', 'create')->name('point-A');
-            Route::post('/P-A/post-pointA', 'store')->name('store.pointa');
-            Route::get('/P-A/U/{PointId}', 'edit')->name('edit.Point-A');
-            Route::put('/P-A/Up/{PointId}', 'update')->name('update.Point-A');
+            Route::get('/Pa/Input', 'create')->name('point-A');
+            Route::post('/Pa/post-pointA', 'store')->name('store.pointa');
+            Route::get('/Pa/U/{PointId}', 'edit')->name('edit.Point-A');
+            Route::put('/Pa/Up/{PointId}', 'update')->name('update.Point-A');
         });
 
         // -----------------------------Point B----------------------------------------//
         Route::controller(PointBController::class)->group(function () {
-            Route::get('/P-B', 'create')->name('point-B');
-            Route::post('/P-B/post-pointB', 'store')->name('store.pointb');
-            Route::get('/P-B/U/{PointId}', 'edit')->name('edit.Point-B');
-            Route::put('/P-B/Up/{PointId}', 'update')->name('update.Point-B');
+            Route::get('/Pb/Input', 'create')->name('point-B');
+            Route::post('/Pb/post-pointB', 'store')->name('store.pointb');
+            Route::get('/Pb/U/{PointId}', 'edit')->name('edit.Point-B');
+            Route::put('/Pb/Up/{PointId}', 'update')->name('update.Point-B');
         });
 
-        Route::get('/point-C', [PointCController::class, 'create'])->name('point-C');
-        Route::post('/post-pointC', [PointCController::class, 'store'])->name('store.pointc');
+        // -----------------------------Point C----------------------------------------//
+        Route::controller(PointCController::class)->group(function () {
+            Route::get('/Pc/Input', 'create')->name('point-C');
+            Route::post('/Pc/post-pointC', 'store')->name('store.pointc');
+            Route::get('/Pc/U/{PointId}', 'edit')->name('edit.Point-C');
+            Route::put('/Pc/Up/{PointId}', 'update')->name('update.Point-C');
+        });
 
-        Route::get('/point-D', [PointDController::class, 'create'])->name('point-D');
-        Route::post('/post-pointD', [PointDController::class, 'store'])->name('store.pointd');
+        // -----------------------------Point D----------------------------------------//
+        Route::controller(PointDController::class)->group(function () {
+            Route::get('/Pd/Input', 'create')->name('point-D');
+            Route::post('/Pc/post-pointD', 'store')->name('store.pointd');
+            // Route::get('/Pc/U/{PointId}', 'edit')->name('edit.Point-D');
+            // Route::put('/Pc/Up/{PointId}', 'update')->name('update.Point-D');
+        });
 
-        Route::get('/point-E', [PointEController::class, 'create'])->name('point-E');
-        Route::post('/post-pointE', [PointEController::class, 'store'])->name('store.pointe');
+        // -----------------------------Point E----------------------------------------//
+        Route::controller(PointEController::class)->group(function () {
+            Route::get('/Pe/Input', 'create')->name('point-E');
+            Route::post('/Pc/post-pointD', 'store')->name('store.pointe');
+            // Route::get('/Pc/U/{PointId}', 'edit')->name('edit.Point-E');
+            // Route::put('/Pc/Up/{PointId}', 'update')->name('update.Point-E');
+        });
     });
-    Route::get('/raport/view/{user_id}', [sumPointController::class, 'raportView'])->name('raport');
-    Route::get('/UserControl', [ControlUserController::class, 'index'])->name('usercontrol');
+    // -----------------------------Raport User----------------------------------------//
+    Route::controller(sumPointController::class)->group(function () {
+        Route::get('/raport/view/{user_id}', 'raportView')->name('raport');
+    });
+
+    // -----------------------------Users Management----------------------------------------//
+    Route::controller(ControlUserController::class)->group(function () {
+        Route::get('/UserControl', 'index')->name('usercontrol');
+    });
 });
 
 // -----------------------------Aggregat----------------------------------------//
