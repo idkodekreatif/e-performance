@@ -71,8 +71,8 @@ Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function ()
         Route::controller(PointEController::class)->group(function () {
             Route::get('/Pe/Input', 'create')->name('point-E');
             Route::post('/Pe/post-pointD', 'store')->name('store.pointe');
-            // Route::get('/Pe/U/{PointId}', 'edit')->name('edit.Point-E');
-            // Route::put('/Pe/Up/{PointId}', 'update')->name('update.Point-E');
+            Route::get('/Pe/U/{PointId}', 'edit')->name('edit.Point-E');
+            Route::put('/Pe/Up/{PointId}', 'update')->name('update.Point-E');
         });
     });
     // -----------------------------Raport User----------------------------------------//

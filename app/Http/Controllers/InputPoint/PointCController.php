@@ -338,10 +338,10 @@ class PointCController extends Controller
             $scorSubItemC1 = $request->scorSubItemC1;
 
             if ($request->hasFile('fileC1')) {
-                if ($RecordData->fileC1 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC1))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC1);
+                if ($RecordData->fileC1 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC1))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC1);
                 }
-                $file_c1 = $request->file('fileC1')->store('uploads/Point-b', 'public');
+                $file_c1 = $request->file('fileC1')->store('uploads/Point-c', 'public');
             } else {
                 $file_c1 = $RecordData->fileC1;
             }
@@ -365,10 +365,10 @@ class PointCController extends Controller
             $scorSubItemC2 = $request->scorSubItemC2;
 
             if ($request->hasFile('fileC2')) {
-                if ($RecordData->fileC2 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC2))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC2);
+                if ($RecordData->fileC2 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC2))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC2);
                 }
-                $file_c2 = $request->file('fileC2')->store('uploads/Point-b', 'public');
+                $file_c2 = $request->file('fileC2')->store('uploads/Point-c', 'public');
             } else {
                 $file_c2 = $RecordData->fileC2;
             }
@@ -392,10 +392,10 @@ class PointCController extends Controller
             $scorSubItemC3 = $request->scorSubItemC3;
 
             if ($request->hasFile('fileC3')) {
-                if ($RecordData->fileC3 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC3))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC3);
+                if ($RecordData->fileC3 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC3))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC3);
                 }
-                $file_c3 = $request->file('fileC3')->store('uploads/Point-b', 'public');
+                $file_c3 = $request->file('fileC3')->store('uploads/Point-c', 'public');
             } else {
                 $file_c3 = $RecordData->fileC3;
             }
@@ -415,10 +415,10 @@ class PointCController extends Controller
             $scorSubItemC4 = $request->scorSubItemC4;
 
             if ($request->hasFile('fileC4')) {
-                if ($RecordData->fileC4 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC4))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC4);
+                if ($RecordData->fileC4 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC4))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC4);
                 }
-                $file_c4 = $request->file('fileC4')->store('uploads/Point-b', 'public');
+                $file_c4 = $request->file('fileC4')->store('uploads/Point-c', 'public');
             } else {
                 $file_c4 = $RecordData->fileC4;
             }
@@ -442,10 +442,10 @@ class PointCController extends Controller
             $scorSubItemC5 = $request->scorSubItemC5;
 
             if ($request->hasFile('fileC5')) {
-                if ($RecordData->fileC5 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC5))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC5);
+                if ($RecordData->fileC5 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC5))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC5);
                 }
-                $file_c5 = $request->file('fileC5')->store('uploads/Point-b', 'public');
+                $file_c5 = $request->file('fileC5')->store('uploads/Point-c', 'public');
             } else {
                 $file_c5 = $RecordData->fileC5;
             }
@@ -469,10 +469,10 @@ class PointCController extends Controller
             $scorSubItemC6 = $request->scorSubItemC6;
 
             if ($request->hasFile('fileC6')) {
-                if ($RecordData->fileC6 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC6))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC6);
+                if ($RecordData->fileC6 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC6))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC6);
                 }
-                $file_c6 = $request->file('fileC6')->store('uploads/Point-b', 'public');
+                $file_c6 = $request->file('fileC6')->store('uploads/Point-c', 'public');
             } else {
                 $file_c6 = $RecordData->fileC6;
             }
@@ -496,10 +496,10 @@ class PointCController extends Controller
             $scorSubItemC7 = $request->scorSubItemC7;
 
             if ($request->hasFile('fileC7')) {
-                if ($RecordData->fileC7 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC7))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC7);
+                if ($RecordData->fileC7 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC7))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC7);
                 }
-                $file_c7 = $request->file('fileC7')->store('uploads/Point-b', 'public');
+                $file_c7 = $request->file('fileC7')->store('uploads/Point-c', 'public');
             } else {
                 $file_c7 = $RecordData->fileC7;
             }
@@ -523,10 +523,10 @@ class PointCController extends Controller
             $scorSubItemC8 = $request->scorSubItemC8;
 
             if ($request->hasFile('fileC8')) {
-                if ($RecordData->fileC8 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC8))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC8);
+                if ($RecordData->fileC8 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC8))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC8);
                 }
-                $file_c8 = $request->file('fileC8')->store('uploads/Point-b', 'public');
+                $file_c8 = $request->file('fileC8')->store('uploads/Point-c', 'public');
             } else {
                 $file_c8 = $RecordData->fileC8;
             }
@@ -550,10 +550,10 @@ class PointCController extends Controller
             $scorSubItemC9 = $request->scorSubItemC9;
 
             if ($request->hasFile('fileC9')) {
-                if ($RecordData->fileC9 && file_exists(storage_path('app/public/uploads/Point-b/' . $RecordData->fileC9))) {
-                    \Storage::delete('public/uploads/Point-b/' . $RecordData->fileC9);
+                if ($RecordData->fileC9 && file_exists(storage_path('app/public/uploads/Point-c/' . $RecordData->fileC9))) {
+                    \Storage::delete('public/uploads/Point-c/' . $RecordData->fileC9);
                 }
-                $file_c9 = $request->file('fileC9')->store('uploads/Point-b', 'public');
+                $file_c9 = $request->file('fileC9')->store('uploads/Point-c', 'public');
             } else {
                 $file_c9 = $RecordData->fileC9;
             }
