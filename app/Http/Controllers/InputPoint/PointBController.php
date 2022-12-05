@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\InputPoint;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Models\PointB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -426,7 +427,16 @@ class PointBController extends Controller
      */
     public function edit(PointB $pointB, $PointId)
     {
-        $data = PointB::where('user_id', '=', $PointId)->firstOrFail();
+        $dataMenu = Menu::first();
+
+        if ($dataMenu->control_menu == 0)
+            return view('menu.disabled');
+        elseif (PointB::where('user_id', '=', $PointId)->first() == "") {
+            return view('menu.menu-empty');
+        } else {
+            $data = PointB::where('user_id', '=', $PointId)->first();
+        }
+
         return view('edit-point.EditPointB', ['data' => $data]);
     }
 

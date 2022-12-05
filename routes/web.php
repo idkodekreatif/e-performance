@@ -6,6 +6,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function () {
 
     // -----------------------------Prefix All Point----------------------------------------//
-    Route::group(['prefix' => "/Point"], function () {
+    Route::group(['prefix' => "/Point", 'middleware' => ['role:dosen|it']], function () {
 
         // -----------------------------Point A----------------------------------------//
         Route::controller(PointAController::class)->group(function () {
@@ -83,6 +84,13 @@ Route::group(['middleware' => ['role:superuser|it|hrd|lppm|dosen']], function ()
     // -----------------------------Users Management----------------------------------------//
     Route::controller(ControlUserController::class)->group(function () {
         Route::get('/UserControl', 'index')->name('usercontrol');
+    });
+
+    // -----------------------------Menu Controller Edit Point----------------------------------------//
+    Route::controller(MenuController::class)->group(function () {
+        Route::get('/Menu/Point', 'IndexMenuPoint')->name('Menu.Controller');
+        Route::post('/Menu/Point/Store', 'MenuPointSore')->name('Menu.Store');
+        Route::put('/Menu/Point/{id_menu}', 'MenuPointUpdate')->name('Menu.Update');
     });
 });
 

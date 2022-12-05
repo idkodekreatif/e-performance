@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\InputPoint;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Models\PointC;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -303,7 +304,16 @@ class PointCController extends Controller
      */
     public function edit(PointC $pointC, $PointId)
     {
-        $data = PointC::where('user_id', '=', $PointId)->firstOrFail();
+        $dataMenu = Menu::first();
+
+        if ($dataMenu->control_menu == 0)
+            return view('menu.disabled');
+        elseif (PointC::where('user_id', '=', $PointId)->first() == "") {
+            return view('menu.menu-empty');
+        } else {
+            $data = PointC::where('user_id', '=', $PointId)->first();
+        }
+
         return view('edit-point.EditPointC', ['data' => $data]);
     }
 
