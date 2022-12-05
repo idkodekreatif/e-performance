@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PointA;
 use Illuminate\Http\Request;
 use Alert;
+use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -254,8 +255,16 @@ class PointAController extends Controller
      */
     public function edit(PointA $pointA, $PointId)
     {
-        $data = PointA::where('user_id', '=', $PointId)->firstOrFail();
-        // dd($data);
+        $dataMenu = Menu::first();
+        // dd($dataMenu);
+        if ($dataMenu->control_menu == 0)
+            return view('menu.disabled');
+        elseif (PointA::where('user_id', '=', $PointId)->first() == "") {
+            return view('menu.menu-empty');
+        } else {
+            $data = PointA::where('user_id', '=', $PointId)->first();
+        }
+
         return view('edit-point.EditPointA', ['data' => $data]);
     }
 

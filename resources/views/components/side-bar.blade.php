@@ -13,12 +13,6 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('raport.chart') }}">Laporan</a></li>
-                    {{-- <li><a href="javascript:void()">Flot</a></li>
-                    <li><a href="javascript:void()">Morris</a></li> --}}
-                    {{-- <li><a href="{{ route('raport.chart', Auth::user()->id) }}">Chartjs</a></li> --}}
-                    {{-- <li><a href="javascript:void()">Chartist</a></li>
-                    <li><a href="javascript:void()">Sparkline</a></li>
-                    <li><a href="javascript:void()">Peity</a></li> --}}
                 </ul>
             </li>
             @endrole
@@ -50,6 +44,7 @@
             </li>
 
             @role('it|superuser')
+
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-table"></i>
                     <span class="nav-text">Table</span>
@@ -67,6 +62,11 @@
                 <ul aria-expanded="false">
                     <li><a href="{{ route('usercontrol') }}">User Control</a></li>
                     <li><a href="javascript:void()">Activity Log</a></li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Menu Control</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('Menu.Controller') }}">Menu Edit Point</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             @endrole
