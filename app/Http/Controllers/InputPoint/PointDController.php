@@ -325,9 +325,10 @@ class PointDController extends Controller
      * @param  \App\Models\PointD  $pointD
      * @return \Illuminate\Http\Response
      */
-    public function edit(PointD $pointD)
+    public function edit(PointD $pointD, $PointId)
     {
-        //
+        $data = PointD::where('user_id', '=', $PointId)->firstOrFail();
+        return view('edit-point.EditPointD', ['data' => $data]);
     }
 
     /**
@@ -337,9 +338,509 @@ class PointDController extends Controller
      * @param  \App\Models\PointD  $pointD
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PointD $pointD)
+    public function update(Request $request, PointD $pointD, $PointId)
     {
-        //
+        $request->validate([
+            'fileD1' => 'mimes:pdf|max:2048',
+            'fileD2' => 'mimes:pdf|max:2048',
+            'fileD3' => 'mimes:pdf|max:2048',
+            'fileD4' => 'mimes:pdf|max:2048',
+            'fileD5' => 'mimes:pdf|max:2048',
+            'fileD6' => 'mimes:pdf|max:2048',
+            'fileD7' => 'mimes:pdf|max:2048',
+            'fileD8' => 'mimes:pdf|max:2048',
+            'fileD9' => 'mimes:pdf|max:2048',
+            'fileD10' => 'mimes:pdf|max:2048',
+            'fileD11' => 'mimes:pdf|max:2048',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $RecordData =  PointD::where('user_id', $PointId)->firstOrFail();
+            // Request put data update
+            $D1 = $request->D1;
+            $scorD1 = $request->scorD1;
+            $scorMaxD1 = $request->scorMaxD1;
+            $scorSubItemD1 = $request->scorSubItemD1;
+
+
+            if ($request->hasFile('fileD1')) {
+                if ($RecordData->fileD1 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD1))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD1);
+                }
+                $file_D1 = $request->file('fileD1')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D1 = $RecordData->fileD1;
+            }
+
+            $D2 = $request->D2;
+            $scorD2 = $request->scorD2;
+            $scorMaxD2 = $request->scorMaxD2;
+            $scorSubItemD2 = $request->scorSubItemD2;
+
+            if ($request->hasFile('fileD2')) {
+                if ($RecordData->fileD2 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD2))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD2);
+                }
+                $file_D2 = $request->file('fileD2')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D2 = $RecordData->fileD2;
+            }
+
+            $JumlahYangDihasilkanD2_2_in = $request->JumlahYangDihasilkanD2_2;
+            $SkorTambahanD2_2 = $request->SkorTambahanD2_2;
+            $JumlahYangDihasilkanD2_3_in = $request->JumlahYangDihasilkanD2_3;
+            $SkorTambahanD2_3 = $request->SkorTambahanD2_3;
+            $JumlahYangDihasilkanD2_4_in = $request->JumlahYangDihasilkanD2_4;
+            $SkorTambahanD2_4 = $request->SkorTambahanD2_4;
+            $JumlahYangDihasilkanD2_5_in = $request->JumlahYangDihasilkanD2_5;
+            $SkorTambahanD2_5 = $request->SkorTambahanD2_5;
+            $SkorTambahanJumlahD2 = $request->SkorTambahanJumlahD2;
+            $JumlahSkorYangDiHasilkanD2 = $request->JumlahSkorYangDiHasilkanD2;
+            $SkorTambahanJumlahSkorD2 = $request->SkorTambahanJumlahSkorD2;
+            $SkorTambahanJumlahBobotSubItemD2 = $request->SkorTambahanJumlahBobotSubItemD2;
+
+            $D3 = $request->D3;
+            $scorD3 = $request->scorD3;
+            $scorMaxD3 = $request->scorMaxD3;
+            $scorSubItemD3 = $request->scorSubItemD3;
+
+            if ($request->hasFile('fileD3')) {
+                if ($RecordData->fileD3 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD3))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD3);
+                }
+                $file_D3 = $request->file('fileD3')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D3 = $RecordData->fileD3;
+            }
+
+            $JumlahYangDihasilkanD3_2_in = $request->JumlahYangDihasilkanD3_2;
+            $SkorTambahanD3_2 = $request->SkorTambahanD3_2;
+            $JumlahYangDihasilkanD3_3_in = $request->JumlahYangDihasilkanD3_3;
+            $SkorTambahanD3_3 = $request->SkorTambahanD3_3;
+            $JumlahYangDihasilkanD3_4_in = $request->JumlahYangDihasilkanD3_4;
+            $SkorTambahanD3_4 = $request->SkorTambahanD3_4;
+            $JumlahYangDihasilkanD3_5_in = $request->JumlahYangDihasilkanD3_5;
+            $SkorTambahanD3_5 = $request->SkorTambahanD3_5;
+            $SkorTambahanJumlahD3 = $request->SkorTambahanJumlahD3;
+            $JumlahSkorYangDiHasilkanD3 = $request->JumlahSkorYangDiHasilkanD3;
+            $SkorTambahanJumlahSkorD3 = $request->SkorTambahanJumlahSkorD3;
+            $SkorTambahanJumlahBobotSubItemD3 = $request->SkorTambahanJumlahBobotSubItemD3;
+
+            $D4 = $request->D4;
+            $scorD4 = $request->scorD4;
+            $scorMaxD4 = $request->scorMaxD4;
+            $scorSubItemD4 = $request->scorSubItemD4;
+
+            if ($request->hasFile('fileD4')) {
+                if ($RecordData->fileD4 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD4))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD4);
+                }
+                $file_D4 = $request->file('fileD4')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D4 = $RecordData->fileD4;
+            }
+
+            $JumlahYangDihasilkanD4_3_in = $request->JumlahYangDihasilkanD4_3;
+            $SkorTambahanD4_3 = $request->SkorTambahanD4_3;
+            $JumlahYangDihasilkanD4_4_in = $request->JumlahYangDihasilkanD4_4;
+            $SkorTambahanD4_4 = $request->SkorTambahanD4_4;
+            $JumlahYangDihasilkanD4_5_in = $request->JumlahYangDihasilkanD4_5;
+            $SkorTambahanD4_5 = $request->SkorTambahanD4_5;
+            $SkorTambahanJumlahD4 = $request->SkorTambahanJumlahD4;
+            $JumlahSkorYangDiHasilkanD4 = $request->JumlahSkorYangDiHasilkanD4;
+            $SkorTambahanJumlahSkorD4 = $request->SkorTambahanJumlahSkorD4;
+            $SkorTambahanJumlahBobotSubItemD4 = $request->SkorTambahanJumlahBobotSubItemD4;
+
+            $D5 = $request->D5;
+            $scorD5 = $request->scorD5;
+            $scorMaxD5 = $request->scorMaxD5;
+            $scorSubItemD5 = $request->scorSubItemD5;
+
+            if ($request->hasFile('fileD5')) {
+                if ($RecordData->fileD5 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD5))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD5);
+                }
+                $file_D5 = $request->file('fileD5')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D5 = $RecordData->fileD5;
+            }
+
+            $JumlahYangDihasilkanD5_3_in = $request->JumlahYangDihasilkanD5_3;
+            $SkorTambahanD5_3 = $request->SkorTambahanD5_3;
+            $JumlahYangDihasilkanD5_4_in = $request->JumlahYangDihasilkanD5_4;
+            $SkorTambahanD5_4 = $request->SkorTambahanD5_4;
+            $JumlahYangDihasilkanD5_5_in = $request->JumlahYangDihasilkanD5_5;
+            $SkorTambahanD5_5 = $request->SkorTambahanD5_5;
+            $SkorTambahanJumlahD5 = $request->SkorTambahanJumlahD5;
+            $JumlahSkorYangDiHasilkanD5 = $request->JumlahSkorYangDiHasilkanD5;
+            $SkorTambahanJumlahSkorD5 = $request->SkorTambahanJumlahSkorD5;
+            $SkorTambahanJumlahBobotSubItemD5 = $request->SkorTambahanJumlahBobotSubItemD5;
+
+            $D6 = $request->D6;
+            $scorD6 = $request->scorD6;
+            $scorMaxD6 = $request->scorMaxD6;
+            $scorSubItemD6 = $request->scorSubItemD6;
+
+            if ($request->hasFile('fileD6')) {
+                if ($RecordData->fileD6 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD6))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD6);
+                }
+                $file_D6 = $request->file('fileD6')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D6 = $RecordData->fileD6;
+            }
+
+            $JumlahYangDihasilkanD6_2_in = $request->JumlahYangDihasilkanD6_2;
+            $SkorTambahanD6_2 = $request->SkorTambahanD6_2;
+            $JumlahYangDihasilkanD6_3_in = $request->JumlahYangDihasilkanD6_3;
+            $SkorTambahanD6_3 = $request->SkorTambahanD6_3;
+            $JumlahYangDihasilkanD6_4_in = $request->JumlahYangDihasilkanD6_4;
+            $SkorTambahanD6_4 = $request->SkorTambahanD6_4;
+            $JumlahYangDihasilkanD6_5_in = $request->JumlahYangDihasilkanD6_5;
+            $SkorTambahanD6_5 = $request->SkorTambahanD6_5;
+            $SkorTambahanJumlahD6 = $request->SkorTambahanJumlahD6;
+            $JumlahSkorYangDiHasilkanD6 = $request->JumlahSkorYangDiHasilkanD6;
+            $SkorTambahanJumlahSkorD6 = $request->SkorTambahanJumlahSkorD6;
+            $SkorTambahanJumlahBobotSubItemD6 = $request->SkorTambahanJumlahBobotSubItemD6;
+
+            $D7 = $request->D7;
+            $scorD7 = $request->scorD7;
+            $scorMaxD7 = $request->scorMaxD7;
+            $scorSubItemD7 = $request->scorSubItemD7;
+
+            if ($request->hasFile('fileD7')) {
+                if ($RecordData->fileD7 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD7))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD7);
+                }
+                $file_D7 = $request->file('fileD7')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D7 = $RecordData->fileD7;
+            }
+
+            $JumlahYangDihasilkanD7_5_in = $request->JumlahYangDihasilkanD7_5;
+            $SkorTambahanD7_5 = $request->SkorTambahanD7_5;
+            $SkorTambahanJumlahD7 = $request->SkorTambahanJumlahD7;
+            $JumlahSkorYangDiHasilkanD7 = $request->JumlahSkorYangDiHasilkanD7;
+            $SkorTambahanJumlahSkorD7 = $request->SkorTambahanJumlahSkorD7;
+            $SkorTambahanJumlahBobotSubItemD7 = $request->SkorTambahanJumlahBobotSubItemD7;
+
+            $D8 = $request->D8;
+            $scorD8 = $request->scorD8;
+            $scorMaxD8 = $request->scorMaxD8;
+            $scorSubItemD8 = $request->scorSubItemD8;
+
+            if ($request->hasFile('fileD8')) {
+                if ($RecordData->fileD8 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD8))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD8);
+                }
+                $file_D8 = $request->file('fileD8')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D8 = $RecordData->fileD8;
+            }
+
+            $JumlahYangDihasilkanD8_3_in = $request->JumlahYangDihasilkanD8_3;
+            $SkorTambahanD8_3 = $request->SkorTambahanD8_3;
+            $JumlahYangDihasilkanD8_4_in = $request->JumlahYangDihasilkanD8_4;
+            $SkorTambahanD8_4 = $request->SkorTambahanD8_4;
+            $JumlahYangDihasilkanD8_5_in = $request->JumlahYangDihasilkanD8_5;
+            $SkorTambahanD8_5 = $request->SkorTambahanD8_5;
+            $SkorTambahanJumlahD8 = $request->SkorTambahanJumlahD8;
+            $JumlahSkorYangDiHasilkanD8 = $request->JumlahSkorYangDiHasilkanD8;
+            $SkorTambahanJumlahSkorD8 = $request->SkorTambahanJumlahSkorD8;
+            $SkorTambahanJumlahBobotSubItemD8 = $request->SkorTambahanJumlahBobotSubItemD8;
+
+            $D9 = $request->D9;
+            $scorD9 = $request->scorD9;
+            $scorMaxD9 = $request->scorMaxD9;
+            $scorSubItemD9 = $request->scorSubItemD9;
+
+            if ($request->hasFile('fileD9')) {
+                if ($RecordData->fileD9 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD9))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD9);
+                }
+                $file_D9 = $request->file('fileD9')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D9 = $RecordData->fileD9;
+            }
+
+            $JumlahYangDihasilkanD9_2_in = $request->JumlahYangDihasilkanD9_2;
+            $SkorTambahanD9_2 = $request->SkorTambahanD9_2;
+            $JumlahYangDihasilkanD9_3_in = $request->JumlahYangDihasilkanD9_3;
+            $SkorTambahanD9_3 = $request->SkorTambahanD9_3;
+            $JumlahYangDihasilkanD9_4_in = $request->JumlahYangDihasilkanD9_4;
+            $SkorTambahanD9_4 = $request->SkorTambahanD9_4;
+            $JumlahYangDihasilkanD9_5_in = $request->JumlahYangDihasilkanD9_5;
+            $SkorTambahanD9_5 = $request->SkorTambahanD9_5;
+            $SkorTambahanJumlahD9 = $request->SkorTambahanJumlahD9;
+            $JumlahSkorYangDiHasilkanD9 = $request->JumlahSkorYangDiHasilkanD9;
+            $SkorTambahanJumlahSkorD9 = $request->SkorTambahanJumlahSkorD9;
+            $SkorTambahanJumlahBobotSubItemD9 = $request->SkorTambahanJumlahBobotSubItemD9;
+
+            $D10 = $request->D10;
+            $scorD10 = $request->scorD10;
+            $scorMaxD10 = $request->scorMaxD10;
+            $scorSubItemD10 = $request->scorSubItemD10;
+
+            if ($request->hasFile('fileD10')) {
+                if ($RecordData->fileD10 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD10))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD10);
+                }
+                $file_D10 = $request->file('fileD10')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D10 = $RecordData->fileD10;
+            }
+
+            $JumlahYangDihasilkanD10_3_in = $request->JumlahYangDihasilkanD10_3;
+            $SkorTambahanD10_3 = $request->SkorTambahanD10_3;
+            $JumlahYangDihasilkanD10_4_in = $request->JumlahYangDihasilkanD10_4;
+            $SkorTambahanD10_4 = $request->SkorTambahanD10_4;
+            $JumlahYangDihasilkanD10_5_in = $request->JumlahYangDihasilkanD10_5;
+            $SkorTambahanD10_5 = $request->SkorTambahanD10_5;
+            $SkorTambahanJumlahD10 = $request->SkorTambahanJumlahD10;
+            $JumlahSkorYangDiHasilkanD10 = $request->JumlahSkorYangDiHasilkanD10;
+            $SkorTambahanJumlahSkorD10 = $request->SkorTambahanJumlahSkorD10;
+            $SkorTambahanJumlahBobotSubItemD10 = $request->SkorTambahanJumlahBobotSubItemD10;
+
+            $D11 = $request->D11;
+            $scorD11 = $request->scorD11;
+            $scorMaxD11 = $request->scorMaxD11;
+            $scorSubItemD11 = $request->scorSubItemD11;
+
+            if ($request->hasFile('fileD11')) {
+                if ($RecordData->fileD11 && file_exists(storage_path('app/public/uploads/Point-d/' . $RecordData->fileD11))) {
+                    \Storage::delete('public/uploads/Point-d/' . $RecordData->fileD11);
+                }
+                $file_D11 = $request->file('fileD11')->store('uploads/Point-d', 'public');
+            } else {
+                $file_D11 = $RecordData->fileD11;
+            }
+
+            $JumlahYangDihasilkanD11_3_in = $request->JumlahYangDihasilkanD11_3;
+            $SkorTambahanD11_3 = $request->SkorTambahanD11_3;
+            $JumlahYangDihasilkanD11_4_in = $request->JumlahYangDihasilkanD11_4;
+            $SkorTambahanD11_4 = $request->SkorTambahanD11_4;
+            $JumlahYangDihasilkanD11_5_in = $request->JumlahYangDihasilkanD11_5;
+            $SkorTambahanD11_5 = $request->SkorTambahanD11_5;
+            $SkorTambahanJumlahD11 = $request->SkorTambahanJumlahD11;
+            $JumlahSkorYangDiHasilkanD11 = $request->JumlahSkorYangDiHasilkanD11;
+            $SkorTambahanJumlahSkorD11 = $request->SkorTambahanJumlahSkorD11;
+            $SkorTambahanJumlahBobotSubItemD11 = $request->SkorTambahanJumlahBobotSubItemD11;
+
+            $TotalSkorUnsurPenunjang = $request->TotalSkorUnsurPenunjang;
+            $TotalKelebihaD2 = $request->TotalKelebihaD2;
+            $TotalKelebihaD3 = $request->TotalKelebihaD3;
+            $TotalKelebihaD4 = $request->TotalKelebihaD4;
+            $TotalKelebihaD5 = $request->TotalKelebihaD5;
+            $TotalKelebihaD6 = $request->TotalKelebihaD6;
+            $TotalKelebihaD7 = $request->TotalKelebihaD7;
+            $TotalKelebihaD8 = $request->TotalKelebihaD8;
+            $TotalKelebihaD9 = $request->TotalKelebihaD9;
+            $TotalKelebihaD10 = $request->TotalKelebihaD10;
+            $TotalKelebihaD11 = $request->TotalKelebihaD11;
+            $TotalKelebihanSkor = $request->TotalKelebihanSkor;
+            $NilaiUnsurPenunjang = $request->NilaiUnsurPenunjang;
+            $NilaiTambahUnsurPenunjang = $request->NilaiTambahUnsurPenunjang;
+            $ResultSumNilaiTotalUnsurPenunjang = $request->ResultSumNilaiTotalUnsurPenunjang;
+
+
+            $update = [
+                'D1' => $D1,
+                'scorD1' => $scorD1,
+                'scorMaxD1' => $scorMaxD1,
+                'scorSubItemD1' => $scorSubItemD1,
+                'fileD1' => $file_D1,
+
+                'D2' => $D2,
+                'scorD2' => $scorD2,
+                'scorMaxD2' => $scorMaxD2,
+                'scorSubItemD2' => $scorSubItemD2,
+                'fileD2' => $file_D2,
+                'JumlahYangDihasilkanD2_2_in' => $JumlahYangDihasilkanD2_2_in,
+                'SkorTambahanD2_2' => $SkorTambahanD2_2,
+                'JumlahYangDihasilkanD2_3_in' => $JumlahYangDihasilkanD2_3_in,
+                'SkorTambahanD2_3' => $SkorTambahanD2_3,
+                'JumlahYangDihasilkanD2_4_in' => $JumlahYangDihasilkanD2_4_in,
+                'SkorTambahanD2_4' => $SkorTambahanD2_4,
+                'JumlahYangDihasilkanD2_5_in' => $JumlahYangDihasilkanD2_5_in,
+                'SkorTambahanD2_5' => $SkorTambahanD2_5,
+                'SkorTambahanJumlahD2' => $SkorTambahanJumlahD2,
+                'JumlahSkorYangDiHasilkanD2' => $JumlahSkorYangDiHasilkanD2,
+                'SkorTambahanJumlahSkorD2' => $SkorTambahanJumlahSkorD2,
+                'SkorTambahanJumlahBobotSubItemD2' => $SkorTambahanJumlahBobotSubItemD2,
+
+                'D3' => $D3,
+                'scorD3' => $scorD3,
+                'scorMaxD3' => $scorMaxD3,
+                'scorSubItemD3' => $scorSubItemD3,
+                'fileD3' => $file_D3,
+                'JumlahYangDihasilkanD3_2_in' => $JumlahYangDihasilkanD3_2_in,
+                'SkorTambahanD3_2' => $SkorTambahanD3_2,
+                'JumlahYangDihasilkanD3_3_in' => $JumlahYangDihasilkanD3_3_in,
+                'SkorTambahanD3_3' => $SkorTambahanD3_3,
+                'JumlahYangDihasilkanD3_4_in' => $JumlahYangDihasilkanD3_4_in,
+                'SkorTambahanD3_4' => $SkorTambahanD3_4,
+                'JumlahYangDihasilkanD3_5_in' => $JumlahYangDihasilkanD3_5_in,
+                'SkorTambahanD3_5' => $SkorTambahanD3_5,
+                'SkorTambahanJumlahD3' => $SkorTambahanJumlahD3,
+                'JumlahSkorYangDiHasilkanD3' => $JumlahSkorYangDiHasilkanD3,
+                'SkorTambahanJumlahSkorD3' => $SkorTambahanJumlahSkorD3,
+                'SkorTambahanJumlahBobotSubItemD3' => $SkorTambahanJumlahBobotSubItemD3,
+
+                'D4' => $D4,
+                'scorD4' => $scorD4,
+                'scorMaxD4' => $scorMaxD4,
+                'scorSubItemD4' => $scorSubItemD4,
+                'fileD4' => $file_D4,
+                'JumlahYangDihasilkanD4_3_in' => $JumlahYangDihasilkanD4_3_in,
+                'SkorTambahanD4_3' => $SkorTambahanD4_3,
+                'JumlahYangDihasilkanD4_4_in' => $JumlahYangDihasilkanD4_4_in,
+                'SkorTambahanD4_4' => $SkorTambahanD4_4,
+                'JumlahYangDihasilkanD4_5_in' => $JumlahYangDihasilkanD4_5_in,
+                'SkorTambahanD4_5' => $SkorTambahanD4_5,
+                'SkorTambahanJumlahD4' => $SkorTambahanJumlahD4,
+                'JumlahSkorYangDiHasilkanD4' => $JumlahSkorYangDiHasilkanD4,
+                'SkorTambahanJumlahSkorD4' => $SkorTambahanJumlahSkorD4,
+                'SkorTambahanJumlahBobotSubItemD4' => $SkorTambahanJumlahBobotSubItemD4,
+
+                'D5' => $D5,
+                'scorD5' => $scorD5,
+                'scorMaxD5' => $scorMaxD5,
+                'scorSubItemD5' => $scorSubItemD5,
+                'fileD5' => $file_D5,
+                'JumlahYangDihasilkanD5_3_in' => $JumlahYangDihasilkanD5_3_in,
+                'SkorTambahanD5_3' => $SkorTambahanD5_3,
+                'JumlahYangDihasilkanD5_4_in' => $JumlahYangDihasilkanD5_4_in,
+                'SkorTambahanD5_4' => $SkorTambahanD5_4,
+                'JumlahYangDihasilkanD5_5_in' => $JumlahYangDihasilkanD5_5_in,
+                'SkorTambahanD5_5' => $SkorTambahanD5_5,
+                'SkorTambahanJumlahD5' => $SkorTambahanJumlahD5,
+                'JumlahSkorYangDiHasilkanD5' => $JumlahSkorYangDiHasilkanD5,
+                'SkorTambahanJumlahSkorD5' => $SkorTambahanJumlahSkorD5,
+                'SkorTambahanJumlahBobotSubItemD5' => $SkorTambahanJumlahBobotSubItemD5,
+
+                'D6' => $D6,
+                'scorD6' => $scorD6,
+                'scorMaxD6' => $scorMaxD6,
+                'scorSubItemD6' => $scorSubItemD6,
+                'fileD6' => $file_D6,
+                'JumlahYangDihasilkanD6_2_in' => $JumlahYangDihasilkanD6_2_in,
+                'SkorTambahanD6_2' => $SkorTambahanD6_2,
+                'JumlahYangDihasilkanD6_3_in' => $JumlahYangDihasilkanD6_3_in,
+                'SkorTambahanD6_3' => $SkorTambahanD6_3,
+                'JumlahYangDihasilkanD6_4_in' => $JumlahYangDihasilkanD6_4_in,
+                'SkorTambahanD6_4' => $SkorTambahanD6_4,
+                'JumlahYangDihasilkanD6_5_in' => $JumlahYangDihasilkanD6_5_in,
+                'SkorTambahanD6_5' => $SkorTambahanD6_5,
+                'SkorTambahanJumlahD6' => $SkorTambahanJumlahD6,
+                'JumlahSkorYangDiHasilkanD6' => $JumlahSkorYangDiHasilkanD6,
+                'SkorTambahanJumlahSkorD6' => $SkorTambahanJumlahSkorD6,
+                'SkorTambahanJumlahBobotSubItemD6' => $SkorTambahanJumlahBobotSubItemD6,
+
+                'D7' => $D7,
+                'scorD7' => $scorD7,
+                'scorMaxD7' => $scorMaxD7,
+                'scorSubItemD7' => $scorSubItemD7,
+                'fileD7' => $file_D7,
+                'JumlahYangDihasilkanD7_5_in' => $JumlahYangDihasilkanD7_5_in,
+                'SkorTambahanD7_5' => $SkorTambahanD7_5,
+                'SkorTambahanJumlahD7' => $SkorTambahanJumlahD7,
+                'JumlahSkorYangDiHasilkanD7' => $JumlahSkorYangDiHasilkanD7,
+                'SkorTambahanJumlahSkorD7' => $SkorTambahanJumlahSkorD7,
+                'SkorTambahanJumlahBobotSubItemD7' => $SkorTambahanJumlahBobotSubItemD7,
+
+                'D8' => $D8,
+                'scorD8' => $scorD8,
+                'scorMaxD8' => $scorMaxD8,
+                'scorSubItemD8' => $scorSubItemD8,
+                'fileD8' => $file_D8,
+                'JumlahYangDihasilkanD8_3_in' => $JumlahYangDihasilkanD8_3_in,
+                'SkorTambahanD8_3' => $SkorTambahanD8_3,
+                'JumlahYangDihasilkanD8_4_in' => $JumlahYangDihasilkanD8_4_in,
+                'SkorTambahanD8_4' => $SkorTambahanD8_4,
+                'JumlahYangDihasilkanD8_5_in' => $JumlahYangDihasilkanD8_5_in,
+                'SkorTambahanD8_5' => $SkorTambahanD8_5,
+                'SkorTambahanJumlahD8' => $SkorTambahanJumlahD8,
+                'JumlahSkorYangDiHasilkanD8' => $JumlahSkorYangDiHasilkanD8,
+                'SkorTambahanJumlahSkorD8' => $SkorTambahanJumlahSkorD8,
+                'SkorTambahanJumlahBobotSubItemD8' => $SkorTambahanJumlahBobotSubItemD8,
+
+                'D9' => $D9,
+                'scorD9' => $scorD9,
+                'scorMaxD9' => $scorMaxD9,
+                'scorSubItemD9' => $scorSubItemD9,
+                'fileD9' => $file_D9,
+                'JumlahYangDihasilkanD9_2_in' => $JumlahYangDihasilkanD9_2_in,
+                'SkorTambahanD9_2' => $SkorTambahanD9_2,
+                'JumlahYangDihasilkanD9_3_in' => $JumlahYangDihasilkanD9_3_in,
+                'SkorTambahanD9_3' => $SkorTambahanD9_3,
+                'JumlahYangDihasilkanD9_4_in' => $JumlahYangDihasilkanD9_4_in,
+                'SkorTambahanD9_4' => $SkorTambahanD9_4,
+                'JumlahYangDihasilkanD9_5_in' => $JumlahYangDihasilkanD9_5_in,
+                'SkorTambahanD9_5' => $SkorTambahanD9_5,
+                'SkorTambahanJumlahD9' => $SkorTambahanJumlahD9,
+                'JumlahSkorYangDiHasilkanD9' => $JumlahSkorYangDiHasilkanD9,
+                'SkorTambahanJumlahSkorD9' => $SkorTambahanJumlahSkorD9,
+                'SkorTambahanJumlahBobotSubItemD9' => $SkorTambahanJumlahBobotSubItemD9,
+
+                'D10' => $D10,
+                'scorD10' => $scorD10,
+                'scorMaxD10' => $scorMaxD10,
+                'scorSubItemD10' => $scorSubItemD10,
+                'fileD10' => $file_D10,
+                'JumlahYangDihasilkanD10_3_in' => $JumlahYangDihasilkanD10_3_in,
+                'SkorTambahanD10_3' => $SkorTambahanD10_3,
+                'JumlahYangDihasilkanD10_4_in' => $JumlahYangDihasilkanD10_4_in,
+                'SkorTambahanD10_4' => $SkorTambahanD10_4,
+                'JumlahYangDihasilkanD10_5_in' => $JumlahYangDihasilkanD10_5_in,
+                'SkorTambahanD10_5' => $SkorTambahanD10_5,
+                'SkorTambahanJumlahD10' => $SkorTambahanJumlahD10,
+                'JumlahSkorYangDiHasilkanD10' => $JumlahSkorYangDiHasilkanD10,
+                'SkorTambahanJumlahSkorD10' => $SkorTambahanJumlahSkorD10,
+                'SkorTambahanJumlahBobotSubItemD10' => $SkorTambahanJumlahBobotSubItemD10,
+
+                'D11' => $D11,
+                'scorD11' => $scorD11,
+                'scorMaxD11' => $scorMaxD11,
+                'scorSubItemD11' => $scorSubItemD11,
+                'fileD11' => $file_D11,
+                'JumlahYangDihasilkanD11_3_in' => $JumlahYangDihasilkanD11_3_in,
+                'SkorTambahanD11_3' => $SkorTambahanD11_3,
+                'JumlahYangDihasilkanD11_4_in' => $JumlahYangDihasilkanD11_4_in,
+                'SkorTambahanD11_4' => $SkorTambahanD11_4,
+                'JumlahYangDihasilkanD11_5_in' => $JumlahYangDihasilkanD11_5_in,
+                'SkorTambahanD11_5' => $SkorTambahanD11_5,
+                'SkorTambahanJumlahD11' => $SkorTambahanJumlahD11,
+                'JumlahSkorYangDiHasilkanD11' => $JumlahSkorYangDiHasilkanD11,
+                'SkorTambahanJumlahSkorD11' => $SkorTambahanJumlahSkorD11,
+                'SkorTambahanJumlahBobotSubItemD11' => $SkorTambahanJumlahBobotSubItemD11,
+
+                'TotalSkorUnsurPenunjang' => $TotalSkorUnsurPenunjang,
+                'TotalKelebihaD2' => $TotalKelebihaD2,
+                'TotalKelebihaD3' => $TotalKelebihaD3,
+                'TotalKelebihaD4' => $TotalKelebihaD4,
+                'TotalKelebihaD5' => $TotalKelebihaD5,
+                'TotalKelebihaD6' => $TotalKelebihaD6,
+                'TotalKelebihaD7' => $TotalKelebihaD7,
+                'TotalKelebihaD8' => $TotalKelebihaD8,
+                'TotalKelebihaD9' => $TotalKelebihaD9,
+                'TotalKelebihaD10' => $TotalKelebihaD10,
+                'TotalKelebihaD11' => $TotalKelebihaD11,
+                'TotalKelebihanSkor' => $TotalKelebihanSkor,
+                'NilaiUnsurPenunjang' => $NilaiUnsurPenunjang,
+                'NilaiTambahUnsurPenunjang' => $NilaiTambahUnsurPenunjang,
+                'ResultSumNilaiTotalUnsurPenunjang' => $ResultSumNilaiTotalUnsurPenunjang,
+            ];
+
+            $RecordData->update($update);
+            DB::commit();
+            toast('Update Point D successfully :)', 'success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            toast('Update Point D fail :)', 'error');
+            return redirect()->back();
+        }
     }
 
     /**

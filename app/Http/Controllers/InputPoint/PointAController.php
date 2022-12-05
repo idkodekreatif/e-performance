@@ -252,9 +252,11 @@ class PointAController extends Controller
      * @param  \App\Models\PointA  $pointA
      * @return \Illuminate\Http\Response
      */
-    public function edit(PointA $pointA)
+    public function edit(PointA $pointA, $PointId)
     {
-        //
+        $data = PointA::where('user_id', '=', $PointId)->firstOrFail();
+        // dd($data);
+        return view('edit-point.EditPointA', ['data' => $data]);
     }
 
     /**
@@ -264,9 +266,350 @@ class PointAController extends Controller
      * @param  \App\Models\PointA  $pointA
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PointA $pointA)
+    public function update(Request $request, PointA $pointA, $PointId)
     {
-        //
+        // Validation file upload
+        $request->validate([
+            'fileA1' => 'mimes:pdf|max:2048',
+            'fileA2' => 'mimes:pdf|max:2048',
+            'fileA3' => 'mimes:pdf|max:2048',
+            'fileA4' => 'mimes:pdf|max:2048',
+            'fileA5' => 'mimes:pdf|max:2048',
+            'fileA6' => 'mimes:pdf|max:2048',
+            'fileA7' => 'mimes:pdf|max:2048',
+            'fileA8' => 'mimes:pdf|max:2048',
+            'fileA9' => 'mimes:pdf|max:2048',
+            'fileA10' => 'mimes:pdf|max:2048',
+            'fileA11' => 'mimes:pdf|max:2048',
+            'fileA12' => 'mimes:pdf|max:2048',
+            'fileA13' => 'mimes:pdf|max:2048',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $RecordData =  PointA::where('user_id', $PointId)->firstOrFail();
+            // Request put data update
+            $A1 = $request->A1;
+            $scorA1 = $request->scorA1;
+            $scorMaxA1 = $request->scorMaxA1;
+            $scorSubItemA1 = $request->scorSubItemA1;
+
+            if ($request->hasFile('fileA1')) {
+                if ($RecordData->fileA1 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA1))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA1);
+                }
+                $file_a1 = $request->file('fileA1')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a1 = $RecordData->fileA1;
+            }
+
+            $A2 = $request->A2;
+            $scorA2 = $request->scorA2;
+            $scorMaxA2 = $request->scorMaxA2;
+            $scorSubItemA2 = $request->scorSubItemA2;
+
+            if ($request->hasFile('fileA2')) {
+                if ($RecordData->fileA2 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA2))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA2);
+                }
+                $file_a2 = $request->file('fileA2')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a2 = $RecordData->fileA2;
+            }
+
+            $A3 = $request->A3;
+            $scorA3 = $request->scorA3;
+            $scorMaxA3 = $request->scorMaxA3;
+            $scorSubItemA3 = $request->scorSubItemA3;
+
+            if ($request->hasFile('fileA3')) {
+                if ($RecordData->fileA3 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA3))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA3);
+                }
+                $file_a3 = $request->file('fileA3')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a3 = $RecordData->fileA3;
+            }
+
+            $A4 = $request->A4;
+            $scorA4 = $request->scorA4;
+            $scorMaxA4 = $request->scorMaxA4;
+            $scorSubItemA4 = $request->scorSubItemA4;
+
+            if ($request->hasFile('fileA4')) {
+                if ($RecordData->fileA4 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA4))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA4);
+                }
+                $file_a4 = $request->file('fileA4')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a4 = $RecordData->fileA4;
+            }
+
+            $A5 = $request->A5;
+            $scorA5 = $request->scorA5;
+            $scorMaxA5 = $request->scorMaxA5;
+            $scorSubItemA5 = $request->scorSubItemA5;
+
+            if ($request->hasFile('fileA5')) {
+                if ($RecordData->fileA5 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA5))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA5);
+                }
+                $file_a5 = $request->file('fileA5')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a5 = $RecordData->fileA5;
+            }
+
+            $A6 = $request->A6;
+            $scorA6 = $request->scorA6;
+            $scorMaxA6 = $request->scorMaxA6;
+            $scorSubItemA6 = $request->scorSubItemA6;
+
+            if ($request->hasFile('fileA6')) {
+                if ($RecordData->fileA6 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA6))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA6);
+                }
+                $file_a6 = $request->file('fileA6')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a6 = $RecordData->fileA6;
+            }
+
+            $A7 = $request->A7;
+            $scorA7 = $request->scorA7;
+            $scorMaxA7 = $request->scorMaxA7;
+            $scorSubItemA7 = $request->scorSubItemA7;
+
+            if ($request->hasFile('fileA7')) {
+                if ($RecordData->fileA7 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA7))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA7);
+                }
+                $file_a7 = $request->file('fileA7')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a7 = $RecordData->fileA7;
+            }
+
+            $A8 = $request->A8;
+            $scorA8 = $request->scorA8;
+            $scorMaxA8 = $request->scorMaxA8;
+            $scorSubItemA8 = $request->scorSubItemA8;
+
+            if ($request->hasFile('fileA8')) {
+                if ($RecordData->fileA8 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA8))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA8);
+                }
+                $file_a8 = $request->file('fileA8')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a8 = $RecordData->fileA8;
+            }
+
+            $A9 = $request->A9;
+            $scorA9 = $request->scorA9;
+            $scorMaxA9 = $request->scorMaxA9;
+            $scorSubItemA9 = $request->scorSubItemA9;
+
+            if ($request->hasFile('fileA9')) {
+                if ($RecordData->fileA9 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA9))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA9);
+                }
+                $file_a9 = $request->file('fileA9')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a9 = $RecordData->fileA9;
+            }
+
+            $A10 = $request->A10;
+            $scorA10 = $request->scorA10;
+            $scorMaxA10 = $request->scorMaxA10;
+            $scorSubItemA10 = $request->scorSubItemA10;
+
+            if ($request->hasFile('fileA10')) {
+                if ($RecordData->fileA10 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA10))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA10);
+                }
+                $file_a10 = $request->file('fileA10')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a10 = $RecordData->fileA10;
+            }
+
+            $A11 = $request->A11;
+            $scorA11 = $request->scorA11;
+            $scorMaxA11 = $request->scorMaxA11;
+            $scorSubItemA11 = $request->scorSubItemA11;
+
+            if ($request->hasFile('fileA11')) {
+                if ($RecordData->fileA11 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA11))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA11);
+                }
+                $file_a11 = $request->file('fileA11')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a11 = $RecordData->fileA11;
+            }
+
+            $tambahan_a11_in = $request->JumlahYangDihasilkanA11_5;
+            $SkorTambahanA11_5 = $request->SkorTambahanA11_5;
+            $SkorTambahanJumlahA11_5 = $request->SkorTambahanJumlahA11_5;
+            $JumlahSkorYangDiHasilkanA11_5 = $request->JumlahSkorYangDiHasilkanA11_5;
+            $JumlahSkorYangDiHasilkanBobotSubItemA11_5 = $request->JumlahSkorYangDiHasilkanBobotSubItemA11_5;
+            $SkorTambahanJumlahBobotSubItemA11_5 = $request->SkorTambahanJumlahBobotSubItemA11_5;
+
+            $A12 = $request->A12;
+            $scorA12 = $request->scorA12;
+            $scorMaxA12 = $request->scorMaxA12;
+            $scorSubItemA12 = $request->scorSubItemA12;
+
+            if ($request->hasFile('fileA12')) {
+                if ($RecordData->fileA12 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA12))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA12);
+                }
+                $file_a12 = $request->file('fileA12')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a12 = $RecordData->fileA12;
+            }
+
+            $JumlahYangDihasilkanA12_3_in = $request->JumlahYangDihasilkanA12_3;
+            $SkorTambahanA12_3 = $request->SkorTambahanA12_3;
+            $JumlahYangDihasilkanA12_4_in = $request->JumlahYangDihasilkanA12_4;
+            $SkorTambahanA12_4 = $request->SkorTambahanA12_4;
+            $JumlahYangDihasilkanA12_5_in = $request->JumlahYangDihasilkanA12_5;
+            $SkorTambahanA12_5 = $request->SkorTambahanA12_5;
+            $SkorTambahanJumlahA12 = $request->SkorTambahanJumlahA12;
+            $JumlahSkorYangDiHasilkanA12 = $request->JumlahSkorYangDiHasilkanA12;
+            $SkorTambahanJumlahSkorA12 = $request->SkorTambahanJumlahSkorA12;
+            $SkorTambahanJumlahBobotSubItemA12 = $request->SkorTambahanJumlahBobotSubItemA12;
+
+            $A13 = $request->A13;
+            $scorA13 = $request->scorA13;
+            $scorMaxA13 = $request->scorMaxA13;
+            $scorSubItemA13 = $request->scorSubItemA13;
+
+            if ($request->hasFile('fileA13')) {
+                if ($RecordData->fileA13 && file_exists(storage_path('app/public/uploads/Point-a/' . $RecordData->fileA13))) {
+                    \Storage::delete('public/uploads/Point-a/' . $RecordData->fileA13);
+                }
+                $file_a13 = $request->file('fileA13')->store('uploads/Point-a', 'public');
+            } else {
+                $file_a13 = $RecordData->fileA13;
+            }
+
+            $TotalSkorPendidikanPointA = $request->TotalSkorPendidikanPointA;
+            $TotalKelebihanA11 = $request->TotalKelebihanA11;
+            $TotalKelebihanA12 = $request->TotalKelebihanA12;
+            $TotalKelebihanSkor = $request->TotalKelebihanSkor;
+            $nilaiPendidikandanPengajaran = $request->nilaiPendidikandanPengajaran;
+            $NilaiTambahPendidikanDanPengajaran = $request->NilaiTambahPendidikanDanPengajaran;
+            $NilaiTotalPendidikanDanPengajaran = $request->NilaiTotalPendidikanDanPengajaran;
+
+            $update = [
+                'A1' => $A1,
+                'scorA1' => $scorA1,
+                'scorMaxA1' => $scorMaxA1,
+                'scorSubItemA1' => $scorSubItemA1,
+                'fileA1' => $file_a1,
+
+                'A2' => $A2,
+                'scorA2' => $scorA2,
+                'scorMaxA2' => $scorMaxA2,
+                'scorSubItemA2' => $scorSubItemA2,
+                'fileA2' => $file_a2,
+
+                'A3' => $A3,
+                'scorA3' => $scorA3,
+                'scorMaxA3' =>  $scorMaxA3,
+                'scorSubItemA3' => $scorSubItemA3,
+                'fileA3' => $file_a3,
+
+                'A4' => $A4,
+                'scorA4' => $scorA4,
+                'scorMaxA4' => $scorMaxA4,
+                'scorSubItemA4' => $scorSubItemA4,
+                'fileA4' => $file_a4,
+
+                'A5' => $A5,
+                'scorA5' => $scorA5,
+                'scorMaxA5' => $scorMaxA5,
+                'scorSubItemA5' => $scorSubItemA5,
+                'fileA5' => $file_a5,
+
+                'A6' => $A6,
+                'scorA6' => $scorA6,
+                'scorMaxA6' => $scorMaxA6,
+                'scorSubItemA6' => $scorSubItemA6,
+                'fileA6' => $file_a6,
+
+                'A7' => $A7,
+                'scorA7' => $scorA7,
+                'scorMaxA7' => $scorMaxA7,
+                'scorSubItemA7' => $scorSubItemA7,
+                'fileA7' => $file_a7,
+
+                'A8' =>  $A8,
+                'scorA8' => $scorA8,
+                'scorMaxA8' => $scorMaxA8,
+                'scorSubItemA8' => $scorSubItemA8,
+                'fileA8' => $file_a8,
+
+                'A9' => $A9,
+                'scorA9' => $scorA9,
+                'scorMaxA9' => $scorMaxA9,
+                'scorSubItemA9' => $scorSubItemA9,
+                'fileA9' => $file_a9,
+
+                'A10' => $A10,
+                'scorA10' => $scorA10,
+                'scorMaxA10' => $scorMaxA10,
+                'scorSubItemA10' => $scorSubItemA10,
+                'fileA10' => $file_a10,
+
+                'A11' => $A11,
+                'scorA11' => $scorA11,
+                'scorMaxA11' => $scorMaxA11,
+                'scorSubItemA11' => $scorSubItemA11,
+                'fileA11' => $file_a11,
+                'tambahan_a11_in' => $tambahan_a11_in,
+                'SkorTambahanA11_5' => $SkorTambahanA11_5,
+                'SkorTambahanJumlahA11_5' => $SkorTambahanJumlahA11_5,
+                'JumlahSkorYangDiHasilkanA11_5' =>  $JumlahSkorYangDiHasilkanA11_5,
+                'JumlahSkorYangDiHasilkanBobotSubItemA11_5' =>  $JumlahSkorYangDiHasilkanBobotSubItemA11_5,
+                'SkorTambahanJumlahBobotSubItemA11_5' => $SkorTambahanJumlahBobotSubItemA11_5,
+
+                'A12' => $A12,
+                'scorA12' => $scorA12,
+                'scorMaxA12' => $scorMaxA12,
+                'scorSubItemA12' => $scorSubItemA12,
+                'fileA12' => $file_a12,
+                'JumlahYangDihasilkanA12_3_in' => $JumlahYangDihasilkanA12_3_in,
+                'SkorTambahanA12_3' => $SkorTambahanA12_3,
+                'JumlahYangDihasilkanA12_4_in' => $JumlahYangDihasilkanA12_4_in,
+                'SkorTambahanA12_4' => $SkorTambahanA12_4,
+                'JumlahYangDihasilkanA12_5_in' => $JumlahYangDihasilkanA12_5_in,
+                'SkorTambahanA12_5' => $SkorTambahanA12_5,
+                'SkorTambahanJumlahA12' => $SkorTambahanJumlahA12,
+                'JumlahSkorYangDiHasilkanA12' =>  $JumlahSkorYangDiHasilkanA12,
+                'SkorTambahanJumlahSkorA12' => $SkorTambahanJumlahSkorA12,
+                'SkorTambahanJumlahBobotSubItemA12' => $SkorTambahanJumlahBobotSubItemA12,
+
+                'A13' => $A13,
+                'scorA13' => $scorA13,
+                'scorMaxA13' => $scorMaxA13,
+                'scorSubItemA13' => $scorSubItemA13,
+                'fileA13' => $file_a13,
+
+                'TotalSkorPendidikanPointA' => $TotalSkorPendidikanPointA,
+                'TotalKelebihanA11' => $TotalKelebihanA11,
+                'TotalKelebihanA12' => $TotalKelebihanA12,
+                'TotalKelebihanSkor' => $TotalKelebihanSkor,
+                'nilaiPendidikandanPengajaran' => $nilaiPendidikandanPengajaran,
+                'NilaiTambahPendidikanDanPengajaran' => $NilaiTambahPendidikanDanPengajaran,
+                'NilaiTotalPendidikanDanPengajaran' => $NilaiTotalPendidikanDanPengajaran,
+            ];
+
+            $RecordData->update($update);
+            DB::commit();
+            toast('Update Point A successfully :)', 'success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            toast('Update Point A fail :)', 'error');
+            return redirect()->back();
+        }
     }
 
     /**

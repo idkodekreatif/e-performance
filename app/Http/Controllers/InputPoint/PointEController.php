@@ -189,9 +189,10 @@ class PointEController extends Controller
      * @param  \App\Models\PointE  $pointE
      * @return \Illuminate\Http\Response
      */
-    public function edit(PointE $pointE)
+    public function edit(PointE $pointE, $PointId)
     {
-        //
+        $data = PointE::where('user_id', '=', $PointId)->firstOrFail();
+        return view('edit-point.EditPointE', ['data' => $data]);
     }
 
     /**
@@ -201,9 +202,242 @@ class PointEController extends Controller
      * @param  \App\Models\PointE  $pointE
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PointE $pointE)
+    public function update(Request $request, PointE $pointE, $PointId)
     {
-        //
+        $request->validate([
+            'fileE1_1' => 'mimes:pdf|max:2048',
+            'fileE1_2' => 'mimes:pdf|max:2048',
+            'fileE1_3' => 'mimes:pdf|max:2048',
+            'fileE1_4' => 'mimes:pdf|max:2048',
+            'fileE1_5' => 'mimes:pdf|max:2048',
+            'fileE1_6' => 'mimes:pdf|max:2048',
+            'fileE2_1' => 'mimes:pdf|max:2048',
+            'fileE2_2' => 'mimes:pdf|max:2048',
+            'fileE2_3' => 'mimes:pdf|max:2048',
+            'fileE2_4' => 'mimes:pdf|max:2048',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $RecordData =  PointE::where('user_id', $PointId)->firstOrFail();
+            // Request put data update
+            $E1_1 = $request->E1_1;
+            $scorE1_1 = $request->scorE1_1;
+            $scorMaxE1_1 = $request->scorMaxE1_1;
+            $scorSubItemE1_1 = $request->scorSubItemE1_1;
+
+            if ($request->hasFile('fileE1_1')) {
+                if ($RecordData->fileE1_1 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE1_1))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE1_1);
+                }
+                $fileE1_1 = $request->file('fileE1_1')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE1_1 = $RecordData->fileE1_1;
+            }
+
+            $E1_2 = $request->E1_2;
+            $scorE1_2 = $request->scorE1_2;
+            $scorMaxE1_2 = $request->scorMaxE1_2;
+            $scorSubItemE1_2 = $request->scorSubItemE1_2;
+
+            if ($request->hasFile('fileE1_2')) {
+                if ($RecordData->fileE1_2 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE1_2))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE1_2);
+                }
+                $fileE1_2 = $request->file('fileE1_2')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE1_2 = $RecordData->fileE1_2;
+            }
+
+            $E1_3 = $request->E1_3;
+            $scorE1_3 = $request->scorE1_3;
+            $scorMaxE1_3 = $request->scorMaxE1_3;
+            $scorSubItemE1_3 = $request->scorSubItemE1_3;
+
+            if ($request->hasFile('fileE1_3')) {
+                if ($RecordData->fileE1_3 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE1_3))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE1_3);
+                }
+                $fileE1_3 = $request->file('fileE1_3')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE1_3 = $RecordData->fileE1_3;
+            }
+
+            $E1_4 = $request->E1_4;
+            $scorE1_4 = $request->scorE1_4;
+            $scorMaxE1_4 = $request->scorMaxE1_4;
+            $scorSubItemE1_4 = $request->scorSubItemE1_4;
+
+            if ($request->hasFile('fileE1_4')) {
+                if ($RecordData->fileE1_4 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE1_4))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE1_4);
+                }
+                $fileE1_4 = $request->file('fileE1_4')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE1_4 = $RecordData->fileE1_4;
+            }
+
+            $E1_5 = $request->E1_5;
+            $scorE1_5 = $request->scorE1_5;
+            $scorMaxE1_5 = $request->scorMaxE1_5;
+            $scorSubItemE1_5 = $request->scorSubItemE1_5;
+
+            if ($request->hasFile('fileE1_5')) {
+                if ($RecordData->fileE1_5 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE1_5))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE1_5);
+                }
+                $fileE1_5 = $request->file('fileE1_5')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE1_5 = $RecordData->fileE1_5;
+            }
+
+            $E1_6 = $request->E1_6;
+            $scorE1_6 = $request->scorE1_6;
+            $scorMaxE1_6 = $request->scorMaxE1_6;
+            $scorSubItemE1_6 = $request->scorSubItemE1_6;
+
+            if ($request->hasFile('fileE1_6')) {
+                if ($RecordData->fileE1_6 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE1_6))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE1_6);
+                }
+                $fileE1_6 = $request->file('fileE1_6')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE1_6 = $RecordData->fileE1_6;
+            }
+
+            $E2_1 = $request->E2_1;
+            $scorE2_1 = $request->scorE2_1;
+            $scorMaxE2_1 = $request->scorMaxE2_1;
+            $scorSubItemE2_1 = $request->scorSubItemE2_1;
+
+            if ($request->hasFile('fileE2_1')) {
+                if ($RecordData->fileE2_1 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE2_1))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE2_1);
+                }
+                $fileE2_1 = $request->file('fileE2_1')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE2_1 = $RecordData->fileE2_1;
+            }
+
+            $E2_2 = $request->E2_2;
+            $scorE2_2 = $request->scorE2_2;
+            $scorMaxE2_2 = $request->scorMaxE2_2;
+            $scorSubItemE2_2 = $request->scorSubItemE2_2;
+
+            if ($request->hasFile('fileE2_2')) {
+                if ($RecordData->fileE2_2 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE2_2))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE2_2);
+                }
+                $fileE2_2 = $request->file('fileE2_2')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE2_2 = $RecordData->fileE2_2;
+            }
+
+            $E2_3 = $request->E2_3;
+            $scorE2_3 = $request->scorE2_3;
+            $scorMaxE2_3 = $request->scorMaxE2_3;
+            $scorSubItemE2_3 = $request->scorSubItemE2_3;
+
+            if ($request->hasFile('fileE2_3')) {
+                if ($RecordData->fileE2_3 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE2_3))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE2_3);
+                }
+                $fileE2_3 = $request->file('fileE2_3')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE2_3 = $RecordData->fileE2_3;
+            }
+
+            $E2_4 = $request->E2_4;
+            $scorE2_4 = $request->scorE2_4;
+            $scorMaxE2_4 = $request->scorMaxE2_4;
+            $scorSubItemE2_4 = $request->scorSubItemE2_4;
+
+            if ($request->hasFile('fileE2_4')) {
+                if ($RecordData->fileE2_4 && file_exists(storage_path('app/public/uploads/Point-e/' . $RecordData->fileE2_4))) {
+                    \Storage::delete('public/uploads/Point-e/' . $RecordData->fileE2_4);
+                }
+                $fileE2_4 = $request->file('fileE2_4')->store('uploads/Point-e', 'public');
+            } else {
+                $fileE2_4 = $RecordData->fileE2_4;
+            }
+
+            $SumSkor = $request->SumSkor;
+            $NilaiUnsurPengabdian = $request->NilaiUnsurPengabdian;
+
+            $update = [
+                'E1_1' => $E1_1,
+                'scorE1_1' => $scorE1_1,
+                'scorMaxE1_1' => $scorMaxE1_1,
+                'scorSubItemE1_1' => $scorSubItemE1_1,
+                'fileE1_1' => $fileE1_1,
+
+                'E1_2' => $E1_2,
+                'scorE1_2' => $scorE1_2,
+                'scorMaxE1_2' => $scorMaxE1_2,
+                'scorSubItemE1_2' => $scorSubItemE1_2,
+                'fileE1_2' => $fileE1_2,
+
+                'E1_3' => $E1_3,
+                'scorE1_3' => $scorE1_3,
+                'scorMaxE1_3' => $scorMaxE1_3,
+                'scorSubItemE1_3' => $scorSubItemE1_3,
+                'fileE1_3' => $fileE1_3,
+
+                'E1_4' => $E1_4,
+                'scorE1_4' => $scorE1_4,
+                'scorMaxE1_4' => $scorMaxE1_4,
+                'scorSubItemE1_4' => $scorSubItemE1_4,
+                'fileE1_4' => $fileE1_4,
+
+                'E1_5' => $E1_5,
+                'scorE1_5' => $scorE1_5,
+                'scorMaxE1_5' => $scorMaxE1_5,
+                'scorSubItemE1_5' => $scorSubItemE1_5,
+                'fileE1_5' => $fileE1_5,
+
+                'E1_6' => $E1_6,
+                'scorE1_6' => $scorE1_6,
+                'scorMaxE1_6' => $scorMaxE1_6,
+                'scorSubItemE1_6' => $scorSubItemE1_6,
+                'fileE1_6' => $fileE1_6,
+
+                'E2_1' => $E2_1,
+                'scorE2_1' => $scorE2_1,
+                'scorMaxE2_1' => $scorMaxE2_1,
+                'scorSubItemE2_1' => $scorSubItemE2_1,
+                'fileE2_1' => $fileE2_1,
+
+                'E2_2' => $E2_2,
+                'scorE2_2' => $scorE2_2,
+                'scorMaxE2_2' => $scorMaxE2_2,
+                'scorSubItemE2_2' => $scorSubItemE2_2,
+                'fileE2_2' => $fileE2_2,
+
+                'E2_3' => $E2_3,
+                'scorE2_3' => $scorE2_3,
+                'scorMaxE2_3' => $scorMaxE2_3,
+                'scorSubItemE2_3' => $scorSubItemE2_3,
+                'fileE2_3' => $fileE2_3,
+
+                'E2_4' => $E2_4,
+                'scorE2_4' => $scorE2_4,
+                'scorMaxE2_4' => $scorMaxE2_4,
+                'scorSubItemE2_4' => $scorSubItemE2_4,
+                'fileE2_4' => $fileE2_4,
+
+                'SumSkor' => $SumSkor,
+                'NilaiUnsurPengabdian' => $NilaiUnsurPengabdian,
+            ];
+
+            $RecordData->update($update);
+            DB::commit();
+            toast('Update Point E successfully :)', 'success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            toast('Update Point E fail :)', 'error');
+            return redirect()->back();
+        }
     }
 
     /**
