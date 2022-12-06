@@ -12,13 +12,7 @@
                     <span class="nav-text">Charts</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('raport.chart') }}">Laporan</a></li>
-                    {{-- <li><a href="javascript:void()">Flot</a></li>
-                    <li><a href="javascript:void()">Morris</a></li> --}}
-                    {{-- <li><a href="{{ route('raport.chart', Auth::user()->id) }}">Chartjs</a></li> --}}
-                    {{-- <li><a href="javascript:void()">Chartist</a></li>
-                    <li><a href="javascript:void()">Sparkline</a></li>
-                    <li><a href="javascript:void()">Peity</a></li> --}}
+                    <li><a href="{{ route('raport.chart') }}">Laporan Dosen</a></li>
                 </ul>
             </li>
             @endrole
@@ -50,6 +44,7 @@
             </li>
 
             @role('it|superuser')
+
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-table"></i>
                     <span class="nav-text">Table</span>
@@ -59,20 +54,29 @@
                     <li><a href="javascript:void()">Datatable</a></li>
                 </ul>
             </li>
+            @endrole
 
+            @role('hrd|it|superuser')
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-info-circle"></i>
                     <span class="nav-text">Maintenain</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('usercontrol') }}">User Control</a></li>
+                    @role('it|superuser')
                     <li><a href="javascript:void()">Activity Log</a></li>
+                    @endrole
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Menu Control</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('Menu.Controller') }}">Menu Edit Point</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             @endrole
         </ul>
         <div class="side-bar-profile">
-            <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex align-items-center justify-content-start mb-3">
                 <div class="side-bar-profile-img">
                     <img src="{{ asset('Assets/images/user.jpg') }}" alt="">
                 </div>
@@ -84,7 +88,7 @@
                     <i></i>
                 </div>
             </div>
-            <div class="d-flex justify-content-between mb-2 progress-info">
+            <div class="d-flex justify-content-start mb-2 progress-info">
                 <span class="fs-12"><i class="fas fa-star text-orange me-2"></i>Task Progress</span>
                 <span class="fs-12">20/45</span>
             </div>
@@ -98,7 +102,7 @@
 
         <div class="copyright">
             <p><strong>Institut Kesehatan & Bisnis Surabaya</strong> © {{ date('Y') }} All Rights Reserved</p>
-            <p class="fs-12">Made with <span class="heart"></span> by IKBIS</p>
+            <p class="fs-12">Made with by IKBIS</p>
         </div>
     </div>
 </div>

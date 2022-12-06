@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\InputPoint;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Models\PointE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -166,10 +167,6 @@ class PointEController extends Controller
             toast('Add Point E fail :)', 'error');
             return redirect()->back();
         }
-
-
-        // toast('Berhasil menambahkan Point E', 'success');
-        // return redirect()->route('point-E');
     }
 
     /**
@@ -191,7 +188,16 @@ class PointEController extends Controller
      */
     public function edit(PointE $pointE, $PointId)
     {
-        $data = PointE::where('user_id', '=', $PointId)->firstOrFail();
+        $dataMenu = Menu::first();
+
+        if ($dataMenu->control_menu == 0)
+            return view('menu.disabled');
+        elseif (PointE::where('user_id', '=', $PointId)->first() == "") {
+            return view('menu.menu-empty');
+        } else {
+            $data = PointE::where('user_id', '=', $PointId)->first();
+        }
+
         return view('edit-point.EditPointE', ['data' => $data]);
     }
 

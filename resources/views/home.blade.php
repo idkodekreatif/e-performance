@@ -17,8 +17,9 @@
                                 <div class="card-body tryal row">
                                     <div class="col-xl-7 col-sm-6">
                                         <h2>Manage your performance ikbis.</h2>
-                                        <span>Let Fillow manage your project automatically with our best AI
-                                            systems </span>
+                                        <span>Let Follow manage your Progress automatically with our best systems
+                                            performance
+                                        </span>
                                         <a href="javascript:void(0);"
                                             class="btn btn-rounded  fs-18 font-w500">IKBIS.AC.ID</a>
                                     </div>
@@ -39,7 +40,7 @@
                                     <div class="card">
                                         <div class="card-body d-flex px-4 pb-0 justify-content-between">
                                             <div>
-                                                <h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Clients
+                                                <h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Users
                                                 </h4>
                                                 <div class="d-flex align-items-center">
                                                     <h2 class="fs-32 font-w700 mb-0">68</h2>
@@ -62,7 +63,7 @@
                                 <div class="col-xl-6 col-sm-6">
                                     <div class="card">
                                         <div class="card-body px-4 pb-0">
-                                            <h4 class="fs-18 font-w600 mb-5 text-nowrap">Total Clients</h4>
+                                            <h4 class="fs-18 font-w600 mb-5 text-nowrap">Total Users</h4>
                                             <div class="progress default-progress">
                                                 <div class="progress-bar bg-gradient1 progress-animated"
                                                     style="width: 40%; height:10px;" role="progressbar">
@@ -83,10 +84,10 @@
                                                 <div class="">
                                                     <h2 class="fs-32 font-w700">562</h2>
                                                     <span class="fs-18 font-w500 d-block">Total
-                                                        Clients</span>
-                                                    <span class="d-block fs-16 font-w400"><small
+                                                        Users</span>
+                                                    {{-- <span class="d-block fs-16 font-w400"><small
                                                             class="text-danger">-2%</small> than last
-                                                        month</span>
+                                                        month</span> --}}
                                                 </div>
                                             </div>
                                             <div id="NewCustomers"></div>
@@ -100,10 +101,10 @@
                                                 <div class="">
                                                     <h2 class="fs-32 font-w700">892</h2>
                                                     <span class="fs-18 font-w500 d-block">New
-                                                        Projects</span>
-                                                    <span class="d-block fs-16 font-w400"><small
+                                                        Performance</span>
+                                                    {{-- <span class="d-block fs-16 font-w400"><small
                                                             class="text-success">-2%</small> than last
-                                                        month</span>
+                                                        month</span> --}}
                                                 </div>
                                             </div>
                                             <div id="NewCustomers1"></div>
