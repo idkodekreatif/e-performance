@@ -10,9 +10,7 @@ class MenuController extends Controller
 {
     public function IndexMenuPoint()
     {
-        // $data = DB::table('control_menu')->first();
         $data = Menu::first();
-        // dd($data);
         return view('menu.menu-point', ['data' => $data]);
     }
 

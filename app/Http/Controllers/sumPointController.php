@@ -104,7 +104,6 @@ class sumPointController extends Controller
             ->where('point_d.user_id', $user_id)
             ->where('point_e.user_id', $user_id)
             ->first();
-        // dd($users);
 
         return view('input-point.raport', compact('users'));
     }
@@ -120,8 +119,6 @@ class sumPointController extends Controller
         }
         if ($request->User_Name != null) {
             $users = $users->where('users.id', $request->User_Name);
-            // $users = $users->orWhere('fakultas', 'LIKE', '%' . $request->keyword . '%');
-            // $users = $users->orWhere('prodi', 'LIKE', '%' . $request->keyword . '%');
         }
         if ($request->fakultas != null) {
             $users = $users->where('users.fakultas', $request->fakultas);
@@ -193,8 +190,6 @@ class sumPointController extends Controller
             $messagesArray[] = $result_data;
         }
 
-        // dd($messagesArray);
-        // return view('input-point.chart_raport', ['messagesArray' => $messagesArray]);
         return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName'));
     }
 }
