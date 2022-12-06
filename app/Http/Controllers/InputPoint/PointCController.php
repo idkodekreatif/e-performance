@@ -281,8 +281,6 @@ class PointCController extends Controller
             toast('Add Point C fail :)', 'error');
             return redirect()->back();
         }
-        // toast('Berhasil menambahkan Point C', 'success');
-        // return redirect()->route('point-C');
     }
 
     /**

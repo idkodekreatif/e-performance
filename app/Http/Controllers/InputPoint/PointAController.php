@@ -256,7 +256,7 @@ class PointAController extends Controller
     public function edit(PointA $pointA, $PointId)
     {
         $dataMenu = Menu::first();
-        // dd($dataMenu);
+
         if ($dataMenu->control_menu == 0)
             return view('menu.disabled');
         elseif (PointA::where('user_id', '=', $PointId)->first() == "") {

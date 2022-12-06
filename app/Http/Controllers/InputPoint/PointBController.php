@@ -405,7 +405,6 @@ class PointBController extends Controller
             toast('Add Point B fail :)', 'error');
             return redirect()->back();
         }
-        // return redirect()->route('point-B');
     }
 
     /**
