@@ -21,17 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
 // -----------------------------Home----------------------------------------//
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified');
 
 
-Route::group(['middleware' => ['role:superuser|it|hrd|lppm']], function () {
+Route::group(['middleware' => ['role:superuser|it|hrd|lppm', 'auth', 'verified']], function () {
     // -----------------------------Users Management----------------------------------------//
     Route::controller(ControlUserController::class)->group(function () {
         Route::get('/UserControl', 'index')->name('usercontrol');
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['role:superuser|it|hrd|lppm']], function () {
 });
 
 // -----------------------------Prefix All Point----------------------------------------//
-Route::group(['prefix' => "/Point", 'middleware' => ['role:superuser|it|hrd|lppm|dosen']], function () {
+Route::group(['prefix' => "/Point", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified']], function () {
 
     // -----------------------------Point A----------------------------------------//
     Route::controller(PointAController::class)->group(function () {
@@ -96,7 +96,7 @@ Route::group(['prefix' => "/Point", 'middleware' => ['role:superuser|it|hrd|lppm
 
 // -----------------------------Aggregat----------------------------------------//
 Route::group(
-    ['middleware' => ['role:superuser|it']],
+    ['middleware' => ['role:superuser|it', 'auth', 'verified']],
     function () {
         Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
     }
