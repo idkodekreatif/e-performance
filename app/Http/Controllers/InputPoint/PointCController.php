@@ -304,7 +304,9 @@ class PointCController extends Controller
     {
         $dataMenu = Menu::first();
 
-        if ($dataMenu->control_menu == 0)
+        if (empty($dataMenu)) {
+            return redirect()->back();
+        } elseif ($dataMenu->control_menu == 0)
             return view('menu.disabled');
         elseif (PointC::where('user_id', '=', $PointId)->first() == "") {
             return view('menu.menu-empty');
