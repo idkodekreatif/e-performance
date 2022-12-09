@@ -8,6 +8,10 @@ use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
+use App\Http\Controllers\UserManagement\IndexController;
+use App\Http\Controllers\UserManagement\PermissionController;
+use App\Http\Controllers\UserManagement\RoleController;
+use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,11 +35,43 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified');
 
 
-Route::group(['middleware' => ['role:superuser|it|hrd|lppm', 'auth', 'verified']], function () {
-    // -----------------------------Users Management----------------------------------------//
-    Route::controller(ControlUserController::class)->group(function () {
-        Route::get('/UserControl', 'index')->name('usercontrol');
+Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified']], function () {
+    // -----------------------------Users Management Spatie----------------------------------------//
+    Route::controller(IndexController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
     });
+
+    // ----------------------------- User Role Controller ----------------------------------------//
+    Route::resource('/role', RoleController::class);
+    Route::controller(RoleController::class)->group(function () {
+        Route::post('/roles/{role}/permissions', 'givePermission')->name('role.permissions');
+        Route::delete('/roles/{role}/permissions/{permission}', 'revokePermission')->name('role.permission.revoke');
+    });
+
+    // ----------------------------- User Permissions Controller ----------------------------------------//
+    Route::resource('/permission', PermissionController::class);
+    Route::controller(PermissionController::class)->group(function () {
+        Route::post('/permissions/{permission}/roles', 'assignRole')->name('permissions.roles');
+        Route::delete('/permissions/{permission}/roles/{role}', 'removeRole')->name('permission.role.remove');
+    });
+
+
+    // ----------------------------- User Management ----------------------------------------//
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/users', 'index')->name('users.index');
+        Route::get('/users/{user}', 'show')->name('users.show');
+        Route::delete('/users/{user}', 'destroy')->name('users.destroy');
+        Route::post('/users/{user}/roles', 'assignRole')->name('users.roles');
+        Route::delete('/users/{user}/roles/{role}', 'removeRole')->name('users.roles.remove');
+        Route::post('/users/{user}/permissions', 'givePermission')->name('users.permissions');
+        Route::delete('/users/{user}/permissions/{permission}', 'revokePermission')->name('users.permissions.revoke');
+    });
+
+
+    // -----------------------------Users Management----------------------------------------//
+    // Route::controller(ControlUserController::class)->group(function () {
+    //     Route::get('/UserControl', 'index')->name('usercontrol');
+    // });
 
     // -----------------------------Menu Controller Edit Point----------------------------------------//
     Route::controller(MenuController::class)->group(function () {

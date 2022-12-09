@@ -63,7 +63,14 @@
                 </a>
                 <ul aria-expanded="false">
                     @role('it|superuser')
-                    <li><a href="{{ route('usercontrol') }}">User Control</a></li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">User Control</a>
+                        <ul aria-expanded="false">
+                            {{-- <li><a href="{{ route('usercontrol') }}">User Management</a></li> --}}
+                            <li><a href="{{ route('users.index') }}">User Management</a></li>
+                            <li><a href="{{ route('role.index') }}">User Role</a></li>
+                            <li><a href="{{ route('permission.index') }}">User Permission</a></li>
+                        </ul>
+                    </li>
                     <li><a href="javascript:void()">Activity Log</a></li>
                     @endrole
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Menu Control</a>
@@ -78,7 +85,7 @@
         <div class="side-bar-profile">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="side-bar-profile-img">
-                    <img src="{{ asset('Assets/images/user.jpg') }}" alt="">
+                    <img src="{{ asset('Assets/images/undraw_profile.svg') }}" alt="">
                 </div>
                 <div class="profile-info1">
                     <h4 class="fs-18 font-w500">{{ Auth::user()->name }}</h4>
