@@ -230,10 +230,6 @@ class PointAController extends Controller
             toast('Add Point A fail :)', 'error');
             return redirect()->back();
         }
-
-        // PointA::create($request->all());
-
-        // return redirect()->route('point-A')->with('status', 'Point A Telah di isi');
     }
 
     /**

@@ -10,7 +10,7 @@
         </svg>
         <div class="brand-title">
             <h2 class="">Ikbis.</h2>
-            <span class="brand-sub-title">Institut Kesehatan & bisnis Surabaya</span>
+            <span class="brand-sub-title">Institut Kesehatan dan Bisnis Surabaya</span>
         </div>
     </a>
     <div class="nav-control">
