@@ -17,7 +17,11 @@
                     </li>
                     <li class="nav-item dropdown  header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+                            @if (Auth::user()->avatar)
                             <img src="{{ asset('/storage/photos/'. Auth::user()->avatar) }}" width="56" alt="">
+                            @else
+                            <img src="{{ asset('Assets/images/profile/profile.png') }}" width="56" alt="">
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="{{ route('profile.index') }}" class="dropdown-item ai-icon">

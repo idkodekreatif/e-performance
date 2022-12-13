@@ -6,7 +6,7 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            @role('it|superuser')
+            @role('it|superuser|manajer')
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-chart-line"></i>
                     <span class="nav-text">Charts</span>
@@ -16,6 +16,8 @@
                 </ul>
             </li>
             @endrole
+
+            @role('it|superuser|dosen')
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-file-alt"></i>
                     <span class="nav-text">Forms</span>
@@ -42,9 +44,9 @@
                     <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>
                 </ul>
             </li>
+            @endrole
 
             @role('it|superuser')
-
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-table"></i>
                     <span class="nav-text">Table</span>
@@ -71,7 +73,7 @@
                             <li><a href="{{ route('permission.index') }}">User Permission</a></li>
                         </ul>
                     </li>
-                    <li><a href="javascript:void()">Activity Log</a></li>
+                    <li><a href="{{ route('logactivity') }}">Activity Log</a></li>
                     @endrole
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Menu Control</a>
                         <ul aria-expanded="false">
@@ -85,7 +87,11 @@
         <div class="side-bar-profile">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="side-bar-profile-img">
+                    @if (Auth::user()->avatar)
                     <img src="{{ asset('/storage/photos/'. Auth::user()->avatar) }}" alt="">
+                    @else
+                    <img src="{{ asset('Assets/images/profile/profile.png') }}" width="56" alt="">
+                    @endif
                 </div>
                 <div class="profile-info1">
                     <h4 class="fs-18 font-w500">{{ Auth::user()->name }}</h4>
@@ -108,7 +114,7 @@
         </div>
 
         <div class="copyright">
-            <p><strong>Institut Kesehatan & Bisnis Surabaya</strong> © {{ date('Y') }} All Rights Reserved</p>
+            <p><strong>Institut Kesehatan dan Bisnis Surabaya</strong> © {{ date('Y') }} All Rights Reserved</p>
             <p class="fs-12">Made with by IKBIS</p>
         </div>
     </div>

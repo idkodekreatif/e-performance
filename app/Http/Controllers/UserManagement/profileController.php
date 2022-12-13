@@ -48,6 +48,7 @@ class profileController extends Controller
             $user->prodi = $request->prodi;
             $user->save();
 
+            // activity()->log('Update profile User');
             DB::commit();
             toast('Update Profile successfully :)', 'success');
             return redirect()->back();

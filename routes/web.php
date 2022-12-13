@@ -6,6 +6,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
 use App\Http\Controllers\UserManagement\IndexController;
@@ -36,15 +37,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified');
 
 
-Route::resource('profile', profileController::class)->only(['index', 'update']);
-
-// Route::group(['middleware' => ['auth', 'verified']], function () {
-//     // ----------------------------- Profile User ----------------------------------------//
-//     Route::controller(profileController::class)->group(function () {
-//         Route::post('/profile/{profile}]', 'storeProfileMe')->name('users.profile.aboutme');
-//     });
-// });
-
+Route::resource('profile', profileController::class)->only(['index', 'update'])->middleware('auth', 'verified');
 
 
 Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified']], function () {
@@ -78,13 +71,6 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::post('/users/{user}/permissions', 'givePermission')->name('users.permissions');
         Route::delete('/users/{user}/permissions/{permission}', 'revokePermission')->name('users.permissions.revoke');
     });
-
-
-
-    // -----------------------------Users Management----------------------------------------//
-    // Route::controller(ControlUserController::class)->group(function () {
-    //     Route::get('/UserControl', 'index')->name('usercontrol');
-    // });
 
     // -----------------------------Menu Controller Edit Point----------------------------------------//
     Route::controller(MenuController::class)->group(function () {
@@ -145,8 +131,13 @@ Route::group(['prefix' => "/Point", 'middleware' => ['role:superuser|it|hrd|lppm
 
 // -----------------------------Aggregat----------------------------------------//
 Route::group(
-    ['middleware' => ['role:superuser|it', 'auth', 'verified']],
+    ['middleware' => ['role:superuser|it|manajer', 'auth', 'verified']],
     function () {
         Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
     }
 );
+
+// -----------------------------Log Activity----------------------------------------//
+Route::controller(LogActivity::class)->group(function () {
+    Route::get('/logactivity', 'index')->name('logactivity');
+});

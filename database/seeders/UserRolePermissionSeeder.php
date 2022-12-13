@@ -62,6 +62,12 @@ class UserRolePermissionSeeder extends Seeder
                 'password' => bcrypt('tendik123456')
             ], $default_user_value));
 
+            $manajer = User::create(array_merge([
+                'email' => 'manajer@ikbis.ac.id',
+                'name' => 'manajer',
+                'password' => bcrypt('manajer123456')
+            ], $default_user_value));
+
             // membuat role user
             $role_dosen = Role::create(['name' => 'dosen']);
             $role_tendik = Role::create(['name' => 'tendik']);
@@ -69,6 +75,7 @@ class UserRolePermissionSeeder extends Seeder
             $role_lppm = Role::create(['name' => 'lppm']);
             $role_superuser = Role::create(['name' => 'superuser']);
             $role_it = Role::create(['name' => 'it']);
+            $role_manajer = Role::create(['name' => 'manajer']);
 
             // membuat permission
             $permission = Permission::create(['name' => 'read role']);
@@ -82,6 +89,8 @@ class UserRolePermissionSeeder extends Seeder
             $role_it->givePermissionTo('update role');
             $role_it->givePermissionTo('delete role');
             $role_it->givePermissionTo('read konfigurasi');
+
+            $role_manajer->givePermissionTo('read role');
 
             $role_superuser->givePermissionTo('read role');
             $role_superuser->givePermissionTo('create role');
@@ -119,6 +128,7 @@ class UserRolePermissionSeeder extends Seeder
             $lppm->assignRole('lppm');
             $superuser->assignRole('superuser');
             $it->assignRole('it');
+            $manajer->assignRole('manajer');
 
             DB::commit();
         } catch (\Throwable $th) {
