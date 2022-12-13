@@ -25,36 +25,35 @@ class profileController extends Controller
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // DB::beginTransaction();
-        // try {
-        $user = Profile::findOrFail($profile);
+        DB::beginTransaction();
+        try {
+            $user = Profile::findOrFail($profile);
 
-        $user->about_me = $request->about_me;
+            $user->about_me = $request->about_me;
 
-        if (request()->hasFile('avatar')) {
-            if ($user->avatar && file_exists(storage_path('app/public/photos/' . $user->avatar))) {
-                \Storage::delete('app/public/photos/' . $user->avatar);
+            if (request()->hasFile('avatar')) {
+                if ($user->avatar && file_exists(storage_path('app/public/photos/' . $user->avatar))) {
+                    \Storage::delete('app/public/photos/' . $user->avatar);
+                }
+
+                $file = $request->file('avatar');
+                $fileName = $file->hashName() . '.' . $file->getClientOriginalExtension();
+                $request->avatar->move(storage_path('app/public/photos'), $fileName);
+                $user->avatar = $fileName;
             }
 
-            $file = $request->file('avatar');
-            $fileName = $file->hashName() . '.' . $file->getClientOriginalExtension();
-            $request->avatar->move(storage_path('app/public/photos'), $fileName);
-            $user->avatar = $fileName;
+            $user->email = $request->email;
+            $user->fakultas = $request->fakultas;
+            $user->prodi = $request->prodi;
+            $user->save();
+
+            DB::commit();
+            toast('Update Profile successfully :)', 'success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            toast('Update Profile fail :)', 'error');
+            return redirect()->back();
         }
-
-        $user->email = $request->email;
-        $user->fakultas = $request->fakultas;
-        $user->prodi = $request->prodi;
-        $user->save();
-
-        // activity()->log('Update profile User');
-        // DB::commit();
-        toast('Update Profile successfully :)', 'success');
-        return redirect()->back();
-        // } catch (\Throwable $th) {
-        //     DB::rollBack();
-        //     toast('Update Profile fail :)', 'error');
-        //     return redirect()->back();
-        // }
     }
 }
