@@ -85,7 +85,7 @@
         <div class="side-bar-profile">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="side-bar-profile-img">
-                    <img src="{{ asset('Assets/images/undraw_profile.svg') }}" alt="">
+                    <img src="{{ asset('/storage/photos/'. Auth::user()->avatar) }}" alt="">
                 </div>
                 <div class="profile-info1">
                     <h4 class="fs-18 font-w500">{{ Auth::user()->name }}</h4>

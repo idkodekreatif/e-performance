@@ -10,6 +10,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
 use App\Http\Controllers\UserManagement\IndexController;
 use App\Http\Controllers\UserManagement\PermissionController;
+use App\Http\Controllers\UserManagement\profileController;
 use App\Http\Controllers\UserManagement\RoleController;
 use App\Http\Controllers\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,17 @@ Route::get('/', function () {
 
 // -----------------------------Home----------------------------------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified');
+
+
+Route::resource('profile', profileController::class)->only(['index', 'update']);
+
+// Route::group(['middleware' => ['auth', 'verified']], function () {
+//     // ----------------------------- Profile User ----------------------------------------//
+//     Route::controller(profileController::class)->group(function () {
+//         Route::post('/profile/{profile}]', 'storeProfileMe')->name('users.profile.aboutme');
+//     });
+// });
+
 
 
 Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified']], function () {
@@ -66,6 +78,7 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::post('/users/{user}/permissions', 'givePermission')->name('users.permissions');
         Route::delete('/users/{user}/permissions/{permission}', 'revokePermission')->name('users.permissions.revoke');
     });
+
 
 
     // -----------------------------Users Management----------------------------------------//
