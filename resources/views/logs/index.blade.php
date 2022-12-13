@@ -10,7 +10,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Responsive Table</h4>
+            <h4 class="card-title">Logs Activity</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
