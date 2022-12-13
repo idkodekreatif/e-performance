@@ -65,8 +65,10 @@
                     onsubmit="return confirm('Are you sure?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger shadow btn-xs">{{ $permission_role->name
-                        }}</button>
+                    <div class="d-flex float-start mb-2 mr-2">
+                        <button type="submit" class="btn btn-primary light btn-xs">{{ $permission_role->name
+                            }}</button>
+                    </div>
                 </form>
                 @endforeach
                 @endif
@@ -74,7 +76,7 @@
                 <form method="POST" action="{{ route('permissions.roles', $permission->id) }}">
                     @csrf
 
-                    <label class="form-label" for="role">Roles</label>
+                    {{-- <label class="form-label" for="role">Roles</label> --}}
                     <select class="default-select form-control wide mb-3" name="role" id="role">
                         @foreach ($roles as $role)
                         <option value="{{ $role->name }}">{{ $role->name }}</option>

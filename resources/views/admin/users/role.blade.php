@@ -49,21 +49,24 @@
             <h4 class="card-title">Role</h4>
         </div>
         <div class="card-body">
+
             @if ($user->roles)
             @foreach ($user->roles as $user_role)
             <form method="POST" action="{{ route('users.roles.remove', [$user->id, $user_role->id]) }}"
                 onsubmit="return confirm('Are you sure?')">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger shadow btn-xs">{{ $user_role->name
-                    }}</button>
+                <div class="float-start mb-2">
+                    <button type="submit" class="btn btn-primary light btn-xs">{{ $user_role->name
+                        }}</button>
+                </div>
             </form>
             @endforeach
             @endif
 
             <form method="POST" action="{{ route('users.roles', $user->id) }}">
                 @csrf
-                <label class="form-label" for="role">Roles</label>
+                {{-- <label class="form-label" for="role">Roles</label> --}}
                 <select class="default-select form-control wide mb-3" name="role" id="role">
                     @foreach ($roles as $role)
                     <option value="{{ $role->name }}">{{ $role->name }}</option>
@@ -91,14 +94,16 @@
                 onsubmit="return confirm('Are you sure?')">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger shadow btn-xs">{{ $user_permission->name }}</button>
+                <div class="d-flex float-start mb-2 mr-2">
+                    <button type="submit" class="btn btn-primary light btn-xs">{{ $user_permission->name }}</button>
+                </div>
             </form>
             @endforeach
             @endif
 
             <form method="POST" action="{{ route('users.permissions', $user->id) }}">
                 @csrf
-                <label class="form-label" for="permission">Permission</label>
+                {{-- <label class="form-label" for="permission">Permission</label> --}}
                 <select class="default-select form-control wide mb-3" name="permission" id="permission">
                     @foreach ($permissions as $permission)
                     <option value="{{ $permission->name }}">{{ $permission->name }}</option>
