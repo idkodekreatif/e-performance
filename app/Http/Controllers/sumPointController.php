@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -105,6 +106,8 @@ class sumPointController extends Controller
             ->where('point_e.user_id', $user_id)
             ->first();
 
+
+
         return view('input-point.raport', compact('users'));
     }
 
@@ -112,7 +115,9 @@ class sumPointController extends Controller
     {
         $users = DB::table('users');
 
-        $resultGetUsersName = DB::table('users')->get();
+        $resultGetUsersName = User::whereNotIn('name', [
+            'it', 'superuser', 'manajer', 'lppm', 'hrd'
+        ])->get();
 
         if ($request->keyword != null) {
             $users = $users->orWhere('users.name', 'LIKE', '%' . $request->keyword . '%');
@@ -128,12 +133,17 @@ class sumPointController extends Controller
         }
 
         $data = $users
-            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
             ->leftJoin('point_a', 'point_a.user_id', 'users.id')
             ->leftJoin('point_b', 'point_b.user_id', 'users.id')
             ->leftJoin('point_c', 'point_c.user_id', 'users.id')
             ->leftJoin('point_d', 'point_d.user_id', 'users.id')
             ->leftJoin('point_e', 'point_e.user_id', 'users.id')
+            ->whereNotNull('point_a.user_id')
+            ->whereNotNull('point_b.user_id')
+            ->whereNotNull('point_c.user_id')
+            ->whereNotNull('point_d.user_id')
+            ->whereNotNull('point_e.user_id')
+            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
             ->get();
 
         $messagesArray = [];
