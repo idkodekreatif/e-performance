@@ -19,7 +19,8 @@ Reset
 
                 <div class="col-md-6">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                        name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus
+                        readonly>
 
                     @error('email')
                     <span class="invalid-feedback" role="alert">
