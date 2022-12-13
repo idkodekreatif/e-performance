@@ -64,17 +64,14 @@
                     <span class="nav-text">Maintenain</span>
                 </a>
                 <ul aria-expanded="false">
-                    @role('it|superuser')
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">User Control</a>
                         <ul aria-expanded="false">
-                            {{-- <li><a href="{{ route('usercontrol') }}">User Management</a></li> --}}
                             <li><a href="{{ route('users.index') }}">User Management</a></li>
                             <li><a href="{{ route('role.index') }}">User Role</a></li>
                             <li><a href="{{ route('permission.index') }}">User Permission</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('logactivity') }}">Activity Log</a></li>
-                    @endrole
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Menu Control</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('Menu.Controller') }}">Menu Edit Point</a></li>
