@@ -18,8 +18,12 @@
                     </div>
                     <div class="profile-info">
                         <div class="profile-photo">
+                            @if (Auth::user()->avatar)
                             <img src="{{ asset('/storage/photos/'. Auth::user()->avatar) }}"
                                 class="img-fluid rounded-circle" alt="">
+                            @else
+                            <img src="{{ asset('Assets/images/profile/profile.png') }}" width="56" alt="">
+                            @endif
                         </div>
                         <div class="profile-details">
                             <div class="profile-name px-3 pt-2">
