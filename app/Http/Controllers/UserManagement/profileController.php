@@ -28,7 +28,7 @@ class profileController extends Controller
 
         DB::beginTransaction();
         try {
-            $user = User::findOrFail($profile);
+            $user = profile::findOrFail($profile);
 
             $user->about_me = $request->about_me;
 
