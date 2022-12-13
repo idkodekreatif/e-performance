@@ -36,12 +36,6 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected static $logFillable = true;
-
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return $this->name . " {$eventName} Oleh: " . Auth::user()->name;
-    }
-
     protected static $logOnlyDirty = true;
 
     /**
