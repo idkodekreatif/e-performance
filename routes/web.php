@@ -131,7 +131,7 @@ Route::group(['prefix' => "/Point", 'middleware' => ['role:superuser|it|hrd|lppm
 
 // -----------------------------Aggregat----------------------------------------//
 Route::group(
-    ['middleware' => ['role:superuser|it|manajer', 'auth', 'verified']],
+    ['middleware' => ['role:superuser|it|manajer|hrd', 'auth', 'verified']],
     function () {
         Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
     }
