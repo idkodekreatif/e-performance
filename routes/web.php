@@ -9,6 +9,7 @@ use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
+use App\Http\Controllers\UserManagement\ImpersonateController;
 use App\Http\Controllers\UserManagement\IndexController;
 use App\Http\Controllers\UserManagement\PermissionController;
 use App\Http\Controllers\UserManagement\profileController;
@@ -129,13 +130,19 @@ Route::group(['prefix' => "/Point", 'middleware' => ['role:superuser|it|hrd|lppm
     });
 });
 
-// -----------------------------Aggregat----------------------------------------//
+// -----------------------------Aggregat Itikad----------------------------------------//
 Route::group(
     ['middleware' => ['role:superuser|it|manajer|hrd', 'auth', 'verified']],
     function () {
         Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
     }
 );
+
+// -----------------------------Laravel Impersonate / Login As----------------------------------------//
+Route::controller(ImpersonateController::class, ['middleware' => ['auth', 'verified']])->group(function () {
+    Route::get('/impersonate/{id}', 'impersonate')->name('impersonate');
+    Route::get('/stop-impersonate', 'stopImpersonate')->name('stop-impersonate');
+});
 
 // -----------------------------Log Activity----------------------------------------//
 Route::controller(LogActivity::class)->group(function () {
