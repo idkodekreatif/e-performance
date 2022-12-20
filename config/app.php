@@ -165,6 +165,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         // Sweetalert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        // Laravel Impersonate
+        Lab404\Impersonate\ImpersonateServiceProvider::class,
 
 
         /*

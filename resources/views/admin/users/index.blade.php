@@ -36,6 +36,8 @@
                                 <div class="d-flex">
                                     <a href="{{ route('users.show', $user->id) }}"
                                         class="btn btn-primary shadow btn-xs me-1">Roles</a>
+                                    <a href="{{ route('impersonate', $user->id) }}"
+                                        class="btn btn-primary shadow btn-xs me-1">Impersonate</a>
                                     {{-- <a href="" class="btn btn-primary shadow btn-xs me-1">Permissions</a> --}}
                                     <form method="POST" action="{{ route('users.destroy', $user->id) }}"
                                         onsubmit="return confirm('Are you sure delete user?')">
