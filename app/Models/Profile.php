@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Traits\LogsActivity;
 
+/**
+ * Profile
+ */
 class Profile extends Model
 {
     use HasFactory, LogsActivity;
@@ -17,9 +20,17 @@ class Profile extends Model
     protected $guarded = [];
 
     protected static $logUnguarded = true;
+
+    /**
+     * getDescriptionForEvent
+     *
+     * @param  mixed $eventName
+     * @return string
+     */
     public function getDescriptionForEvent(string $eventName): string
     {
         return $this->name . " {$eventName} Oleh: " . Auth::user()->name;
     }
+
     protected static $logOnlyDirty = true;
 }

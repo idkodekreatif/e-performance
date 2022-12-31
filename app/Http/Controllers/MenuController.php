@@ -6,14 +6,28 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * MenuController
+ */
 class MenuController extends Controller
 {
+    /**
+     * IndexMenuPoint
+     *
+     * @return void
+     */
     public function IndexMenuPoint()
     {
         $data = Menu::first();
         return view('menu.menu-point', ['data' => $data]);
     }
 
+    /**
+     * MenuPointSore
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function MenuPointSore(Request $request)
     {
         DB::beginTransaction();
@@ -31,6 +45,13 @@ class MenuController extends Controller
         }
     }
 
+    /**
+     * MenuPointUpdate
+     *
+     * @param  mixed $request
+     * @param  mixed $id_menu
+     * @return void
+     */
     public function MenuPointUpdate(Request $request, $id_menu)
     {
         DB::beginTransaction();

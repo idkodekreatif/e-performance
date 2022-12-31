@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
+/**
+ * UserController
+ */
 class UserController extends Controller
 {
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index()
     {
         $users = User::whereNotIn('name', [
@@ -18,6 +26,12 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    /**
+     * show
+     *
+     * @param  mixed $user
+     * @return void
+     */
     public function show(User $user)
     {
         $roles = Role::all();
@@ -26,6 +40,13 @@ class UserController extends Controller
         return view('admin.users.role', compact('user', 'roles', 'permissions'));
     }
 
+    /**
+     * assignRole
+     *
+     * @param  mixed $request
+     * @param  mixed $user
+     * @return void
+     */
     public function assignRole(Request $request, User $user)
     {
         if ($user->hasRole($request->role)) {
@@ -38,6 +59,13 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * removeRole
+     *
+     * @param  mixed $user
+     * @param  mixed $role
+     * @return void
+     */
     public function removeRole(User $user, Role $role)
     {
         if ($user->hasRole($role)) {
@@ -50,6 +78,13 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * givePermission
+     *
+     * @param  mixed $request
+     * @param  mixed $user
+     * @return void
+     */
     public function givePermission(Request $request, User $user)
     {
         if ($user->hasPermissionTo($request->permission)) {
@@ -61,6 +96,13 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * revokePermission
+     *
+     * @param  mixed $user
+     * @param  mixed $permission
+     * @return void
+     */
     public function revokePermission(User $user, Permission $permission)
     {
         if ($user->hasPermissionTo($permission)) {
@@ -73,6 +115,12 @@ class UserController extends Controller
     }
 
 
+    /**
+     * destroy
+     *
+     * @param  mixed $user
+     * @return void
+     */
     public function destroy(User $user)
     {
         if ($user->hasRole('admin')) {

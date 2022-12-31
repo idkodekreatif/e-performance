@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 class sumPoint extends Model
 {
     use HasFactory;
+
+    /**
+     * table raport_user
+     *
+     * @var string
+     */
     protected $table = "raport_user";
     protected $guarded = [];
 }
