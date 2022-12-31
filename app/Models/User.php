@@ -58,22 +58,51 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * PointAId
+     *
+     * @return void
+     */
     public function PointAId()
     {
         return $this->hasOne(PointA::class, 'user_id', 'id');
     }
+
+    /**
+     * PointBId
+     *
+     * @return void
+     */
     public function PointBId()
     {
         return $this->hasOne(PointB::class, 'user_id', 'id');
     }
+
+    /**
+     * PointCId
+     *
+     * @return void
+     */
     public function PointCId()
     {
         return $this->hasOne(PointC::class, 'user_id', 'id');
     }
+
+    /**
+     * PointDId
+     *
+     * @return void
+     */
     public function PointDId()
     {
         return $this->hasOne(PointD::class, 'user_id', 'id');
     }
+
+    /**
+     * PointEId
+     *
+     * @return void
+     */
     public function PointEId()
     {
         return $this->hasOne(PointE::class, 'user_id', 'id');

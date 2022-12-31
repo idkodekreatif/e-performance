@@ -8,6 +8,9 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 
+/**
+ * RoleController
+ */
 class RoleController extends Controller
 {
     /**
@@ -127,6 +130,13 @@ class RoleController extends Controller
         }
     }
 
+    /**
+     * givePermission
+     *
+     * @param  mixed $request
+     * @param  mixed $role
+     * @return void
+     */
     public function givePermission(Request $request, Role $role)
     {
         if ($role->hasPermissionTo($request->permission)) {
@@ -139,6 +149,13 @@ class RoleController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * revokePermission
+     *
+     * @param  mixed $role
+     * @param  mixed $permission
+     * @return void
+     */
     public function revokePermission(Role $role, Permission $permission)
     {
         if ($role->hasPermissionTo($permission)) {

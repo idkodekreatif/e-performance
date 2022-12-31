@@ -9,8 +9,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * profileController
+ */
 class profileController extends Controller
 {
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index()
     {
         $data = Profile::findOrFail(Auth::id());
@@ -19,6 +27,13 @@ class profileController extends Controller
         return view('users.profile.index', compact('data'));
     }
 
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $profile
+     * @return void
+     */
     public function update(Request $request, $profile)
     {
         $request->validate([

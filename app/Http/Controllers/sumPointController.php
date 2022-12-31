@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
+/**
+ * sumPointController
+ */
 class sumPointController extends Controller
 {
     // public function __construct()
@@ -90,6 +93,12 @@ class sumPointController extends Controller
         //
     }
 
+    /**
+     * raportView
+     *
+     * @param  mixed $user_id
+     * @return void
+     */
     public function raportView($user_id)
     {
         $users = DB::table('users')
@@ -111,6 +120,12 @@ class sumPointController extends Controller
         return view('input-point.raport', compact('users'));
     }
 
+    /**
+     * RaportChartView
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function RaportChartView(Request $request)
     {
         $users = DB::table('users');

@@ -128,6 +128,13 @@ class PermissionController extends Controller
         }
     }
 
+    /**
+     * assignRole
+     *
+     * @param  mixed $request
+     * @param  mixed $permission
+     * @return void
+     */
     public function assignRole(Request $request, Permission $permission)
     {
         if ($permission->hasRole($request->role)) {
@@ -140,6 +147,13 @@ class PermissionController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * removeRole
+     *
+     * @param  mixed $permission
+     * @param  mixed $role
+     * @return void
+     */
     public function removeRole(Permission $permission, Role $role)
     {
         if ($permission->hasRole($role)) {
