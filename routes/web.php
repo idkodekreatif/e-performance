@@ -6,6 +6,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
@@ -81,8 +82,8 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
     });
 });
 
-// -----------------------------Prefix All Point----------------------------------------//
-Route::group(['prefix' => "/Point", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified']], function () {
+// -----------------------------Prefix All Point ITIKAD----------------------------------------//
+Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified']], function () {
 
     // -----------------------------Point A----------------------------------------//
     Route::controller(PointAController::class)->group(function () {
@@ -138,6 +139,16 @@ Route::group(
     }
 );
 
+// -----------------------------Prefix All Point ITIKAD----------------------------------------//
+Route::group(
+    ['prefix' => "/Point/ITISAR", 'middleware' => ['role:superuser|it|hrd|lppm|tendik', 'auth', 'verified']],
+    function () {
+        // -----------------------------Warek 2 Controller Form Penilaian Ka. Bau ----------------------------------------//
+        Route::controller(warek2Controller::class)->group(function () {
+            Route::get('/Input', 'create')->name('warek2.ka.bau');
+        });
+    }
+);
 // -----------------------------Laravel Impersonate / Login As----------------------------------------//
 Route::controller(ImpersonateController::class, ['middleware' => ['auth', 'verified']])->group(function () {
     Route::get('/impersonate/{id}', 'impersonate')->name('impersonate');

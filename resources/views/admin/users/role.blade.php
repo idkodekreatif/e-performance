@@ -1,7 +1,7 @@
 <x-app-layout title="Users Management">
     @push('style')
     @endpush
-    <div class="row page-titles">
+    <div class="row page-titles shadow">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">User Control</a></li>
             <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
@@ -18,7 +18,7 @@
             <a href="{{ route('users.index') }}" class="btn btn-primary btn-sm">Users</a>
         </div>
     </div>
-    <div class="card">
+    <div class="card shadow">
         <div class="card-body">
             <table class="table table-hover table-responsive-md">
                 <thead>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header">
             <h4 class="card-title">Role</h4>
         </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header">
             <h4 class="card-title">Permissions</h4>
         </div>

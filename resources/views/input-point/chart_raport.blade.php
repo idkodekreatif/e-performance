@@ -1,7 +1,7 @@
 <x-app-layout title="Raport Chart">
     @push('style')
     @endpush
-    <div class="row page-titles">
+    <div class="row page-titles shadow">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Laporan</a></li>
             <li class="breadcrumb-item"><a href="javascript:void(0)">Chart</a></li>
@@ -45,7 +45,7 @@
                     </select>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary ml-2">Search</button>
+                    <button type="submit" class="btn btn-primary ml-2 shadow">Search</button>
                 </div>
             </div>
         </form>
@@ -53,7 +53,7 @@
 
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-sm-12">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header">
                     <h4 class="card-title">Laporan</h4>
                 </div>

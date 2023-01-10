@@ -1,14 +1,14 @@
 <x-app-layout title="Logs Activity">
     @push('style')
     @endpush
-    <div class="row page-titles">
+    <div class="row page-titles shadow">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Maintenain</a></li>
             <li class="breadcrumb-item"><a href="javascript:void(0)">Logs Activity</a></li>
         </ol>
     </div>
 
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header">
             <h4 class="card-title">Logs Activity</h4>
         </div>

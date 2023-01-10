@@ -53,25 +53,11 @@
                 <ul aria-expanded="false">
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITISAR</a>
                         <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Insert Point</a>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="javascript:void()">Point A</a></li>
-                                    <li><a href="javascript:void()">Point B</a></li>
-                                    <li><a href="javascript:void()">Point C</a></li>
-                                    <li><a href="javascript:void()">Point D</a></li>
-                                    <li><a href="javascript:void()">Point E</a></li>
+                                    <li><a href="{{ route('warek2.ka.bau') }}">Ka. Bau</a></li>
                                 </ul>
                             </li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Update Point</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="javascript:void()">Point A</a></li>
-                                    <li><a href="javascript:void()">Point B</a></li>
-                                    <li><a href="javascript:void()">Point C</a></li>
-                                    <li><a href="javascript:void()">Point D</a></li>
-                                    <li><a href="javascript:void()">Point E</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void()">Raport</a></li>
                         </ul>
                     </li>
                 </ul>
