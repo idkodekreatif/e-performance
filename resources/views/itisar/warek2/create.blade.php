@@ -1040,16 +1040,26 @@
                                         <td>1</td>
                                         <td>Menghimpun dan mengkaji peraturan perundang-undangan di bidang Umum,
                                             kepegawaian dan keuangan</td>
-                                        <td><input id="kinerja_kompetensi_1_1" name="kinerja_kompetensi_1_1"
-                                                type="number" aria-label="kinerja_kompetensi_1_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_1_2" name="kinerja_kompetensi_1_2"
-                                                type="number" aria-label="kinerja_kompetensi_1_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_1_3" name="kinerja_kompetensi_1_3"
-                                                type="number" aria-label="kinerja_kompetensi_1_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_1_4" name="kinerja_kompetensi_1_4"
-                                                type="number" aria-label="kinerja_kompetensi_1_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_1_5" name="kinerja_kompetensi_1_5"
-                                                type="number" aria-label="kinerja_kompetensi_1_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
+                                                id="kinerja_kompetensi_1_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
+                                                id="kinerja_kompetensi_1_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
+                                                id="kinerja_kompetensi_1_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
+                                                id="kinerja_kompetensi_1_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
+                                                id="kinerja_kompetensi_1_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_1')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Dokumen peraaturan
                                                 perundang-undangan di bidang Umum, kepegawaian dan keuangan</label>
@@ -1067,16 +1077,26 @@
                                     <tr>
                                         <td>2</td>
                                         <td>Mengoordinasikan tugas- tugas bawahannya sesuai bidangnya</td>
-                                        <td><input id="kinerja_kompetensi_2_1" name="kinerja_kompetensi_2_1"
-                                                type="number" aria-label="kinerja_kompetensi_2_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_2_2" name="kinerja_kompetensi_2_2"
-                                                type="number" aria-label="kinerja_kompetensi_2_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_2_3" name="kinerja_kompetensi_2_3"
-                                                type="number" aria-label="kinerja_kompetensi_2_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_2_4" name="kinerja_kompetensi_2_4"
-                                                type="number" aria-label="kinerja_kompetensi_2_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_2_5" name="kinerja_kompetensi_2_5"
-                                                type="number" aria-label="kinerja_kompetensi_2_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
+                                                id="kinerja_kompetensi_2_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
+                                                id="kinerja_kompetensi_2_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
+                                                id="kinerja_kompetensi_2_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
+                                                id="kinerja_kompetensi_2_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
+                                                id="kinerja_kompetensi_2_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1093,16 +1113,26 @@
                                     <tr>
                                         <td>3</td>
                                         <td>Mengkoordinasikan administrasi umum, kepegawaian dan keuangan</td>
-                                        <td><input id="kinerja_kompetensi_3_1" name="kinerja_kompetensi_3_1"
-                                                type="number" aria-label="kinerja_kompetensi_3_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_3_2" name="kinerja_kompetensi_3_2"
-                                                type="number" aria-label="kinerja_kompetensi_3_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_3_3" name="kinerja_kompetensi_3_3"
-                                                type="number" aria-label="kinerja_kompetensi_3_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_3_4" name="kinerja_kompetensi_3_4"
-                                                type="number" aria-label="kinerja_kompetensi_3_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_3_5" name="kinerja_kompetensi_3_5"
-                                                type="number" aria-label="kinerja_kompetensi_3_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
+                                                id="kinerja_kompetensi_3_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
+                                                id="kinerja_kompetensi_3_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
+                                                id="kinerja_kompetensi_3_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
+                                                id="kinerja_kompetensi_3_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
+                                                id="kinerja_kompetensi_3_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_3')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1119,16 +1149,26 @@
                                     <tr>
                                         <td>4</td>
                                         <td>Mengkoordinasikan urusan keamanan dan ketertiban,kebersihan kampus</td>
-                                        <td><input id="kinerja_kompetensi_4_1" name="kinerja_kompetensi_4_1"
-                                                type="number" aria-label="kinerja_kompetensi_4_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_4_2" name="kinerja_kompetensi_4_2"
-                                                type="number" aria-label="kinerja_kompetensi_4_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_4_3" name="kinerja_kompetensi_4_3"
-                                                type="number" aria-label="kinerja_kompetensi_4_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_4_4" name="kinerja_kompetensi_4_4"
-                                                type="number" aria-label="kinerja_kompetensi_4_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_4_5" name="kinerja_kompetensi_4_5"
-                                                type="number" aria-label="kinerja_kompetensi_4_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
+                                                id="kinerja_kompetensi_4_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
+                                                id="kinerja_kompetensi_4_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
+                                                id="kinerja_kompetensi_4_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
+                                                id="kinerja_kompetensi_4_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
+                                                id="kinerja_kompetensi_4_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_4')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1145,16 +1185,26 @@
                                     <tr>
                                         <td>5</td>
                                         <td>Mengkoordinasikan perencanaan pengadaan barang dan jasa</td>
-                                        <td><input id="kinerja_kompetensi_5_1" name="kinerja_kompetensi_5_1"
-                                                type="number" aria-label="kinerja_kompetensi_5_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_5_2" name="kinerja_kompetensi_5_2"
-                                                type="number" aria-label="kinerja_kompetensi_5_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_5_3" name="kinerja_kompetensi_5_3"
-                                                type="number" aria-label="kinerja_kompetensi_5_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_5_4" name="kinerja_kompetensi_5_4"
-                                                type="number" aria-label="kinerja_kompetensi_5_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_5_5" name="kinerja_kompetensi_5_5"
-                                                type="number" aria-label="kinerja_kompetensi_5_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
+                                                id="kinerja_kompetensi_5_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
+                                                id="kinerja_kompetensi_5_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
+                                                id="kinerja_kompetensi_5_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
+                                                id="kinerja_kompetensi_5_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
+                                                id="kinerja_kompetensi_5_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_5')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1172,16 +1222,26 @@
                                         <td>6</td>
                                         <td>Mengkoordinasikan penggunaan dan pemeliharaan sarana dan prasarana IKBIS
                                         </td>
-                                        <td><input id="kinerja_kompetensi_6_1" name="kinerja_kompetensi_6_1"
-                                                type="number" aria-label="kinerja_kompetensi_6_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_6_2" name="kinerja_kompetensi_6_2"
-                                                type="number" aria-label="kinerja_kompetensi_6_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_6_3" name="kinerja_kompetensi_6_3"
-                                                type="number" aria-label="kinerja_kompetensi_6_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_6_4" name="kinerja_kompetensi_6_4"
-                                                type="number" aria-label="kinerja_kompetensi_6_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_6_5" name="kinerja_kompetensi_6_5"
-                                                type="number" aria-label="kinerja_kompetensi_6_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
+                                                id="kinerja_kompetensi_6_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
+                                                id="kinerja_kompetensi_6_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
+                                                id="kinerja_kompetensi_6_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
+                                                id="kinerja_kompetensi_6_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
+                                                id="kinerja_kompetensi_6_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_6')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1200,16 +1260,26 @@
                                         <td>Mengkoordinasikan penyimpanan, pendistribusian, inventarisasi, dan
                                             penghapusan barang milik Institusi
                                         </td>
-                                        <td><input id="kinerja_kompetensi_7_1" name="kinerja_kompetensi_7_1"
-                                                type="number" aria-label="kinerja_kompetensi_7_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_7_2" name="kinerja_kompetensi_7_2"
-                                                type="number" aria-label="kinerja_kompetensi_7_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_7_3" name="kinerja_kompetensi_7_3"
-                                                type="number" aria-label="kinerja_kompetensi_7_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_7_4" name="kinerja_kompetensi_7_4"
-                                                type="number" aria-label="kinerja_kompetensi_7_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_7_5" name="kinerja_kompetensi_7_5"
-                                                type="number" aria-label="kinerja_kompetensi_7_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
+                                                id="kinerja_kompetensi_7_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
+                                                id="kinerja_kompetensi_7_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
+                                                id="kinerja_kompetensi_7_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
+                                                id="kinerja_kompetensi_7_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
+                                                id="kinerja_kompetensi_7_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_7')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1227,16 +1297,26 @@
                                         <td>8</td>
                                         <td>Mengkoordinasikan pelaksanaan rapat dan acara-acara ceremonial
                                         </td>
-                                        <td><input id="kinerja_kompetensi_8_1" name="kinerja_kompetensi_8_1"
-                                                type="number" aria-label="kinerja_kompetensi_8_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_8_2" name="kinerja_kompetensi_8_2"
-                                                type="number" aria-label="kinerja_kompetensi_8_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_8_3" name="kinerja_kompetensi_8_3"
-                                                type="number" aria-label="kinerja_kompetensi_8_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_8_4" name="kinerja_kompetensi_8_4"
-                                                type="number" aria-label="kinerja_kompetensi_8_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_8_5" name="kinerja_kompetensi_8_5"
-                                                type="number" aria-label="kinerja_kompetensi_8_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
+                                                id="kinerja_kompetensi_8_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
+                                                id="kinerja_kompetensi_8_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
+                                                id="kinerja_kompetensi_8_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
+                                                id="kinerja_kompetensi_8_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
+                                                id="kinerja_kompetensi_8_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_8')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1254,16 +1334,26 @@
                                         <td>9</td>
                                         <td>Mengkoordinasikan penyusunan formasi kepegawaian
                                         </td>
-                                        <td><input id="kinerja_kompetensi_9_1" name="kinerja_kompetensi_9_1"
-                                                type="number" aria-label="kinerja_kompetensi_9_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_9_2" name="kinerja_kompetensi_9_2"
-                                                type="number" aria-label="kinerja_kompetensi_9_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_9_3" name="kinerja_kompetensi_9_3"
-                                                type="number" aria-label="kinerja_kompetensi_9_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_9_4" name="kinerja_kompetensi_9_4"
-                                                type="number" aria-label="kinerja_kompetensi_9_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_9_5" name="kinerja_kompetensi_9_5"
-                                                type="number" aria-label="kinerja_kompetensi_9_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_9')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1281,16 +1371,31 @@
                                         <td>10</td>
                                         <td>Mengkoordinasikan pengadaan pegawai dan pengembangannya
                                         </td>
-                                        <td><input id="kinerja_kompetensi_10_1" name="kinerja_kompetensi_10_1"
-                                                type="number" aria-label="kinerja_kompetensi_10_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_10_2" name="kinerja_kompetensi_10_2"
-                                                type="number" aria-label="kinerja_kompetensi_10_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_10_3" name="kinerja_kompetensi_10_3"
-                                                type="number" aria-label="kinerja_kompetensi_10_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_10_4" name="kinerja_kompetensi_10_4"
-                                                type="number" aria-label="kinerja_kompetensi_10_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_10_5" name="kinerja_kompetensi_10_5"
-                                                type="number" aria-label="kinerja_kompetensi_10_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_10')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1309,16 +1414,31 @@
                                         <td>Mengkoordinasikan sistem jenjang kepangkatan, mutasi, pemberhentian, dan
                                             administrasi kepegawaian
                                         </td>
-                                        <td><input id="kinerja_kompetensi_11_1" name="kinerja_kompetensi_11_1"
-                                                type="number" aria-label="kinerja_kompetensi_11_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_11_2" name="kinerja_kompetensi_11_2"
-                                                type="number" aria-label="kinerja_kompetensi_11_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_11_3" name="kinerja_kompetensi_11_3"
-                                                type="number" aria-label="kinerja_kompetensi_11_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_11_4" name="kinerja_kompetensi_11_4"
-                                                type="number" aria-label="kinerja_kompetensi_11_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_11_5" name="kinerja_kompetensi_11_5"
-                                                type="number" aria-label="kinerja_kompetensi_11_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_11')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1337,16 +1457,31 @@
                                         <td>Mengkoordinasikan penerimaan, pengeluaran, penyimpanan, dan
                                             pertanggungjawaban anggaran institute
                                         </td>
-                                        <td><input id="kinerja_kompetensi_12_1" name="kinerja_kompetensi_12_1"
-                                                type="number" aria-label="kinerja_kompetensi_12_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_12_2" name="kinerja_kompetensi_12_2"
-                                                type="number" aria-label="kinerja_kompetensi_12_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_12_3" name="kinerja_kompetensi_12_3"
-                                                type="number" aria-label="kinerja_kompetensi_12_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_12_4" name="kinerja_kompetensi_12_4"
-                                                type="number" aria-label="kinerja_kompetensi_12_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_12_5" name="kinerja_kompetensi_12_5"
-                                                type="number" aria-label="kinerja_kompetensi_12_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_12')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1365,16 +1500,31 @@
                                         <td>Mengkoordinasikan sistem pencatatan, pembukuan, penyusunan laporan keuangan
                                             institut
                                         </td>
-                                        <td><input id="kinerja_kompetensi_13_1" name="kinerja_kompetensi_13_1"
-                                                type="number" aria-label="kinerja_kompetensi_13_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_13_2" name="kinerja_kompetensi_13_2"
-                                                type="number" aria-label="kinerja_kompetensi_13_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_13_3" name="kinerja_kompetensi_13_3"
-                                                type="number" aria-label="kinerja_kompetensi_13_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_13_4" name="kinerja_kompetensi_13_4"
-                                                type="number" aria-label="kinerja_kompetensi_13_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_13_5" name="kinerja_kompetensi_13_5"
-                                                type="number" aria-label="kinerja_kompetensi_13_5" onkeyup="sum()"></td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_13')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
@@ -1418,17 +1568,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-                                        {{-- <td><input id="kinerja_kompetensi_14_1" name="kinerja_kompetensi_14_1"
-                                                type="number" aria-label="kinerja_kompetensi_14_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_14_2" name="kinerja_kompetensi_14_2"
-                                                type="number" aria-label="kinerja_kompetensi_14_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_14_3" name="kinerja_kompetensi_14_3"
-                                                type="number" aria-label="kinerja_kompetensi_14_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_14_4" name="kinerja_kompetensi_14_4"
-                                                type="number" aria-label="kinerja_kompetensi_14_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_14_5" name="kinerja_kompetensi_14_5"
-                                                type="number" aria-label="kinerja_kompetensi_14_5" onkeyup="sum()"></td>
-                                        --}}
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Laporan
                                                 Bulanan</label>
@@ -1471,17 +1610,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-                                        {{-- <td><input id="kinerja_kompetensi_15_1" name="kinerja_kompetensi_15_1"
-                                                type="number" aria-label="kinerja_kompetensi_15_1" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_15_2" name="kinerja_kompetensi_15_2"
-                                                type="number" aria-label="kinerja_kompetensi_15_2" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_15_3" name="kinerja_kompetensi_15_3"
-                                                type="number" aria-label="kinerja_kompetensi_15_3" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_15_4" name="kinerja_kompetensi_15_4"
-                                                type="number" aria-label="kinerja_kompetensi_15_4" onkeyup="sum()"></td>
-                                        <td><input id="kinerja_kompetensi_15_5" name="kinerja_kompetensi_15_5"
-                                                type="number" aria-label="kinerja_kompetensi_15_5" onkeyup="sum()"></td>
-                                        --}}
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Dokumen
                                                 RKAT</label>
@@ -1548,32 +1676,23 @@
                                     <tr>
                                         <td colspan="2"></td>
                                         <td>KOMPONEN</td>
-                                        <td>TOTAL NILAI</td>
+                                        <td>PERILAKU</td>
+                                        <td>KOMPETENSI</td>
+                                        <td>NILAI KINERJA TOTAL</td>
+                                        <td>PREDIKAT</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2"></td>
-                                        <td>PERILAKU</td>
+                                        <td>TOTAL NILAI</td>
                                         <td><input id="output_nilai_perilaku" name="output_nilai_perilaku" type="number"
                                                 value="0" aria-label="output_nilai_perilaku" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td>KOMPETENSI</td>
                                         <td><input id="output_nilai_kompetensi" name="output_nilai_kompetensi"
                                                 type="number" value="0" aria-label="output_nilai_kompetensi" readonly>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td>NILAI KINERJA TOTAL</td>
                                         <td><input id="output_nilai_kinerja_total" name="output_nilai_kinerja_total"
                                                 type="number" value="0" aria-label="output_nilai_kinerja_total"
                                                 readonly>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td>PREDIKAT</td>
                                         <td><input id="output_predikat" name="output_predikat" type="text" value="baik"
                                                 aria-label="output_predikat" readonly>
                                         </td>
