@@ -23,6 +23,11 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Bau</a></li>
             </ol>
         </div>
+        <div class="row">
+            <div class="col">
+                <a href="{{ route('warek2.ka.bau.raport') }}" class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
+            </div>
+        </div>
         <form action="#" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card shadow">
@@ -1669,34 +1674,6 @@
                                                 aria-label="output_total_sementara_kinerja_kompetensi" readonly></td>
                                     </tr>
 
-                                    <tr class="table-primary">
-                                        <td colspan="8 text-center">TOTAL KOMPONEN POINT</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td>KOMPONEN</td>
-                                        <td>PERILAKU</td>
-                                        <td>KOMPETENSI</td>
-                                        <td>NILAI KINERJA TOTAL</td>
-                                        <td>PREDIKAT</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td>TOTAL NILAI</td>
-                                        <td><input id="output_nilai_perilaku" name="output_nilai_perilaku" type="number"
-                                                value="0" aria-label="output_nilai_perilaku" readonly></td>
-                                        <td><input id="output_nilai_kompetensi" name="output_nilai_kompetensi"
-                                                type="number" value="0" aria-label="output_nilai_kompetensi" readonly>
-                                        </td>
-                                        <td><input id="output_nilai_kinerja_total" name="output_nilai_kinerja_total"
-                                                type="number" value="0" aria-label="output_nilai_kinerja_total"
-                                                readonly>
-                                        </td>
-                                        <td><input id="output_predikat" name="output_predikat" type="text" value="baik"
-                                                aria-label="output_predikat" readonly>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                             <div class="row">

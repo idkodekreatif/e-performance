@@ -146,6 +146,7 @@ Route::group(
         // -----------------------------Warek 2 Controller Form Penilaian Ka. Bau ----------------------------------------//
         Route::controller(warek2Controller::class)->group(function () {
             Route::get('/Input', 'create')->name('warek2.ka.bau');
+            Route::get('/Raport/Ka-Bau', 'raport')->name('warek2.ka.bau.raport');
         });
     }
 );
