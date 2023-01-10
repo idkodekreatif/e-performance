@@ -2,7 +2,7 @@
     @push('style')
     @endpush
 
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header">
             <h4 class="card-title">Data Empty</h4>
         </div>

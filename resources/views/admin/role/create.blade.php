@@ -1,7 +1,7 @@
 <x-app-layout title="Create Role">
     @push('style')
     @endpush
-    <div class="row page-titles">
+    <div class="row page-titles shadow">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">User Control</a></li>
             <li class="breadcrumb-item"><a href="javascript:void(0)">Role</a></li>
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="card">
+    <div class="card shadow">
         <div class="card-body">
             <div class="basic-form">
                 <form method="POST" action="{{ route('role.store') }}">

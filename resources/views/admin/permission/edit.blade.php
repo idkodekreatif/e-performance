@@ -2,7 +2,7 @@
     @push('style')
     @endpush
 
-    <div class="row page-titles">
+    <div class="row page-titles shadow">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">User Control</a></li>
             <li class="breadcrumb-item"><a href="javascript:void(0)">Permission</a></li>
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="card">
+    <div class="card shadow">
         <div class="card-body">
             <div class="basic-form">
                 <form method="POST" action="{{ route('permission.update', $permission) }}">
@@ -51,7 +51,7 @@
     </div>
 
 
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header">
             <h4 class="card-title">Roles</h4>
         </div>

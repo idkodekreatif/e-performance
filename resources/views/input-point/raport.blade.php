@@ -4,13 +4,13 @@
     @endpush
 
     <div class="col-xl col-lg">
-        <div class="row page-titles">
+        <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Point</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Raport</a></li>
             </ol>
         </div>
-        <div class="card">
+        <div class="card shadow">
             <div class="card-header">
                 <h4 class="card-title">Raport User</h4>
             </div>
