@@ -88,7 +88,8 @@
                                                 aria-label="A1" value="{{ $data->scorMaxA1 }}" readonly>
                                         </td>
                                         <td rowspan="2"><input id="scorSubItemA1" name="scorSubItemA1" type="number"
-                                                aria-label="A1" value="{{ $data->scorSubItemA1 }}" readonly></td>
+                                                aria-label="A1" value="{{ number_format($data->scorSubItemA1, 3) }}"
+                                                readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.1</td>
@@ -144,7 +145,8 @@
                                         <td rowspan="2"><input id="scorMaxA2" value="{{ $data->scorMaxA2 }}"
                                                 name="scorMaxA2" type="number" aria-label="A2" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA2" value="{{ $data->scorSubItemA2 }}"
+                                        <td rowspan="2"><input id="scorSubItemA2"
+                                                value="{{ number_format($data->scorSubItemA2, 3) }}"
                                                 name="scorSubItemA2" type="number" aria-label="A2" readonly></td>
                                     </tr>
                                     <tr>
@@ -199,7 +201,8 @@
                                         <td rowspan="2"><input id="scorMaxA3" value="{{ $data->scorMaxA3 }}"
                                                 name="scorMaxA3" type="number" aria-label="A3" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA3" value="{{ $data->scorSubItemA3 }}"
+                                        <td rowspan="2"><input id="scorSubItemA3"
+                                                value="{{ number_format($data->scorSubItemA3, 3)  }}"
                                                 name="scorSubItemA3" type="number" aria-label="A3" readonly></td>
                                     </tr>
                                     <tr>
@@ -252,7 +255,8 @@
                                         <td rowspan="2"><input id="scorMaxA4" value="{{ $data->scorMaxA4 }}"
                                                 name="scorMaxA4" type="number" aria-label="A4" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA4" value="{{ $data->scorSubItemA4 }}"
+                                        <td rowspan="2"><input id="scorSubItemA4"
+                                                value="{{ number_format($data->scorSubItemA4, 3) }}"
                                                 name="scorSubItemA4" type="number" aria-label="A4" readonly></td>
                                     </tr>
                                     <tr>
@@ -308,7 +312,8 @@
                                         <td rowspan="2"><input id="scorMaxA5" value="{{ $data->scorMaxA5 }}"
                                                 name="scorMaxA5" type="number" aria-label="A5" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA5" value="{{ $data->scorSubItemA5 }}"
+                                        <td rowspan="2"><input id="scorSubItemA5"
+                                                value="{{ number_format($data->scorSubItemA5, 3)  }}"
                                                 name="scorSubItemA5" type="number" aria-label="A5" readonly></td>
                                     </tr>
                                     <tr>
@@ -363,7 +368,8 @@
                                         <td rowspan="2"><input id="scorMaxA6" value="{{ $data->scorMaxA6 }}"
                                                 name="scorMaxA6" type="number" aria-label="A6" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA6" value="{{ $data->scorSubItemA6 }}"
+                                        <td rowspan="2"><input id="scorSubItemA6"
+                                                value="{{ number_format($data->scorSubItemA6, 3) }}"
                                                 name="scorSubItemA6" type="number" aria-label="A6" readonly></td>
                                     </tr>
                                     <tr>
@@ -417,7 +423,8 @@
                                         <td rowspan="2"><input id="scorMaxA7" value="{{ $data->scorMaxA7 }}"
                                                 name="scorMaxA7" type="number" aria-label="A7" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA7" value="{{ $data->scorSubItemA7 }}"
+                                        <td rowspan="2"><input id="scorSubItemA7"
+                                                value="{{ number_format($data->scorSubItemA7, 3) }}"
                                                 name="scorSubItemA7" type="number" aria-label="A7" readonly></td>
                                     </tr>
                                     <tr>
@@ -471,7 +478,8 @@
                                         <td rowspan="2"><input id="scorMaxA8" value="{{ $data->scorMaxA8 }}"
                                                 name="scorMaxA8" type="number" aria-label="A8" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA8" value="{{ $data->scorSubItemA8 }}"
+                                        <td rowspan="2"><input id="scorSubItemA8"
+                                                value="{{ number_format($data->scorSubItemA8, 3) }}"
                                                 name="scorSubItemA8" type="number" aria-label="A8" readonly></td>
                                     </tr>
                                     <tr>
@@ -528,7 +536,8 @@
                                         <td rowspan="2"><input id="scorMaxA9" value="{{ $data->scorMaxA9 }}"
                                                 name="scorMaxA9" type="number" aria-label="A9" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA9" value="{{ $data->scorSubItemA9 }}"
+                                        <td rowspan="2"><input id="scorSubItemA9"
+                                                value="{{ number_format($data->scorSubItemA9, 3) }}"
                                                 name="scorSubItemA9" type="number" aria-label="A9" readonly></td>
                                     </tr>
                                     <tr>
@@ -583,7 +592,8 @@
                                         <td rowspan="2"><input id="scorMaxA10" value="{{ $data->scorMaxA10 }}"
                                                 name="scorMaxA10" type="number" aria-label="A10" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA10" value="{{ $data->scorSubItemA10 }}"
+                                        <td rowspan="2"><input id="scorSubItemA10"
+                                                value="{{ number_format($data->scorSubItemA10, 3) }}"
                                                 name="scorSubItemA10" type="number" aria-label="A10" readonly></td>
                                     </tr>
                                     <tr>
@@ -648,7 +658,8 @@
                                         <td rowspan="2"><input id="scorMaxA11" value="{{ $data->scorMaxA11 }}"
                                                 name="scorMaxA11" type="number" aria-label="A11" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA11" value="{{ $data->scorSubItemA11 }}"
+                                        <td rowspan="2"><input id="scorSubItemA11"
+                                                value="{{ number_format($data->scorSubItemA11, 3) }}"
                                                 name="scorSubItemA11" type="number" aria-label="A11" readonly></td>
                                     </tr>
                                     <tr>
@@ -695,7 +706,7 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number"
-                                                value="{{ $data->JumlahSkorYangDiHasilkanBobotSubItemA11_5 }}"
+                                                value="{{ number_format($data->JumlahSkorYangDiHasilkanBobotSubItemA11_5 ,3) }}"
                                                 name="JumlahSkorYangDiHasilkanBobotSubItemA11_5"
                                                 id="JumlahSkorYangDiHasilkanBobotSubItemA11_5" readonly></td>
                                         </td>
@@ -715,7 +726,7 @@
                                         <td></td>
                                         <td></td>
                                         <td><input type="number"
-                                                value="{{ $data->SkorTambahanJumlahBobotSubItemA11_5 }}"
+                                                value="{{ number_format($data->SkorTambahanJumlahBobotSubItemA11_5, 3) }}"
                                                 name="SkorTambahanJumlahBobotSubItemA11_5"
                                                 id="SkorTambahanJumlahBobotSubItemA11_5" readonly></td>
                                     </tr>
@@ -758,7 +769,8 @@
                                         <td rowspan="2"><input id="scorMaxA12" value="{{ $data->scorMaxA12 }}"
                                                 name="scorMaxA12" type="number" aria-label="A12" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA12" value="{{ $data->scorSubItemA12 }}"
+                                        <td rowspan="2"><input id="scorSubItemA12"
+                                                value="{{ number_format($data->scorSubItemA12, 3)  }}"
                                                 name="scorSubItemA12" type="number" aria-label="A12" readonly></td>
                                     </tr>
                                     <tr>
@@ -808,7 +820,8 @@
                                                 name="JumlahSkorYangDiHasilkanA12" id="JumlahSkorYangDiHasilkanA12"
                                                 readonly></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorA12 }}"
+                                        <td><input type="number"
+                                                value="{{ number_format($data->SkorTambahanJumlahSkorA12, 3) }}"
                                                 name="SkorTambahanJumlahSkorA12" id="SkorTambahanJumlahSkorA12"
                                                 readonly></td>
                                     </tr>
@@ -829,7 +842,8 @@
                                                 name="SkorTambahanJumlahA12" id="SkorTambahanJumlahA12" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemA12 }}"
+                                        <td><input type="number"
+                                                value="{{ number_format($data->SkorTambahanJumlahBobotSubItemA12, 3) }}"
                                                 name="SkorTambahanJumlahBobotSubItemA12"
                                                 id="SkorTambahanJumlahBobotSubItemA12" readonly></td>
                                     </tr>
@@ -867,7 +881,8 @@
                                         <td rowspan="2"><input id="scorMaxA13" value="{{ $data->scorMaxA13 }}"
                                                 name="scorMaxA13" type="number" aria-label="A13" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA13" value="{{ $data->scorSubItemA13 }}"
+                                        <td rowspan="2"><input id="scorSubItemA13"
+                                                value="{{ number_format($data->scorSubItemA13, 3)  }}"
                                                 name="scorSubItemA13" type="number" aria-label="A13" readonly></td>
                                     </tr>
                                     <tr>
@@ -898,7 +913,8 @@
                                     <tr>
                                         <td colspan="5"></td>
                                         <td colspan="5">Total Skor Pendidikan dan Pengajaran</td>
-                                        <td><input type="number" value="{{ $data->TotalSkorPendidikanPointA }}"
+                                        <td><input type="number"
+                                                value="{{ number_format($data->TotalSkorPendidikanPointA ,3) }}"
                                                 name="TotalSkorPendidikanPointA" id="TotalSkorPendidikanPointA"
                                                 readonly></td>
                                     </tr>
@@ -935,7 +951,8 @@
                                     <tr>
                                         <td colspan="4"></td>
                                         <td colspan="6">Nilai Total Pendidikan & Pengajaran</td>
-                                        <td><input type="number" value="{{ $data->NilaiTotalPendidikanDanPengajaran }}"
+                                        <td><input type="number"
+                                                value="{{ number_format($data->NilaiTotalPendidikanDanPengajaran, 2) }}"
                                                 name="NilaiTotalPendidikanDanPengajaran"
                                                 id="NilaiTotalPendidikanDanPengajaran" readonly></td>
                                     </tr>

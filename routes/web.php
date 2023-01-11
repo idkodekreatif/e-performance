@@ -41,7 +41,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('profile', profileController::class)->only(['index', 'update'])->middleware('auth', 'verified');
 
-
+// ----------------------------- Maintenain ----------------------------------------//
 Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified']], function () {
     // -----------------------------Users Management Spatie----------------------------------------//
     Route::controller(IndexController::class)->group(function () {
@@ -139,14 +139,16 @@ Route::group(
     }
 );
 
-// -----------------------------Prefix All Point ITIKAD----------------------------------------//
+// -----------------------------Prefix All Point ITISAR----------------------------------------//
 Route::group(
     ['prefix' => "/Point/ITISAR", 'middleware' => ['role:superuser|it|hrd|lppm|tendik', 'auth', 'verified']],
     function () {
         // -----------------------------Warek 2 Controller Form Penilaian Ka. Bau ----------------------------------------//
         Route::controller(warek2Controller::class)->group(function () {
             Route::get('/Input', 'create')->name('warek2.ka.bau');
-            Route::get('/Raport/Ka-Bau', 'raport')->name('warek2.ka.bau.raport');
+            Route::post('/request/store', 'store')->name('store.warek2.ka.bau');
+            Route::get('/ka-bau/edit/{PointId}', 'edit')->name('edit.warek2.ka.bau');
+            Route::get('/Raport/Ka-Bau/{user_id}', 'raport')->name('warek2.ka.bau.raport');
         });
     }
 );
