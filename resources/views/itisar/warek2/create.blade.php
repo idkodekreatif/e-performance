@@ -27,6 +27,8 @@
             <div class="col">
                 <a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
+                <a href="{{ route('edit.warek2.ka.bau', Auth::user()->id) }}"
+                    class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a>
             </div>
         </div>
         <form action="{{ route('store.warek2.ka.bau') }}" method="POST" enctype="multipart/form-data">

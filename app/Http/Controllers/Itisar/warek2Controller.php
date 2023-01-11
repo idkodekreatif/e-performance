@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Itisar;
 
 use App\Http\Controllers\Controller;
 use App\Models\Warek2;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -186,6 +187,29 @@ class warek2Controller extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Warek2  $warek2
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($PointId)
+    {
+        $dataMenu = Menu::first();
+
+        if (empty($dataMenu)) {
+            return redirect()->back();
+        } elseif ($dataMenu->control_menu == 0) {
+            return view('menu.disabled');
+        } elseif (Warek2::where('user_id', '=', $PointId)->first() == "") {
+            return view('menu.menu-empty');
+        } else {
+            $data = Warek2::where('user_id', '=', $PointId)->first();
+        }
+
+        return view('itisar.warek2.edit', ['data' => $data]);
+    }
+
+    /**
      * raport
      *
      * @return void
@@ -197,9 +221,9 @@ class warek2Controller extends Controller
             ->select(
                 'users.name',
                 'users.email',
+                'warek_2.user_id',
                 'warek_2.output_total_sementara_kinerja_perilaku',
                 'warek_2.output_total_sementara_kinerja_kompetensi',
-                'warek_2.user_id'
             )
             ->where('warek_2.user_id', $user_id)
             ->first();

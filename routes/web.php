@@ -147,6 +147,7 @@ Route::group(
         Route::controller(warek2Controller::class)->group(function () {
             Route::get('/Input', 'create')->name('warek2.ka.bau');
             Route::post('/request/store', 'store')->name('store.warek2.ka.bau');
+            Route::get('/ka-bau/edit/{PointId}', 'edit')->name('edit.warek2.ka.bau');
             Route::get('/Raport/Ka-Bau/{user_id}', 'raport')->name('warek2.ka.bau.raport');
         });
     }

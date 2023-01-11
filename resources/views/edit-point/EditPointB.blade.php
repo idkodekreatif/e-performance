@@ -96,7 +96,8 @@
                                             <td rowspan="2"><input id="scorMaxB1" value="{{ $data->scorMaxB1 }}"
                                                     name="scorMaxB1" type="number" aria-label="B1" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB1" value="{{ $data->scorSubItemB1 }}"
+                                            <td rowspan="2"><input id="scorSubItemB1"
+                                                    value="{{ number_format($data->scorSubItemB1, 3) }}"
                                                     name="scorSubItemB1" type="number" aria-label="B1" readonly></td>
                                         </tr>
                                         <tr>
@@ -147,7 +148,8 @@
                                                     name="JumlahSkorYangDiHasilkanB1" id="JumlahSkorYangDiHasilkanB1"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB1 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB1, 3) }}"
                                                     name="SkorTambahanJumlahSkorB1" id="SkorTambahanJumlahSkorB1"
                                                     readonly></td>
                                         </tr>
@@ -171,7 +173,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB1 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB1, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB1"
                                                     id="SkorTambahanJumlahBobotSubItemB1" readonly></td>
                                         </tr>
@@ -210,7 +212,8 @@
                                             <td rowspan="2"><input id="scorMaxB2" value="{{ $data->scorMaxB2 }}"
                                                     name="scorMaxB2" type="number" aria-label="B2" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB2" value="{{ $data->scorSubItemB2 }}"
+                                            <td rowspan="2"><input id="scorSubItemB2"
+                                                    value="{{ number_format($data->scorSubItemB2, 3) }}"
                                                     name="scorSubItemB2" type="number" aria-label="B2" readonly></td>
                                         </tr>
                                         <tr>
@@ -255,7 +258,8 @@
                                                     name="JumlahSkorYangDiHasilkanB2" id="JumlahSkorYangDiHasilkanB2"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB2 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB2, 3) }}"
                                                     name="SkorTambahanJumlahSkorB2" id="SkorTambahanJumlahSkorB2"
                                                     readonly></td>
                                         </tr>
@@ -275,7 +279,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB2 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB2, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB2"
                                                     id="SkorTambahanJumlahBobotSubItemB2" readonly></td>
                                         </tr>
@@ -314,7 +318,8 @@
                                             <td rowspan="2"><input id="scorMaxB3" value="{{ $data->scorMaxB3 }}"
                                                     name="scorMaxB3" type="number" aria-label="B3" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB3" value="{{ $data->scorSubItemB3 }}"
+                                            <td rowspan="2"><input id="scorSubItemB3"
+                                                    value="{{ number_format($data->scorSubItemB3, 3) }}"
                                                     name="scorSubItemB3" type="number" aria-label="B3" readonly></td>
                                         </tr>
                                         <tr>
@@ -379,7 +384,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB3 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB3, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB3"
                                                     id="SkorTambahanJumlahBobotSubItemB3" readonly></td>
                                         </tr>
@@ -418,7 +423,8 @@
                                             <td rowspan="2"><input id="scorMaxB4" value="{{ $data->scorMaxB4 }}"
                                                     type="number" name="scorMaxB4" aria-label="B4" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB4" value="{{ $data->scorSubItemB4 }}"
+                                            <td rowspan="2"><input id="scorSubItemB4"
+                                                    value="{{ number_format($data->scorSubItemB4, 3) }}"
                                                     name="scorSubItemB4" type="number" aria-label="B4" readonly></td>
                                         </tr>
                                         <tr>
@@ -485,7 +491,8 @@
                                             <td rowspan="2"><input id="scorMaxB5" value="{{ $data->scorMaxB5 }}"
                                                     name="scorMaxB5" type="number" aria-label="B5" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB5" value="{{ $data->scorSubItemB5 }}"
+                                            <td rowspan="2"><input id="scorSubItemB5"
+                                                    value="{{ number_format($data->scorSubItemB5, 3) }}"
                                                     name="scorSubItemB5" type="number" aria-label="B5" readonly></td>
                                         </tr>
                                         <tr>
@@ -528,7 +535,8 @@
                                                     name="JumlahSkorYangDiHasilkanB5" id="JumlahSkorYangDiHasilkanB5"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB5 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB5, 3) }}"
                                                     name="SkorTambahanJumlahSkorB5" id="SkorTambahanJumlahSkorB5"
                                                     readonly></td>
                                         </tr>
@@ -546,7 +554,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB5 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB5, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB5"
                                                     id="SkorTambahanJumlahBobotSubItemB5" readonly></td>
                                         </tr>
@@ -588,7 +596,8 @@
                                             <td rowspan="2"><input id="scorMaxB6" value="{{ $data->scorMaxB6 }}"
                                                     name="scorMaxB6" type="number" aria-label="B6" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB6" value="{{ $data->scorSubItemB6 }}"
+                                            <td rowspan="2"><input id="scorSubItemB6"
+                                                    value="{{ number_format($data->scorSubItemB6, 3) }}"
                                                     name="scorSubItemB6" type="number" aria-label="B6" readonly></td>
                                         </tr>
                                         <tr>
@@ -632,7 +641,8 @@
                                                     name="JumlahSkorYangDiHasilkanB6" id="JumlahSkorYangDiHasilkanB6"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB6 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB6, 3) }}"
                                                     name="SkorTambahanJumlahSkorB6" id="SkorTambahanJumlahSkorB6"
                                                     readonly></td>
                                         </tr>
@@ -650,7 +660,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB6 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB6, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB6"
                                                     id="SkorTambahanJumlahBobotSubItemB6" readonly></td>
                                         </tr>
@@ -691,7 +701,8 @@
                                             <td rowspan="2"><input id="scorMaxB7" value="{{ $data->scorMaxB7 }}"
                                                     name="scorMaxB7" type="number" aria-label="B7" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB7" value="{{ $data->scorSubItemB7 }}"
+                                            <td rowspan="2"><input id="scorSubItemB7"
+                                                    value="{{ number_format($data->scorSubItemB7, 3) }}"
                                                     name="scorSubItemB7" type="number" aria-label="B7" readonly></td>
                                         </tr>
                                         <tr>
@@ -737,7 +748,8 @@
                                                     name="JumlahSkorYangDiHasilkanB7" id="JumlahSkorYangDiHasilkanB7"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB7 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB7, 3) }}"
                                                     name="SkorTambahanJumlahSkorB7" id="SkorTambahanJumlahSkorB7"
                                                     readonly></td>
                                         </tr>
@@ -755,7 +767,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB7 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB7, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB7"
                                                     id="SkorTambahanJumlahBobotSubItemB7" readonly></td>
                                         </tr>
@@ -796,7 +808,8 @@
                                             <td rowspan="2"><input id="scorMaxB8" value="{{ $data->scorMaxB8 }}"
                                                     name="scorMaxB8" type="number" aria-label="B8" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB8" value="{{ $data->scorSubItemB8 }}"
+                                            <td rowspan="2"><input id="scorSubItemB8"
+                                                    value="{{ number_format($data->scorSubItemB8, 3) }}"
                                                     name="scorSubItemB8" type="number" aria-label="B8" readonly></td>
                                         </tr>
                                         <tr>
@@ -865,7 +878,8 @@
                                             <td rowspan="2"><input id="scorMaxB9" value="{{ $data->scorMaxB9 }}"
                                                     name="scorMaxB9" type="number" aria-label="B9" readonly>
                                             </td>
-                                            <td rowspan="2"><input id="scorSubItemB9" value="{{ $data->scorSubItemB9 }}"
+                                            <td rowspan="2"><input id="scorSubItemB9"
+                                                    value="{{ number_format($data->scorSubItemB9, 3) }}"
                                                     name="scorSubItemB9" type="number" aria-label="B9" readonly></td>
                                         </tr>
                                         <tr>
@@ -912,7 +926,8 @@
                                                     name="JumlahSkorYangDiHasilkanB9" id="JumlahSkorYangDiHasilkanB9"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB9 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB9, 3) }}"
                                                     name="SkorTambahanJumlahSkorB9" id="SkorTambahanJumlahSkorB9"
                                                     readonly></td>
                                         </tr>
@@ -932,7 +947,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB9 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB9, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB9"
                                                     id="SkorTambahanJumlahBobotSubItemB9" readonly></td>
                                         </tr>
@@ -978,8 +993,8 @@
                                                     name="scorMaxB10" type="number" aria-label="B10" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB10"
-                                                    value="{{ $data->scorSubItemB10 }}" name="scorSubItemB10"
-                                                    type="number" aria-label="B10" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB10, 3) }}"
+                                                    name="scorSubItemB10" type="number" aria-label="B10" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.10</td>
@@ -1025,7 +1040,8 @@
                                                     name="JumlahSkorYangDiHasilkanB10" id="JumlahSkorYangDiHasilkanB10"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB10 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB10, 3) }}"
                                                     name="SkorTambahanJumlahSkorB10" id="SkorTambahanJumlahSkorB10"
                                                     readonly></td>
                                         </tr>
@@ -1046,7 +1062,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB10 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB10, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB10"
                                                     id="SkorTambahanJumlahBobotSubItemB10" readonly></td>
                                         </tr>
@@ -1092,8 +1108,8 @@
                                                     name="scorMaxB11" type="number" aria-label="B11" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB11"
-                                                    value="{{ $data->scorSubItemB11 }}" name="scorSubItemB11"
-                                                    type="number" aria-label="B11" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB11, 3) }}"
+                                                    name="scorSubItemB11" type="number" aria-label="B11" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.11</td>
@@ -1136,7 +1152,8 @@
                                                     name="JumlahSkorYangDiHasilkanB11" id="JumlahSkorYangDiHasilkanB11"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB11 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB11, 3) }}"
                                                     name="SkorTambahanJumlahSkorB11" id="SkorTambahanJumlahSkorB11"
                                                     readonly></td>
                                         </tr>
@@ -1155,7 +1172,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB11 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB11, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB11"
                                                     id="SkorTambahanJumlahBobotSubItemB11" readonly></td>
                                         </tr>
@@ -1201,8 +1218,8 @@
                                                     name="scorMaxB12" type="number" aria-label="B12" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB12"
-                                                    value="{{ $data->scorSubItemB12 }}" name="scorSubItemB12"
-                                                    type="number" aria-label="B12" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB12, 3) }}"
+                                                    name="scorSubItemB12" type="number" aria-label="B12" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.12</td>
@@ -1245,7 +1262,8 @@
                                                     name="JumlahSkorYangDiHasilkanB12" id="JumlahSkorYangDiHasilkanB12"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB12 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB12, 3) }}"
                                                     name="SkorTambahanJumlahSkorB12" id="SkorTambahanJumlahSkorB12"
                                                     readonly></td>
                                         </tr>
@@ -1264,7 +1282,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB12 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB12, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB12"
                                                     id="SkorTambahanJumlahBobotSubItemB12" readonly></td>
                                         </tr>
@@ -1306,8 +1324,8 @@
                                                     name="scorMaxB13" type="number" aria-label="B13" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB13"
-                                                    value="{{ $data->scorSubItemB13 }}" name="scorSubItemB13"
-                                                    type="number" aria-label="B13" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB13, 3) }}"
+                                                    name="scorSubItemB13" type="number" aria-label="B13" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.13</td>
@@ -1354,7 +1372,8 @@
                                                     name="JumlahSkorYangDiHasilkanB13" id="JumlahSkorYangDiHasilkanB13"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB13 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB13, 3) }}"
                                                     name="SkorTambahanJumlahSkorB13" id="SkorTambahanJumlahSkorB13"
                                                     readonly></td>
                                         </tr>
@@ -1377,7 +1396,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB13 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB13, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB13"
                                                     id="SkorTambahanJumlahBobotSubItemB13" readonly></td>
                                         </tr>
@@ -1419,8 +1438,8 @@
                                                     name="scorMaxB14" type="number" aria-label="B14" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB14"
-                                                    value="{{ $data->scorSubItemB14 }}" name="scorSubItemB14"
-                                                    type="number" aria-label="B14" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB14, 3) }}"
+                                                    name="scorSubItemB14" type="number" aria-label="B14" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.14</td>
@@ -1471,7 +1490,8 @@
                                                     name="JumlahSkorYangDiHasilkanB14" id="JumlahSkorYangDiHasilkanB14"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB14 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB14, 3) }}"
                                                     name="SkorTambahanJumlahSkorB14" id="SkorTambahanJumlahSkorB14"
                                                     readonly></td>
                                         </tr>
@@ -1496,7 +1516,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB14 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB14, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB14"
                                                     id="SkorTambahanJumlahBobotSubItemB14" readonly></td>
                                         </tr>
@@ -1541,8 +1561,8 @@
                                                     name="scorMaxB15" type="number" aria-label="B15" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB15"
-                                                    value="{{ $data->scorSubItemB15 }}" name="scorSubItemB15"
-                                                    type="number" aria-label="B15" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB15, 3) }}"
+                                                    name="scorSubItemB15" type="number" aria-label="B15" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.15</td>
@@ -1591,7 +1611,8 @@
                                                     name="JumlahSkorYangDiHasilkanB15" id="JumlahSkorYangDiHasilkanB15"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB15 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB15, 3) }}"
                                                     name="SkorTambahanJumlahSkorB15" id="SkorTambahanJumlahSkorB15"
                                                     readonly></td>
                                         </tr>
@@ -1614,7 +1635,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB15 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB15, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB15"
                                                     id="SkorTambahanJumlahBobotSubItemB15" readonly></td>
                                         </tr>
@@ -1655,8 +1676,8 @@
                                                     name="scorMaxB16" type="number" aria-label="B16" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB16"
-                                                    value="{{ $data->scorSubItemB16 }}" name="scorSubItemB16"
-                                                    type="number" aria-label="B16" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB16, 3) }}"
+                                                    name="scorSubItemB16" type="number" aria-label="B16" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.16</td>
@@ -1724,8 +1745,8 @@
                                                     name="scorMaxB17" type="number" aria-label="B17" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB17"
-                                                    value="{{ $data->scorSubItemB17 }}" name="scorSubItemB17"
-                                                    type="number" aria-label="B17" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB17, 3) }}"
+                                                    name="scorSubItemB17" type="number" aria-label="B17" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.17</td>
@@ -1774,7 +1795,8 @@
                                                     name="JumlahSkorYangDiHasilkanB17" id="JumlahSkorYangDiHasilkanB17"
                                                     readonly></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorB17 }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->SkorTambahanJumlahSkorB17, 3) }}"
                                                     name="SkorTambahanJumlahSkorB17" id="SkorTambahanJumlahSkorB17"
                                                     readonly></td>
                                         </tr>
@@ -1799,7 +1821,7 @@
                                             <td></td>
                                             <td></td>
                                             <td><input type="number"
-                                                    value="{{ $data->SkorTambahanJumlahBobotSubItemB17 }}"
+                                                    value="{{ number_format($data->SkorTambahanJumlahBobotSubItemB17, 3) }}"
                                                     name="SkorTambahanJumlahBobotSubItemB17"
                                                     id="SkorTambahanJumlahBobotSubItemB17" readonly></td>
                                         </tr>
@@ -1840,8 +1862,8 @@
                                                     name="scorMaxB18" type="number" aria-label="B18" readonly>
                                             </td>
                                             <td rowspan="2"><input id="scorSubItemB18"
-                                                    value="{{ $data->scorSubItemB18 }}" name="scorSubItemB18"
-                                                    type="number" aria-label="B18" readonly></td>
+                                                    value="{{ number_format($data->scorSubItemB18, 3) }}"
+                                                    name="scorSubItemB18" type="number" aria-label="B18" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>B.18</td>
@@ -1873,7 +1895,8 @@
                                         <tr>
                                             <td colspan="5"></td>
                                             <td colspan="5">Total Skor Penelitian</td>
-                                            <td><input type="number" value="{{ $data->TotalSkorPenelitianPointB }}"
+                                            <td><input type="number"
+                                                    value="{{ number_format($data->TotalSkorPenelitianPointB, 3) }}"
                                                     name="TotalSkorPenelitianPointB" id="TotalSkorPenelitianPointB"
                                                     readonly></td>
                                         </tr>
@@ -1995,7 +2018,7 @@
                                             <td colspan="4"></td>
                                             <td colspan="6">Nilai Total Penelitian & Karya Ilmiah</td>
                                             <td><input type="number"
-                                                    value="{{ $data->NilaiTotalPenelitiandanKaryaIlmiah }}"
+                                                    value="{{ number_format($data->NilaiTotalPenelitiandanKaryaIlmiah, 2) }}"
                                                     name="NilaiTotalPenelitiandanKaryaIlmiah"
                                                     id="NilaiTotalPenelitiandanKaryaIlmiah" readonly></td>
                                         </tr>
