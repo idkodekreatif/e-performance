@@ -23,7 +23,53 @@
                     <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
                         <thead>
                             <tr style="font-weight:bold">
-                                <td>Komponen</td>
+                                <td>NAMA</td>
+                                <td>EMAIL</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <?php
+                                    $name = $DataUser->name;
+                                    $email = $DataUser->email;
+                                ?>
+                                <td>
+                                    <?php echo $name  ?>
+                                </td>
+                                <td>
+                                    <?php echo $email  ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                        <?php
+                            $DataUserKinerjaPerilaku = (float)$DataUser->output_total_sementara_kinerja_perilaku;
+                            $DataUserKinerjaKompetensi = (float)$DataUser->output_total_sementara_kinerja_kompetensi;
+
+                            // SUM Nilai Perilaku dan Kompetensi
+                            $resultSumPerilakuKompetensi = $DataUserKinerjaPerilaku + $DataUserKinerjaKompetensi;
+
+                            // Predikat Perilaku dan Kompetensi
+                            if ($resultSumPerilakuKompetensi >= 5) {
+                            $OutPutPredikatKompetensi = "ISTIMEWA";
+                            }elseif($resultSumPerilakuKompetensi >= 4.01) {
+                            # code...
+                            $OutPutPredikatKompetensi = "SANGAT BAIK";
+                            }elseif($resultSumPerilakuKompetensi >= 3.01) {
+                            # code...
+                            $OutPutPredikatKompetensi = "BAIK";
+                            }elseif ($resultSumPerilakuKompetensi >= 2.01) {
+                            # code...
+                            $OutPutPredikatKompetensi = "CUKUP";
+                            }else {
+                            # code...
+                            $OutPutPredikatKompetensi = "KURANG";
+                            }
+                        ?>
+                        <thead>
+                            <tr style="font-weight:bold">
+                                <td>KOMPONEN</td>
                                 <td>PERILAKU</td>
                                 <td>KOMPETENSI</td>
                                 <td>NILAI KINERJA TOTAL</td>
@@ -33,12 +79,18 @@
                         <tbody>
                             <tr>
                                 <td style="font-weight:bold">Nilai</td>
-                                <td>1.10</td>
                                 <td>
-                                    2.2
+                                    <?php echo number_format((float)$DataUserKinerjaPerilaku, 2, '.', '')  ?>
                                 </td>
-                                <td>1.6</td>
-                                <td style="font-weight:bold">CUKUP</td>
+                                <td>
+                                    <?php echo number_format((float)$DataUserKinerjaKompetensi, 2, '.', '')  ?>
+                                </td>
+                                <td>
+                                    <?php echo number_format((float)$resultSumPerilakuKompetensi, 2, '.', '')  ?>
+                                </td>
+                                <td style="font-weight:bold">
+                                    <?php echo $OutPutPredikatKompetensi  ?>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

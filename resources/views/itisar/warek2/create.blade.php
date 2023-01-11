@@ -25,10 +25,11 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('warek2.ka.bau.raport') }}" class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
+                <a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}"
+                    class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
         </div>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('store.warek2.ka.bau') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card shadow">
                 <div class="card-header">

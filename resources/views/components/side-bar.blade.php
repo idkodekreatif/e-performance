@@ -49,6 +49,7 @@
                     </li>
                 </ul>
                 @endrole
+
                 @role('it|superuser|tendik')
                 <ul aria-expanded="false">
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITISAR</a>
@@ -100,6 +101,7 @@
             </li>
             @endrole
         </ul>
+
         <div class="side-bar-profile">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="side-bar-profile-img">
