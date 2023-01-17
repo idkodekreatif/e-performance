@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getDescriptionForEvent(string $eventName): string
     {
         if (empty(Auth::user()->name)) {
-            return $this->name . " {$eventName} Oleh: " . "master Import User";
+            return $this->name . " {$eventName} Oleh: " . "master Import User Seeder";
         } else {
             return $this->name . " {$eventName} Oleh: " .  Auth::user()->name;
         }
