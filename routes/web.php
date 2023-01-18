@@ -6,6 +6,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -141,14 +142,24 @@ Route::group(
 
 // -----------------------------Prefix All Point ITISAR----------------------------------------//
 Route::group(
-    ['prefix' => "/Point/ITISAR", 'middleware' => ['role:superuser|it|hrd|lppm|tendik', 'auth', 'verified']],
+    ['prefix' => "/ITISAR", 'middleware' => ['role:superuser|it|hrd|lppm|tendik', 'auth', 'verified']],
     function () {
         // -----------------------------Warek 2 Controller Form Penilaian Ka. Bau ----------------------------------------//
         Route::controller(warek2Controller::class)->group(function () {
             Route::get('/Input', 'create')->name('warek2.ka.bau');
             Route::post('/request/store', 'store')->name('store.warek2.ka.bau');
             Route::get('/ka-bau/edit/{PointId}', 'edit')->name('edit.warek2.ka.bau');
+            Route::put('/ka-bau/edit/update/{PointId}', 'update')->name('update.warek2.ka.bau');
             Route::get('/Raport/Ka-Bau/{user_id}', 'raport')->name('warek2.ka.bau.raport');
+        });
+
+        // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PEMASARAN ----------------------------------//
+        Route::controller(KaUnitPemasaranController::class)->group(function () {
+            Route::get('/Ka-Unit-Pemasaran/Input', 'create')->name('ka.upt.ka.unit.pemasaran');
+            Route::post('/KaPemasaran/Request/Store', 'store')->name('store.ka.pemasaran');
+            Route::get('/KaPemasaran/edit/{PointId}', 'edit')->name('edit.ka.pemasaran');
+            Route::put('/KaPemasaran/update/{PointId}', 'update')->name('update.ka.pemasaran');
+            Route::get('/Raport/KaPemasaran/{user_id}', 'raport')->name('ka.pemasaran.raport');
         });
     }
 );
