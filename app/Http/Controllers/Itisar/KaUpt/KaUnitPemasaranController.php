@@ -212,50 +212,50 @@ class KaUnitPemasaranController extends Controller
 
             $kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
             if ($request->hasFile('kinerja_kompetensi_1')) {
-                if ($RecordData->kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_1))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_1);
+                if ($RecordData->kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_1))) {
+                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_1);
                 }
-                $file_kinerja_kompetensi_1 = $request->file('kinerja_kompetensi_1')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_1 = $request->file('kinerja_kompetensi_1')->store('uploads/KaUpt/KaPemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_1 = $RecordData->kinerja_kompetensi_1;
             }
 
             $kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
             if ($request->hasFile('file_kinerja_kompetensi_2')) {
-                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_2))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_2);
+                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_2))) {
+                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_2);
                 }
-                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/KaUpt/KaPemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_2 = $RecordData->file_kinerja_kompetensi_2;
             }
 
             $kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
             if ($request->hasFile('file_kinerja_kompetensi_3')) {
-                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_3))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_3);
+                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_3))) {
+                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_3);
                 }
-                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/KaUpt/KaPemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_3 = $RecordData->file_kinerja_kompetensi_3;
             }
 
             $kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
             if ($request->hasFile('kinerja_kompetensi_4')) {
-                if ($RecordData->kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_4))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_4);
+                if ($RecordData->kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_4))) {
+                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_4);
                 }
-                $file_kinerja_kompetensi_4 = $request->file('kinerja_kompetensi_4')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_4 = $request->file('kinerja_kompetensi_4')->store('uploads/KaUpt/KaPemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_4 = $RecordData->kinerja_kompetensi_4;
             }
 
             $kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/ploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5))) {
-                    \Storage::delete('public/ploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5);
+                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/ploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_5))) {
+                    \Storage::delete('public/ploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_5);
                 }
-                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('ploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('ploads/KaUpt/KaPemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_5 = $RecordData->file_kinerja_kompetensi_5;
             }
