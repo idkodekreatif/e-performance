@@ -64,7 +64,7 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. UPT</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('ka.upt.ka.unit.pemasaran') }}">Ka. UNIT PEMASARAN</a></li>
-                                    <li><a href="javascript:void()">KOORDINATOR PERPUSTAKAAN</a></li>
+                                    <li><a href="{{ route('ka.upt.ka.unit.perpustakaan') }}">KOORDINATOR PERPUSTAKAAN</a></li>
                                     <li><a href="javascript:void()">KOORDINATOR LABORATORIUM</a></li>
                                     <li><a href="javascript:void()">Ka. UNIT IT</a></li>
                                 </ul>

@@ -226,6 +226,8 @@ class warek2Controller extends Controller
             'fileA11' => 'mimes:pdf|max:2048',
             'fileA12' => 'mimes:pdf|max:2048',
             'fileA13' => 'mimes:pdf|max:2048',
+            'fileA14' => 'mimes:pdf|max:2048',
+            'fileA15' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
         try {

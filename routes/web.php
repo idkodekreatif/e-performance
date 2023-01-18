@@ -7,6 +7,7 @@ use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
+use App\Http\Controllers\Itisar\KaUpt\KoordinatorPerpustakaanController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -156,10 +157,19 @@ Route::group(
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PEMASARAN ----------------------------------//
         Route::controller(KaUnitPemasaranController::class)->group(function () {
             Route::get('/Ka-Unit-Pemasaran/Input', 'create')->name('ka.upt.ka.unit.pemasaran');
-            Route::post('/KaPemasaran/Request/Store', 'store')->name('store.ka.pemasaran');
-            Route::get('/KaPemasaran/edit/{PointId}', 'edit')->name('edit.ka.pemasaran');
-            Route::put('/KaPemasaran/update/{PointId}', 'update')->name('update.ka.pemasaran');
+            Route::post('/Ka-Pemasaran/Request/Store', 'store')->name('store.ka.pemasaran');
+            Route::get('/Ka-Pemasaran/edit/{PointId}', 'edit')->name('edit.ka.pemasaran');
+            Route::put('/Ka-Pemasaran/update/{PointId}', 'update')->name('update.ka.pemasaran');
             Route::get('/Raport/KaPemasaran/{user_id}', 'raport')->name('ka.pemasaran.raport');
+        });
+
+        // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PERPUSTAKAAN ----------------------------------//
+        Route::controller(KoordinatorPerpustakaanController::class)->group(function () {
+            Route::get('/Ka-Perpustakaan/Input', 'create')->name('ka.upt.ka.unit.perpustakaan');
+            Route::post('/Ka-Perpustakaan/Request/Store', 'store')->name('store.ka.perpustakaan');
+            Route::get('/Ka-Perpustakaan/edit/{PointId}', 'edit')->name('edit.ka.perpustakaan');
+            Route::put('/Ka-Perpustakaan/update/{PointId}', 'update')->name('update.ka.perpustakaan');
+            Route::get('/Raport/Ka-Perpustakaan/{user_id}', 'raport')->name('ka.perpustakaan.raport');
         });
     }
 );
