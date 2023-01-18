@@ -29,7 +29,8 @@
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
         </div>
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('update.ka.pemasaran', [$data->user_id]) }}" method="POST" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="card shadow">
                 <div class="card-header">

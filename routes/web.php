@@ -149,6 +149,7 @@ Route::group(
             Route::get('/Input', 'create')->name('warek2.ka.bau');
             Route::post('/request/store', 'store')->name('store.warek2.ka.bau');
             Route::get('/ka-bau/edit/{PointId}', 'edit')->name('edit.warek2.ka.bau');
+            Route::put('/ka-bau/edit/update/{PointId}', 'update')->name('update.warek2.ka.bau');
             Route::get('/Raport/Ka-Bau/{user_id}', 'raport')->name('warek2.ka.bau.raport');
         });
 
@@ -157,6 +158,7 @@ Route::group(
             Route::get('/Ka-Unit-Pemasaran/Input', 'create')->name('ka.upt.ka.unit.pemasaran');
             Route::post('/KaPemasaran/Request/Store', 'store')->name('store.ka.pemasaran');
             Route::get('/KaPemasaran/edit/{PointId}', 'edit')->name('edit.ka.pemasaran');
+            Route::put('/KaPemasaran/update/{PointId}', 'update')->name('update.ka.pemasaran');
             Route::get('/Raport/KaPemasaran/{user_id}', 'raport')->name('ka.pemasaran.raport');
         });
     }
