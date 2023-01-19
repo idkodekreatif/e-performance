@@ -6,6 +6,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
 use App\Http\Controllers\Itisar\KaUpt\KoordinatorPerpustakaanController;
 use App\Http\Controllers\Itisar\warek2Controller;
@@ -170,6 +171,15 @@ Route::group(
             Route::get('/Ka-Perpustakaan/edit/{PointId}', 'edit')->name('edit.ka.perpustakaan');
             Route::put('/Ka-Perpustakaan/update/{PointId}', 'update')->name('update.ka.perpustakaan');
             Route::get('/Raport/Ka-Perpustakaan/{user_id}', 'raport')->name('ka.perpustakaan.raport');
+        });
+
+        // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT LABORAN ----------------------------------//
+        Route::controller(KaLaboranController::class)->group(function () {
+            Route::get('/Ka-Laboran/Input', 'create')->name('ka.upt.ka.unit.laboran');
+            Route::post('/Ka-Laboran/Request/Store', 'store')->name('store.ka.laboran');
+            Route::get('/Ka-Laboran/edit/{PointId}', 'edit')->name('edit.ka.laboran');
+            Route::put('/Ka-Laboran/update/{PointId}', 'update')->name('update.ka.laboran');
+            Route::get('/Raport/Ka-Laboran/{user_id}', 'raport')->name('ka.laboran.raport');
         });
     }
 );

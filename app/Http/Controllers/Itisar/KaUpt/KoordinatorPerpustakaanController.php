@@ -302,10 +302,10 @@ class KoordinatorPerpustakaanController extends Controller
 
             $kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/ploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_5))) {
-                    \Storage::delete('public/ploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_5);
+                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_5))) {
+                    \Storage::delete('public/uploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_5);
                 }
-                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('ploads/KaUpt/KaPerpustakaan', 'public');
+                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/KaUpt/KaPerpustakaan', 'public');
             } else {
                 $file_kinerja_kompetensi_5 = $RecordData->file_kinerja_kompetensi_5;
             }
@@ -342,10 +342,10 @@ class KoordinatorPerpustakaanController extends Controller
 
             $kinerja_kompetensi_9 = $request->get('kinerja_kompetensi_9');
             if ($request->hasFile('file_kinerja_kompetensi_9')) {
-                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/ploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_9))) {
-                    \Storage::delete('public/ploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_9);
+                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/uploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_9))) {
+                    \Storage::delete('public/uploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_9);
                 }
-                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('ploads/KaUpt/KaPerpustakaan', 'public');
+                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('uploads/KaUpt/KaPerpustakaan', 'public');
             } else {
                 $file_kinerja_kompetensi_9 = $RecordData->file_kinerja_kompetensi_9;
             }

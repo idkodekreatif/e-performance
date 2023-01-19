@@ -314,10 +314,10 @@ class warek2Controller extends Controller
 
             $kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/ploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5))) {
-                    \Storage::delete('public/ploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5);
+                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5))) {
+                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5);
                 }
-                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('ploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/warek2/ka-bau', 'public');
             } else {
                 $file_kinerja_kompetensi_5 = $RecordData->file_kinerja_kompetensi_5;
             }
@@ -354,10 +354,10 @@ class warek2Controller extends Controller
 
             $kinerja_kompetensi_9 = $request->get('kinerja_kompetensi_9');
             if ($request->hasFile('file_kinerja_kompetensi_9')) {
-                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/ploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_9))) {
-                    \Storage::delete('public/ploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_9);
+                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_9))) {
+                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_9);
                 }
-                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('ploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('uploads/warek2/ka-bau', 'public');
             } else {
                 $file_kinerja_kompetensi_9 = $RecordData->file_kinerja_kompetensi_9;
             }
