@@ -6,6 +6,9 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
+use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
+use App\Http\Controllers\Itisar\KaUpt\KoordinatorPerpustakaanController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -41,7 +44,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('profile', profileController::class)->only(['index', 'update'])->middleware('auth', 'verified');
 
-
+// ----------------------------- Maintenain ----------------------------------------//
 Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified']], function () {
     // -----------------------------Users Management Spatie----------------------------------------//
     Route::controller(IndexController::class)->group(function () {
@@ -139,13 +142,44 @@ Route::group(
     }
 );
 
-// -----------------------------Prefix All Point ITIKAD----------------------------------------//
+// -----------------------------Prefix All Point ITISAR----------------------------------------//
 Route::group(
-    ['prefix' => "/Point/ITISAR", 'middleware' => ['role:superuser|it|hrd|lppm|tendik', 'auth', 'verified']],
+    ['prefix' => "/ITISAR", 'middleware' => ['role:superuser|it|hrd|lppm|tendik', 'auth', 'verified']],
     function () {
         // -----------------------------Warek 2 Controller Form Penilaian Ka. Bau ----------------------------------------//
         Route::controller(warek2Controller::class)->group(function () {
             Route::get('/Input', 'create')->name('warek2.ka.bau');
+            Route::post('/request/store', 'store')->name('store.warek2.ka.bau');
+            Route::get('/ka-bau/edit/{PointId}', 'edit')->name('edit.warek2.ka.bau');
+            Route::put('/ka-bau/edit/update/{PointId}', 'update')->name('update.warek2.ka.bau');
+            Route::get('/Raport/Ka-Bau/{user_id}', 'raport')->name('warek2.ka.bau.raport');
+        });
+
+        // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PEMASARAN ----------------------------------//
+        Route::controller(KaUnitPemasaranController::class)->group(function () {
+            Route::get('/Ka-Unit-Pemasaran/Input', 'create')->name('ka.upt.ka.unit.pemasaran');
+            Route::post('/Ka-Pemasaran/Request/Store', 'store')->name('store.ka.pemasaran');
+            Route::get('/Ka-Pemasaran/edit/{PointId}', 'edit')->name('edit.ka.pemasaran');
+            Route::put('/Ka-Pemasaran/update/{PointId}', 'update')->name('update.ka.pemasaran');
+            Route::get('/Raport/KaPemasaran/{user_id}', 'raport')->name('ka.pemasaran.raport');
+        });
+
+        // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PERPUSTAKAAN ----------------------------------//
+        Route::controller(KoordinatorPerpustakaanController::class)->group(function () {
+            Route::get('/Ka-Perpustakaan/Input', 'create')->name('ka.upt.ka.unit.perpustakaan');
+            Route::post('/Ka-Perpustakaan/Request/Store', 'store')->name('store.ka.perpustakaan');
+            Route::get('/Ka-Perpustakaan/edit/{PointId}', 'edit')->name('edit.ka.perpustakaan');
+            Route::put('/Ka-Perpustakaan/update/{PointId}', 'update')->name('update.ka.perpustakaan');
+            Route::get('/Raport/Ka-Perpustakaan/{user_id}', 'raport')->name('ka.perpustakaan.raport');
+        });
+
+        // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT LABORAN ----------------------------------//
+        Route::controller(KaLaboranController::class)->group(function () {
+            Route::get('/Ka-Laboran/Input', 'create')->name('ka.upt.ka.unit.laboran');
+            Route::post('/Ka-Laboran/Request/Store', 'store')->name('store.ka.laboran');
+            Route::get('/Ka-Laboran/edit/{PointId}', 'edit')->name('edit.ka.laboran');
+            Route::put('/Ka-Laboran/update/{PointId}', 'update')->name('update.ka.laboran');
+            Route::get('/Raport/Ka-Laboran/{user_id}', 'raport')->name('ka.laboran.raport');
         });
     }
 );

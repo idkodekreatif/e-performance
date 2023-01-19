@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWarek2Table extends Migration
+class CreateKaPerpustakaanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWarek2Table extends Migration
      */
     public function up()
     {
-        Schema::create('warek_2', function (Blueprint $table) {
+        Schema::create('ka_perpustakaan', function (Blueprint $table) {
             $table->id();
             $table->enum('Point1_1', ['1', '2', '3', '4', '5'])->nullable();
             $table->enum('Point1_2', ['1', '2', '3', '4', '5'])->nullable();
@@ -76,14 +76,6 @@ class CreateWarek2Table extends Migration
             $table->string('file_kinerja_kompetensi_10')->nullable();
             $table->enum('kinerja_kompetensi_11', ['1', '2', '3', '4', '5'])->nullable();
             $table->string('file_kinerja_kompetensi_11')->nullable();
-            $table->enum('kinerja_kompetensi_12', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_12')->nullable();
-            $table->enum('kinerja_kompetensi_13', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_13')->nullable();
-            $table->enum('kinerja_kompetensi_14', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_14')->nullable();
-            $table->enum('kinerja_kompetensi_15', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_15')->nullable();
             $table->string('output_point_kinerja_kompetensi_1', 50);
             $table->string('output_point_kinerja_kompetensi_2', 50);
             $table->string('output_point_kinerja_kompetensi_3', 50);
@@ -106,6 +98,6 @@ class CreateWarek2Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('warek_2');
+        Schema::dropIfExists('ka_perpustakaan');
     }
 }

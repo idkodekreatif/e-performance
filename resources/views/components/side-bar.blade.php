@@ -49,6 +49,7 @@
                     </li>
                 </ul>
                 @endrole
+
                 @role('it|superuser|tendik')
                 <ul aria-expanded="false">
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITISAR</a>
@@ -56,6 +57,16 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('warek2.ka.bau') }}">Ka. Bau</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. UPT</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('ka.upt.ka.unit.pemasaran') }}">Ka. UNIT PEMASARAN</a></li>
+                                    <li><a href="{{ route('ka.upt.ka.unit.perpustakaan') }}">KOORDINATOR PERPUSTAKAAN</a></li>
+                                    <li><a href="{{ route('ka.upt.ka.unit.laboran') }}">KOORDINATOR LABORATORIUM</a></li>
+                                    <li><a href="javascript:void()">Ka. UNIT IT</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -100,6 +111,7 @@
             </li>
             @endrole
         </ul>
+
         <div class="side-bar-profile">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="side-bar-profile-img">

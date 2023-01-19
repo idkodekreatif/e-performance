@@ -37,6 +37,14 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected static $logFillable = true;
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        if (empty(Auth::user()->name)) {
+            return $this->name . " {$eventName} Oleh: " . "master Import User Seeder";
+        } else {
+            return $this->name . " {$eventName} Oleh: " .  Auth::user()->name;
+        }
+    }
     protected static $logOnlyDirty = true;
 
     /**
@@ -106,5 +114,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function PointEId()
     {
         return $this->hasOne(PointE::class, 'user_id', 'id');
+    }
+
+    /**
+     * Warek2
+     *
+     * @return void
+     */
+    public function Warek2Id()
+    {
+        return $this->hasOne(Warek2::class, 'user_id', 'id');
     }
 }
