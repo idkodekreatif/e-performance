@@ -1204,8 +1204,7 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Menghimpun dan mengkaji peraturan perundang-undangan di bidang Umum,
-                                            kepegawaian dan keuangan</td>
+                                        <td>Menyusunan rencana kebutuhan dan penyediaan bahan pustaka</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_1 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
                                             id="kinerja_kompetensi_1_1" value="1" onclick="sum();">
@@ -1232,8 +1231,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen peraaturan
-                                                perundang-undangan di bidang Umum, kepegawaian dan keuangan</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen rencana kebutuhan</label>
                                             <input class="@error('file_kinerja_kompetensi_1') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_1" type="file">
 
@@ -1254,7 +1252,7 @@
 
                                     <tr>
                                         <td>2</td>
-                                        <td>Mengoordinasikan tugas- tugas bawahannya sesuai bidangnya</td>
+                                        <td>Mengelolah bahan pustaka fisik dan digital</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_2 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
                                             id="kinerja_kompetensi_2_1" value="1" onclick="sum();">
@@ -1302,7 +1300,7 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>Mengkoordinasikan administrasi umum, kepegawaian dan keuangan</td>
+                                        <td>Memberikan pelayanan dan pendayagunaan bahan pustaka, dan tata usaha Perpustakaan</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_3 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
                                             id="kinerja_kompetensi_3_1" value="1" onclick="sum();">
@@ -1329,8 +1327,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Laporan harian</label>
                                             <input class="@error('file_kinerja_kompetensi_3') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_3" type="file">
 
@@ -1350,7 +1347,7 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>Mengkoordinasikan urusan keamanan dan ketertiban,kebersihan kampus</td>
+                                        <td>Melakukan inventarisasi bahan pustaka</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_4 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
                                             id="kinerja_kompetensi_4_1" value="1" onclick="sum();">
@@ -1377,8 +1374,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen daftar inventaris bahan pustaka</label>
                                             <input class="@error('file_kinerja_kompetensi_4') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_4" type="file">
 
@@ -1398,7 +1394,7 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td>Mengkoordinasikan perencanaan pengadaan barang dan jasa</td>
+                                        <td>Melaksanaan penataan, perawatan koleksi buku</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_5 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
                                             id="kinerja_kompetensi_5_1" value="1" onclick="sum();">
@@ -1446,7 +1442,7 @@
                                     </tr>
                                     <tr>
                                         <td>6</td>
-                                        <td>Mengkoordinasikan penggunaan dan pemeliharaan sarana dan prasarana IKBIS
+                                        <td>Melaksanaan kerjasama dengan lembaga terkait
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_6 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
@@ -1474,8 +1470,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* MoU/MoA</label>
                                             <input class="@error('file_kinerja_kompetensi_6') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_6" type="file">
 
@@ -1495,8 +1490,7 @@
                                     </tr>
                                     <tr>
                                         <td>7</td>
-                                        <td>Mengkoordinasikan penyimpanan, pendistribusian, inventarisasi, dan
-                                            penghapusan barang milik Institusi
+                                        <td>Menyusun proposal pemenuhan kebutuhan koleksi buku teks, jurnal internasional , jurnal nasional dan proseding
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_7 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
@@ -1524,8 +1518,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen proposal</label>
                                             <input class="@error('file_kinerja_kompetensi_7') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_7" type="file">
 
@@ -1545,7 +1538,7 @@
                                     </tr>
                                     <tr>
                                         <td>8</td>
-                                        <td>Mengkoordinasikan pelaksanaan rapat dan acara-acara ceremonial
+                                        <td>Membuat statistic pengunjung
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_8 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
@@ -1573,8 +1566,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen statistik pengunjung</label>
                                             <input class="@error('file_kinerja_kompetensi_8') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_8" type="file">
 
@@ -1594,7 +1586,7 @@
                                     </tr>
                                     <tr>
                                         <td>9</td>
-                                        <td>Mengkoordinasikan penyusunan formasi kepegawaian
+                                        <td>Melakukan katalogisasi bahan pustaka
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_9 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
@@ -1622,8 +1614,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen daftar kaltalog</label>
                                             <input class="@error('file_kinerja_kompetensi_9') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_9" type="file">
 
@@ -1643,7 +1634,7 @@
                                     </tr>
                                     <tr>
                                         <td>10</td>
-                                        <td>Mengkoordinasikan pengadaan pegawai dan pengembangannya
+                                        <td>Menyusun laporan unit perpustakaan sebagai pertanggung jawaban kepada atasan
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_10 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_10"
@@ -1676,8 +1667,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Laporan Bulanan</label>
                                             <input class="@error('file_kinerja_kompetensi_10') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_10" type="file">
 
@@ -1697,8 +1687,7 @@
                                     </tr>
                                     <tr>
                                         <td>11</td>
-                                        <td>Mengkoordinasikan sistem jenjang kepangkatan, mutasi, pemberhentian, dan
-                                            administrasi kepegawaian
+                                        <td>Menyusun rencana kerja dan anggaran tahunan (RKAT) pada bidangnya
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_11 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_11"
@@ -1731,8 +1720,7 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen RKAT</label>
                                             <input class="@error('file_kinerja_kompetensi_11') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_11" type="file">
 
@@ -1821,7 +1809,7 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/itisar/warek2/PointKinerjaPerilaku.js') }}"></script>
-    <script src="{{ asset('Assets/js/itisar/warek2/PointKinerjaKompetensi.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/KaUpt/KaPerpustakaan/PointKinerjaPerilaku.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/KaUpt/KaPerpustakaan/PointKinerjaKompetensi.js') }}"></script>
     @endpush
 </x-app-layout>
