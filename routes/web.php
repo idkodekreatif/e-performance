@@ -6,6 +6,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\Itisar\Baak\BaakController;
 use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
@@ -190,6 +191,15 @@ Route::group(
             Route::get('/Ka-Unit-IT/edit/{PointId}', 'edit')->name('edit.ka.it');
             Route::put('/Ka-Unit-IT/update/{PointId}', 'update')->name('update.ka.it');
             Route::get('/Raport/Ka-Unit-IT/{user_id}', 'raport')->name('ka.it.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian Ka. Baak ----------------------------------//
+        Route::controller(BaakController::class)->group(function () {
+            Route::get('/Baak/Input', 'create')->name('ka.baak');
+            Route::post('/Baak/Request/Store', 'store')->name('store.ka.baak');
+            Route::get('/Baak/edit/{PointId}', 'edit')->name('edit.ka.baak');
+            Route::put('/Baak/update/{PointId}', 'update')->name('update.ka.baak');
+            Route::get('/Raport/Baak/{user_id}', 'raport')->name('ka.baak.raport');
         });
     }
 );

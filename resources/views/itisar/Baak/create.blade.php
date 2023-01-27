@@ -1,4 +1,4 @@
-<x-app-layout title="Form Penilaian Ka. UPT | Ka. Unit IT">
+<x-app-layout title="Form Penilaian Ka. Baak">
     @push('style')
     <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
     <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -19,21 +19,21 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Unit IT</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Baak</a></li>
             </ol>
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('ka.it.raport', Auth::user()->id) }}"
+                <a href="{{ route('ka.baak.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
-                <a href="{{ route('edit.ka.it', Auth::user()->id) }}"
+                <a href="{{ route('edit.ka.baak', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a>
             </div>
         </div>
-        <form action="{{ route('store.ka.it') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('store.ka.baak') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="card shadow">
+           <div class="card shadow">
                 <div class="card-body">
                     <div class="mb-4">
                         <h4 class="card-title">Nama</h4>
@@ -1062,7 +1062,7 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Melaksanaan pengelolaan, pemeliharaan dan pemanfaatan jaringan sistem informasi, teknologi informasi dan komunikasi</td>
+                                        <td>Menyusun Kalender Akademik</td>
                                         <td><input type="radio" class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
                                                 id="kinerja_kompetensi_1_1" value="1" onclick="sum();">
                                         </td>
@@ -1099,7 +1099,7 @@
 
                                     <tr>
                                         <td>2</td>
-                                        <td>Melakukan perawatan dan mengisi konten website IKBIS</td>
+                                        <td>Melaksanakan dan mengkoordinasikan revisi Peraturan Akademik (PA)</td>
                                         <td><input type="radio" class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
                                                 id="kinerja_kompetensi_2_1" value="1" onclick="sum();">
                                         </td>
@@ -1135,7 +1135,7 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>Menginventarisir PC, laptop, printer, monitor, LCD, CCTV dan jaringan milik IKBIS</td>
+                                        <td>Mengkoordinasikan pelaksanaan administrasi Akreditasi Program studi</td>
                                         <td><input type="radio" class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
                                                 id="kinerja_kompetensi_3_1" value="1" onclick="sum();">
                                         </td>
@@ -1157,7 +1157,8 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Daftar inventaris</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
                                             <input class="@error('file_kinerja_kompetensi_3') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_3" type="file">
 
@@ -1170,7 +1171,7 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>Melakukan perbaikan atas PC, laptop, printer, monitor, LCD, CCTV dan jaringan milik IKBIS</td>
+                                        <td>Melaksanakan dan mengkoordinasikan proses mahasiswa cuti kuliah dan Surat Keterangan Pernah Kuliah (SKPK)</td>
                                         <td><input type="radio" class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
                                                 id="kinerja_kompetensi_4_1" value="1" onclick="sum();">
                                         </td>
@@ -1192,7 +1193,8 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik/form service berkala</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
                                             <input class="@error('file_kinerja_kompetensi_4') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_4" type="file">
 
@@ -1205,7 +1207,7 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td>Menghubungkan PC dan laptop yang terhubung dengan jaringan luas internet</td>
+                                        <td>Menyusun data kelulusan mahasiswa</td>
                                         <td><input type="radio" class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
                                                 id="kinerja_kompetensi_5_1" value="1" onclick="sum();">
                                         </td>
@@ -1241,7 +1243,7 @@
                                     </tr>
                                     <tr>
                                         <td>6</td>
-                                        <td>Menjamin keberlangsungan ingel (IKBIS new generation e-learning)
+                                        <td>Menyusun data wisudawan dalam format fisik dan digital
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
                                                 id="kinerja_kompetensi_6_1" value="1" onclick="sum();">
@@ -1278,7 +1280,7 @@
                                     </tr>
                                     <tr>
                                         <td>7</td>
-                                        <td>Menyusun laporan unit IT sebagai pertanggung jawaban kepada atasan
+                                        <td>Melaksanakan pengadaan dan pengelolaan atribut wisuda serta pemeliharaannya
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
                                                 id="kinerja_kompetensi_7_1" value="1" onclick="sum();">
@@ -1301,7 +1303,8 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Laporan bulanan</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
                                             <input class="@error('file_kinerja_kompetensi_7') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_7" type="file">
 
@@ -1314,7 +1317,7 @@
                                     </tr>
                                     <tr>
                                         <td>8</td>
-                                        <td>Menyusun rencana kerja dan anggaran tahunan (RKAT) pada bidangnya
+                                        <td>Melaksanakan dan mengkoordinasikan upacara wisuda
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
                                                 id="kinerja_kompetensi_8_1" value="1" onclick="sum();">
@@ -1337,7 +1340,8 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen RKAT</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
                                             <input class="@error('file_kinerja_kompetensi_8') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_8" type="file">
 
@@ -1348,7 +1352,378 @@
                                             @enderror
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Menerbitkan Ijazah, SKPI, Transkrip Nilai Mahasiswa, dan SKL
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_1" value="1" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_2" value="2" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_3" value="3" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_4" value="4" onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
+                                                id="kinerja_kompetensi_9_5" value="5" onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_9')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_9') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_9" type="file">
 
+                                            @error('file_kinerja_kompetensi_9')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Pelayanan legalisasi Transkrip Nilai dan Ijazah
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_10')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_10') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_10" type="file">
+
+                                            @error('file_kinerja_kompetensi_10')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Melaksanakan pengarsipan Ijazah, SKPI dan Transkrip Nilai dalam format fisik dan digital
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_11"
+                                                name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_11')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_11') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_11" type="file">
+
+                                            @error('file_kinerja_kompetensi_11')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Melaksanakan pelayanan permohonan Validasi Ijazah
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_10"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_12"
+                                                name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_12')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_12') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_12" type="file">
+
+                                            @error('file_kinerja_kompetensi_12')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>Melaksanakan dan Mengoordinasikan layanan permohonan penggantian Ijazah dan Transkrip Nilai yang hilang atau rusak
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_13"
+                                                name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_13')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_13') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_13" type="file">
+
+                                            @error('file_kinerja_kompetensi_13')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Mengkoordinasikan Proses Penerbitan Surat Izin dan Tugas Belajar/Studi Lanjut, Surat Ucapan Selamat dan Laporan Dosen
+                                        Lulus Dalam Negeri dan Luar Negeri, dan lain-lain
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_14"
+                                                name="kinerja_kompetensi_14" id="kinerja_kompetensi_14_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_14"
+                                                name="kinerja_kompetensi_14" id="kinerja_kompetensi_14_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_14"
+                                                name="kinerja_kompetensi_14" id="kinerja_kompetensi_14_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_14"
+                                                name="kinerja_kompetensi_14" id="kinerja_kompetensi_14_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_14"
+                                                name="kinerja_kompetensi_14" id="kinerja_kompetensi_14_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_14')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_14') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_14" type="file">
+
+                                            @error('file_kinerja_kompetensi_14')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>15</td>
+                                        <td>Melaksanakan dan Mengkoordinasikan penerbitan surat ijin penelitian skripsi bagi mahasiswa
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_15"
+                                                name="kinerja_kompetensi_15" id="kinerja_kompetensi_15_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_15"
+                                                name="kinerja_kompetensi_15" id="kinerja_kompetensi_15_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_15"
+                                                name="kinerja_kompetensi_15" id="kinerja_kompetensi_15_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_15"
+                                                name="kinerja_kompetensi_15" id="kinerja_kompetensi_15_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_15"
+                                                name="kinerja_kompetensi_15" id="kinerja_kompetensi_15_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_15')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
+                                                RKAT</label>
+                                            <input class="@error('file_kinerja_kompetensi_15') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_15" type="file">
+
+                                            @error('file_kinerja_kompetensi_15')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>16</td>
+                                        <td>Menyusun laporan unit perpustakaansebagai pertanggung jawaban kepada atasan
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_16')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Laporan Bulanan</label>
+                                            <input class="@error('file_kinerja_kompetensi_16') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_16" type="file">
+
+                                            @error('file_kinerja_kompetensi_16')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>17</td>
+                                        <td>Menyusun rencana kerja dan anggaran tahunan (RKAT) pada bidangnya
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_17')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen RKAT</label>
+                                            <input class="@error('file_kinerja_kompetensi_17') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_17" type="file">
+
+                                            @error('file_kinerja_kompetensi_17')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
 
 
                                     <tr class="table-primary">
@@ -1413,8 +1788,8 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/itisar/KaUpt/KaUnitIt/PointKinerjaPerilaku.js') }}"></script>
-    <script src="{{ asset('Assets/js/itisar/KaUpt/KaUnitIt/PointKinerjaKompetensi.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/Baak/PointKinerjaPerilaku.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/Baak/PointKinerjaKompetensi.js') }}"></script>
     <script src="{{ asset('Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('Assets/vendor/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('Assets/js/plugins-init/select2-init.js') }}"></script>
