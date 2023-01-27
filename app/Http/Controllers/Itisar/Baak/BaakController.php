@@ -1,27 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Itisar;
+namespace App\Http\Controllers\Itisar\Baak;
 
 use App\Http\Controllers\Controller;
-use App\Models\Warek2;
-use App\Models\Menu;
-use App\Models\User;
+use App\Models\Baak;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Menu;
+use App\Models\User;
 
-class warek2Controller extends Controller
+class BaakController extends Controller
 {
-    /**
-     * create
-     *
-     * @return void
-     */
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser',
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
         ])->get();
-        return view('itisar.warek2.create', compact('users'));
+        return view('itisar.Baak.create', compact('users'));
     }
 
     /**
@@ -48,144 +43,156 @@ class warek2Controller extends Controller
             'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
             'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
             'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
         ]);
 
         DB::beginTransaction();
         try {
-            $warek2 = new Warek2();
-            $warek2->Point1_1 = $request->get('Point1_1');
-            $warek2->Point1_2 = $request->get('Point1_2');
-            $warek2->Point1_3 = $request->get('Point1_3');
-            $warek2->Point1_4 = $request->get('Point1_4');
-            $warek2->Point1_5 = $request->get('Point1_5');
-            $warek2->Point2_1 = $request->get('Point2_1');
-            $warek2->Point2_2 = $request->get('Point2_2');
-            $warek2->Point2_3 = $request->get('Point2_3');
-            $warek2->Point2_4 = $request->get('Point2_4');
-            $warek2->Point2_5 = $request->get('Point2_5');
-            $warek2->Point3_1 = $request->get('Point3_1');
-            $warek2->Point3_2 = $request->get('Point3_2');
-            $warek2->Point3_3 = $request->get('Point3_3');
-            $warek2->Point3_4 = $request->get('Point3_4');
-            $warek2->Point3_5 = $request->get('Point3_5');
-            $warek2->Point4_1 = $request->get('Point4_1');
-            $warek2->Point4_2 = $request->get('Point4_2');
-            $warek2->Point4_3 = $request->get('Point4_3');
-            $warek2->Point4_4 = $request->get('Point4_4');
-            $warek2->Point4_5 = $request->get('Point4_5');
-            $warek2->Point5_1 = $request->get('Point5_1');
-            $warek2->Point5_2 = $request->get('Point5_2');
-            $warek2->Point5_3 = $request->get('Point5_3');
-            $warek2->Point5_4 = $request->get('Point5_4');
-            $warek2->Point5_5 = $request->get('Point5_5');
-            $warek2->Point6_1 = $request->get('Point6_1');
-            $warek2->Point6_2 = $request->get('Point6_2');
-            $warek2->Point6_3 = $request->get('Point6_3');
-            $warek2->Point6_4 = $request->get('Point6_4');
-            $warek2->Point6_5 = $request->get('Point6_5');
-            $warek2->output_point_1 = $request->get('output_point_1');
-            $warek2->output_point_2 = $request->get('output_point_2');
-            $warek2->output_point_3 = $request->get('output_point_3');
-            $warek2->output_point_4 = $request->get('output_point_4');
-            $warek2->output_point_5 = $request->get('output_point_5');
-            $warek2->output_total_point_kinerja_perilaku = $request->get('output_total_point_kinerja_perilaku');
-            $warek2->output_total_nilai_rata_rata_kinerja_perilaku = $request->get('output_total_nilai_rata_rata_kinerja_perilaku');
-            $warek2->output_total_sementara_kinerja_perilaku = $request->get('output_total_sementara_kinerja_perilaku');
+            $baak = new Baak();
+            $baak->Point1_1 = $request->get('Point1_1');
+            $baak->Point1_2 = $request->get('Point1_2');
+            $baak->Point1_3 = $request->get('Point1_3');
+            $baak->Point1_4 = $request->get('Point1_4');
+            $baak->Point1_5 = $request->get('Point1_5');
+            $baak->Point2_1 = $request->get('Point2_1');
+            $baak->Point2_2 = $request->get('Point2_2');
+            $baak->Point2_3 = $request->get('Point2_3');
+            $baak->Point2_4 = $request->get('Point2_4');
+            $baak->Point2_5 = $request->get('Point2_5');
+            $baak->Point3_1 = $request->get('Point3_1');
+            $baak->Point3_2 = $request->get('Point3_2');
+            $baak->Point3_3 = $request->get('Point3_3');
+            $baak->Point3_4 = $request->get('Point3_4');
+            $baak->Point3_5 = $request->get('Point3_5');
+            $baak->Point4_1 = $request->get('Point4_1');
+            $baak->Point4_2 = $request->get('Point4_2');
+            $baak->Point4_3 = $request->get('Point4_3');
+            $baak->Point4_4 = $request->get('Point4_4');
+            $baak->Point4_5 = $request->get('Point4_5');
+            $baak->Point5_1 = $request->get('Point5_1');
+            $baak->Point5_2 = $request->get('Point5_2');
+            $baak->Point5_3 = $request->get('Point5_3');
+            $baak->Point5_4 = $request->get('Point5_4');
+            $baak->Point5_5 = $request->get('Point5_5');
+            $baak->Point6_1 = $request->get('Point6_1');
+            $baak->Point6_2 = $request->get('Point6_2');
+            $baak->Point6_3 = $request->get('Point6_3');
+            $baak->Point6_4 = $request->get('Point6_4');
+            $baak->Point6_5 = $request->get('Point6_5');
+            $baak->output_point_1 = $request->get('output_point_1');
+            $baak->output_point_2 = $request->get('output_point_2');
+            $baak->output_point_3 = $request->get('output_point_3');
+            $baak->output_point_4 = $request->get('output_point_4');
+            $baak->output_point_5 = $request->get('output_point_5');
+            $baak->output_total_point_kinerja_perilaku = $request->get('output_total_point_kinerja_perilaku');
+            $baak->output_total_nilai_rata_rata_kinerja_perilaku = $request->get('output_total_nilai_rata_rata_kinerja_perilaku');
+            $baak->output_total_sementara_kinerja_perilaku = $request->get('output_total_sementara_kinerja_perilaku');
 
-            $warek2->kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
+            $baak->kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
             if ($request->hasFile('file_kinerja_kompetensi_1')) {
-                $fileName = $request->file('file_kinerja_kompetensi_1')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_1 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_1')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_1 = $fileName;
             }
-            $warek2->kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
+            $baak->kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
             if ($request->hasFile('file_kinerja_kompetensi_2')) {
-                $fileName = $request->file('file_kinerja_kompetensi_2')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_2 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_2')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_2 = $fileName;
             }
-            $warek2->kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
+            $baak->kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
             if ($request->hasFile('file_kinerja_kompetensi_3')) {
-                $fileName = $request->file('file_kinerja_kompetensi_3')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_3 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_3')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_3 = $fileName;
             }
-            $warek2->kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
+            $baak->kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
             if ($request->hasFile('file_kinerja_kompetensi_4')) {
-                $fileName = $request->file('file_kinerja_kompetensi_4')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_4 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_4')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_4 = $fileName;
             }
-            $warek2->kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
+            $baak->kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                $fileName = $request->file('file_kinerja_kompetensi_5')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_5 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_5')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_5 = $fileName;
             }
-            $warek2->kinerja_kompetensi_6 = $request->get('kinerja_kompetensi_6');
+            $baak->kinerja_kompetensi_6 = $request->get('kinerja_kompetensi_6');
             if ($request->hasFile('file_kinerja_kompetensi_6')) {
-                $fileName = $request->file('file_kinerja_kompetensi_6')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_6 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_6')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_6 = $fileName;
             }
-            $warek2->kinerja_kompetensi_7 = $request->get('kinerja_kompetensi_7');
+            $baak->kinerja_kompetensi_7 = $request->get('kinerja_kompetensi_7');
             if ($request->hasFile('file_kinerja_kompetensi_7')) {
-                $fileName = $request->file('file_kinerja_kompetensi_7')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_7 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_7')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_7 = $fileName;
             }
-            $warek2->kinerja_kompetensi_8 = $request->get('kinerja_kompetensi_8');
+            $baak->kinerja_kompetensi_8 = $request->get('kinerja_kompetensi_8');
             if ($request->hasFile('file_kinerja_kompetensi_8')) {
-                $fileName = $request->file('file_kinerja_kompetensi_8')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_8 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_8')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_8 = $fileName;
             }
-            $warek2->kinerja_kompetensi_9 = $request->get('kinerja_kompetensi_9');
+            $baak->kinerja_kompetensi_9 = $request->get('kinerja_kompetensi_9');
             if ($request->hasFile('file_kinerja_kompetensi_9')) {
-                $fileName = $request->file('file_kinerja_kompetensi_9')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_9 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_9')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_9 = $fileName;
             }
-            $warek2->kinerja_kompetensi_10 = $request->get('kinerja_kompetensi_10');
+            $baak->kinerja_kompetensi_10 = $request->get('kinerja_kompetensi_10');
             if ($request->hasFile('file_kinerja_kompetensi_10')) {
-                $fileName = $request->file('file_kinerja_kompetensi_10')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_10 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_10')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_10 = $fileName;
             }
-            $warek2->kinerja_kompetensi_11 = $request->get('kinerja_kompetensi_11');
+            $baak->kinerja_kompetensi_11 = $request->get('kinerja_kompetensi_11');
             if ($request->hasFile('file_kinerja_kompetensi_11')) {
-                $fileName = $request->file('file_kinerja_kompetensi_11')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_11 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_11')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_11 = $fileName;
             }
-            $warek2->kinerja_kompetensi_12 = $request->get('kinerja_kompetensi_12');
+            $baak->kinerja_kompetensi_12 = $request->get('kinerja_kompetensi_12');
             if ($request->hasFile('file_kinerja_kompetensi_12')) {
-                $fileName = $request->file('file_kinerja_kompetensi_12')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_12 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_12')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_12 = $fileName;
             }
-            $warek2->kinerja_kompetensi_13 = $request->get('kinerja_kompetensi_13');
+            $baak->kinerja_kompetensi_13 = $request->get('kinerja_kompetensi_13');
             if ($request->hasFile('file_kinerja_kompetensi_13')) {
-                $fileName = $request->file('file_kinerja_kompetensi_13')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_13 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_13')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_13 = $fileName;
             }
-            $warek2->kinerja_kompetensi_14 = $request->get('kinerja_kompetensi_14');
+            $baak->kinerja_kompetensi_14 = $request->get('kinerja_kompetensi_14');
             if ($request->hasFile('file_kinerja_kompetensi_14')) {
-                $fileName = $request->file('file_kinerja_kompetensi_14')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_14 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_14')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_14 = $fileName;
             }
-            $warek2->kinerja_kompetensi_15 = $request->get('kinerja_kompetensi_15');
+            $baak->kinerja_kompetensi_15 = $request->get('kinerja_kompetensi_15');
             if ($request->hasFile('file_kinerja_kompetensi_15')) {
-                $fileName = $request->file('file_kinerja_kompetensi_15')->store('uploads/warek2/ka-bau', 'public');
-                $warek2->file_kinerja_kompetensi_15 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_15')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_15 = $fileName;
+            }
+            $baak->kinerja_kompetensi_16 = $request->get('kinerja_kompetensi_16');
+            if ($request->hasFile('file_kinerja_kompetensi_16')) {
+                $fileName = $request->file('file_kinerja_kompetensi_16')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_16 = $fileName;
+            }
+            $baak->kinerja_kompetensi_17 = $request->get('kinerja_kompetensi_17');
+            if ($request->hasFile('file_kinerja_kompetensi_17')) {
+                $fileName = $request->file('file_kinerja_kompetensi_17')->store('uploads/baak', 'public');
+                $baak->file_kinerja_kompetensi_17 = $fileName;
             }
 
-            $warek2->output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
-            $warek2->output_point_kinerja_kompetensi_2 = $request->get('output_point_kinerja_kompetensi_2');
-            $warek2->output_point_kinerja_kompetensi_3 = $request->get('output_point_kinerja_kompetensi_3');
-            $warek2->output_point_kinerja_kompetensi_4 = $request->get('output_point_kinerja_kompetensi_4');
-            $warek2->output_point_kinerja_kompetensi_5 = $request->get('output_point_kinerja_kompetensi_5');
-            $warek2->output_total_point_kinerja_kompetensi = $request->get('output_total_point_kinerja_kompetensi');
-            $warek2->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
-            $warek2->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
+            $baak->output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
+            $baak->output_point_kinerja_kompetensi_2 = $request->get('output_point_kinerja_kompetensi_2');
+            $baak->output_point_kinerja_kompetensi_3 = $request->get('output_point_kinerja_kompetensi_3');
+            $baak->output_point_kinerja_kompetensi_4 = $request->get('output_point_kinerja_kompetensi_4');
+            $baak->output_point_kinerja_kompetensi_5 = $request->get('output_point_kinerja_kompetensi_5');
+            $baak->output_total_point_kinerja_kompetensi = $request->get('output_total_point_kinerja_kompetensi');
+            $baak->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
+            $baak->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
-            $warek2->user_id = $request->get('UserId');
-            $warek2->save();
+            $baak->user_id = $request->get('UserId');
+            $baak->save();
 
             DB::commit();
-            toast('Create Point Ka. Bau successfully :)', 'success');
+            toast('Create Point Ka. Baak successfully :)', 'success');
             return redirect()->back();
         } catch (\Throwable $th) {
             DB::rollBack();
-            toast('Add Point Ka. Bau fail :)', 'error');
+            toast('Add Point Ka. Baak fail :)', 'error');
             return redirect()->back();
         }
     }
@@ -193,7 +200,7 @@ class warek2Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Warek2  $warek2
+     * @param  \App\Models\Baak  $Baak
      * @return \Illuminate\Http\Response
      */
     public function edit($PointId)
@@ -204,13 +211,13 @@ class warek2Controller extends Controller
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (Warek2::where('user_id', '=', $PointId)->first() == "") {
+        } elseif (Baak::where('user_id', '=', $PointId)->first() == "") {
             return view('menu.menu-empty');
         } else {
-            $data = Warek2::where('user_id', '=', $PointId)->first();
+            $data = Baak::where('user_id', '=', $PointId)->first();
         }
 
-        return view('itisar.warek2.edit', ['data' => $data]);
+        return view('itisar.baak.edit', ['data' => $data]);
     }
 
     public function update(Request $request, $PointId)
@@ -232,10 +239,12 @@ class warek2Controller extends Controller
             'fileA13' => 'mimes:pdf|max:2048',
             'fileA14' => 'mimes:pdf|max:2048',
             'fileA15' => 'mimes:pdf|max:2048',
+            'fileA16' => 'mimes:pdf|max:2048',
+            'fileA17' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
         try {
-            $RecordData =  Warek2::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  Baak::where('user_id', $PointId)->firstOrFail();
 
             $Point1_1 = $request->get('Point1_1');
             $Point1_2 = $request->get('Point1_2');
@@ -278,152 +287,172 @@ class warek2Controller extends Controller
 
             $kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
             if ($request->hasFile('kinerja_kompetensi_1')) {
-                if ($RecordData->kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_1))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_1);
+                if ($RecordData->kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_1))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_1);
                 }
-                $file_kinerja_kompetensi_1 = $request->file('kinerja_kompetensi_1')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_1 = $request->file('kinerja_kompetensi_1')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_1 = $RecordData->kinerja_kompetensi_1;
             }
 
             $kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
             if ($request->hasFile('file_kinerja_kompetensi_2')) {
-                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_2))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_2);
+                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_2))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_2);
                 }
-                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_2 = $RecordData->file_kinerja_kompetensi_2;
             }
 
             $kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
             if ($request->hasFile('file_kinerja_kompetensi_3')) {
-                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_3))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_3);
+                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_3))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_3);
                 }
-                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_3 = $RecordData->file_kinerja_kompetensi_3;
             }
 
             $kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
             if ($request->hasFile('kinerja_kompetensi_4')) {
-                if ($RecordData->kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_4))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_4);
+                if ($RecordData->kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_4))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_4);
                 }
-                $file_kinerja_kompetensi_4 = $request->file('kinerja_kompetensi_4')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_4 = $request->file('kinerja_kompetensi_4')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_4 = $RecordData->kinerja_kompetensi_4;
             }
 
             $kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_5);
+                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_5))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_5);
                 }
-                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_5 = $RecordData->file_kinerja_kompetensi_5;
             }
 
             $kinerja_kompetensi_6 = $request->get('kinerja_kompetensi_6');
             if ($request->hasFile('file_kinerja_kompetensi_6')) {
-                if ($RecordData->file_kinerja_kompetensi_6 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_6))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_6);
+                if ($RecordData->file_kinerja_kompetensi_6 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_6))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_6);
                 }
-                $file_kinerja_kompetensi_6 = $request->file('file_kinerja_kompetensi_6')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_6 = $request->file('file_kinerja_kompetensi_6')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_6 = $RecordData->file_kinerja_kompetensi_6;
             }
 
             $kinerja_kompetensi_7 = $request->get('kinerja_kompetensi_7');
             if ($request->hasFile('file_kinerja_kompetensi_7')) {
-                if ($RecordData->file_kinerja_kompetensi_7 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_7))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_7);
+                if ($RecordData->file_kinerja_kompetensi_7 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_7))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_7);
                 }
-                $file_kinerja_kompetensi_7 = $request->file('file_kinerja_kompetensi_7')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_7 = $request->file('file_kinerja_kompetensi_7')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_7 = $RecordData->file_kinerja_kompetensi_7;
             }
 
             $kinerja_kompetensi_8 = $request->get('kinerja_kompetensi_8');
             if ($request->hasFile('kinerja_kompetensi_8')) {
-                if ($RecordData->kinerja_kompetensi_8 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_8))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_8);
+                if ($RecordData->kinerja_kompetensi_8 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_8))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_8);
                 }
-                $file_kinerja_kompetensi_8 = $request->file('kinerja_kompetensi_8')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_8 = $request->file('kinerja_kompetensi_8')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_8 = $RecordData->kinerja_kompetensi_8;
             }
 
             $kinerja_kompetensi_9 = $request->get('kinerja_kompetensi_9');
             if ($request->hasFile('file_kinerja_kompetensi_9')) {
-                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_9))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_9);
+                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_9))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_9);
                 }
-                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_9 = $RecordData->file_kinerja_kompetensi_9;
             }
 
             $kinerja_kompetensi_10 = $request->get('kinerja_kompetensi_10');
             if ($request->hasFile('file_kinerja_kompetensi_10')) {
-                if ($RecordData->file_kinerja_kompetensi_10 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_10))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_10);
+                if ($RecordData->file_kinerja_kompetensi_10 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_10))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_10);
                 }
-                $file_kinerja_kompetensi_10 = $request->file('file_kinerja_kompetensi_10')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_10 = $request->file('file_kinerja_kompetensi_10')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_10 = $RecordData->file_kinerja_kompetensi_10;
             }
 
             $kinerja_kompetensi_11 = $request->get('kinerja_kompetensi_11');
             if ($request->hasFile('file_kinerja_kompetensi_11')) {
-                if ($RecordData->file_kinerja_kompetensi_11 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_11))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_11);
+                if ($RecordData->file_kinerja_kompetensi_11 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_11))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_11);
                 }
-                $file_kinerja_kompetensi_11 = $request->file('file_kinerja_kompetensi_11')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_11 = $request->file('file_kinerja_kompetensi_11')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_11 = $RecordData->file_kinerja_kompetensi_11;
             }
 
             $kinerja_kompetensi_12 = $request->get('kinerja_kompetensi_12');
             if ($request->hasFile('file_kinerja_kompetensi_12')) {
-                if ($RecordData->file_kinerja_kompetensi_12 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_12))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_12);
+                if ($RecordData->file_kinerja_kompetensi_12 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_12))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_12);
                 }
-                $file_kinerja_kompetensi_12 = $request->file('file_kinerja_kompetensi_12')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_12 = $request->file('file_kinerja_kompetensi_12')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_12 = $RecordData->file_kinerja_kompetensi_12;
             }
 
             $kinerja_kompetensi_13 = $request->get('kinerja_kompetensi_13');
             if ($request->hasFile('file_kinerja_kompetensi_13')) {
-                if ($RecordData->file_kinerja_kompetensi_13 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_13))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_13);
+                if ($RecordData->file_kinerja_kompetensi_13 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_13))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_13);
                 }
-                $file_kinerja_kompetensi_13 = $request->file('file_kinerja_kompetensi_13')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_13 = $request->file('file_kinerja_kompetensi_13')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_13 = $RecordData->file_kinerja_kompetensi_13;
             }
 
             $kinerja_kompetensi_14 = $request->get('kinerja_kompetensi_14');
             if ($request->hasFile('kinerja_kompetensi_14')) {
-                if ($RecordData->kinerja_kompetensi_14 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_14))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->kinerja_kompetensi_14);
+                if ($RecordData->kinerja_kompetensi_14 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_14))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_14);
                 }
-                $file_kinerja_kompetensi_14 = $request->file('kinerja_kompetensi_14')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_14 = $request->file('kinerja_kompetensi_14')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_14 = $RecordData->kinerja_kompetensi_14;
             }
 
             $kinerja_kompetensi_15 = $request->get('kinerja_kompetensi_15');
             if ($request->hasFile('file_kinerja_kompetensi_15')) {
-                if ($RecordData->file_kinerja_kompetensi_15 && file_exists(storage_path('app/public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_15))) {
-                    \Storage::delete('public/uploads/warek2/ka-bau/' . $RecordData->file_kinerja_kompetensi_15);
+                if ($RecordData->file_kinerja_kompetensi_15 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_15))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_15);
                 }
-                $file_kinerja_kompetensi_15 = $request->file('file_kinerja_kompetensi_15')->store('uploads/warek2/ka-bau', 'public');
+                $file_kinerja_kompetensi_15 = $request->file('file_kinerja_kompetensi_15')->store('uploads/baak', 'public');
             } else {
                 $file_kinerja_kompetensi_15 = $RecordData->file_kinerja_kompetensi_15;
+            }
+
+            $kinerja_kompetensi_16 = $request->get('kinerja_kompetensi_16');
+            if ($request->hasFile('file_kinerja_kompetensi_16')) {
+                if ($RecordData->file_kinerja_kompetensi_16 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_16))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_16);
+                }
+                $file_kinerja_kompetensi_16 = $request->file('file_kinerja_kompetensi_16')->store('uploads/baak', 'public');
+            } else {
+                $file_kinerja_kompetensi_16 = $RecordData->file_kinerja_kompetensi_16;
+            }
+
+            $kinerja_kompetensi_17 = $request->get('kinerja_kompetensi_17');
+            if ($request->hasFile('file_kinerja_kompetensi_17')) {
+                if ($RecordData->file_kinerja_kompetensi_17 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_17))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_17);
+                }
+                $file_kinerja_kompetensi_17 = $request->file('file_kinerja_kompetensi_17')->store('uploads/baak', 'public');
+            } else {
+                $file_kinerja_kompetensi_17 = $RecordData->file_kinerja_kompetensi_17;
             }
 
             $output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
@@ -504,6 +533,10 @@ class warek2Controller extends Controller
                 'file_kinerja_kompetensi_14' => $file_kinerja_kompetensi_14,
                 'kinerja_kompetensi_15' => $kinerja_kompetensi_15,
                 'file_kinerja_kompetensi_15' => $file_kinerja_kompetensi_15,
+                'kinerja_kompetensi_16' => $kinerja_kompetensi_16,
+                'file_kinerja_kompetensi_16' => $file_kinerja_kompetensi_16,
+                'kinerja_kompetensi_17' => $kinerja_kompetensi_17,
+                'file_kinerja_kompetensi_17' => $file_kinerja_kompetensi_17,
                 'output_point_kinerja_kompetensi_1' => $output_point_kinerja_kompetensi_1,
                 'output_point_kinerja_kompetensi_2' => $output_point_kinerja_kompetensi_2,
                 'output_point_kinerja_kompetensi_3' => $output_point_kinerja_kompetensi_3,
@@ -516,11 +549,11 @@ class warek2Controller extends Controller
             ];
             $RecordData->update($update);
             DB::commit();
-            toast('Update Point Ka. Bau successfully :)', 'success');
+            toast('Update Point Ka. Baak successfully :)', 'success');
             return redirect()->back();
         } catch (\Throwable $th) {
             DB::rollBack();
-            toast('Update Point Ka. Bau fail :)', 'error');
+            toast('Update Point Ka. Baak fail :)', 'error');
             return redirect()->back();
         }
     }
@@ -533,20 +566,20 @@ class warek2Controller extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('warek_2', 'users.id', '=', 'warek_2.user_id')
+            ->leftJoin('baak', 'users.id', '=', 'baak.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'warek_2.user_id',
-                'warek_2.output_total_sementara_kinerja_perilaku',
-                'warek_2.output_total_sementara_kinerja_kompetensi',
+                'baak.user_id',
+                'baak.output_total_sementara_kinerja_perilaku',
+                'baak.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('warek_2.user_id', $user_id)
+            ->where('baak.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
         if (!empty($DataUser->user_id)) {
-            return view('itisar.warek2.raport', compact('DataUser'));
+            return view('itisar.baak.raport', compact('DataUser'));
         } else {
             return view('menu.menu-empty');
         }

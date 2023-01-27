@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Itisar\KaUpt;
 use App\Http\Controllers\Controller;
 use App\Models\KaPemasaran;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,10 @@ class KaUnitPemasaranController extends Controller
      */
     public function create()
     {
-        return view('itisar.ka-upt.ka-unit-pemasaran.create');
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
+        return view('itisar.ka-upt.ka-unit-pemasaran.create', compact('users'));
     }
 
     /**
@@ -113,7 +117,7 @@ class KaUnitPemasaranController extends Controller
             $kaPemasaran->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
             $kaPemasaran->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
-            $kaPemasaran->user_id = Auth()->id();
+            $kaPemasaran->user_id = $request->get('UserId');
             $kaPemasaran->save();
 
             DB::commit();

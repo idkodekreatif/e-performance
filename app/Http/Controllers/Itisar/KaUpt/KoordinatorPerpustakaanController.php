@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Itisar\KaUpt;
 use App\Http\Controllers\Controller;
 use App\Models\KaPerpustakaan;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,10 @@ class KoordinatorPerpustakaanController extends Controller
 {
     public function create()
     {
-        return view('itisar.ka-upt.ka-perpustakaan.create');
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
+        return view('itisar.ka-upt.ka-perpustakaan.create', compact('users'));
     }
 
     /**
@@ -144,7 +148,7 @@ class KoordinatorPerpustakaanController extends Controller
             $kaperpustakaan->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
             $kaperpustakaan->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
-            $kaperpustakaan->user_id = Auth()->id();
+            $kaperpustakaan->user_id = $request->get('UserId');
             $kaperpustakaan->save();
 
             DB::commit();

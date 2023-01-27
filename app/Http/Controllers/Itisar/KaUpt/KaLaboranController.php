@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Itisar\KaUpt;
 use App\Http\Controllers\Controller;
 use App\Models\KaLaboran;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,10 @@ class KaLaboranController extends Controller
 {
     public function create()
     {
-        return view('itisar.ka-upt.koord-laboran.create');
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
+        return view('itisar.ka-upt.koord-laboran.create', compact('users'));
     }
 
     /**
@@ -120,7 +124,7 @@ class KaLaboranController extends Controller
             $kalaboran->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
             $kalaboran->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
-            $kalaboran->user_id = Auth()->id();
+            $kalaboran->user_id = $request->get('UserId');
             $kalaboran->save();
 
             DB::commit();
