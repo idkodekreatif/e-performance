@@ -220,6 +220,13 @@ class BaakController extends Controller
         return view('itisar.baak.edit', ['data' => $data]);
     }
 
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $PointId
+     * @return void
+     */
     public function update(Request $request, $PointId)
     {
         // Validation file upload
