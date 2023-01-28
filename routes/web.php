@@ -11,6 +11,7 @@ use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
 use App\Http\Controllers\Itisar\KaUpt\KoordinatorPerpustakaanController;
+use App\Http\Controllers\Itisar\KaUpt\StaffPemasaranController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -200,6 +201,15 @@ Route::group(
             Route::get('/Baak/edit/{PointId}', 'edit')->name('edit.ka.baak');
             Route::put('/Baak/update/{PointId}', 'update')->name('update.ka.baak');
             Route::get('/Raport/Baak/{user_id}', 'raport')->name('ka.baak.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian Staff Pemasaran ----------------------------------//
+        Route::controller(StaffPemasaranController::class)->group(function () {
+            Route::get('/StaffPemasaran/Input', 'create')->name('ka.StaffPemasaran');
+            Route::post('/StaffPemasaran/Request/Store', 'store')->name('store.StaffPemasaran');
+            Route::get('/StaffPemasaran/edit/{PointId}', 'edit')->name('edit.StaffPemasaran');
+            Route::put('/StaffPemasaran/update/{PointId}', 'update')->name('update.StaffPemasaran');
+            Route::get('/Raport/StaffPemasaran/{user_id}', 'raport')->name('StaffPemasaran.raport');
         });
     }
 );

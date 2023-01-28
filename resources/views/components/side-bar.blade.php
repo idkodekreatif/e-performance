@@ -63,21 +63,28 @@
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. UPT</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="{{ route('ka.upt.ka.unit.pemasaran') }}">Ka. UNIT PEMASARAN</a></li>
-                                    <li><a href="{{ route('ka.upt.ka.unit.perpustakaan') }}">KOORDINATOR PERPUSTAKAAN</a></li>
-                                    <li><a href="{{ route('ka.upt.ka.unit.laboran') }}">KOORDINATOR LABORATORIUM</a></li>
-                                    <li><a href="{{ route('ka.upt.ka.unit.it')}}">Ka. UNIT IT</a></li>
+                                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Unit Pemasaran</a>
+                                        <ul aria-expanded="false">
+                                            <li><a href="{{ route('ka.upt.ka.unit.pemasaran') }}">Ka. Unit Pemasaran</a></li>
+                                            <li><a href="{{ route('ka.StaffPemasaran') }}">Staff Pemasaran</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ route('ka.upt.ka.unit.perpustakaan') }}">Koordinator Perpustakaan</a></li>
+                                    <li><a href="{{ route('ka.upt.ka.unit.laboran') }}">Koordinator Laboratorium</a></li>
+                                    <li><a href="{{ route('ka.upt.ka.unit.it')}}">Ka. Unit IT</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('ka.baak') }}" aria-expanded="false">Ka. BAAK</a>
-                                {{-- <ul aria-expanded="false">
-                                    <li><a href="{{ route('ka.upt.ka.unit.pemasaran') }}">Ka. UNIT PEMASARAN</a></li>
-                                    <li><a href="{{ route('ka.upt.ka.unit.perpustakaan') }}">KOORDINATOR PERPUSTAKAAN</a></li>
-                                    <li><a href="{{ route('ka.upt.ka.unit.laboran') }}">KOORDINATOR LABORATORIUM</a></li>
-                                    <li><a href="{{ route('ka.upt.ka.unit.it')}}">Ka. UNIT IT</a></li>
-                                </ul> --}}
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('ka.baak') }}" aria-expanded="false">Ka. BAAK</a>
+                                    <li><a href="javascript:void()">BAAK Keperawatan</a></li>
+                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
+                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
+                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
+                                    <li><a href="javascript:void()">BAAK Manajement</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
