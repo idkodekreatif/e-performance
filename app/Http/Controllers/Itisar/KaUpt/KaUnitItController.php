@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Itisar\KaUpt;
 use App\Http\Controllers\Controller;
 use App\Models\KaUnitIt;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,10 @@ class KaUnitItController extends Controller
 {
     public function create()
     {
-        return view('itisar.ka-upt.ka-unit-it.create');
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
+        return view('itisar.ka-upt.ka-unit-it.create', compact('users'));
     }
 
     /**
@@ -126,7 +130,7 @@ class KaUnitItController extends Controller
             $kaunitit->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
             $kaunitit->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
-            $kaunitit->user_id = Auth()->id();
+            $kaunitit->user_id = $request->get('UserId');
             $kaunitit->save();
 
             DB::commit();
