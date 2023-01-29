@@ -143,11 +143,12 @@ class KaUnitItController extends Controller
         }
     }
 
+
     /**
-     * Show the form for editing the specified resource.
+     * edit
      *
-     * @param  \App\Models\Warek2  $warek2
-     * @return \Illuminate\Http\Response
+     * @param  mixed $PointId
+     * @return void
      */
     public function edit($PointId)
     {
@@ -166,18 +167,25 @@ class KaUnitItController extends Controller
         return view('itisar.ka-upt.ka-unit-it.edit', ['data' => $data]);
     }
 
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $PointId
+     * @return void
+     */
     public function update(Request $request, $PointId)
     {
         // Validation file upload
         $request->validate([
-            'fileA1' => 'mimes:pdf|max:2048',
-            'fileA2' => 'mimes:pdf|max:2048',
-            'fileA3' => 'mimes:pdf|max:2048',
-            'fileA4' => 'mimes:pdf|max:2048',
-            'fileA5' => 'mimes:pdf|max:2048',
-            'fileA6' => 'mimes:pdf|max:2048',
-            'fileA7' => 'mimes:pdf|max:2048',
-            'fileA8' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
         try {

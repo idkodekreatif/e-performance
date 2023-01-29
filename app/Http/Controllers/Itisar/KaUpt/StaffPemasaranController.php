@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Itisar\KaUpt;
 
 use App\Http\Controllers\Controller;
-use App\Models\KaPemasaran;
 use App\Models\Menu;
+use App\Models\StaffPemasaran;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class KaUnitPemasaranController extends Controller
+class StaffPemasaranController extends Controller
 {
     /**
      * create
@@ -21,14 +21,14 @@ class KaUnitPemasaranController extends Controller
         $users = User::whereNotIn('name', [
             'superuser', 'manajer', 'it', 'hrd', 'lppm',
         ])->get();
-        return view('itisar.ka-upt.ka-unit-pemasaran.create', compact('users'));
+        return view('itisar.ka-upt.StaffPemasaran.create', compact('users'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * store
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return void
      */
     public function store(Request $request)
     {
@@ -38,103 +38,109 @@ class KaUnitPemasaranController extends Controller
             'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
             'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
             'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
         ]);
 
         DB::beginTransaction();
         try {
-            $kaPemasaran = new KaPemasaran();
-            $kaPemasaran->Point1_1 = $request->get('Point1_1');
-            $kaPemasaran->Point1_2 = $request->get('Point1_2');
-            $kaPemasaran->Point1_3 = $request->get('Point1_3');
-            $kaPemasaran->Point1_4 = $request->get('Point1_4');
-            $kaPemasaran->Point1_5 = $request->get('Point1_5');
-            $kaPemasaran->Point2_1 = $request->get('Point2_1');
-            $kaPemasaran->Point2_2 = $request->get('Point2_2');
-            $kaPemasaran->Point2_3 = $request->get('Point2_3');
-            $kaPemasaran->Point2_4 = $request->get('Point2_4');
-            $kaPemasaran->Point2_5 = $request->get('Point2_5');
-            $kaPemasaran->Point3_1 = $request->get('Point3_1');
-            $kaPemasaran->Point3_2 = $request->get('Point3_2');
-            $kaPemasaran->Point3_3 = $request->get('Point3_3');
-            $kaPemasaran->Point3_4 = $request->get('Point3_4');
-            $kaPemasaran->Point3_5 = $request->get('Point3_5');
-            $kaPemasaran->Point4_1 = $request->get('Point4_1');
-            $kaPemasaran->Point4_2 = $request->get('Point4_2');
-            $kaPemasaran->Point4_3 = $request->get('Point4_3');
-            $kaPemasaran->Point4_4 = $request->get('Point4_4');
-            $kaPemasaran->Point4_5 = $request->get('Point4_5');
-            $kaPemasaran->Point5_1 = $request->get('Point5_1');
-            $kaPemasaran->Point5_2 = $request->get('Point5_2');
-            $kaPemasaran->Point5_3 = $request->get('Point5_3');
-            $kaPemasaran->Point5_4 = $request->get('Point5_4');
-            $kaPemasaran->Point5_5 = $request->get('Point5_5');
-            $kaPemasaran->Point6_1 = $request->get('Point6_1');
-            $kaPemasaran->Point6_2 = $request->get('Point6_2');
-            $kaPemasaran->Point6_3 = $request->get('Point6_3');
-            $kaPemasaran->Point6_4 = $request->get('Point6_4');
-            $kaPemasaran->Point6_5 = $request->get('Point6_5');
-            $kaPemasaran->output_point_1 = $request->get('output_point_1');
-            $kaPemasaran->output_point_2 = $request->get('output_point_2');
-            $kaPemasaran->output_point_3 = $request->get('output_point_3');
-            $kaPemasaran->output_point_4 = $request->get('output_point_4');
-            $kaPemasaran->output_point_5 = $request->get('output_point_5');
-            $kaPemasaran->output_total_point_kinerja_perilaku = $request->get('output_total_point_kinerja_perilaku');
-            $kaPemasaran->output_total_nilai_rata_rata_kinerja_perilaku = $request->get('output_total_nilai_rata_rata_kinerja_perilaku');
-            $kaPemasaran->output_total_sementara_kinerja_perilaku = $request->get('output_total_sementara_kinerja_perilaku');
+            $staffpemasaran = new StaffPemasaran();
+            $staffpemasaran->Point1_1 = $request->get('Point1_1');
+            $staffpemasaran->Point1_2 = $request->get('Point1_2');
+            $staffpemasaran->Point1_3 = $request->get('Point1_3');
+            $staffpemasaran->Point1_4 = $request->get('Point1_4');
+            $staffpemasaran->Point1_5 = $request->get('Point1_5');
+            $staffpemasaran->Point2_1 = $request->get('Point2_1');
+            $staffpemasaran->Point2_2 = $request->get('Point2_2');
+            $staffpemasaran->Point2_3 = $request->get('Point2_3');
+            $staffpemasaran->Point2_4 = $request->get('Point2_4');
+            $staffpemasaran->Point2_5 = $request->get('Point2_5');
+            $staffpemasaran->Point3_1 = $request->get('Point3_1');
+            $staffpemasaran->Point3_2 = $request->get('Point3_2');
+            $staffpemasaran->Point3_3 = $request->get('Point3_3');
+            $staffpemasaran->Point3_4 = $request->get('Point3_4');
+            $staffpemasaran->Point3_5 = $request->get('Point3_5');
+            $staffpemasaran->Point4_1 = $request->get('Point4_1');
+            $staffpemasaran->Point4_2 = $request->get('Point4_2');
+            $staffpemasaran->Point4_3 = $request->get('Point4_3');
+            $staffpemasaran->Point4_4 = $request->get('Point4_4');
+            $staffpemasaran->Point4_5 = $request->get('Point4_5');
+            $staffpemasaran->Point5_1 = $request->get('Point5_1');
+            $staffpemasaran->Point5_2 = $request->get('Point5_2');
+            $staffpemasaran->Point5_3 = $request->get('Point5_3');
+            $staffpemasaran->Point5_4 = $request->get('Point5_4');
+            $staffpemasaran->Point5_5 = $request->get('Point5_5');
+            $staffpemasaran->Point6_1 = $request->get('Point6_1');
+            $staffpemasaran->Point6_2 = $request->get('Point6_2');
+            $staffpemasaran->Point6_3 = $request->get('Point6_3');
+            $staffpemasaran->Point6_4 = $request->get('Point6_4');
+            $staffpemasaran->Point6_5 = $request->get('Point6_5');
+            $staffpemasaran->output_point_1 = $request->get('output_point_1');
+            $staffpemasaran->output_point_2 = $request->get('output_point_2');
+            $staffpemasaran->output_point_3 = $request->get('output_point_3');
+            $staffpemasaran->output_point_4 = $request->get('output_point_4');
+            $staffpemasaran->output_point_5 = $request->get('output_point_5');
+            $staffpemasaran->output_total_point_kinerja_perilaku = $request->get('output_total_point_kinerja_perilaku');
+            $staffpemasaran->output_total_nilai_rata_rata_kinerja_perilaku = $request->get('output_total_nilai_rata_rata_kinerja_perilaku');
+            $staffpemasaran->output_total_sementara_kinerja_perilaku = $request->get('output_total_sementara_kinerja_perilaku');
 
-            $kaPemasaran->kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
+            $staffpemasaran->kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
             if ($request->hasFile('file_kinerja_kompetensi_1')) {
-                $fileName = $request->file('file_kinerja_kompetensi_1')->store('uploads/KaUpt/KaPemasaran', 'public');
-                $kaPemasaran->file_kinerja_kompetensi_1 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_1')->store('uploads/KaUpt/staffpemasaran', 'public');
+                $staffpemasaran->file_kinerja_kompetensi_1 = $fileName;
             }
-            $kaPemasaran->kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
+            $staffpemasaran->kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
             if ($request->hasFile('file_kinerja_kompetensi_2')) {
-                $fileName = $request->file('file_kinerja_kompetensi_2')->store('uploads/KaUpt/KaPemasaran', 'public');
-                $kaPemasaran->file_kinerja_kompetensi_2 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_2')->store('uploads/KaUpt/staffpemasaran', 'public');
+                $staffpemasaran->file_kinerja_kompetensi_2 = $fileName;
             }
-            $kaPemasaran->kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
+            $staffpemasaran->kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
             if ($request->hasFile('file_kinerja_kompetensi_3')) {
-                $fileName = $request->file('file_kinerja_kompetensi_3')->store('uploads/KaUpt/KaPemasaran', 'public');
-                $kaPemasaran->file_kinerja_kompetensi_3 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_3')->store('uploads/KaUpt/staffpemasaran', 'public');
+                $staffpemasaran->file_kinerja_kompetensi_3 = $fileName;
             }
-            $kaPemasaran->kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
+            $staffpemasaran->kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
             if ($request->hasFile('file_kinerja_kompetensi_4')) {
-                $fileName = $request->file('file_kinerja_kompetensi_4')->store('uploads/KaUpt/KaPemasaran', 'public');
-                $kaPemasaran->file_kinerja_kompetensi_4 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_4')->store('uploads/KaUpt/staffpemasaran', 'public');
+                $staffpemasaran->file_kinerja_kompetensi_4 = $fileName;
             }
-            $kaPemasaran->kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
+            $staffpemasaran->kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                $fileName = $request->file('file_kinerja_kompetensi_5')->store('uploads/KaUpt/KaPemasaran', 'public');
-                $kaPemasaran->file_kinerja_kompetensi_5 = $fileName;
+                $fileName = $request->file('file_kinerja_kompetensi_5')->store('uploads/KaUpt/staffpemasaran', 'public');
+                $staffpemasaran->file_kinerja_kompetensi_5 = $fileName;
+            }
+            $staffpemasaran->kinerja_kompetensi_6 = $request->get('kinerja_kompetensi_6');
+            if ($request->hasFile('file_kinerja_kompetensi_6')) {
+                $fileName = $request->file('file_kinerja_kompetensi_6')->store('uploads/KaUpt/staffpemasaran', 'public');
+                $staffpemasaran->file_kinerja_kompetensi_6 = $fileName;
             }
 
-            $kaPemasaran->output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
-            $kaPemasaran->output_point_kinerja_kompetensi_2 = $request->get('output_point_kinerja_kompetensi_2');
-            $kaPemasaran->output_point_kinerja_kompetensi_3 = $request->get('output_point_kinerja_kompetensi_3');
-            $kaPemasaran->output_point_kinerja_kompetensi_4 = $request->get('output_point_kinerja_kompetensi_4');
-            $kaPemasaran->output_point_kinerja_kompetensi_5 = $request->get('output_point_kinerja_kompetensi_5');
-            $kaPemasaran->output_total_point_kinerja_kompetensi = $request->get('output_total_point_kinerja_kompetensi');
-            $kaPemasaran->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
-            $kaPemasaran->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
+            $staffpemasaran->output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
+            $staffpemasaran->output_point_kinerja_kompetensi_2 = $request->get('output_point_kinerja_kompetensi_2');
+            $staffpemasaran->output_point_kinerja_kompetensi_3 = $request->get('output_point_kinerja_kompetensi_3');
+            $staffpemasaran->output_point_kinerja_kompetensi_4 = $request->get('output_point_kinerja_kompetensi_4');
+            $staffpemasaran->output_point_kinerja_kompetensi_5 = $request->get('output_point_kinerja_kompetensi_5');
+            $staffpemasaran->output_total_point_kinerja_kompetensi = $request->get('output_total_point_kinerja_kompetensi');
+            $staffpemasaran->output_total_nilai_rata_rata_kinerja_kompetensi = $request->get('output_total_nilai_rata_rata_kinerja_kompetensi');
+            $staffpemasaran->output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
-            $kaPemasaran->user_id = $request->get('UserId');
-            $kaPemasaran->save();
+            $staffpemasaran->user_id = $request->get('UserId');
+            $staffpemasaran->save();
 
             DB::commit();
-            toast('Create Point Ka. Pemasaran successfully :)', 'success');
+            toast('Create Point Staff Pemasaran successfully :)', 'success');
             return redirect()->back();
         } catch (\Throwable $th) {
             DB::rollBack();
-            toast('Add Point Ka. Pemasaran fail :)', 'error');
+            toast('Add Point Staff Pemasaran fail :)', 'error');
             return redirect()->back();
         }
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * edit
      *
-     * @param  \App\Models\kaPemasaran  $kaPemasaran
-     * @return \Illuminate\Http\Response
+     * @param  mixed $PointId
+     * @return void
      */
     public function edit($PointId)
     {
@@ -144,15 +150,22 @@ class KaUnitPemasaranController extends Controller
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (KaPemasaran::where('user_id', '=', $PointId)->first() == "") {
+        } elseif (StaffPemasaran::where('user_id', '=', $PointId)->first() == "") {
             return view('menu.menu-empty');
         } else {
-            $data = KaPemasaran::where('user_id', '=', $PointId)->first();
+            $data = StaffPemasaran::where('user_id', '=', $PointId)->first();
         }
 
-        return view('itisar.ka-upt.ka-unit-pemasaran.edit', ['data' => $data]);
+        return view('itisar.ka-upt.StaffPemasaran.edit', ['data' => $data]);
     }
 
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $PointId
+     * @return void
+     */
     public function update(Request $request, $PointId)
     {
         // Validation file upload
@@ -162,10 +175,11 @@ class KaUnitPemasaranController extends Controller
             'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
             'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
             'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
         try {
-            $RecordData =  KaPemasaran::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  StaffPemasaran::where('user_id', $PointId)->firstOrFail();
 
             $Point1_1 = $request->get('Point1_1');
             $Point1_2 = $request->get('Point1_2');
@@ -208,52 +222,62 @@ class KaUnitPemasaranController extends Controller
 
             $kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
             if ($request->hasFile('kinerja_kompetensi_1')) {
-                if ($RecordData->kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_1))) {
-                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_1);
+                if ($RecordData->kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/KaUpt/staffpemasaran' . $RecordData->kinerja_kompetensi_1))) {
+                    \Storage::delete('public/uploads/KaUpt/staffpemasaran' . $RecordData->kinerja_kompetensi_1);
                 }
-                $file_kinerja_kompetensi_1 = $request->file('kinerja_kompetensi_1')->store('uploads/KaUpt/KaPemasaran', 'public');
+                $file_kinerja_kompetensi_1 = $request->file('kinerja_kompetensi_1')->store('uploads/KaUpt/staffpemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_1 = $RecordData->kinerja_kompetensi_1;
             }
 
             $kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
             if ($request->hasFile('file_kinerja_kompetensi_2')) {
-                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_2))) {
-                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_2);
+                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_2))) {
+                    \Storage::delete('public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_2);
                 }
-                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/KaUpt/KaPemasaran', 'public');
+                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/KaUpt/staffpemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_2 = $RecordData->file_kinerja_kompetensi_2;
             }
 
             $kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
             if ($request->hasFile('file_kinerja_kompetensi_3')) {
-                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_3))) {
-                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_3);
+                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_3))) {
+                    \Storage::delete('public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_3);
                 }
-                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/KaUpt/KaPemasaran', 'public');
+                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/KaUpt/staffpemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_3 = $RecordData->file_kinerja_kompetensi_3;
             }
 
             $kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
             if ($request->hasFile('kinerja_kompetensi_4')) {
-                if ($RecordData->kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_4))) {
-                    \Storage::delete('public/uploads/KaUpt/KaPemasaran/' . $RecordData->kinerja_kompetensi_4);
+                if ($RecordData->kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/KaUpt/staffpemasaran' . $RecordData->kinerja_kompetensi_4))) {
+                    \Storage::delete('public/uploads/KaUpt/staffpemasaran' . $RecordData->kinerja_kompetensi_4);
                 }
-                $file_kinerja_kompetensi_4 = $request->file('kinerja_kompetensi_4')->store('uploads/KaUpt/KaPemasaran', 'public');
+                $file_kinerja_kompetensi_4 = $request->file('kinerja_kompetensi_4')->store('uploads/KaUpt/staffpemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_4 = $RecordData->kinerja_kompetensi_4;
             }
 
             $kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_5))) {
-                    \Storage::delete('public/ploads/KaUpt/KaPemasaran/' . $RecordData->file_kinerja_kompetensi_5);
+                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_5))) {
+                    \Storage::delete('public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_5);
                 }
-                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/KaUpt/KaPemasaran', 'public');
+                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/KaUpt/staffpemasaran', 'public');
             } else {
                 $file_kinerja_kompetensi_5 = $RecordData->file_kinerja_kompetensi_5;
+            }
+
+            $kinerja_kompetensi_6 = $request->get('kinerja_kompetensi_6');
+            if ($request->hasFile('file_kinerja_kompetensi_6')) {
+                if ($RecordData->file_kinerja_kompetensi_6 && file_exists(storage_path('app/public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_6))) {
+                    \Storage::delete('public/uploads/KaUpt/staffpemasaran' . $RecordData->file_kinerja_kompetensi_6);
+                }
+                $file_kinerja_kompetensi_6 = $request->file('file_kinerja_kompetensi_6')->store('uploads/KaUpt/staffpemasaran', 'public');
+            } else {
+                $file_kinerja_kompetensi_6 = $RecordData->file_kinerja_kompetensi_6;
             }
 
             $output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
@@ -314,6 +338,8 @@ class KaUnitPemasaranController extends Controller
                 'file_kinerja_kompetensi_4' => $file_kinerja_kompetensi_4,
                 'kinerja_kompetensi_5' => $kinerja_kompetensi_5,
                 'file_kinerja_kompetensi_5' => $file_kinerja_kompetensi_5,
+                'kinerja_kompetensi_6' => $kinerja_kompetensi_6,
+                'file_kinerja_kompetensi_6' => $file_kinerja_kompetensi_6,
                 'output_point_kinerja_kompetensi_1' => $output_point_kinerja_kompetensi_1,
                 'output_point_kinerja_kompetensi_2' => $output_point_kinerja_kompetensi_2,
                 'output_point_kinerja_kompetensi_3' => $output_point_kinerja_kompetensi_3,
@@ -326,11 +352,11 @@ class KaUnitPemasaranController extends Controller
             ];
             $RecordData->update($update);
             DB::commit();
-            toast('Update Point Ka. Pemasaran successfully :)', 'success');
+            toast('Update Point Ka. Baak successfully :)', 'success');
             return redirect()->back();
         } catch (\Throwable $th) {
             DB::rollBack();
-            toast('Update Point Ka. Pemasaran fail :)', 'error');
+            toast('Update Point Ka. Baak fail :)', 'error');
             return redirect()->back();
         }
     }
@@ -343,20 +369,19 @@ class KaUnitPemasaranController extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('ka_pemasaran', 'users.id', '=', 'ka_pemasaran.user_id')
+            ->leftJoin('staff_pemasaran', 'users.id', '=', 'staff_pemasaran.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'ka_pemasaran.user_id',
-                'ka_pemasaran.output_total_sementara_kinerja_perilaku',
-                'ka_pemasaran.output_total_sementara_kinerja_kompetensi',
+                'staff_pemasaran.user_id',
+                'staff_pemasaran.output_total_sementara_kinerja_perilaku',
+                'staff_pemasaran.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('ka_pemasaran.user_id', $user_id)
+            ->where('staff_pemasaran.user_id', $user_id)
             ->first();
 
-        // dd($DataUser);
         if (!empty($DataUser->user_id)) {
-            return view('itisar.ka-upt.ka-unit-pemasaran.raport', compact('DataUser'));
+            return view('itisar.ka-upt.StaffPemasaran.raport', compact('DataUser'));
         } else {
             return view('menu.menu-empty');
         }

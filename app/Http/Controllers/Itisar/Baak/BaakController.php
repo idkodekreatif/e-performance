@@ -220,27 +220,34 @@ class BaakController extends Controller
         return view('itisar.baak.edit', ['data' => $data]);
     }
 
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $PointId
+     * @return void
+     */
     public function update(Request $request, $PointId)
     {
         // Validation file upload
         $request->validate([
-            'fileA1' => 'mimes:pdf|max:2048',
-            'fileA2' => 'mimes:pdf|max:2048',
-            'fileA3' => 'mimes:pdf|max:2048',
-            'fileA4' => 'mimes:pdf|max:2048',
-            'fileA5' => 'mimes:pdf|max:2048',
-            'fileA6' => 'mimes:pdf|max:2048',
-            'fileA7' => 'mimes:pdf|max:2048',
-            'fileA8' => 'mimes:pdf|max:2048',
-            'fileA9' => 'mimes:pdf|max:2048',
-            'fileA10' => 'mimes:pdf|max:2048',
-            'fileA11' => 'mimes:pdf|max:2048',
-            'fileA12' => 'mimes:pdf|max:2048',
-            'fileA13' => 'mimes:pdf|max:2048',
-            'fileA14' => 'mimes:pdf|max:2048',
-            'fileA15' => 'mimes:pdf|max:2048',
-            'fileA16' => 'mimes:pdf|max:2048',
-            'fileA17' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
         try {
