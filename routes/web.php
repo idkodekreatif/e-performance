@@ -15,6 +15,7 @@ use App\Http\Controllers\Itisar\KaUpt\KoordinatorPerpustakaanController;
 use App\Http\Controllers\Itisar\KaUpt\StaffPemasaranController;
 use App\Http\Controllers\Itisar\Keuangan\StaffKeuanganController;
 use App\Http\Controllers\Itisar\LpmController;
+use App\Http\Controllers\Itisar\prodi\SekKaprodiController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -240,6 +241,15 @@ Route::group(
             Route::get('/KasubRisbang/edit/{PointId}', 'edit')->name('edit.KasubRisbang');
             Route::put('/KasubRisbang/update/{PointId}', 'update')->name('update.KasubRisbang');
             Route::get('/Raport/KasubRisbang/{user_id}', 'raport')->name('KasubRisbang.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian Sek Ka. Prodi ----------------------------------//
+        Route::controller(SekKaprodiController::class)->group(function () {
+            Route::get('/sekKaprodi/Input', 'create')->name('sekKaprodi');
+            Route::post('/sekKaprodi/Request/Store', 'store')->name('store.sekKaprodi');
+            Route::get('/sekKaprodi/edit/{PointId}', 'edit')->name('edit.sekKaprodi');
+            Route::put('/sekKaprodi/update/{PointId}', 'update')->name('update.sekKaprodi');
+            Route::get('/Raport/sekKaprodi/{user_id}', 'raport')->name('sekKaprodi.raport');
         });
     }
 );
