@@ -127,12 +127,25 @@
                             </li>
                         </ul>
                         <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Kaprodi</a>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
                             {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('sekKaprodi') }}" aria-expanded="false">Sek Ka. Prodi</a>
                                     {{-- <li><a href="javascript:void()">BAAK Keperawatan</a></li>
                                     <li><a href="javascript:void()">BAAK Kebidanan</a></li>
+                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
+                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
+                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
+                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('kasubBiroKepegawaian') }}" aria-expanded="false">Ka. Sub Biro Kepegawaian</a>
+                                    <li><a href="javascript:void()">Ka. Sub. Biro Keuangan & Akuntant</a></li>
+                                    {{-- <li><a href="javascript:void()">BAAK Kebidanan</a></li>
                                     <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
                                     <li><a href="javascript:void()">BAAK Akuntansi</a></li>
                                     <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
