@@ -2033,7 +2033,7 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/itisar/KasubBiroKepegawaian/PointKinerjaPerilaku.js') }}"></script>
-    <script src="{{ asset('Assets/js/itisar/KasubBiroKepegawaian/PointKinerjaKompetensi.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/bau/KasubBiroKepegawaian/PointKinerjaPerilaku.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/bau/KasubBiroKepegawaian/PointKinerjaKompetensi.js') }}"></script>
     @endpush
 </x-app-layout>

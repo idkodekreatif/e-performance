@@ -144,7 +144,7 @@
                             {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('kasubBiroKepegawaian') }}" aria-expanded="false">Ka. Sub Biro Kepegawaian</a>
-                                    <li><a href="javascript:void()">Ka. Sub. Biro Keuangan & Akuntant</a></li>
+                                    <li><a href="{{ route('KasubBiroKeuangan') }}">Ka. Sub. Biro Keuangan & Akuntant</a></li>
                                     {{-- <li><a href="javascript:void()">BAAK Kebidanan</a></li>
                                     <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
                                     <li><a href="javascript:void()">BAAK Akuntansi</a></li>

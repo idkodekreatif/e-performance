@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKasubBiroKeuanganKepegawaianTable extends Migration
+class CreateKasubBiroKeuanganAkuntansiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateKasubBiroKeuanganKepegawaianTable extends Migration
      */
     public function up()
     {
-        Schema::create('kasub_biro_keuangan_kepegawaian', function (Blueprint $table) {
+        Schema::create('kasub_biro_keuangan_akuntansi', function (Blueprint $table) {
             $table->id();
             $table->enum('Point1_1', ['1', '2', '3', '4', '5'])->nullable();
             $table->enum('Point1_2', ['1', '2', '3', '4', '5'])->nullable();
@@ -104,6 +104,6 @@ class CreateKasubBiroKeuanganKepegawaianTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kasub_biro_keuangan_kepegawaian');
+        Schema::dropIfExists('kasub_biro_keuangan_akuntansi');
     }
 }

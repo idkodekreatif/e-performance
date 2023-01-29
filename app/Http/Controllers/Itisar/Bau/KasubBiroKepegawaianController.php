@@ -16,7 +16,7 @@ class KasubBiroKepegawaianController extends Controller
         $users = User::whereNotIn('name', [
             'superuser', 'manajer', 'it', 'hrd', 'lppm',
         ])->get();
-        return view('itisar.KasubBiroKepegawaian.create', compact('users'));
+        return view('itisar.bau.KasubBiroKepegawaian.create', compact('users'));
     }
 
     public function store(Request $request)
@@ -193,7 +193,7 @@ class KasubBiroKepegawaianController extends Controller
             $data = KasubBiroKepegawaian::where('user_id', '=', $PointId)->first();
         }
 
-        return view('itisar.KasubBiroKepegawaian.edit', ['data' => $data]);
+        return view('itisar.bau.KasubBiroKepegawaian.edit', ['data' => $data]);
     }
 
     public function update(Request $request, $PointId)
@@ -524,7 +524,7 @@ class KasubBiroKepegawaianController extends Controller
 
         // dd($DataUser);
         if (!empty($DataUser->user_id)) {
-            return view('itisar.KasubBiroKepegawaian.raport', compact('DataUser'));
+            return view('itisar.bau.KasubBiroKepegawaian.raport', compact('DataUser'));
         } else {
             return view('menu.menu-empty');
         }

@@ -8,6 +8,7 @@ use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\Itisar\Baak\BaakController;
 use App\Http\Controllers\Itisar\Bau\KasubBiroKepegawaianController;
+use App\Http\Controllers\Itisar\Bau\KasubBiroKeuanganController;
 use App\Http\Controllers\Itisar\KasubRisbangController;
 use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
@@ -260,6 +261,15 @@ Route::group(
             Route::get('/kasubBiroKepegawaian/edit/{PointId}', 'edit')->name('edit.kasubBiroKepegawaian');
             Route::put('/kasubBiroKepegawaian/update/{PointId}', 'update')->name('update.kasubBiroKepegawaian');
             Route::get('/Raport/kasubBiroKepegawaian/{user_id}', 'raport')->name('kasubBiroKepegawaian.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Keuangan dan Akuntansi ------------------------------//
+        Route::controller(KasubBiroKeuanganController::class)->group(function () {
+            Route::get('/KasubBiroKeuangan/Input', 'create')->name('KasubBiroKeuangan');
+            Route::post('/KasubBiroKeuangan/Request/Store', 'store')->name('store.KasubBiroKeuangan');
+            Route::get('/KasubBiroKeuangan/edit/{PointId}', 'edit')->name('edit.KasubBiroKeuangan');
+            Route::put('/KasubBiroKeuangan/update/{PointId}', 'update')->name('update.KasubBiroKeuangan');
+            Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport');
         });
     }
 );

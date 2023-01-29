@@ -11,9 +11,9 @@ class KasubBiroKeuangan extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected static $logName = 'Kasub Biro Keuangan';
+    protected static $logName = 'Kasub Biro Keuangan & Akuntansi';
 
-    protected $table = "kasub_biro_keuangan_kepegawaian";
+    protected $table = "kasub_biro_keuangan_akuntansi";
     protected $guarded = [];
 
     protected static $logUnguarded = true;
