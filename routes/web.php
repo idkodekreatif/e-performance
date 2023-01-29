@@ -7,6 +7,8 @@ use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\Itisar\Baak\BaakController;
+use App\Http\Controllers\Itisar\Bau\KasubBiroKepegawaianController;
+use App\Http\Controllers\Itisar\Bau\KasubBiroKeuanganController;
 use App\Http\Controllers\Itisar\KasubRisbangController;
 use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
@@ -250,6 +252,24 @@ Route::group(
             Route::get('/sekKaprodi/edit/{PointId}', 'edit')->name('edit.sekKaprodi');
             Route::put('/sekKaprodi/update/{PointId}', 'update')->name('update.sekKaprodi');
             Route::get('/Raport/sekKaprodi/{user_id}', 'raport')->name('sekKaprodi.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Kepegawaian ----------------------------------//
+        Route::controller(KasubBiroKepegawaianController::class)->group(function () {
+            Route::get('/kasubBiroKepegawaian/Input', 'create')->name('kasubBiroKepegawaian');
+            Route::post('/kasubBiroKepegawaian/Request/Store', 'store')->name('store.kasubBiroKepegawaian');
+            Route::get('/kasubBiroKepegawaian/edit/{PointId}', 'edit')->name('edit.kasubBiroKepegawaian');
+            Route::put('/kasubBiroKepegawaian/update/{PointId}', 'update')->name('update.kasubBiroKepegawaian');
+            Route::get('/Raport/kasubBiroKepegawaian/{user_id}', 'raport')->name('kasubBiroKepegawaian.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Keuangan dan Akuntansi ------------------------------//
+        Route::controller(KasubBiroKeuanganController::class)->group(function () {
+            Route::get('/KasubBiroKeuangan/Input', 'create')->name('KasubBiroKeuangan');
+            Route::post('/KasubBiroKeuangan/Request/Store', 'store')->name('store.KasubBiroKeuangan');
+            Route::get('/KasubBiroKeuangan/edit/{PointId}', 'edit')->name('edit.KasubBiroKeuangan');
+            Route::put('/KasubBiroKeuangan/update/{PointId}', 'update')->name('update.KasubBiroKeuangan');
+            Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport');
         });
     }
 );
