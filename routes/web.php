@@ -7,6 +7,7 @@ use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\Itisar\Baak\BaakController;
+use App\Http\Controllers\Itisar\KasubRisbangController;
 use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
@@ -230,6 +231,15 @@ Route::group(
             Route::get('/Lpm/edit/{PointId}', 'edit')->name('edit.Lpm');
             Route::put('/Lpm/update/{PointId}', 'update')->name('update.Lpm');
             Route::get('/Raport/Lpm/{user_id}', 'raport')->name('Lpm.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian KasubRisbang ----------------------------------//
+        Route::controller(KasubRisbangController::class)->group(function () {
+            Route::get('/KasubRisbang/Input', 'create')->name('KasubRisbang');
+            Route::post('/KasubRisbang/Request/Store', 'store')->name('store.KasubRisbang');
+            Route::get('/KasubRisbang/edit/{PointId}', 'edit')->name('edit.KasubRisbang');
+            Route::put('/KasubRisbang/update/{PointId}', 'update')->name('update.KasubRisbang');
+            Route::get('/Raport/KasubRisbang/{user_id}', 'raport')->name('KasubRisbang.raport');
         });
     }
 );
