@@ -1,4 +1,4 @@
-<x-app-layout title="Raport Penilaian Ka. UPT | Ka. LABORAN">
+<x-app-layout title="Raport Penilaian LPM">
     @push('style')
     @endpush
 
@@ -6,17 +6,17 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Point</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Raport Ka. Laboran</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Raport LPM</a></li>
             </ol>
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('ka.upt.ka.unit.laboran') }}" class="btn btn-primary btn-sm mb-2 float-end">Point</a>
+                <a href="{{ route('Lpm') }}" class="btn btn-primary btn-sm mb-2 float-end">Point</a>
             </div>
         </div>
         <div class="card shadow">
             <div class="card-header">
-                <h4 class="card-title">Raport Ka. Laboran</h4>
+                <h4 class="card-title">Raport LPM</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

@@ -13,6 +13,7 @@ use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
 use App\Http\Controllers\Itisar\KaUpt\KoordinatorPerpustakaanController;
 use App\Http\Controllers\Itisar\KaUpt\StaffPemasaranController;
 use App\Http\Controllers\Itisar\Keuangan\StaffKeuanganController;
+use App\Http\Controllers\Itisar\LpmController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -220,6 +221,15 @@ Route::group(
             Route::get('/StaffKeuangan/edit/{PointId}', 'edit')->name('edit.StaffKeuangan');
             Route::put('/StaffKeuangan/update/{PointId}', 'update')->name('update.StaffKeuangan');
             Route::get('/Raport/StaffKeuangan/{user_id}', 'raport')->name('StaffKeuangan.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian LPM ----------------------------------//
+        Route::controller(LpmController::class)->group(function () {
+            Route::get('/Lpm/Input', 'create')->name('Lpm');
+            Route::post('/Lpm/Request/Store', 'store')->name('store.Lpm');
+            Route::get('/Lpm/edit/{PointId}', 'edit')->name('edit.Lpm');
+            Route::put('/Lpm/update/{PointId}', 'update')->name('update.Lpm');
+            Route::get('/Raport/Lpm/{user_id}', 'raport')->name('Lpm.raport');
         });
     }
 );
