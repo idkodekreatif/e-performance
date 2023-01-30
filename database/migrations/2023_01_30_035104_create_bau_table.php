@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWarek2Table extends Migration
+class CreateBauTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWarek2Table extends Migration
      */
     public function up()
     {
-        Schema::create('warek_2', function (Blueprint $table) {
+        Schema::create('bau', function (Blueprint $table) {
             $table->id();
             $table->enum('Point1_1', ['1', '2', '3', '4', '5'])->nullable();
             $table->enum('Point1_2', ['1', '2', '3', '4', '5'])->nullable();
@@ -106,6 +106,6 @@ class CreateWarek2Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('warek_2');
+        Schema::dropIfExists('bau');
     }
 }

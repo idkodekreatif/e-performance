@@ -18,6 +18,8 @@ use App\Http\Controllers\Itisar\KaUpt\StaffPemasaranController;
 use App\Http\Controllers\Itisar\Keuangan\StaffKeuanganController;
 use App\Http\Controllers\Itisar\LpmController;
 use App\Http\Controllers\Itisar\prodi\SekKaprodiController;
+use App\Http\Controllers\Itisar\rektor\warekDuaController;
+use App\Http\Controllers\Itisar\rektor\warekSatuController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -270,6 +272,24 @@ Route::group(
             Route::get('/KasubBiroKeuangan/edit/{PointId}', 'edit')->name('edit.KasubBiroKeuangan');
             Route::put('/KasubBiroKeuangan/update/{PointId}', 'update')->name('update.KasubBiroKeuangan');
             Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
+        Route::controller(warekSatuController::class)->group(function () {
+            Route::get('/warekSatu/Input', 'create')->name('warekSatu');
+            Route::post('/warekSatu/Request/Store', 'store')->name('store.warekSatu');
+            Route::get('/warekSatu/edit/{PointId}', 'edit')->name('edit.warekSatu');
+            Route::put('/warekSatu/update/{PointId}', 'update')->name('update.warekSatu');
+            Route::get('/Raport/warekSatu/{user_id}', 'raport')->name('warekSatu.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
+        Route::controller(warekDuaController::class)->group(function () {
+            Route::get('/WarekDua/Input', 'create')->name('WarekDua');
+            Route::post('/WarekDua/Request/Store', 'store')->name('store.WarekDua');
+            Route::get('/WarekDua/edit/{PointId}', 'edit')->name('edit.WarekDua');
+            Route::put('/WarekDua/update/{PointId}', 'update')->name('update.WarekDua');
+            Route::get('/Raport/WarekDua/{user_id}', 'raport')->name('WarekDua.raport');
         });
     }
 );
