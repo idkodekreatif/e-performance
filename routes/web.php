@@ -18,6 +18,7 @@ use App\Http\Controllers\Itisar\KaUpt\StaffPemasaranController;
 use App\Http\Controllers\Itisar\Keuangan\StaffKeuanganController;
 use App\Http\Controllers\Itisar\LpmController;
 use App\Http\Controllers\Itisar\prodi\SekKaprodiController;
+use App\Http\Controllers\Itisar\rektor\StaffSusBidKerjasamaController;
 use App\Http\Controllers\Itisar\rektor\warekDuaController;
 use App\Http\Controllers\Itisar\rektor\warekSatuController;
 use App\Http\Controllers\Itisar\warek2Controller;
@@ -290,6 +291,15 @@ Route::group(
             Route::get('/WarekDua/edit/{PointId}', 'edit')->name('edit.WarekDua');
             Route::put('/WarekDua/update/{PointId}', 'update')->name('update.WarekDua');
             Route::get('/Raport/WarekDua/{user_id}', 'raport')->name('WarekDua.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Sus Bidang Kerjasama ------------------------------//
+        Route::controller(StaffSusBidKerjasamaController::class)->group(function () {
+            Route::get('/StaffSusBidKerjasama/Input', 'create')->name('StaffSusBidKerjasama');
+            Route::post('/StaffSusBidKerjasama/Request/Store', 'store')->name('store.StaffSusBidKerjasama');
+            Route::get('/StaffSusBidKerjasama/edit/{PointId}', 'edit')->name('edit.StaffSusBidKerjasama');
+            Route::put('/StaffSusBidKerjasama/update/{PointId}', 'update')->name('update.StaffSusBidKerjasama');
+            Route::get('/Raport/StaffSusBidKerjasama/{user_id}', 'raport')->name('StaffSusBidKerjasama.raport');
         });
     }
 );

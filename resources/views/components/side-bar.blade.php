@@ -172,7 +172,7 @@
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('warekSatu') }}" aria-expanded="false">Warek I</a>
                                     <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
-                                    <li><a href="javascript:void()">Staffsus Bidang Kerjasama</a></li>
+                                    <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
                                     <li><a href="javascript:void()">Ka. Lembaga Penjaminan Mutu</a></li>
                                 </ul>
                             </li>
