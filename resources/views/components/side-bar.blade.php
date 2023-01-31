@@ -152,6 +152,31 @@
                                 </ul>
                             </li>
                         </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="javascript:void()" aria-expanded="false">Koor. Kemahasiswaan & Alumni</a>
+                                    <li><a href="javascript:void()">Ka. UPT</a></li>
+                                    <li><a href="javascript:void()">Ka. Lem. Risbang</a></li>
+                                    <li><a href="javascript:void()">Ka. Baak</a></li>
+                                    <li><a href="javascript:void()">Ka. Prodi Kebidanan</a></li>
+                                    <li><a href="javascript:void()">Ka. Prodi Ilmu Keperawatan</a></li>
+                                    <li><a href="javascript:void()">Ka. Prodi Ilmu Gizi</a></li>
+                                    <li><a href="javascript:void()">Ka. Prodi Manajement</a></li>
+                                    <li><a href="javascript:void()">Ka. Prodi Akuntansi</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">REKTOR</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('warekSatu') }}" aria-expanded="false">Warek I</a>
+                                    <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
+                                    <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
+                                    <li><a href="{{ route('KaLpm') }}">Ka. Lembaga Penjaminan Mutu</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 @endrole
