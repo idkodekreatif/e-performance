@@ -18,6 +18,7 @@ use App\Http\Controllers\Itisar\KaUpt\StaffPemasaranController;
 use App\Http\Controllers\Itisar\Keuangan\StaffKeuanganController;
 use App\Http\Controllers\Itisar\LpmController;
 use App\Http\Controllers\Itisar\prodi\SekKaprodiController;
+use App\Http\Controllers\Itisar\rektor\KaLpmController;
 use App\Http\Controllers\Itisar\rektor\StaffSusBidKerjasamaController;
 use App\Http\Controllers\Itisar\rektor\warekDuaController;
 use App\Http\Controllers\Itisar\rektor\warekSatuController;
@@ -300,6 +301,15 @@ Route::group(
             Route::get('/StaffSusBidKerjasama/edit/{PointId}', 'edit')->name('edit.StaffSusBidKerjasama');
             Route::put('/StaffSusBidKerjasama/update/{PointId}', 'update')->name('update.StaffSusBidKerjasama');
             Route::get('/Raport/StaffSusBidKerjasama/{user_id}', 'raport')->name('StaffSusBidKerjasama.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Sus Bidang Kerjasama ------------------------------//
+        Route::controller(KaLpmController::class)->group(function () {
+            Route::get('/KaLpm/Input', 'create')->name('KaLpm');
+            Route::post('/KaLpm/Request/Store', 'store')->name('store.KaLpm');
+            Route::get('/KaLpm/edit/{PointId}', 'edit')->name('edit.KaLpm');
+            Route::put('/KaLpm/update/{PointId}', 'update')->name('update.KaLpm');
+            Route::get('/Raport/KaLpm/{user_id}', 'raport')->name('KaLpm.raport');
         });
     }
 );
