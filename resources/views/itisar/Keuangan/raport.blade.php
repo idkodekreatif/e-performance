@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('ka.upt.ka.unit.it') }}" class="btn btn-primary btn-sm mb-2 float-end">Point</a>
+                <a href="{{ route('StaffKeuangan') }}" class="btn btn-primary btn-sm mb-2 float-end">Point</a>
             </div>
         </div>
         <div class="card shadow">

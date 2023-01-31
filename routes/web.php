@@ -23,6 +23,7 @@ use App\Http\Controllers\Itisar\rektor\StaffSusBidKerjasamaController;
 use App\Http\Controllers\Itisar\rektor\warekDuaController;
 use App\Http\Controllers\Itisar\rektor\warekSatuController;
 use App\Http\Controllers\Itisar\warek2Controller;
+use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
@@ -303,13 +304,22 @@ Route::group(
             Route::get('/Raport/StaffSusBidKerjasama/{user_id}', 'raport')->name('StaffSusBidKerjasama.raport');
         });
 
-        // -------------------------- Controller Form Penilaian Staff Sus Bidang Kerjasama ------------------------------//
+        // -------------------------- Controller Form Penilaian Ka. LPM ------------------------------//
         Route::controller(KaLpmController::class)->group(function () {
             Route::get('/KaLpm/Input', 'create')->name('KaLpm');
             Route::post('/KaLpm/Request/Store', 'store')->name('store.KaLpm');
             Route::get('/KaLpm/edit/{PointId}', 'edit')->name('edit.KaLpm');
             Route::put('/KaLpm/update/{PointId}', 'update')->name('update.KaLpm');
             Route::get('/Raport/KaLpm/{user_id}', 'raport')->name('KaLpm.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Koor Kemahasiswaan dan Alumni ------------------------------//
+        Route::controller(KoorKemahasiswaanDanAlumniController::class)->group(function () {
+            Route::get('/koorkemahasiswaanDanAlumni/Input', 'create')->name('koorkemahasiswaanDanAlumni');
+            Route::post('/koorkemahasiswaanDanAlumni/Request/Store', 'store')->name('store.koorkemahasiswaanDanAlumni');
+            Route::get('/koorkemahasiswaanDanAlumni/edit/{PointId}', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
+            Route::put('/koorkemahasiswaanDanAlumni/update/{PointId}', 'update')->name('update.koorkemahasiswaanDanAlumni');
+            Route::get('/Raport/koorkemahasiswaanDanAlumni/{user_id}', 'raport')->name('koorkemahasiswaanDanAlumni.raport');
         });
     }
 );
