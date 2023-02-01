@@ -23,6 +23,9 @@ use App\Http\Controllers\Itisar\rektor\StaffSusBidKerjasamaController;
 use App\Http\Controllers\Itisar\rektor\warekDuaController;
 use App\Http\Controllers\Itisar\rektor\warekSatuController;
 use App\Http\Controllers\Itisar\warek2Controller;
+use App\Http\Controllers\Itisar\WarekSatu\KaBaakController;
+use App\Http\Controllers\Itisar\WarekSatu\KaRisbangController;
+use App\Http\Controllers\Itisar\WarekSatu\KaUptController;
 use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
@@ -320,6 +323,33 @@ Route::group(
             Route::get('/koorkemahasiswaanDanAlumni/edit/{PointId}', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
             Route::put('/koorkemahasiswaanDanAlumni/update/{PointId}', 'update')->name('update.koorkemahasiswaanDanAlumni');
             Route::get('/Raport/koorkemahasiswaanDanAlumni/{user_id}', 'raport')->name('koorkemahasiswaanDanAlumni.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Upt ------------------------------//
+        Route::controller(KaUptController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Upt/Input', 'create')->name('WarekSatu.Ka.Upt');
+            Route::post('/warek-satu/Ka-Upt/Request/Store', 'store')->name('store.WarekSatu.Ka.Upt');
+            Route::get('/warek-satu/Ka-Upt/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Upt');
+            Route::put('/warek-satu/Ka-Upt/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Upt');
+            Route::get('/Raport/warek-satu/Ka-Upt/{user_id}', 'raport')->name('WarekSatu.Ka.Upt.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Risbang ------------------------------//
+        Route::controller(KaRisbangController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Risbang/Input', 'create')->name('WarekSatu.Ka.Risbang');
+            Route::post('/warek-satu/Ka-Risbang/Request/Store', 'store')->name('store.WarekSatu.Ka.Risbang');
+            Route::get('/warek-satu/Ka-Risbang/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Risbang');
+            Route::put('/warek-satu/Ka-Risbang/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Risbang');
+            Route::get('/Raport/warek-satu/Ka-Risbang/{user_id}', 'raport')->name('WarekSatu.Ka.Risbang.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Baak ------------------------------//
+        Route::controller(KaBaakController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Baak/Input', 'create')->name('WarekSatu.Ka.Baak');
+            Route::post('/warek-satu/Ka-Baak/Request/Store', 'store')->name('store.WarekSatu.Ka.Baak');
+            Route::get('/warek-satu/Ka-Baak/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Baak');
+            Route::put('/warek-satu/Ka-Baak/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Baak');
+            Route::get('/Raport/warek-satu/Ka-Baak/{user_id}', 'raport')->name('WarekSatu.Ka.Baak.raport');
         });
     }
 );

@@ -339,7 +339,7 @@ class KoordinatorPerpustakaanController extends Controller
                 if ($RecordData->file_kinerja_kompetensi_8 && file_exists(storage_path('app/public/uploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_8))) {
                     \Storage::delete('public/uploads/KaUpt/KaPerpustakaan/' . $RecordData->file_kinerja_kompetensi_8);
                 }
-                $file_kinerja_kompetensi_8 = $request->file(file_'kinerja_kompetensi_8')->store('uploads/KaUpt/KaPerpustakaan', 'public');
+                $file_kinerja_kompetensi_8 = $request->file('file_kinerja_kompetensi_8')->store('uploads/KaUpt/KaPerpustakaan', 'public');
             } else {
                 $file_kinerja_kompetensi_8 = $RecordData->file_kinerja_kompetensi_8;
             }

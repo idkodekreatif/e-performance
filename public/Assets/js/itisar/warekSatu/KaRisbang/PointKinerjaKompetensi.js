@@ -173,6 +173,24 @@ function sum() {
     var kinerja_kompetensi_29_3;
     var kinerja_kompetensi_29_4;
     var kinerja_kompetensi_29_5;
+    // Variable Point 30
+    var kinerja_kompetensi_30_1;
+    var kinerja_kompetensi_30_2;
+    var kinerja_kompetensi_30_3;
+    var kinerja_kompetensi_30_4;
+    var kinerja_kompetensi_30_5;
+    // Variable Point 31
+    var kinerja_kompetensi_31_1;
+    var kinerja_kompetensi_31_2;
+    var kinerja_kompetensi_31_3;
+    var kinerja_kompetensi_31_4;
+    var kinerja_kompetensi_31_5;
+    // Variable Point 32
+    var kinerja_kompetensi_32_1;
+    var kinerja_kompetensi_32_2;
+    var kinerja_kompetensi_32_3;
+    var kinerja_kompetensi_32_4;
+    var kinerja_kompetensi_32_5;
 
     // Checkinput point baris 1
     if ($("input[id='kinerja_kompetensi_1_1']:checked").val() != null) {
@@ -1218,6 +1236,114 @@ function sum() {
     } else {
         kinerja_kompetensi_29_5 = 0;
     }
+    // Checkinput point baris 30
+    if ($("input[id='kinerja_kompetensi_30_1']:checked").val() != null) {
+        kinerja_kompetensi_30_1 = document.querySelector(
+            'input[id="kinerja_kompetensi_30_1"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_30_1 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_30_2']:checked").val() != null) {
+        kinerja_kompetensi_30_2 = document.querySelector(
+            'input[id="kinerja_kompetensi_30_2"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_30_2 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_30_3']:checked").val() != null) {
+        kinerja_kompetensi_30_3 = document.querySelector(
+            'input[id="kinerja_kompetensi_30_3"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_30_3 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_30_4']:checked").val() != null) {
+        kinerja_kompetensi_30_4 = document.querySelector(
+            'input[id="kinerja_kompetensi_30_4"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_30_4 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_30_5']:checked").val() != null) {
+        kinerja_kompetensi_30_5 = document.querySelector(
+            'input[id="kinerja_kompetensi_30_5"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_30_5 = 0;
+    }
+    // Checkinput point baris 31
+    if ($("input[id='kinerja_kompetensi_31_1']:checked").val() != null) {
+        kinerja_kompetensi_31_1 = document.querySelector(
+            'input[id="kinerja_kompetensi_31_1"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_31_1 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_31_2']:checked").val() != null) {
+        kinerja_kompetensi_31_2 = document.querySelector(
+            'input[id="kinerja_kompetensi_31_2"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_31_2 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_31_3']:checked").val() != null) {
+        kinerja_kompetensi_31_3 = document.querySelector(
+            'input[id="kinerja_kompetensi_31_3"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_31_3 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_31_4']:checked").val() != null) {
+        kinerja_kompetensi_31_4 = document.querySelector(
+            'input[id="kinerja_kompetensi_31_4"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_31_4 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_31_5']:checked").val() != null) {
+        kinerja_kompetensi_31_5 = document.querySelector(
+            'input[id="kinerja_kompetensi_31_5"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_31_5 = 0;
+    }
+    // Checkinput point baris 32
+    if ($("input[id='kinerja_kompetensi_32_1']:checked").val() != null) {
+        kinerja_kompetensi_32_1 = document.querySelector(
+            'input[id="kinerja_kompetensi_32_1"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_32_1 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_32_2']:checked").val() != null) {
+        kinerja_kompetensi_32_2 = document.querySelector(
+            'input[id="kinerja_kompetensi_32_2"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_32_2 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_32_3']:checked").val() != null) {
+        kinerja_kompetensi_32_3 = document.querySelector(
+            'input[id="kinerja_kompetensi_32_3"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_32_3 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_32_4']:checked").val() != null) {
+        kinerja_kompetensi_32_4 = document.querySelector(
+            'input[id="kinerja_kompetensi_32_4"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_32_4 = 0;
+    }
+    if ($("input[id='kinerja_kompetensi_32_5']:checked").val() != null) {
+        kinerja_kompetensi_32_5 = document.querySelector(
+            'input[id="kinerja_kompetensi_32_5"]:checked'
+        ).value;
+    } else {
+        kinerja_kompetensi_32_5 = 0;
+    }
 
     // Merubah Ke Nilai INTEGER
     // Point 1
@@ -1394,6 +1520,24 @@ function sum() {
     var Skorkinerja_kompetensi_29_3 = parseInt(kinerja_kompetensi_29_3);
     var Skorkinerja_kompetensi_29_4 = parseInt(kinerja_kompetensi_29_4);
     var Skorkinerja_kompetensi_29_5 = parseInt(kinerja_kompetensi_29_5);
+    // Point 30
+    var Skorkinerja_kompetensi_30_1 = parseInt(kinerja_kompetensi_30_1);
+    var Skorkinerja_kompetensi_30_2 = parseInt(kinerja_kompetensi_30_2);
+    var Skorkinerja_kompetensi_30_3 = parseInt(kinerja_kompetensi_30_3);
+    var Skorkinerja_kompetensi_30_4 = parseInt(kinerja_kompetensi_30_4);
+    var Skorkinerja_kompetensi_30_5 = parseInt(kinerja_kompetensi_30_5);
+    // Point 31
+    var Skorkinerja_kompetensi_31_1 = parseInt(kinerja_kompetensi_31_1);
+    var Skorkinerja_kompetensi_31_2 = parseInt(kinerja_kompetensi_31_2);
+    var Skorkinerja_kompetensi_31_3 = parseInt(kinerja_kompetensi_31_3);
+    var Skorkinerja_kompetensi_31_4 = parseInt(kinerja_kompetensi_31_4);
+    var Skorkinerja_kompetensi_31_5 = parseInt(kinerja_kompetensi_31_5);
+    // Point 32
+    var Skorkinerja_kompetensi_32_1 = parseInt(kinerja_kompetensi_32_1);
+    var Skorkinerja_kompetensi_32_2 = parseInt(kinerja_kompetensi_32_2);
+    var Skorkinerja_kompetensi_32_3 = parseInt(kinerja_kompetensi_32_3);
+    var Skorkinerja_kompetensi_32_4 = parseInt(kinerja_kompetensi_32_4);
+    var Skorkinerja_kompetensi_32_5 = parseInt(kinerja_kompetensi_32_5);
 
     // SUM Kolom Point 1
     var ResultSumSkorkinerja_kompetensi_1 =
@@ -1425,7 +1569,10 @@ function sum() {
         Skorkinerja_kompetensi_26_1 +
         Skorkinerja_kompetensi_27_1 +
         Skorkinerja_kompetensi_28_1 +
-        Skorkinerja_kompetensi_29_1;
+        Skorkinerja_kompetensi_29_1 +
+        Skorkinerja_kompetensi_30_1 +
+        Skorkinerja_kompetensi_31_1 +
+        Skorkinerja_kompetensi_32_1;
 
     // SUM Kolom Point 2
     var ResultSumSkorkinerja_kompetensi_2 =
@@ -1457,7 +1604,10 @@ function sum() {
         Skorkinerja_kompetensi_26_2 +
         Skorkinerja_kompetensi_27_2 +
         Skorkinerja_kompetensi_28_2 +
-        Skorkinerja_kompetensi_29_2;
+        Skorkinerja_kompetensi_29_2 +
+        Skorkinerja_kompetensi_30_2 +
+        Skorkinerja_kompetensi_31_2 +
+        Skorkinerja_kompetensi_32_2;
 
     // SUM Kolom Point 3
     var ResultSumSkorkinerja_kompetensi_3 =
@@ -1489,7 +1639,9 @@ function sum() {
         Skorkinerja_kompetensi_26_3 +
         Skorkinerja_kompetensi_27_3 +
         Skorkinerja_kompetensi_28_3 +
-        Skorkinerja_kompetensi_29_3;
+        Skorkinerja_kompetensi_29_3 +
+        Skorkinerja_kompetensi_30_3 +
+        Skorkinerja_kompetensi_31_3;
 
     // SUM Kolom Point 4
     var ResultSumSkorkinerja_kompetensi_4 =
@@ -1521,7 +1673,10 @@ function sum() {
         Skorkinerja_kompetensi_26_4 +
         Skorkinerja_kompetensi_27_4 +
         Skorkinerja_kompetensi_28_4 +
-        Skorkinerja_kompetensi_29_4;
+        Skorkinerja_kompetensi_29_4 +
+        Skorkinerja_kompetensi_30_4 +
+        Skorkinerja_kompetensi_31_4 +
+        Skorkinerja_kompetensi_32_4;
 
     // SUM Kolom Point 5
     var ResultSumSkorkinerja_kompetensi_5 =
@@ -1553,7 +1708,10 @@ function sum() {
         Skorkinerja_kompetensi_26_5 +
         Skorkinerja_kompetensi_27_5 +
         Skorkinerja_kompetensi_28_5 +
-        Skorkinerja_kompetensi_29_5;
+        Skorkinerja_kompetensi_29_5 +
+        Skorkinerja_kompetensi_30_5 +
+        Skorkinerja_kompetensi_31_5 +
+        Skorkinerja_kompetensi_32_5;
 
     if (!isNaN(ResultSumSkorkinerja_kompetensi_1)) {
         // Tampilkan output pada input form
@@ -1596,7 +1754,7 @@ function sum() {
     }
 
     // Nilai Rata-Rata Kinerja Kompetensi
-    var ResultDivisionKinerja = SumResultTotalKinerjaKompetensi / 30;
+    var ResultDivisionKinerja = SumResultTotalKinerjaKompetensi / 29;
     var FormatNumberResultDivisionKinerja = ResultDivisionKinerja.toFixed(2);
     if (!isNaN(FormatNumberResultDivisionKinerja)) {
         // Tampilkan output pada input form

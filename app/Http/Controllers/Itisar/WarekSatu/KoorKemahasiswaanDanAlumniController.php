@@ -276,169 +276,169 @@ class KoorKemahasiswaanDanAlumniController extends Controller
 
             $kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
             if ($request->hasFile('file_kinerja_kompetensi_1')) {
-                if ($RecordData->file_kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_1))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_1);
+                if ($RecordData->file_kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_1))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_1);
                 }
-                $file_kinerja_kompetensi_1 = $request->file('file_kinerja_kompetensi_1')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_1 = $request->file('file_kinerja_kompetensi_1')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_1 = $RecordData->file_kinerja_kompetensi_1;
             }
 
             $kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
             if ($request->hasFile('file_kinerja_kompetensi_2')) {
-                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_2))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_2);
+                if ($RecordData->file_kinerja_kompetensi_2 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_2))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_2);
                 }
-                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_2 = $request->file('file_kinerja_kompetensi_2')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_2 = $RecordData->file_kinerja_kompetensi_2;
             }
 
             $kinerja_kompetensi_3 = $request->get('kinerja_kompetensi_3');
             if ($request->hasFile('file_kinerja_kompetensi_3')) {
-                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_3))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_3);
+                if ($RecordData->file_kinerja_kompetensi_3 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_3))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_3);
                 }
-                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_3 = $request->file('file_kinerja_kompetensi_3')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_3 = $RecordData->file_kinerja_kompetensi_3;
             }
 
             $kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
             if ($request->hasFile('file_kinerja_kompetensi_4')) {
-                if ($RecordData->file_kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_4))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_4);
+                if ($RecordData->file_kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_4))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_4);
                 }
-                $file_kinerja_kompetensi_4 = $request->file('file_kinerja_kompetensi_4')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_4 = $request->file('file_kinerja_kompetensi_4')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_4 = $RecordData->file_kinerja_kompetensi_4;
             }
 
             $kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
             if ($request->hasFile('file_kinerja_kompetensi_5')) {
-                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_5))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_5);
+                if ($RecordData->file_kinerja_kompetensi_5 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_5))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_5);
                 }
-                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_5 = $request->file('file_kinerja_kompetensi_5')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_5 = $RecordData->file_kinerja_kompetensi_5;
             }
 
             $kinerja_kompetensi_6 = $request->get('kinerja_kompetensi_6');
             if ($request->hasFile('file_kinerja_kompetensi_6')) {
-                if ($RecordData->file_kinerja_kompetensi_6 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_6))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_6);
+                if ($RecordData->file_kinerja_kompetensi_6 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_6))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_6);
                 }
-                $file_kinerja_kompetensi_6 = $request->file('file_kinerja_kompetensi_6')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_6 = $request->file('file_kinerja_kompetensi_6')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_6 = $RecordData->file_kinerja_kompetensi_6;
             }
 
             $kinerja_kompetensi_7 = $request->get('kinerja_kompetensi_7');
             if ($request->hasFile('file_kinerja_kompetensi_7')) {
-                if ($RecordData->file_kinerja_kompetensi_7 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_7))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_7);
+                if ($RecordData->file_kinerja_kompetensi_7 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_7))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_7);
                 }
-                $file_kinerja_kompetensi_7 = $request->file('file_kinerja_kompetensi_7')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_7 = $request->file('file_kinerja_kompetensi_7')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_7 = $RecordData->file_kinerja_kompetensi_7;
             }
 
             $kinerja_kompetensi_8 = $request->get('kinerja_kompetensi_8');
             if ($request->hasFile('file_kinerja_kompetensi_8')) {
-                if ($RecordData->file_kinerja_kompetensi_8 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_8))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_8);
+                if ($RecordData->file_kinerja_kompetensi_8 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_8))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_8);
                 }
-                $file_kinerja_kompetensi_8 = $request->file('file_kinerja_kompetensi_8')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_8 = $request->file('file_kinerja_kompetensi_8')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_8 = $RecordData->file_kinerja_kompetensi_8;
             }
 
             $kinerja_kompetensi_9 = $request->get('kinerja_kompetensi_9');
             if ($request->hasFile('file_kinerja_kompetensi_9')) {
-                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_9))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_9);
+                if ($RecordData->file_kinerja_kompetensi_9 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_9))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_9);
                 }
-                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_9 = $request->file('file_kinerja_kompetensi_9')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_9 = $RecordData->file_kinerja_kompetensi_9;
             }
 
             $kinerja_kompetensi_10 = $request->get('kinerja_kompetensi_10');
             if ($request->hasFile('file_kinerja_kompetensi_10')) {
-                if ($RecordData->file_kinerja_kompetensi_10 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_10))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_10);
+                if ($RecordData->file_kinerja_kompetensi_10 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_10))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_10);
                 }
-                $file_kinerja_kompetensi_10 = $request->file('file_kinerja_kompetensi_10')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_10 = $request->file('file_kinerja_kompetensi_10')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_10 = $RecordData->file_kinerja_kompetensi_10;
             }
 
             $kinerja_kompetensi_11 = $request->get('kinerja_kompetensi_11');
             if ($request->hasFile('file_kinerja_kompetensi_11')) {
-                if ($RecordData->file_kinerja_kompetensi_11 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_11))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_11);
+                if ($RecordData->file_kinerja_kompetensi_11 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_11))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_11);
                 }
-                $file_kinerja_kompetensi_11 = $request->file('file_kinerja_kompetensi_11')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_11 = $request->file('file_kinerja_kompetensi_11')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_11 = $RecordData->file_kinerja_kompetensi_11;
             }
 
             $kinerja_kompetensi_12 = $request->get('kinerja_kompetensi_12');
             if ($request->hasFile('file_kinerja_kompetensi_12')) {
-                if ($RecordData->file_kinerja_kompetensi_12 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_12))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_12);
+                if ($RecordData->file_kinerja_kompetensi_12 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_12))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_12);
                 }
-                $file_kinerja_kompetensi_12 = $request->file('file_kinerja_kompetensi_12')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_12 = $request->file('file_kinerja_kompetensi_12')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_12 = $RecordData->file_kinerja_kompetensi_12;
             }
 
             $kinerja_kompetensi_13 = $request->get('kinerja_kompetensi_13');
             if ($request->hasFile('file_kinerja_kompetensi_13')) {
-                if ($RecordData->file_kinerja_kompetensi_13 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_13))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_13);
+                if ($RecordData->file_kinerja_kompetensi_13 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_13))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_13);
                 }
-                $file_kinerja_kompetensi_13 = $request->file('file_kinerja_kompetensi_13')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_13 = $request->file('file_kinerja_kompetensi_13')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_13 = $RecordData->file_kinerja_kompetensi_13;
             }
 
             $kinerja_kompetensi_14 = $request->get('kinerja_kompetensi_14');
             if ($request->hasFile('file_kinerja_kompetensi_14')) {
-                if ($RecordData->file_kinerja_kompetensi_14 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_14))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_14);
+                if ($RecordData->file_kinerja_kompetensi_14 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_14))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_14);
                 }
-                $file_kinerja_kompetensi_14 = $request->file('file_kinerja_kompetensi_14')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_14 = $request->file('file_kinerja_kompetensi_14')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_14 = $RecordData->file_kinerja_kompetensi_14;
             }
 
             $kinerja_kompetensi_15 = $request->get('kinerja_kompetensi_15');
             if ($request->hasFile('file_kinerja_kompetensi_15')) {
-                if ($RecordData->file_kinerja_kompetensi_15 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_15))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_15);
+                if ($RecordData->file_kinerja_kompetensi_15 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_15))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_15);
                 }
-                $file_kinerja_kompetensi_15 = $request->file('file_kinerja_kompetensi_15')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_15 = $request->file('file_kinerja_kompetensi_15')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_15 = $RecordData->file_kinerja_kompetensi_15;
             }
 
             $kinerja_kompetensi_16 = $request->get('kinerja_kompetensi_16');
             if ($request->hasFile('file_kinerja_kompetensi_16')) {
-                if ($RecordData->file_kinerja_kompetensi_16 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_16))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_16);
+                if ($RecordData->file_kinerja_kompetensi_16 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_16))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_16);
                 }
-                $file_kinerja_kompetensi_16 = $request->file('file_kinerja_kompetensi_16')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_16 = $request->file('file_kinerja_kompetensi_16')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_16 = $RecordData->file_kinerja_kompetensi_16;
             }
             $kinerja_kompetensi_17 = $request->get('kinerja_kompetensi_17');
             if ($request->hasFile('file_kinerja_kompetensi_17')) {
-                if ($RecordData->file_kinerja_kompetensi_17 && file_exists(storage_path('app/public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_17))) {
-                    \Storage::delete('public/uploads/rektor/kalpm/' . $RecordData->file_kinerja_kompetensi_17);
+                if ($RecordData->file_kinerja_kompetensi_17 && file_exists(storage_path('app/public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_17))) {
+                    \Storage::delete('public/uploads/wareksatu/koorkemahasiswaandanalumni/' . $RecordData->file_kinerja_kompetensi_17);
                 }
-                $file_kinerja_kompetensi_17 = $request->file('file_kinerja_kompetensi_17')->store('uploads/rektor/kalpm', 'public');
+                $file_kinerja_kompetensi_17 = $request->file('file_kinerja_kompetensi_17')->store('uploads/wareksatu/koorkemahasiswaandanalumni', 'public');
             } else {
                 $file_kinerja_kompetensi_17 = $RecordData->file_kinerja_kompetensi_17;
             }

@@ -156,9 +156,9 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('koorkemahasiswaanDanAlumni') }}" aria-expanded="false">Koor. Kemahasiswaan & Alumni</a>
-                                    <li><a href="javascript:void()">Ka. UPT</a></li>
-                                    <li><a href="javascript:void()">Ka. Lem. Risbang</a></li>
-                                    <li><a href="javascript:void()">Ka. Baak</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Upt') }}">Ka. UPT</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Risbang') }}">Ka. Lem. Risbang</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Baak') }}">Ka. Baak</a></li>
                                     <li><a href="javascript:void()">Ka. Prodi</a></li>
                                 </ul>
                             </li>
