@@ -24,6 +24,7 @@ use App\Http\Controllers\Itisar\rektor\warekDuaController;
 use App\Http\Controllers\Itisar\rektor\warekSatuController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\Itisar\WarekSatu\KaBaakController;
+use App\Http\Controllers\Itisar\WarekSatu\KaProdiController;
 use App\Http\Controllers\Itisar\WarekSatu\KaRisbangController;
 use App\Http\Controllers\Itisar\WarekSatu\KaUptController;
 use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
@@ -350,6 +351,15 @@ Route::group(
             Route::get('/warek-satu/Ka-Baak/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Baak');
             Route::put('/warek-satu/Ka-Baak/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Baak');
             Route::get('/Raport/warek-satu/Ka-Baak/{user_id}', 'raport')->name('WarekSatu.Ka.Baak.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Prodi ------------------------------//
+        Route::controller(KaProdiController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Prodi/Input', 'create')->name('WarekSatu.Ka.Prodi');
+            Route::post('/warek-satu/Ka-Prodi/Request/Store', 'store')->name('store.WarekSatu.Ka.Prodi');
+            Route::get('/warek-satu/Ka-Prodi/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Prodi');
+            Route::put('/warek-satu/Ka-Prodi/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
+            Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport');
         });
     }
 );

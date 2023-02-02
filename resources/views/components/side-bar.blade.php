@@ -159,7 +159,7 @@
                                     <li><a href="{{ route('WarekSatu.Ka.Upt') }}">Ka. UPT</a></li>
                                     <li><a href="{{ route('WarekSatu.Ka.Risbang') }}">Ka. Lem. Risbang</a></li>
                                     <li><a href="{{ route('WarekSatu.Ka.Baak') }}">Ka. Baak</a></li>
-                                    <li><a href="javascript:void()">Ka. Prodi</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Prodi') }}">Ka. Prodi</a></li>
                                 </ul>
                             </li>
                         </ul>
