@@ -1,4 +1,4 @@
-<x-app-layout title="Raport Penilaian Sek Ka. Prodi">
+<x-app-layout title="Raport Penilaian Warek 1 | Ka. Upt">
     @push('style')
     @endpush
 
@@ -6,17 +6,17 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Point</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Raport Sek Ka. Prodi</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Raport Ka. Upt</a></li>
             </ol>
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('sekKaprodi') }}" class="btn btn-primary btn-sm mb-2 float-end">Point</a>
+                <a href="{{ route('WarekSatu.Ka.Upt') }}" class="btn btn-primary btn-sm mb-2 float-end">Point</a>
             </div>
         </div>
         <div class="card shadow">
             <div class="card-header">
-                <h4 class="card-title">Raport Sek Ka. Prodi</h4>
+                <h4 class="card-title">Raport Ka. Upt</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
