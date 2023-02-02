@@ -117,12 +117,59 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Lem. RISBANG</a>
                             {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
-                                    <li><a href="#" aria-expanded="false">Ka. Sub. Lem. Penel & Pengmas</a>
+                                    <li><a href="{{ route('KasubRisbang') }}" aria-expanded="false">Ka. Sub. Lem. Penel & Pengmas</a>
                                     {{-- <li><a href="javascript:void()">BAAK Keperawatan</a></li>
                                     <li><a href="javascript:void()">BAAK Kebidanan</a></li>
                                     <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
                                     <li><a href="javascript:void()">BAAK Akuntansi</a></li>
                                     <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
+                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('sekKaprodi') }}" aria-expanded="false">Sek Ka. Prodi</a>
+                                    {{-- <li><a href="javascript:void()">BAAK Keperawatan</a></li>
+                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
+                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
+                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
+                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
+                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('kasubBiroKepegawaian') }}" aria-expanded="false">Ka. Sub Biro Kepegawaian</a>
+                                    <li><a href="{{ route('KasubBiroKeuangan') }}">Ka. Sub. Biro Keuangan & Akuntant</a></li>
+                                    {{-- <li><a href="javascript:void()">BAAK Kebidanan</a></li>
+                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
+                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
+                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('koorkemahasiswaanDanAlumni') }}" aria-expanded="false">Koor. Kemahasiswaan & Alumni</a>
+                                    <li><a href="{{ route('WarekSatu.Ka.Upt') }}">Ka. UPT</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Risbang') }}">Ka. Lem. Risbang</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Baak') }}">Ka. Baak</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Prodi') }}">Ka. Prodi</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">REKTOR</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('warekSatu') }}" aria-expanded="false">Warek I</a>
+                                    <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
+                                    <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
+                                    <li><a href="{{ route('KaLpm') }}">Ka. Lembaga Penjaminan Mutu</a></li>
                                 </ul>
                             </li>
                         </ul>

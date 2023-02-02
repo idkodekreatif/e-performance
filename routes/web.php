@@ -7,6 +7,9 @@ use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\Itisar\Baak\BaakController;
+use App\Http\Controllers\Itisar\Bau\KasubBiroKepegawaianController;
+use App\Http\Controllers\Itisar\Bau\KasubBiroKeuanganController;
+use App\Http\Controllers\Itisar\KasubRisbangController;
 use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitPemasaranController;
@@ -14,7 +17,17 @@ use App\Http\Controllers\Itisar\KaUpt\KoordinatorPerpustakaanController;
 use App\Http\Controllers\Itisar\KaUpt\StaffPemasaranController;
 use App\Http\Controllers\Itisar\Keuangan\StaffKeuanganController;
 use App\Http\Controllers\Itisar\LpmController;
+use App\Http\Controllers\Itisar\prodi\SekKaprodiController;
+use App\Http\Controllers\Itisar\rektor\KaLpmController;
+use App\Http\Controllers\Itisar\rektor\StaffSusBidKerjasamaController;
+use App\Http\Controllers\Itisar\rektor\warekDuaController;
+use App\Http\Controllers\Itisar\rektor\warekSatuController;
 use App\Http\Controllers\Itisar\warek2Controller;
+use App\Http\Controllers\Itisar\WarekSatu\KaBaakController;
+use App\Http\Controllers\Itisar\WarekSatu\KaProdiController;
+use App\Http\Controllers\Itisar\WarekSatu\KaRisbangController;
+use App\Http\Controllers\Itisar\WarekSatu\KaUptController;
+use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
@@ -230,6 +243,123 @@ Route::group(
             Route::get('/Lpm/edit/{PointId}', 'edit')->name('edit.Lpm');
             Route::put('/Lpm/update/{PointId}', 'update')->name('update.Lpm');
             Route::get('/Raport/Lpm/{user_id}', 'raport')->name('Lpm.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian KasubRisbang ----------------------------------//
+        Route::controller(KasubRisbangController::class)->group(function () {
+            Route::get('/KasubRisbang/Input', 'create')->name('KasubRisbang');
+            Route::post('/KasubRisbang/Request/Store', 'store')->name('store.KasubRisbang');
+            Route::get('/KasubRisbang/edit/{PointId}', 'edit')->name('edit.KasubRisbang');
+            Route::put('/KasubRisbang/update/{PointId}', 'update')->name('update.KasubRisbang');
+            Route::get('/Raport/KasubRisbang/{user_id}', 'raport')->name('KasubRisbang.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian Sek Ka. Prodi ----------------------------------//
+        Route::controller(SekKaprodiController::class)->group(function () {
+            Route::get('/sekKaprodi/Input', 'create')->name('sekKaprodi');
+            Route::post('/sekKaprodi/Request/Store', 'store')->name('store.sekKaprodi');
+            Route::get('/sekKaprodi/edit/{PointId}', 'edit')->name('edit.sekKaprodi');
+            Route::put('/sekKaprodi/update/{PointId}', 'update')->name('update.sekKaprodi');
+            Route::get('/Raport/sekKaprodi/{user_id}', 'raport')->name('sekKaprodi.raport');
+        });
+
+        // ----------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Kepegawaian ----------------------------------//
+        Route::controller(KasubBiroKepegawaianController::class)->group(function () {
+            Route::get('/kasubBiroKepegawaian/Input', 'create')->name('kasubBiroKepegawaian');
+            Route::post('/kasubBiroKepegawaian/Request/Store', 'store')->name('store.kasubBiroKepegawaian');
+            Route::get('/kasubBiroKepegawaian/edit/{PointId}', 'edit')->name('edit.kasubBiroKepegawaian');
+            Route::put('/kasubBiroKepegawaian/update/{PointId}', 'update')->name('update.kasubBiroKepegawaian');
+            Route::get('/Raport/kasubBiroKepegawaian/{user_id}', 'raport')->name('kasubBiroKepegawaian.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Keuangan dan Akuntansi ------------------------------//
+        Route::controller(KasubBiroKeuanganController::class)->group(function () {
+            Route::get('/KasubBiroKeuangan/Input', 'create')->name('KasubBiroKeuangan');
+            Route::post('/KasubBiroKeuangan/Request/Store', 'store')->name('store.KasubBiroKeuangan');
+            Route::get('/KasubBiroKeuangan/edit/{PointId}', 'edit')->name('edit.KasubBiroKeuangan');
+            Route::put('/KasubBiroKeuangan/update/{PointId}', 'update')->name('update.KasubBiroKeuangan');
+            Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
+        Route::controller(warekSatuController::class)->group(function () {
+            Route::get('/warekSatu/Input', 'create')->name('warekSatu');
+            Route::post('/warekSatu/Request/Store', 'store')->name('store.warekSatu');
+            Route::get('/warekSatu/edit/{PointId}', 'edit')->name('edit.warekSatu');
+            Route::put('/warekSatu/update/{PointId}', 'update')->name('update.warekSatu');
+            Route::get('/Raport/warekSatu/{user_id}', 'raport')->name('warekSatu.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
+        Route::controller(warekDuaController::class)->group(function () {
+            Route::get('/WarekDua/Input', 'create')->name('WarekDua');
+            Route::post('/WarekDua/Request/Store', 'store')->name('store.WarekDua');
+            Route::get('/WarekDua/edit/{PointId}', 'edit')->name('edit.WarekDua');
+            Route::put('/WarekDua/update/{PointId}', 'update')->name('update.WarekDua');
+            Route::get('/Raport/WarekDua/{user_id}', 'raport')->name('WarekDua.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Sus Bidang Kerjasama ------------------------------//
+        Route::controller(StaffSusBidKerjasamaController::class)->group(function () {
+            Route::get('/StaffSusBidKerjasama/Input', 'create')->name('StaffSusBidKerjasama');
+            Route::post('/StaffSusBidKerjasama/Request/Store', 'store')->name('store.StaffSusBidKerjasama');
+            Route::get('/StaffSusBidKerjasama/edit/{PointId}', 'edit')->name('edit.StaffSusBidKerjasama');
+            Route::put('/StaffSusBidKerjasama/update/{PointId}', 'update')->name('update.StaffSusBidKerjasama');
+            Route::get('/Raport/StaffSusBidKerjasama/{user_id}', 'raport')->name('StaffSusBidKerjasama.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka. LPM ------------------------------//
+        Route::controller(KaLpmController::class)->group(function () {
+            Route::get('/KaLpm/Input', 'create')->name('KaLpm');
+            Route::post('/KaLpm/Request/Store', 'store')->name('store.KaLpm');
+            Route::get('/KaLpm/edit/{PointId}', 'edit')->name('edit.KaLpm');
+            Route::put('/KaLpm/update/{PointId}', 'update')->name('update.KaLpm');
+            Route::get('/Raport/KaLpm/{user_id}', 'raport')->name('KaLpm.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Koor Kemahasiswaan dan Alumni ------------------------------//
+        Route::controller(KoorKemahasiswaanDanAlumniController::class)->group(function () {
+            Route::get('/koorkemahasiswaanDanAlumni/Input', 'create')->name('koorkemahasiswaanDanAlumni');
+            Route::post('/koorkemahasiswaanDanAlumni/Request/Store', 'store')->name('store.koorkemahasiswaanDanAlumni');
+            Route::get('/koorkemahasiswaanDanAlumni/edit/{PointId}', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
+            Route::put('/koorkemahasiswaanDanAlumni/update/{PointId}', 'update')->name('update.koorkemahasiswaanDanAlumni');
+            Route::get('/Raport/koorkemahasiswaanDanAlumni/{user_id}', 'raport')->name('koorkemahasiswaanDanAlumni.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Upt ------------------------------//
+        Route::controller(KaUptController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Upt/Input', 'create')->name('WarekSatu.Ka.Upt');
+            Route::post('/warek-satu/Ka-Upt/Request/Store', 'store')->name('store.WarekSatu.Ka.Upt');
+            Route::get('/warek-satu/Ka-Upt/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Upt');
+            Route::put('/warek-satu/Ka-Upt/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Upt');
+            Route::get('/Raport/warek-satu/Ka-Upt/{user_id}', 'raport')->name('WarekSatu.Ka.Upt.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Risbang ------------------------------//
+        Route::controller(KaRisbangController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Risbang/Input', 'create')->name('WarekSatu.Ka.Risbang');
+            Route::post('/warek-satu/Ka-Risbang/Request/Store', 'store')->name('store.WarekSatu.Ka.Risbang');
+            Route::get('/warek-satu/Ka-Risbang/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Risbang');
+            Route::put('/warek-satu/Ka-Risbang/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Risbang');
+            Route::get('/Raport/warek-satu/Ka-Risbang/{user_id}', 'raport')->name('WarekSatu.Ka.Risbang.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Baak ------------------------------//
+        Route::controller(KaBaakController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Baak/Input', 'create')->name('WarekSatu.Ka.Baak');
+            Route::post('/warek-satu/Ka-Baak/Request/Store', 'store')->name('store.WarekSatu.Ka.Baak');
+            Route::get('/warek-satu/Ka-Baak/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Baak');
+            Route::put('/warek-satu/Ka-Baak/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Baak');
+            Route::get('/Raport/warek-satu/Ka-Baak/{user_id}', 'raport')->name('WarekSatu.Ka.Baak.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Ka Prodi ------------------------------//
+        Route::controller(KaProdiController::class)->group(function () {
+            Route::get('/warek-satu/Ka-Prodi/Input', 'create')->name('WarekSatu.Ka.Prodi');
+            Route::post('/warek-satu/Ka-Prodi/Request/Store', 'store')->name('store.WarekSatu.Ka.Prodi');
+            Route::get('/warek-satu/Ka-Prodi/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Prodi');
+            Route::put('/warek-satu/Ka-Prodi/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
+            Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport');
         });
     }
 );

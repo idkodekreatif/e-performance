@@ -293,13 +293,13 @@ class BaakController extends Controller
             $output_total_sementara_kinerja_perilaku = $request->get('output_total_sementara_kinerja_perilaku');
 
             $kinerja_kompetensi_1 = $request->get('kinerja_kompetensi_1');
-            if ($request->hasFile('kinerja_kompetensi_1')) {
-                if ($RecordData->kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_1))) {
-                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_1);
+            if ($request->hasFile('file_kinerja_kompetensi_1')) {
+                if ($RecordData->file_kinerja_kompetensi_1 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_1))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_1);
                 }
-                $file_kinerja_kompetensi_1 = $request->file('kinerja_kompetensi_1')->store('uploads/baak', 'public');
+                $file_kinerja_kompetensi_1 = $request->file('file_kinerja_kompetensi_1')->store('uploads/baak', 'public');
             } else {
-                $file_kinerja_kompetensi_1 = $RecordData->kinerja_kompetensi_1;
+                $file_kinerja_kompetensi_1 = $RecordData->file_kinerja_kompetensi_1;
             }
 
             $kinerja_kompetensi_2 = $request->get('kinerja_kompetensi_2');
@@ -323,13 +323,13 @@ class BaakController extends Controller
             }
 
             $kinerja_kompetensi_4 = $request->get('kinerja_kompetensi_4');
-            if ($request->hasFile('kinerja_kompetensi_4')) {
-                if ($RecordData->kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_4))) {
-                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_4);
+            if ($request->hasFile('file_kinerja_kompetensi_4')) {
+                if ($RecordData->file_kinerja_kompetensi_4 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_4))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_4);
                 }
-                $file_kinerja_kompetensi_4 = $request->file('kinerja_kompetensi_4')->store('uploads/baak', 'public');
+                $file_kinerja_kompetensi_4 = $request->file('file_kinerja_kompetensi_4')->store('uploads/baak', 'public');
             } else {
-                $file_kinerja_kompetensi_4 = $RecordData->kinerja_kompetensi_4;
+                $file_kinerja_kompetensi_4 = $RecordData->file_kinerja_kompetensi_4;
             }
 
             $kinerja_kompetensi_5 = $request->get('kinerja_kompetensi_5');
@@ -363,13 +363,13 @@ class BaakController extends Controller
             }
 
             $kinerja_kompetensi_8 = $request->get('kinerja_kompetensi_8');
-            if ($request->hasFile('kinerja_kompetensi_8')) {
-                if ($RecordData->kinerja_kompetensi_8 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_8))) {
-                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_8);
+            if ($request->hasFile('file_kinerja_kompetensi_8')) {
+                if ($RecordData->file_kinerja_kompetensi_8 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_8))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_8);
                 }
-                $file_kinerja_kompetensi_8 = $request->file('kinerja_kompetensi_8')->store('uploads/baak', 'public');
+                $file_kinerja_kompetensi_8 = $request->file('file_kinerja_kompetensi_8')->store('uploads/baak', 'public');
             } else {
-                $file_kinerja_kompetensi_8 = $RecordData->kinerja_kompetensi_8;
+                $file_kinerja_kompetensi_8 = $RecordData->file_kinerja_kompetensi_8;
             }
 
             $kinerja_kompetensi_9 = $request->get('kinerja_kompetensi_9');
@@ -423,13 +423,13 @@ class BaakController extends Controller
             }
 
             $kinerja_kompetensi_14 = $request->get('kinerja_kompetensi_14');
-            if ($request->hasFile('kinerja_kompetensi_14')) {
-                if ($RecordData->kinerja_kompetensi_14 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->kinerja_kompetensi_14))) {
-                    \Storage::delete('public/uploads/baak/' . $RecordData->kinerja_kompetensi_14);
+            if ($request->hasFile('file_kinerja_kompetensi_14')) {
+                if ($RecordData->file_kinerja_kompetensi_14 && file_exists(storage_path('app/public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_14))) {
+                    \Storage::delete('public/uploads/baak/' . $RecordData->file_kinerja_kompetensi_14);
                 }
-                $file_kinerja_kompetensi_14 = $request->file('kinerja_kompetensi_14')->store('uploads/baak', 'public');
+                $file_kinerja_kompetensi_14 = $request->file('file_kinerja_kompetensi_14')->store('uploads/baak', 'public');
             } else {
-                $file_kinerja_kompetensi_14 = $RecordData->kinerja_kompetensi_14;
+                $file_kinerja_kompetensi_14 = $RecordData->file_kinerja_kompetensi_14;
             }
 
             $kinerja_kompetensi_15 = $request->get('kinerja_kompetensi_15');
