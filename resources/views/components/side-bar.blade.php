@@ -173,6 +173,16 @@
                                 </ul>
                             </li>
                         </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">YAYASAN</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('rektor') }}" aria-expanded="false">Rektor</a>
+                                    {{-- <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
+                                    <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
+                                    <li><a href="{{ route('KaLpm') }}">Ka. Lembaga Penjaminan Mutu</a></li> --}}
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 @endrole
