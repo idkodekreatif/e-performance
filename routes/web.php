@@ -28,6 +28,7 @@ use App\Http\Controllers\Itisar\WarekSatu\KaProdiController;
 use App\Http\Controllers\Itisar\WarekSatu\KaRisbangController;
 use App\Http\Controllers\Itisar\WarekSatu\KaUptController;
 use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
+use App\Http\Controllers\Itisar\Yayasan\RektorController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
@@ -360,6 +361,15 @@ Route::group(
             Route::get('/warek-satu/Ka-Prodi/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Prodi');
             Route::put('/warek-satu/Ka-Prodi/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
             Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Rektor ------------------------------//
+        Route::controller(RektorController::class)->group(function () {
+            Route::get('/Rektor/Input', 'create')->name('rektor');
+            Route::post('/Rektor/Request/Store', 'store')->name('store.rektor');
+            Route::get('/Rektor/edit/{PointId}', 'edit')->name('edit.rektor');
+            Route::put('/Rektor/update/{PointId}', 'update')->name('update.rektor');
+            Route::get('/Raport/Rektor/{user_id}', 'raport')->name('rektor.raport');
         });
     }
 );
