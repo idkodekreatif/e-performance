@@ -178,6 +178,13 @@ class RektorController extends Controller
         return view('itisar.Yayasan.Rektor.edit', ['data' => $data]);
     }
 
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $PointId
+     * @return void
+     */
     public function update(Request $request, $PointId)
     {
         // Validation file upload
@@ -196,7 +203,7 @@ class RektorController extends Controller
             'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
-        try {
+        try {Q
             $RecordData =  Rektor::where('user_id', $PointId)->firstOrFail();
 
             $Point1_1 = $request->get('Point1_1');
@@ -465,7 +472,6 @@ class RektorController extends Controller
             ->where('rektor.user_id', $user_id)
             ->first();
 
-        // dd($DataUser);
         if (!empty($DataUser->user_id)) {
             return view('itisar.Yayasan.Rektor.raport', compact('DataUser'));
         } else {

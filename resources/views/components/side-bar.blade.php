@@ -188,8 +188,8 @@
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('staffumum') }}" aria-expanded="false">Staff Umum Dan Kepegawaian</a>
                                     <li><a href="{{ route('staffkebersihan') }}">Staff Kebersihan</a></li>
-                                    {{-- <li><a href="{{ route('StaffSusBidKerjasama') }}">Security</a></li> --}}
-                                    {{-- <li><a href="{{ route('KaLpm') }}">Srapras</a></li> --}}
+                                    <li><a href="{{ route('staffsecurity') }}">Staff Security</a></li>
+                                    <li><a href="{{ route('staffsarpras') }}">Staff Srapras</a></li>
                                 </ul>
                             </li>
                         </ul>

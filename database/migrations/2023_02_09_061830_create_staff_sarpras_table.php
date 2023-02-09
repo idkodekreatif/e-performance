@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStaffKebersihanTable extends Migration
+class CreateStaffSarprasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStaffKebersihanTable extends Migration
      */
     public function up()
     {
-        Schema::create('staff_kebersihan', function (Blueprint $table) {
+        Schema::create('staff_sarpras', function (Blueprint $table) {
             $table->id();
             $table->enum('Point1_1', ['1', '2', '3', '4', '5'])->nullable();
             $table->enum('Point1_2', ['1', '2', '3', '4', '5'])->nullable();
@@ -92,18 +92,6 @@ class CreateStaffKebersihanTable extends Migration
             $table->string('file_kinerja_kompetensi_18')->nullable();
             $table->enum('kinerja_kompetensi_19', ['1', '2', '3', '4', '5'])->nullable();
             $table->string('file_kinerja_kompetensi_19')->nullable();
-            $table->enum('kinerja_kompetensi_20', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_20')->nullable();
-            $table->enum('kinerja_kompetensi_21', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_21')->nullable();
-            $table->enum('kinerja_kompetensi_22', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_22')->nullable();
-            $table->enum('kinerja_kompetensi_23', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_23')->nullable();
-            $table->enum('kinerja_kompetensi_24', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_24')->nullable();
-            $table->enum('kinerja_kompetensi_25', ['1', '2', '3', '4', '5'])->nullable();
-            $table->string('file_kinerja_kompetensi_25')->nullable();
             $table->string('output_point_kinerja_kompetensi_1', 50);
             $table->string('output_point_kinerja_kompetensi_2', 50);
             $table->string('output_point_kinerja_kompetensi_3', 50);
@@ -126,6 +114,6 @@ class CreateStaffKebersihanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staff_kebersihan');
+        Schema::dropIfExists('staff_sarpras');
     }
 }
