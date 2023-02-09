@@ -22,6 +22,10 @@ use App\Http\Controllers\Itisar\rektor\KaLpmController;
 use App\Http\Controllers\Itisar\rektor\StaffSusBidKerjasamaController;
 use App\Http\Controllers\Itisar\rektor\warekDuaController;
 use App\Http\Controllers\Itisar\rektor\warekSatuController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffKebersihanController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffSarprasController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffSecurityController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffUmumController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\Itisar\WarekSatu\KaBaakController;
 use App\Http\Controllers\Itisar\WarekSatu\KaProdiController;
@@ -370,6 +374,42 @@ Route::group(
             Route::get('/Rektor/edit/{PointId}', 'edit')->name('edit.rektor');
             Route::put('/Rektor/update/{PointId}', 'update')->name('update.rektor');
             Route::get('/Raport/Rektor/{user_id}', 'raport')->name('rektor.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Umum Dan Kepegawaian ------------------------------//
+        Route::controller(StaffUmumController::class)->group(function () {
+            Route::get('/staffumum/Input', 'create')->name('staffumum');
+            Route::post('/staffumum/Request/Store', 'store')->name('store.staffumum');
+            Route::get('/staffumum/edit/{PointId}', 'edit')->name('edit.staffumum');
+            Route::put('/staffumum/update/{PointId}', 'update')->name('update.staffumum');
+            Route::get('/Raport/staffumum/{user_id}', 'raport')->name('staffumum.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Kebersihan ------------------------------//
+        Route::controller(StaffKebersihanController::class)->group(function () {
+            Route::get('/staffkebersihan/Input', 'create')->name('staffkebersihan');
+            Route::post('/staffkebersihan/Request/Store', 'store')->name('store.staffkebersihan');
+            Route::get('/staffkebersihan/edit/{PointId}', 'edit')->name('edit.staffkebersihan');
+            Route::put('/staffkebersihan/update/{PointId}', 'update')->name('update.staffkebersihan');
+            Route::get('/Raport/staffkebersihan/{user_id}', 'raport')->name('staffkebersihan.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Security ------------------------------//
+        Route::controller(StaffSecurityController::class)->group(function () {
+            Route::get('/staffsecurity/Input', 'create')->name('staffsecurity');
+            Route::post('/staffsecurity/Request/Store', 'store')->name('store.staffsecurity');
+            Route::get('/staffsecurity/edit/{PointId}', 'edit')->name('edit.staffsecurity');
+            Route::put('/staffsecurity/update/{PointId}', 'update')->name('update.staffsecurity');
+            Route::get('/Raport/staffsecurity/{user_id}', 'raport')->name('staffsecurity.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Sarpras ------------------------------//
+        Route::controller(StaffSarprasController::class)->group(function () {
+            Route::get('/staffsarpras/Input', 'create')->name('staffsarpras');
+            Route::post('/staffsarpras/Request/Store', 'store')->name('store.staffsarpras');
+            Route::get('/staffsarpras/edit/{PointId}', 'edit')->name('edit.staffsarpras');
+            Route::put('/staffsarpras/update/{PointId}', 'update')->name('update.staffsarpras');
+            Route::get('/Raport/staffsarpras/{user_id}', 'raport')->name('staffsarpras.raport');
         });
     }
 );
