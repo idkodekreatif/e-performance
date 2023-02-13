@@ -81,8 +81,8 @@
                                     <li><a href="{{ route('ka.baak') }}" aria-expanded="false">Ka. BAAK</a>
                                     <li><a href="{{ route('kemahasiswaan') }}">Kemahasiswaan</a></li>
                                     <li><a href="{{ route('baakFkBisnis') }}">BAAK Bisnis</a></li>
-                                    <li><a href="javascript:void()">BAAK 1</a></li>
-                                    <li><a href="javascript:void()">BAAK 2</a></li>
+                                    <li><a href="{{ route('staffbaaksatu') }}">BAAK 1</a></li>
+                                    <li><a href="{{ route('staffbaakdua') }}">BAAK 2</a></li>
                                 </ul>
                             </li>
                         </ul>

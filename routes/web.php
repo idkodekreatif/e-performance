@@ -11,6 +11,8 @@ use App\Http\Controllers\Itisar\Bau\KasubBiroKepegawaianController;
 use App\Http\Controllers\Itisar\Bau\KasubBiroKeuanganController;
 use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\BaakFkBisnisController;
 use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\KemahasiswaanController;
+use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\StaffBaakDuaController;
+use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\StaffBaakSatuController;
 use App\Http\Controllers\Itisar\KasubRisbangController;
 use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
@@ -429,6 +431,22 @@ Route::group(
             Route::get('/baakFkBisnis/edit/{PointId}', 'edit')->name('edit.baakFkBisnis');
             Route::put('/baakFkBisnis/update/{PointId}', 'update')->name('update.baakFkBisnis');
             Route::get('/Raport/baakFkBisnis/{user_id}', 'raport')->name('baakFkBisnis.raport');
+        });
+        // -------------------------- Controller Form Penilaian Staff Baak Satu ------------------------------//
+        Route::controller(StaffBaakSatuController::class)->group(function () {
+            Route::get('/staffbaaksatu/Input', 'create')->name('staffbaaksatu');
+            Route::post('/staffbaaksatu/Request/Store', 'store')->name('store.staffbaaksatu');
+            Route::get('/staffbaaksatu/edit/{PointId}', 'edit')->name('edit.staffbaaksatu');
+            Route::put('/staffbaaksatu/update/{PointId}', 'update')->name('update.staffbaaksatu');
+            Route::get('/Raport/staffbaaksatu/{user_id}', 'raport')->name('staffbaaksatu.raport');
+        });
+        // -------------------------- Controller Form Penilaian Staff Baak Dua ------------------------------//
+        Route::controller(StaffBaakDuaController::class)->group(function () {
+            Route::get('/staffbaakdua/Input', 'create')->name('staffbaakdua');
+            Route::post('/staffbaakdua/Request/Store', 'store')->name('store.staffbaakdua');
+            Route::get('/staffbaakdua/edit/{PointId}', 'edit')->name('edit.staffbaakdua');
+            Route::put('/staffbaakdua/update/{PointId}', 'update')->name('update.staffbaakdua');
+            Route::get('/Raport/staffbaakdua/{user_id}', 'raport')->name('staffbaakdua.raport');
         });
     }
 );
