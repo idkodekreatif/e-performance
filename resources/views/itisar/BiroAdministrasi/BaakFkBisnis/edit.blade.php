@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Penilaian Staff Sarpras">
+<x-app-layout title="Edit Penilaian Baak Fakultas Bisnis">
     @push('style')
     <style>
         input::-webkit-outer-spin-button,
@@ -17,16 +17,16 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Staff Sarpras</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Baak Fakultas Bisnis</a></li>
             </ol>
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('staffsarpras.raport', Auth::user()->id) }}"
+                <a href="{{ route('baakFkBisnis.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
         </div>
-        <form action="{{ route('update.staffsarpras', [$data->user_id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('update.baakFkBisnis', [$data->user_id]) }}" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="card shadow">
@@ -1199,9 +1199,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="table-primary">
+
+                                    <tr>
                                         <td>1</td>
-                                        <td>Menginventarisasi prasarana :</td>
+                                        <td>Pengolahan Data Mahasiswa</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -1209,10 +1210,19 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
-
+                                    <tr>
+                                        <td></td>
+                                        <td>Mengkoordinasikan dan memasukkan di siakad dan feeder, biodata mahasiswa dan orang tua meliputi : </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                     <tr>
                                         <td>A.</td>
-                                        <td>Melakukan pencatatan barang inventaris</td>
+                                        <td>Data diri mahasiswa:  tempat tanggal lahir, agama, nama orang tua, alamat, nomer tlpn, agama, status perkawinan</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_1 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
                                             id="kinerja_kompetensi_1_1" value="1" onclick="sum();">
@@ -1261,7 +1271,7 @@
 
                                     <tr>
                                         <td>B.</td>
-                                        <td>Melakukan Pengecekan barang inventaris</td>
+                                        <td>Data orang tua: tempat tanggal lahir, status perkawinan, nomer tlpn, alamat, pekerjaan</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_2 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
                                             id="kinerja_kompetensi_2_1" value="1" onclick="sum();">
@@ -1309,7 +1319,7 @@
                                     </tr>
                                     <tr>
                                         <td>C.</td>
-                                        <td>Melakukan penempelan kode barang inventaris</td>
+                                        <td>Mengkoordinasikan dan memberikan Nomer Induk Mahasiswa sesuai program studi</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_3 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
                                             id="kinerja_kompetensi_3_1" value="1" onclick="sum();">
@@ -1356,20 +1366,9 @@
                                         </td>
                                     </tr>
 
-                                    <tr class="table-primary">
-                                        <td>2</td>
-                                        <td>Perawatan dan Pemelihara Prasarana  :</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-
                                     <tr>
-                                        <td>A.</td>
-                                        <td>Perawatan dan Pemeliharan Gedung</td>
+                                        <td>D.</td>
+                                        <td> Mengkoordinasikan dan Membuatkan Arsip Manual sebagai Backup Program Siakad</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_4 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
                                             id="kinerja_kompetensi_4_1" value="1" onclick="sum();">
@@ -1416,8 +1415,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>B.</td>
-                                        <td>Perawatan dan Pemeliharan Instalasi Air</td>
+                                        <td>E.</td>
+                                        <td>Mengkoordinasikan dan Memastikan data mahasiswa dan orang tua dengan benar sesuai ijazah, akte kelahiran, nomer induk kependudukan, Kartu Keluarg, karena</td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_5 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
                                             id="kinerja_kompetensi_5_1" value="1" onclick="sum();">
@@ -1463,9 +1462,20 @@
                                             @enderror
                                         </td>
                                     </tr>
+
                                     <tr>
-                                        <td>C.</td>
-                                        <td>Perawatan dan Pemeliharan Listrik
+                                        <td>2</td>
+                                        <td>Kartu Rencana Studi</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan pengumpulkan Jadwal kuliah dari Program Studi guna di masukan ke siakad sebagai Langkah awal Kartu rencana Studi
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_6 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
@@ -1513,8 +1523,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>D.</td>
-                                        <td>Perawatan dan Pemeliharan Telepon
+                                        <td>B.</td>
+                                        <td>Mengkoordinasikan dan Membuat jadwal  kelas sesuai dengan yang di program siakad
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_7 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
@@ -1562,8 +1572,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>E.</td>
-                                        <td>Perawatan dan Pemeliharan Parkir
+                                        <td>C.</td>
+                                        <td>Mengkoordinasikan dan Memasukan nama dosen pengajar atau dosen pengampu mata kuliah
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_8 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
@@ -1610,21 +1620,9 @@
                                             @enderror
                                         </td>
                                     </tr>
-
-                                    <tr class="table-primary">
-                                        <td>3</td>
-                                        <td>Merencanakan pengadaan kebutuhan prasarana  :</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-
                                     <tr>
-                                        <td>A.</td>
-                                        <td>Membuat surat pengajuan/permintaan prasarana
+                                        <td>D.</td>
+                                        <td>Mengkoordinasikan dan Mengkroscek mahasiswa yang sudah dan belum melakukan kartu rencana studi
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_9 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
@@ -1671,21 +1669,9 @@
                                             @enderror
                                         </td>
                                     </tr>
-
-                                    <tr class="table-primary">
-                                        <td>4</td>
-                                        <td>Menginventarisasi sarana   :</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-
                                     <tr>
-                                        <td>A</td>
-                                        <td>Melakukan pencatatan barang inventaris
+                                        <td>E.</td>
+                                        <td>Mengkoordinasikan dan Memasukan Kurikulum prodi ke Neo Feeder Sesuai dengan periode Ganjil dan periode genap
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_10 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_10"
@@ -1738,8 +1724,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>B.</td>
-                                        <td>Melakukan Pengecekan barang inventaris
+                                        <td>F.</td>
+                                        <td>Mengkoordinasikan dan Mencetak Kartu Rencana Studi
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_11 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_11"
@@ -1792,11 +1778,11 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>C.</td>
-                                        <td>Melakukan penempelan kode barang inventaris
+                                        <td>G.</td>
+                                        <td>Mengkoordinasikan dan mengumpulkan Kartu Rencana Studi yang telah disahkan oleh Pembimbing Akademik dan Ka. Prodi
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_12 == "1" ? "checked" : ""}}
-                                            class="kinerja_kompetensi_12"
+                                            class="kinerja_kompetensi_10"
                                             name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_1" value="1"
                                             onclick="sum();">
                                         </td>
@@ -1846,9 +1832,9 @@
                                         </td>
                                     </tr>
 
-                                    <tr class="table-primary">
-                                        <td>5</td>
-                                        <td>Perawatan dan Pemelihara Sarana  :</td>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Kegiatan Belajar Mengajar</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -1856,10 +1842,9 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
-
                                     <tr>
                                         <td>A.</td>
-                                        <td>Perawatan dan Pemeliharan Kendaraan Dinas
+                                        <td>Mengkoordinasikan dan Membantu Dosen Membuatkan Absensi di Sistem Siakad
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_13 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_13"
@@ -1913,7 +1898,7 @@
                                     </tr>
                                     <tr>
                                         <td>B.</td>
-                                        <td>Perawatan dan Pemeliharan AC
+                                        <td>Mengkoordinasikan dan Membantu Administrasi yang di perlukan dalam proses Praktek Klinik dan Praktek Rumah Sakit sesuai prodi
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_14 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_14"
@@ -1967,7 +1952,7 @@
                                     </tr>
                                     <tr>
                                         <td>C.</td>
-                                        <td>Perawatan dan Pemeliharan LCD/Proyektor
+                                        <td>Mengkoordinasikan dan Mengkroscek dan Input Proses Pembelajaran di Siakad (Meliputi Cek Materi dan jumlah Pertemuan Dosen Dalam Mengajar di Sistem Siakad)
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_15 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_15"
@@ -2021,7 +2006,7 @@
                                     </tr>
                                     <tr>
                                         <td>D.</td>
-                                        <td>Perawatan dan Pemeliharan Kursi & Meja
+                                        <td>Mengkoordinasikan dan Memastikan Status Aktif Dan Non Aktif Mahasiswa di Neo Feeder
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_16 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_16"
@@ -2075,7 +2060,7 @@
                                     </tr>
                                     <tr>
                                         <td>E.</td>
-                                        <td>Perawatan dan Pemeliharan Sound System
+                                        <td>Mengkoordinasikan dan Memasukan Nilai Transfer Di Neo Feeder bagi mahasiswa alih jenjang dan mahasiswa Transfer agar di saat Permohonan Permintaan
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_17 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_17"
@@ -2128,9 +2113,10 @@
                                         </td>
                                     </tr>
 
-                                    <tr class="table-primary">
-                                        <td>6</td>
-                                        <td>Merencanakan pengadaan kebutuhan sarana  :</td>
+
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Surat Menyurat</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -2138,10 +2124,9 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
-
                                     <tr>
                                         <td>A.</td>
-                                        <td>Membuat surat pengajuan/permintaan sarana
+                                        <td>Surat Penelitian :Mengkoordinasikan dan Membuatkan Surat Penelitian Baik Skripsi, Tugas Mata Kuliah, Seminar  dll
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_18 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_18"
@@ -2194,8 +2179,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>4</td>
-                                        <td>Mendistribusikan barang
+                                        <td>B.</td>
+                                        <td> Surat Aktif Kuliah : Mengkoordinasikan dan Membuatkan Surat Aktif Kuliah Guna Keperluan, Beasiswa, Pekerjaan Orang Tua dll
                                         </td>
                                         <td><input type="radio" {{$data->kinerja_kompetensi_19 == "1" ? "checked" : ""}}
                                             class="kinerja_kompetensi_19"
@@ -2241,6 +2226,1552 @@
                                             @endif
 
                                             @error('file_kinerja_kompetensi_19')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C.</td>
+                                        <td> Surat Validasi Ijazah : Mengkoordinasikan dan memvalidasi Keabsahan Ijazah, baik untuk Mencari Pekerjaan, Akreditasi Rumah Sakit, dan Kenaikan Pangkat
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_20 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_20"
+                                            name="kinerja_kompetensi_20" id="kinerja_kompetensi_20_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_20 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_20"
+                                            name="kinerja_kompetensi_20" id="kinerja_kompetensi_20_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_20 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_20"
+                                            name="kinerja_kompetensi_20" id="kinerja_kompetensi_20_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_20 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_20"
+                                            name="kinerja_kompetensi_20" id="kinerja_kompetensi_20_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_20 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_20"
+                                            name="kinerja_kompetensi_20" id="kinerja_kompetensi_20_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_20')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_20') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_20" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_20)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_20) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_20')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>D.</td>
+                                        <td>Surat Cuti : Mengoordinasikan dan Membuatkan Surat Cuti Guna Penonaktif di Neo Feder
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_21 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_21"
+                                            name="kinerja_kompetensi_21" id="kinerja_kompetensi_21_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_21 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_21"
+                                            name="kinerja_kompetensi_21" id="kinerja_kompetensi_21_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_21 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_21"
+                                            name="kinerja_kompetensi_21" id="kinerja_kompetensi_21_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_21 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_21"
+                                            name="kinerja_kompetensi_21" id="kinerja_kompetensi_21_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_21 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_21"
+                                            name="kinerja_kompetensi_21" id="kinerja_kompetensi_21_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_21')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_21') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_21" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_21)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_21) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_21')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>E.</td>
+                                        <td> Surat Aktif Kembali : Mengkoordinasikan dan Pengaktifan Kembali dan Pengelompokan Mahasiswa
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_22 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_22"
+                                            name="kinerja_kompetensi_22" id="kinerja_kompetensi_22_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_22 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_22"
+                                            name="kinerja_kompetensi_22" id="kinerja_kompetensi_22_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_22 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_22"
+                                            name="kinerja_kompetensi_22" id="kinerja_kompetensi_22_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_22 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_22"
+                                            name="kinerja_kompetensi_22" id="kinerja_kompetensi_22_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_22 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_22"
+                                            name="kinerja_kompetensi_22" id="kinerja_kompetensi_22_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_22')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_22') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_22" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_22)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_22) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_22')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>F.</td>
+                                        <td>Surat Mutlak : Mengkoordinasikan dan Sebagai Syarat Pegawai Negeri Kenaikan Pangkat
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_23 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_23"
+                                            name="kinerja_kompetensi_23" id="kinerja_kompetensi_23_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_23 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_23"
+                                            name="kinerja_kompetensi_23" id="kinerja_kompetensi_23_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_23 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_23"
+                                            name="kinerja_kompetensi_23" id="kinerja_kompetensi_23_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_23 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_23"
+                                            name="kinerja_kompetensi_23" id="kinerja_kompetensi_23_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_23 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_23"
+                                            name="kinerja_kompetensi_23" id="kinerja_kompetensi_23_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_23')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_23') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_23" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_23)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_23) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_23')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>G. </td>
+                                        <td>Mengkoordinasikan dan membuatkan surat administrasi yang di perlukan oleh program studi yang berhubungan dengan proses belajar mengajar
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_24 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_24"
+                                            name="kinerja_kompetensi_24" id="kinerja_kompetensi_24_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_24 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_24"
+                                            name="kinerja_kompetensi_24" id="kinerja_kompetensi_24_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_24 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_24"
+                                            name="kinerja_kompetensi_24" id="kinerja_kompetensi_24_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_24 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_24"
+                                            name="kinerja_kompetensi_24" id="kinerja_kompetensi_24_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_24 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_24"
+                                            name="kinerja_kompetensi_24" id="kinerja_kompetensi_24_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_24')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_24') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_24" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_24)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_24) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_24')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Kartu Hasil Studi </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan dan memproses Kartu Hasil Studi mulai dari pengumpulan nilai dari program studi
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_25 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_25"
+                                            name="kinerja_kompetensi_25" id="kinerja_kompetensi_25_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_25 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_25"
+                                            name="kinerja_kompetensi_25" id="kinerja_kompetensi_25_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_25 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_25"
+                                            name="kinerja_kompetensi_25" id="kinerja_kompetensi_25_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_25 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_25"
+                                            name="kinerja_kompetensi_25" id="kinerja_kompetensi_25_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_25 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_25"
+                                            name="kinerja_kompetensi_25" id="kinerja_kompetensi_25_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_25')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_25') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_25" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_25)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_25) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_25')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.</td>
+                                        <td>Mengkoordinasikan dan Pengecekan nilai dan mata kuliah sesuai dengan yang di program di Neo Feeder
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_26 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_26"
+                                            name="kinerja_kompetensi_26" id="kinerja_kompetensi_26_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_26 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_26"
+                                            name="kinerja_kompetensi_26" id="kinerja_kompetensi_26_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_26 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_26"
+                                            name="kinerja_kompetensi_26" id="kinerja_kompetensi_26_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_26 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_26"
+                                            name="kinerja_kompetensi_26" id="kinerja_kompetensi_26_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_26 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_26"
+                                            name="kinerja_kompetensi_26" id="kinerja_kompetensi_26_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_26')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_26') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_26" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_26)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_26) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_26')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C.</td>
+                                        <td>Mengkoordinasikan dan Memastikan Riwayat Pendidikan Sesuai dengan yang di Program ( Sarjana & Diploma) pada Neo Feeder
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_27 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_27"
+                                            name="kinerja_kompetensi_27" id="kinerja_kompetensi_27_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_27 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_27"
+                                            name="kinerja_kompetensi_27" id="kinerja_kompetensi_27_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_27 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_27"
+                                            name="kinerja_kompetensi_27" id="kinerja_kompetensi_27_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_27 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_27"
+                                            name="kinerja_kompetensi_27" id="kinerja_kompetensi_27_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_27 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_27"
+                                            name="kinerja_kompetensi_27" id="kinerja_kompetensi_27_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_27')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_27') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_27" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_27)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_27) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_27')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>D.</td>
+                                        <td>Pengumpulan kartu rencana studi (arsip Manual)
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_28 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_28"
+                                            name="kinerja_kompetensi_28" id="kinerja_kompetensi_28_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_28 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_28"
+                                            name="kinerja_kompetensi_28" id="kinerja_kompetensi_28_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_28 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_28"
+                                            name="kinerja_kompetensi_28" id="kinerja_kompetensi_28_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_28 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_28"
+                                            name="kinerja_kompetensi_28" id="kinerja_kompetensi_28_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_28 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_28"
+                                            name="kinerja_kompetensi_28" id="kinerja_kompetensi_28_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_28')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_28') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_28" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_28)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_28) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_28')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Skripsi Dan Tugas LTA</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan dan Membantu administrasi Program studi untuk penjadwal dan kegiatan ujian baik Ujian Proposal dan ujian skripsi
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_29 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_29"
+                                            name="kinerja_kompetensi_29" id="kinerja_kompetensi_29_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_29 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_29"
+                                            name="kinerja_kompetensi_29" id="kinerja_kompetensi_29_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_29 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_29"
+                                            name="kinerja_kompetensi_29" id="kinerja_kompetensi_29_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_29 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_29"
+                                            name="kinerja_kompetensi_29" id="kinerja_kompetensi_29_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_29 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_29"
+                                            name="kinerja_kompetensi_29" id="kinerja_kompetensi_29_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_29')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_29') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_29" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_29)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_29) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_29')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.</td>
+                                        <td>Mengkoordinasikan dan Pengumpulan nilai skripsi
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_30 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_30"
+                                            name="kinerja_kompetensi_30" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_30 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_30"
+                                            name="kinerja_kompetensi_30" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_30 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_30"
+                                            name="kinerja_kompetensi_30" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_30 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_30"
+                                            name="kinerja_kompetensi_30" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_30 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_30"
+                                            name="kinerja_kompetensi_30" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_30')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_30') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_30" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_30)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_30) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_30')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C.</td>
+                                        <td>Mengkoordinasikan dan Memasukan judul skripsi, dosen penguji dan dosen pembimbing di neo feeder
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_31 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_31"
+                                            name="kinerja_kompetensi_31" id="kinerja_kompetensi_31_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_31 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_31"
+                                            name="kinerja_kompetensi_31" id="kinerja_kompetensi_31_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_31 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_31"
+                                            name="kinerja_kompetensi_31" id="kinerja_kompetensi_31_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_31 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_31"
+                                            name="kinerja_kompetensi_31" id="kinerja_kompetensi_31_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_31 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_31"
+                                            name="kinerja_kompetensi_31" id="kinerja_kompetensi_31_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_31')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_31') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_31" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_31)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_31) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_31')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Yudisium </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan dan Memastikan bahwa mahasiswa tersebut layak di yudisum (Riwayat Studi di Neo feeder Harus kita Cek Agar Sesuai Dengan Jenjang Sarjana
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_32 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_32"
+                                            name="kinerja_kompetensi_32" id="kinerja_kompetensi_32_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_32 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_32"
+                                            name="kinerja_kompetensi_32" id="kinerja_kompetensi_32_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_32 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_32"
+                                            name="kinerja_kompetensi_32" id="kinerja_kompetensi_32_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_32 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_32"
+                                            name="kinerja_kompetensi_32" id="kinerja_kompetensi_32_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_32 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_32"
+                                            name="kinerja_kompetensi_32" id="kinerja_kompetensi_32_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_32')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_32') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_32" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_32)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_32) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_32')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.</td>
+                                        <td> Mengkoordinasikan dan membuka pendaftaran dan jadwal yudisum
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_33 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_33"
+                                            name="kinerja_kompetensi_33" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_33 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_33"
+                                            name="kinerja_kompetensi_33" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_33 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_33"
+                                            name="kinerja_kompetensi_33" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_33 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_33"
+                                            name="kinerja_kompetensi_33" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_33 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_33"
+                                            name="kinerja_kompetensi_33" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_33')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_33') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_33" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_33)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_33) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_33')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C.</td>
+                                        <td>Mengkoordinasikan dan Membuatkan Surat Keterangan Lulus Sementara Sebelum Ijazah Jadi
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_34 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_34"
+                                            name="kinerja_kompetensi_34" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_34 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_34"
+                                            name="kinerja_kompetensi_34" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_34 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_34"
+                                            name="kinerja_kompetensi_34" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_34 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_34"
+                                            name="kinerja_kompetensi_34" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_34 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_34"
+                                            name="kinerja_kompetensi_34" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_34')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_34') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_34" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_34)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_34) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_34')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Penomeran Ijazah Nasional </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan dan Mengajukan ke PIN SIVIL LLDIKTI (mulai proses administrasi input sampai dengan keluar PIN)
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_35 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_35"
+                                            name="kinerja_kompetensi_35" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_35 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_35"
+                                            name="kinerja_kompetensi_35" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_35 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_35"
+                                            name="kinerja_kompetensi_35" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_35 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_35"
+                                            name="kinerja_kompetensi_35" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_35 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_35"
+                                            name="kinerja_kompetensi_35" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_35')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_35') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_35" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_35)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_35) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_35')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Wisuda </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan dan Membukan pendafatarn wisuda, mulai dari administarasi kelengkapan wisuda sampai di gelar acara wisuda (meliputi, kegiatan administrasi mulai calon wisudawan sampai kepenetapan Wisudawan
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_36 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_36"
+                                            name="kinerja_kompetensi_36" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_36 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_36"
+                                            name="kinerja_kompetensi_36" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_36 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_36"
+                                            name="kinerja_kompetensi_36" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_36 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_36"
+                                            name="kinerja_kompetensi_36" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_36 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_36"
+                                            name="kinerja_kompetensi_36" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_36')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_36') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_36" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_36)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_36) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_36')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Cetak Ijazah, Transkip dan SKPI </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan dan mencetak Ijazah, Transkip dan SKPI
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_37 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_37"
+                                            name="kinerja_kompetensi_37" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_37 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_37"
+                                            name="kinerja_kompetensi_37" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_37 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_37"
+                                            name="kinerja_kompetensi_37" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_37 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_37"
+                                            name="kinerja_kompetensi_37" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_37 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_37"
+                                            name="kinerja_kompetensi_37" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_37')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_37') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_37" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_37)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_37) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_37')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.</td>
+                                        <td>Mengkoordinasikan dan Memproses Administrasi guna Keperluan cetak Ijazah
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_38 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_38"
+                                            name="kinerja_kompetensi_38" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_38 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_38"
+                                            name="kinerja_kompetensi_38" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_38 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_38"
+                                            name="kinerja_kompetensi_38" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_38 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_38"
+                                            name="kinerja_kompetensi_38" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_38 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_38"
+                                            name="kinerja_kompetensi_38" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_38')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_38') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_38" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_38)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_38) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_38')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C.</td>
+                                        <td>Mengkoordinasikan dan Memproses Legaliser Keabsahan Berkas
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_39 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_39"
+                                            name="kinerja_kompetensi_39" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_39 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_39"
+                                            name="kinerja_kompetensi_39" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_39 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_39"
+                                            name="kinerja_kompetensi_39" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_39 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_39"
+                                            name="kinerja_kompetensi_39" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_39 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_39"
+                                            name="kinerja_kompetensi_39" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_39')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_39') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_39" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_39)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_39) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_39')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>D.</td>
+                                        <td>Mengkoordinasikan dan Memproses Cetak Surat Keterangan Pendamping Ijazah
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_40 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_40"
+                                            name="kinerja_kompetensi_40" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_40 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_40"
+                                            name="kinerja_kompetensi_40" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_40 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_40"
+                                            name="kinerja_kompetensi_40" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_40 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_40"
+                                            name="kinerja_kompetensi_40" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_40 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_40"
+                                            name="kinerja_kompetensi_40" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_40')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_40') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_40" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_40)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_40) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_40')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Kerjasama Dengan LLDIKTI</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Mengkoordinasikan dan Memproses Validasi Data Lulusan (Administrasi Menjadi Masiswa Alumni)
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_41 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_41"
+                                            name="kinerja_kompetensi_41" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_41 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_41"
+                                            name="kinerja_kompetensi_41" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_41 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_41"
+                                            name="kinerja_kompetensi_41" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_41 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_41"
+                                            name="kinerja_kompetensi_41" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_41 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_41"
+                                            name="kinerja_kompetensi_41" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_41')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_41') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_41" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_41)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_41) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_41')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.</td>
+                                        <td>Mengkoordinasikan dan Pembukaan periode, perbaikan data mahasiswa
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_42 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_42"
+                                            name="kinerja_kompetensi_42" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_42 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_42"
+                                            name="kinerja_kompetensi_42" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_42 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_42"
+                                            name="kinerja_kompetensi_42" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_42 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_42"
+                                            name="kinerja_kompetensi_42" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_42 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_42"
+                                            name="kinerja_kompetensi_42" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_42')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_42') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_42" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_42)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_42) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_42')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C.</td>
+                                        <td> Mengkoordinasikan dan layanan yang berhubungan dengan administrasi Neo Feeder Institusi
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_43 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_43"
+                                            name="kinerja_kompetensi_43" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_43 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_43"
+                                            name="kinerja_kompetensi_43" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_43 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_43"
+                                            name="kinerja_kompetensi_43" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_43 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_43"
+                                            name="kinerja_kompetensi_43" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_43 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_43"
+                                            name="kinerja_kompetensi_43" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_43')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_43') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_43" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_43)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_43) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_43')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Ujian Kompetensi ( BNSP )</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Pendaftaran Peserta pada akun Ujian Ukom BNSP
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_44 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_44"
+                                            name="kinerja_kompetensi_44" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_44 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_44"
+                                            name="kinerja_kompetensi_44" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_44 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_44"
+                                            name="kinerja_kompetensi_44" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_44 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_44"
+                                            name="kinerja_kompetensi_44" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_44 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_44"
+                                            name="kinerja_kompetensi_44" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_44')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_44') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_44" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_44)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_44) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_44')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B.</td>
+                                        <td>Pengecekan tempat ujian Ukom (Mulai tahap Pembekalan sampai proses Ujian)
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_45 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_45"
+                                            name="kinerja_kompetensi_45" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_45 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_45"
+                                            name="kinerja_kompetensi_45" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_45 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_45"
+                                            name="kinerja_kompetensi_45" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_45 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_45"
+                                            name="kinerja_kompetensi_45" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_45 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_45"
+                                            name="kinerja_kompetensi_45" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_45')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_45') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_45" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_45)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_45) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_45')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>C.</td>
+                                        <td>Mengkoordinasikan dan Pencetakan Sertifikat Ujian Ukom
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_46 == "1" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_46"
+                                            name="kinerja_kompetensi_46" id="kinerja_kompetensi_30_1" value="1"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_46 == "2" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_46"
+                                            name="kinerja_kompetensi_46" id="kinerja_kompetensi_30_2" value="2"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_46 == "3" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_46"
+                                            name="kinerja_kompetensi_46" id="kinerja_kompetensi_30_3" value="3"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_46 == "4" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_46"
+                                            name="kinerja_kompetensi_46" id="kinerja_kompetensi_30_4" value="4"
+                                            onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" {{$data->kinerja_kompetensi_46 == "5" ? "checked" : ""}}
+                                            class="kinerja_kompetensi_46"
+                                            name="kinerja_kompetensi_46" id="kinerja_kompetensi_30_5" value="5"
+                                            onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_46')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_46') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_46" type="file">
+
+                                            @if($data->file_kinerja_kompetensi_46)
+                                            <a href="{{ asset('storage/'.$data->file_kinerja_kompetensi_46) }}"
+                                                target="_blank">Preview</a>
+                                            @else
+                                            N/A
+                                            @endif
+
+                                            @error('file_kinerja_kompetensi_46')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -2320,7 +3851,7 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/itisar/SubBiroUmum/StaffSarpras/PointKinerjaPerilaku.js') }}"></script>
-    <script src="{{ asset('Assets/js/itisar/SubBiroUmum/StaffSarpras/PointKinerjaKompetensi.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/BiroAdministrasi/BaakBisnis/PointKinerjaPerilaku.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/BiroAdministrasi/BaakBisnis/PointKinerjaKompetensi.js') }}"></script>
     @endpush
 </x-app-layout>

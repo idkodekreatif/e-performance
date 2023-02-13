@@ -79,11 +79,10 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('ka.baak') }}" aria-expanded="false">Ka. BAAK</a>
-                                    <li><a href="javascript:void()">BAAK Keperawatan</a></li>
-                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
-                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
-                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
-                                    <li><a href="javascript:void()">BAAK Manajement</a></li>
+                                    <li><a href="{{ route('kemahasiswaan') }}">Kemahasiswaan</a></li>
+                                    <li><a href="{{ route('baakFkBisnis') }}">BAAK Bisnis</a></li>
+                                    <li><a href="javascript:void()">BAAK 1</a></li>
+                                    <li><a href="javascript:void()">BAAK 2</a></li>
                                 </ul>
                             </li>
                         </ul>
