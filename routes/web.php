@@ -9,6 +9,10 @@ use App\Http\Controllers\InputPoint\PointEController;
 use App\Http\Controllers\Itisar\Baak\BaakController;
 use App\Http\Controllers\Itisar\Bau\KasubBiroKepegawaianController;
 use App\Http\Controllers\Itisar\Bau\KasubBiroKeuanganController;
+use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\BaakFkBisnisController;
+use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\KemahasiswaanController;
+use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\StaffBaakDuaController;
+use App\Http\Controllers\Itisar\BiroAdministrasiAkademik\StaffBaakSatuController;
 use App\Http\Controllers\Itisar\KasubRisbangController;
 use App\Http\Controllers\Itisar\KaUpt\KaLaboranController;
 use App\Http\Controllers\Itisar\KaUpt\KaUnitItController;
@@ -22,12 +26,17 @@ use App\Http\Controllers\Itisar\rektor\KaLpmController;
 use App\Http\Controllers\Itisar\rektor\StaffSusBidKerjasamaController;
 use App\Http\Controllers\Itisar\rektor\warekDuaController;
 use App\Http\Controllers\Itisar\rektor\warekSatuController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffKebersihanController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffSarprasController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffSecurityController;
+use App\Http\Controllers\Itisar\SubBiroUmum\StaffUmumController;
 use App\Http\Controllers\Itisar\warek2Controller;
 use App\Http\Controllers\Itisar\WarekSatu\KaBaakController;
 use App\Http\Controllers\Itisar\WarekSatu\KaProdiController;
 use App\Http\Controllers\Itisar\WarekSatu\KaRisbangController;
 use App\Http\Controllers\Itisar\WarekSatu\KaUptController;
 use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
+use App\Http\Controllers\Itisar\Yayasan\RektorController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\sumPointController;
@@ -360,6 +369,84 @@ Route::group(
             Route::get('/warek-satu/Ka-Prodi/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Prodi');
             Route::put('/warek-satu/Ka-Prodi/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
             Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Rektor ------------------------------//
+        Route::controller(RektorController::class)->group(function () {
+            Route::get('/Rektor/Input', 'create')->name('rektor');
+            Route::post('/Rektor/Request/Store', 'store')->name('store.rektor');
+            Route::get('/Rektor/edit/{PointId}', 'edit')->name('edit.rektor');
+            Route::put('/Rektor/update/{PointId}', 'update')->name('update.rektor');
+            Route::get('/Raport/Rektor/{user_id}', 'raport')->name('rektor.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Umum Dan Kepegawaian ------------------------------//
+        Route::controller(StaffUmumController::class)->group(function () {
+            Route::get('/staffumum/Input', 'create')->name('staffumum');
+            Route::post('/staffumum/Request/Store', 'store')->name('store.staffumum');
+            Route::get('/staffumum/edit/{PointId}', 'edit')->name('edit.staffumum');
+            Route::put('/staffumum/update/{PointId}', 'update')->name('update.staffumum');
+            Route::get('/Raport/staffumum/{user_id}', 'raport')->name('staffumum.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Kebersihan ------------------------------//
+        Route::controller(StaffKebersihanController::class)->group(function () {
+            Route::get('/staffkebersihan/Input', 'create')->name('staffkebersihan');
+            Route::post('/staffkebersihan/Request/Store', 'store')->name('store.staffkebersihan');
+            Route::get('/staffkebersihan/edit/{PointId}', 'edit')->name('edit.staffkebersihan');
+            Route::put('/staffkebersihan/update/{PointId}', 'update')->name('update.staffkebersihan');
+            Route::get('/Raport/staffkebersihan/{user_id}', 'raport')->name('staffkebersihan.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Security ------------------------------//
+        Route::controller(StaffSecurityController::class)->group(function () {
+            Route::get('/staffsecurity/Input', 'create')->name('staffsecurity');
+            Route::post('/staffsecurity/Request/Store', 'store')->name('store.staffsecurity');
+            Route::get('/staffsecurity/edit/{PointId}', 'edit')->name('edit.staffsecurity');
+            Route::put('/staffsecurity/update/{PointId}', 'update')->name('update.staffsecurity');
+            Route::get('/Raport/staffsecurity/{user_id}', 'raport')->name('staffsecurity.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Staff Sarpras ------------------------------//
+        Route::controller(StaffSarprasController::class)->group(function () {
+            Route::get('/staffsarpras/Input', 'create')->name('staffsarpras');
+            Route::post('/staffsarpras/Request/Store', 'store')->name('store.staffsarpras');
+            Route::get('/staffsarpras/edit/{PointId}', 'edit')->name('edit.staffsarpras');
+            Route::put('/staffsarpras/update/{PointId}', 'update')->name('update.staffsarpras');
+            Route::get('/Raport/staffsarpras/{user_id}', 'raport')->name('staffsarpras.raport');
+        });
+
+        // -------------------------- Controller Form Penilaian Kemahasiswaan ------------------------------//
+        Route::controller(KemahasiswaanController::class)->group(function () {
+            Route::get('/kemahasiswaan/Input', 'create')->name('kemahasiswaan');
+            Route::post('/kemahasiswaan/Request/Store', 'store')->name('store.kemahasiswaan');
+            Route::get('/kemahasiswaan/edit/{PointId}', 'edit')->name('edit.kemahasiswaan');
+            Route::put('/kemahasiswaan/update/{PointId}', 'update')->name('update.kemahasiswaan');
+            Route::get('/Raport/kemahasiswaan/{user_id}', 'raport')->name('kemahasiswaan.raport');
+        });
+        // -------------------------- Controller Form Penilaian Baak Fk Bisnis ------------------------------//
+        Route::controller(BaakFkBisnisController::class)->group(function () {
+            Route::get('/baakFkBisnis/Input', 'create')->name('baakFkBisnis');
+            Route::post('/baakFkBisnis/Request/Store', 'store')->name('store.baakFkBisnis');
+            Route::get('/baakFkBisnis/edit/{PointId}', 'edit')->name('edit.baakFkBisnis');
+            Route::put('/baakFkBisnis/update/{PointId}', 'update')->name('update.baakFkBisnis');
+            Route::get('/Raport/baakFkBisnis/{user_id}', 'raport')->name('baakFkBisnis.raport');
+        });
+        // -------------------------- Controller Form Penilaian Staff Baak Satu ------------------------------//
+        Route::controller(StaffBaakSatuController::class)->group(function () {
+            Route::get('/staffbaaksatu/Input', 'create')->name('staffbaaksatu');
+            Route::post('/staffbaaksatu/Request/Store', 'store')->name('store.staffbaaksatu');
+            Route::get('/staffbaaksatu/edit/{PointId}', 'edit')->name('edit.staffbaaksatu');
+            Route::put('/staffbaaksatu/update/{PointId}', 'update')->name('update.staffbaaksatu');
+            Route::get('/Raport/staffbaaksatu/{user_id}', 'raport')->name('staffbaaksatu.raport');
+        });
+        // -------------------------- Controller Form Penilaian Staff Baak Dua ------------------------------//
+        Route::controller(StaffBaakDuaController::class)->group(function () {
+            Route::get('/staffbaakdua/Input', 'create')->name('staffbaakdua');
+            Route::post('/staffbaakdua/Request/Store', 'store')->name('store.staffbaakdua');
+            Route::get('/staffbaakdua/edit/{PointId}', 'edit')->name('edit.staffbaakdua');
+            Route::put('/staffbaakdua/update/{PointId}', 'update')->name('update.staffbaakdua');
+            Route::get('/Raport/staffbaakdua/{user_id}', 'raport')->name('staffbaakdua.raport');
         });
     }
 );

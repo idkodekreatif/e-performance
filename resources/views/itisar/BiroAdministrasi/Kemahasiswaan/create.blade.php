@@ -1,4 +1,4 @@
-<x-app-layout title="Form Penilaian LPM">
+<x-app-layout title="Form Penilaian Kemahasiswaan">
     @push('style')
     <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
     <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -19,18 +19,18 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">LPM</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Kemahasiswaan</a></li>
             </ol>
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('Lpm.raport', Auth::user()->id) }}"
+                <a href="{{ route('kemahasiswaan.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
-                <a href="{{ route('edit.Lpm', Auth::user()->id) }}"
+                <a href="{{ route('edit.kemahasiswaan', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a>
             </div>
         </div>
-        <form action="{{ route('store.Lpm') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('store.kemahasiswaan') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card shadow">
                 <div class="card-body">
@@ -1059,10 +1059,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="table-primary">
                                         <td>1</td>
-                                        <td>Mengkoordinasikan dan melaksanakan pengembangan instrumen monitoring dan evaluasi serta audit mutu internal dan
-                                        eksternal di seluruh satuan kerja</td>
+                                        <td>Alur pendaftaran kip IKBIS Surabaya :</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>A.</td>
+                                        <td>Memonitor Calon Mahasiswa KIPK yang melakukan pendaftaran online di laman SIM KIPK Siswa </td>
                                         <td><input type="radio" class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
                                                 id="kinerja_kompetensi_1_1" value="1" onclick="sum();">
                                         </td>
@@ -1098,8 +1109,8 @@
                                     </tr>
 
                                     <tr>
-                                        <td>2</td>
-                                        <td>Mengkoordinasikan dan melaksanakan uji validitas dan reliabilitas instrumen monitoring dan evaluasi</td>
+                                        <td>B.</td>
+                                        <td>Memonitor Calon mahasiswa kipk wajib mengisi persyaratan yang sesuai arahan di SIM KIPK Siswa</td>
                                         <td><input type="radio" class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
                                                 id="kinerja_kompetensi_2_1" value="1" onclick="sum();">
                                         </td>
@@ -1134,9 +1145,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>3</td>
-                                        <td>Mengkoordinasikan dan melaksanakan monitoring dan evaluasi serta audit mutu internal dan eksternal di seluruh satuan
-                                        kerja</td>
+                                        <td>C.</td>
+                                        <td>Menyerahkan berkas KIPK secara offline atau onlie (melalui email kmhs@.ac.id)</td>
                                         <td><input type="radio" class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
                                                 id="kinerja_kompetensi_3_1" value="1" onclick="sum();">
                                         </td>
@@ -1171,8 +1181,15 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>4</td>
-                                        <td>Mengkoordinasikan dan merumuskan tindakan koreksi untuk memelihara dan meningkatkan mutu secara berkelanjutan;</td>
+                                        <td>D.</td>
+                                        <td>
+                                            Memvalidasi berkas
+                                            <ul>
+                                                <li>Tes tulis secara online </li>
+                                                <li>Pengumuman tes tulis </li>
+                                                <li>Sosialisasi penerima mahasiswa KIPK</li>
+                                            </ul>
+                                        </td>
                                         <td><input type="radio" class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
                                                 id="kinerja_kompetensi_4_1" value="1" onclick="sum();">
                                         </td>
@@ -1206,9 +1223,23 @@
                                             @enderror
                                         </td>
                                     </tr>
+
+
+
+                                    <tr class="table-primary">
+                                        <td>2</td>
+                                        <td>Tugas tambahan</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td></td>
+                                    </tr>
                                     <tr>
-                                        <td>5</td>
-                                        <td>Mengkoordinasikan dan mewujudkan tingkat layanan yang dapat memuaskan stakeholders;</td>
+                                        <td>A.</td>
+                                        <td>Menerima legalisir </td>
                                         <td><input type="radio" class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
                                                 id="kinerja_kompetensi_5_1" value="1" onclick="sum();">
                                         </td>
@@ -1243,8 +1274,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>6</td>
-                                        <td>Melakukan pengarsipan seluruh dokumen produk kegiatan dalam bentuk hardcopy maupun softcopy;
+                                        <td>B.</td>
+                                        <td>Menerima pengambilan ijasah, naskah profesi, sumpah
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
                                                 id="kinerja_kompetensi_6_1" value="1" onclick="sum();">
@@ -1280,8 +1311,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>7</td>
-                                        <td>Mengkoordinasikan dan menyusun dokumen SPMI/SPME yang meliputi Kebijakan , Manual Mutu , Standart dan Formulir
+                                        <td>C.</td>
+                                        <td>Membuat surat ijin penelitian, pengantar penelitian, pengambilan data awal
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
                                                 id="kinerja_kompetensi_7_1" value="1" onclick="sum();">
@@ -1317,8 +1348,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>8</td>
-                                        <td>Mengkoordinasikan dan menyusun Dokumen Standart Operating Procedure (SOP) kegiatan asessmen;
+                                        <td>D.</td>
+                                        <td>Melayani pendaftaran offline ( mahasiswa alih jenjang, profesi, reguler )
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_8" name="kinerja_kompetensi_8"
                                                 id="kinerja_kompetensi_8_1" value="1" onclick="sum();">
@@ -1354,8 +1385,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>9</td>
-                                        <td>Mengkoordinasikan dan melakukan Asesmen terhadap kegiatan di bidang akademik dan non akademik;
+                                        <td>E.</td>
+                                        <td>Membantu Ka. Prodi Gizi jika membutuhkan bantuan ( membuat surat pencairan, permohononan, mengantarkan proposal pkl dll )
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_9" name="kinerja_kompetensi_9"
                                                 id="kinerja_kompetensi_9_1" value="1" onclick="sum();">
@@ -1391,8 +1422,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>10</td>
-                                        <td>Mengkoordinasikan dan menyiapkan pengisian borang akreditasi institusi dan borang akreditasi prodi
+                                        <td>F.</td>
+                                        <td>Membantu Stafsus Rektor Bid. Kerjasama membuat MoU RS , Dinkes dll
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_10"
                                                 name="kinerja_kompetensi_10" id="kinerja_kompetensi_10_1" value="1"
@@ -1433,8 +1464,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>11</td>
-                                        <td>Mengkoordinasikan dan melakukan pendampingan serta memfasilitasi pengisian borang akreditasi institusi dan prodi.
+                                        <td>G.</td>
+                                        <td>Membuat surat validasi alumni
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_11"
                                                 name="kinerja_kompetensi_11" id="kinerja_kompetensi_11_1" value="1"
@@ -1474,9 +1505,24 @@
                                             @enderror
                                         </td>
                                     </tr>
+
+
+
+                                    <tr class="table-primary">
+                                        <td>3</td>
+                                        <td>Tugas Sesuai SK
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td></td>
+                                    </tr>
                                     <tr>
-                                        <td>12</td>
-                                        <td>Mengkoordinasikan dan membantu penyediaan data untuk pengisian borang akreditasi institusi dan prodi
+                                        <td>A.</td>
+                                        <td>LPJ Bidikmisi Angkatan 2018,2019
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_12"
                                                 name="kinerja_kompetensi_12" id="kinerja_kompetensi_12_1" value="1"
@@ -1517,8 +1563,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>13</td>
-                                        <td>Mengkoordinasikan dan melakukan simulasi penghitungan nilai akreditasi institusi dan prodi
+                                        <td>B.</td>
+                                        <td>LPJ KIPK On Going angkatan 2020,2021
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_13"
                                                 name="kinerja_kompetensi_13" id="kinerja_kompetensi_13_1" value="1"
@@ -1559,8 +1605,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>14</td>
-                                        <td>Menyusun laporan Koordinator SPMI/SPME sebagai pertanggung jawaban kepada atasan;
+                                        <td>C.</td>
+                                        <td>Pendaftaran KIPK angkatan 2022
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_14"
                                                 name="kinerja_kompetensi_14" id="kinerja_kompetensi_14_1" value="1"
@@ -1588,8 +1634,8 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Laporan
-                                                Bulanan</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
                                             <input class="@error('file_kinerja_kompetensi_14') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_14" type="file">
 
@@ -1601,8 +1647,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>15</td>
-                                        <td>Menyususn rencana kerja dan anggaran tahunan (RKAT) pada bidangnya.
+                                        <td>D.</td>
+                                        <td>Laporan Pencairan BIDIKMISI
                                         </td>
                                         <td><input type="radio" class="kinerja_kompetensi_15"
                                                 name="kinerja_kompetensi_15" id="kinerja_kompetensi_15_1" value="1"
@@ -1630,8 +1676,8 @@
                                         </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
-                                                RKAT</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
                                             <input class="@error('file_kinerja_kompetensi_15') is-invalid @enderror"
                                                 id="formFileSm" name="file_kinerja_kompetensi_15" type="file">
 
@@ -1642,35 +1688,120 @@
                                             @enderror
                                         </td>
                                     </tr>
-
-
-                                    <tr class="table-primary">
-                                        <td colspan="8 text-center">TOTAL KINERJA KOMPETENSI</td>
-                                    </tr>
-
                                     <tr>
-                                        <td colspan="2"></td>
-                                        <td><label for="">Point 1</label><input id="output_point_kinerja_kompetensi_1"
-                                                name="output_point_kinerja_kompetensi_1" type="number" value="0"
-                                                aria-label="output_point" readonly>
+                                        <td>E.</td>
+                                        <td>Laporan pencairan KIPK on going
                                         </td>
-                                        <td><label for="">Point 2</label><input id="output_point_kinerja_kompetensi_2"
-                                                name="output_point_kinerja_kompetensi_2" type="number" value="0"
-                                                aria-label="output_point" readonly>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_1" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><label for="">Point 3</label><input id="output_point_kinerja_kompetensi_3"
-                                                name="output_point_kinerja_kompetensi_3" type="number" value="0"
-                                                aria-label="output_point" readonly>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_2" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><label for="">Point 4</label><input id="output_point_kinerja_kompetensi_4"
-                                                name="output_point_kinerja_kompetensi_4" type="number" value="0"
-                                                aria-label="output_point" readonly>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_3" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><label for="">Point 5</label><input id="output_point_kinerja_kompetensi_5"
-                                                name="output_point_kinerja_kompetensi_5" type="number" value="0"
-                                                aria-label="output_point" readonly>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_16"
+                                                name="kinerja_kompetensi_16" id="kinerja_kompetensi_16_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_16')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                            Document</label>
+                                            <input class="@error('file_kinerja_kompetensi_16') is-invalid @enderror"
+                                                id="formFileSm" name="file_kinerja_kompetensi_16" type="file">
+
+                                            @error('file_kinerja_kompetensi_16')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>F.</td>
+                                        <td> Melayani pendaftaran mahasiswa Offline / Online
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_1" value="1"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_2" value="2"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_3" value="3"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_4" value="4"
+                                                onclick="sum();">
+                                        </td>
+                                        <td><input type="radio" class="kinerja_kompetensi_17"
+                                                name="kinerja_kompetensi_17" id="kinerja_kompetensi_17_5" value="5"
+                                                onclick="sum();">
+                                        </td>
+                                        @error('kinerja_kompetensi_17')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        <td>
+                                                <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
+                                                <input class="@error('file_kinerja_kompetensi_17') is-invalid @enderror"
+                                                        id="formFileSm" name="file_kinerja_kompetensi_17" type="file">
+
+                                                @error('file_kinerja_kompetensi_17')
+                                                <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                                </td>
+                                        </tr>
+
+
+
+                                        <tr class="table-primary">
+                                                <td colspan="8 text-center">TOTAL KINERJA KOMPETENSI</td>
+                                        </tr>
+
+                                        <tr>
+                                                <td colspan="2"></td>
+                                                <td><label for="">Point 1</label><input id="output_point_kinerja_kompetensi_1"
+                                                        name="output_point_kinerja_kompetensi_1" type="number" value="0"
+                                                        aria-label="output_point" readonly>
+                                                </td>
+                                                <td><label for="">Point 2</label><input id="output_point_kinerja_kompetensi_2"
+                                                        name="output_point_kinerja_kompetensi_2" type="number" value="0"
+                                                        aria-label="output_point" readonly>
+                                                </td>
+                                                <td><label for="">Point 3</label><input id="output_point_kinerja_kompetensi_3"
+                                                        name="output_point_kinerja_kompetensi_3" type="number" value="0"
+                                                        aria-label="output_point" readonly>
+                                                </td>
+                                                <td><label for="">Point 4</label><input id="output_point_kinerja_kompetensi_4"
+                                                        name="output_point_kinerja_kompetensi_4" type="number" value="0"
+                                                        aria-label="output_point" readonly>
+                                                </td>
+                                                <td><label for="">Point 5</label><input id="output_point_kinerja_kompetensi_5"
+                                                        name="output_point_kinerja_kompetensi_5" type="number" value="0"
+                                                        aria-label="output_point" readonly>
+                                                </td>
+                                        </tr>
                                     <tr>
                                         <td colspan="2"></td>
                                         <td class="table-primary"><label for="">Total</label><input
@@ -1706,8 +1837,8 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/itisar/Lpm/PointKinerjaPerilaku.js') }}"></script>
-    <script src="{{ asset('Assets/js/itisar/Lpm/PointKinerjaKompetensi.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/BiroAdministrasi/Kemahasiswaan/PointKinerjaPerilaku.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/BiroAdministrasi/Kemahasiswaan/PointKinerjaKompetensi.js') }}"></script>
     <script src="{{ asset('Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('Assets/vendor/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('Assets/js/plugins-init/select2-init.js') }}"></script>

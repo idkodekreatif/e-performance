@@ -79,11 +79,10 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('ka.baak') }}" aria-expanded="false">Ka. BAAK</a>
-                                    <li><a href="javascript:void()">BAAK Keperawatan</a></li>
-                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
-                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
-                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
-                                    <li><a href="javascript:void()">BAAK Manajement</a></li>
+                                    <li><a href="{{ route('kemahasiswaan') }}">Kemahasiswaan</a></li>
+                                    <li><a href="{{ route('baakFkBisnis') }}">BAAK Bisnis</a></li>
+                                    <li><a href="{{ route('staffbaaksatu') }}">BAAK 1</a></li>
+                                    <li><a href="{{ route('staffbaakdua') }}">BAAK 2</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -170,6 +169,26 @@
                                     <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
                                     <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
                                     <li><a href="{{ route('KaLpm') }}">Ka. Lembaga Penjaminan Mutu</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">YAYASAN</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('rektor') }}" aria-expanded="false">Rektor</a>
+                                    {{-- <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
+                                    <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
+                                    <li><a href="{{ route('KaLpm') }}">Ka. Lembaga Penjaminan Mutu</a></li> --}}
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">SUB BIRO UMUM</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('staffumum') }}" aria-expanded="false">Staff Umum Dan Kepegawaian</a>
+                                    <li><a href="{{ route('staffkebersihan') }}">Staff Kebersihan</a></li>
+                                    <li><a href="{{ route('staffsecurity') }}">Staff Security</a></li>
+                                    <li><a href="{{ route('staffsarpras') }}">Staff Srapras</a></li>
                                 </ul>
                             </li>
                         </ul>
