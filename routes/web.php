@@ -39,6 +39,7 @@ use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
 use App\Http\Controllers\Itisar\Yayasan\RektorController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SumItisarChartController;
 use App\Http\Controllers\sumPointController;
 use App\Http\Controllers\UserManagement\ImpersonateController;
 use App\Http\Controllers\UserManagement\IndexController;
@@ -166,6 +167,7 @@ Route::group(
     ['middleware' => ['role:superuser|it|manajer|hrd', 'auth', 'verified']],
     function () {
         Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
+        Route::get('/raport/chart/itisar/', [SumItisarChartController::class, 'ChartView'])->name('raport.chart.itisar');
     }
 );
 
