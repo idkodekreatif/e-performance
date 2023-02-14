@@ -13,6 +13,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('raport.chart') }}">Laporan Dosen</a></li>
+                    <li><a href="{{ route('raport.chart.itisar') }}">Laporan Tendik</a></li>
                 </ul>
             </li>
             @endrole
