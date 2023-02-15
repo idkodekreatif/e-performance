@@ -21,13 +21,18 @@ class SumItisarChartController extends Controller
         }
 
         $data = $users
-            ->leftJoin('baak', 'baak.user_id', 'users.id')
-            ->leftJoin('staff_umum_kepegawaian', 'staff_umum_kepegawaian.user_id', 'users.id')
-            ->whereNotNull('baak.user_id')
-            ->whereNotNull('staff_umum_kepegawaian.user_id')
-            ->select('users.name', 'baak.output_total_sementara_kinerja_perilaku', 'baak.output_total_sementara_kinerja_kompetensi')
-            ->select('users.name', 'staff_umum_kepegawaian.output_total_sementara_kinerja_perilaku', 'staff_umum_kepegawaian.output_total_sementara_kinerja_kompetensi')
-            ->get();
+        ->leftJoin('baak', 'baak.user_id', 'users.id')
+        // ->leftJoin('baak_bisnis', 'baak_bisnis.user_id', 'users.id')
+        ->whereNotNull('baak.user_id')
+        // ->whereNotNull('baak_bisnis.user_id')
+        ->select(
+            'users.name',
+            'baak.output_total_sementara_kinerja_perilaku',
+            'baak.output_total_sementara_kinerja_kompetensi',
+            // 'baak_bisnis.output_total_sementara_kinerja_perilaku',
+            // 'baak_bisnis.output_total_sementara_kinerja_kompetensi',
+            )
+        ->get();
 
 
         $messagesArray = [];
@@ -36,7 +41,7 @@ class SumItisarChartController extends Controller
             $result_data["name"] = $data->name;
             $a = (float)$data->output_total_sementara_kinerja_perilaku;
             $b = (float)$data->output_total_sementara_kinerja_kompetensi;
-            // // Result SUM Nilai Akhir Nilai Kinerja total
+            // Result SUM Nilai Akhir Nilai Kinerja total
             $sum_Kinerja_total = $a + $b;
             $result_sum_Kinerja_total = number_format((float)$sum_Kinerja_total, 2, '.', '');
             $result_data['NilaiKinerjaTotal'] = $result_sum_Kinerja_total;
@@ -60,7 +65,7 @@ class SumItisarChartController extends Controller
             // Result Array
             $messagesArray[] = $result_data;
         }
-        // dd($messagesArray);
+        dd($data);
 
         return view('itisar.ChartRaport.Chart', compact('messagesArray', 'resultGetUsersName'));
     }
