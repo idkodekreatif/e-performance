@@ -22,15 +22,15 @@ class SumItisarChartController extends Controller
 
         $data = $users
         ->leftJoin('baak', 'baak.user_id', 'users.id')
-        // ->leftJoin('baak_bisnis', 'baak_bisnis.user_id', 'users.id')
-        ->whereNotNull('baak.user_id')
-        // ->whereNotNull('baak_bisnis.user_id')
+        ->leftJoin('baak_bisnis', 'baak_bisnis.user_id', 'users.id')
+        ->whereExists('baak.user_id')
+        ->whereExists('baak_bisnis.user_id')
         ->select(
             'users.name',
             'baak.output_total_sementara_kinerja_perilaku',
             'baak.output_total_sementara_kinerja_kompetensi',
-            // 'baak_bisnis.output_total_sementara_kinerja_perilaku',
-            // 'baak_bisnis.output_total_sementara_kinerja_kompetensi',
+            'baak_bisnis.output_total_sementara_kinerja_perilaku',
+            'baak_bisnis.output_total_sementara_kinerja_kompetensi',
             )
         ->get();
 
@@ -65,7 +65,7 @@ class SumItisarChartController extends Controller
             // Result Array
             $messagesArray[] = $result_data;
         }
-        // dd($data);
+        dd($data);
 
         return view('itisar.ChartRaport.Chart', compact('messagesArray', 'resultGetUsersName'));
     }
