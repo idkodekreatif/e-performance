@@ -65,7 +65,7 @@ class SumItisarChartController extends Controller
             // Result Array
             $messagesArray[] = $result_data;
         }
-        dd($data);
+        // dd($data);
 
         return view('itisar.ChartRaport.Chart', compact('messagesArray', 'resultGetUsersName'));
     }
