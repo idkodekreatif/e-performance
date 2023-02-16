@@ -6,13 +6,14 @@ Project Description
 
 ### Todo
 
-- [ ] Fiks Raport ITIKAD supaya bisa muncul nilai saat ada yang sudah terisi point  
+- [ ] Menambahkan Role Untuk IKTISAR  
 - [ ] dibawah poin E & diatas update ada menu submit  
 - tampilkan higligts  
 - [ ] untuk poin e tombol simpan & submit (bila submit dipilih akan muncul halaman rekap untuk preview, dihalaman tsb akan ada pilihan submit & kembali)  
 
 ### In Progress
 
+- [ ] Fiks Raport dan Chart ITIKAD supaya bisa muncul nilai saat ada yang sudah terisi point  
 
 ### Done ✓
 

@@ -102,19 +102,34 @@ class sumPointController extends Controller
     public function raportView($user_id)
     {
         $users = DB::table('users')
-            ->leftJoin('point_a', 'users.id', '=', 'point_a.user_id')
-            ->leftJoin('point_b', 'users.id', '=', 'point_b.user_id')
-            ->leftJoin('point_c', 'users.id', '=', 'point_c.user_id')
-            ->leftJoin('point_d', 'users.id', '=', 'point_d.user_id')
-            ->leftJoin('point_e', 'users.id', '=', 'point_e.user_id')
-            ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
-            ->where('point_a.user_id', $user_id)
-            ->where('point_b.user_id', $user_id)
-            ->where('point_c.user_id', $user_id)
-            ->where('point_d.user_id', $user_id)
-            ->where('point_e.user_id', $user_id)
-            ->first();
+            // ->leftJoin('point_a', 'users.id', '=', 'point_a.user_id')
+            // ->leftJoin('point_b', 'users.id', '=', 'point_b.user_id')
+            // ->leftJoin('point_c', 'users.id', '=', 'point_c.user_id')
+            // ->leftJoin('point_d', 'users.id', '=', 'point_d.user_id')
+            // ->leftJoin('point_e', 'users.id', '=', 'point_e.user_id')
+            // ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
+            // ->where('point_a.user_id', $user_id)
+            // ->where('point_b.user_id', $user_id)
+            // ->where('point_c.user_id', $user_id)
+            // ->where('point_d.user_id', $user_id)
+            // ->where('point_e.user_id', $user_id)
+            // ->first();
 
+            ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+            ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+            ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+            ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+            ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+            ->where(function($query) {
+                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
+            })
+            ->first();
+            // dd($users);
 
 
         return view('input-point.raport', compact('users'));
@@ -148,18 +163,20 @@ class sumPointController extends Controller
         }
 
         $data = $users
-            ->leftJoin('point_a', 'point_a.user_id', 'users.id')
-            ->leftJoin('point_b', 'point_b.user_id', 'users.id')
-            ->leftJoin('point_c', 'point_c.user_id', 'users.id')
-            ->leftJoin('point_d', 'point_d.user_id', 'users.id')
-            ->leftJoin('point_e', 'point_e.user_id', 'users.id')
-            ->whereNotNull('point_a.user_id')
-            ->whereNotNull('point_b.user_id')
-            ->whereNotNull('point_c.user_id')
-            ->whereNotNull('point_d.user_id')
-            ->whereNotNull('point_e.user_id')
-            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-            ->get();
+        ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+        ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+        ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+        ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+        ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+        ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+        ->where(function($query) {
+            $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
+        })
+        ->get();
 
         $messagesArray = [];
         foreach ($data as $data) {

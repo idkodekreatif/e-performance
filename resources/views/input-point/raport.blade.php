@@ -15,7 +15,6 @@
                 <h4 class="card-title">Raport User</h4>
             </div>
             <div class="card-body">
-                @if (!empty($users->user_id))
                 <div class="table-responsive">
                     <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
                         <?php
@@ -239,90 +238,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                @else
-
-                <div class="table-responsive">
-                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
-                        <tr>
-                            <td>Nilai Total UNSUR UTAMA</td>
-                            <td>
-                                -
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nilai Total Unsur Non-Tri Dharma</td>
-                            <td>
-                                -
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nilai Kinerja Dosen</td>
-                            <td>
-                                -
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
-                        <thead>
-                            <tr>
-                                <td>Komponen</td>
-                                <td>Nilai Total</td>
-                                <td>Standar</td>
-                                <td>Persentase Capaian terhadap standar (%)</td>
-                                <td>Predikat</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PENDIDIKAN DAN PENGAJARAN</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>PENELITIAN DAN KARYA ILMIAH</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>PENGABDIAN KEPADA MASYARAKAT</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr style="font-weight:bold">
-                                <td>NILAI KINERJA TOTAL</td>
-                                <td colspan="4">-</td>
-                            </tr>
-                            <tr style="font-weight:bold">
-                                <td>STANDAR KINERJA TOTAL</td>
-                                <td colspan="4">-</td>
-                            </tr>
-                            <tr style="font-weight:bold">
-                                <td>PERSENTASE CAPAIAN TOTAL (%)</td>
-                                <td colspan="4">-</td>
-                            </tr>
-                            <tr style="font-weight:bold">
-                                <td>PREDIKAT</td>
-                                <td colspan="4">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                @endif
 
             </div>
         </div>
