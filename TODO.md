@@ -6,7 +6,6 @@ Project Description
 
 ### Todo
 
-- [ ] Chart Itikad menjadi 5 point  
 - [ ] bisa di save, simultan ( bisa bertahap misal di kerjakan point A 1 sampai 5 dulu terus next 6 sampai 10 )  
 - [ ] Fiks Raport ITIKAD supaya bisa muncul nilai saat ada yang sudah terisi point  
 - [ ] dibawah poin E & diatas update ada menu submit  
@@ -15,9 +14,10 @@ Project Description
 
 ### In Progress
 
-- [ ] tombol reset dibuang, di gantikan simpan kapanpun dia bekerja dan bisa next / redirect point selanjut nya setelah di simpan dan membuat notif onclik popup yakin di simpan atau tidak  
+- [ ] Chart Itikad menjadi 5 point  
 
 ### Done ✓
 
+- [x] tombol reset dibuang, di gantikan simpan kapanpun dia bekerja dan bisa next / redirect point selanjut nya setelah di simpan dan membuat notif onclik popup yakin di simpan atau tidak  
 - [x] SK yg tidak ada ditempatnya tanpa upload ( Remove required )  
 

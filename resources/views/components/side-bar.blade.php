@@ -23,9 +23,10 @@
                     <i class="fas fa-file-alt"></i>
                     <span class="nav-text">Forms</span>
                 </a>
-                @role('it|superuser|dosen')
+                @role('it|superuser|dosen|hrd')
                 <ul aria-expanded="false">
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITIKAD</a>
+                        @role('it|superuser|dosen')
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Insert Point</a>
                                 <ul aria-expanded="false">
@@ -36,6 +37,8 @@
                                     <li><a href="{{ route('point-E') }}">Point E</a></li>
                                 </ul>
                             </li>
+                            @endrole
+                            @role('it|superuser|hrd')
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Update Point</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('edit.Point-A', Auth::user()->id) }}">Point A</a></li>
@@ -45,6 +48,7 @@
                                     <li><a href="{{ route('edit.Point-E', Auth::user()->id) }}">Point E</a></li>
                                 </ul>
                             </li>
+                            @endrole
                             <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>
                         </ul>
                     </li>
@@ -89,66 +93,37 @@
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KEUANGAN</a>
-                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('StaffKeuangan') }}" aria-expanded="false">Staff Keuangan</a>
-                                    {{-- <li><a href="javascript:void()">BAAK Keperawatan</a></li>
-                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
-                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
-                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
-                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
                                 </ul>
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
-                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('Lpm') }}" aria-expanded="false">Staff LPM</a>
-                                    {{-- <li><a href="javascript:void()">BAAK Keperawatan</a></li>
-                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
-                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
-                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
-                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
                                 </ul>
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Lem. RISBANG</a>
-                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('KasubRisbang') }}" aria-expanded="false">Ka. Sub. Lem. Penel & Pengmas</a>
-                                    {{-- <li><a href="javascript:void()">BAAK Keperawatan</a></li>
-                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
-                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
-                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
-                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
                                 </ul>
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
-                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('sekKaprodi') }}" aria-expanded="false">Sek Ka. Prodi</a>
-                                    {{-- <li><a href="javascript:void()">BAAK Keperawatan</a></li>
-                                    <li><a href="javascript:void()">BAAK Kebidanan</a></li>
-                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
-                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
-                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
                                 </ul>
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
-                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a> --}}
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('kasubBiroKepegawaian') }}" aria-expanded="false">Ka. Sub Biro Kepegawaian</a>
                                     <li><a href="{{ route('KasubBiroKeuangan') }}">Ka. Sub. Biro Keuangan & Akuntant</a></li>
-                                    {{-- <li><a href="javascript:void()">BAAK Kebidanan</a></li>
-                                    <li><a href="javascript:void()">BAAK Ilmu Gizi</a></li>
-                                    <li><a href="javascript:void()">BAAK Akuntansi</a></li>
-                                    <li><a href="javascript:void()">BAAK Manajement</a></li> --}}
                                 </ul>
                             </li>
                         </ul>
@@ -177,9 +152,6 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">YAYASAN</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('rektor') }}" aria-expanded="false">Rektor</a>
-                                    {{-- <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
-                                    <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
-                                    <li><a href="{{ route('KaLpm') }}">Ka. Lembaga Penjaminan Mutu</a></li> --}}
                                 </ul>
                             </li>
                         </ul>

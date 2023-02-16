@@ -33,9 +33,12 @@ class PointAController extends Controller
      */
     public function create()
     {
-        // $user = User::find(1)->PointAId;
-        // dd($user);
-        return view('input-point.point-A');
+        $pointA = PointA::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointA)) {
+            return view('input-point.point-A');
+        } else {
+            return view('edit-point.EditPointA', ['data' => $pointA]);
+        }
     }
 
     /**

@@ -172,7 +172,18 @@ class sumPointController extends Controller
             $d = (float)$data->ResultSumNilaiTotalUnsurPenunjang;
             $e = (float)$data->NilaiUnsurPengabdian;
 
+            // Result nilai Pendidikan dan Pengajaran
+            $result_data["PendidikanDanPengajaran"] = ($a / 11.69) * 100;
+            // Result Nilai Penelitian & karya Ilmiah
+            $result_data["PenelitianDanKaryaIlmiah"] = ($b / 4.26) * 100;
+            // Result Nilai Pengabdian Masyarakat
+            $result_data["PengabdianMasyarakat"] = ($c / 1.20) * 100;
+
+
             $sum_d_e = $d + $e;
+            // Result Nilai Penunjang, Pengabdian Intitus dan Pengembangan Diri
+            $result_data["PengabdianInstitusiDanPengembanganDiri"] = ($sum_d_e / 2.17) * 100;
+
             // Result SUM Nilai Akhir Nilai Kinerja total
             $sum_Kinerja_total = $a + $b + $c + $sum_d_e;
             $result_sum_Kinerja_total = number_format((float)$sum_Kinerja_total, 2, '.', '');
@@ -214,6 +225,7 @@ class sumPointController extends Controller
             // Result Array
             $messagesArray[] = $result_data;
         }
+        // dd($messagesArray);
 
         return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName'));
     }

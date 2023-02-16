@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PointD;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PointDController extends Controller
@@ -27,7 +28,12 @@ class PointDController extends Controller
      */
     public function create()
     {
-        return view('input-point.point-D');
+        $pointD = PointD::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointD)) {
+            return view('input-point.point-D');
+        } else {
+            return view('edit-point.EditPointD', ['data' => $pointD]);
+        }
     }
 
     /**
