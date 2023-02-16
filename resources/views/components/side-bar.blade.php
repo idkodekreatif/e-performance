@@ -53,7 +53,7 @@
 
                 @role('it|superuser|tendik')
                 <ul aria-expanded="false">
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITISAR</a>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR</a>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
                                 <ul aria-expanded="false">

@@ -35,7 +35,7 @@ Register
             <select class="default-select form-control wide mb-3" name="role" required>
                 <option value="">-- Select --</option>
                 <option value="dosen">Dosen</option>
-                {{-- <option value="tendik">Tendik</option> --}}
+                <option value="tendik">Tendik</option>
             </select>
 
             @error('role')

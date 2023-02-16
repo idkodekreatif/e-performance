@@ -299,7 +299,7 @@ class PointDController extends Controller
 
             DB::commit();
             toast('Create new Point D successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-E');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Add Point D fail :)', 'error');

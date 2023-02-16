@@ -1041,7 +1041,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="reset" class="btn btn-danger btn-sm mb-2">Reset</button>
                                         <button type="submit" class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
