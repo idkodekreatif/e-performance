@@ -173,16 +173,20 @@ class sumPointController extends Controller
             $e = (float)$data->NilaiUnsurPengabdian;
 
             // Result nilai Pendidikan dan Pengajaran
-            $result_data["PendidikanDanPengajaran"] = ($a / 11.69) * 100;
+            $resultSumPendidikanDanPengajaran = ($a / 11.69) * 100;
+            $result_data["PendidikanDanPengajaran"] = number_format((float)$resultSumPendidikanDanPengajaran, 2, '.', '');
             // Result Nilai Penelitian & karya Ilmiah
-            $result_data["PenelitianDanKaryaIlmiah"] = ($b / 4.26) * 100;
+            $resultSumPenelitian = ($b / 4.26) * 100;
+            $result_data["PenelitianDanKaryaIlmiah"] = number_format((float)$resultSumPenelitian, 2, '.', '');
             // Result Nilai Pengabdian Masyarakat
-            $result_data["PengabdianMasyarakat"] = ($c / 1.20) * 100;
+            $resultSumPengabdian = ($c / 1.20) * 100;
+            $result_data["PengabdianMasyarakat"] = number_format((float)$resultSumPengabdian, 2, '.', '');
 
 
             $sum_d_e = $d + $e;
             // Result Nilai Penunjang, Pengabdian Intitus dan Pengembangan Diri
-            $result_data["PengabdianInstitusiDanPengembanganDiri"] = ($sum_d_e / 2.17) * 100;
+            $resultSumPenunjangPengabdian = ($sum_d_e / 2.17) * 100;
+            $result_data["PengabdianInstitusiDanPengembanganDiri"] = number_format((float)$resultSumPenunjangPengabdian, 2, '.', '');
 
             // Result SUM Nilai Akhir Nilai Kinerja total
             $sum_Kinerja_total = $a + $b + $c + $sum_d_e;
