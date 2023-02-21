@@ -20,18 +20,26 @@ class SumItisarChartController extends Controller
             $users = $users->orWhere('users.name', 'LIKE', '%' . $request->keyword . '%');
         }
 
+        // $data = $users
+        // ->leftJoin('baak', 'baak.user_id', 'users.id')
+        // ->leftJoin('baak_bisnis', 'baak_bisnis.user_id', 'users.id')
+        // ->whereExists('baak.user_id')
+        // ->whereExists('baak_bisnis.user_id')
+        // ->select(
+        //     'users.name',
+        //     'baak.output_total_sementara_kinerja_perilaku',
+        //     'baak.output_total_sementara_kinerja_kompetensi',
+        //     'baak_bisnis.output_total_sementara_kinerja_perilaku',
+        //     'baak_bisnis.output_total_sementara_kinerja_kompetensi',
+        //     )
+        // ->get();
+
         $data = $users
-        ->leftJoin('baak', 'baak.user_id', 'users.id')
-        ->leftJoin('baak_bisnis', 'baak_bisnis.user_id', 'users.id')
-        ->whereExists('baak.user_id')
-        ->whereExists('baak_bisnis.user_id')
-        ->select(
-            'users.name',
-            'baak.output_total_sementara_kinerja_perilaku',
-            'baak.output_total_sementara_kinerja_kompetensi',
-            'baak_bisnis.output_total_sementara_kinerja_perilaku',
-            'baak_bisnis.output_total_sementara_kinerja_kompetensi',
-            )
+        ->leftJoin('baak', 'baak.user_id', '=', 'users.id')
+        ->leftJoin('baak_bisnis', 'baak_bisnis.user_id', '=', 'users.id')
+        ->select('users.name', 'baak.output_total_sementara_kinerja_perilaku')
+        ->whereNotNull('baak.output_total_sementara_kinerja_perilaku')
+        ->orWhereNotNull('baak_bisnis.output_total_sementara_kinerja_perilaku')
         ->get();
 
 

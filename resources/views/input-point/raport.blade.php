@@ -23,16 +23,13 @@
                             $c = (float)$users->NilaiTotalPengabdianKepadaMasyarakat;
                             // SUM Point ( A,B,C )
                             $total_Ntu = $a + $b + $c;
-
                             $d = (float)$users->ResultSumNilaiTotalUnsurPenunjang;
                             $e = (float)$users->NilaiUnsurPengabdian;
                             // SUM Point ( D,E )
                             $total_Ntd = $d + $e;
                             // SUM Point Nilai Kinerja Dosen
                             $total_Nkd = $total_Ntu + $total_Ntd;
-
                             $NtAFinalSum = $a /11.69 * 100;
-
                             if ($NtAFinalSum >= 120) {
                                 $outputHasilPDP =  "ISTIMEWA";
                             }elseif($NtAFinalSum >= 110) {
@@ -48,9 +45,7 @@
                                 # code...
                                 $outputHasilPDP = "KURANG";
                             }
-
                                 $NTiFinalSum = $b /4.26 * 100;
-
                                 if ($NTiFinalSum >= 120) {
                                 $OutputHasilPki = "ISTIMEWA";
                                 }elseif($NTiFinalSum >= 110) {
@@ -66,9 +61,7 @@
                                 # code...
                                 $OutputHasilPki = "KURANG";
                                 }
-
                                 $NTiFinalSumPkm = $c /1.20 * 100;
-
                                 if ($NTiFinalSumPkm >= 120) {
                                 $OutputHasilPkm = "ISTIMEWA";
                                 }elseif($NTiFinalSumPkm >= 110) {
@@ -84,7 +77,6 @@
                                 # code...
                                 $OutputHasilPkm = "KURANG";
                                 }
-
                                 // Persentase Capaian terhadap standar (%) Point UNSUR PENUNJANG, Pengabdian institusi, dan pengembangan diri
                                 $SUMUnsurPenungjang = $total_Ntd /2.17 * 100;
                                 // Predikat
@@ -103,7 +95,6 @@
                                 # code...
                                 $OutputHasilUnsurPenunjang = "KURANG";
                                 }
-
                                 // SUM Nilai kinerja total
                                 $SumNkt = $a + $b + $c + $total_Ntd;
                                 // SUM Nilsi standart
@@ -126,7 +117,6 @@
                                 # code...
                                 $Result_predikat = "KURANG";
                                 }
-
                             ?>
                         <tr>
                             <td>Nilai Total UNSUR UTAMA</td>

@@ -20,7 +20,7 @@
             </li>
             @endrole
 
-            @role('it|superuser|dosen|tendik')
+            @role('it|superuser|dosen|tendik|warek2|upt|baak|keuangan|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi|bau|warek1|rektor|hrd|ypsdmit')
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-file-alt"></i>
                     <span class="nav-text">Forms</span>
@@ -57,18 +57,39 @@
                 </ul>
                 @endrole
 
-                @role('it|superuser|tendik')
+                @role('it|superuser|tendik|warek2|upt|baak|keuangan|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi|bau|warek1|rektor|hrd|ypsdmit')
                 <ul aria-expanded="false">
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR</a>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}">Raport Ka. Bau</a></li>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|warek2')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('warek2.ka.bau') }}">Ka. Bau</a></li>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. UPT</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Raport Unit Pemasaran</a>
+                                        <ul aria-expanded="false">
+                                            <li><a href="{{ route('ka.pemasaran.raport', Auth::user()->id) }}">Raport Ka. Unit Pemasaran</a></li>
+                                            <li><a href="{{ route('StaffPemasaran.raport', Auth::user()->id) }}">Raport Staff Pemasaran</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ route('ka.perpustakaan.raport', Auth::user()->id) }}">Raport Koordinator Perpustakaan</a></li>
+                                    <li><a href="{{ route('ka.laboran.raport', Auth::user()->id) }}">Raport Koordinator Laboratorium</a></li>
+                                    <li><a href="{{ route('ka.it.raport', Auth::user()->id)}}">Raport Ka. Unit IT</a></li>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|upt')
                                 <ul aria-expanded="false">
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Unit Pemasaran</a>
                                         <ul aria-expanded="false">
@@ -80,10 +101,21 @@
                                     <li><a href="{{ route('ka.upt.ka.unit.laboran') }}">Koordinator Laboratorium</a></li>
                                     <li><a href="{{ route('ka.upt.ka.unit.it')}}">Ka. Unit IT</a></li>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('ka.baak.raport', Auth::user()->id) }}" aria-expanded="false">Raport Ka. BAAK</a>
+                                    <li><a href="{{ route('kemahasiswaan.raport', Auth::user()->id) }}">Raport Kemahasiswaan</a></li>
+                                    <li><a href="{{ route('baakFkBisnis.raport', Auth::user()->id) }}">Raport BAAK Bisnis</a></li>
+                                    <li><a href="{{ route('staffbaaksatu.raport', Auth::user()->id) }}">Raport BAAK 1</a></li>
+                                    <li><a href="{{ route('staffbaakdua.raport', Auth::user()->id) }}">Raport BAAK 2</a></li>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|baak')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('ka.baak') }}" aria-expanded="false">Ka. BAAK</a>
                                     <li><a href="{{ route('kemahasiswaan') }}">Kemahasiswaan</a></li>
@@ -91,46 +123,93 @@
                                     <li><a href="{{ route('staffbaaksatu') }}">BAAK 1</a></li>
                                     <li><a href="{{ route('staffbaakdua') }}">BAAK 2</a></li>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KEUANGAN</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('StaffKeuangan.raport', Auth::user()->id) }}" aria-expanded="false">Raport Staff Keuangan</a>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|keuangan')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('StaffKeuangan') }}" aria-expanded="false">Staff Keuangan</a>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('Lpm.raport', Auth::user()->id) }}" aria-expanded="false">Raport Staff LPM</a>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|lpm')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('Lpm') }}" aria-expanded="false">Staff LPM</a>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Lem. RISBANG</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('KasubRisbang.raport', Auth::user()->id) }}" aria-expanded="false">Raport Ka. Sub. Lem. Penel & Pengmas</a>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|risbang')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('KasubRisbang') }}" aria-expanded="false">Ka. Sub. Lem. Penel & Pengmas</a>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('sekKaprodi.raport', Auth::user()->id) }}" aria-expanded="false">Raport Sek Ka. Prodi</a>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|gizi|perawat|bidan|manajemen|akuntansi')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('sekKaprodi') }}" aria-expanded="false">Sek Ka. Prodi</a>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('kasubBiroKepegawaian.raport', Auth::user()->id) }}" aria-expanded="false">Raport Ka. Sub Biro Kepegawaian</a>
+                                    <li><a href="{{ route('KasubBiroKeuangan.raport', Auth::user()->id) }}">Raport Ka. Sub. Biro Keuangan & Akuntant</a></li>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|bau')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('kasubBiroKepegawaian') }}" aria-expanded="false">Ka. Sub Biro Kepegawaian</a>
                                     <li><a href="{{ route('KasubBiroKeuangan') }}">Ka. Sub. Biro Keuangan & Akuntant</a></li>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('koorkemahasiswaanDanAlumni.raport', Auth::user()->id) }}" aria-expanded="false">Raport Koor. Kemahasiswaan & Alumni</a>
+                                    <li><a href="{{ route('WarekSatu.Ka.Upt.raport', Auth::user()->id) }}">Raport Ka. UPT</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Risbang.raport', Auth::user()->id) }}">Raport Ka. Lem. Risbang</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Baak.raport', Auth::user()->id) }}">Raport Ka. Baak</a></li>
+                                    <li><a href="{{ route('WarekSatu.Ka.Prodi.raport', Auth::user()->id) }}">Raport Ka. Prodi</a></li>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|warek1')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('koorkemahasiswaanDanAlumni') }}" aria-expanded="false">Koor. Kemahasiswaan & Alumni</a>
                                     <li><a href="{{ route('WarekSatu.Ka.Upt') }}">Ka. UPT</a></li>
@@ -138,33 +217,61 @@
                                     <li><a href="{{ route('WarekSatu.Ka.Baak') }}">Ka. Baak</a></li>
                                     <li><a href="{{ route('WarekSatu.Ka.Prodi') }}">Ka. Prodi</a></li>
                                 </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">REKTOR</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('warekSatu.raport', Auth::user()->id) }}" aria-expanded="false">Raport Warek I</a>
+                                    <li><a href="{{ route('WarekDua.raport', Auth::user()->id) }}">Raport Warek II</a></li>
+                                    <li><a href="{{ route('StaffSusBidKerjasama.raport', Auth::user()->id) }}">Raport Staffsus Bidang Kerjasama</a></li>
+                                    <li><a href="{{ route('KaLpm.raport', Auth::user()->id) }}">Raport Ka. Lembaga Penjaminan Mutu</a></li>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|rektor')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('warekSatu') }}" aria-expanded="false">Warek I</a>
                                     <li><a href="{{ route('WarekDua') }}">Warek II</a></li>
                                     <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a></li>
                                     <li><a href="{{ route('KaLpm') }}">Ka. Lembaga Penjaminan Mutu</a></li>
                                 </ul>
-                            </li>
-                        </ul>
-                        <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">YAYASAN</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ route('rektor') }}" aria-expanded="false">Rektor</a>
-                                </ul>
+                                @endrole
                             </li>
                         </ul>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">SUB BIRO UMUM</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('staffumum.raport', Auth::user()->id) }}" aria-expanded="false">Raport Staff Umum Dan Kepegawaian</a>
+                                    <li><a href="{{ route('staffkebersihan.raport', Auth::user()->id) }}">Raport Staff Kebersihan</a></li>
+                                    <li><a href="{{ route('staffsecurity.raport', Auth::user()->id) }}">Raport Staff Security</a></li>
+                                    <li><a href="{{ route('staffsarpras.raport', Auth::user()->id) }}">Raport Staff Srapras</a></li>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|hrd')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('staffumum') }}" aria-expanded="false">Staff Umum Dan Kepegawaian</a>
                                     <li><a href="{{ route('staffkebersihan') }}">Staff Kebersihan</a></li>
                                     <li><a href="{{ route('staffsecurity') }}">Staff Security</a></li>
                                     <li><a href="{{ route('staffsarpras') }}">Staff Srapras</a></li>
                                 </ul>
+                                @endrole
+                            </li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">YAYASAN</a>
+                                @role('tendik')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('rektor.raport', Auth::user()->id) }}" aria-expanded="false">Raport Rektor</a>
+                                </ul>
+                                @endrole
+                                @role('it|superuser|ypsdmit')
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('rektor') }}" aria-expanded="false">Rektor</a>
+                                </ul>
+                                @endrole
                             </li>
                         </ul>
                     </li>
