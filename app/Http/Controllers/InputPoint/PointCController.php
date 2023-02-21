@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PointC;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PointCController extends Controller
@@ -27,7 +28,12 @@ class PointCController extends Controller
      */
     public function create()
     {
-        return view('input-point.point-C');
+        $pointC = PointC::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointC)) {
+            return view('input-point.point-C');
+        } else {
+            return view('edit-point.EditPointC', ['data' => $pointC]);
+        }
     }
 
     /**
@@ -39,15 +45,15 @@ class PointCController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fileC1' => 'required|mimes:pdf|max:2048',
-            'fileC2' => 'required|mimes:pdf|max:2048',
-            'fileC3' => 'required|mimes:pdf|max:2048',
-            'fileC4' => 'required|mimes:pdf|max:2048',
-            'fileC5' => 'required|mimes:pdf|max:2048',
-            'fileC6' => 'required|mimes:pdf|max:2048',
-            'fileC7' => 'required|mimes:pdf|max:2048',
-            'fileC8' => 'required|mimes:pdf|max:2048',
-            'fileC9' => 'required|mimes:pdf|max:2048',
+            'fileC1' => 'mimes:pdf',
+            'fileC2' => 'mimes:pdf',
+            'fileC3' => 'mimes:pdf',
+            'fileC4' => 'mimes:pdf',
+            'fileC5' => 'mimes:pdf',
+            'fileC6' => 'mimes:pdf',
+            'fileC7' => 'mimes:pdf',
+            'fileC8' => 'mimes:pdf',
+            'fileC9' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
@@ -275,7 +281,7 @@ class PointCController extends Controller
 
             DB::commit();
             toast('Create new Point C successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-D');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Add Point C fail :)', 'error');
@@ -327,15 +333,15 @@ class PointCController extends Controller
     public function update(Request $request, PointC $pointC, $PointId)
     {
         $request->validate([
-            'fileC1' => 'mimes:pdf|max:2048',
-            'fileC2' => 'mimes:pdf|max:2048',
-            'fileC3' => 'mimes:pdf|max:2048',
-            'fileC4' => 'mimes:pdf|max:2048',
-            'fileC5' => 'mimes:pdf|max:2048',
-            'fileC6' => 'mimes:pdf|max:2048',
-            'fileC7' => 'mimes:pdf|max:2048',
-            'fileC8' => 'mimes:pdf|max:2048',
-            'fileC9' => 'mimes:pdf|max:2048',
+            'fileC1' => 'mimes:pdf',
+            'fileC2' => 'mimes:pdf',
+            'fileC3' => 'mimes:pdf',
+            'fileC4' => 'mimes:pdf',
+            'fileC5' => 'mimes:pdf',
+            'fileC6' => 'mimes:pdf',
+            'fileC7' => 'mimes:pdf',
+            'fileC8' => 'mimes:pdf',
+            'fileC9' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();

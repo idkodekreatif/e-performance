@@ -33,9 +33,12 @@ class PointAController extends Controller
      */
     public function create()
     {
-        // $user = User::find(1)->PointAId;
-        // dd($user);
-        return view('input-point.point-A');
+        $pointA = PointA::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointA)) {
+            return view('input-point.point-A');
+        } else {
+            return view('edit-point.EditPointA', ['data' => $pointA]);
+        }
     }
 
     /**
@@ -47,19 +50,19 @@ class PointAController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fileA1' => 'required|mimes:pdf|max:2048',
-            'fileA2' => 'required|mimes:pdf|max:2048',
-            'fileA3' => 'required|mimes:pdf|max:2048',
-            'fileA4' => 'required|mimes:pdf|max:2048',
-            'fileA5' => 'required|mimes:pdf|max:2048',
-            'fileA6' => 'required|mimes:pdf|max:2048',
-            'fileA7' => 'required|mimes:pdf|max:2048',
-            'fileA8' => 'required|mimes:pdf|max:2048',
-            'fileA9' => 'required|mimes:pdf|max:2048',
-            'fileA10' => 'required|mimes:pdf|max:2048',
-            'fileA11' => 'required|mimes:pdf|max:2048',
-            'fileA12' => 'required|mimes:pdf|max:2048',
-            'fileA13' => 'required|mimes:pdf|max:2048',
+            'fileA1' => 'mimes:pdf',
+            'fileA2' => 'mimes:pdf',
+            'fileA3' => 'mimes:pdf',
+            'fileA4' => 'mimes:pdf',
+            'fileA5' => 'mimes:pdf',
+            'fileA6' => 'mimes:pdf',
+            'fileA7' => 'mimes:pdf',
+            'fileA8' => 'mimes:pdf',
+            'fileA9' => 'mimes:pdf',
+            'fileA10' => 'mimes:pdf',
+            'fileA11' => 'mimes:pdf',
+            'fileA12' => 'mimes:pdf',
+            'fileA13' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
@@ -227,7 +230,7 @@ class PointAController extends Controller
 
             DB::commit();
             toast('Create new Point A successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-B');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Add Point A fail :)', 'error');
@@ -280,19 +283,19 @@ class PointAController extends Controller
     {
         // Validation file upload
         $request->validate([
-            'fileA1' => 'mimes:pdf|max:2048',
-            'fileA2' => 'mimes:pdf|max:2048',
-            'fileA3' => 'mimes:pdf|max:2048',
-            'fileA4' => 'mimes:pdf|max:2048',
-            'fileA5' => 'mimes:pdf|max:2048',
-            'fileA6' => 'mimes:pdf|max:2048',
-            'fileA7' => 'mimes:pdf|max:2048',
-            'fileA8' => 'mimes:pdf|max:2048',
-            'fileA9' => 'mimes:pdf|max:2048',
-            'fileA10' => 'mimes:pdf|max:2048',
-            'fileA11' => 'mimes:pdf|max:2048',
-            'fileA12' => 'mimes:pdf|max:2048',
-            'fileA13' => 'mimes:pdf|max:2048',
+            'fileA1' => 'mimes:pdf',
+            'fileA2' => 'mimes:pdf',
+            'fileA3' => 'mimes:pdf',
+            'fileA4' => 'mimes:pdf',
+            'fileA5' => 'mimes:pdf',
+            'fileA6' => 'mimes:pdf',
+            'fileA7' => 'mimes:pdf',
+            'fileA8' => 'mimes:pdf',
+            'fileA9' => 'mimes:pdf',
+            'fileA10' => 'mimes:pdf',
+            'fileA11' => 'mimes:pdf',
+            'fileA12' => 'mimes:pdf',
+            'fileA13' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();

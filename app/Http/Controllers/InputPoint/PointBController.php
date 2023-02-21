@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PointB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PointBController extends Controller
@@ -27,7 +28,12 @@ class PointBController extends Controller
      */
     public function create()
     {
-        return view('input-point.point-B');
+        $pointB = PointB::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointB)) {
+            return view('input-point.point-B');
+        } else {
+            return view('edit-point.EditPointB', ['data' => $pointB]);
+        }
     }
 
     /**
@@ -39,24 +45,24 @@ class PointBController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fileB1' => 'required|mimes:pdf|max:2048',
-            'fileB2' => 'required|mimes:pdf|max:2048',
-            'fileB3' => 'required|mimes:pdf|max:2048',
-            'fileB4' => 'required|mimes:pdf|max:2048',
-            'fileB5' => 'required|mimes:pdf|max:2048',
-            'fileB6' => 'required|mimes:pdf|max:2048',
-            'fileB7' => 'required|mimes:pdf|max:2048',
-            'fileB8' => 'required|mimes:pdf|max:2048',
-            'fileB9' => 'required|mimes:pdf|max:2048',
-            'fileB10' => 'required|mimes:pdf|max:2048',
-            'fileB11' => 'required|mimes:pdf|max:2048',
-            'fileB12' => 'required|mimes:pdf|max:2048',
-            'fileB13' => 'required|mimes:pdf|max:2048',
-            'fileB14' => 'required|mimes:pdf|max:2048',
-            'fileB15' => 'required|mimes:pdf|max:2048',
-            'fileB16' => 'required|mimes:pdf|max:2048',
-            'fileB17' => 'required|mimes:pdf|max:2048',
-            'fileB18' => 'required|mimes:pdf|max:2048',
+            'fileB1' => 'mimes:pdf',
+            'fileB2' => 'mimes:pdf',
+            'fileB3' => 'mimes:pdf',
+            'fileB4' => 'mimes:pdf',
+            'fileB5' => 'mimes:pdf',
+            'fileB6' => 'mimes:pdf',
+            'fileB7' => 'mimes:pdf',
+            'fileB8' => 'mimes:pdf',
+            'fileB9' => 'mimes:pdf',
+            'fileB10' => 'mimes:pdf',
+            'fileB11' => 'mimes:pdf',
+            'fileB12' => 'mimes:pdf',
+            'fileB13' => 'mimes:pdf',
+            'fileB14' => 'mimes:pdf',
+            'fileB15' => 'mimes:pdf',
+            'fileB16' => 'mimes:pdf',
+            'fileB17' => 'mimes:pdf',
+            'fileB18' => 'mimes:pdf',
         ]);
 
 
@@ -399,7 +405,7 @@ class PointBController extends Controller
 
             DB::commit();
             toast('Create new Point B successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-C');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Add Point B fail :)', 'error');
@@ -451,24 +457,24 @@ class PointBController extends Controller
     public function update(Request $request, PointB $pointB, $PointId)
     {
         $request->validate([
-            'fileB1' => 'mimes:pdf|max:2048',
-            'fileB2' => 'mimes:pdf|max:2048',
-            'fileB3' => 'mimes:pdf|max:2048',
-            'fileB4' => 'mimes:pdf|max:2048',
-            'fileB5' => 'mimes:pdf|max:2048',
-            'fileB6' => 'mimes:pdf|max:2048',
-            'fileB7' => 'mimes:pdf|max:2048',
-            'fileB8' => 'mimes:pdf|max:2048',
-            'fileB9' => 'mimes:pdf|max:2048',
-            'fileB10' => 'mimes:pdf|max:2048',
-            'fileB11' => 'mimes:pdf|max:2048',
-            'fileB12' => 'mimes:pdf|max:2048',
-            'fileB13' => 'mimes:pdf|max:2048',
-            'fileB14' => 'mimes:pdf|max:2048',
-            'fileB15' => 'mimes:pdf|max:2048',
-            'fileB16' => 'mimes:pdf|max:2048',
-            'fileB17' => 'mimes:pdf|max:2048',
-            'fileB18' => 'mimes:pdf|max:2048',
+            'fileB1' => 'mimes:pdf',
+            'fileB2' => 'mimes:pdf',
+            'fileB3' => 'mimes:pdf',
+            'fileB4' => 'mimes:pdf',
+            'fileB5' => 'mimes:pdf',
+            'fileB6' => 'mimes:pdf',
+            'fileB7' => 'mimes:pdf',
+            'fileB8' => 'mimes:pdf',
+            'fileB9' => 'mimes:pdf',
+            'fileB10' => 'mimes:pdf',
+            'fileB11' => 'mimes:pdf',
+            'fileB12' => 'mimes:pdf',
+            'fileB13' => 'mimes:pdf',
+            'fileB14' => 'mimes:pdf',
+            'fileB15' => 'mimes:pdf',
+            'fileB16' => 'mimes:pdf',
+            'fileB17' => 'mimes:pdf',
+            'fileB18' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();

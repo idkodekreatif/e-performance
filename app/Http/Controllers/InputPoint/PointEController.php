@@ -4,8 +4,10 @@ namespace App\Http\Controllers\InputPoint;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\PointD;
 use App\Models\PointE;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PointEController extends Controller
@@ -27,7 +29,12 @@ class PointEController extends Controller
      */
     public function create()
     {
-        return view('input-point.point-E');
+        $pointE = PointE::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointE)) {
+            return view('input-point.point-E');
+        } else {
+            return view('edit-point.EditPointE', ['data' => $pointE]);
+        }
     }
 
     /**
@@ -39,16 +46,16 @@ class PointEController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fileE1_1' => 'required|mimes:pdf|max:2048',
-            'fileE1_2' => 'required|mimes:pdf|max:2048',
-            'fileE1_3' => 'required|mimes:pdf|max:2048',
-            'fileE1_4' => 'required|mimes:pdf|max:2048',
-            'fileE1_5' => 'required|mimes:pdf|max:2048',
-            'fileE1_6' => 'required|mimes:pdf|max:2048',
-            'fileE2_1' => 'required|mimes:pdf|max:2048',
-            'fileE2_2' => 'required|mimes:pdf|max:2048',
-            'fileE2_3' => 'required|mimes:pdf|max:2048',
-            'fileE2_4' => 'required|mimes:pdf|max:2048',
+            'fileE1_1' => 'mimes:pdf',
+            'fileE1_2' => 'mimes:pdf',
+            'fileE1_3' => 'mimes:pdf',
+            'fileE1_4' => 'mimes:pdf',
+            'fileE1_5' => 'mimes:pdf',
+            'fileE1_6' => 'mimes:pdf',
+            'fileE2_1' => 'mimes:pdf',
+            'fileE2_2' => 'mimes:pdf',
+            'fileE2_3' => 'mimes:pdf',
+            'fileE2_4' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
@@ -213,16 +220,16 @@ class PointEController extends Controller
     public function update(Request $request, PointE $pointE, $PointId)
     {
         $request->validate([
-            'fileE1_1' => 'mimes:pdf|max:2048',
-            'fileE1_2' => 'mimes:pdf|max:2048',
-            'fileE1_3' => 'mimes:pdf|max:2048',
-            'fileE1_4' => 'mimes:pdf|max:2048',
-            'fileE1_5' => 'mimes:pdf|max:2048',
-            'fileE1_6' => 'mimes:pdf|max:2048',
-            'fileE2_1' => 'mimes:pdf|max:2048',
-            'fileE2_2' => 'mimes:pdf|max:2048',
-            'fileE2_3' => 'mimes:pdf|max:2048',
-            'fileE2_4' => 'mimes:pdf|max:2048',
+            'fileE1_1' => 'mimes:pdf',
+            'fileE1_2' => 'mimes:pdf',
+            'fileE1_3' => 'mimes:pdf',
+            'fileE1_4' => 'mimes:pdf',
+            'fileE1_5' => 'mimes:pdf',
+            'fileE1_6' => 'mimes:pdf',
+            'fileE2_1' => 'mimes:pdf',
+            'fileE2_2' => 'mimes:pdf',
+            'fileE2_3' => 'mimes:pdf',
+            'fileE2_4' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();

@@ -27,7 +27,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <form action="{{ route('store.pointe') }}" method="POST" enctype="multipart/form-data">
+                        <form id="my-form" action="{{ route('store.pointe') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <table class="table table-bordered border-2 table-sm text-center table-sm">
                                 <thead>
@@ -578,8 +578,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="reset" class="btn btn-danger btn-sm mb-2">Reset</button>
-                                        <button type="submit" class="btn btn-primary btn-sm mb-2">Simpan</button>
+                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();" class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -592,5 +591,25 @@
 
     @push('JavaScript')
     <script src="{{ asset('Assets/js/Input-point/ScorPointE.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmSubmit() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan menyimpan data tersebut.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Simpan',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('my-form').submit();
+                } else {
+                    Swal.fire('Data batal disimpan');
+                }
+            });
+        }
+    </script>
     @endpush
 </x-app-layout>
