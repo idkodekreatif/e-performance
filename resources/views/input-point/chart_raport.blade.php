@@ -72,14 +72,20 @@
         // var arr = @json($messagesArray);
         var arr = {!! json_encode($messagesArray) !!}
         var arrStringName = arr.map(obj => obj.name);
-        var arrStringNilaiKinerjaTotal = arr.map(obj => obj.NilaiKinerjaTotal);
-        var arrStringStandartKinerjaTotal = arr.map(obj => obj.StandartKinerjaTotal);
+        var arrStringPendidikanDanPengajaran = arr.map(obj => obj.PendidikanDanPengajaran);
+        var arrStringPenelitianDanKaryaIlmiah = arr.map(obj => obj.PenelitianDanKaryaIlmiah);
+        var arrStringPengabdianMasyarakat = arr.map(obj => obj.PengabdianMasyarakat);
+        var arrStringPengabdianInstitusiDanPengembanganDiri = arr.map(obj => obj.PengabdianInstitusiDanPengembanganDiri);
         var arrStringresult_capaian_total = arr.map(obj => obj.result_capaian_total);
         var arrStringPredikat = arr.map(obj => obj.predikat);
 
         // console.log(arr);
         // console.log(arrStringName);
         // console.log(arrStringNilaiKinerjaTotal);
+        // console.log(arrStringPendidikanDanPengajaran);
+        // console.log(arrStringPenelitianDanKaryaIlmiah);
+        // console.log(arrStringPengabdianMasyarakat);
+        // console.log(arrStringPengabdianInstitusiDanPengembanganDiri);
         // console.log(arrStringStandartKinerjaTotal);
         // console.log(arrStringresult_capaian_total);
         // console.log(arrStringPredikat);

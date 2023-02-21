@@ -1,4 +1,4 @@
-<x-app-layout title="Form Update Point D">
+<x-app-layout title="Form Point D">
     @push('style')
     <style>
         input::-webkit-outer-spin-button,
@@ -14,12 +14,22 @@
     @endpush
 
     <div class="col-xl col-lg">
+        @role('it'|'superuser')
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms Update</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Update Forms </a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Point D</a></li>
             </ol>
         </div>
+        @endrole
+        @role('dosen|hrd')
+        <div class="row page-titles shadow">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms </a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Point D</a></li>
+            </ol>
+        </div>
+        @endrole
         <div class="card shadow">
             <div class="card-header">
                 <h4 class="card-title">Point D</h4>
@@ -27,7 +37,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <form action="{{ route('update.Point-D', [$data->user_id]) }}" method="POST"
+                        <form id="my-form" action="{{ route('update.Point-D', [$data->user_id]) }}" method="POST"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
@@ -1277,8 +1287,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="reset" class="btn btn-danger btn-sm mb-2">Reset</button>
-                                        <button type="submit" class="btn btn-primary btn-sm mb-2">Simpan</button>
+                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();" class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -1291,5 +1300,25 @@
 
     @push('JavaScript')
     <script src="{{ asset('Assets/js/Input-point/ScorPointD.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmSubmit() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan menyimpan data tersebut.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Simpan',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('my-form').submit();
+                } else {
+                    Swal.fire('Data batal disimpan');
+                }
+            });
+        }
+    </script>
     @endpush
 </x-app-layout>

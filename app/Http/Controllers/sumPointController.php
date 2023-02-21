@@ -102,20 +102,20 @@ class sumPointController extends Controller
     public function raportView($user_id)
     {
         $users = DB::table('users')
-            ->leftJoin('point_a', 'users.id', '=', 'point_a.user_id')
-            ->leftJoin('point_b', 'users.id', '=', 'point_b.user_id')
-            ->leftJoin('point_c', 'users.id', '=', 'point_c.user_id')
-            ->leftJoin('point_d', 'users.id', '=', 'point_d.user_id')
-            ->leftJoin('point_e', 'users.id', '=', 'point_e.user_id')
-            ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
-            ->where('point_a.user_id', $user_id)
-            ->where('point_b.user_id', $user_id)
-            ->where('point_c.user_id', $user_id)
-            ->where('point_d.user_id', $user_id)
-            ->where('point_e.user_id', $user_id)
+            ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+            ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+            ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+            ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+            ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+            ->where(function($query) {
+                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
+            })
             ->first();
-
-
 
         return view('input-point.raport', compact('users'));
     }
@@ -148,18 +148,20 @@ class sumPointController extends Controller
         }
 
         $data = $users
-            ->leftJoin('point_a', 'point_a.user_id', 'users.id')
-            ->leftJoin('point_b', 'point_b.user_id', 'users.id')
-            ->leftJoin('point_c', 'point_c.user_id', 'users.id')
-            ->leftJoin('point_d', 'point_d.user_id', 'users.id')
-            ->leftJoin('point_e', 'point_e.user_id', 'users.id')
-            ->whereNotNull('point_a.user_id')
-            ->whereNotNull('point_b.user_id')
-            ->whereNotNull('point_c.user_id')
-            ->whereNotNull('point_d.user_id')
-            ->whereNotNull('point_e.user_id')
-            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-            ->get();
+        ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+        ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+        ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+        ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+        ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+        ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+        ->where(function($query) {
+            $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
+        })
+        ->get();
 
         $messagesArray = [];
         foreach ($data as $data) {
@@ -172,7 +174,22 @@ class sumPointController extends Controller
             $d = (float)$data->ResultSumNilaiTotalUnsurPenunjang;
             $e = (float)$data->NilaiUnsurPengabdian;
 
+            // Result nilai Pendidikan dan Pengajaran
+            $resultSumPendidikanDanPengajaran = ($a / 11.69) * 100;
+            $result_data["PendidikanDanPengajaran"] = number_format((float)$resultSumPendidikanDanPengajaran, 2, '.', '');
+            // Result Nilai Penelitian & karya Ilmiah
+            $resultSumPenelitian = ($b / 4.26) * 100;
+            $result_data["PenelitianDanKaryaIlmiah"] = number_format((float)$resultSumPenelitian, 2, '.', '');
+            // Result Nilai Pengabdian Masyarakat
+            $resultSumPengabdian = ($c / 1.20) * 100;
+            $result_data["PengabdianMasyarakat"] = number_format((float)$resultSumPengabdian, 2, '.', '');
+
+
             $sum_d_e = $d + $e;
+            // Result Nilai Penunjang, Pengabdian Intitus dan Pengembangan Diri
+            $resultSumPenunjangPengabdian = ($sum_d_e / 2.17) * 100;
+            $result_data["PengabdianInstitusiDanPengembanganDiri"] = number_format((float)$resultSumPenunjangPengabdian, 2, '.', '');
+
             // Result SUM Nilai Akhir Nilai Kinerja total
             $sum_Kinerja_total = $a + $b + $c + $sum_d_e;
             $result_sum_Kinerja_total = number_format((float)$sum_Kinerja_total, 2, '.', '');
@@ -214,6 +231,7 @@ class sumPointController extends Controller
             // Result Array
             $messagesArray[] = $result_data;
         }
+        // dd($messagesArray);
 
         return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName'));
     }

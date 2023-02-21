@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PointB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PointBController extends Controller
@@ -27,7 +28,12 @@ class PointBController extends Controller
      */
     public function create()
     {
-        return view('input-point.point-B');
+        $pointB = PointB::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointB)) {
+            return view('input-point.point-B');
+        } else {
+            return view('edit-point.EditPointB', ['data' => $pointB]);
+        }
     }
 
     /**
@@ -399,7 +405,7 @@ class PointBController extends Controller
 
             DB::commit();
             toast('Create new Point B successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-C');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Add Point B fail :)', 'error');

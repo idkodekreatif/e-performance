@@ -4,8 +4,10 @@ namespace App\Http\Controllers\InputPoint;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\PointD;
 use App\Models\PointE;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PointEController extends Controller
@@ -27,7 +29,12 @@ class PointEController extends Controller
      */
     public function create()
     {
-        return view('input-point.point-E');
+        $pointE = PointE::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointE)) {
+            return view('input-point.point-E');
+        } else {
+            return view('edit-point.EditPointE', ['data' => $pointE]);
+        }
     }
 
     /**
