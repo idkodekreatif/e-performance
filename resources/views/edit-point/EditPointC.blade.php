@@ -1094,7 +1094,7 @@
                                         <td><input type="number" value="{{ $data->TotalKelebihaC5 }}"
                                                 name="TotalKelebihaC5" id="TotalKelebihaC5" readonly>
                                         </td>
-                                        <td colspan="3" rowspan="6">Nilai Tambah Penelitian</td>
+                                        <td colspan="3" rowspan="6">Nilai Tambah Pengabdian kepada Masyarakat</td>
                                         <td rowspan="6"><input type="number" value="{{ $data->NilaiTambahPenelitian }}"
                                                 name="NilaiTambahPenelitian" id="NilaiTambahPenelitian" readonly></td>
                                     </tr>

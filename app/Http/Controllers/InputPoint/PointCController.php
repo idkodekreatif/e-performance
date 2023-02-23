@@ -274,7 +274,7 @@ class PointCController extends Controller
             $pointC->TotalKelebihaC9 = $request->get('TotalKelebihaC9');
             $pointC->TotalKelebihanSkor = $request->get('TotalKelebihanSkor');
             $pointC->NilaiPengabdianKepadaMasyarakat = $request->get('NilaiPengabdianKepadaMasyarakat');
-            $pointC->NilaiTambahPenelitian = $request->get('NilaiTambahPenelitian');
+            $pointC->NilaiTambahPengabdianKepadaMasyarakat = $request->get('NilaiTambahPengabdianKepadaMasyarakat');
             $pointC->NilaiTotalPengabdianKepadaMasyarakat = $request->get('NilaiTotalPengabdianKepadaMasyarakat');
             $pointC->user_id = Auth()->id();
             $pointC->save();
@@ -599,7 +599,7 @@ class PointCController extends Controller
             $TotalKelebihaC9 = $request->TotalKelebihaC9;
             $TotalKelebihanSkor = $request->TotalKelebihanSkor;
             $NilaiPengabdianKepadaMasyarakat = $request->NilaiPengabdianKepadaMasyarakat;
-            $NilaiTambahPenelitian = $request->NilaiTambahPenelitian;
+            $NilaiTambahPengabdianKepadaMasyarakat = $request->NilaiTambahPengabdianKepadaMasyarakat;
             $NilaiTotalPengabdianKepadaMasyarakat = $request->NilaiTotalPengabdianKepadaMasyarakat;
 
 
@@ -774,14 +774,14 @@ class PointCController extends Controller
                 'TotalKelebihaC9' => $TotalKelebihaC9,
                 'TotalKelebihanSkor' => $TotalKelebihanSkor,
                 'NilaiPengabdianKepadaMasyarakat' => $NilaiPengabdianKepadaMasyarakat,
-                'NilaiTambahPenelitian' => $NilaiTambahPenelitian,
+                'NilaiTambahPenelitian' => $NilaiTambahPengabdianKepadaMasyarakat,
                 'NilaiTotalPengabdianKepadaMasyarakat' => $NilaiTotalPengabdianKepadaMasyarakat,
             ];
 
             $RecordData->update($update);
             DB::commit();
             toast('Update Point C successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-D');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Update Point C fail :)', 'error');

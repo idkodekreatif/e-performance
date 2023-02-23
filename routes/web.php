@@ -159,6 +159,7 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
     // -----------------------------Raport User----------------------------------------//
     Route::controller(sumPointController::class)->group(function () {
         Route::get('/raport/view/{user_id}', 'raportView')->name('raport');
+        Route::get('/preview/{user_id}', 'Preview')->name('preview.point');
     });
 });
 

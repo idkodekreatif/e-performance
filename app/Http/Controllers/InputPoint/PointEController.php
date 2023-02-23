@@ -168,7 +168,7 @@ class PointEController extends Controller
 
             DB::commit();
             toast('Create new Point E successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('preview.point', ['user_id' => Auth::user()->id]);
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Add Point E fail :)', 'error');
@@ -447,7 +447,7 @@ class PointEController extends Controller
             $RecordData->update($update);
             DB::commit();
             toast('Update Point E successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('preview.point', ['user_id' => Auth::user()->id]);
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Update Point E fail :)', 'error');
