@@ -176,7 +176,7 @@ class CreatePointCTable extends Migration
             $table->string('TotalKelebihaC9', 20);
             $table->string('TotalKelebihanSkor', 20);
             $table->string('NilaiPengabdianKepadaMasyarakat', 20);
-            $table->string('NilaiTambahPenelitian', 20);
+            $table->string('NilaiTambahPengabdianKepadaMasyarakat', 20);
             $table->float('NilaiTotalPengabdianKepadaMasyarakat', 8, 2);
 
             $table->unsignedBigInteger('user_id')->unique();

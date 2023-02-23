@@ -871,9 +871,9 @@
                                         <td colspan="2">Total Kelebihan Skor No. 5</td>
                                         <td><input type="number" name="TotalKelebihaC5" id="TotalKelebihaC5" readonly>
                                         </td>
-                                        <td colspan="3" rowspan="6">Nilai Tambah Penelitian</td>
-                                        <td rowspan="6"><input type="number" name="NilaiTambahPenelitian"
-                                                id="NilaiTambahPenelitian" readonly></td>
+                                        <td colspan="3" rowspan="6">Nilai Tambah Pengabdian kepada Masyarakat</td>
+                                        <td rowspan="6"><input type="number" name="NilaiTambahPengabdianKepadaMasyarakat"
+                                                id="NilaiTambahPengabdianKepadaMasyarakat" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
