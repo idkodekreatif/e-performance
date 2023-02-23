@@ -6,17 +6,15 @@ Project Description
 
 ### Todo
 
-- [ ] dibawah poin E & diatas update ada menu submit  
-- tampilkan higligts  
-- [ ] untuk poin e tombol simpan & submit (bila submit dipilih akan muncul halaman rekap untuk preview, dihalaman tsb akan ada pilihan submit & kembali)  
 
 ### In Progress
 
-- [ ] Menambahkan Role / akun+role Untuk IKTISAR serta mengatur role di blade menu  
-- [ ] Menambahkan menu raport di sidebar untuk role tendik  
+- [ ] untuk poin e tombol simpan & submit (bila submit dipilih akan muncul halaman rekap untuk preview, dihalaman tsb akan ada pilihan submit & kembali)  
 
 ### Done ✓
 
+- [x] Menambahkan menu raport di sidebar untuk role tendik  
+- [x] Menambahkan Role / akun+role Untuk IKTISAR serta mengatur role di blade menu  
 - [x] Fiks Raport dan Chart ITIKAD supaya bisa muncul nilai saat ada yang sudah terisi point  
 - [x] bisa di save, simultan ( bisa bertahap misal di kerjakan point A 1 sampai 5 dulu terus next 6 sampai 10 )  
 - [x] Chart Itikad menjadi 5 point  
