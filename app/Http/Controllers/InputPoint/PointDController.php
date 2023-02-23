@@ -851,7 +851,7 @@ class PointDController extends Controller
             $RecordData->update($update);
             DB::commit();
             toast('Update Point D successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-E');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Update Point D fail :)', 'error');

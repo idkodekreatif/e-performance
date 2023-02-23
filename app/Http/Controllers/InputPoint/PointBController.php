@@ -1139,7 +1139,7 @@ class PointBController extends Controller
             $RecordData->update($update);
             DB::commit();
             toast('Update Point B successfully :)', 'success');
-            return redirect()->back();
+            return redirect()->route('point-C');
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Update Point B fail :)', 'error');

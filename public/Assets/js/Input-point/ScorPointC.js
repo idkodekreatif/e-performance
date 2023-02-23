@@ -1462,7 +1462,7 @@ function sum() {
     // // nilai tambah pendidikan dan pengajaran
     if (!isNaN(resultHasilSumKelebihanSkor)) {
         // Tampilkan output pada input form
-        document.getElementById("NilaiTambahPenelitian").value =
+        document.getElementById("NilaiTambahPengabdianKepadaMasyarakat").value =
             resultHasilSumKelebihanSkor;
     }
 

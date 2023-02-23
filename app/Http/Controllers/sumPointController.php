@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -234,5 +235,27 @@ class sumPointController extends Controller
         // dd($messagesArray);
 
         return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName'));
+    }
+
+    public function Preview($user_id)
+    {
+        $data = DB::table('users')
+        ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+        ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+        ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+        ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+        ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+        ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
+        ->where(function($query) {
+            $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
+        })
+        ->where('users.id', $user_id)
+        ->first();
+
+        return view('input-point.preview', compact('data'));
     }
 }
