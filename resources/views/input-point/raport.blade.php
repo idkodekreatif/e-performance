@@ -18,13 +18,13 @@
                 <div class="table-responsive">
                     <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
                         <?php
-                            $a = (float)$users->NilaiTotalPendidikanDanPengajaran;
-                            $b = (float)$users->NilaiTotalPenelitiandanKaryaIlmiah;
-                            $c = (float)$users->NilaiTotalPengabdianKepadaMasyarakat;
+                            $a = (float)($users->NilaiTotalPendidikanDanPengajaran ?? 0);
+                            $b = (float)($users->NilaiTotalPenelitiandanKaryaIlmiah ?? 0);
+                            $c = (float)($users->NilaiTotalPengabdianKepadaMasyarakat ?? 0);
                             // SUM Point ( A,B,C )
                             $total_Ntu = $a + $b + $c;
-                            $d = (float)$users->ResultSumNilaiTotalUnsurPenunjang;
-                            $e = (float)$users->NilaiUnsurPengabdian;
+                            $d = (float)($users->ResultSumNilaiTotalUnsurPenunjang ?? 0);
+                            $e = (float)($users->NilaiUnsurPengabdian ?? 0);
                             // SUM Point ( D,E )
                             $total_Ntd = $d + $e;
                             // SUM Point Nilai Kinerja Dosen
