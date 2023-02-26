@@ -1,5 +1,6 @@
 <x-app-layout title="Preview">
     @push('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
     @endpush
 
     <div id="my-form" class="col-xl col-lg">
@@ -45,7 +46,7 @@
                             <tr>
                                 <td>
                                     <label for="">Total Skor Pendidikan dan Pengajaran</label>
-                                    <input id="" name="" type="number" value="{{ $data->TotalSkorPendidikanPointA }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->TotalSkorPendidikanPointA, 3) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                                 <td>
@@ -60,7 +61,7 @@
                                 </td>
                                 <td>
                                     <label for="">Nilai Total Pendidikan & Pengajaran</label>
-                                    <input id="" name="" type="number" value="{{ $data->NilaiTotalPendidikanDanPengajaran }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->NilaiTotalPendidikanDanPengajaran, 2) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                             </tr>
@@ -80,7 +81,7 @@
                             <tr>
                                 <td>
                                     <label for="">Total Skor Penelitian</label>
-                                    <input id="" name="" type="number" value="{{ $data->TotalSkorPenelitianPointB }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->TotalSkorPenelitianPointB, 3) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                                 <td>
@@ -95,7 +96,7 @@
                                 </td>
                                 <td>
                                     <label for="">Nilai Total Penelitian & Karya Ilmiah</label>
-                                    <input id="" name="" type="number" value="{{ $data->NilaiTotalPenelitiandanKaryaIlmiah }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->NilaiTotalPenelitiandanKaryaIlmiah, 2) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                             </tr>
@@ -115,7 +116,7 @@
                             <tr>
                                 <td>
                                     <label for="">Total Skor Pengabdian Kepada Masyarakat</label>
-                                    <input id="" name="" type="number" value="{{ $data->TotalSkorPengabdianKepadaMasyarakat }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->TotalSkorPengabdianKepadaMasyarakat, 3) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                                 <td>
@@ -130,7 +131,7 @@
                                 </td>
                                 <td>
                                     <label for="">Nilai Total Pengabdian Kepada Masyarakat</label>
-                                    <input id="" name="" type="number" value="{{ $data->NilaiTotalPengabdianKepadaMasyarakat }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->NilaiTotalPengabdianKepadaMasyarakat, 2) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                             </tr>
@@ -139,6 +140,40 @@
                 </div>
             </div>
         </div>
+
+        <?php
+            $a = (float)$data->NilaiTotalPendidikanDanPengajaran;
+            $b = (float)$data->NilaiTotalPenelitiandanKaryaIlmiah;
+            $c = (float)$data->NilaiTotalPengabdianKepadaMasyarakat;
+            // SUM Point ( A,B,C )
+            $total_Ntu = $a + $b + $c;
+            $d = (float)$data->ResultSumNilaiTotalUnsurPenunjang;
+            $e = (float)$data->NilaiUnsurPengabdian;
+            // SUM Point ( D,E )
+            $total_Ntd = $d + $e;
+            // SUM Point Nilai Kinerja Dosen
+            $total_Nkd = $total_Ntu + $total_Ntd;
+        ?>
+
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="">Nilai Total UNSUR UTAMA</label>
+                                    <input id="" name="" type="number" value="<?php echo number_format((float)$total_Ntu, 2, '.', '')  ?>" class="form-control"
+                                    aria-label="output_point" readonly>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
         <div class="card shadow">
             <div class="card-header">
                 <h4 class="card-title">Point D</h4>
@@ -150,7 +185,7 @@
                             <tr>
                                 <td>
                                     <label for="">Total Skor Unsur Penunjang</label>
-                                    <input id="" name="" type="number" value="{{ $data->TotalSkorUnsurPenunjang }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->TotalSkorUnsurPenunjang, 3) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                                 <td>
@@ -165,7 +200,7 @@
                                 </td>
                                 <td>
                                     <label for="">Nilai Total Unsur Penunjang</label>
-                                    <input id="" name="" type="number" value="{{ $data->ResultSumNilaiTotalUnsurPenunjang }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->ResultSumNilaiTotalUnsurPenunjang, 2) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                             </tr>
@@ -185,24 +220,49 @@
                             <tr>
                                 <td>
                                     <label for="">Total Skor Unsur Pengabdian kepada Institusi dan Pengembangan Diri</label>
-                                    <input id="" name="" type="number" value="{{ $data->SumSkor }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->SumSkor, 3) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
                                 <td>
                                     <label for="">Nilai Total Unsur Pengabdian kpd Institusi dan Pengembangan Diri</label>
-                                    <input id="" name="" type="number" value="{{ $data->NilaiUnsurPengabdian }}" class="form-control"
+                                    <input id="" name="" type="number" value="{{ number_format($data->NilaiUnsurPengabdian, 2) }}" class="form-control"
                                     aria-label="output_point" readonly>
                                 </td>
-                                {{-- <td>
-                                    <label for="">Nilai Tambah Unsur Penunjang</label>
-                                    <input id="" name="" type="number" value="{{ $data->NilaiTambahUnsurPenunjang }}" class="form-control"
-                                    aria-label="output_point" readonly>
-                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                        <tbody>
+                            <tr>
                                 <td>
-                                    <label for="">Nilai Total Unsur Penunjang</label>
-                                    <input id="" name="" type="number" value="{{ $data->ResultSumNilaiTotalUnsurPenunjang }}" class="form-control"
+                                    <label for="">Nilai Total Unsur Non-Tri Dharma</label>
+                                    <input id="" name="" type="number" value="<?php echo number_format((float)$total_Ntd, 2, '.', '') ?>" class="form-control"
                                     aria-label="output_point" readonly>
-                                </td> --}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="">Nilai Kinerja Dosen</label>
+                                    <input id="" name="" type="number" value="<?php echo number_format((float)$total_Nkd, 2, '.', '')  ?>" class="form-control"
+                                    aria-label="output_point" readonly>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -211,28 +271,36 @@
         </div>
 
         <a href="{{ route('point-E') }}" class="btn btn-primary float-left">Kembali</a>
-        <a href="{{ route('raport', Auth::user()->id) }}" class="btn btn-primary" onclick="event.preventDefault(); confirmSubmit();">Raport</a>
+        <a href="{{ route('raport', Auth::user()->id) }}" id="link" class="btn btn-primary">Raport</a>
     </div>
 
     @push('JavaScript')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script>
-        function confirmSubmit() {
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Anda akan meninggalkan halaman ini.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'ya',
-                cancelButtonText: 'Batal',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('my-form').submit();
-                } else {
-                    Swal.fire('Data batal disimpan');
-                }
-            });
-        }
-    </script>
+        // Ambil elemen a href
+        var link = document.getElementById('link');
+
+        // Tambahkan event listener untuk event click pada elemen tersebut
+        link.addEventListener('click', function(event) {
+          event.preventDefault(); // Mencegah a href dari berperilaku default
+
+          // Tampilkan SweetAlert untuk konfirmasi
+          swal({
+            title: "Apakah kamu yakin?",
+            text: "Setelah pindah halaman, kamu tidak akan kembali ke halaman ini lagi!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ya, pindah halaman!",
+            cancelButtonText: "Batal",
+            closeOnConfirm: false
+          },
+          function(){
+            // Jika tombol "Ya" diklik, pindah ke halaman baru
+            window.location.href = link.href;
+          });
+        });
+      </script>
     @endpush
 </x-app-layout>
