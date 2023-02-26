@@ -13,9 +13,9 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('raport.chart') }}">Laporan Dosen</a></li>
-                    <li><a href="{{ route('preview.point', Auth::user()->id) }}">Laporan preview</a></li>
+                    <li><a href="{{ route('preview.point', Auth::user()->id) }}">Fiks Laporan preview</a></li>
                     @role('it')
-                    <li><a href="{{ route('raport.chart.itisar') }}">Laporan Tendik</a></li>
+                    <li><a href="{{ route('raport.chart.itisar') }}">Dev Laporan Tendik</a></li>
                     @endrole
                 </ul>
             </li>
