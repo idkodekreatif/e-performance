@@ -26,7 +26,7 @@
             <div class="col">
                 <a href="{{ route('ka.baak.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
-                <a href="{{ route('edit.ka.baak', Auth::user()->id) }}"
+                <a href="{{ route('edit.ka.baak') }}"
                     class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a>
             </div>
         </div>
@@ -1775,7 +1775,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="reset" class="btn btn-danger btn-sm mb-2">Reset</button>
                                         <button type="submit" class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>

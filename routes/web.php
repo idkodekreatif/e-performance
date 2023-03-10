@@ -234,7 +234,8 @@ Route::group(
         Route::controller(BaakController::class)->middleware(['role:it|superuser|baak|tendik'])->group(function () {
             Route::get('/Baak/Input', 'create')->name('ka.baak');
             Route::post('/Baak/Request/Store', 'store')->name('store.ka.baak');
-            Route::get('/Baak/edit/{PointId}', 'edit')->name('edit.ka.baak');
+            Route::get('/Baak/edit/', 'edit')->name('edit.ka.baak');
+            Route::get('/Baak/search/result', 'dataSearch')->name('baak.data.search');
             Route::put('/Baak/update/{PointId}', 'update')->name('update.ka.baak');
             Route::get('/Raport/Baak/{user_id}', 'raport')->name('ka.baak.raport')->middleware(['role:it|superuser|tendik']);
         });
