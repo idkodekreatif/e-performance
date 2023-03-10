@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+- [ ] Max Size file upload  
 
 ### In Progress
 

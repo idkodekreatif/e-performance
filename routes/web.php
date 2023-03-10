@@ -67,13 +67,13 @@ Route::get('/', function () {
 });
 
 // -----------------------------Home----------------------------------------//
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified', 'prevent-back-history');
 
 
 Route::resource('profile', profileController::class)->only(['index', 'update'])->middleware('auth', 'verified');
 
 // ----------------------------- Maintenain ----------------------------------------//
-Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified']], function () {
+Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified', 'prevent-back-history']], function () {
     // -----------------------------Users Management Spatie----------------------------------------//
     Route::controller(IndexController::class)->group(function () {
         Route::get('/', 'index')->name('index');
@@ -114,7 +114,7 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
 });
 
 // -----------------------------Prefix All Point ITIKAD----------------------------------------//
-Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified']], function () {
+Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified', 'prevent-back-history']], function () {
 
     // -----------------------------Point A----------------------------------------//
     Route::controller(PointAController::class)->group(function () {
@@ -165,16 +165,16 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
 
 // -----------------------------Aggregat Itikad----------------------------------------//
 Route::group(
-    ['middleware' => ['role:superuser|it|manajer|hrd', 'auth', 'verified']],
+    ['middleware' => ['role:superuser|it|manajer|hrd', 'auth', 'verified', 'prevent-back-history']],
     function () {
         Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
         Route::get('/raport/chart/itisar/', [SumItisarChartController::class, 'ChartView'])->name('raport.chart.itisar');
     }
 );
 
-// -----------------------------Prefix All Point ITISAR----------------------------------------//
+// -----------------------------Prefix All Point IKTISAR----------------------------------------//
 Route::group(
-    ['prefix' => "/ITISAR", 'middleware' => ['role:superuser|it|tendik|warek2', 'auth', 'verified']],
+    ['prefix' => "/IKTISAR", 'middleware' => ['role:superuser|it|tendik|warek2', 'auth', 'verified', 'prevent-back-history']],
     function () {
         // -----------------------------Warek 2 Controller Form Penilaian Ka. Bau ----------------------------------------//
         Route::controller(warek2Controller::class)->middleware(['role:it|superuser|warek2|tendik'])->group(function () {
@@ -455,12 +455,12 @@ Route::group(
     }
 );
 // -----------------------------Laravel Impersonate / Login As----------------------------------------//
-Route::controller(ImpersonateController::class, ['middleware' => ['auth', 'verified']])->group(function () {
+Route::controller(ImpersonateController::class, ['middleware' => ['auth', 'verified', 'prevent-back-history']])->group(function () {
     Route::get('/impersonate/{id}', 'impersonate')->name('impersonate');
     Route::get('/stop-impersonate', 'stopImpersonate')->name('stop-impersonate');
 });
 
 // -----------------------------Log Activity----------------------------------------//
-Route::controller(LogActivity::class)->group(function () {
+Route::controller(LogActivity::class, ['middleware' => ['auth', 'verified', 'prevent-back-history']])->group(function () {
     Route::get('/logactivity', 'index')->name('logactivity');
 });
