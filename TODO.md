@@ -6,11 +6,17 @@ Project Description
 
 ### Todo
 
+- [ ] Fiks BUG menu  
+- [ ] Membuat fiture edit IKTISAR berdasarkan id user pegawai yang di nilai  
 - [ ] Max Size file upload  
+- [ ] Validation/Form input sesuai form excel pembagian  
+- [ ] Menampilkan detail Checklist validation yang belum terisi di bagian dosen  
+- [ ] Jika role UPT hanya bisa read karena hanya yang bisa mengisi kepala bagian  
+- [ ] Check fungsi penambahan role user di VPS dan LOCAL  
 
 ### In Progress
 
-- [ ] Membuat fiture edit IKTISAR berdasarkan id user pegawai yang di nilai  
+- [ ] Penyusunan Menu IKTIKAD sesuai bagian  
 
 ### Done ✓
 

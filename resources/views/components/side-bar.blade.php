@@ -63,14 +63,13 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR</a>
                         <ul aria-expanded="false">
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
-                                @role('tendik')
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}">Raport Ka. Bau</a></li>
-                                </ul>
-                                @endrole
                                 @role('it|superuser|warek2')
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('warek2.ka.bau') }}">Ka. Bau</a></li>
+                                </ul>
+                                @else
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}">Raport Ka. Bau</a></li>
                                 </ul>
                                 @endrole
                             </li>
