@@ -6,7 +6,6 @@ Project Description
 
 ### Todo
 
-- [ ] Fiks BUG menu  
 - [ ] Membuat fiture edit IKTISAR berdasarkan id user pegawai yang di nilai  
 - [ ] Max Size file upload  
 - [ ] Validation/Form input sesuai form excel pembagian  
@@ -16,10 +15,12 @@ Project Description
 
 ### In Progress
 
+- [ ] Fiks BUG menu  
 - [ ] Penyusunan Menu IKTIKAD sesuai bagian  
 
 ### Done ✓
 
+- [x] Fiks Register Tendik  
 - [x] fiks register tendik required fakultas dan prodi  
 - [x] untuk poin e tombol simpan & submit (bila submit dipilih akan muncul halaman rekap untuk preview, dihalaman tsb akan ada pilihan submit & kembali)  
 - [x] Menambahkan menu raport di sidebar untuk role tendik  
