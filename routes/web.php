@@ -67,13 +67,13 @@ Route::get('/', function () {
 });
 
 // -----------------------------Home----------------------------------------//
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified', 'prevent-back-history');
 
 
 Route::resource('profile', profileController::class)->only(['index', 'update'])->middleware('auth', 'verified');
 
 // ----------------------------- Maintenain ----------------------------------------//
-Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified']], function () {
+Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified', 'prevent-back-history']], function () {
     // -----------------------------Users Management Spatie----------------------------------------//
     Route::controller(IndexController::class)->group(function () {
         Route::get('/', 'index')->name('index');
@@ -114,7 +114,7 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
 });
 
 // -----------------------------Prefix All Point ITIKAD----------------------------------------//
-Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified']], function () {
+Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified', 'prevent-back-history']], function () {
 
     // -----------------------------Point A----------------------------------------//
     Route::controller(PointAController::class)->group(function () {
@@ -165,16 +165,16 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
 
 // -----------------------------Aggregat Itikad----------------------------------------//
 Route::group(
-    ['middleware' => ['role:superuser|it|manajer|hrd', 'auth', 'verified']],
+    ['middleware' => ['role:superuser|it|manajer|hrd', 'auth', 'verified', 'prevent-back-history']],
     function () {
         Route::get('/raport/chart/', [sumPointController::class, 'RaportChartView'])->name('raport.chart');
         Route::get('/raport/chart/itisar/', [SumItisarChartController::class, 'ChartView'])->name('raport.chart.itisar');
     }
 );
 
-// -----------------------------Prefix All Point ITISAR----------------------------------------//
+// -----------------------------Prefix All Point IKTISAR----------------------------------------//
 Route::group(
-    ['prefix' => "/ITISAR", 'middleware' => ['role:superuser|it|tendik|warek2', 'auth', 'verified']],
+    ['prefix' => "/IKTISAR", 'middleware' => ['auth', 'verified', 'prevent-back-history']],
     function () {
         // -----------------------------Warek 2 Controller Form Penilaian Ka. Bau ----------------------------------------//
         Route::controller(warek2Controller::class)->middleware(['role:it|superuser|warek2|tendik'])->group(function () {
@@ -186,7 +186,7 @@ Route::group(
         });
 
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PEMASARAN ----------------------------------//
-        Route::controller(KaUnitPemasaranController::class)->middleware(['role:it|superuser|upt|tendik'])->group(function () {
+        Route::controller(KaUnitPemasaranController::class)->middleware(['role:it|superuser|warek1|upt|tendik'])->group(function () {
             Route::get('/Ka-Unit-Pemasaran/Input', 'create')->name('ka.upt.ka.unit.pemasaran');
             Route::post('/Ka-Pemasaran/Request/Store', 'store')->name('store.ka.pemasaran');
             Route::get('/Ka-Pemasaran/edit/{PointId}', 'edit')->name('edit.ka.pemasaran');
@@ -195,7 +195,7 @@ Route::group(
         });
 
         // ----------------------------- Controller Form Penilaian Staff Pemasaran ----------------------------------//
-        Route::controller(StaffPemasaranController::class)->middleware(['role:it|superuser|upt|tendik'])->group(function () {
+        Route::controller(StaffPemasaranController::class)->middleware(['role:it|superuser|warek1|upt|tendik'])->group(function () {
             Route::get('/StaffPemasaran/Input', 'create')->name('ka.StaffPemasaran');
             Route::post('/StaffPemasaran/Request/Store', 'store')->name('store.StaffPemasaran');
             Route::get('/StaffPemasaran/edit/{PointId}', 'edit')->name('edit.StaffPemasaran');
@@ -204,7 +204,7 @@ Route::group(
         });
 
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PERPUSTAKAAN ----------------------------------//
-        Route::controller(KoordinatorPerpustakaanController::class)->middleware(['role:it|superuser|upt|tendik'])->group(function () {
+        Route::controller(KoordinatorPerpustakaanController::class)->middleware(['role:it|superuser|upt|warek1|tendik'])->group(function () {
             Route::get('/Ka-Perpustakaan/Input', 'create')->name('ka.upt.ka.unit.perpustakaan');
             Route::post('/Ka-Perpustakaan/Request/Store', 'store')->name('store.ka.perpustakaan');
             Route::get('/Ka-Perpustakaan/edit/{PointId}', 'edit')->name('edit.ka.perpustakaan');
@@ -213,7 +213,7 @@ Route::group(
         });
 
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT LABORAN ----------------------------------//
-        Route::controller(KaLaboranController::class)->middleware(['role:it|superuser|upt|tendik'])->group(function () {
+        Route::controller(KaLaboranController::class)->middleware(['role:it|superuser|upt|warek1|tendik'])->group(function () {
             Route::get('/Ka-Laboran/Input', 'create')->name('ka.upt.ka.unit.laboran');
             Route::post('/Ka-Laboran/Request/Store', 'store')->name('store.ka.laboran');
             Route::get('/Ka-Laboran/edit/{PointId}', 'edit')->name('edit.ka.laboran');
@@ -222,7 +222,7 @@ Route::group(
         });
 
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT IT ----------------------------------//
-        Route::controller(KaUnitItController::class)->middleware(['role:it|superuser|upt|tendik'])->group(function () {
+        Route::controller(KaUnitItController::class)->middleware(['role:it|superuser|upt|warek1|tendik'])->group(function () {
             Route::get('/Ka-Unit-IT/Input', 'create')->name('ka.upt.ka.unit.it');
             Route::post('/Ka-Unit-IT/Request/Store', 'store')->name('store.ka.it');
             Route::get('/Ka-Unit-IT/edit/{PointId}', 'edit')->name('edit.ka.it');
@@ -231,16 +231,17 @@ Route::group(
         });
 
         // ----------------------------- Controller Form Penilaian Ka. Baak ----------------------------------//
-        Route::controller(BaakController::class)->middleware(['role:it|superuser|baak|tendik'])->group(function () {
+        Route::controller(BaakController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/Baak/Input', 'create')->name('ka.baak');
             Route::post('/Baak/Request/Store', 'store')->name('store.ka.baak');
-            Route::get('/Baak/edit/{PointId}', 'edit')->name('edit.ka.baak');
+            Route::get('/Baak/edit/', 'edit')->name('edit.ka.baak');
+            Route::get('/Baak/search/result', 'dataSearch')->name('baak.data.search');
             Route::put('/Baak/update/{PointId}', 'update')->name('update.ka.baak');
             Route::get('/Raport/Baak/{user_id}', 'raport')->name('ka.baak.raport')->middleware(['role:it|superuser|tendik']);
         });
 
          // -------------------------- Controller Form Penilaian Kemahasiswaan ------------------------------//
-         Route::controller(KemahasiswaanController::class)->middleware(['role:it|superuser|baak|tendik'])->group(function () {
+         Route::controller(KemahasiswaanController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/kemahasiswaan/Input', 'create')->name('kemahasiswaan');
             Route::post('/kemahasiswaan/Request/Store', 'store')->name('store.kemahasiswaan');
             Route::get('/kemahasiswaan/edit/{PointId}', 'edit')->name('edit.kemahasiswaan');
@@ -249,7 +250,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Baak Fk Bisnis ------------------------------//
-        Route::controller(BaakFkBisnisController::class)->middleware(['role:it|superuser|baak|tendik'])->group(function () {
+        Route::controller(BaakFkBisnisController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/baakFkBisnis/Input', 'create')->name('baakFkBisnis');
             Route::post('/baakFkBisnis/Request/Store', 'store')->name('store.baakFkBisnis');
             Route::get('/baakFkBisnis/edit/{PointId}', 'edit')->name('edit.baakFkBisnis');
@@ -257,7 +258,7 @@ Route::group(
             Route::get('/Raport/baakFkBisnis/{user_id}', 'raport')->name('baakFkBisnis.raport')->middleware(['role:it|superuser|tendik']);
         });
         // -------------------------- Controller Form Penilaian Staff Baak Satu ------------------------------//
-        Route::controller(StaffBaakSatuController::class)->middleware(['role:it|superuser|baak|tendik'])->group(function () {
+        Route::controller(StaffBaakSatuController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/staffbaaksatu/Input', 'create')->name('staffbaaksatu');
             Route::post('/staffbaaksatu/Request/Store', 'store')->name('store.staffbaaksatu');
             Route::get('/staffbaaksatu/edit/{PointId}', 'edit')->name('edit.staffbaaksatu');
@@ -265,7 +266,7 @@ Route::group(
             Route::get('/Raport/staffbaaksatu/{user_id}', 'raport')->name('staffbaaksatu.raport')->middleware(['role:it|superuser|tendik']);
         });
         // -------------------------- Controller Form Penilaian Staff Baak Dua ------------------------------//
-        Route::controller(StaffBaakDuaController::class)->middleware(['role:it|superuser|baak|tendik'])->group(function () {
+        Route::controller(StaffBaakDuaController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/staffbaakdua/Input', 'create')->name('staffbaakdua');
             Route::post('/staffbaakdua/Request/Store', 'store')->name('store.staffbaakdua');
             Route::get('/staffbaakdua/edit/{PointId}', 'edit')->name('edit.staffbaakdua');
@@ -283,7 +284,7 @@ Route::group(
         });
 
         // ----------------------------- Controller Form Penilaian LPM ----------------------------------//
-        Route::controller(LpmController::class)->middleware(['role:it|superuser|lpm|tendik'])->group(function () {
+        Route::controller(LpmController::class)->middleware(['role:it|superuser|lpm|ypsdmit|tendik'])->group(function () {
             Route::get('/Lpm/Input', 'create')->name('Lpm');
             Route::post('/Lpm/Request/Store', 'store')->name('store.Lpm');
             Route::get('/Lpm/edit/{PointId}', 'edit')->name('edit.Lpm');
@@ -292,7 +293,7 @@ Route::group(
         });
 
         // ----------------------------- Controller Form Penilaian KasubRisbang ----------------------------------//
-        Route::controller(KasubRisbangController::class)->middleware(['role:it|superuser|risbang|tendik'])->group(function () {
+        Route::controller(KasubRisbangController::class)->middleware(['role:it|superuser|risbang|warek1|tendik'])->group(function () {
             Route::get('/KasubRisbang/Input', 'create')->name('KasubRisbang');
             Route::post('/KasubRisbang/Request/Store', 'store')->name('store.KasubRisbang');
             Route::get('/KasubRisbang/edit/{PointId}', 'edit')->name('edit.KasubRisbang');
@@ -301,7 +302,7 @@ Route::group(
         });
 
         // ----------------------------- Controller Form Penilaian Sek Ka. Prodi ----------------------------------//
-        Route::controller(SekKaprodiController::class)->middleware(['role:it|superuser|gizi|perawat|bidan|manajemen|akuntansi|tendik'])->group(function () {
+        Route::controller(SekKaprodiController::class)->middleware(['role:it|superuser|gizi|perawat|bidan|manajemen|akuntansi|warek1|tendik'])->group(function () {
             Route::get('/sekKaprodi/Input', 'create')->name('sekKaprodi');
             Route::post('/sekKaprodi/Request/Store', 'store')->name('store.sekKaprodi');
             Route::get('/sekKaprodi/edit/{PointId}', 'edit')->name('edit.sekKaprodi');
@@ -373,7 +374,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
-        Route::controller(warekSatuController::class)->middleware(['role:it|superuser|rektor|tendik'])->group(function () {
+        Route::controller(warekSatuController::class)->middleware(['role:it|superuser|rektor|ypsdmit|tendik'])->group(function () {
             Route::get('/warekSatu/Input', 'create')->name('warekSatu');
             Route::post('/warekSatu/Request/Store', 'store')->name('store.warekSatu');
             Route::get('/warekSatu/edit/{PointId}', 'edit')->name('edit.warekSatu');
@@ -381,8 +382,8 @@ Route::group(
             Route::get('/Raport/warekSatu/{user_id}', 'raport')->name('warekSatu.raport')->middleware(['role:it|superuser|tendik']);
         });
 
-        // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
-        Route::controller(warekDuaController::class)->middleware(['role:it|superuser|rektor|tendik'])->group(function () {
+        // -------------------------- Controller Form Penilaian Warek Dua ------------------------------//
+        Route::controller(warekDuaController::class)->middleware(['role:it|superuser|ypsdmit|rektor|tendik'])->group(function () {
             Route::get('/WarekDua/Input', 'create')->name('WarekDua');
             Route::post('/WarekDua/Request/Store', 'store')->name('store.WarekDua');
             Route::get('/WarekDua/edit/{PointId}', 'edit')->name('edit.WarekDua');
@@ -391,7 +392,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Staff Sus Bidang Kerjasama ------------------------------//
-        Route::controller(StaffSusBidKerjasamaController::class)->middleware(['role:it|superuser|rektor|tendik'])->group(function () {
+        Route::controller(StaffSusBidKerjasamaController::class)->middleware(['role:it|superuser|rektor|ypsdmit|tendik'])->group(function () {
             Route::get('/StaffSusBidKerjasama/Input', 'create')->name('StaffSusBidKerjasama');
             Route::post('/StaffSusBidKerjasama/Request/Store', 'store')->name('store.StaffSusBidKerjasama');
             Route::get('/StaffSusBidKerjasama/edit/{PointId}', 'edit')->name('edit.StaffSusBidKerjasama');
@@ -445,7 +446,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Rektor ------------------------------//
-        Route::controller(RektorController::class)->middleware(['role:it|superuser|ypsdmit|tendik'])->group(function () {
+        Route::controller(RektorController::class)->middleware(['role:it|superuser|ypsdmit|warek1|warek2|tendik'])->group(function () {
             Route::get('/Rektor/Input', 'create')->name('rektor');
             Route::post('/Rektor/Request/Store', 'store')->name('store.rektor');
             Route::get('/Rektor/edit/{PointId}', 'edit')->name('edit.rektor');
@@ -455,12 +456,12 @@ Route::group(
     }
 );
 // -----------------------------Laravel Impersonate / Login As----------------------------------------//
-Route::controller(ImpersonateController::class, ['middleware' => ['auth', 'verified']])->group(function () {
+Route::controller(ImpersonateController::class, ['middleware' => ['auth', 'verified', 'prevent-back-history']])->group(function () {
     Route::get('/impersonate/{id}', 'impersonate')->name('impersonate');
     Route::get('/stop-impersonate', 'stopImpersonate')->name('stop-impersonate');
 });
 
 // -----------------------------Log Activity----------------------------------------//
-Route::controller(LogActivity::class)->group(function () {
+Route::controller(LogActivity::class, ['middleware' => ['auth', 'verified', 'prevent-back-history']])->group(function () {
     Route::get('/logactivity', 'index')->name('logactivity');
 });

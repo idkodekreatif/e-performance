@@ -1,6 +1,20 @@
 <x-app-layout title="Users Management">
     @push('style')
+    <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
+    <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
     @endpush
+
     <div class="row page-titles shadow">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">User Control</a></li>
@@ -67,7 +81,12 @@
             <form method="POST" action="{{ route('users.roles', $user->id) }}">
                 @csrf
                 {{-- <label class="form-label" for="role">Roles</label> --}}
-                <select class="default-select form-control wide mb-3" name="role" id="role">
+                {{-- <select class="default-select form-control wide mb-3" name="role" id="role">
+                    @foreach ($roles as $role)
+                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                    @endforeach
+                </select> --}}
+                <select id="single-select" name="role" id="role">
                     @foreach ($roles as $role)
                     <option value="{{ $role->name }}">{{ $role->name }}</option>
                     @endforeach
@@ -83,7 +102,7 @@
         </div>
     </div>
 
-    <div class="card shadow">
+    {{-- <div class="card shadow">
         <div class="card-header">
             <h4 class="card-title">Permissions</h4>
         </div>
@@ -103,7 +122,7 @@
 
             <form method="POST" action="{{ route('users.permissions', $user->id) }}">
                 @csrf
-                {{-- <label class="form-label" for="permission">Permission</label> --}}
+                <label class="form-label" for="permission">Permission</label>
                 <select class="default-select form-control wide mb-3" name="permission" id="permission">
                     @foreach ($permissions as $permission)
                     <option value="{{ $permission->name }}">{{ $permission->name }}</option>
@@ -118,9 +137,13 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 
 
     @push('JavaScript')
+    <script src="{{ asset('Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('Assets/vendor/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('Assets/js/plugins-init/select2-init.js') }}"></script>
+    <script src="{{ asset('Assets/js/custom.min.js') }}"></script>
     @endpush
 </x-app-layout>
