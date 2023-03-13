@@ -6,11 +6,11 @@ Project Description
 
 ### Todo
 
-- [ ] Fiks BUG menu display sesuai role  
 - [ ] Max Size file upload  
 - [ ] Validation/Form input sesuai form excel pembagian  
 - [ ] Menampilkan detail Checklist validation yang belum terisi di bagian dosen  
 - [ ] Jika role UPT hanya bisa read karena hanya yang bisa mengisi kepala bagian  
+- [ ] Fiks BUG menu display sesuai role  
 
 ### In Progress
 
