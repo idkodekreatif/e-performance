@@ -6,14 +6,23 @@ Project Description
 
 ### Todo
 
-- [ ] Table C baris 163 di ganti  
+- [ ] Membuat fiture edit IKTISAR berdasarkan id user pegawai yang di nilai  
+- [ ] Max Size file upload  
+- [ ] Validation/Form input sesuai form excel pembagian  
+- [ ] Menampilkan detail Checklist validation yang belum terisi di bagian dosen  
+- [ ] Jika role UPT hanya bisa read karena hanya yang bisa mengisi kepala bagian  
+- [ ] Check fungsi penambahan role user di VPS dan LOCAL  
 
 ### In Progress
 
-- [ ] untuk poin e tombol simpan & submit (bila submit dipilih akan muncul halaman rekap untuk preview, dihalaman tsb akan ada pilihan submit & kembali)  
+- [ ] Fiks BUG menu  
+- [ ] Penyusunan Menu IKTIKAD sesuai bagian  
 
 ### Done ✓
 
+- [x] Fiks Register Tendik  
+- [x] fiks register tendik required fakultas dan prodi  
+- [x] untuk poin e tombol simpan & submit (bila submit dipilih akan muncul halaman rekap untuk preview, dihalaman tsb akan ada pilihan submit & kembali)  
 - [x] Menambahkan menu raport di sidebar untuk role tendik  
 - [x] Menambahkan Role / akun+role Untuk IKTISAR serta mengatur role di blade menu  
 - [x] Fiks Raport dan Chart ITIKAD supaya bisa muncul nilai saat ada yang sudah terisi point  

@@ -46,7 +46,7 @@ Register
         </div>
         <div class="mb-3">
             <label class="mb-1"><strong>Fakultas</strong></label>
-            <select class="default-select form-control wide mb-3" name="fakultas" required>
+            <select class="default-select form-control wide mb-3" name="fakultas">
                 <option value="">-- Select --</option>
                 <option value="FB">Fakultas Bisnis</option>
                 <option value="FK">Fakultas Kesehatan</option>
@@ -60,7 +60,7 @@ Register
         </div>
         <div class="mb-3">
             <label class="mb-1"><strong>Prodi</strong></label>
-            <select class="default-select form-control wide mb-3" name="prodi" required>
+            <select class="default-select form-control wide mb-3" name="prodi">
                 <option value="">-- Select --</option>
                 <option value="GZ">Prodi Gizi</option>
                 <option value="PR">Prodi Keperawatan</option>

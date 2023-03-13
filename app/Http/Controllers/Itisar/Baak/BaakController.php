@@ -203,20 +203,46 @@ class BaakController extends Controller
      * @param  \App\Models\Baak  $Baak
      * @return \Illuminate\Http\Response
      */
-    public function edit($PointId)
+    public function edit()
     {
+
+
+        // if (empty($dataMenu)) {
+        //     return redirect()->back();
+        // } elseif ($dataMenu->control_menu == 0) {
+        //     return view('menu.disabled');
+        // } elseif (Baak::where('user_id', '=', $PointId)->first() == "") {
+        //     return view('menu.menu-empty');
+        // } else {
+        //     $data = Baak::where('user_id', '=', $PointId)->first();
+        // }
+
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (Baak::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = Baak::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.Baak.searchdata', compact('users'));
+    }
 
+    public function dataSearch(Request $request)
+    {
+        // $userIds = $request->input('dataSearch');
+        // $data = Baak::whereIn('user_id', $userIds)->first();
+
+        // if(Baak::where('user_id', '=', $dataSearch)->first() == ""){
+        //         return view('menu.menu-empty');
+        //     }else{
+        //             $data = Baak::where('user_id', '=', $dataSearch)->first();
+        //         }
+        // $data = Baak::findOrFail($request->id);
+        $data = Baak::where('user_id', '=', $request->id)->first();
+        dd($data);
         return view('itisar.baak.edit', ['data' => $data]);
     }
 
