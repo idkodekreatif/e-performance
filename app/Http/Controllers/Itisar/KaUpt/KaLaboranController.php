@@ -143,19 +143,24 @@ class KaLaboranController extends Controller
      * @param  \App\Models\kalabora
      * @return \Illuminate\Http\Response
      */
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (KaLaboran::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = KaLaboran::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.ka-upt.koord-laboran.searchdata', compact('users'));
+    }
+
+    public function dataSearch(Request $request)
+    {
+        $data = KaLaboran::where('user_id', '=', $request->id)->first();
 
         return view('itisar.ka-upt.koord-laboran.edit', ['data' => $data]);
     }

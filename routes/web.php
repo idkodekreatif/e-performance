@@ -220,8 +220,9 @@ Route::group(
         Route::controller(KaLaboranController::class)->middleware(['role:it|superuser|upt|warek1|tendik'])->group(function () {
             Route::get('/Ka-Laboran/Input', 'create')->name('ka.upt.ka.unit.laboran');
             Route::post('/Ka-Laboran/Request/Store', 'store')->name('store.ka.laboran');
-            Route::get('/Ka-Laboran/edit/{PointId}', 'edit')->name('edit.ka.laboran');
-            Route::put('/Ka-Laboran/update/{PointId}', 'update')->name('update.ka.laboran');
+            Route::get('/Ka-Laboran/edit/', 'edit')->name('edit.ka.laboran');
+            Route::get('/kaLaboran/search/result', 'dataSearch')->name('kaLaboran.data.search');
+            Route::put('/Ka-Laboran/update/{pointId}', 'update')->name('update.ka.laboran');
             Route::get('/Raport/Ka-Laboran/{user_id}', 'raport')->name('ka.laboran.raport')->middleware(['role:tendik']);
         });
 
@@ -229,8 +230,9 @@ Route::group(
         Route::controller(KaUnitItController::class)->middleware(['role:it|superuser|upt|warek1|tendik'])->group(function () {
             Route::get('/Ka-Unit-IT/Input', 'create')->name('ka.upt.ka.unit.it');
             Route::post('/Ka-Unit-IT/Request/Store', 'store')->name('store.ka.it');
-            Route::get('/Ka-Unit-IT/edit/{PointId}', 'edit')->name('edit.ka.it');
-            Route::put('/Ka-Unit-IT/update/{PointId}', 'update')->name('update.ka.it');
+            Route::get('/Ka-Unit-IT/edit/', 'edit')->name('edit.ka.it');
+            Route::get('/kaIt/search/result', 'dataSearch')->name('kaIt.data.search');
+            Route::put('/Ka-Unit-IT/update/{pointId}', 'update')->name('update.ka.it');
             Route::get('/Raport/Ka-Unit-IT/{user_id}', 'raport')->name('ka.it.raport')->middleware(['role:it|superuser|tendik']);
         });
 
