@@ -1,4 +1,4 @@
-<x-app-layout title="Form Penilaian Ka. Baak">
+<x-app-layout title="Form Penilaian Ka. Sub. Biro Administrasi Akademik">
     @push('style')
     <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
     <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Baak</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Sub. Biro Administrasi Akademik</a></li>
             </ol>
         </div>
         <div class="row">

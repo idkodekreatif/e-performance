@@ -361,7 +361,7 @@
                                     <li><a href="{{ route('kemahasiswaan') }}">Staff Kemahasiswaan</a></li>
                                     <li><a href="{{ route('baakFkBisnis') }}">Staff BAAK Fakultas Bisnis</a></li>
                                     <li><a href="{{ route('staffbaaksatu') }}">Staff BAAK</a></li>
-                                    <li><a href="{{ route('staffbaakdua') }}">Staff BAAK 2</a></li>
+                                    <li><a href="{{ route('staffbaakdua') }}">Staff BAAK</a></li>
                                 </ul>
                                 @else
                                 <ul aria-expanded="false">

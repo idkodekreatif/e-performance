@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Penilaian Ka. Baak">
+<x-app-layout title="Edit Penilaian Ka. Sub. Biro Administrasi Akademik">
     @push('style')
     @endpush
 
@@ -20,7 +20,7 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Baak</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Sub. Biro Administrasi Akademik</a></li>
             </ol>
         </div>
         <div class="row">
