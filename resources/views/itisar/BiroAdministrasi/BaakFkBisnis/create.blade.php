@@ -1,4 +1,4 @@
-<x-app-layout title="Form Penilaian Baak Fakultas Bisnis">
+<x-app-layout title="Form Penilaian Staff Baak Fakultas Bisnis">
     @push('style')
     <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
     <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -26,11 +26,11 @@
             <div class="col">
                 <a href="{{ route('baakFkBisnis.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
-                <a href="{{ route('edit.baakFkBisnis', Auth::user()->id) }}"
+                <a href="{{ route('edit.baakFkBisnis') }}"
                     class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a>
             </div>
         </div>
-        <form action="{{ route('store.baakFkBisnis') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('store.baakFkBisnis') }}" id="my-form" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card shadow">
                 <div class="card-body">
@@ -3148,8 +3148,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="reset" class="btn btn-danger btn-sm mb-2">Reset</button>
-                                        <button type="submit" class="btn btn-primary btn-sm mb-2">Simpan</button>
+                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();" class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -3167,5 +3166,24 @@
     <script src="{{ asset('Assets/vendor/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('Assets/js/plugins-init/select2-init.js') }}"></script>
     <script src="{{ asset('Assets/js/custom.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmSubmit() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan menyimpan data tersebut.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Simpan',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('my-form').submit();
+                } else {
+                    Swal.fire('Data batal disimpan');
+                }
+            });
+        }
+    </script>
     @endpush
 </x-app-layout>

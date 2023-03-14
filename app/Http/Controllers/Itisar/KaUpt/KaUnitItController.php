@@ -150,19 +150,24 @@ class KaUnitItController extends Controller
      * @param  mixed $PointId
      * @return void
      */
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (KaUnitIt::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = KaUnitIt::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.ka-upt.ka-unit-it.searchdata', compact('users'));
+    }
+
+public function dataSearch(Request $request)
+    {
+        $data = KaUnitIt::where('user_id', '=', $request->id)->first();
 
         return view('itisar.ka-upt.ka-unit-it.edit', ['data' => $data]);
     }

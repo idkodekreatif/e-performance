@@ -403,19 +403,24 @@ class StaffBaakSatuController extends Controller
         }
     }
 
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (StaffBaakSatu::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = StaffBaakSatu::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.BiroAdministrasi.BaakSatu.searchdata', compact('users'));
+    }
+
+public function dataSearch(Request $request)
+    {
+        $data = StaffBaakSatu::where('user_id', '=', $request->id)->first();
 
         return view('itisar.BiroAdministrasi.BaakSatu.edit', ['data' => $data]);
     }

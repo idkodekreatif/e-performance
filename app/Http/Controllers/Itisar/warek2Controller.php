@@ -197,19 +197,24 @@ class warek2Controller extends Controller
      * @param  \App\Models\Warek2  $warek2
      * @return \Illuminate\Http\Response
      */
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (bau::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = bau::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.warek2.searchdata', compact('users'));
+    }
+
+    public function dataSearch(Request $request)
+    {
+        $data = bau::where('user_id', '=', $request->id)->first();
 
         return view('itisar.warek2.edit', ['data' => $data]);
     }

@@ -205,18 +205,6 @@ class BaakController extends Controller
      */
     public function edit()
     {
-
-
-        // if (empty($dataMenu)) {
-        //     return redirect()->back();
-        // } elseif ($dataMenu->control_menu == 0) {
-        //     return view('menu.disabled');
-        // } elseif (Baak::where('user_id', '=', $PointId)->first() == "") {
-        //     return view('menu.menu-empty');
-        // } else {
-        //     $data = Baak::where('user_id', '=', $PointId)->first();
-        // }
-
         $dataMenu = Menu::first();
         $users = User::whereNotIn('name', [
             'superuser', 'manajer', 'it', 'hrd', 'lppm',
@@ -232,17 +220,8 @@ class BaakController extends Controller
 
     public function dataSearch(Request $request)
     {
-        // $userIds = $request->input('dataSearch');
-        // $data = Baak::whereIn('user_id', $userIds)->first();
-
-        // if(Baak::where('user_id', '=', $dataSearch)->first() == ""){
-        //         return view('menu.menu-empty');
-        //     }else{
-        //             $data = Baak::where('user_id', '=', $dataSearch)->first();
-        //         }
-        // $data = Baak::findOrFail($request->id);
         $data = Baak::where('user_id', '=', $request->id)->first();
-        dd($data);
+
         return view('itisar.baak.edit', ['data' => $data]);
     }
 
@@ -253,7 +232,7 @@ class BaakController extends Controller
      * @param  mixed $PointId
      * @return void
      */
-    public function update(Request $request, $PointId)
+    public function update(Request $request, $pointId)
     {
         // Validation file upload
         $request->validate([
@@ -277,7 +256,7 @@ class BaakController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            $RecordData =  Baak::where('user_id', $PointId)->firstOrFail();
+            $RecordData = Baak::where('user_id', $pointId)->firstOrFail();
 
             $Point1_1 = $request->get('Point1_1');
             $Point1_2 = $request->get('Point1_2');

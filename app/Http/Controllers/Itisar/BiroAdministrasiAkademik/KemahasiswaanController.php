@@ -193,19 +193,24 @@ class KemahasiswaanController extends Controller
         }
     }
 
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (Kemahasiswaan::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = Kemahasiswaan::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.BiroAdministrasi.Kemahasiswaan.searchdata', compact('users'));
+    }
+
+public function dataSearch(Request $request)
+    {
+        $data = Kemahasiswaan::where('user_id', '=', $request->id)->first();
 
         return view('itisar.BiroAdministrasi.Kemahasiswaan.edit', ['data' => $data]);
     }
