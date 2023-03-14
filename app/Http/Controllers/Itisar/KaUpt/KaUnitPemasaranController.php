@@ -136,19 +136,24 @@ class KaUnitPemasaranController extends Controller
      * @param  \App\Models\kaPemasaran  $kaPemasaran
      * @return \Illuminate\Http\Response
      */
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (KaPemasaran::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = KaPemasaran::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.ka-upt.ka-unit-pemasaran.searchdata', compact('users'));
+    }
+
+public function dataSearch(Request $request)
+    {
+        $data = KaPemasaran::where('user_id', '=', $request->id)->first();
 
         return view('itisar.ka-upt.ka-unit-pemasaran.edit', ['data' => $data]);
     }
