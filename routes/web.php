@@ -348,8 +348,9 @@ Route::group(
         Route::controller(KoorKemahasiswaanDanAlumniController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
             Route::get('/koorkemahasiswaanDanAlumni/Input', 'create')->name('koorkemahasiswaanDanAlumni');
             Route::post('/koorkemahasiswaanDanAlumni/Request/Store', 'store')->name('store.koorkemahasiswaanDanAlumni');
-            Route::get('/koorkemahasiswaanDanAlumni/edit/{PointId}', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
-            Route::put('/koorkemahasiswaanDanAlumni/update/{PointId}', 'update')->name('update.koorkemahasiswaanDanAlumni');
+            Route::get('/koorkemahasiswaanDanAlumni/edit/', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
+            Route::get('/koorkemahasiswaanDanAlumni/search/result', 'dataSearch')->name('koorkemahasiswaanDanAlumni.data.search');
+            Route::put('/koorkemahasiswaanDanAlumni/update/{pointId}', 'update')->name('update.koorkemahasiswaanDanAlumni');
             Route::get('/Raport/koorkemahasiswaanDanAlumni/{user_id}', 'raport')->name('koorkemahasiswaanDanAlumni.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -357,8 +358,9 @@ Route::group(
         Route::controller(KaUptController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
             Route::get('/warek-satu/Ka-Upt/Input', 'create')->name('WarekSatu.Ka.Upt');
             Route::post('/warek-satu/Ka-Upt/Request/Store', 'store')->name('store.WarekSatu.Ka.Upt');
-            Route::get('/warek-satu/Ka-Upt/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Upt');
-            Route::put('/warek-satu/Ka-Upt/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Upt');
+            Route::get('/warek-satu/Ka-Upt/edit/', 'edit')->name('edit.WarekSatu.Ka.Upt');
+            Route::get('/warek-satu/KaUpt/search/result', 'dataSearch')->name('warekSatu.data.search');
+            Route::put('/warek-satu/Ka-Upt/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Upt');
             Route::get('/Raport/warek-satu/Ka-Upt/{user_id}', 'raport')->name('WarekSatu.Ka.Upt.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -366,8 +368,9 @@ Route::group(
         Route::controller(KaRisbangController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
             Route::get('/warek-satu/Ka-Risbang/Input', 'create')->name('WarekSatu.Ka.Risbang');
             Route::post('/warek-satu/Ka-Risbang/Request/Store', 'store')->name('store.WarekSatu.Ka.Risbang');
-            Route::get('/warek-satu/Ka-Risbang/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Risbang');
-            Route::put('/warek-satu/Ka-Risbang/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Risbang');
+            Route::get('/warek-satu/Ka-Risbang/edit/', 'edit')->name('edit.WarekSatu.Ka.Risbang');
+            Route::get('/warek-satu/KaRisbang/search/result', 'dataSearch')->name('warekSatu.kaRisbang.data.search');
+            Route::put('/warek-satu/Ka-Risbang/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Risbang');
             Route::get('/Raport/warek-satu/Ka-Risbang/{user_id}', 'raport')->name('WarekSatu.Ka.Risbang.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -375,8 +378,9 @@ Route::group(
         Route::controller(KaBaakController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
             Route::get('/warek-satu/Ka-Baak/Input', 'create')->name('WarekSatu.Ka.Baak');
             Route::post('/warek-satu/Ka-Baak/Request/Store', 'store')->name('store.WarekSatu.Ka.Baak');
-            Route::get('/warek-satu/Ka-Baak/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Baak');
-            Route::put('/warek-satu/Ka-Baak/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Baak');
+            Route::get('/warek-satu/Ka-Baak/edit/', 'edit')->name('edit.WarekSatu.Ka.Baak');
+            Route::get('/warek1/KaBaak/search/result', 'dataSearch')->name('WarekSatu.baak.data.search');
+            Route::put('/warek-satu/Ka-Baak/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Baak');
             Route::get('/Raport/warek-satu/Ka-Baak/{user_id}', 'raport')->name('WarekSatu.Ka.Baak.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -384,8 +388,9 @@ Route::group(
         Route::controller(KaProdiController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
             Route::get('/warek-satu/Ka-Prodi/Input', 'create')->name('WarekSatu.Ka.Prodi');
             Route::post('/warek-satu/Ka-Prodi/Request/Store', 'store')->name('store.WarekSatu.Ka.Prodi');
-            Route::get('/warek-satu/Ka-Prodi/edit/{PointId}', 'edit')->name('edit.WarekSatu.Ka.Prodi');
-            Route::put('/warek-satu/Ka-Prodi/update/{PointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
+            Route::get('/warek-satu/Ka-Prodi/edit/', 'edit')->name('edit.WarekSatu.Ka.Prodi');
+            Route::get('/warek-satu/search/result', 'dataSearch')->name('WarekSatu.KaProdi.data.search');
+            Route::put('/warek-satu/Ka-Prodi/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
             Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport')->middleware(['role:it|superuser|tendik']);
         });
 

@@ -26,7 +26,7 @@
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
         </div>
-        <form action="{{ route('update.WarekSatu.Ka.Risbang', [$data->user_id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('update.WarekSatu.Ka.Risbang', ['pointId' => $data->user_id]) }}" id="my-form" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="card shadow">
@@ -2954,8 +2954,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="reset" class="btn btn-danger btn-sm mb-2">Reset</button>
-                                        <button type="submit" class="btn btn-primary btn-sm mb-2">Simpan</button>
+                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();" class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -2967,7 +2966,26 @@
     </div>
 
     @push('JavaScript')
-<script src="{{ asset('Assets/js/itisar/warekSatu/KaRisbang/PointKinerjaPerilaku.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/warekSatu/KaRisbang/PointKinerjaPerilaku.js') }}"></script>
     <script src="{{ asset('Assets/js/itisar/warekSatu/KaRisbang/PointKinerjaKompetensi.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmSubmit() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan menyimpan data tersebut.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Simpan',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('my-form').submit();
+                } else {
+                    Swal.fire('Data batal disimpan');
+                }
+            });
+        }
+    </script>
     @endpush
 </x-app-layout>
