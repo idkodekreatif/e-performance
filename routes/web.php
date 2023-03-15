@@ -398,8 +398,9 @@ Route::group(
         Route::controller(warekSatuController::class)->middleware(['role:it|superuser|rektor|ypsdmit|tendik'])->group(function () {
             Route::get('/warekSatu/Input', 'create')->name('warekSatu');
             Route::post('/warekSatu/Request/Store', 'store')->name('store.warekSatu');
-            Route::get('/warekSatu/edit/{PointId}', 'edit')->name('edit.warekSatu');
-            Route::put('/warekSatu/update/{PointId}', 'update')->name('update.warekSatu');
+            Route::get('/warekSatu/edit/', 'edit')->name('edit.warekSatu');
+            Route::get('/rektor/warekSatu/search/result', 'dataSearch')->name('rektor.warekSatu.data.search');
+            Route::put('/warekSatu/update/{pointId}', 'update')->name('update.warekSatu');
             Route::get('/Raport/warekSatu/{user_id}', 'raport')->name('warekSatu.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -407,8 +408,9 @@ Route::group(
         Route::controller(warekDuaController::class)->middleware(['role:it|superuser|ypsdmit|rektor|tendik'])->group(function () {
             Route::get('/WarekDua/Input', 'create')->name('WarekDua');
             Route::post('/WarekDua/Request/Store', 'store')->name('store.WarekDua');
-            Route::get('/WarekDua/edit/{PointId}', 'edit')->name('edit.WarekDua');
-            Route::put('/WarekDua/update/{PointId}', 'update')->name('update.WarekDua');
+            Route::get('/WarekDua/edit/', 'edit')->name('edit.WarekDua');
+            Route::get('/warekDua/search/result', 'dataSearch')->name('warekDua.data.search');
+            Route::put('/WarekDua/update/{pointId}', 'update')->name('update.WarekDua');
             Route::get('/Raport/WarekDua/{user_id}', 'raport')->name('WarekDua.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -416,8 +418,9 @@ Route::group(
         Route::controller(StaffSusBidKerjasamaController::class)->middleware(['role:it|superuser|rektor|ypsdmit|tendik'])->group(function () {
             Route::get('/StaffSusBidKerjasama/Input', 'create')->name('StaffSusBidKerjasama');
             Route::post('/StaffSusBidKerjasama/Request/Store', 'store')->name('store.StaffSusBidKerjasama');
-            Route::get('/StaffSusBidKerjasama/edit/{PointId}', 'edit')->name('edit.StaffSusBidKerjasama');
-            Route::put('/StaffSusBidKerjasama/update/{PointId}', 'update')->name('update.StaffSusBidKerjasama');
+            Route::get('/StaffSusBidKerjasama/edit/', 'edit')->name('edit.StaffSusBidKerjasama');
+            Route::get('/StaffSusBidKerjasama/search/result', 'dataSearch')->name('StaffSusBidKerjasama.data.search');
+            Route::put('/StaffSusBidKerjasama/update/{pointId}', 'update')->name('update.StaffSusBidKerjasama');
             Route::get('/Raport/StaffSusBidKerjasama/{user_id}', 'raport')->name('StaffSusBidKerjasama.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -425,8 +428,9 @@ Route::group(
         Route::controller(KaLpmController::class)->middleware(['role:it|superuser|rektor|tendik'])->group(function () {
             Route::get('/KaLpm/Input', 'create')->name('KaLpm');
             Route::post('/KaLpm/Request/Store', 'store')->name('store.KaLpm');
-            Route::get('/KaLpm/edit/{PointId}', 'edit')->name('edit.KaLpm');
-            Route::put('/KaLpm/update/{PointId}', 'update')->name('update.KaLpm');
+            Route::get('/KaLpm/edit/', 'edit')->name('edit.KaLpm');
+            Route::get('/KaLpm/search/result', 'dataSearch')->name('KaLpm.data.search');
+            Route::put('/KaLpm/update/{pointId}', 'update')->name('update.KaLpm');
             Route::get('/Raport/KaLpm/{user_id}', 'raport')->name('KaLpm.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -434,8 +438,9 @@ Route::group(
         Route::controller(StaffUmumController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffumum/Input', 'create')->name('staffumum');
             Route::post('/staffumum/Request/Store', 'store')->name('store.staffumum');
-            Route::get('/staffumum/edit/{PointId}', 'edit')->name('edit.staffumum');
-            Route::put('/staffumum/update/{PointId}', 'update')->name('update.staffumum');
+            Route::get('/staffumum/edit/', 'edit')->name('edit.staffumum');
+            Route::get('/staffumum/search/result', 'dataSearch')->name('staffumum.data.search');
+            Route::put('/staffumum/update/{pointId}', 'update')->name('update.staffumum');
             Route::get('/Raport/staffumum/{user_id}', 'raport')->name('staffumum.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -443,8 +448,9 @@ Route::group(
         Route::controller(StaffKebersihanController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffkebersihan/Input', 'create')->name('staffkebersihan');
             Route::post('/staffkebersihan/Request/Store', 'store')->name('store.staffkebersihan');
-            Route::get('/staffkebersihan/edit/{PointId}', 'edit')->name('edit.staffkebersihan');
-            Route::put('/staffkebersihan/update/{PointId}', 'update')->name('update.staffkebersihan');
+            Route::get('/staffkebersihan/edit/', 'edit')->name('edit.staffkebersihan');
+            Route::get('/staffkebersihan/search/result', 'dataSearch')->name('staffkebersihan.data.search');
+            Route::put('/staffkebersihan/update/{pointId}', 'update')->name('update.staffkebersihan');
             Route::get('/Raport/staffkebersihan/{user_id}', 'raport')->name('staffkebersihan.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -452,8 +458,9 @@ Route::group(
         Route::controller(StaffSecurityController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffsecurity/Input', 'create')->name('staffsecurity');
             Route::post('/staffsecurity/Request/Store', 'store')->name('store.staffsecurity');
-            Route::get('/staffsecurity/edit/{PointId}', 'edit')->name('edit.staffsecurity');
-            Route::put('/staffsecurity/update/{PointId}', 'update')->name('update.staffsecurity');
+            Route::get('/staffsecurity/edit/', 'edit')->name('edit.staffsecurity');
+            Route::get('/staffsecurity/search/result', 'dataSearch')->name('staffsecurity.data.search');
+            Route::put('/staffsecurity/update/{pointId}', 'update')->name('update.staffsecurity');
             Route::get('/Raport/staffsecurity/{user_id}', 'raport')->name('staffsecurity.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -461,8 +468,9 @@ Route::group(
         Route::controller(StaffSarprasController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffsarpras/Input', 'create')->name('staffsarpras');
             Route::post('/staffsarpras/Request/Store', 'store')->name('store.staffsarpras');
-            Route::get('/staffsarpras/edit/{PointId}', 'edit')->name('edit.staffsarpras');
-            Route::put('/staffsarpras/update/{PointId}', 'update')->name('update.staffsarpras');
+            Route::get('/staffsarpras/edit/', 'edit')->name('edit.staffsarpras');
+            Route::get('/staffsarpras/search/result', 'dataSearch')->name('staffsarpras.data.search');
+            Route::put('/staffsarpras/update/{pointId}', 'update')->name('update.staffsarpras');
             Route::get('/Raport/staffsarpras/{user_id}', 'raport')->name('staffsarpras.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -470,8 +478,9 @@ Route::group(
         Route::controller(RektorController::class)->middleware(['role:it|superuser|ypsdmit|warek1|warek2|tendik'])->group(function () {
             Route::get('/Rektor/Input', 'create')->name('rektor');
             Route::post('/Rektor/Request/Store', 'store')->name('store.rektor');
-            Route::get('/Rektor/edit/{PointId}', 'edit')->name('edit.rektor');
-            Route::put('/Rektor/update/{PointId}', 'update')->name('update.rektor');
+            Route::get('/Rektor/edit/', 'edit')->name('edit.rektor');
+            Route::get('/Rektor/search/result', 'dataSearch')->name('Rektor.data.search');
+            Route::put('/Rektor/update/{pointId}', 'update')->name('update.rektor');
             Route::get('/Raport/Rektor/{user_id}', 'raport')->name('rektor.raport')->middleware(['role:it|superuser|tendik']);
         });
     }

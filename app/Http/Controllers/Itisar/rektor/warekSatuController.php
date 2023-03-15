@@ -131,19 +131,24 @@ class warekSatuController extends Controller
         }
     }
 
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (warek1::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = warek1::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.Rektor.WarekSatu.searchdata', compact('users'));
+    }
+
+    public function dataSearch(Request $request)
+    {
+        $data = warek1::where('user_id', '=', $request->id)->firstOrFail();
 
         return view('itisar.Rektor.WarekSatu.edit', ['data' => $data]);
     }
