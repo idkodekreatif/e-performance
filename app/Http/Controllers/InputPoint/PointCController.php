@@ -28,11 +28,27 @@ class PointCController extends Controller
      */
     public function create()
     {
-        $pointC = PointC::where('user_id', '=', Auth::user()->id)->first();
-        if (empty($pointC)) {
-            return view('input-point.point-C');
-        } else {
-            return view('edit-point.EditPointC', ['data' => $pointC]);
+        $user = Auth::user();
+        $dataMenu = Menu::first();
+
+        if($user->hasAnyRole(['hrd', 'it', 'superuser'])){
+            if (PointC::where('user_id', '=', Auth::user()->id)->first() == "") {
+                return view('input-point.point-C');
+            } else {
+                $pointC = PointC::where('user_id', '=', Auth::user()->id)->first();
+                return view('edit-point.EditPointC', ['data' => $pointC]);
+            }
+        }else{
+            if (empty($dataMenu)) {
+                return redirect()->back();
+            } elseif ($dataMenu->control_menu == 0) {
+                return view('menu.disabled');
+            } elseif (PointC::where('user_id', '=', Auth::user()->id)->first() == "") {
+                return view('input-point.point-C');
+            } else {
+                $data = PointC::where('user_id', '=', Auth::user()->id)->first();
+                return view('edit-point.EditPointC', ['data' => $data]);
+            }
         }
     }
 

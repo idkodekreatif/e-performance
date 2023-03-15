@@ -29,11 +29,27 @@ class PointEController extends Controller
      */
     public function create()
     {
-        $pointE = PointE::where('user_id', '=', Auth::user()->id)->first();
-        if (empty($pointE)) {
-            return view('input-point.point-E');
-        } else {
-            return view('edit-point.EditPointE', ['data' => $pointE]);
+        $user = Auth::user();
+        $dataMenu = Menu::first();
+
+        if($user->hasAnyRole(['hrd', 'it', 'superuser'])){
+            if (PointE::where('user_id', '=', Auth::user()->id)->first() == "") {
+                return view('input-point.point-E');
+            } else {
+                $pointE = PointE::where('user_id', '=', Auth::user()->id)->first();
+                return view('edit-point.EditPointE', ['data' => $pointE]);
+            }
+        }else{
+            if (empty($dataMenu)) {
+                return redirect()->back();
+            } elseif ($dataMenu->control_menu == 0) {
+                return view('menu.disabled');
+            } elseif (PointE::where('user_id', '=', Auth::user()->id)->first() == "") {
+                return view('input-point.point-E');
+            } else {
+                $data = PointE::where('user_id', '=', Auth::user()->id)->first();
+                return view('edit-point.EditPointE', ['data' => $data]);
+            }
         }
     }
 

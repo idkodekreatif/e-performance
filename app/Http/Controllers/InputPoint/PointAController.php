@@ -30,14 +30,31 @@ class PointAController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * TODO: jika role hrd impersonate ke dosen apakah akan menjadi role dosen?
      */
     public function create()
     {
-        $pointA = PointA::where('user_id', '=', Auth::user()->id)->first();
-        if (empty($pointA)) {
-            return view('input-point.point-A');
-        } else {
-            return view('edit-point.EditPointA', ['data' => $pointA]);
+        $user = Auth::user();
+        $dataMenu = Menu::first();
+
+        if($user->hasAnyRole(['hrd', 'it', 'superuser'])){
+            if (PointA::where('user_id', '=', Auth::user()->id)->first() == "") {
+                return view('input-point.point-A');
+            } else {
+                $pointA = PointA::where('user_id', '=', Auth::user()->id)->first();
+                return view('edit-point.EditPointA', ['data' => $pointA]);
+            }
+        }else{
+            if (empty($dataMenu)) {
+                return redirect()->back();
+            } elseif ($dataMenu->control_menu == 0) {
+                return view('menu.disabled');
+            } elseif (PointA::where('user_id', '=', Auth::user()->id)->first() == "") {
+                return view('input-point.point-A');
+            } else {
+                $data = PointA::where('user_id', '=', Auth::user()->id)->first();
+                return view('edit-point.EditPointA', ['data' => $data]);
+            }
         }
     }
 
