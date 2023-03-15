@@ -288,8 +288,9 @@ Route::group(
         Route::controller(StaffKeuanganController::class)->middleware(['role:it|superuser|keuangan|tendik'])->group(function () {
             Route::get('/StaffKeuangan/Input', 'create')->name('StaffKeuangan');
             Route::post('/StaffKeuangan/Request/Store', 'store')->name('store.StaffKeuangan');
-            Route::get('/StaffKeuangan/edit/{PointId}', 'edit')->name('edit.StaffKeuangan');
-            Route::put('/StaffKeuangan/update/{PointId}', 'update')->name('update.StaffKeuangan');
+            Route::get('/StaffKeuangan/edit/', 'edit')->name('edit.StaffKeuangan');
+            Route::get('/staffkeuangan/search/result', 'dataSearch')->name('staffkeuangan.data.search');
+            Route::put('/StaffKeuangan/update/{pointId}', 'update')->name('update.StaffKeuangan');
             Route::get('/Raport/StaffKeuangan/{user_id}', 'raport')->name('StaffKeuangan.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -297,8 +298,9 @@ Route::group(
         Route::controller(LpmController::class)->middleware(['role:it|superuser|lpm|ypsdmit|tendik'])->group(function () {
             Route::get('/Lpm/Input', 'create')->name('Lpm');
             Route::post('/Lpm/Request/Store', 'store')->name('store.Lpm');
-            Route::get('/Lpm/edit/{PointId}', 'edit')->name('edit.Lpm');
-            Route::put('/Lpm/update/{PointId}', 'update')->name('update.Lpm');
+            Route::get('/Lpm/edit/', 'edit')->name('edit.Lpm');
+            Route::get('/Lpm/search/result', 'dataSearch')->name('Lpm.data.search');
+            Route::put('/Lpm/update/{pointId}', 'update')->name('update.Lpm');
             Route::get('/Raport/Lpm/{user_id}', 'raport')->name('Lpm.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -306,8 +308,9 @@ Route::group(
         Route::controller(KasubRisbangController::class)->middleware(['role:it|superuser|risbang|warek1|tendik'])->group(function () {
             Route::get('/KasubRisbang/Input', 'create')->name('KasubRisbang');
             Route::post('/KasubRisbang/Request/Store', 'store')->name('store.KasubRisbang');
-            Route::get('/KasubRisbang/edit/{PointId}', 'edit')->name('edit.KasubRisbang');
-            Route::put('/KasubRisbang/update/{PointId}', 'update')->name('update.KasubRisbang');
+            Route::get('/KasubRisbang/edit/', 'edit')->name('edit.KasubRisbang');
+            Route::get('/kasubrisbang/search/result', 'dataSearch')->name('kasubrisbang.data.search');
+            Route::put('/KasubRisbang/update/{pointId}', 'update')->name('update.KasubRisbang');
             Route::get('/Raport/KasubRisbang/{user_id}', 'raport')->name('KasubRisbang.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -315,8 +318,9 @@ Route::group(
         Route::controller(SekKaprodiController::class)->middleware(['role:it|superuser|gizi|perawat|bidan|manajemen|akuntansi|warek1|tendik'])->group(function () {
             Route::get('/sekKaprodi/Input', 'create')->name('sekKaprodi');
             Route::post('/sekKaprodi/Request/Store', 'store')->name('store.sekKaprodi');
-            Route::get('/sekKaprodi/edit/{PointId}', 'edit')->name('edit.sekKaprodi');
-            Route::put('/sekKaprodi/update/{PointId}', 'update')->name('update.sekKaprodi');
+            Route::get('/sekKaprodi/edit/', 'edit')->name('edit.sekKaprodi');
+            Route::get('/sekkaprodi/search/result', 'dataSearch')->name('sekkaprodi.data.search');
+            Route::put('/sekKaprodi/update/{pointId}', 'update')->name('update.sekKaprodi');
             Route::get('/Raport/sekKaprodi/{user_id}', 'raport')->name('sekKaprodi.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -324,8 +328,9 @@ Route::group(
         Route::controller(KasubBiroKepegawaianController::class)->middleware(['role:it|superuser|bau|tendik'])->group(function () {
             Route::get('/kasubBiroKepegawaian/Input', 'create')->name('kasubBiroKepegawaian');
             Route::post('/kasubBiroKepegawaian/Request/Store', 'store')->name('store.kasubBiroKepegawaian');
-            Route::get('/kasubBiroKepegawaian/edit/{PointId}', 'edit')->name('edit.kasubBiroKepegawaian');
-            Route::put('/kasubBiroKepegawaian/update/{PointId}', 'update')->name('update.kasubBiroKepegawaian');
+            Route::get('/kasubBiroKepegawaian/edit/', 'edit')->name('edit.kasubBiroKepegawaian');
+            Route::get('/kasubBiroKepegawaian/search/result', 'dataSearch')->name('kasubBiroKepegawaian.data.search');
+            Route::put('/kasubBiroKepegawaian/update/{pointId}', 'update')->name('update.kasubBiroKepegawaian');
             Route::get('/Raport/kasubBiroKepegawaian/{user_id}', 'raport')->name('kasubBiroKepegawaian.raport')->middleware(['role:it|superuser|tendik']);
         });
 
@@ -333,13 +338,14 @@ Route::group(
         Route::controller(KasubBiroKeuanganController::class)->middleware(['role:it|superuser|bau|tendik'])->group(function () {
             Route::get('/KasubBiroKeuangan/Input', 'create')->name('KasubBiroKeuangan');
             Route::post('/KasubBiroKeuangan/Request/Store', 'store')->name('store.KasubBiroKeuangan');
-            Route::get('/KasubBiroKeuangan/edit/{PointId}', 'edit')->name('edit.KasubBiroKeuangan');
-            Route::put('/KasubBiroKeuangan/update/{PointId}', 'update')->name('update.KasubBiroKeuangan');
+            Route::get('/KasubBiroKeuangan/edit/', 'edit')->name('edit.KasubBiroKeuangan');
+            Route::get('/KasubBiroKeuangan/search/result', 'dataSearch')->name('KasubBiroKeuangan.data.search');
+            Route::put('/KasubBiroKeuangan/update/{pointId}', 'update')->name('update.KasubBiroKeuangan');
             Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport')->middleware(['role:it|superuser|tendik']);
         });
 
          // -------------------------- Controller Form Penilaian Koor Kemahasiswaan dan Alumni ------------------------------//
-         Route::controller(KoorKemahasiswaanDanAlumniController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
+        Route::controller(KoorKemahasiswaanDanAlumniController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
             Route::get('/koorkemahasiswaanDanAlumni/Input', 'create')->name('koorkemahasiswaanDanAlumni');
             Route::post('/koorkemahasiswaanDanAlumni/Request/Store', 'store')->name('store.koorkemahasiswaanDanAlumni');
             Route::get('/koorkemahasiswaanDanAlumni/edit/{PointId}', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
