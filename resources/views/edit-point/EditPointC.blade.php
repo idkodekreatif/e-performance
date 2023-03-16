@@ -1095,8 +1095,8 @@
                                                 name="TotalKelebihaC5" id="TotalKelebihaC5" readonly>
                                         </td>
                                         <td colspan="3" rowspan="6">Nilai Tambah Pengabdian kepada Masyarakat</td>
-                                        <td rowspan="6"><input type="number" value="{{ $data->NilaiTambahPenelitian }}"
-                                                name="NilaiTambahPenelitian" id="NilaiTambahPenelitian" readonly></td>
+                                        <td rowspan="6"><input type="number" value="{{ $data->NilaiTambahPengabdianKepadaMasyarakat }}"
+                                                name="NilaiTambahPengabdianKepadaMasyarakat" id="NilaiTambahPengabdianKepadaMasyarakat" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>

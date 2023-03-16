@@ -14,7 +14,7 @@ class SekKaprodiController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
         ])->get();
         return view('itisar.Kaprodi.SekKaprodi.create', compact('users'));
     }
@@ -186,19 +186,24 @@ class SekKaprodiController extends Controller
         }
     }
 
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (SekKaprodi::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = SekKaprodi::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.Kaprodi.SekKaprodi.searchdata', compact('users'));
+    }
+
+    public function dataSearch(Request $request)
+    {
+        $data = SekKaprodi::where('user_id', '=', $request->id)->first();
 
         return view('itisar.Kaprodi.SekKaprodi.edit', ['data' => $data]);
     }

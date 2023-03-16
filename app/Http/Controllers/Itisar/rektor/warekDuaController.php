@@ -14,7 +14,7 @@ class warekDuaController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
         ])->get();
         return view('itisar.Rektor.WarekDua.create', compact('users'));
     }
@@ -102,6 +102,11 @@ class warekDuaController extends Controller
                 $fileName = $request->file('file_kinerja_kompetensi_6')->store('uploads/rektor/warekdua', 'public');
                 $warekdua->file_kinerja_kompetensi_6 = $fileName;
             }
+            $warekdua->kinerja_kompetensi_7 = $request->get('kinerja_kompetensi_7');
+            if ($request->hasFile('file_kinerja_kompetensi_7')) {
+                $fileName = $request->file('file_kinerja_kompetensi_7')->store('uploads/rektor/warekdua', 'public');
+                $warekdua->file_kinerja_kompetensi_7 = $fileName;
+            }
 
             $warekdua->output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
             $warekdua->output_point_kinerja_kompetensi_2 = $request->get('output_point_kinerja_kompetensi_2');
@@ -125,19 +130,24 @@ class warekDuaController extends Controller
         }
     }
 
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (warekDua::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = warekDua::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.Rektor.WarekDua.searchdata', compact('users'));
+    }
+
+    public function dataSearch(Request $request)
+    {
+        $data = warekDua::where('user_id', '=', $request->id)->firstOrFail();
 
         return view('itisar.Rektor.WarekDua.edit', ['data' => $data]);
     }
@@ -256,6 +266,15 @@ class warekDuaController extends Controller
             } else {
                 $file_kinerja_kompetensi_6 = $RecordData->file_kinerja_kompetensi_6;
             }
+            $kinerja_kompetensi_7 = $request->get('kinerja_kompetensi_7');
+            if ($request->hasFile('file_kinerja_kompetensi_7')) {
+                if ($RecordData->file_kinerja_kompetensi_7 && file_exists(storage_path('app/public/rektor/warekdua/' . $RecordData->file_kinerja_kompetensi_7))) {
+                    \Storage::delete('public/rektor/warekdua/' . $RecordData->file_kinerja_kompetensi_7);
+                }
+                $file_kinerja_kompetensi_7 = $request->file('file_kinerja_kompetensi_7')->store('rektor/warekdua', 'public');
+            } else {
+                $file_kinerja_kompetensi_7 = $RecordData->file_kinerja_kompetensi_7;
+            }
 
             $output_point_kinerja_kompetensi_1 = $request->get('output_point_kinerja_kompetensi_1');
             $output_point_kinerja_kompetensi_2 = $request->get('output_point_kinerja_kompetensi_2');
@@ -317,6 +336,8 @@ class warekDuaController extends Controller
                 'file_kinerja_kompetensi_5' => $file_kinerja_kompetensi_5,
                 'kinerja_kompetensi_6' => $kinerja_kompetensi_6,
                 'file_kinerja_kompetensi_6' => $file_kinerja_kompetensi_6,
+                'kinerja_kompetensi_7' => $kinerja_kompetensi_7,
+                'file_kinerja_kompetensi_7' => $file_kinerja_kompetensi_7,
                 'output_point_kinerja_kompetensi_1' => $output_point_kinerja_kompetensi_1,
                 'output_point_kinerja_kompetensi_2' => $output_point_kinerja_kompetensi_2,
                 'output_point_kinerja_kompetensi_3' => $output_point_kinerja_kompetensi_3,

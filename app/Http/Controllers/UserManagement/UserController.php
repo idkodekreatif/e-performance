@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::whereNotIn('name', [
-            'it', 'superuser'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
         ])->get();
         return view('admin.users.index', compact('users'));
     }

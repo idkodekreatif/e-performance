@@ -19,7 +19,7 @@ class StaffKeuanganController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
         ])->get();
 
         return view('itisar.Keuangan.create', compact('users'));
@@ -161,40 +161,45 @@ class StaffKeuanganController extends Controller
      * @param  mixed $PointId
      * @return void
      */
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (StaffKeuangan::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = StaffKeuangan::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.Keuangan.searchdata', compact('users'));
+    }
+
+    public function dataSearch(Request $request)
+    {
+        $data = StaffKeuangan::where('user_id', '=', $request->id)->first();
 
         return view('itisar.Keuangan.edit', ['data' => $data]);
     }
 
-    public function update(Request $request, $PointId)
+    public function update(Request $request, $pointId)
     {
         // Validation file upload
         $request->validate([
-            'kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
         try {
-            $RecordData =  StaffKeuangan::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  StaffKeuangan::where('user_id', $pointId)->firstOrFail();
 
             $Point1_1 = $request->get('Point1_1');
             $Point1_2 = $request->get('Point1_2');
@@ -401,6 +406,7 @@ class StaffKeuanganController extends Controller
                 'output_total_sementara_kinerja_kompetensi' => $output_total_sementara_kinerja_kompetensi,
 
             ];
+            // dd($RecordData);
             $RecordData->update($update);
             DB::commit();
             toast('Update Point Staff Keuangan successfully :)', 'success');
