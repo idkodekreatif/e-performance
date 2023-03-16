@@ -774,7 +774,7 @@ class PointCController extends Controller
                 'TotalKelebihaC9' => $TotalKelebihaC9,
                 'TotalKelebihanSkor' => $TotalKelebihanSkor,
                 'NilaiPengabdianKepadaMasyarakat' => $NilaiPengabdianKepadaMasyarakat,
-                'NilaiTambahPenelitian' => $NilaiTambahPengabdianKepadaMasyarakat,
+                'NilaiTambahPengabdianKepadaMasyarakat' => $NilaiTambahPengabdianKepadaMasyarakat,
                 'NilaiTotalPengabdianKepadaMasyarakat' => $NilaiTotalPengabdianKepadaMasyarakat,
             ];
 

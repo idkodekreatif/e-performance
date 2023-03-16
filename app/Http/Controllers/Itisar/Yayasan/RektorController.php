@@ -14,7 +14,7 @@ class RektorController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm',
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
         ])->get();
         return view('itisar.Yayasan.Rektor.create', compact('users'));
     }
@@ -161,19 +161,24 @@ class RektorController extends Controller
         }
     }
 
-    public function edit($PointId)
+    public function edit()
     {
         $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+        ])->get();
 
         if (empty($dataMenu)) {
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (Rektor::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = Rektor::where('user_id', '=', $PointId)->first();
         }
+        return view('itisar.Yayasan.Rektor.searchdata', compact('users'));
+    }
+
+    public function dataSearch(Request $request)
+    {
+        $data = Rektor::where('user_id', '=', $request->id)->firstOrFail();
 
         return view('itisar.Yayasan.Rektor.edit', ['data' => $data]);
     }
@@ -203,7 +208,7 @@ class RektorController extends Controller
             'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
         ]);
         DB::beginTransaction();
-        try {Q
+        try {
             $RecordData =  Rektor::where('user_id', $PointId)->firstOrFail();
 
             $Point1_1 = $request->get('Point1_1');
