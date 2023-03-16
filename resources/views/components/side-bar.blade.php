@@ -426,7 +426,7 @@
 							<span>{{ Auth::user()->email }}</span>
 						</div>
 						<div class="profile-button">
-							<i class="fas fa-caret-down scale5 text-light"></i>
+							{{-- <i class="fas fa-caret-down scale5 text-light"></i> --}}
 						</div>
 					</div>
 				</div>

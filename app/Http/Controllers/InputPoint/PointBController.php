@@ -28,27 +28,11 @@ class PointBController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $dataMenu = Menu::first();
-
-        if($user->hasAnyRole(['hrd', 'it', 'superuser'])){
-            if (PointB::where('user_id', '=', Auth::user()->id)->first() == "") {
-                return view('input-point.point-B');
-            } else {
-                $pointB = PointB::where('user_id', '=', Auth::user()->id)->first();
-                return view('edit-point.EditPointB', ['data' => $pointB]);
-            }
-        }else{
-            if (empty($dataMenu)) {
-                return redirect()->back();
-            } elseif ($dataMenu->control_menu == 0) {
-                return view('menu.disabled');
-            } elseif (PointB::where('user_id', '=', Auth::user()->id)->first() == "") {
-                return view('input-point.point-B');
-            } else {
-                $data = PointB::where('user_id', '=', Auth::user()->id)->first();
-                return view('edit-point.EditPointB', ['data' => $data]);
-            }
+        $pointB = PointB::where('user_id', '=', Auth::user()->id)->first();
+        if (empty($pointB)) {
+            return view('input-point.point-B');
+        } else {
+            return view('edit-point.EditPointB', ['data' => $pointB]);
         }
     }
 
