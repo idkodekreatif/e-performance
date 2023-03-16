@@ -32,7 +32,7 @@
 							<span class="nav-text">Apps</span>
 						</a>
                         {{-- Start ITIKAD --}}
-                        @role('it|superuse|dosen|hrd|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi')
+                        @role('it|superuse|dosen|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi')
                         <ul aria-expanded="false">
 							<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITIKAD</a>
                                 <ul aria-expanded="false">
@@ -42,6 +42,19 @@
 									<li><a href="{{ route('point-D') }}">Poin D</a></li>
 									<li><a href="{{ route('point-E') }}">Poin E</a></li>
                                     <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        @endrole
+                        @role('it|superuse|hrd')
+                        <ul aria-expanded="false">
+							<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITIKAD</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('point-A') }}">Search Poin A</a></li>
+									<li><a href="{{ route('point-B') }}">Search Poin B</a></li>
+									<li><a href="{{ route('point-C') }}">Search Poin C</a></li>
+									<li><a href="{{ route('point-D') }}">Search Poin D</a></li>
+									<li><a href="{{ route('point-E') }}">Search Poin E</a></li>
                                 </ul>
                             </li>
                         </ul>
