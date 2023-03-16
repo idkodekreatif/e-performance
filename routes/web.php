@@ -295,7 +295,7 @@ Route::group(
         });
 
         // ----------------------------- Controller Form Penilaian LPM ----------------------------------//
-        Route::controller(LpmController::class)->middleware(['role:it|superuser|lpm|ypsdmit|tendik'])->group(function () {
+        Route::controller(LpmController::class)->middleware(['role:it|superuser|lpm|ypsdmit|tendik|rektor'])->group(function () {
             Route::get('/Lpm/Input', 'create')->name('Lpm');
             Route::post('/Lpm/Request/Store', 'store')->name('store.Lpm');
             Route::get('/Lpm/edit/', 'edit')->name('edit.Lpm');
@@ -325,7 +325,7 @@ Route::group(
         });
 
         // ----------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Kepegawaian ----------------------------------//
-        Route::controller(KasubBiroKepegawaianController::class)->middleware(['role:it|superuser|bau|tendik'])->group(function () {
+        Route::controller(KasubBiroKepegawaianController::class)->middleware(['role:it|superuser|bau|tendik|rektor|warek2'])->group(function () {
             Route::get('/kasubBiroKepegawaian/Input', 'create')->name('kasubBiroKepegawaian');
             Route::post('/kasubBiroKepegawaian/Request/Store', 'store')->name('store.kasubBiroKepegawaian');
             Route::get('/kasubBiroKepegawaian/edit/', 'edit')->name('edit.kasubBiroKepegawaian');
@@ -335,7 +335,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Keuangan dan Akuntansi ------------------------------//
-        Route::controller(KasubBiroKeuanganController::class)->middleware(['role:it|superuser|bau|tendik'])->group(function () {
+        Route::controller(KasubBiroKeuanganController::class)->middleware(['role:it|superuser|bau|tendik|rektor|warek2'])->group(function () {
             Route::get('/KasubBiroKeuangan/Input', 'create')->name('KasubBiroKeuangan');
             Route::post('/KasubBiroKeuangan/Request/Store', 'store')->name('store.KasubBiroKeuangan');
             Route::get('/KasubBiroKeuangan/edit/', 'edit')->name('edit.KasubBiroKeuangan');
@@ -344,8 +344,10 @@ Route::group(
             Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport')->middleware(['role:it|superuser|tendik']);
         });
 
+         // -------------------------- Form Penilaian Rektor & ka. Sub. Rektor ------------------------------//
+
          // -------------------------- Controller Form Penilaian Koor Kemahasiswaan dan Alumni ------------------------------//
-        Route::controller(KoorKemahasiswaanDanAlumniController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
+        Route::controller(KoorKemahasiswaanDanAlumniController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/koorkemahasiswaanDanAlumni/Input', 'create')->name('koorkemahasiswaanDanAlumni');
             Route::post('/koorkemahasiswaanDanAlumni/Request/Store', 'store')->name('store.koorkemahasiswaanDanAlumni');
             Route::get('/koorkemahasiswaanDanAlumni/edit/', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
@@ -355,7 +357,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Ka Upt ------------------------------//
-        Route::controller(KaUptController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
+        Route::controller(KaUptController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Upt/Input', 'create')->name('WarekSatu.Ka.Upt');
             Route::post('/warek-satu/Ka-Upt/Request/Store', 'store')->name('store.WarekSatu.Ka.Upt');
             Route::get('/warek-satu/Ka-Upt/edit/', 'edit')->name('edit.WarekSatu.Ka.Upt');
@@ -365,7 +367,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Ka Risbang ------------------------------//
-        Route::controller(KaRisbangController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
+        Route::controller(KaRisbangController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Risbang/Input', 'create')->name('WarekSatu.Ka.Risbang');
             Route::post('/warek-satu/Ka-Risbang/Request/Store', 'store')->name('store.WarekSatu.Ka.Risbang');
             Route::get('/warek-satu/Ka-Risbang/edit/', 'edit')->name('edit.WarekSatu.Ka.Risbang');
@@ -375,7 +377,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Ka Baak ------------------------------//
-        Route::controller(KaBaakController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
+        Route::controller(KaBaakController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Baak/Input', 'create')->name('WarekSatu.Ka.Baak');
             Route::post('/warek-satu/Ka-Baak/Request/Store', 'store')->name('store.WarekSatu.Ka.Baak');
             Route::get('/warek-satu/Ka-Baak/edit/', 'edit')->name('edit.WarekSatu.Ka.Baak');
@@ -385,7 +387,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Ka Prodi ------------------------------//
-        Route::controller(KaProdiController::class)->middleware(['role:it|superuser|warek1|tendik'])->group(function () {
+        Route::controller(KaProdiController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Prodi/Input', 'create')->name('WarekSatu.Ka.Prodi');
             Route::post('/warek-satu/Ka-Prodi/Request/Store', 'store')->name('store.WarekSatu.Ka.Prodi');
             Route::get('/warek-satu/Ka-Prodi/edit/', 'edit')->name('edit.WarekSatu.Ka.Prodi');
@@ -393,6 +395,9 @@ Route::group(
             Route::put('/warek-satu/Ka-Prodi/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
             Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport')->middleware(['role:it|superuser|tendik']);
         });
+
+
+        // -------------------------- ka. Sub. Yayasan dan Form Penilaian Rektor ------------------------------//
 
         // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
         Route::controller(warekSatuController::class)->middleware(['role:it|superuser|rektor|ypsdmit|tendik'])->group(function () {
@@ -425,7 +430,7 @@ Route::group(
         });
 
         // -------------------------- Controller Form Penilaian Ka. LPM ------------------------------//
-        Route::controller(KaLpmController::class)->middleware(['role:it|superuser|rektor|tendik'])->group(function () {
+        Route::controller(KaLpmController::class)->middleware(['role:it|superuser|rektor|tendik|ypsdmit'])->group(function () {
             Route::get('/KaLpm/Input', 'create')->name('KaLpm');
             Route::post('/KaLpm/Request/Store', 'store')->name('store.KaLpm');
             Route::get('/KaLpm/edit/', 'edit')->name('edit.KaLpm');
@@ -433,6 +438,7 @@ Route::group(
             Route::put('/KaLpm/update/{pointId}', 'update')->name('update.KaLpm');
             Route::get('/Raport/KaLpm/{user_id}', 'raport')->name('KaLpm.raport')->middleware(['role:it|superuser|tendik']);
         });
+        // -------------------------- End ka. Sub. Yayasan dan Form Penilaian Rektor ------------------------------//
 
         // -------------------------- Controller Form Penilaian Staff Umum Dan Kepegawaian ------------------------------//
         Route::controller(StaffUmumController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
