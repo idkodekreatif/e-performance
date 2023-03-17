@@ -146,6 +146,10 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::post('/Pc/post-pointC', 'store')->name('store.pointc');
         Route::get('/Pc/U/{PointId}', 'edit')->name('edit.Point-C');
         Route::put('/Pc/Up/{PointId}', 'update')->name('update.Point-C');
+        // -----------------------------Point C HRD----------------------------------------//
+        Route::get('/Pc/search/', 'searchPoin')->name('Point-C.data.search');
+        Route::get('/Pc/search/result', 'resultSearchPoin')->name('Point-C.data.search.result');
+        Route::put('/Pc/Up/hrd/{PointId}', 'updateHrd')->name('update.hrd.Point-C');
     });
 
     // -----------------------------Point D----------------------------------------//
@@ -154,6 +158,10 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::post('/Pd/post-pointD', 'store')->name('store.pointd');
         Route::get('/Pd/U/{PointId}', 'edit')->name('edit.Point-D');
         Route::put('/Pd/Up/{PointId}', 'update')->name('update.Point-D');
+        // -----------------------------Point D HRD----------------------------------------//
+        Route::get('/Pd/search/', 'searchPoin')->name('Point-D.data.search');
+        Route::get('/Pd/search/result', 'resultSearchPoin')->name('Point-D.data.search.result');
+        Route::put('/Pd/Up/hrd/{PointId}', 'updateHrd')->name('update.hrd.Point-D');
     });
 
     // -----------------------------Point E----------------------------------------//
@@ -162,6 +170,10 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::post('/Pe/post-pointD', 'store')->name('store.pointe');
         Route::get('/Pe/U/{PointId}', 'edit')->name('edit.Point-E');
         Route::put('/Pe/Up/{PointId}', 'update')->name('update.Point-E');
+         // -----------------------------Point E HRD----------------------------------------//
+        Route::get('/Pe/search/', 'searchPoin')->name('Point-E.data.search');
+        Route::get('/Pe/search/result', 'resultSearchPoin')->name('Point-E.data.search.result');
+        Route::put('/Pe/Up/hrd/{PointId}', 'updateHrd')->name('update.hrd.Point-E');
     });
 
     // -----------------------------Raport User----------------------------------------//

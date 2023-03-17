@@ -52,9 +52,11 @@
                                     <ul aria-expanded="false">
                                         <li><a href="{{ route('Point-A.data.search') }}">Search Poin A</a></li>
                                         <li><a href="{{ route('Point-B.data.search') }}">Search Poin B</a></li>
-                                        <li><a href="{{ route('point-C') }}">Search Poin C</a></li>
-                                        <li><a href="{{ route('point-D') }}">Search Poin D</a></li>
-                                        <li><a href="{{ route('point-E') }}">Search Poin E</a></li>
+                                        <li><a href="{{ route('Point-C.data.search') }}">Search Poin C</a></li>
+                                        <li><a href="{{ route('Point-D.data.search') }}">Search Poin D</a></li>
+                                        <li><a href="{{ route('Point-E.data.search') }}">Search Poin E</a></li>
+                                        <li><a href="javascript:void()">Search Rincian Poin</a></li>
+                                        <li><a href="javascript:void()">Search Raport</a></li>
                                     </ul>
                                 </li>
                             </ul>
