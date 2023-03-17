@@ -13,87 +13,6 @@ use Illuminate\Support\Facades\DB;
  */
 class sumPointController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->sumPoint = new sumPoint();
-    // }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     /**
      * raportView
      *
@@ -124,9 +43,6 @@ class sumPointController extends Controller
             ->where('users.id', $user_id)
             ->first();
 
-
-            // dd($users);
-
         return view('input-point.raport', compact('users'));
     }
 
@@ -141,7 +57,7 @@ class sumPointController extends Controller
         $users = DB::table('users');
 
         $resultGetUsersName = User::whereNotIn('name', [
-            'it', 'superuser', 'manajer', 'lppm', 'hrd'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
         if ($request->keyword != null) {
@@ -266,5 +182,63 @@ class sumPointController extends Controller
         ->first();
 
         return view('input-point.preview', compact('data'));
+    }
+
+     // functuin mencari data page search
+     public function searchRaport()
+     {
+         $users = User::whereNotIn('name', [
+             'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+         ])->get();
+
+         return view('edit-point.hrd.search.searchDataRaport', compact('users'));
+     }
+
+     public function resultSearchRaport(Request $request)
+    {
+        $users = DB::table('users')
+        ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+        ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+        ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+        ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+        ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+        ->select('users.*', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+        ->where(function($query) use ($request) {
+            $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                  ->orWhere(function($query) use ($request) {
+                      $query->where('point_a.user_id', '=', $request->id);
+                  })
+                  ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                  ->orWhere(function($query) use ($request) {
+                      $query->where('point_b.user_id', '=', $request->id);
+                  })
+                  ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                  ->orWhere(function($query) use ($request) {
+                      $query->where('point_c.user_id', '=', $request->id);
+                  })
+                  ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                  ->orWhere(function($query) use ($request) {
+                      $query->where('point_d.user_id', '=', $request->id);
+                  })
+                  ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
+                  ->orWhere(function($query) use ($request) {
+                      $query->where('point_e.user_id', '=', $request->id);
+                  });
+        })
+        ->first();
+
+        if (empty($users)) {
+            return redirect()->back();
+        } elseif ($dataMenu->control_menu == 0) {
+            return view('menu.disabled');
+        } elseif (PointA::where('user_id', '=', $PointId)->first() == "") {
+            return view('menu.menu-empty');
+        } else {
+            $data = PointA::where('user_id', '=', $PointId)->first();
+        }
+
+// dd($users);
+
+        return view('edit-point.hrd.raport.raport', compact('users'));
     }
 }

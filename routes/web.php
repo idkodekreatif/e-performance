@@ -180,6 +180,9 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
     Route::controller(sumPointController::class)->group(function () {
         Route::get('/raport/view/{user_id}', 'raportView')->name('raport');
         Route::get('/preview/{user_id}', 'Preview')->name('preview.point');
+        // -----------------------------Search raport hrd HRD----------------------------------------//
+        Route::get('/raport/search/', 'searchRaport')->name('raport.data.search');
+        Route::get('/raport/search/result', 'resultSearchRaport')->name('raport.data.search.result');
     });
 });
 
