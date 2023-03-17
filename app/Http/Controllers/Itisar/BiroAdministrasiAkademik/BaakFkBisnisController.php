@@ -14,7 +14,7 @@ class BaakFkBisnisController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
         return view('itisar.BiroAdministrasi.BaakFkBisnis.create', compact('users'));
     }
@@ -400,7 +400,7 @@ class BaakFkBisnisController extends Controller
     {
         $dataMenu = Menu::first();
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
         if (empty($dataMenu)) {

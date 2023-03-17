@@ -122,6 +122,10 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::post('/Pa/post-pointA', 'store')->name('store.pointa');
         Route::get('/Pa/U/{PointId}', 'edit')->name('edit.Point-A');
         Route::put('/Pa/Up/{PointId}', 'update')->name('update.Point-A');
+        // -----------------------------Point A HRD----------------------------------------//
+        Route::get('/Pa/search/', 'searchPoin')->name('Point-A.data.search');
+        Route::get('/Pa/search/result', 'resultSearchPoin')->name('Point-A.data.search.result');
+        Route::put('/Pa/Up/hrd/{PointId}', 'updateHrd')->name('update.hrd.Point-A');
     });
 
     // -----------------------------Point B----------------------------------------//
@@ -130,6 +134,10 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::post('/Pb/post-pointB', 'store')->name('store.pointb');
         Route::get('/Pb/U/{PointId}', 'edit')->name('edit.Point-B');
         Route::put('/Pb/Up/{PointId}', 'update')->name('update.Point-B');
+        // -----------------------------Point B HRD----------------------------------------//
+        Route::get('/Pb/search/', 'searchPoin')->name('Point-B.data.search');
+        Route::get('/Pb/search/result', 'resultSearchPoin')->name('Point-B.data.search.result');
+        Route::put('/Pb/Up/hrd/{PointId}', 'updateHrd')->name('update.hrd.Point-B');
     });
 
     // -----------------------------Point C----------------------------------------//

@@ -32,7 +32,7 @@
 							<span class="nav-text">Apps</span>
 						</a>
                         {{-- Start ITIKAD --}}
-                        @role('it|superuse|dosen|hrd|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi')
+                        @role('it|superuse|dosen|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi')
                             <ul aria-expanded="false">
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITIKAD</a>
                                     <ul aria-expanded="false">
@@ -42,6 +42,19 @@
                                         <li><a href="{{ route('point-D') }}">Poin D</a></li>
                                         <li><a href="{{ route('point-E') }}">Poin E</a></li>
                                         <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        @endrole
+                        @role('it|superuse|hrd')
+                            <ul aria-expanded="false">
+                                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">ITIKAD</a>
+                                    <ul aria-expanded="false">
+                                        <li><a href="{{ route('Point-A.data.search') }}">Search Poin A</a></li>
+                                        <li><a href="{{ route('Point-B.data.search') }}">Search Poin B</a></li>
+                                        <li><a href="{{ route('point-C') }}">Search Poin C</a></li>
+                                        <li><a href="{{ route('point-D') }}">Search Poin D</a></li>
+                                        <li><a href="{{ route('point-E') }}">Search Poin E</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -281,136 +294,138 @@
                                             </li>
                                         @endrole
                                     {{-- End Penilaian Staff Sub Biro Umum --}}
-
                                     </ul>
+
                                 </li>
                             </ul>
-                        @else
-                            <ul aria-expanded="false">
-                                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR</a>
-                                    <ul aria-expanded="false">
-                                        {{-- Form Penilaian Yayasan dan Ka. Sub. Rektor --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">YAYASAN</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('rektor.raport', Auth::user()->id) }}">Raport Rektor</a></li>
-                                                </ul>
-                                            </li>
-                                        {{-- End Penilaian Yayasan dan Ka. Sub. Rektor--}}
+                        @endrole
 
-                                        {{-- Form Penilaian Rektor dan Ka. Sub. Rektor --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">REKTOR</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('warekSatu.raport', Auth::user()->id) }}" aria-expanded="false">Raport Warek I</a></li>
-                                                    <li><a href="{{ route('WarekDua.raport', Auth::user()->id) }}">Raport Warek II</a></li>
-                                                    <li><a href="{{ route('StaffSusBidKerjasama.raport', Auth::user()->id) }}">Raport Staffsus Bidang Kerjasama</a></li>
-                                                    <li><a href="{{ route('KaLpm.raport', Auth::user()->id) }}">Raport Ka. Lembaga Penjaminan Mutu</a></li>
-                                                </ul>
-                                            </li>
-                                        {{-- End Penilaian Rektor dan Ka. Sub. Rektor--}}
+                        @role('tendik')
+                        <ul aria-expanded="false">
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR</a>
+                                <ul aria-expanded="false">
+                                    {{-- Form Penilaian Yayasan dan Ka. Sub. Rektor --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">YAYASAN</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('rektor.raport', Auth::user()->id) }}">Raport Rektor</a></li>
+                                            </ul>
+                                        </li>
+                                    {{-- End Penilaian Yayasan dan Ka. Sub. Rektor--}}
 
-                                        {{-- Penilaian Warek 1 dan Ka. Sub. Warek 1 --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('koorkemahasiswaanDanAlumni.raport', Auth::user()->id) }}" aria-expanded="false">Raport Koor. Kemahasiswaan & Alumni</a></li>
-                                                    <li><a href="{{ route('WarekSatu.Ka.Upt.raport', Auth::user()->id) }}">Raport Ka. UPT</a></li>
-                                                    <li><a href="{{ route('WarekSatu.Ka.Risbang.raport', Auth::user()->id) }}">Raport Ka. Lem. Risbang</a></li>
-                                                    <li><a href="{{ route('WarekSatu.Ka.Baak.raport', Auth::user()->id) }}">Raport Ka. Baak</a></li>
-                                                    <li><a href="{{ route('WarekSatu.Ka.Prodi.raport', Auth::user()->id) }}">Raport Ka. Prodi</a></li>
-                                                </ul>
-                                            </li>
-                                        {{-- End Penilaian Warek 1 dan Ka. Sub. Warek 1 --}}
+                                    {{-- Form Penilaian Rektor dan Ka. Sub. Rektor --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">REKTOR</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('warekSatu.raport', Auth::user()->id) }}" aria-expanded="false">Raport Warek I</a></li>
+                                                <li><a href="{{ route('WarekDua.raport', Auth::user()->id) }}">Raport Warek II</a></li>
+                                                <li><a href="{{ route('StaffSusBidKerjasama.raport', Auth::user()->id) }}">Raport Staffsus Bidang Kerjasama</a></li>
+                                                <li><a href="{{ route('KaLpm.raport', Auth::user()->id) }}">Raport Ka. Lembaga Penjaminan Mutu</a></li>
+                                            </ul>
+                                        </li>
+                                    {{-- End Penilaian Rektor dan Ka. Sub. Rektor--}}
 
-                                        {{-- Penilaian Warek 2 dan Ka. Sub. Warek 2 --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}">Raport Ka. Bau</a></li>
-                                                </ul>
-                                            </li>
-                                        {{-- End Penilaian Warek 2 dan Ka. Sub. Warek 2 --}}
+                                    {{-- Penilaian Warek 1 dan Ka. Sub. Warek 1 --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('koorkemahasiswaanDanAlumni.raport', Auth::user()->id) }}" aria-expanded="false">Raport Koor. Kemahasiswaan & Alumni</a></li>
+                                                <li><a href="{{ route('WarekSatu.Ka.Upt.raport', Auth::user()->id) }}">Raport Ka. UPT</a></li>
+                                                <li><a href="{{ route('WarekSatu.Ka.Risbang.raport', Auth::user()->id) }}">Raport Ka. Lem. Risbang</a></li>
+                                                <li><a href="{{ route('WarekSatu.Ka.Baak.raport', Auth::user()->id) }}">Raport Ka. Baak</a></li>
+                                                <li><a href="{{ route('WarekSatu.Ka.Prodi.raport', Auth::user()->id) }}">Raport Ka. Prodi</a></li>
+                                            </ul>
+                                        </li>
+                                    {{-- End Penilaian Warek 1 dan Ka. Sub. Warek 1 --}}
 
-                                        {{-- Penilaian UPT --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">UPT</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('ka.perpustakaan.raport', Auth::user()->id) }}">Raport Koordinator Perpustakaan</a></li>
-                                                    <li><a href="{{ route('ka.laboran.raport', Auth::user()->id) }}">Raport Koordinator Laboratorium</a></li>
-                                                    <li><a href="{{ route('ka.it.raport', Auth::user()->id)}}">Raport Ka. Unit IT</a></li>
-                                                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Unit Pemasaran</a>
-                                                        <ul aria-expanded="false">
-                                                            <li><a href="{{ route('ka.pemasaran.raport', Auth::user()->id) }}">Raport Ka. Unit Pemasaran</a></li>
-                                                            <li><a href="{{ route('StaffPemasaran.raport', Auth::user()->id) }}">Raport Staff Pemasaran</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        {{-- End Penilaian UPT --}}
+                                    {{-- Penilaian Warek 2 dan Ka. Sub. Warek 2 --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}">Raport Ka. Bau</a></li>
+                                            </ul>
+                                        </li>
+                                    {{-- End Penilaian Warek 2 dan Ka. Sub. Warek 2 --}}
 
-                                        {{-- Penilaian Staff Baak --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('ka.baak.raport', Auth::user()->id) }}">Raport Ka. Sub. Biro Administrasi Akademik</a></li>
-                                                    <li><a href="{{ route('kemahasiswaan.raport', Auth::user()->id) }}">Raport Kemahasiswaan</a></li>
-                                                    <li><a href="{{ route('baakFkBisnis.raport', Auth::user()->id) }}">Raport Baak Fakultas Bisnis</a></li>
-                                                    <li><a href="{{ route('staffbaaksatu.raport', Auth::user()->id) }}">Raport Staff Baak</a></li>
-                                                    <li><a href="{{ route('staffbaakdua.raport', Auth::user()->id) }}">Raport Staff Baak</a></li>
-                                                </ul>
-                                            </li>
-                                        {{-- End Penilaian Staff Baak --}}
+                                    {{-- Penilaian UPT --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">UPT</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('ka.perpustakaan.raport', Auth::user()->id) }}">Raport Koordinator Perpustakaan</a></li>
+                                                <li><a href="{{ route('ka.laboran.raport', Auth::user()->id) }}">Raport Koordinator Laboratorium</a></li>
+                                                <li><a href="{{ route('ka.it.raport', Auth::user()->id)}}">Raport Ka. Unit IT</a></li>
+                                                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Unit Pemasaran</a>
+                                                    <ul aria-expanded="false">
+                                                        <li><a href="{{ route('ka.pemasaran.raport', Auth::user()->id) }}">Raport Ka. Unit Pemasaran</a></li>
+                                                        <li><a href="{{ route('StaffPemasaran.raport', Auth::user()->id) }}">Raport Staff Pemasaran</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    {{-- End Penilaian UPT --}}
+
+                                    {{-- Penilaian Staff Baak --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('ka.baak.raport', Auth::user()->id) }}">Raport Ka. Sub. Biro Administrasi Akademik</a></li>
+                                                <li><a href="{{ route('kemahasiswaan.raport', Auth::user()->id) }}">Raport Kemahasiswaan</a></li>
+                                                <li><a href="{{ route('baakFkBisnis.raport', Auth::user()->id) }}">Raport Baak Fakultas Bisnis</a></li>
+                                                <li><a href="{{ route('staffbaaksatu.raport', Auth::user()->id) }}">Raport Staff Baak</a></li>
+                                                <li><a href="{{ route('staffbaakdua.raport', Auth::user()->id) }}">Raport Staff Baak</a></li>
+                                            </ul>
+                                        </li>
+                                    {{-- End Penilaian Staff Baak --}}
 
                                     {{-- Penilaian Staff Keuangan --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KEUANGAN</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('StaffKeuangan.raport', Auth::user()->id) }}">Raport Staff Keuangan</a></li>
-                                                </ul>
-                                            </li>
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KEUANGAN</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('StaffKeuangan.raport', Auth::user()->id) }}">Raport Staff Keuangan</a></li>
+                                            </ul>
+                                        </li>
                                     {{-- End Penilaian Staff Keuangan --}}
 
                                     {{-- Penilaian Staff lpm --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('Lpm.raport', Auth::user()->id) }}">Raport Staff ka. Sub. Lem. SPMI-SPME</a></li>
-                                                </ul>
-                                            </li>
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('Lpm.raport', Auth::user()->id) }}">Raport Staff ka. Sub. Lem. SPMI-SPME</a></li>
+                                            </ul>
+                                        </li>
                                     {{-- End Penilaian Staff lpm --}}
 
                                     {{-- Penilaian Staff Risbang --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">RISBANG</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('KasubRisbang.raport', Auth::user()->id) }}">Raport Ka. Sub. Lem. Penel & Pengmas</a></li>
-                                                </ul>
-                                            </li>
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">RISBANG</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('KasubRisbang.raport', Auth::user()->id) }}">Raport Ka. Sub. Lem. Penel & Pengmas</a></li>
+                                            </ul>
+                                        </li>
                                     {{-- End Penilaian Staff Risbang --}}
 
                                     {{-- Penilaian Staff Prodi --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('sekKaprodi.raport', Auth::user()->id) }}">Raport Sek. Ka. Prodi</a></li>
-                                                </ul>
-                                            </li>
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('sekKaprodi.raport', Auth::user()->id) }}">Raport Sek. Ka. Prodi</a></li>
+                                            </ul>
+                                        </li>
                                     {{-- End Penilaian Staff Prodi --}}
 
                                     {{-- Penilaian Staff Bau --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('kasubBiroKepegawaian.raport', Auth::user()->id) }}">Raport Ka. Sub Biro Kepegawaian</a></li>
-                                                    <li><a href="{{ route('KasubBiroKeuangan.raport', Auth::user()->id) }}">Raport Ka. Sub. Biro Keuangan & Akuntant</a></li>
-                                                </ul>
-                                            </li>
-                                    {{-- End Penilaian Staff Bau --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('kasubBiroKepegawaian.raport', Auth::user()->id) }}">Raport Ka. Sub Biro Kepegawaian</a></li>
+                                                <li><a href="{{ route('KasubBiroKeuangan.raport', Auth::user()->id) }}">Raport Ka. Sub. Biro Keuangan & Akuntant</a></li>
+                                            </ul>
+                                        </li>
+                                {{-- End Penilaian Staff Bau --}}
 
-                                    {{-- Penilaian Staff Sub Biro Umum --}}
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">SUB BIRO UMUM</a>
-                                                <ul aria-expanded="false">
-                                                    <li><a href="{{ route('staffumum.raport', Auth::user()->id) }}">Raport Staff Umum Dan Kepegawaian</a></li>
-                                                    <li><a href="{{ route('staffkebersihan.raport', Auth::user()->id) }}">Raport Staff Kebersihan</a></li>
-                                                    <li><a href="{{ route('staffsecurity.raport', Auth::user()->id) }}">Raport Staff Security</a></li>
-                                                    <li><a href="{{ route('staffsarpras.raport', Auth::user()->id) }}">Raport Staff Srapras</a></li>
-                                                </ul>
-                                            </li>
-                                    {{-- End Penilaian Staff Sub Biro Umum --}}
+                                {{-- Penilaian Staff Sub Biro Umum --}}
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">SUB BIRO UMUM</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('staffumum.raport', Auth::user()->id) }}">Raport Staff Umum Dan Kepegawaian</a></li>
+                                                <li><a href="{{ route('staffkebersihan.raport', Auth::user()->id) }}">Raport Staff Kebersihan</a></li>
+                                                <li><a href="{{ route('staffsecurity.raport', Auth::user()->id) }}">Raport Staff Security</a></li>
+                                                <li><a href="{{ route('staffsarpras.raport', Auth::user()->id) }}">Raport Staff Srapras</a></li>
+                                            </ul>
+                                        </li>
+                                {{-- End Penilaian Staff Sub Biro Umum --}}
 
-                                    </ul>
-                                </li>
-                            </ul>
+                                </ul>
+                            </li>
+                        </ul>
                         @endrole
                         {{-- End IKTISAR --}}
                     </li>

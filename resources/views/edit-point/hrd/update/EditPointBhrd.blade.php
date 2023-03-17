@@ -30,6 +30,35 @@
             </ol>
         </div>
         @endrole
+
+        <div class="card shadow">
+            <div class="card-header">
+                <h4 class="card-title">Profile</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                        <thead>
+                            <tr style="font-weight:bold">
+                                <td>NAMA</td>
+                                <td>EMAIL</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{ $data->name }}
+                                </td>
+                                <td>
+                                    {{ $data->email }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <div class="card shadow">
             <div class="card-header">
                 <h4 class="card-title">Point B</h4>
@@ -37,7 +66,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <form id="my-form" action="{{ route('update.Point-B', [$data->user_id]) }}" method="POST"
+                        <form id="my-form" action="{{ route('update.hrd.Point-B', [$data->user_id]) }}" method="POST"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
