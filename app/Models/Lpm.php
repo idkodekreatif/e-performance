@@ -13,7 +13,7 @@ class Lpm extends Model
 
     protected static $logName = 'LPM';
 
-    protected $table = "lpm";
+    protected $table = "ikbis_lpm";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

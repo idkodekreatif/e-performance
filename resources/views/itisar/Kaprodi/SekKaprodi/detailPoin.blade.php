@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Penilaian Sek Ka. Prodi">
+<x-app-layout title="Detail Poin Penilaian Sek Ka. Prodi">
     @push('style')
     @endpush
 
@@ -19,18 +19,17 @@
     <div class="col-xl col-lg">
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Detail Poin</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Sek Ka. Prodi</a></li>
             </ol>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col">
                 <a href="{{ route('sekKaprodi.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
-        </div> --}}
-        <form action="{{ route('update.sekKaprodi', ['pointId' => $data->user_id]) }}" id="my-form" method="POST"
-            enctype="multipart/form-data">
+        </div>
+        <form action="javascript:void(0)" id="my-form" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -492,8 +491,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_1') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_1" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_1)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_1) }}"
@@ -546,8 +543,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_2') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_2" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_2)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_2) }}"
@@ -600,8 +595,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_3') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_3" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_3)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_3) }}"
@@ -655,8 +648,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_4') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_4" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_4)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_4) }}"
@@ -710,8 +701,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_5') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_5" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_5)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_5) }}"
@@ -765,8 +754,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_6') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_6" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_6)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_6) }}"
@@ -821,8 +808,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_7') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_7" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_7)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_7) }}"
@@ -876,8 +861,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_8') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_8" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_8)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_8) }}"
@@ -931,8 +914,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_9') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_9" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_9)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_9) }}"
@@ -985,8 +966,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_10') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_10" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_10)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_10) }}"
@@ -1040,8 +1019,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_11') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_11" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_11)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_11) }}"
@@ -1095,8 +1072,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_12') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_12" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_12)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_12) }}"
@@ -1150,8 +1125,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_13') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_13" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_13)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_13) }}"
@@ -1205,8 +1178,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_14') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_14" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_14)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_14) }}"
@@ -1260,8 +1231,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_15') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_15" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_15)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_15) }}"
@@ -1314,8 +1283,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_16') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_16" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_16)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_16) }}"
@@ -1381,8 +1348,7 @@
                                         <td class="table-primary"><label for="">Nilai
                                                 Rata-rata</label><input
                                                 id="output_total_nilai_rata_rata_kinerja_kompetensi"
-                                                name="output_total_nilai_rata_rata_kinerja_kompetensi"
-                                                type="number"
+                                                name="output_total_nilai_rata_rata_kinerja_kompetensi" type="number"
                                                 value="{{ number_format($data->output_total_nilai_rata_rata_kinerja_kompetensi, 2) }}"
                                                 aria-label="output_total_nilai_rata_rata_kinerja_kompetensi" readonly>
                                         </td>
@@ -1398,8 +1364,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
-                                            class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -1411,26 +1375,5 @@
     </div>
 
     @push('JavaScript')
-        <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2x6.js') }}"></script>
-        <script src="{{ asset('Assets/js/itisar/Kaprodi/SekKaprodi/PointKinerjaKompetensi.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            function confirmSubmit() {
-                Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda akan menyimpan data tersebut.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Simpan',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('my-form').submit();
-                    } else {
-                        Swal.fire('Data batal disimpan');
-                    }
-                });
-            }
-        </script>
     @endpush
 </x-app-layout>

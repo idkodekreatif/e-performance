@@ -28,17 +28,17 @@ class KoordinatorPerpustakaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
@@ -190,17 +190,17 @@ class KoordinatorPerpustakaanController extends Controller
     {
         // Validation file upload
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
         ]);
         DB::beginTransaction();
         try {

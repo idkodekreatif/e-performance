@@ -33,11 +33,11 @@ class KaUnitPemasaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
@@ -127,7 +127,7 @@ class KaUnitPemasaranController extends Controller
         return view('itisar.ka-upt.ka-unit-pemasaran.searchdata', compact('users'));
     }
 
-public function dataSearch(Request $request)
+    public function dataSearch(Request $request)
     {
         $data = KaPemasaran::where('user_id', '=', $request->id)->first();
 
@@ -138,11 +138,11 @@ public function dataSearch(Request $request)
     {
         // Validation file upload
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
         ]);
         DB::beginTransaction();
         try {

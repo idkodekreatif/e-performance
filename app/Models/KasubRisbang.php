@@ -13,7 +13,7 @@ class KasubRisbang extends Model
 
     protected static $logName = 'Kasub Risbang';
 
-    protected $table = "kasub_risbang";
+    protected $table = "ikbis_kasub_risbang";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

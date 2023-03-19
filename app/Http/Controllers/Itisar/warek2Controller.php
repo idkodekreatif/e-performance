@@ -34,21 +34,21 @@ class warek2Controller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
@@ -199,21 +199,21 @@ class warek2Controller extends Controller
     {
         // Validation file upload
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
         ]);
         DB::beginTransaction();
         try {
@@ -488,9 +488,9 @@ class warek2Controller extends Controller
     }
 
     public function detailPoin($userId)
-        {
+    {
         $data = bau::where('user_id', '=', $userId)->first();
 
         return view('itisar.warek2.detailPoin', ['data' => $data]);
-        }
+    }
 }
