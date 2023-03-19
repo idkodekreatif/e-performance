@@ -14,10 +14,11 @@ Project Description
 
 ### In Progress
 
-- [ ] Membuat fiture edit IKTISAR berdasarkan id user pegawai yang di nilai  
+- [ ] fiksing perhitungan 20% dan 80%  
 
 ### Done ✓
 
+- [x] Membuat fiture edit IKTISAR berdasarkan id user pegawai yang di nilai  
 - [x] Check fungsi penambahan role user di VPS dan LOCAL  
 - [x] Penyusunan Menu IKTIKAD sesuai bagian  
 - [x] Fiks Register Tendik  

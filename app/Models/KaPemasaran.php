@@ -13,7 +13,7 @@ class KaPemasaran extends Model
 
     protected static $logName = 'Ka. Unit Pemasaran';
 
-    protected $table = "ka_pemasaran";
+    protected $table = "ikbis_ka_pemasaran";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

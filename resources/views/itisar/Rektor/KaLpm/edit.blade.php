@@ -2843,7 +2843,7 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/itisar/rektor/KaLpm/PointKinerjaPerilaku.js') }}"></script>
+    <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2.js') }}"></script>
     <script src="{{ asset('Assets/js/itisar/rektor/KaLpm/PointKinerjaKompetensi.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

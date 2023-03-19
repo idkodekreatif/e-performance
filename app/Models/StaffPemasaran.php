@@ -12,7 +12,7 @@ class StaffPemasaran extends Model
 
     protected static $logName = 'Staff Pemasaran';
 
-    protected $table = "staff_pemasaran";
+    protected $table = "ikbis_staff_pemasaran";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

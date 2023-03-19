@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Penilaian Ka. UPT | Ka. LABORAN">
+<x-app-layout title="Detail Poin Penilaian Staff Pemasaran">
     @push('style')
     @endpush
 
@@ -19,18 +19,17 @@
     <div class="col-xl col-lg">
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Laboran</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Detail Poin</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Staff Pemasaran</a></li>
             </ol>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col">
-                <a href="{{ route('ka.laboran.raport', Auth::user()->id) }}"
+                <a href="{{ route('StaffPemasaran.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
-        </div> --}}
-        <form action="{{ route('update.ka.laboran', ['pointId' => $data->user_id]) }}" id="my-form" method="POST"
-            enctype="multipart/form-data">
+        </div>
+        <form action="javascript:void(0)" id="my-form" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -457,8 +456,10 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Merencanakan strategi pengembangan laboratorium dilingkungan prodi dan
-                                            institusi</td>
+                                        <td>Konten Marketing : Menciptakan konten yang berkualitas untuk memudahkan
+                                            audiens mendapat informasi produk yang
+                                            ditawarkan dalam pemasaran melalui media sosial, konten yang dibuat menarik
+                                            dan sesuai dengan target.</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_1 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
@@ -490,10 +491,8 @@
                                             </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
-                                                perencanaan strategi</label>
-                                            <input class="@error('file_kinerja_kompetensi_1') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_1" type="file">
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
 
                                             @if ($data->file_kinerja_kompetensi_1)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_1) }}"
@@ -512,7 +511,11 @@
 
                                     <tr>
                                         <td>2</td>
-                                        <td>Implementasi strategi</td>
+                                        <td>Sosial Media Marketing : Menjangkau target audiens melalui platform sosial
+                                            media. Seperti Facebook, Instagram, Youtube,
+                                            Tiktok, dll. Sosial Media Marketing juga sebagai strategi membangun brand
+                                            awareness produk dilakukkan sampai mendapatkan
+                                            audiens dari media sosial.</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_2 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
@@ -546,8 +549,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_2') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_2" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_2)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_2) }}"
@@ -565,7 +566,9 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>Membuat denah dan mengkompilasi jadwal penggunaan laboratorium</td>
+                                        <td>Desain Digital : Mendesain baik untuk konten sosial media, tampilan website
+                                            kampus, sarana media promosi fisik kampus
+                                            hingga kebutuhan desain di internal kampus.</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_3 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
@@ -597,10 +600,8 @@
                                             </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
-                                                jadwal</label>
-                                            <input class="@error('file_kinerja_kompetensi_3') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_3" type="file">
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
 
                                             @if ($data->file_kinerja_kompetensi_3)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_3) }}"
@@ -618,7 +619,11 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>Melakukan perawatan alat laboratorium</td>
+                                        <td>Artikel dan Berita : Memuat berbagai berita tentang kegiatan baik didalam
+                                            maupun diluar yang berhubungan dengan kampus
+                                            di sosial media dan website kampus, serta memuat artikel yang telah dibuat
+                                            oleh para dosen di sosial media dan website
+                                            kampus.</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_4 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
@@ -652,8 +657,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_4') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_4" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_4)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_4) }}"
@@ -671,7 +674,9 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td>Membuat daftar inventaris alat laboratorium</td>
+                                        <td>Promosi dan kanvas : Melakukan koordinasi dan kunjungan ke sejumlah sekolah
+                                            SMA guna menjalin hubungan dengan guru BK,
+                                            Kepala Sekolah serta melakukan promosi untuk mendapatkan maba.</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_5 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
@@ -703,10 +708,8 @@
                                             </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen daftar
-                                                inventaris alat lab</label>
-                                            <input class="@error('file_kinerja_kompetensi_5') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_5" type="file">
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
 
                                             @if ($data->file_kinerja_kompetensi_5)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_5) }}"
@@ -724,7 +727,9 @@
                                     </tr>
                                     <tr>
                                         <td>6</td>
-                                        <td>Menyusun laporan unit laboratorium sebagai pertanggung jawaban kepada atasan
+                                        <td>Dokumentasi : Mengabadikan setiap momen kegiatan baik didalam maupun diluar
+                                            yang berhubungan dengan kampus serta
+                                            mengarsipkan hasil dokumentasi.
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_6 == '1' ? 'checked' : '' }}
@@ -757,10 +762,8 @@
                                             </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Laporan
-                                                bulanan</label>
-                                            <input class="@error('file_kinerja_kompetensi_6') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_6" type="file">
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
 
                                             @if ($data->file_kinerja_kompetensi_6)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_6) }}"
@@ -770,60 +773,6 @@
                                             @endif
 
                                             @error('file_kinerja_kompetensi_6')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Menyusun rencana kerja dan anggaran tahunan (RKAT) pada bidangnya
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_7')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
-                                                RKAT</label>
-                                            <input class="@error('file_kinerja_kompetensi_7') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_7" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_7)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_7) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_7')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -893,8 +842,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
-                                            class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -906,26 +853,5 @@
     </div>
 
     @push('JavaScript')
-        <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2x5.js') }}"></script>
-        <script src="{{ asset('Assets/js/itisar/KaUpt/KaLaboran/PointKinerjaKompetensi.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            function confirmSubmit() {
-                Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda akan menyimpan data tersebut.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Simpan',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('my-form').submit();
-                    } else {
-                        Swal.fire('Data batal disimpan');
-                    }
-                });
-            }
-        </script>
     @endpush
 </x-app-layout>

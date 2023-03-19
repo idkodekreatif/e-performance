@@ -43,36 +43,12 @@ class KaUnitPemasaranController extends Controller
         DB::beginTransaction();
         try {
             $kaPemasaran = new KaPemasaran();
-            $kaPemasaran->Point1_1 = $request->get('Point1_1');
-            $kaPemasaran->Point1_2 = $request->get('Point1_2');
-            $kaPemasaran->Point1_3 = $request->get('Point1_3');
-            $kaPemasaran->Point1_4 = $request->get('Point1_4');
-            $kaPemasaran->Point1_5 = $request->get('Point1_5');
-            $kaPemasaran->Point2_1 = $request->get('Point2_1');
-            $kaPemasaran->Point2_2 = $request->get('Point2_2');
-            $kaPemasaran->Point2_3 = $request->get('Point2_3');
-            $kaPemasaran->Point2_4 = $request->get('Point2_4');
-            $kaPemasaran->Point2_5 = $request->get('Point2_5');
-            $kaPemasaran->Point3_1 = $request->get('Point3_1');
-            $kaPemasaran->Point3_2 = $request->get('Point3_2');
-            $kaPemasaran->Point3_3 = $request->get('Point3_3');
-            $kaPemasaran->Point3_4 = $request->get('Point3_4');
-            $kaPemasaran->Point3_5 = $request->get('Point3_5');
-            $kaPemasaran->Point4_1 = $request->get('Point4_1');
-            $kaPemasaran->Point4_2 = $request->get('Point4_2');
-            $kaPemasaran->Point4_3 = $request->get('Point4_3');
-            $kaPemasaran->Point4_4 = $request->get('Point4_4');
-            $kaPemasaran->Point4_5 = $request->get('Point4_5');
-            $kaPemasaran->Point5_1 = $request->get('Point5_1');
-            $kaPemasaran->Point5_2 = $request->get('Point5_2');
-            $kaPemasaran->Point5_3 = $request->get('Point5_3');
-            $kaPemasaran->Point5_4 = $request->get('Point5_4');
-            $kaPemasaran->Point5_5 = $request->get('Point5_5');
-            $kaPemasaran->Point6_1 = $request->get('Point6_1');
-            $kaPemasaran->Point6_2 = $request->get('Point6_2');
-            $kaPemasaran->Point6_3 = $request->get('Point6_3');
-            $kaPemasaran->Point6_4 = $request->get('Point6_4');
-            $kaPemasaran->Point6_5 = $request->get('Point6_5');
+            $kaPemasaran->q1 = $request->get('q1');
+            $kaPemasaran->q2 = $request->get('q2');
+            $kaPemasaran->q3 = $request->get('q3');
+            $kaPemasaran->q4 = $request->get('q4');
+            $kaPemasaran->q5 = $request->get('q5');
+            $kaPemasaran->q6 = $request->get('q6');
             $kaPemasaran->output_point_1 = $request->get('output_point_1');
             $kaPemasaran->output_point_2 = $request->get('output_point_2');
             $kaPemasaran->output_point_3 = $request->get('output_point_3');
@@ -172,36 +148,12 @@ public function dataSearch(Request $request)
         try {
             $RecordData =  KaPemasaran::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -271,36 +223,12 @@ public function dataSearch(Request $request)
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -348,15 +276,15 @@ public function dataSearch(Request $request)
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('ka_pemasaran', 'users.id', '=', 'ka_pemasaran.user_id')
+            ->leftJoin('ikbis_ka_pemasaran', 'users.id', '=', 'ikbis_ka_pemasaran.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'ka_pemasaran.user_id',
-                'ka_pemasaran.output_total_sementara_kinerja_perilaku',
-                'ka_pemasaran.output_total_sementara_kinerja_kompetensi',
+                'ikbis_ka_pemasaran.user_id',
+                'ikbis_ka_pemasaran.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_pemasaran.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('ka_pemasaran.user_id', $user_id)
+            ->where('ikbis_ka_pemasaran.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -365,5 +293,12 @@ public function dataSearch(Request $request)
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = KaPemasaran::where('user_id', '=', $userId)->first();
+
+        return view('itisar.ka-upt.ka-unit-pemasaran.detailPoin', ['data' => $data]);
     }
 }

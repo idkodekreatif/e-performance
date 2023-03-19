@@ -13,7 +13,7 @@ class KaLaboran extends Model
 
     protected static $logName = 'Ka. Laboran';
 
-    protected $table = "ka_laboran";
+    protected $table = "ikbis_ka_laboran";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

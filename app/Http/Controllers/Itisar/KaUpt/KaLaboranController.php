@@ -40,36 +40,12 @@ class KaLaboranController extends Controller
         DB::beginTransaction();
         try {
             $kalaboran = new KaLaboran();
-            $kalaboran->Point1_1 = $request->get('Point1_1');
-            $kalaboran->Point1_2 = $request->get('Point1_2');
-            $kalaboran->Point1_3 = $request->get('Point1_3');
-            $kalaboran->Point1_4 = $request->get('Point1_4');
-            $kalaboran->Point1_5 = $request->get('Point1_5');
-            $kalaboran->Point2_1 = $request->get('Point2_1');
-            $kalaboran->Point2_2 = $request->get('Point2_2');
-            $kalaboran->Point2_3 = $request->get('Point2_3');
-            $kalaboran->Point2_4 = $request->get('Point2_4');
-            $kalaboran->Point2_5 = $request->get('Point2_5');
-            $kalaboran->Point3_1 = $request->get('Point3_1');
-            $kalaboran->Point3_2 = $request->get('Point3_2');
-            $kalaboran->Point3_3 = $request->get('Point3_3');
-            $kalaboran->Point3_4 = $request->get('Point3_4');
-            $kalaboran->Point3_5 = $request->get('Point3_5');
-            $kalaboran->Point4_1 = $request->get('Point4_1');
-            $kalaboran->Point4_2 = $request->get('Point4_2');
-            $kalaboran->Point4_3 = $request->get('Point4_3');
-            $kalaboran->Point4_4 = $request->get('Point4_4');
-            $kalaboran->Point4_5 = $request->get('Point4_5');
-            $kalaboran->Point5_1 = $request->get('Point5_1');
-            $kalaboran->Point5_2 = $request->get('Point5_2');
-            $kalaboran->Point5_3 = $request->get('Point5_3');
-            $kalaboran->Point5_4 = $request->get('Point5_4');
-            $kalaboran->Point5_5 = $request->get('Point5_5');
-            $kalaboran->Point6_1 = $request->get('Point6_1');
-            $kalaboran->Point6_2 = $request->get('Point6_2');
-            $kalaboran->Point6_3 = $request->get('Point6_3');
-            $kalaboran->Point6_4 = $request->get('Point6_4');
-            $kalaboran->Point6_5 = $request->get('Point6_5');
+            $kalaboran->q1 = $request->get('q1');
+            $kalaboran->q2 = $request->get('q2');
+            $kalaboran->q3 = $request->get('q3');
+            $kalaboran->q4 = $request->get('q4');
+            $kalaboran->q5 = $request->get('q5');
+            $kalaboran->q6 = $request->get('q6');
             $kalaboran->output_point_1 = $request->get('output_point_1');
             $kalaboran->output_point_2 = $request->get('output_point_2');
             $kalaboran->output_point_3 = $request->get('output_point_3');
@@ -181,36 +157,12 @@ class KaLaboranController extends Controller
         try {
             $RecordData =  KaLaboran::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -301,36 +253,12 @@ class KaLaboranController extends Controller
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -382,15 +310,15 @@ class KaLaboranController extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('ka_laboran', 'users.id', '=', 'ka_laboran.user_id')
+            ->leftJoin('ikbis_ka_laboran', 'users.id', '=', 'ikbis_ka_laboran.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'ka_laboran.user_id',
-                'ka_laboran.output_total_sementara_kinerja_perilaku',
-                'ka_laboran.output_total_sementara_kinerja_kompetensi',
+                'ikbis_ka_laboran.user_id',
+                'ikbis_ka_laboran.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_laboran.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('ka_laboran.user_id', $user_id)
+            ->where('ikbis_ka_laboran.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -399,5 +327,12 @@ class KaLaboranController extends Controller
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = KaLaboran::where('user_id', '=', $userId)->first();
+
+        return view('itisar.ka-upt.koord-laboran.detailPoin', ['data' => $data]);
     }
 }

@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Penilaian Ka. UPT | Ka. LABORAN">
+<x-app-layout title="Detail Penilaian Ka. Upt | Ka. UNIT PEMASARAN">
     @push('style')
     @endpush
 
@@ -19,18 +19,17 @@
     <div class="col-xl col-lg">
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Laboran</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Detail</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Unit Pemasaran</a></li>
             </ol>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col">
-                <a href="{{ route('ka.laboran.raport', Auth::user()->id) }}"
+                <a href="{{ route('ka.pemasaran.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
-        </div> --}}
-        <form action="{{ route('update.ka.laboran', ['pointId' => $data->user_id]) }}" id="my-form" method="POST"
-            enctype="multipart/form-data">
+        </div>
+        <form action="javascript:void(0)" id="my-form" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -80,24 +79,19 @@
                                         <td>Question 1</td>
                                         <td>Orientasi Pelayanan</td>
                                         <td><input type="radio" class="q1" name="q1" id="q1_1"
-                                                value="1" {{ $data->q1 == '1' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="1" {{ $data->q1 == '1' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q1" name="q1" id="q1_2"
-                                                value="2" {{ $data->q1 == '2' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="2" {{ $data->q1 == '2' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q1" name="q1" id="q1_3"
-                                                value="3" {{ $data->q1 == '3' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="3" {{ $data->q1 == '3' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q1" name="q1" id="q1_4"
-                                                value="4" {{ $data->q1 == '4' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="4" {{ $data->q1 == '4' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q1" name="q1" id="q1_5"
-                                                value="5" {{ $data->q1 == '5' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="5" {{ $data->q1 == '5' ? 'checked' : '' }}>
                                         </td>
                                         @error('q1')
                                             <span class="invalid-feedback" role="alert">
@@ -129,24 +123,19 @@
                                         <td>Question 2</td>
                                         <td>Integritas</td>
                                         <td><input type="radio" class="q2" name="q2" id="q2_1"
-                                                value="1" {{ $data->q2 == '1' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="1" {{ $data->q2 == '1' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q2" name="q2" id="q2_2"
-                                                value="2" {{ $data->q2 == '2' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="2" {{ $data->q2 == '2' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q2" name="q2" id="q2_3"
-                                                value="3" {{ $data->q2 == '3' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="3" {{ $data->q2 == '3' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q2" name="q2" id="q2_4"
-                                                value="4" {{ $data->q2 == '4' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="4" {{ $data->q2 == '4' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q2" name="q2" id="q2_5"
-                                                value="5" {{ $data->q2 == '5' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="5" {{ $data->q2 == '5' ? 'checked' : '' }}>
                                         </td>
                                         @error('q2')
                                             <span class="invalid-feedback" role="alert">
@@ -178,24 +167,19 @@
                                         <td>Question 3</td>
                                         <td>Komitmen</td>
                                         <td><input type="radio" class="q3" name="q3" id="q3_1"
-                                                value="1" {{ $data->q3 == '1' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="1" {{ $data->q3 == '1' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q3" name="q3" id="q3_2"
-                                                value="2" {{ $data->q3 == '2' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="2" {{ $data->q3 == '2' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q3" name="q3" id="q3_3"
-                                                value="3" {{ $data->q3 == '3' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="3" {{ $data->q3 == '3' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q3" name="q3" id="q3_4"
-                                                value="4" {{ $data->q3 == '4' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="4" {{ $data->q3 == '4' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q3" name="q3" id="q3_5"
-                                                value="5" {{ $data->q3 == '5' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="5" {{ $data->q3 == '5' ? 'checked' : '' }}>
                                         </td>
                                         @error('q3')
                                             <span class="invalid-feedback" role="alert">
@@ -238,24 +222,19 @@
                                         <td>Question 4</td>
                                         <td>Disiplin</td>
                                         <td><input type="radio" class="q4" name="q4" id="q4_1"
-                                                value="1" {{ $data->q4 == '1' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="1" {{ $data->q4 == '1' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q4" name="q4" id="q4_2"
-                                                value="2" {{ $data->q4 == '2' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="2" {{ $data->q4 == '2' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q4" name="q4" id="q4_3"
-                                                value="3" {{ $data->q4 == '3' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="3" {{ $data->q4 == '3' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q4" name="q4" id="q4_4"
-                                                value="4" {{ $data->q4 == '4' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="4" {{ $data->q4 == '4' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q4" name="q4" id="q4_5"
-                                                value="5" {{ $data->q4 == '5' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="5" {{ $data->q4 == '5' ? 'checked' : '' }}>
                                         </td>
                                         @error('q4')
                                             <span class="invalid-feedback" role="alert">
@@ -292,24 +271,19 @@
                                         <td>Question 5</td>
                                         <td>Kerjasama</td>
                                         <td><input type="radio" class="q5" name="q5" id="q5_1"
-                                                value="1" {{ $data->q5 == '1' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="1" {{ $data->q5 == '1' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q5" name="q5" id="q5_2"
-                                                value="2" {{ $data->q5 == '2' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="2" {{ $data->q5 == '2' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q5" name="q5" id="q5_3"
-                                                value="3" {{ $data->q5 == '3' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="3" {{ $data->q5 == '3' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q5" name="q5" id="q5_4"
-                                                value="4" {{ $data->q5 == '4' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="4" {{ $data->q5 == '4' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q5" name="q5" id="q5_5"
-                                                value="5" {{ $data->q5 == '5' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="5" {{ $data->q5 == '5' ? 'checked' : '' }}>
                                         </td>
                                         @error('q5')
                                             <span class="invalid-feedback" role="alert">
@@ -348,24 +322,19 @@
                                         <td>Question 6</td>
                                         <td>Kepemimpinan (Hanya yang menduduki Jabatan Struktural)</td>
                                         <td><input type="radio" class="q6" name="q6" id="q6_1"
-                                                value="1" {{ $data->q6 == '1' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="1" {{ $data->q6 == '1' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q6" name="q6" id="q6_2"
-                                                value="2" {{ $data->q6 == '2' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="2" {{ $data->q6 == '2' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q6" name="q6" id="q6_3"
-                                                value="3" {{ $data->q6 == '3' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="3" {{ $data->q6 == '3' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q6" name="q6" id="q6_4"
-                                                value="4" {{ $data->q6 == '4' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="4" {{ $data->q6 == '4' ? 'checked' : '' }}>
                                         </td>
                                         <td><input type="radio" class="q6" name="q6" id="q6_5"
-                                                value="5" {{ $data->q6 == '5' ? 'checked' : '' }}
-                                                onclick="sumPoint();">
+                                                value="5" {{ $data->q6 == '5' ? 'checked' : '' }}>
                                         </td>
                                         @error('q6')
                                             <span class="invalid-feedback" role="alert">
@@ -457,8 +426,8 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Merencanakan strategi pengembangan laboratorium dilingkungan prodi dan
-                                            institusi</td>
+                                        <td>Memenuhi Target Pencapaian maba sesuai yang ditetapkan oleh Yayasan/Rektor
+                                        </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_1 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
@@ -490,10 +459,8 @@
                                             </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
-                                                perencanaan strategi</label>
-                                            <input class="@error('file_kinerja_kompetensi_1') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_1" type="file">
+                                            <label for="formFileSm" class="form-label text-danger">* Dokumen /
+                                                Fisik</label>
 
                                             @if ($data->file_kinerja_kompetensi_1)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_1) }}"
@@ -512,7 +479,9 @@
 
                                     <tr>
                                         <td>2</td>
-                                        <td>Implementasi strategi</td>
+                                        <td>Mengkoordinasikan promosi prodi-prodi yang ada di IKBIS baik melalui
+                                            visitasi, brosur maupun medsos kepada masyarakat
+                                            dengan tujuan menarik minat calon mahasiswa baru</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_2 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
@@ -546,8 +515,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_2') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_2" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_2)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_2) }}"
@@ -565,7 +532,8 @@
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>Membuat denah dan mengkompilasi jadwal penggunaan laboratorium</td>
+                                        <td>Menjalin kerjasama dengan pimpinan SMU/SMK/MA untuk menarik minat camaba
+                                        </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_3 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
@@ -597,10 +565,8 @@
                                             </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
-                                                jadwal</label>
-                                            <input class="@error('file_kinerja_kompetensi_3') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_3" type="file">
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
 
                                             @if ($data->file_kinerja_kompetensi_3)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_3) }}"
@@ -618,7 +584,10 @@
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>Melakukan perawatan alat laboratorium</td>
+                                        <td>Mengkoordinasikan pemetaan mahasiswa IKBIS menurut Jenis kelamin, asal
+                                            sekolah, domisili, jenis pekerjaan orang tua,
+                                            penghasilan orang tua, jenis pekerjaan mahasiswa, penghasilan mahasiswa
+                                            untuk camaba</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_4 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
@@ -652,8 +621,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_4') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_4" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_4)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_4) }}"
@@ -671,7 +638,8 @@
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td>Membuat daftar inventaris alat laboratorium</td>
+                                        <td>Menyusun laporan unit pemasaran sebagai pertanggung jawaban kepada atasan
+                                        </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_5 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
@@ -703,10 +671,8 @@
                                             </span>
                                         @enderror
                                         <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen daftar
-                                                inventaris alat lab</label>
-                                            <input class="@error('file_kinerja_kompetensi_5') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_5" type="file">
+                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
+                                                Document</label>
 
                                             @if ($data->file_kinerja_kompetensi_5)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_5) }}"
@@ -722,114 +688,8 @@
                                             @enderror
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Menyusun laporan unit laboratorium sebagai pertanggung jawaban kepada atasan
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_6 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
-                                                id="kinerja_kompetensi_6_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_6 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
-                                                id="kinerja_kompetensi_6_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_6 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
-                                                id="kinerja_kompetensi_6_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_6 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
-                                                id="kinerja_kompetensi_6_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_6 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_6" name="kinerja_kompetensi_6"
-                                                id="kinerja_kompetensi_6_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_6')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Laporan
-                                                bulanan</label>
-                                            <input class="@error('file_kinerja_kompetensi_6') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_6" type="file">
 
-                                            @if ($data->file_kinerja_kompetensi_6)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_6) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
 
-                                            @error('file_kinerja_kompetensi_6')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Menyusun rencana kerja dan anggaran tahunan (RKAT) pada bidangnya
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_7 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_7" name="kinerja_kompetensi_7"
-                                                id="kinerja_kompetensi_7_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_7')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Dokumen
-                                                RKAT</label>
-                                            <input class="@error('file_kinerja_kompetensi_7') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_7" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_7)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_7) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_7')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
 
                                     <tr class="table-primary">
                                         <td colspan="8 text-center">TOTAL KINERJA KOMPETENSI</td>
@@ -893,8 +753,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
-                                            class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -906,26 +764,5 @@
     </div>
 
     @push('JavaScript')
-        <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2x5.js') }}"></script>
-        <script src="{{ asset('Assets/js/itisar/KaUpt/KaLaboran/PointKinerjaKompetensi.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            function confirmSubmit() {
-                Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda akan menyimpan data tersebut.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Simpan',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('my-form').submit();
-                    } else {
-                        Swal.fire('Data batal disimpan');
-                    }
-                });
-            }
-        </script>
     @endpush
 </x-app-layout>

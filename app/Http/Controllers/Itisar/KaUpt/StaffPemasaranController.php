@@ -44,36 +44,12 @@ class StaffPemasaranController extends Controller
         DB::beginTransaction();
         try {
             $staffpemasaran = new StaffPemasaran();
-            $staffpemasaran->Point1_1 = $request->get('Point1_1');
-            $staffpemasaran->Point1_2 = $request->get('Point1_2');
-            $staffpemasaran->Point1_3 = $request->get('Point1_3');
-            $staffpemasaran->Point1_4 = $request->get('Point1_4');
-            $staffpemasaran->Point1_5 = $request->get('Point1_5');
-            $staffpemasaran->Point2_1 = $request->get('Point2_1');
-            $staffpemasaran->Point2_2 = $request->get('Point2_2');
-            $staffpemasaran->Point2_3 = $request->get('Point2_3');
-            $staffpemasaran->Point2_4 = $request->get('Point2_4');
-            $staffpemasaran->Point2_5 = $request->get('Point2_5');
-            $staffpemasaran->Point3_1 = $request->get('Point3_1');
-            $staffpemasaran->Point3_2 = $request->get('Point3_2');
-            $staffpemasaran->Point3_3 = $request->get('Point3_3');
-            $staffpemasaran->Point3_4 = $request->get('Point3_4');
-            $staffpemasaran->Point3_5 = $request->get('Point3_5');
-            $staffpemasaran->Point4_1 = $request->get('Point4_1');
-            $staffpemasaran->Point4_2 = $request->get('Point4_2');
-            $staffpemasaran->Point4_3 = $request->get('Point4_3');
-            $staffpemasaran->Point4_4 = $request->get('Point4_4');
-            $staffpemasaran->Point4_5 = $request->get('Point4_5');
-            $staffpemasaran->Point5_1 = $request->get('Point5_1');
-            $staffpemasaran->Point5_2 = $request->get('Point5_2');
-            $staffpemasaran->Point5_3 = $request->get('Point5_3');
-            $staffpemasaran->Point5_4 = $request->get('Point5_4');
-            $staffpemasaran->Point5_5 = $request->get('Point5_5');
-            $staffpemasaran->Point6_1 = $request->get('Point6_1');
-            $staffpemasaran->Point6_2 = $request->get('Point6_2');
-            $staffpemasaran->Point6_3 = $request->get('Point6_3');
-            $staffpemasaran->Point6_4 = $request->get('Point6_4');
-            $staffpemasaran->Point6_5 = $request->get('Point6_5');
+            $staffpemasaran->q1 = $request->get('q1');
+            $staffpemasaran->q2 = $request->get('q2');
+            $staffpemasaran->q3 = $request->get('q3');
+            $staffpemasaran->q4 = $request->get('q4');
+            $staffpemasaran->q5 = $request->get('q5');
+            $staffpemasaran->q6 = $request->get('q6');
             $staffpemasaran->output_point_1 = $request->get('output_point_1');
             $staffpemasaran->output_point_2 = $request->get('output_point_2');
             $staffpemasaran->output_point_3 = $request->get('output_point_3');
@@ -186,36 +162,12 @@ class StaffPemasaranController extends Controller
         try {
             $RecordData =  StaffPemasaran::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -295,36 +247,12 @@ class StaffPemasaranController extends Controller
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -374,15 +302,15 @@ class StaffPemasaranController extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('staff_pemasaran', 'users.id', '=', 'staff_pemasaran.user_id')
+            ->leftJoin('ikbis_staff_pemasaran', 'users.id', '=', 'ikbis_staff_pemasaran.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'staff_pemasaran.user_id',
-                'staff_pemasaran.output_total_sementara_kinerja_perilaku',
-                'staff_pemasaran.output_total_sementara_kinerja_kompetensi',
+                'ikbis_staff_pemasaran.user_id',
+                'ikbis_staff_pemasaran.output_total_sementara_kinerja_perilaku',
+                'ikbis_staff_pemasaran.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('staff_pemasaran.user_id', $user_id)
+            ->where('ikbis_staff_pemasaran.user_id', $user_id)
             ->first();
 
         if (!empty($DataUser->user_id)) {
@@ -390,5 +318,12 @@ class StaffPemasaranController extends Controller
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = StaffPemasaran::where('user_id', '=', $userId)->first();
+
+        return view('itisar.ka-upt.StaffPemasaran.detailPoin', ['data' => $data]);
     }
 }

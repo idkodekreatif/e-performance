@@ -44,36 +44,12 @@ class KoordinatorPerpustakaanController extends Controller
         DB::beginTransaction();
         try {
             $kaperpustakaan = new KaPerpustakaan();
-            $kaperpustakaan->Point1_1 = $request->get('Point1_1');
-            $kaperpustakaan->Point1_2 = $request->get('Point1_2');
-            $kaperpustakaan->Point1_3 = $request->get('Point1_3');
-            $kaperpustakaan->Point1_4 = $request->get('Point1_4');
-            $kaperpustakaan->Point1_5 = $request->get('Point1_5');
-            $kaperpustakaan->Point2_1 = $request->get('Point2_1');
-            $kaperpustakaan->Point2_2 = $request->get('Point2_2');
-            $kaperpustakaan->Point2_3 = $request->get('Point2_3');
-            $kaperpustakaan->Point2_4 = $request->get('Point2_4');
-            $kaperpustakaan->Point2_5 = $request->get('Point2_5');
-            $kaperpustakaan->Point3_1 = $request->get('Point3_1');
-            $kaperpustakaan->Point3_2 = $request->get('Point3_2');
-            $kaperpustakaan->Point3_3 = $request->get('Point3_3');
-            $kaperpustakaan->Point3_4 = $request->get('Point3_4');
-            $kaperpustakaan->Point3_5 = $request->get('Point3_5');
-            $kaperpustakaan->Point4_1 = $request->get('Point4_1');
-            $kaperpustakaan->Point4_2 = $request->get('Point4_2');
-            $kaperpustakaan->Point4_3 = $request->get('Point4_3');
-            $kaperpustakaan->Point4_4 = $request->get('Point4_4');
-            $kaperpustakaan->Point4_5 = $request->get('Point4_5');
-            $kaperpustakaan->Point5_1 = $request->get('Point5_1');
-            $kaperpustakaan->Point5_2 = $request->get('Point5_2');
-            $kaperpustakaan->Point5_3 = $request->get('Point5_3');
-            $kaperpustakaan->Point5_4 = $request->get('Point5_4');
-            $kaperpustakaan->Point5_5 = $request->get('Point5_5');
-            $kaperpustakaan->Point6_1 = $request->get('Point6_1');
-            $kaperpustakaan->Point6_2 = $request->get('Point6_2');
-            $kaperpustakaan->Point6_3 = $request->get('Point6_3');
-            $kaperpustakaan->Point6_4 = $request->get('Point6_4');
-            $kaperpustakaan->Point6_5 = $request->get('Point6_5');
+            $kaperpustakaan->q1 = $request->get('q1');
+            $kaperpustakaan->q2 = $request->get('q2');
+            $kaperpustakaan->q3 = $request->get('q3');
+            $kaperpustakaan->q4 = $request->get('q4');
+            $kaperpustakaan->q5 = $request->get('q5');
+            $kaperpustakaan->q6 = $request->get('q6');
             $kaperpustakaan->output_point_1 = $request->get('output_point_1');
             $kaperpustakaan->output_point_2 = $request->get('output_point_2');
             $kaperpustakaan->output_point_3 = $request->get('output_point_3');
@@ -176,7 +152,7 @@ class KoordinatorPerpustakaanController extends Controller
         return view('itisar.ka-upt.ka-perpustakaan.searchdata', compact('users'));
     }
 
-public function dataSearch(Request $request)
+    public function dataSearch(Request $request)
     {
         $data = KaPerpustakaan::where('user_id', '=', $request->id)->first();
 
@@ -191,15 +167,15 @@ public function dataSearch(Request $request)
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('ka_perpustakaan', 'users.id', '=', 'ka_perpustakaan.user_id')
+            ->leftJoin('ikbis_ka_perpustakaan', 'users.id', '=', 'ikbis_ka_perpustakaan.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'ka_perpustakaan.user_id',
-                'ka_perpustakaan.output_total_sementara_kinerja_perilaku',
-                'ka_perpustakaan.output_total_sementara_kinerja_kompetensi',
+                'ikbis_ka_perpustakaan.user_id',
+                'ikbis_ka_perpustakaan.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_perpustakaan.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('ka_perpustakaan.user_id', $user_id)
+            ->where('ikbis_ka_perpustakaan.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -230,36 +206,12 @@ public function dataSearch(Request $request)
         try {
             $RecordData =  KaPerpustakaan::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -389,36 +341,12 @@ public function dataSearch(Request $request)
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -468,5 +396,12 @@ public function dataSearch(Request $request)
             toast('Update Point Ka. Perpustakaan fail :)', 'error');
             return redirect()->back();
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = KaPerpustakaan::where('user_id', '=', $userId)->first();
+
+        return view('itisar.ka-upt.ka-perpustakaan.detailPoin', ['data' => $data]);
     }
 }

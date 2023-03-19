@@ -13,7 +13,7 @@ class KaPerpustakaan extends Model
 
     protected static $logName = 'Ka. Unit Perpustakaan';
 
-    protected $table = "ka_perpustakaan";
+    protected $table = "ikbis_ka_perpustakaan";
     protected $guarded = [];
 
     protected static $logUnguarded = true;
