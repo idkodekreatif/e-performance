@@ -13,7 +13,7 @@ class Kemahasiswaan extends Model
 
     protected static $logName = 'kemahasiswaan';
 
-    protected $table = "kemahasiswaan";
+    protected $table = "ikbis_kemahasiswaan";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

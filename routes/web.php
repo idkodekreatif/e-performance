@@ -279,6 +279,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Kemahasiswaan ------------------------------//
         Route::controller(KemahasiswaanController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/kemahasiswaan/Input', 'create')->name('kemahasiswaan');
+            Route::get('/kemahasiswaan/result/poin/{userId}', 'detailPoin')->name('kemahasiswaan.poin');
             Route::post('/kemahasiswaan/Request/Store', 'store')->name('store.kemahasiswaan');
             Route::get('/kemahasiswaan/edit/', 'edit')->name('edit.kemahasiswaan');
             Route::get('/kemahasiswaan/search/result', 'dataSearch')->name('kemahasiswaan.data.search');
@@ -289,6 +290,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Baak Fakultas Bisnis ------------------------------//
         Route::controller(BaakFkBisnisController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/baakFkBisnis/Input', 'create')->name('baakFkBisnis');
+            Route::get('/baakFkBisnis/result/poin/{userId}', 'detailPoin')->name('baakFkBisnis.poin');
             Route::post('/baakFkBisnis/Request/Store', 'store')->name('store.baakFkBisnis');
             Route::get('/baakFkBisnis/edit/', 'edit')->name('edit.baakFkBisnis');
             Route::get('/baakFkBisnis/search/result', 'dataSearch')->name('baakFkBisnis.data.search');

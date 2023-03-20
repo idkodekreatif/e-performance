@@ -13,7 +13,7 @@ class BaakFkBisnis extends Model
 
     protected static $logName = 'Baak Fakultas Bisnis';
 
-    protected $table = "baak_bisnis";
+    protected $table = "ikbis_baak_bisnis";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

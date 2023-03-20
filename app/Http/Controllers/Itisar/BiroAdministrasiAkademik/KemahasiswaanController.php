@@ -22,58 +22,34 @@ class KemahasiswaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
         try {
             $kemahasiswaan = new Kemahasiswaan();
-            $kemahasiswaan->Point1_1 = $request->get('Point1_1');
-            $kemahasiswaan->Point1_2 = $request->get('Point1_2');
-            $kemahasiswaan->Point1_3 = $request->get('Point1_3');
-            $kemahasiswaan->Point1_4 = $request->get('Point1_4');
-            $kemahasiswaan->Point1_5 = $request->get('Point1_5');
-            $kemahasiswaan->Point2_1 = $request->get('Point2_1');
-            $kemahasiswaan->Point2_2 = $request->get('Point2_2');
-            $kemahasiswaan->Point2_3 = $request->get('Point2_3');
-            $kemahasiswaan->Point2_4 = $request->get('Point2_4');
-            $kemahasiswaan->Point2_5 = $request->get('Point2_5');
-            $kemahasiswaan->Point3_1 = $request->get('Point3_1');
-            $kemahasiswaan->Point3_2 = $request->get('Point3_2');
-            $kemahasiswaan->Point3_3 = $request->get('Point3_3');
-            $kemahasiswaan->Point3_4 = $request->get('Point3_4');
-            $kemahasiswaan->Point3_5 = $request->get('Point3_5');
-            $kemahasiswaan->Point4_1 = $request->get('Point4_1');
-            $kemahasiswaan->Point4_2 = $request->get('Point4_2');
-            $kemahasiswaan->Point4_3 = $request->get('Point4_3');
-            $kemahasiswaan->Point4_4 = $request->get('Point4_4');
-            $kemahasiswaan->Point4_5 = $request->get('Point4_5');
-            $kemahasiswaan->Point5_1 = $request->get('Point5_1');
-            $kemahasiswaan->Point5_2 = $request->get('Point5_2');
-            $kemahasiswaan->Point5_3 = $request->get('Point5_3');
-            $kemahasiswaan->Point5_4 = $request->get('Point5_4');
-            $kemahasiswaan->Point5_5 = $request->get('Point5_5');
-            $kemahasiswaan->Point6_1 = $request->get('Point6_1');
-            $kemahasiswaan->Point6_2 = $request->get('Point6_2');
-            $kemahasiswaan->Point6_3 = $request->get('Point6_3');
-            $kemahasiswaan->Point6_4 = $request->get('Point6_4');
-            $kemahasiswaan->Point6_5 = $request->get('Point6_5');
+            $kemahasiswaan->q1 = $request->get('q1');
+            $kemahasiswaan->q2 = $request->get('q2');
+            $kemahasiswaan->q3 = $request->get('q3');
+            $kemahasiswaan->q4 = $request->get('q4');
+            $kemahasiswaan->q5 = $request->get('q5');
+            $kemahasiswaan->q6 = $request->get('q6');
             $kemahasiswaan->output_point_1 = $request->get('output_point_1');
             $kemahasiswaan->output_point_2 = $request->get('output_point_2');
             $kemahasiswaan->output_point_3 = $request->get('output_point_3');
@@ -208,7 +184,7 @@ class KemahasiswaanController extends Controller
         return view('itisar.BiroAdministrasi.Kemahasiswaan.searchdata', compact('users'));
     }
 
-public function dataSearch(Request $request)
+    public function dataSearch(Request $request)
     {
         $data = Kemahasiswaan::where('user_id', '=', $request->id)->first();
 
@@ -219,58 +195,34 @@ public function dataSearch(Request $request)
     {
         // Validation file upload
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf',
         ]);
         DB::beginTransaction();
         try {
             $RecordData =  Kemahasiswaan::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -460,36 +412,12 @@ public function dataSearch(Request $request)
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -556,15 +484,15 @@ public function dataSearch(Request $request)
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('kemahasiswaan', 'users.id', '=', 'kemahasiswaan.user_id')
+            ->leftJoin('ikbis_kemahasiswaan', 'users.id', '=', 'ikbis_kemahasiswaan.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'kemahasiswaan.user_id',
-                'kemahasiswaan.output_total_sementara_kinerja_perilaku',
-                'kemahasiswaan.output_total_sementara_kinerja_kompetensi',
+                'ikbis_kemahasiswaan.user_id',
+                'ikbis_kemahasiswaan.output_total_sementara_kinerja_perilaku',
+                'ikbis_kemahasiswaan.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('kemahasiswaan.user_id', $user_id)
+            ->where('ikbis_kemahasiswaan.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -573,5 +501,12 @@ public function dataSearch(Request $request)
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = Kemahasiswaan::where('user_id', '=', $userId)->first();
+
+        return view('itisar.BiroAdministrasi.Kemahasiswaan.detailPoin', ['data' => $data]);
     }
 }

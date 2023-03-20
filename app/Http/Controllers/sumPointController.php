@@ -28,17 +28,17 @@ class sumPointController extends Controller
             ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
             ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
             ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-            ->where(function($query) use ($user_id) {
+            ->where(function ($query) use ($user_id) {
                 $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-                      ->orWhere('point_a.user_id', '=', $user_id)
-                      ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-                      ->orWhere('point_b.user_id', '=', $user_id)
-                      ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-                      ->orWhere('point_c.user_id', '=', $user_id)
-                      ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-                      ->orWhere('point_d.user_id', '=', $user_id)
-                      ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
-                      ->orWhere('point_e.user_id', '=', $user_id);
+                    ->orWhere('point_a.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                    ->orWhere('point_b.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                    ->orWhere('point_c.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                    ->orWhere('point_d.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
+                    ->orWhere('point_e.user_id', '=', $user_id);
             })
             ->where('users.id', $user_id)
             ->first();
@@ -74,20 +74,20 @@ class sumPointController extends Controller
         }
 
         $data = $users
-        ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
-        ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
-        ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
-        ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
-        ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
-        ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-        ->where(function($query) {
-            $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-                ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-                ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-                ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-                ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
-        })
-        ->get();
+            ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+            ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+            ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+            ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+            ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+            ->where(function ($query) {
+                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
+            })
+            ->get();
 
         $messagesArray = [];
         foreach ($data as $data) {
@@ -165,79 +165,69 @@ class sumPointController extends Controller
     public function Preview($user_id)
     {
         $data = DB::table('users')
-        ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
-        ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
-        ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
-        ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
-        ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
-        ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
-        ->where(function($query) {
-            $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-                ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-                ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-                ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-                ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
-        })
-        ->where('users.id', $user_id)
-        ->first();
+            ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+            ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+            ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+            ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+            ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+            ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
+            ->where(function ($query) {
+                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
+            })
+            ->where('users.id', $user_id)
+            ->first();
 
         return view('input-point.preview', compact('data'));
     }
 
-     // functuin mencari data page search
-     public function searchRaport()
-     {
-         $users = User::whereNotIn('name', [
-             'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
-         ])->get();
+    // functuin mencari data page search
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
 
-         return view('edit-point.hrd.search.searchDataRaport', compact('users'));
-     }
+        return view('edit-point.hrd.search.searchDataRaport', compact('users'));
+    }
 
-     public function resultSearchRaport(Request $request)
+    public function resultSearchRaport(Request $request)
     {
         $users = DB::table('users')
-        ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
-        ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
-        ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
-        ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
-        ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
-        ->select('users.*', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-        ->where(function($query) use ($request) {
-            $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-                  ->orWhere(function($query) use ($request) {
-                      $query->where('point_a.user_id', '=', $request->id);
-                  })
-                  ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-                  ->orWhere(function($query) use ($request) {
-                      $query->where('point_b.user_id', '=', $request->id);
-                  })
-                  ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-                  ->orWhere(function($query) use ($request) {
-                      $query->where('point_c.user_id', '=', $request->id);
-                  })
-                  ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-                  ->orWhere(function($query) use ($request) {
-                      $query->where('point_d.user_id', '=', $request->id);
-                  })
-                  ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
-                  ->orWhere(function($query) use ($request) {
-                      $query->where('point_e.user_id', '=', $request->id);
-                  });
-        })
-        ->first();
+            ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+            ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+            ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+            ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+            ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+            ->select('users.*', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+            ->where(function ($query) use ($request) {
+                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                    ->orWhere(function ($query) use ($request) {
+                        $query->where('point_a.user_id', '=', $request->id);
+                    })
+                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                    ->orWhere(function ($query) use ($request) {
+                        $query->where('point_b.user_id', '=', $request->id);
+                    })
+                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                    ->orWhere(function ($query) use ($request) {
+                        $query->where('point_c.user_id', '=', $request->id);
+                    })
+                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                    ->orWhere(function ($query) use ($request) {
+                        $query->where('point_d.user_id', '=', $request->id);
+                    })
+                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
+                    ->orWhere(function ($query) use ($request) {
+                        $query->where('point_e.user_id', '=', $request->id);
+                    });
+            })
+            ->first();
 
-        if (empty($users)) {
-            return redirect()->back();
-        } elseif ($dataMenu->control_menu == 0) {
-            return view('menu.disabled');
-        } elseif (PointA::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = PointA::where('user_id', '=', $PointId)->first();
-        }
-
-// dd($users);
+        // dd($users);
 
         return view('edit-point.hrd.raport.raport', compact('users'));
     }
