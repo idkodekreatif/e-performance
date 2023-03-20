@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Penilaian Staff Kebersihan">
+<x-app-layout title="Detail Poin Penilaian Staff Sarpras">
     @push('style')
         <style>
             input::-webkit-outer-spin-button,
@@ -16,18 +16,17 @@
     <div class="col-xl col-lg">
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Staff Kebersihan</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Detail Poin</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Staff Sarpras</a></li>
             </ol>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col">
-                <a href="{{ route('staffkebersihan.raport', Auth::user()->id) }}"
+                <a href="{{ route('staffsarpras.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
-        </div> --}}
-        <form action="{{ route('update.staffkebersihan', ['pointId' => $data->user_id]) }}" id="my-form"
-            method="POST" enctype="multipart/form-data">
+        </div>
+        <form action="javascript:void(0)" id="my-form" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -453,33 +452,19 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table-primary">
-                                        <td><B>A</B></td>
-                                        <td>Ruang Kantor :</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                        <td>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
                                         <td>1</td>
-                                        <td>Membersihkan ruangan dan isinya :</td>
+                                        <td>Menginventarisasi prasarana :</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>
-                                        </td>
+                                        <td></td>
                                     </tr>
 
                                     <tr>
                                         <td>A.</td>
-                                        <td>Membersihkan dan menata</td>
+                                        <td>Melakukan pencatatan barang inventaris</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_1 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_1" name="kinerja_kompetensi_1"
@@ -513,8 +498,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_1') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_1" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_1)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_1) }}"
@@ -533,7 +516,7 @@
 
                                     <tr>
                                         <td>B.</td>
-                                        <td>Membersihkan kaca</td>
+                                        <td>Melakukan Pengecekan barang inventaris</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_2 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_2" name="kinerja_kompetensi_2"
@@ -567,8 +550,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_2') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_2" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_2)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_2) }}"
@@ -586,7 +567,7 @@
                                     </tr>
                                     <tr>
                                         <td>C.</td>
-                                        <td>Menyapu</td>
+                                        <td>Melakukan penempelan kode barang inventaris</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_3 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_3" name="kinerja_kompetensi_3"
@@ -620,8 +601,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_3') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_3" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_3)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_3) }}"
@@ -637,9 +616,21 @@
                                             @enderror
                                         </td>
                                     </tr>
+
+                                    <tr class="table-primary">
+                                        <td>2</td>
+                                        <td>Perawatan dan Pemelihara Prasarana :</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
                                     <tr>
-                                        <td>D.</td>
-                                        <td>Mengepel</td>
+                                        <td>A.</td>
+                                        <td>Perawatan dan Pemeliharan Gedung</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_4 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_4" name="kinerja_kompetensi_4"
@@ -673,8 +664,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_4') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_4" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_4)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_4) }}"
@@ -691,8 +680,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>E.</td>
-                                        <td>Memberi pengharum ruangan</td>
+                                        <td>B.</td>
+                                        <td>Perawatan dan Pemeliharan Instalasi Air</td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_5 == '1' ? 'checked' : '' }}
                                                 class="kinerja_kompetensi_5" name="kinerja_kompetensi_5"
@@ -726,8 +715,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_5') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_5" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_5)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_5) }}"
@@ -744,8 +731,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>F.</td>
-                                        <td>Membuang sampah
+                                        <td>C.</td>
+                                        <td>Perawatan dan Pemeliharan Listrik
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_6 == '1' ? 'checked' : '' }}
@@ -780,8 +767,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_6') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_6" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_6)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_6) }}"
@@ -798,9 +783,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Mengkondisikan setiap hari kesiapan ruang kantor untuk dapat digunakan
-                                            paling lambat jam 07.30 WIB.
+                                        <td>D.</td>
+                                        <td>Perawatan dan Pemeliharan Telepon
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_7 == '1' ? 'checked' : '' }}
@@ -835,8 +819,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_7') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_7" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_7)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_7) }}"
@@ -853,8 +835,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>3</td>
-                                        <td>Mengontrol kebersihan ruang kantor selama jam kerja
+                                        <td>E.</td>
+                                        <td>Perawatan dan Pemeliharan Parkir
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_8 == '1' ? 'checked' : '' }}
@@ -889,8 +871,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_8') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_8" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_8)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_8) }}"
@@ -908,33 +888,19 @@
                                     </tr>
 
                                     <tr class="table-primary">
-                                        <td><B>B</B></td>
-                                        <td>Ruang Perkuliahan :</td>
+                                        <td>3</td>
+                                        <td>Merencanakan pengadaan kebutuhan prasarana :</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-
-                                        <td>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Membersihkan ruangan dan isinya :</td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                        </td>
                                     </tr>
 
                                     <tr>
                                         <td>A.</td>
-                                        <td>Membersihkan dan menata
+                                        <td>Membuat surat pengajuan/permintaan prasarana
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_9 == '1' ? 'checked' : '' }}
@@ -969,8 +935,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_9') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_9" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_9)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_9) }}"
@@ -986,9 +950,21 @@
                                             @enderror
                                         </td>
                                     </tr>
+
+                                    <tr class="table-primary">
+                                        <td>4</td>
+                                        <td>Menginventarisasi sarana :</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
                                     <tr>
-                                        <td>B</td>
-                                        <td>Membersihkan kaca
+                                        <td>A</td>
+                                        <td>Melakukan pencatatan barang inventaris
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_10 == '1' ? 'checked' : '' }}
@@ -1023,8 +999,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_10') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_10" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_10)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_10) }}"
@@ -1041,8 +1015,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>C.</td>
-                                        <td>Menyapu
+                                        <td>B.</td>
+                                        <td>Melakukan Pengecekan barang inventaris
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_11 == '1' ? 'checked' : '' }}
@@ -1077,8 +1051,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_11') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_11" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_11)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_11) }}"
@@ -1095,12 +1067,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>D.</td>
-                                        <td>Mengepel
+                                        <td>C.</td>
+                                        <td>Melakukan penempelan kode barang inventaris
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_12 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_10" name="kinerja_kompetensi_12"
+                                                class="kinerja_kompetensi_12" name="kinerja_kompetensi_12"
                                                 id="kinerja_kompetensi_12_1" value="1" onclick="sum();">
                                         </td>
                                         <td><input type="radio"
@@ -1131,8 +1103,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_12') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_12" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_12)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_12) }}"
@@ -1148,9 +1118,21 @@
                                             @enderror
                                         </td>
                                     </tr>
+
+                                    <tr class="table-primary">
+                                        <td>5</td>
+                                        <td>Perawatan dan Pemelihara Sarana :</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
                                     <tr>
-                                        <td>E.</td>
-                                        <td>Memberi pengharum ruangan
+                                        <td>A.</td>
+                                        <td>Perawatan dan Pemeliharan Kendaraan Dinas
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_13 == '1' ? 'checked' : '' }}
@@ -1185,8 +1167,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_13') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_13" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_13)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_13) }}"
@@ -1203,8 +1183,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>F.</td>
-                                        <td> Membuang sampah
+                                        <td>B.</td>
+                                        <td>Perawatan dan Pemeliharan AC
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_14 == '1' ? 'checked' : '' }}
@@ -1239,8 +1219,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_14') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_14" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_14)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_14) }}"
@@ -1257,9 +1235,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Mengkondisikan setiap hari kesiapan ruang perkuliahan untuk dapat digunakan
-                                            sebelum jawal perkuliahan.
+                                        <td>C.</td>
+                                        <td>Perawatan dan Pemeliharan LCD/Proyektor
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_15 == '1' ? 'checked' : '' }}
@@ -1294,8 +1271,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_15') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_15" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_15)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_15) }}"
@@ -1312,8 +1287,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>3</td>
-                                        <td>Mengontrol kebersihan ruang perkuliahan selama jam kerja
+                                        <td>D.</td>
+                                        <td>Perawatan dan Pemeliharan Kursi & Meja
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_16 == '1' ? 'checked' : '' }}
@@ -1348,8 +1323,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_16') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_16" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_16)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_16) }}"
@@ -1365,23 +1338,9 @@
                                             @enderror
                                         </td>
                                     </tr>
-
-                                    <tr class="table-primary">
-                                        <td><B>C</B></td>
-                                        <td>Halaman (Luar Ruangan Kantor):</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                        <td>
-                                        </td>
-                                    </tr>
-
                                     <tr>
-                                        <td>1</td>
-                                        <td>Menyapu dan membuang sampah
+                                        <td>E.</td>
+                                        <td>Perawatan dan Pemeliharan Sound System
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_17 == '1' ? 'checked' : '' }}
@@ -1416,8 +1375,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_17') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_17" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_17)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_17) }}"
@@ -1433,9 +1390,21 @@
                                             @enderror
                                         </td>
                                     </tr>
+
+                                    <tr class="table-primary">
+                                        <td>6</td>
+                                        <td>Merencanakan pengadaan kebutuhan sarana :</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
                                     <tr>
-                                        <td>2</td>
-                                        <td>Menyiangi rumput
+                                        <td>A.</td>
+                                        <td>Membuat surat pengajuan/permintaan sarana
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_18 == '1' ? 'checked' : '' }}
@@ -1470,8 +1439,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_18') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_18" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_18)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_18) }}"
@@ -1487,23 +1454,9 @@
                                             @enderror
                                         </td>
                                     </tr>
-
-                                    <tr class="table-primary">
-                                        <td><B>D</B></td>
-                                        <td>Taman :</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                        <td>
-                                        </td>
-                                    </tr>
-
                                     <tr>
-                                        <td>1</td>
-                                        <td>Mengkondisikan peralatan pertamanan
+                                        <td>4</td>
+                                        <td>Mendistribusikan barang
                                         </td>
                                         <td><input type="radio"
                                                 {{ $data->kinerja_kompetensi_19 == '1' ? 'checked' : '' }}
@@ -1538,8 +1491,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_19') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_19" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_19)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_19) }}"
@@ -1549,330 +1500,6 @@
                                             @endif
 
                                             @error('file_kinerja_kompetensi_19')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Menyapu taman
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_20 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_20" name="kinerja_kompetensi_20"
-                                                id="kinerja_kompetensi_20_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_20 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_20" name="kinerja_kompetensi_20"
-                                                id="kinerja_kompetensi_20_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_20 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_20" name="kinerja_kompetensi_20"
-                                                id="kinerja_kompetensi_20_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_20 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_20" name="kinerja_kompetensi_20"
-                                                id="kinerja_kompetensi_20_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_20 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_20" name="kinerja_kompetensi_20"
-                                                id="kinerja_kompetensi_20_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_20')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_20') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_20" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_20)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_20) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_20')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Menyiangi rumput, gulma, dan tanaman yang mati
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_21 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_21" name="kinerja_kompetensi_21"
-                                                id="kinerja_kompetensi_21_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_21 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_21" name="kinerja_kompetensi_21"
-                                                id="kinerja_kompetensi_21_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_21 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_21" name="kinerja_kompetensi_21"
-                                                id="kinerja_kompetensi_21_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_21 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_21" name="kinerja_kompetensi_21"
-                                                id="kinerja_kompetensi_21_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_21 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_21" name="kinerja_kompetensi_21"
-                                                id="kinerja_kompetensi_21_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_21')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_21') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_21" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_21)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_21) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_21')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Menyiangi rumput, gulma, dan tanaman yang mati
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_22 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_22" name="kinerja_kompetensi_22"
-                                                id="kinerja_kompetensi_22_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_22 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_22" name="kinerja_kompetensi_22"
-                                                id="kinerja_kompetensi_22_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_22 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_22" name="kinerja_kompetensi_22"
-                                                id="kinerja_kompetensi_22_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_22 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_22" name="kinerja_kompetensi_22"
-                                                id="kinerja_kompetensi_22_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_22 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_22" name="kinerja_kompetensi_22"
-                                                id="kinerja_kompetensi_22_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_22')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_22') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_22" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_22)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_22) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_22')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Menyiram seluruh tanaman
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_23 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_23" name="kinerja_kompetensi_23"
-                                                id="kinerja_kompetensi_23_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_23 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_23" name="kinerja_kompetensi_23"
-                                                id="kinerja_kompetensi_23_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_23 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_23" name="kinerja_kompetensi_23"
-                                                id="kinerja_kompetensi_23_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_23 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_23" name="kinerja_kompetensi_23"
-                                                id="kinerja_kompetensi_23_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_23 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_23" name="kinerja_kompetensi_23"
-                                                id="kinerja_kompetensi_23_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_23')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_23') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_23" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_23)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_23) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_23')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Menata taman
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_24 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_24" name="kinerja_kompetensi_24"
-                                                id="kinerja_kompetensi_24_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_24 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_24" name="kinerja_kompetensi_24"
-                                                id="kinerja_kompetensi_24_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_24 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_24" name="kinerja_kompetensi_24"
-                                                id="kinerja_kompetensi_24_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_24 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_24" name="kinerja_kompetensi_24"
-                                                id="kinerja_kompetensi_24_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_24 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_24" name="kinerja_kompetensi_24"
-                                                id="kinerja_kompetensi_24_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_24')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_24') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_24" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_24)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_24) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_24')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Memberi pupuk secara berkala
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_25 == '1' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_25" name="kinerja_kompetensi_25"
-                                                id="kinerja_kompetensi_25_1" value="1" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_25 == '2' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_25" name="kinerja_kompetensi_25"
-                                                id="kinerja_kompetensi_25_2" value="2" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_25 == '3' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_25" name="kinerja_kompetensi_25"
-                                                id="kinerja_kompetensi_25_3" value="3" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_25 == '4' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_25" name="kinerja_kompetensi_25"
-                                                id="kinerja_kompetensi_25_4" value="4" onclick="sum();">
-                                        </td>
-                                        <td><input type="radio"
-                                                {{ $data->kinerja_kompetensi_25 == '5' ? 'checked' : '' }}
-                                                class="kinerja_kompetensi_25" name="kinerja_kompetensi_25"
-                                                id="kinerja_kompetensi_25_5" value="5" onclick="sum();">
-                                        </td>
-                                        @error('kinerja_kompetensi_25')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <td>
-                                            <label for="formFileSm" class="form-label text-danger">* Cek fisik /
-                                                Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_25') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_25" type="file">
-
-                                            @if ($data->file_kinerja_kompetensi_25)
-                                                <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_25) }}"
-                                                    target="_blank">Preview</a>
-                                            @else
-                                                N/A
-                                            @endif
-
-                                            @error('file_kinerja_kompetensi_25')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -1946,8 +1573,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
-                                            class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -1959,26 +1584,5 @@
     </div>
 
     @push('JavaScript')
-        <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2x5.js') }}"></script>
-        <script src="{{ asset('Assets/js/itisar/SubBiroUmum/StaffKebersihan/PointKinerjaKompetensi.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            function confirmSubmit() {
-                Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda akan menyimpan data tersebut.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Simpan',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('my-form').submit();
-                    } else {
-                        Swal.fire('Data batal disimpan');
-                    }
-                });
-            }
-        </script>
     @endpush
 </x-app-layout>

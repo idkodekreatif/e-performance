@@ -13,7 +13,7 @@ class StaffKebersihan extends Model
 
     protected static $logName = 'Staff Kebersihan';
 
-    protected $table = "staff_kebersihan";
+    protected $table = "ikbis_staff_kebersihan";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

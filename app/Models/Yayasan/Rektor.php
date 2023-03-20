@@ -13,7 +13,7 @@ class Rektor extends Model
 
     protected static $logName = 'Rektor';
 
-    protected $table = "rektor";
+    protected $table = "ikbis_rektor";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

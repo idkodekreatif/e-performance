@@ -12,7 +12,7 @@ class StaffSusBidKerjasama extends Model
 
     protected static $logName = 'StaffSus Bidang Kerjasama';
 
-    protected $table = "staffsusbid_kerjasama";
+    protected $table = "ikbis_staffsusbid_kerjasama";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

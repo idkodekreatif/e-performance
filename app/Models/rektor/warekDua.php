@@ -13,7 +13,7 @@ class warekDua extends Model
 
     protected static $logName = 'Warek 2';
 
-    protected $table = "warek_2";
+    protected $table = "ikbis_warek_2";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

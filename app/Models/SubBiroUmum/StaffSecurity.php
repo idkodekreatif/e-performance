@@ -13,7 +13,7 @@ class StaffSecurity extends Model
 
     protected static $logName = 'Staff Security';
 
-    protected $table = "staff_security";
+    protected $table = "ikbis_staff_security";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

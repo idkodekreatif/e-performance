@@ -443,6 +443,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Warek Satu ------------------------------//
         Route::controller(warekSatuController::class)->middleware(['role:it|superuser|rektor|ypsdmit|tendik'])->group(function () {
             Route::get('/warekSatu/Input', 'create')->name('warekSatu');
+            Route::get('/warekSatu/result/poin/{userId}', 'detailPoin')->name('warekSatu.poin');
             Route::post('/warekSatu/Request/Store', 'store')->name('store.warekSatu');
             Route::get('/warekSatu/edit/', 'edit')->name('edit.warekSatu');
             Route::get('/rektor/warekSatu/search/result', 'dataSearch')->name('rektor.warekSatu.data.search');
@@ -453,6 +454,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Warek Dua ------------------------------//
         Route::controller(warekDuaController::class)->middleware(['role:it|superuser|ypsdmit|rektor|tendik'])->group(function () {
             Route::get('/WarekDua/Input', 'create')->name('WarekDua');
+            Route::get('/WarekDua/result/poin/{userId}', 'detailPoin')->name('WarekDua.poin');
             Route::post('/WarekDua/Request/Store', 'store')->name('store.WarekDua');
             Route::get('/WarekDua/edit/', 'edit')->name('edit.WarekDua');
             Route::get('/warekDua/search/result', 'dataSearch')->name('warekDua.data.search');
@@ -463,6 +465,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Sus Bidang Kerjasama ------------------------------//
         Route::controller(StaffSusBidKerjasamaController::class)->middleware(['role:it|superuser|rektor|ypsdmit|tendik'])->group(function () {
             Route::get('/StaffSusBidKerjasama/Input', 'create')->name('StaffSusBidKerjasama');
+            Route::get('/StaffSusBidKerjasama/result/poin/{userId}', 'detailPoin')->name('StaffSusBidKerjasama.poin');
             Route::post('/StaffSusBidKerjasama/Request/Store', 'store')->name('store.StaffSusBidKerjasama');
             Route::get('/StaffSusBidKerjasama/edit/', 'edit')->name('edit.StaffSusBidKerjasama');
             Route::get('/StaffSusBidKerjasama/search/result', 'dataSearch')->name('StaffSusBidKerjasama.data.search');
@@ -473,6 +476,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Ka. LPM ------------------------------//
         Route::controller(KaLpmController::class)->middleware(['role:it|superuser|rektor|tendik|ypsdmit'])->group(function () {
             Route::get('/KaLpm/Input', 'create')->name('KaLpm');
+            Route::get('/KaLpm/result/poin/{userId}', 'detailPoin')->name('KaLpmn.poin');
             Route::post('/KaLpm/Request/Store', 'store')->name('store.KaLpm');
             Route::get('/KaLpm/edit/', 'edit')->name('edit.KaLpm');
             Route::get('/KaLpm/search/result', 'dataSearch')->name('KaLpm.data.search');
@@ -484,6 +488,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Umum Dan Kepegawaian ------------------------------//
         Route::controller(StaffUmumController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffumum/Input', 'create')->name('staffumum');
+            Route::get('/staffumum/result/poin/{userId}', 'detailPoin')->name('staffumum.poin');
             Route::post('/staffumum/Request/Store', 'store')->name('store.staffumum');
             Route::get('/staffumum/edit/', 'edit')->name('edit.staffumum');
             Route::get('/staffumum/search/result', 'dataSearch')->name('staffumum.data.search');
@@ -494,6 +499,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Kebersihan ------------------------------//
         Route::controller(StaffKebersihanController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffkebersihan/Input', 'create')->name('staffkebersihan');
+            Route::get('/staffkebersihan/result/poin/{userId}', 'detailPoin')->name('staffkebersihan.poin');
             Route::post('/staffkebersihan/Request/Store', 'store')->name('store.staffkebersihan');
             Route::get('/staffkebersihan/edit/', 'edit')->name('edit.staffkebersihan');
             Route::get('/staffkebersihan/search/result', 'dataSearch')->name('staffkebersihan.data.search');
@@ -504,6 +510,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Security ------------------------------//
         Route::controller(StaffSecurityController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffsecurity/Input', 'create')->name('staffsecurity');
+            Route::get('/staffsecurity/result/poin/{userId}', 'detailPoin')->name('staffsecurity.poin');
             Route::post('/staffsecurity/Request/Store', 'store')->name('store.staffsecurity');
             Route::get('/staffsecurity/edit/', 'edit')->name('edit.staffsecurity');
             Route::get('/staffsecurity/search/result', 'dataSearch')->name('staffsecurity.data.search');
@@ -514,6 +521,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Sarpras ------------------------------//
         Route::controller(StaffSarprasController::class)->middleware(['role:it|superuser|hrd|tendik'])->group(function () {
             Route::get('/staffsarpras/Input', 'create')->name('staffsarpras');
+            Route::get('/staffsarpras/result/poin/{userId}', 'detailPoin')->name('staffsarpras.poin');
             Route::post('/staffsarpras/Request/Store', 'store')->name('store.staffsarpras');
             Route::get('/staffsarpras/edit/', 'edit')->name('edit.staffsarpras');
             Route::get('/staffsarpras/search/result', 'dataSearch')->name('staffsarpras.data.search');
@@ -524,6 +532,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Rektor ------------------------------//
         Route::controller(RektorController::class)->middleware(['role:it|superuser|ypsdmit|warek1|warek2|tendik'])->group(function () {
             Route::get('/Rektor/Input', 'create')->name('rektor');
+            Route::get('/Rektor/result/poin/{userId}', 'detailPoin')->name('rektor.poin');
             Route::post('/Rektor/Request/Store', 'store')->name('store.rektor');
             Route::get('/Rektor/edit/', 'edit')->name('edit.rektor');
             Route::get('/Rektor/search/result', 'dataSearch')->name('Rektor.data.search');

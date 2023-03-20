@@ -12,7 +12,7 @@ class StaffUmum extends Model
 
     protected static $logName = 'Staff Umum Dan Kepegawaian';
 
-    protected $table = "staff_umum_dan_kepegawaian";
+    protected $table = "ikbis_staff_umum_dan_kepegawaian";
     protected $guarded = [];
 
     protected static $logUnguarded = true;
