@@ -13,7 +13,7 @@ class KasubBiroKeuangan extends Model
 
     protected static $logName = 'Kasub Biro Keuangan & Akuntansi';
 
-    protected $table = "kasub_biro_keuangan_akuntansi";
+    protected $table = "ikbis_kasub_biro_keuangan_akuntansi";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

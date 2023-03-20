@@ -13,7 +13,7 @@ class KasubBiroKepegawaian extends Model
 
     protected static $logName = 'Kasub Biro Kepegawaian';
 
-    protected $table = "kasub_biro_kepegawaian";
+    protected $table = "ikbis_kasub_biro_kepegawaian";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

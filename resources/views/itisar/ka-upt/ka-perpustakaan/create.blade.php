@@ -140,10 +140,9 @@
                                             menyalahgunakan wewenangnya tetapi berani menanggung resiko dari tindakan
                                             yang dilakukan
                                         </td>
-                                        <td>Tidak pernah dapat menyelesaikan tugas pelayanan dengan baik dan sikap
-                                            kurang sopan
-                                            serta kurang memuaskan baik untuk pelayanan internal maupun eksternal
-                                            organisasi</td>
+                                        <td>Selalu dalam melaksanakan tugas bersifat jujur, ikhlas dan tidak pernah
+                                            menyalahgunakan wewenangnya serta berani menanggung resiko dari tindakan
+                                            yang dilakukan</td>
                                     </tr>
                                     <tr class="table-primary">
                                         <td>Question 2</td>

@@ -361,6 +361,7 @@ Route::group(
         // ----------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Kepegawaian ----------------------------------//
         Route::controller(KasubBiroKepegawaianController::class)->middleware(['role:it|superuser|bau|tendik|rektor|warek2'])->group(function () {
             Route::get('/kasubBiroKepegawaian/Input', 'create')->name('kasubBiroKepegawaian');
+            Route::get('/kasubBiroKepegawaian/result/poin/{userId}', 'detailPoin')->name('kasubBiroKepegawaian.poin');
             Route::post('/kasubBiroKepegawaian/Request/Store', 'store')->name('store.kasubBiroKepegawaian');
             Route::get('/kasubBiroKepegawaian/edit/', 'edit')->name('edit.kasubBiroKepegawaian');
             Route::get('/kasubBiroKepegawaian/search/result', 'dataSearch')->name('kasubBiroKepegawaian.data.search');
@@ -371,6 +372,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Keuangan dan Akuntansi ------------------------------//
         Route::controller(KasubBiroKeuanganController::class)->middleware(['role:it|superuser|bau|tendik|rektor|warek2'])->group(function () {
             Route::get('/KasubBiroKeuangan/Input', 'create')->name('KasubBiroKeuangan');
+            Route::get('/KasubBiroKeuangan/result/poin/{userId}', 'detailPoin')->name('KasubBiroKeuangan.poin');
             Route::post('/KasubBiroKeuangan/Request/Store', 'store')->name('store.KasubBiroKeuangan');
             Route::get('/KasubBiroKeuangan/edit/', 'edit')->name('edit.KasubBiroKeuangan');
             Route::get('/KasubBiroKeuangan/search/result', 'dataSearch')->name('KasubBiroKeuangan.data.search');
@@ -383,6 +385,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Koor Kemahasiswaan dan Alumni ------------------------------//
         Route::controller(KoorKemahasiswaanDanAlumniController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/koorkemahasiswaanDanAlumni/Input', 'create')->name('koorkemahasiswaanDanAlumni');
+            Route::get('/koorkemahasiswaanDanAlumni/result/poin/{userId}', 'detailPoin')->name('koorkemahasiswaanDanAlumni.poin');
             Route::post('/koorkemahasiswaanDanAlumni/Request/Store', 'store')->name('store.koorkemahasiswaanDanAlumni');
             Route::get('/koorkemahasiswaanDanAlumni/edit/', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
             Route::get('/koorkemahasiswaanDanAlumni/search/result', 'dataSearch')->name('koorkemahasiswaanDanAlumni.data.search');
@@ -393,6 +396,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Ka Upt ------------------------------//
         Route::controller(KaUptController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Upt/Input', 'create')->name('WarekSatu.Ka.Upt');
+            Route::get('/warek-satu/Ka-Upt/result/poin/{userId}', 'detailPoin')->name('WarekSatu.Ka.Upt.poin');
             Route::post('/warek-satu/Ka-Upt/Request/Store', 'store')->name('store.WarekSatu.Ka.Upt');
             Route::get('/warek-satu/Ka-Upt/edit/', 'edit')->name('edit.WarekSatu.Ka.Upt');
             Route::get('/warek-satu/KaUpt/search/result', 'dataSearch')->name('warekSatu.data.search');
@@ -403,6 +407,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Ka Risbang ------------------------------//
         Route::controller(KaRisbangController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Risbang/Input', 'create')->name('WarekSatu.Ka.Risbang');
+            Route::get('/warek-satu/Ka-Risbang/result/poin/{userId}', 'detailPoin')->name('WarekSatu.Ka.Risbang.poin');
             Route::post('/warek-satu/Ka-Risbang/Request/Store', 'store')->name('store.WarekSatu.Ka.Risbang');
             Route::get('/warek-satu/Ka-Risbang/edit/', 'edit')->name('edit.WarekSatu.Ka.Risbang');
             Route::get('/warek-satu/KaRisbang/search/result', 'dataSearch')->name('warekSatu.kaRisbang.data.search');
@@ -413,6 +418,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Ka Baak ------------------------------//
         Route::controller(KaBaakController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Baak/Input', 'create')->name('WarekSatu.Ka.Baak');
+            Route::get('/warek-satu/Ka-Baak/result/poin/{userId}', 'detailPoin')->name('WarekSatu.Ka.Baak.poin');
             Route::post('/warek-satu/Ka-Baak/Request/Store', 'store')->name('store.WarekSatu.Ka.Baak');
             Route::get('/warek-satu/Ka-Baak/edit/', 'edit')->name('edit.WarekSatu.Ka.Baak');
             Route::get('/warek1/KaBaak/search/result', 'dataSearch')->name('WarekSatu.baak.data.search');
@@ -423,6 +429,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Ka Prodi ------------------------------//
         Route::controller(KaProdiController::class)->middleware(['role:it|superuser|warek1|tendik|rektor'])->group(function () {
             Route::get('/warek-satu/Ka-Prodi/Input', 'create')->name('WarekSatu.Ka.Prodi');
+            Route::get('/warek-satu/Ka-Prodi/result/poin/{userId}', 'detailPoin')->name('WarekSatu.Ka.Prodi.poin');
             Route::post('/warek-satu/Ka-Prodi/Request/Store', 'store')->name('store.WarekSatu.Ka.Prodi');
             Route::get('/warek-satu/Ka-Prodi/edit/', 'edit')->name('edit.WarekSatu.Ka.Prodi');
             Route::get('/warek-satu/search/result', 'dataSearch')->name('WarekSatu.KaProdi.data.search');

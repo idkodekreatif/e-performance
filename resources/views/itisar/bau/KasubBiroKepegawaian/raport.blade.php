@@ -11,7 +11,8 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('kasubBiroKepegawaian') }}" class="btn btn-primary btn-sm mb-2 float-end">Point</a>
+                <a href="{{ route('kasubBiroKepegawaian.poin', Auth::user()->id) }}"
+                    class="btn btn-primary btn-sm mb-2 float-end">Point</a>
             </div>
         </div>
         <div class="card shadow">
@@ -30,42 +31,42 @@
                         <tbody>
                             <tr>
                                 <?php
-                                    $name = $DataUser->name;
-                                    $email = $DataUser->email;
+                                $name = $DataUser->name;
+                                $email = $DataUser->email;
                                 ?>
                                 <td>
-                                    <?php echo $name  ?>
+                                    <?php echo $name; ?>
                                 </td>
                                 <td>
-                                    <?php echo $email  ?>
+                                    <?php echo $email; ?>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
                         <?php
-                            $DataUserKinerjaPerilaku = (float)$DataUser->output_total_sementara_kinerja_perilaku;
-                            $DataUserKinerjaKompetensi = (float)$DataUser->output_total_sementara_kinerja_kompetensi;
-
-                            // SUM Nilai Perilaku dan Kompetensi
-                            $resultSumPerilakuKompetensi = $DataUserKinerjaPerilaku + $DataUserKinerjaKompetensi;
-
-                            // Predikat Perilaku dan Kompetensi
-                            if ($resultSumPerilakuKompetensi >= 5) {
-                            $OutPutPredikatKompetensi = "ISTIMEWA";
-                            }elseif($resultSumPerilakuKompetensi >= 4.01) {
+                        $DataUserKinerjaPerilaku = (float) $DataUser->output_total_sementara_kinerja_perilaku;
+                        $DataUserKinerjaKompetensi = (float) $DataUser->output_total_sementara_kinerja_kompetensi;
+                        
+                        // SUM Nilai Perilaku dan Kompetensi
+                        $resultSumPerilakuKompetensi = $DataUserKinerjaPerilaku + $DataUserKinerjaKompetensi;
+                        
+                        // Predikat Perilaku dan Kompetensi
+                        if ($resultSumPerilakuKompetensi >= 5) {
+                            $OutPutPredikatKompetensi = 'ISTIMEWA';
+                        } elseif ($resultSumPerilakuKompetensi >= 4.01) {
                             # code...
-                            $OutPutPredikatKompetensi = "SANGAT BAIK";
-                            }elseif($resultSumPerilakuKompetensi >= 3.01) {
+                            $OutPutPredikatKompetensi = 'SANGAT BAIK';
+                        } elseif ($resultSumPerilakuKompetensi >= 3.01) {
                             # code...
-                            $OutPutPredikatKompetensi = "BAIK";
-                            }elseif ($resultSumPerilakuKompetensi >= 2.01) {
+                            $OutPutPredikatKompetensi = 'BAIK';
+                        } elseif ($resultSumPerilakuKompetensi >= 2.01) {
                             # code...
-                            $OutPutPredikatKompetensi = "CUKUP";
-                            }else {
+                            $OutPutPredikatKompetensi = 'CUKUP';
+                        } else {
                             # code...
-                            $OutPutPredikatKompetensi = "KURANG";
-                            }
+                            $OutPutPredikatKompetensi = 'KURANG';
+                        }
                         ?>
                         <thead>
                             <tr style="font-weight:bold">
@@ -80,16 +81,16 @@
                             <tr>
                                 <td style="font-weight:bold">Nilai</td>
                                 <td>
-                                    <?php echo number_format((float)$DataUserKinerjaPerilaku, 2, '.', '')  ?>
+                                    <?php echo number_format((float) $DataUserKinerjaPerilaku, 2, '.', ''); ?>
                                 </td>
                                 <td>
-                                    <?php echo number_format((float)$DataUserKinerjaKompetensi, 2, '.', '')  ?>
+                                    <?php echo number_format((float) $DataUserKinerjaKompetensi, 2, '.', ''); ?>
                                 </td>
                                 <td>
-                                    <?php echo number_format((float)$resultSumPerilakuKompetensi, 2, '.', '')  ?>
+                                    <?php echo number_format((float) $resultSumPerilakuKompetensi, 2, '.', ''); ?>
                                 </td>
                                 <td style="font-weight:bold">
-                                    <?php echo $OutPutPredikatKompetensi  ?>
+                                    <?php echo $OutPutPredikatKompetensi; ?>
                                 </td>
                             </tr>
                         </tbody>

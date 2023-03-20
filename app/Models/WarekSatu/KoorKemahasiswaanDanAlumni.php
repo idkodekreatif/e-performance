@@ -13,7 +13,7 @@ class KoorKemahasiswaanDanAlumni extends Model
 
     protected static $logName = 'Koor. Kemahasiswaan Dan Alumni';
 
-    protected $table = "koor_kemahasiswaan_dan_alumni";
+    protected $table = "ikbis_koor_kemahasiswaan_dan_alumni";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

@@ -22,73 +22,46 @@ class KaRisbangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_18' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_19' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_20' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_21' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_22' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_23' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_24' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_25' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_26' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_27' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_28' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_29' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_30' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_31' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_32' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf',
+            'file_kinerja_kompetensi_18' => 'mimes:pdf',
+            'file_kinerja_kompetensi_19' => 'mimes:pdf',
+            'file_kinerja_kompetensi_20' => 'mimes:pdf',
+            'file_kinerja_kompetensi_21' => 'mimes:pdf',
+            'file_kinerja_kompetensi_22' => 'mimes:pdf',
+            'file_kinerja_kompetensi_23' => 'mimes:pdf',
+            'file_kinerja_kompetensi_24' => 'mimes:pdf',
+            'file_kinerja_kompetensi_25' => 'mimes:pdf',
+            'file_kinerja_kompetensi_26' => 'mimes:pdf',
+            'file_kinerja_kompetensi_27' => 'mimes:pdf',
+            'file_kinerja_kompetensi_28' => 'mimes:pdf',
+            'file_kinerja_kompetensi_29' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
         try {
             $karisbang = new KaRisbang();
-            $karisbang->Point1_1 = $request->get('Point1_1');
-            $karisbang->Point1_2 = $request->get('Point1_2');
-            $karisbang->Point1_3 = $request->get('Point1_3');
-            $karisbang->Point1_4 = $request->get('Point1_4');
-            $karisbang->Point1_5 = $request->get('Point1_5');
-            $karisbang->Point2_1 = $request->get('Point2_1');
-            $karisbang->Point2_2 = $request->get('Point2_2');
-            $karisbang->Point2_3 = $request->get('Point2_3');
-            $karisbang->Point2_4 = $request->get('Point2_4');
-            $karisbang->Point2_5 = $request->get('Point2_5');
-            $karisbang->Point3_1 = $request->get('Point3_1');
-            $karisbang->Point3_2 = $request->get('Point3_2');
-            $karisbang->Point3_3 = $request->get('Point3_3');
-            $karisbang->Point3_4 = $request->get('Point3_4');
-            $karisbang->Point3_5 = $request->get('Point3_5');
-            $karisbang->Point4_1 = $request->get('Point4_1');
-            $karisbang->Point4_2 = $request->get('Point4_2');
-            $karisbang->Point4_3 = $request->get('Point4_3');
-            $karisbang->Point4_4 = $request->get('Point4_4');
-            $karisbang->Point4_5 = $request->get('Point4_5');
-            $karisbang->Point5_1 = $request->get('Point5_1');
-            $karisbang->Point5_2 = $request->get('Point5_2');
-            $karisbang->Point5_3 = $request->get('Point5_3');
-            $karisbang->Point5_4 = $request->get('Point5_4');
-            $karisbang->Point5_5 = $request->get('Point5_5');
-            $karisbang->Point6_1 = $request->get('Point6_1');
-            $karisbang->Point6_2 = $request->get('Point6_2');
-            $karisbang->Point6_3 = $request->get('Point6_3');
-            $karisbang->Point6_4 = $request->get('Point6_4');
-            $karisbang->Point6_5 = $request->get('Point6_5');
+            $karisbang->q1 = $request->get('q1');
+            $karisbang->q2 = $request->get('q2');
+            $karisbang->q3 = $request->get('q3');
+            $karisbang->q4 = $request->get('q4');
+            $karisbang->q5 = $request->get('q5');
+            $karisbang->q6 = $request->get('q6');
             $karisbang->output_point_1 = $request->get('output_point_1');
             $karisbang->output_point_2 = $request->get('output_point_2');
             $karisbang->output_point_3 = $request->get('output_point_3');
@@ -324,73 +297,46 @@ class KaRisbangController extends Controller
     {
         // Validation file upload
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_18' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_19' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_20' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_21' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_22' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_23' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_24' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_25' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_26' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_27' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_28' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_29' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_30' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_31' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_32' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf',
+            'file_kinerja_kompetensi_18' => 'mimes:pdf',
+            'file_kinerja_kompetensi_19' => 'mimes:pdf',
+            'file_kinerja_kompetensi_20' => 'mimes:pdf',
+            'file_kinerja_kompetensi_21' => 'mimes:pdf',
+            'file_kinerja_kompetensi_22' => 'mimes:pdf',
+            'file_kinerja_kompetensi_23' => 'mimes:pdf',
+            'file_kinerja_kompetensi_24' => 'mimes:pdf',
+            'file_kinerja_kompetensi_25' => 'mimes:pdf',
+            'file_kinerja_kompetensi_26' => 'mimes:pdf',
+            'file_kinerja_kompetensi_27' => 'mimes:pdf',
+            'file_kinerja_kompetensi_28' => 'mimes:pdf',
+            'file_kinerja_kompetensi_29' => 'mimes:pdf',
         ]);
         DB::beginTransaction();
         try {
             $RecordData =  KaRisbang::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -610,7 +556,7 @@ class KaRisbangController extends Controller
                 $file_kinerja_kompetensi_21 = $RecordData->file_kinerja_kompetensi_21;
             }
 
-            $kinerja_kompetensi_22 = $request->get('kinerja_kompetensi_122');
+            $kinerja_kompetensi_22 = $request->get('kinerja_kompetensi_22');
             if ($request->hasFile('file_kinerja_kompetensi_22')) {
                 if ($RecordData->file_kinerja_kompetensi_22 && file_exists(storage_path('app/public/uploads/wareksatu/karisbang/' . $RecordData->file_kinerja_kompetensi_22))) {
                     \Storage::delete('public/uploads/wareksatu/karisbang/' . $RecordData->file_kinerja_kompetensi_22);
@@ -730,36 +676,12 @@ class KaRisbangController extends Controller
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -856,15 +778,15 @@ class KaRisbangController extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('ka_lem_risbang', 'users.id', '=', 'ka_lem_risbang.user_id')
+            ->leftJoin('ikbis_ka_lem_risbang', 'users.id', '=', 'ikbis_ka_lem_risbang.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'ka_lem_risbang.user_id',
-                'ka_lem_risbang.output_total_sementara_kinerja_perilaku',
-                'ka_lem_risbang.output_total_sementara_kinerja_kompetensi',
+                'ikbis_ka_lem_risbang.user_id',
+                'ikbis_ka_lem_risbang.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_lem_risbang.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('ka_lem_risbang.user_id', $user_id)
+            ->where('ikbis_ka_lem_risbang.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -873,5 +795,12 @@ class KaRisbangController extends Controller
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = KaRisbang::where('user_id', '=', $userId)->first();
+
+        return view('itisar.WarekSatu.KaRisbang.detailPoin', ['data' => $data]);
     }
 }

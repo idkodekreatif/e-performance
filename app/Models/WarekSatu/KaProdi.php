@@ -13,7 +13,7 @@ class KaProdi extends Model
 
     protected static $logName = 'Ka. Prodi';
 
-    protected $table = "ka_prodi";
+    protected $table = "ikbis_ka_prodi";
     protected $guarded = [];
 
     protected static $logUnguarded = true;
