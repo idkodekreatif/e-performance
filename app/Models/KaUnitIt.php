@@ -13,7 +13,7 @@ class KaUnitIt extends Model
 
     protected static $logName = 'Ka. Unit IT';
 
-    protected $table = "ka_unit_it";
+    protected $table = "ikbis_ka_unit_it";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

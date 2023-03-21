@@ -13,7 +13,7 @@ class KaLpm extends Model
 
     protected static $logName = 'Ka. Lpm';
 
-    protected $table = "ka_lpm";
+    protected $table = "ikbis_ka_lpm";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

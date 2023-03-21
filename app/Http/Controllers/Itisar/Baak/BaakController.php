@@ -14,7 +14,7 @@ class BaakController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
         return view('itisar.Baak.create', compact('users'));
     }
@@ -50,36 +50,12 @@ class BaakController extends Controller
         DB::beginTransaction();
         try {
             $baak = new Baak();
-            $baak->Point1_1 = $request->get('Point1_1');
-            $baak->Point1_2 = $request->get('Point1_2');
-            $baak->Point1_3 = $request->get('Point1_3');
-            $baak->Point1_4 = $request->get('Point1_4');
-            $baak->Point1_5 = $request->get('Point1_5');
-            $baak->Point2_1 = $request->get('Point2_1');
-            $baak->Point2_2 = $request->get('Point2_2');
-            $baak->Point2_3 = $request->get('Point2_3');
-            $baak->Point2_4 = $request->get('Point2_4');
-            $baak->Point2_5 = $request->get('Point2_5');
-            $baak->Point3_1 = $request->get('Point3_1');
-            $baak->Point3_2 = $request->get('Point3_2');
-            $baak->Point3_3 = $request->get('Point3_3');
-            $baak->Point3_4 = $request->get('Point3_4');
-            $baak->Point3_5 = $request->get('Point3_5');
-            $baak->Point4_1 = $request->get('Point4_1');
-            $baak->Point4_2 = $request->get('Point4_2');
-            $baak->Point4_3 = $request->get('Point4_3');
-            $baak->Point4_4 = $request->get('Point4_4');
-            $baak->Point4_5 = $request->get('Point4_5');
-            $baak->Point5_1 = $request->get('Point5_1');
-            $baak->Point5_2 = $request->get('Point5_2');
-            $baak->Point5_3 = $request->get('Point5_3');
-            $baak->Point5_4 = $request->get('Point5_4');
-            $baak->Point5_5 = $request->get('Point5_5');
-            $baak->Point6_1 = $request->get('Point6_1');
-            $baak->Point6_2 = $request->get('Point6_2');
-            $baak->Point6_3 = $request->get('Point6_3');
-            $baak->Point6_4 = $request->get('Point6_4');
-            $baak->Point6_5 = $request->get('Point6_5');
+            $baak->q1 = $request->get('q1');
+            $baak->q2 = $request->get('q2');
+            $baak->q3 = $request->get('q3');
+            $baak->q4 = $request->get('q4');
+            $baak->q5 = $request->get('q5');
+            $baak->q6 = $request->get('q6');
             $baak->output_point_1 = $request->get('output_point_1');
             $baak->output_point_2 = $request->get('output_point_2');
             $baak->output_point_3 = $request->get('output_point_3');
@@ -207,7 +183,7 @@ class BaakController extends Controller
     {
         $dataMenu = Menu::first();
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
         if (empty($dataMenu)) {
@@ -258,36 +234,12 @@ class BaakController extends Controller
         try {
             $RecordData = Baak::where('user_id', $pointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -477,36 +429,12 @@ class BaakController extends Controller
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -578,15 +506,15 @@ class BaakController extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('baak', 'users.id', '=', 'baak.user_id')
+            ->leftJoin('ikbis_ka_sub_baak', 'users.id', '=', 'ikbis_ka_sub_baak.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'baak.user_id',
-                'baak.output_total_sementara_kinerja_perilaku',
-                'baak.output_total_sementara_kinerja_kompetensi',
+                'ikbis_ka_sub_baak.user_id',
+                'ikbis_ka_sub_baak.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_sub_baak.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('baak.user_id', $user_id)
+            ->where('ikbis_ka_sub_baak.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -595,5 +523,12 @@ class BaakController extends Controller
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = Baak::where('user_id', '=', $userId)->first();
+
+        return view('itisar.Baak.detailPoin', ['data' => $data]);
     }
 }

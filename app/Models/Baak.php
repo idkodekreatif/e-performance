@@ -13,7 +13,7 @@ class Baak extends Model
 
     protected static $logName = 'Baak';
 
-    protected $table = "baak";
+    protected $table = "ikbis_ka_sub_baak";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

@@ -13,7 +13,7 @@ class SekKaprodi extends Model
 
     protected static $logName = 'Sek Ka. Prodi';
 
-    protected $table = "sek_ka_prodi";
+    protected $table = "ikbis_sek_ka_prodi";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

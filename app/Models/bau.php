@@ -13,7 +13,7 @@ class bau extends Model
 
     protected static $logName = 'BAU';
 
-    protected $table = "bau";
+    protected $table = "ikbis_bau";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

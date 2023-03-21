@@ -13,7 +13,7 @@ class StaffBaakDua extends Model
 
     protected static $logName = 'Staff Baak Dua';
 
-    protected $table = "staff_baak_dua";
+    protected $table = "ikbis_staff_baak_dua";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

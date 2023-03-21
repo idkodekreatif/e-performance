@@ -21,36 +21,39 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $number => $user)
-                        <tr>
-                            <td><strong>{{ ++$number }}</strong></td>
-                            <td>
-                                <div class="d-flex align-items-center"><span class="w-space-no">{{ $user->name }}</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center"><span class="w-space-no">{{ $user->email
-                                        }}</span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex">
-                                    <a href="{{ route('users.show', $user->id) }}"
-                                        class="btn btn-primary shadow btn-xs me-1">Roles</a>
-                                        @role('it|superuser|hrd')
-                                    <a href="{{ route('impersonate', $user->id) }}"
-                                        class="btn btn-primary shadow btn-xs me-1">Impersonate</a>
+                            <tr>
+                                <td><strong>{{ ++$number }}</strong></td>
+                                <td>
+                                    <div class="d-flex align-items-center"><span
+                                            class="w-space-no">{{ $user->name }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center"><span
+                                            class="w-space-no">{{ $user->email }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        @role('it|superuser')
+                                            <a href="{{ route('users.show', $user->id) }}"
+                                                class="btn btn-primary shadow btn-xs me-1">Roles</a>
                                         @endrole
-                                    {{-- <a href="" class="btn btn-primary shadow btn-xs me-1">Permissions</a> --}}
-                                    <form method="POST" action="{{ route('users.destroy', $user->id) }}"
-                                        onsubmit="return confirm('Are you sure delete user?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i
-                                                class="fa fa-trash"></i></button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                                        @role('it|superuser|hrd')
+                                            <a href="{{ route('impersonate', $user->id) }}"
+                                                class="btn btn-primary shadow btn-xs me-1">Impersonate</a>
+                                        @endrole
+                                        {{-- <a href="" class="btn btn-primary shadow btn-xs me-1">Permissions</a> --}}
+                                        <form method="POST" action="{{ route('users.destroy', $user->id) }}"
+                                            onsubmit="return confirm('Are you sure delete user?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i
+                                                    class="fa fa-trash"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

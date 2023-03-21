@@ -14,7 +14,7 @@ class StaffBaakDuaController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
         return view('itisar.BiroAdministrasi.BaakDua.create', compact('users'));
     }
@@ -22,90 +22,66 @@ class StaffBaakDuaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_18' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_19' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_20' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_21' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_22' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_23' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_24' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_25' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_26' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_27' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_28' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_29' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_30' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_31' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_32' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_33' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_34' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_35' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_36' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_37' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_38' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_39' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_40' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_41' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_42' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_43' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_44' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_45' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_46' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_47' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_48' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_49' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf',
+            'file_kinerja_kompetensi_18' => 'mimes:pdf',
+            'file_kinerja_kompetensi_19' => 'mimes:pdf',
+            'file_kinerja_kompetensi_20' => 'mimes:pdf',
+            'file_kinerja_kompetensi_21' => 'mimes:pdf',
+            'file_kinerja_kompetensi_22' => 'mimes:pdf',
+            'file_kinerja_kompetensi_23' => 'mimes:pdf',
+            'file_kinerja_kompetensi_24' => 'mimes:pdf',
+            'file_kinerja_kompetensi_25' => 'mimes:pdf',
+            'file_kinerja_kompetensi_26' => 'mimes:pdf',
+            'file_kinerja_kompetensi_27' => 'mimes:pdf',
+            'file_kinerja_kompetensi_28' => 'mimes:pdf',
+            'file_kinerja_kompetensi_29' => 'mimes:pdf',
+            'file_kinerja_kompetensi_30' => 'mimes:pdf',
+            'file_kinerja_kompetensi_31' => 'mimes:pdf',
+            'file_kinerja_kompetensi_32' => 'mimes:pdf',
+            'file_kinerja_kompetensi_33' => 'mimes:pdf',
+            'file_kinerja_kompetensi_34' => 'mimes:pdf',
+            'file_kinerja_kompetensi_35' => 'mimes:pdf',
+            'file_kinerja_kompetensi_36' => 'mimes:pdf',
+            'file_kinerja_kompetensi_37' => 'mimes:pdf',
+            'file_kinerja_kompetensi_38' => 'mimes:pdf',
+            'file_kinerja_kompetensi_39' => 'mimes:pdf',
+            'file_kinerja_kompetensi_40' => 'mimes:pdf',
+            'file_kinerja_kompetensi_41' => 'mimes:pdf',
+            'file_kinerja_kompetensi_42' => 'mimes:pdf',
+            'file_kinerja_kompetensi_43' => 'mimes:pdf',
+            'file_kinerja_kompetensi_44' => 'mimes:pdf',
+            'file_kinerja_kompetensi_45' => 'mimes:pdf',
+            'file_kinerja_kompetensi_46' => 'mimes:pdf',
+            'file_kinerja_kompetensi_47' => 'mimes:pdf',
+            'file_kinerja_kompetensi_48' => 'mimes:pdf',
+            'file_kinerja_kompetensi_49' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
         try {
             $staffbaakdua = new StaffBaakDua();
-            $staffbaakdua->Point1_1 = $request->get('Point1_1');
-            $staffbaakdua->Point1_2 = $request->get('Point1_2');
-            $staffbaakdua->Point1_3 = $request->get('Point1_3');
-            $staffbaakdua->Point1_4 = $request->get('Point1_4');
-            $staffbaakdua->Point1_5 = $request->get('Point1_5');
-            $staffbaakdua->Point2_1 = $request->get('Point2_1');
-            $staffbaakdua->Point2_2 = $request->get('Point2_2');
-            $staffbaakdua->Point2_3 = $request->get('Point2_3');
-            $staffbaakdua->Point2_4 = $request->get('Point2_4');
-            $staffbaakdua->Point2_5 = $request->get('Point2_5');
-            $staffbaakdua->Point3_1 = $request->get('Point3_1');
-            $staffbaakdua->Point3_2 = $request->get('Point3_2');
-            $staffbaakdua->Point3_3 = $request->get('Point3_3');
-            $staffbaakdua->Point3_4 = $request->get('Point3_4');
-            $staffbaakdua->Point3_5 = $request->get('Point3_5');
-            $staffbaakdua->Point4_1 = $request->get('Point4_1');
-            $staffbaakdua->Point4_2 = $request->get('Point4_2');
-            $staffbaakdua->Point4_3 = $request->get('Point4_3');
-            $staffbaakdua->Point4_4 = $request->get('Point4_4');
-            $staffbaakdua->Point4_5 = $request->get('Point4_5');
-            $staffbaakdua->Point5_1 = $request->get('Point5_1');
-            $staffbaakdua->Point5_2 = $request->get('Point5_2');
-            $staffbaakdua->Point5_3 = $request->get('Point5_3');
-            $staffbaakdua->Point5_4 = $request->get('Point5_4');
-            $staffbaakdua->Point5_5 = $request->get('Point5_5');
-            $staffbaakdua->Point6_1 = $request->get('Point6_1');
-            $staffbaakdua->Point6_2 = $request->get('Point6_2');
-            $staffbaakdua->Point6_3 = $request->get('Point6_3');
-            $staffbaakdua->Point6_4 = $request->get('Point6_4');
-            $staffbaakdua->Point6_5 = $request->get('Point6_5');
+            $staffbaakdua->q1 = $request->get('q1');
+            $staffbaakdua->q2 = $request->get('q2');
+            $staffbaakdua->q3 = $request->get('q3');
+            $staffbaakdua->q4 = $request->get('q4');
+            $staffbaakdua->q5 = $request->get('q5');
+            $staffbaakdua->q6 = $request->get('q6');
             $staffbaakdua->output_point_1 = $request->get('output_point_1');
             $staffbaakdua->output_point_2 = $request->get('output_point_2');
             $staffbaakdua->output_point_3 = $request->get('output_point_3');
@@ -421,7 +397,7 @@ class StaffBaakDuaController extends Controller
     {
         $dataMenu = Menu::first();
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
         if (empty($dataMenu)) {
@@ -432,7 +408,7 @@ class StaffBaakDuaController extends Controller
         return view('itisar.BiroAdministrasi.BaakDua.searchdata', compact('users'));
     }
 
-public function dataSearch(Request $request)
+    public function dataSearch(Request $request)
     {
         $data = StaffBaakDua::where('user_id', '=', $request->id)->first();
 
@@ -443,90 +419,66 @@ public function dataSearch(Request $request)
     {
         // Validation file upload
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_15' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_16' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_17' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_18' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_19' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_20' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_21' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_22' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_23' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_24' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_25' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_26' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_27' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_28' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_29' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_30' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_31' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_32' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_33' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_34' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_35' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_36' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_37' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_38' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_39' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_40' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_41' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_42' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_43' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_44' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_45' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_46' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_47' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_48' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_49' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
+            'file_kinerja_kompetensi_15' => 'mimes:pdf',
+            'file_kinerja_kompetensi_16' => 'mimes:pdf',
+            'file_kinerja_kompetensi_17' => 'mimes:pdf',
+            'file_kinerja_kompetensi_18' => 'mimes:pdf',
+            'file_kinerja_kompetensi_19' => 'mimes:pdf',
+            'file_kinerja_kompetensi_20' => 'mimes:pdf',
+            'file_kinerja_kompetensi_21' => 'mimes:pdf',
+            'file_kinerja_kompetensi_22' => 'mimes:pdf',
+            'file_kinerja_kompetensi_23' => 'mimes:pdf',
+            'file_kinerja_kompetensi_24' => 'mimes:pdf',
+            'file_kinerja_kompetensi_25' => 'mimes:pdf',
+            'file_kinerja_kompetensi_26' => 'mimes:pdf',
+            'file_kinerja_kompetensi_27' => 'mimes:pdf',
+            'file_kinerja_kompetensi_28' => 'mimes:pdf',
+            'file_kinerja_kompetensi_29' => 'mimes:pdf',
+            'file_kinerja_kompetensi_30' => 'mimes:pdf',
+            'file_kinerja_kompetensi_31' => 'mimes:pdf',
+            'file_kinerja_kompetensi_32' => 'mimes:pdf',
+            'file_kinerja_kompetensi_33' => 'mimes:pdf',
+            'file_kinerja_kompetensi_34' => 'mimes:pdf',
+            'file_kinerja_kompetensi_35' => 'mimes:pdf',
+            'file_kinerja_kompetensi_36' => 'mimes:pdf',
+            'file_kinerja_kompetensi_37' => 'mimes:pdf',
+            'file_kinerja_kompetensi_38' => 'mimes:pdf',
+            'file_kinerja_kompetensi_39' => 'mimes:pdf',
+            'file_kinerja_kompetensi_40' => 'mimes:pdf',
+            'file_kinerja_kompetensi_41' => 'mimes:pdf',
+            'file_kinerja_kompetensi_42' => 'mimes:pdf',
+            'file_kinerja_kompetensi_43' => 'mimes:pdf',
+            'file_kinerja_kompetensi_44' => 'mimes:pdf',
+            'file_kinerja_kompetensi_45' => 'mimes:pdf',
+            'file_kinerja_kompetensi_46' => 'mimes:pdf',
+            'file_kinerja_kompetensi_47' => 'mimes:pdf',
+            'file_kinerja_kompetensi_48' => 'mimes:pdf',
+            'file_kinerja_kompetensi_49' => 'mimes:pdf',
         ]);
         DB::beginTransaction();
         try {
             $RecordData =  StaffBaakDua::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -746,7 +698,7 @@ public function dataSearch(Request $request)
                 $file_kinerja_kompetensi_21 = $RecordData->file_kinerja_kompetensi_21;
             }
 
-            $kinerja_kompetensi_22 = $request->get('kinerja_kompetensi_122');
+            $kinerja_kompetensi_22 = $request->get('kinerja_kompetensi_22');
             if ($request->hasFile('file_kinerja_kompetensi_22')) {
                 if ($RecordData->file_kinerja_kompetensi_22 && file_exists(storage_path('app/public/uploads/AdministrasiAkademik/staff-baak-dua/' . $RecordData->file_kinerja_kompetensi_22))) {
                     \Storage::delete('public/uploads/AdministrasiAkademik/staff-baak-dua/' . $RecordData->file_kinerja_kompetensi_22);
@@ -1036,36 +988,12 @@ public function dataSearch(Request $request)
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -1196,15 +1124,15 @@ public function dataSearch(Request $request)
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('staff_baak_dua', 'users.id', '=', 'staff_baak_dua.user_id')
+            ->leftJoin('ikbis_staff_baak_dua', 'users.id', '=', 'ikbis_staff_baak_dua.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'staff_baak_dua.user_id',
-                'staff_baak_dua.output_total_sementara_kinerja_perilaku',
-                'staff_baak_dua.output_total_sementara_kinerja_kompetensi',
+                'ikbis_staff_baak_dua.user_id',
+                'ikbis_staff_baak_dua.output_total_sementara_kinerja_perilaku',
+                'ikbis_staff_baak_dua.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('staff_baak_dua.user_id', $user_id)
+            ->where('ikbis_staff_baak_dua.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -1213,5 +1141,12 @@ public function dataSearch(Request $request)
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = StaffBaakDua::where('user_id', '=', $userId)->first();
+
+        return view('itisar.BiroAdministrasi.BaakDua.detailPoin', ['data' => $data]);
     }
 }

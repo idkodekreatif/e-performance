@@ -13,7 +13,7 @@ class KaRisbang extends Model
 
     protected static $logName = 'Ka. Lembaga Risbang';
 
-    protected $table = "ka_lem_risbang";
+    protected $table = "ikbis_ka_lem_risbang";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

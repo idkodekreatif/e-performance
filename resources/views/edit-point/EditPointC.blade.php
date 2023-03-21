@@ -242,10 +242,10 @@
                                                 name="JumlahYangDihasilkanC2_3" id="JumlahYangDihasilkanC2_3"
                                                 onkeyup="sum()" placeholder="0">
                                         </td>
-                                        <td><input type="number" value="{{ $data->JumlahYangDihasilkanC2_4 }}"
+                                        <td><input type="number" value="{{ $data->JumlahYangDihasilkanC2_4_in }}"
                                                 name="JumlahYangDihasilkanC2_4" id="JumlahYangDihasilkanC2_4"
                                                 onkeyup="sum()" placeholder="0"></td>
-                                        <td><input type="number" value="{{ $data->JumlahYangDihasilkanC2_5 }}"
+                                        <td><input type="number" value="{{ $data->JumlahYangDihasilkanC2_5_in }}"
                                                 name="JumlahYangDihasilkanC2_5" id="JumlahYangDihasilkanC2_5"
                                                 onkeyup="sum()" placeholder="0"></td>
                                         <td></td>

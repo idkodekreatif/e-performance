@@ -14,7 +14,7 @@ class StaffSusBidKerjasamaController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
         return view('itisar.Rektor.StaffSusBidKerjasama.create', compact('users'));
     }
@@ -34,36 +34,12 @@ class StaffSusBidKerjasamaController extends Controller
         DB::beginTransaction();
         try {
             $staffsusbidkerjasama = new StaffSusBidKerjasama();
-            $staffsusbidkerjasama->Point1_1 = $request->get('Point1_1');
-            $staffsusbidkerjasama->Point1_2 = $request->get('Point1_2');
-            $staffsusbidkerjasama->Point1_3 = $request->get('Point1_3');
-            $staffsusbidkerjasama->Point1_4 = $request->get('Point1_4');
-            $staffsusbidkerjasama->Point1_5 = $request->get('Point1_5');
-            $staffsusbidkerjasama->Point2_1 = $request->get('Point2_1');
-            $staffsusbidkerjasama->Point2_2 = $request->get('Point2_2');
-            $staffsusbidkerjasama->Point2_3 = $request->get('Point2_3');
-            $staffsusbidkerjasama->Point2_4 = $request->get('Point2_4');
-            $staffsusbidkerjasama->Point2_5 = $request->get('Point2_5');
-            $staffsusbidkerjasama->Point3_1 = $request->get('Point3_1');
-            $staffsusbidkerjasama->Point3_2 = $request->get('Point3_2');
-            $staffsusbidkerjasama->Point3_3 = $request->get('Point3_3');
-            $staffsusbidkerjasama->Point3_4 = $request->get('Point3_4');
-            $staffsusbidkerjasama->Point3_5 = $request->get('Point3_5');
-            $staffsusbidkerjasama->Point4_1 = $request->get('Point4_1');
-            $staffsusbidkerjasama->Point4_2 = $request->get('Point4_2');
-            $staffsusbidkerjasama->Point4_3 = $request->get('Point4_3');
-            $staffsusbidkerjasama->Point4_4 = $request->get('Point4_4');
-            $staffsusbidkerjasama->Point4_5 = $request->get('Point4_5');
-            $staffsusbidkerjasama->Point5_1 = $request->get('Point5_1');
-            $staffsusbidkerjasama->Point5_2 = $request->get('Point5_2');
-            $staffsusbidkerjasama->Point5_3 = $request->get('Point5_3');
-            $staffsusbidkerjasama->Point5_4 = $request->get('Point5_4');
-            $staffsusbidkerjasama->Point5_5 = $request->get('Point5_5');
-            $staffsusbidkerjasama->Point6_1 = $request->get('Point6_1');
-            $staffsusbidkerjasama->Point6_2 = $request->get('Point6_2');
-            $staffsusbidkerjasama->Point6_3 = $request->get('Point6_3');
-            $staffsusbidkerjasama->Point6_4 = $request->get('Point6_4');
-            $staffsusbidkerjasama->Point6_5 = $request->get('Point6_5');
+            $staffsusbidkerjasama->q1 = $request->get('q1');
+            $staffsusbidkerjasama->q2 = $request->get('q2');
+            $staffsusbidkerjasama->q3 = $request->get('q3');
+            $staffsusbidkerjasama->q4 = $request->get('q4');
+            $staffsusbidkerjasama->q5 = $request->get('q5');
+            $staffsusbidkerjasama->q6 = $request->get('q6');
             $staffsusbidkerjasama->output_point_1 = $request->get('output_point_1');
             $staffsusbidkerjasama->output_point_2 = $request->get('output_point_2');
             $staffsusbidkerjasama->output_point_3 = $request->get('output_point_3');
@@ -135,7 +111,7 @@ class StaffSusBidKerjasamaController extends Controller
     {
         $dataMenu = Menu::first();
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
         if (empty($dataMenu)) {
@@ -169,36 +145,12 @@ class StaffSusBidKerjasamaController extends Controller
         try {
             $RecordData =  StaffSusBidKerjasama::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -288,36 +240,12 @@ class StaffSusBidKerjasamaController extends Controller
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -364,15 +292,15 @@ class StaffSusBidKerjasamaController extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('staffsusbid_kerjasama', 'users.id', '=', 'staffsusbid_kerjasama.user_id')
+            ->leftJoin('ikbis_staffsusbid_kerjasama', 'users.id', '=', 'ikbis_staffsusbid_kerjasama.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'staffsusbid_kerjasama.user_id',
-                'staffsusbid_kerjasama.output_total_sementara_kinerja_perilaku',
-                'staffsusbid_kerjasama.output_total_sementara_kinerja_kompetensi',
+                'ikbis_staffsusbid_kerjasama.user_id',
+                'ikbis_staffsusbid_kerjasama.output_total_sementara_kinerja_perilaku',
+                'ikbis_staffsusbid_kerjasama.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('staffsusbid_kerjasama.user_id', $user_id)
+            ->where('ikbis_staffsusbid_kerjasama.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -381,5 +309,12 @@ class StaffSusBidKerjasamaController extends Controller
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = StaffSusBidKerjasama::where('user_id', '=', $userId)->first();
+
+        return view('itisar.Rektor.StaffSusBidKerjasama.detailPoin', ['data' => $data]);
     }
 }

@@ -13,7 +13,7 @@ class StaffKeuangan extends Model
 
     protected static $logName = 'Staff Keuangan';
 
-    protected $table = "staff_keuangan";
+    protected $table = "ikbis_staff_keuangan";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

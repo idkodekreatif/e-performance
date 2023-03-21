@@ -13,7 +13,7 @@ class KaUpt extends Model
 
     protected static $logName = 'Ka. UPT';
 
-    protected $table = "ka_upt";
+    protected $table = "ikbis_ka_upt";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

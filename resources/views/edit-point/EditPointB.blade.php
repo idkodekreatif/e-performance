@@ -643,7 +643,7 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td><input type="number" value="{{ $data->JumlahYangDihasilkanB6_5 }}"
+                                            <td><input type="number" value="{{ $data->JumlahYangDihasilkanB6_5_in }}"
                                                     name="JumlahYangDihasilkanB6_5" id="JumlahYangDihasilkanB6_5"
                                                     onkeyup="sum()" placeholder="0"></td>
                                             <td></td>
@@ -1613,7 +1613,7 @@
                                             <td><input type="number" value="{{ $data->JumlahYangDihasilkanB15_4_in }}"
                                                     name="JumlahYangDihasilkanB15_4" id="JumlahYangDihasilkanB15_4"
                                                     onkeyup="sum()" placeholder="0"></td>
-                                            <td><input type="number" value="{{ $data->JumlahYangDihasilkanB15_5 }}"
+                                            <td><input type="number" value="{{ $data->JumlahYangDihasilkanB15_5_in }}"
                                                     name="JumlahYangDihasilkanB15_5" id="JumlahYangDihasilkanB15_5"
                                                     onkeyup="sum()" placeholder="0"></td>
                                             <td></td>

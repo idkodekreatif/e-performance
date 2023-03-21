@@ -14,7 +14,7 @@ class KaBaakController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
         return view('itisar.WarekSatu.KaBaak.create', compact('users'));
     }
@@ -22,55 +22,31 @@ class KaBaakController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
         ]);
 
         DB::beginTransaction();
         try {
             $kabaak = new KaBaak();
-            $kabaak->Point1_1 = $request->get('Point1_1');
-            $kabaak->Point1_2 = $request->get('Point1_2');
-            $kabaak->Point1_3 = $request->get('Point1_3');
-            $kabaak->Point1_4 = $request->get('Point1_4');
-            $kabaak->Point1_5 = $request->get('Point1_5');
-            $kabaak->Point2_1 = $request->get('Point2_1');
-            $kabaak->Point2_2 = $request->get('Point2_2');
-            $kabaak->Point2_3 = $request->get('Point2_3');
-            $kabaak->Point2_4 = $request->get('Point2_4');
-            $kabaak->Point2_5 = $request->get('Point2_5');
-            $kabaak->Point3_1 = $request->get('Point3_1');
-            $kabaak->Point3_2 = $request->get('Point3_2');
-            $kabaak->Point3_3 = $request->get('Point3_3');
-            $kabaak->Point3_4 = $request->get('Point3_4');
-            $kabaak->Point3_5 = $request->get('Point3_5');
-            $kabaak->Point4_1 = $request->get('Point4_1');
-            $kabaak->Point4_2 = $request->get('Point4_2');
-            $kabaak->Point4_3 = $request->get('Point4_3');
-            $kabaak->Point4_4 = $request->get('Point4_4');
-            $kabaak->Point4_5 = $request->get('Point4_5');
-            $kabaak->Point5_1 = $request->get('Point5_1');
-            $kabaak->Point5_2 = $request->get('Point5_2');
-            $kabaak->Point5_3 = $request->get('Point5_3');
-            $kabaak->Point5_4 = $request->get('Point5_4');
-            $kabaak->Point5_5 = $request->get('Point5_5');
-            $kabaak->Point6_1 = $request->get('Point6_1');
-            $kabaak->Point6_2 = $request->get('Point6_2');
-            $kabaak->Point6_3 = $request->get('Point6_3');
-            $kabaak->Point6_4 = $request->get('Point6_4');
-            $kabaak->Point6_5 = $request->get('Point6_5');
+            $kabaak->q1 = $request->get('q1');
+            $kabaak->q2 = $request->get('q2');
+            $kabaak->q3 = $request->get('q3');
+            $kabaak->q4 = $request->get('q4');
+            $kabaak->q5 = $request->get('q5');
+            $kabaak->q6 = $request->get('q6');
             $kabaak->output_point_1 = $request->get('output_point_1');
             $kabaak->output_point_2 = $request->get('output_point_2');
             $kabaak->output_point_3 = $request->get('output_point_3');
@@ -177,7 +153,7 @@ class KaBaakController extends Controller
     {
         $dataMenu = Menu::first();
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit', 'dosen', 'tendik'
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
         if (empty($dataMenu)) {
@@ -199,55 +175,31 @@ class KaBaakController extends Controller
     {
         // Validation file upload
         $request->validate([
-            'file_kinerja_kompetensi_1' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_2' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_3' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_4' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_5' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_6' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_7' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_8' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_9' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_10' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_11' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_12' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_13' => 'mimes:pdf|max:2048',
-            'file_kinerja_kompetensi_14' => 'mimes:pdf|max:2048',
+            'file_kinerja_kompetensi_1' => 'mimes:pdf',
+            'file_kinerja_kompetensi_2' => 'mimes:pdf',
+            'file_kinerja_kompetensi_3' => 'mimes:pdf',
+            'file_kinerja_kompetensi_4' => 'mimes:pdf',
+            'file_kinerja_kompetensi_5' => 'mimes:pdf',
+            'file_kinerja_kompetensi_6' => 'mimes:pdf',
+            'file_kinerja_kompetensi_7' => 'mimes:pdf',
+            'file_kinerja_kompetensi_8' => 'mimes:pdf',
+            'file_kinerja_kompetensi_9' => 'mimes:pdf',
+            'file_kinerja_kompetensi_10' => 'mimes:pdf',
+            'file_kinerja_kompetensi_11' => 'mimes:pdf',
+            'file_kinerja_kompetensi_12' => 'mimes:pdf',
+            'file_kinerja_kompetensi_13' => 'mimes:pdf',
+            'file_kinerja_kompetensi_14' => 'mimes:pdf',
         ]);
         DB::beginTransaction();
         try {
             $RecordData =  KaBaak::where('user_id', $PointId)->firstOrFail();
 
-            $Point1_1 = $request->get('Point1_1');
-            $Point1_2 = $request->get('Point1_2');
-            $Point1_3 = $request->get('Point1_3');
-            $Point1_4 = $request->get('Point1_4');
-            $Point1_5 = $request->get('Point1_5');
-            $Point2_1 = $request->get('Point2_1');
-            $Point2_2 = $request->get('Point2_2');
-            $Point2_3 = $request->get('Point2_3');
-            $Point2_4 = $request->get('Point2_4');
-            $Point2_5 = $request->get('Point2_5');
-            $Point3_1 = $request->get('Point3_1');
-            $Point3_2 = $request->get('Point3_2');
-            $Point3_3 = $request->get('Point3_3');
-            $Point3_4 = $request->get('Point3_4');
-            $Point3_5 = $request->get('Point3_5');
-            $Point4_1 = $request->get('Point4_1');
-            $Point4_2 = $request->get('Point4_2');
-            $Point4_3 = $request->get('Point4_3');
-            $Point4_4 = $request->get('Point4_4');
-            $Point4_5 = $request->get('Point4_5');
-            $Point5_1 = $request->get('Point5_1');
-            $Point5_2 = $request->get('Point5_2');
-            $Point5_3 = $request->get('Point5_3');
-            $Point5_4 = $request->get('Point5_4');
-            $Point5_5 = $request->get('Point5_5');
-            $Point6_1 = $request->get('Point6_1');
-            $Point6_2 = $request->get('Point6_2');
-            $Point6_3 = $request->get('Point6_3');
-            $Point6_4 = $request->get('Point6_4');
-            $Point6_5 = $request->get('Point6_5');
+            $q1 = $request->get('q1');
+            $q2 = $request->get('q2');
+            $q3 = $request->get('q3');
+            $q4 = $request->get('q4');
+            $q5 = $request->get('q5');
+            $q6 = $request->get('q6');
             $output_point_1 = $request->get('output_point_1');
             $output_point_2 = $request->get('output_point_2');
             $output_point_3 = $request->get('output_point_3');
@@ -407,36 +359,12 @@ class KaBaakController extends Controller
             $output_total_sementara_kinerja_kompetensi = $request->get('output_total_sementara_kinerja_kompetensi');
 
             $update = [
-                'point1_1' => $Point1_1,
-                'point1_2' => $Point1_2,
-                'point1_3' => $Point1_3,
-                'point1_4' => $Point1_4,
-                'point1_5' => $Point1_5,
-                'point2_1' => $Point2_1,
-                'point2_2' => $Point2_2,
-                'point2_3' => $Point2_3,
-                'point2_4' => $Point2_4,
-                'point2_5' => $Point2_5,
-                'point3_1' => $Point3_1,
-                'point3_2' => $Point3_2,
-                'point3_3' => $Point3_3,
-                'point3_4' => $Point3_4,
-                'point3_5' => $Point3_5,
-                'point4_1' => $Point4_1,
-                'point4_2' => $Point4_2,
-                'point4_3' => $Point4_3,
-                'point4_4' => $Point4_4,
-                'point4_5' => $Point4_5,
-                'point5_1' => $Point5_1,
-                'point5_2' => $Point5_2,
-                'point5_3' => $Point5_3,
-                'point5_4' => $Point5_4,
-                'point5_5' => $Point5_5,
-                'point6_1' => $Point6_1,
-                'point6_2' => $Point6_2,
-                'point6_3' => $Point6_3,
-                'point6_4' => $Point6_4,
-                'point6_5' => $Point6_5,
+                'q1' => $q1,
+                'q2' => $q2,
+                'q3' => $q3,
+                'q4' => $q4,
+                'q5' => $q5,
+                'q6' => $q6,
                 'output_point_1' => $output_point_1,
                 'output_point_2' => $output_point_2,
                 'output_point_3' => $output_point_3,
@@ -497,15 +425,15 @@ class KaBaakController extends Controller
     public function raport($user_id)
     {
         $DataUser = DB::table('users')
-            ->leftJoin('ka_baak', 'users.id', '=', 'ka_baak.user_id')
+            ->leftJoin('ikbis_ka_baak', 'users.id', '=', 'ikbis_ka_baak.user_id')
             ->select(
                 'users.name',
                 'users.email',
-                'ka_baak.user_id',
-                'ka_baak.output_total_sementara_kinerja_perilaku',
-                'ka_baak.output_total_sementara_kinerja_kompetensi',
+                'ikbis_ka_baak.user_id',
+                'ikbis_ka_baak.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_baak.output_total_sementara_kinerja_kompetensi',
             )
-            ->where('ka_baak.user_id', $user_id)
+            ->where('ikbis_ka_baak.user_id', $user_id)
             ->first();
 
         // dd($DataUser);
@@ -514,5 +442,12 @@ class KaBaakController extends Controller
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function detailPoin($userId)
+    {
+        $data = KaBaak::where('user_id', '=', $userId)->first();
+
+        return view('itisar.WarekSatu.KaBaak.detailPoin', ['data' => $data]);
     }
 }

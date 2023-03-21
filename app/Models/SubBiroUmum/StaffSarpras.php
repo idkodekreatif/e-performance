@@ -12,7 +12,7 @@ class StaffSarpras extends Model
     use HasFactory, LogsActivity;
     protected static $logName = 'Staff Sarpras';
 
-    protected $table = "staff_sarpras";
+    protected $table = "ikbis_staff_sarpras";
     protected $guarded = [];
 
     protected static $logUnguarded = true;
