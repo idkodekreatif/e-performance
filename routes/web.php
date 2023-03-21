@@ -300,6 +300,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Baak Satu ------------------------------//
         Route::controller(StaffBaakSatuController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/staffbaaksatu/Input', 'create')->name('staffbaaksatu');
+            Route::get('/staffbaaksatu/result/poin/{userId}', 'detailPoin')->name('staffbaaksatu.poin');
             Route::post('/staffbaaksatu/Request/Store', 'store')->name('store.staffbaaksatu');
             Route::get('/staffbaaksatu/edit/', 'edit')->name('edit.staffbaaksatu');
             Route::get('/staffbaaksatu/search/result', 'dataSearch')->name('staffbaaksatu.data.search');
@@ -309,6 +310,7 @@ Route::group(
         // -------------------------- Controller Form Penilaian Staff Baak Dua ------------------------------//
         Route::controller(StaffBaakDuaController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
             Route::get('/staffbaakdua/Input', 'create')->name('staffbaakdua');
+            Route::get('/staffbaakdua/result/poin/{userId}', 'detailPoin')->name('staffbaakdua.poin');
             Route::post('/staffbaakdua/Request/Store', 'store')->name('store.staffbaakdua');
             Route::get('/staffbaakdua/edit/', 'edit')->name('edit.staffbaakdua');
             Route::get('/staffbaakdua/search/result', 'dataSearch')->name('staffbaakdua.data.search');

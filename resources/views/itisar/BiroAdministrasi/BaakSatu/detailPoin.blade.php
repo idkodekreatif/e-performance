@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Penilaian Staff Baak">
+<x-app-layout title="Detail Poin Penilaian Staff Baak">
     @push('style')
         <style>
             input::-webkit-outer-spin-button,
@@ -16,18 +16,17 @@
     <div class="col-xl col-lg">
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Detail Poin</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Baak Fakultas Bisnis</a></li>
             </ol>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col">
                 <a href="{{ route('staffbaaksatu.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a>
             </div>
-        </div> --}}
-        <form action="{{ route('update.staffbaaksatu', ['pointId' => $data->user_id]) }}" id="my-form" method="POST"
-            enctype="multipart/form-data">
+        </div>
+        <form action="javascript:void(0)" id="my-form" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -469,7 +468,7 @@
                                             orang tua meliputi : </td>
                                         <td></td>
                                         <td></td>
-                                        <td>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -512,8 +511,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_1') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_1" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_1)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_1) }}"
@@ -567,8 +564,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_2') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_2" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_2)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_2) }}"
@@ -621,8 +616,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_3') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_3" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_3)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_3) }}"
@@ -676,8 +669,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_4') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_4" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_4)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_4) }}"
@@ -731,8 +722,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_5') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_5" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_5)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_5) }}"
@@ -797,8 +786,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_6') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_6" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_6)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_6) }}"
@@ -852,8 +839,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_7') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_7" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_7)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_7) }}"
@@ -907,8 +892,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_8') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_8" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_8)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_8) }}"
@@ -962,8 +945,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_9') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_9" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_9)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_9) }}"
@@ -1017,8 +998,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_10') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_10" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_10)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_10) }}"
@@ -1071,8 +1050,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_11') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_11" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_11)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_11) }}"
@@ -1126,8 +1103,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_12') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_12" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_12)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_12) }}"
@@ -1191,8 +1166,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_13') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_13" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_13)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_13) }}"
@@ -1246,8 +1219,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_14') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_14" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_14)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_14) }}"
@@ -1302,8 +1273,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_15') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_15" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_15)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_15) }}"
@@ -1357,8 +1326,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_16') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_16" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_16)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_16) }}"
@@ -1412,8 +1379,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_17') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_17" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_17)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_17) }}"
@@ -1479,8 +1444,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_18') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_18" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_18)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_18) }}"
@@ -1534,8 +1497,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_19') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_19" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_19)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_19) }}"
@@ -1589,8 +1550,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_20') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_20" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_20)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_20) }}"
@@ -1644,8 +1603,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_21') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_21" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_21)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_21) }}"
@@ -1699,8 +1656,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_22') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_22" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_22)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_22) }}"
@@ -1754,8 +1709,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_23') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_23" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_23)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_23) }}"
@@ -1809,8 +1762,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_24') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_24" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_24)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_24) }}"
@@ -1875,8 +1826,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_25') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_25" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_25)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_25) }}"
@@ -1930,8 +1879,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_26') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_26" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_26)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_26) }}"
@@ -1985,8 +1932,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_27') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_27" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_27)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_27) }}"
@@ -2039,8 +1984,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_28') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_28" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_28)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_28) }}"
@@ -2105,8 +2048,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_29') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_29" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_29)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_29) }}"
@@ -2159,8 +2100,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_30') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_30" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_30)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_30) }}"
@@ -2214,8 +2153,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_31') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_31" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_31)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_31) }}"
@@ -2281,8 +2218,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_32') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_32" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_32)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_32) }}"
@@ -2335,8 +2270,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_33') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_33" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_33)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_33) }}"
@@ -2390,8 +2323,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_34') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_34" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_34)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_34) }}"
@@ -2456,8 +2387,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_35') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_35" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_35)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_35) }}"
@@ -2523,8 +2452,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_36') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_36" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_36)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_36) }}"
@@ -2588,8 +2515,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_37') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_37" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_37)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_37) }}"
@@ -2642,8 +2567,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_38') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_38" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_38)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_38) }}"
@@ -2696,8 +2619,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_39') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_39" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_39)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_39) }}"
@@ -2750,8 +2671,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_40') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_40" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_40)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_40) }}"
@@ -2816,8 +2735,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_41') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_41" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_41)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_41) }}"
@@ -2870,8 +2787,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_42') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_42" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_42)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_42) }}"
@@ -2925,8 +2840,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_43') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_43" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_43)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_43) }}"
@@ -2991,8 +2904,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_44') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_44" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_44)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_44) }}"
@@ -3045,8 +2956,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_45') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_45" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_45)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_45) }}"
@@ -3099,8 +3008,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_46') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_46" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_46)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_46) }}"
@@ -3153,8 +3060,6 @@
                                         <td>
                                             <label for="formFileSm" class="form-label text-danger">* Cek fisik /
                                                 Document</label>
-                                            <input class="@error('file_kinerja_kompetensi_47') is-invalid @enderror"
-                                                id="formFileSm" name="file_kinerja_kompetensi_47" type="file">
 
                                             @if ($data->file_kinerja_kompetensi_47)
                                                 <a href="{{ asset('storage/' . $data->file_kinerja_kompetensi_47) }}"
@@ -3237,8 +3142,6 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
-                                            class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -3250,26 +3153,5 @@
     </div>
 
     @push('JavaScript')
-        <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2x5.js') }}"></script>
-        <script src="{{ asset('Assets/js/itisar/BiroAdministrasi/BaakSatu/PointKinerjaKompetensi.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            function confirmSubmit() {
-                Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda akan menyimpan data tersebut.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Simpan',
-                    cancelButtonText: 'Batal',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('my-form').submit();
-                    } else {
-                        Swal.fire('Data batal disimpan');
-                    }
-                });
-            }
-        </script>
     @endpush
 </x-app-layout>

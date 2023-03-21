@@ -2656,7 +2656,7 @@ function sum() {
     }
 
     // Nilai Rata-Rata Kinerja Kompetensi
-    var ResultDivisionKinerja = SumResultTotalKinerjaKompetensi / 48;
+    var ResultDivisionKinerja = SumResultTotalKinerjaKompetensi / 49;
     var FormatNumberResultDivisionKinerja = ResultDivisionKinerja.toFixed(2);
     if (!isNaN(FormatNumberResultDivisionKinerja)) {
         // Tampilkan output pada input form
