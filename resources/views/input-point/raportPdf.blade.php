@@ -10,7 +10,7 @@
 
     <style>
         body {
-            margin-top: 15%;
+            margin-top: 17%;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -291,12 +291,10 @@
             <br>
             <br>
             <br>
-            <br>
             <p class="nama-dosen">{{ Auth::user()->name }}</p>
         </div>
         <div class="pihak kanan">
             <p class="nama-warek">Wakil Rektor II</p>
-            <br>
             <br>
             <br>
             <br>
@@ -311,8 +309,7 @@
             <br>
             <br>
             <br>
-            <br>
-            <p>Nama Rektor</p>
+            <p>Ahmad Hariyanto</p>
         </div>
     </div>
 
