@@ -1,5 +1,10 @@
 <x-app-layout title="Admin">
     @push('style')
+        <!-- Datatable -->
+        <link href="{{ asset('Assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+        <!-- Custom Stylesheet -->
+        <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
+        <link href="{{ asset('Assets/css/style.css') }}" rel="stylesheet">
     @endpush
     <div class="row page-titles shadow">
         <ol class="breadcrumb">
@@ -7,59 +12,73 @@
             <li class="breadcrumb-item"><a href="javascript:void(0)">User Management</a></li>
         </ol>
     </div>
-    <div class="card shadow">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-responsive-md">
-                    <thead>
-                        <tr>
-                            <th><strong>NO.</strong></th>
-                            <th><strong>NAME</strong></th>
-                            <th><strong>EMAIL</strong></th>
-                            <th><strong>ACTION</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $number => $user)
-                            <tr>
-                                <td><strong>{{ ++$number }}</strong></td>
-                                <td>
-                                    <div class="d-flex align-items-center"><span
-                                            class="w-space-no">{{ $user->name }}</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center"><span
-                                            class="w-space-no">{{ $user->email }}</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        @role('it|superuser')
-                                            <a href="{{ route('users.show', $user->id) }}"
-                                                class="btn btn-primary shadow btn-xs me-1">Roles</a>
-                                        @endrole
-                                        @role('it|superuser|hrd')
-                                            <a href="{{ route('impersonate', $user->id) }}"
-                                                class="btn btn-primary shadow btn-xs me-1">Impersonate</a>
-                                        @endrole
-                                        {{-- <a href="" class="btn btn-primary shadow btn-xs me-1">Permissions</a> --}}
-                                        <form method="POST" action="{{ route('users.destroy', $user->id) }}"
-                                            onsubmit="return confirm('Are you sure delete user?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i
-                                                    class="fa fa-trash"></i></button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">User Control</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="display yajra-datatable" style="min-width: 845px">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     @push('JavaScript')
+        <!-- Datatable -->
+        <script src="{{ asset('Assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('Assets/js/plugins-init/datatables.init.js') }}"></script>
+        <script type="text/javascript">
+            $(function() {
+                var table = $('.yajra-datatable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('users.index') }}",
+                    "fnCreatedRow": function(row, data, index) {
+                        $('td', row).eq(0).html(index + 1);
+                    },
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'name',
+                            name: 'name'
+                        },
+                        {
+                            data: 'email',
+                            name: 'email'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        },
+                    ]
+                });
+            });
+        </script>
     @endpush
 </x-app-layout>

@@ -98,7 +98,7 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
     Route::controller(UserController::class)->group(function () {
         Route::get('/users', 'index')->name('users.index');
         Route::get('/users/{user}', 'show')->name('users.show');
-        Route::delete('/users/{user}', 'destroy')->name('users.destroy');
+        Route::get('/users/destroy/{user}', 'destroy')->name('users.destroy');
         Route::post('/users/{user}/roles', 'assignRole')->name('users.roles');
         Route::delete('/users/{user}/roles/{role}', 'removeRole')->name('users.roles.remove');
         Route::post('/users/{user}/permissions', 'givePermission')->name('users.permissions');
@@ -179,6 +179,7 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
     // -----------------------------Raport User----------------------------------------//
     Route::controller(sumPointController::class)->group(function () {
         Route::get('/raport/view/{user_id}', 'raportView')->name('raport');
+        Route::get('/raport/cetakPdf/{user_id}', 'raportPdf')->name('raport.pdf');
         Route::get('/preview/{user_id}', 'Preview')->name('preview.point');
         // -----------------------------Search raport hrd HRD----------------------------------------//
         Route::get('/raport/search/', 'searchRaport')->name('raport.data.search');
