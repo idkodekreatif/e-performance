@@ -36,8 +36,8 @@ class UserController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<a href="' . route('users.show', $row->id) . '" class="btn btn-primary shadow btn-xs me-1">Roles</a>
-                    <a href="' . route('impersonate', $row->id) . '" class="btn btn-primary shadow btn-xs me-1">Impersonate</a>
+                    $btn = '<a href="' . route('impersonate', $row->id) . '" class="btn btn-primary shadow btn-xs me-1">Impersonate</a>
+                    <a href="' . route('users.show', $row->id) . '" class="btn btn-primary shadow btn-xs me-1">Roles</a>
                     <a href="' . route('users.destroy', $row->id) . '" class="btn btn-danger shadow btn-xs me-1" onclick="return confirm("Apakah Anda Yakin Menghapus Data?");">Delete</a>
                 ';
 
