@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /**
  * sumPointController
@@ -44,6 +44,39 @@ class sumPointController extends Controller
             ->first();
 
         return view('input-point.raport', compact('users'));
+    }
+
+    public function raportPdf($user_id)
+    {
+        $users = DB::table('users')
+            ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
+            ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
+            ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
+            ->leftJoin('point_d', 'point_d.user_id', '=', 'users.id')
+            ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+            ->where(function ($query) use ($user_id) {
+                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+                    ->orWhere('point_a.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+                    ->orWhere('point_b.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+                    ->orWhere('point_c.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+                    ->orWhere('point_d.user_id', '=', $user_id)
+                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
+                    ->orWhere('point_e.user_id', '=', $user_id);
+            })
+            ->where('users.id', $user_id)
+            ->first();
+        // return view('input-point.raportPdf', compact('users'));
+        // $pdf = Pdf::loadView('input-point.raportPdf', compact($users))->output();
+        // return $pdf->download('invoice.pdf');
+
+        $pdf = PDF::loadView('input-point.raportPdf', compact('users'))->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
+        return $pdf->download('raportDosen.pdf');
+
+        // return $pdf->stream();
     }
 
     /**

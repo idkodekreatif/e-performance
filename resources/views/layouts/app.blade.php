@@ -23,10 +23,13 @@
     <link href="{{ asset('Assets/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('Assets/vendor/nouislider/nouislider.min.css') }}">
 
+
     <!-- Style css -->
     <link href="{{ asset('Assets/css/style.css') }}" rel="stylesheet">
     @stack('style')
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -146,51 +149,49 @@
     {{-- <script src="{{ asset('Assets/js/styleSwitcher.js') }}"></script> --}}
     @stack('JavaScript')
     <script>
-        function cardsCenter()
-		{
+        function cardsCenter() {
 
-			/*  testimonial one function by = owl.carousel.js */
-
+            /*  testimonial one function by = owl.carousel.js */
 
 
-			jQuery('.card-slider').owlCarousel({
-				loop:true,
-				margin:0,
-				nav:true,
-				//center:true,
-				slideSpeed: 3000,
-				paginationSpeed: 3000,
-				dots: true,
-				navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
-				responsive:{
-					0:{
-						items:1
-					},
-					576:{
-						items:1
-					},
-					800:{
-						items:1
-					},
-					991:{
-						items:1
-					},
-					1200:{
-						items:1
-					},
-					1600:{
-						items:1
-					}
-				}
-			})
-		}
 
-		jQuery(window).on('load',function(){
-			setTimeout(function(){
-				cardsCenter();
-			}, 1000);
-		});
+            jQuery('.card-slider').owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: true,
+                //center:true,
+                slideSpeed: 3000,
+                paginationSpeed: 3000,
+                dots: true,
+                navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 1
+                    },
+                    800: {
+                        items: 1
+                    },
+                    991: {
+                        items: 1
+                    },
+                    1200: {
+                        items: 1
+                    },
+                    1600: {
+                        items: 1
+                    }
+                }
+            })
+        }
 
+        jQuery(window).on('load', function() {
+            setTimeout(function() {
+                cardsCenter();
+            }, 1000);
+        });
     </script>
 
 </body>

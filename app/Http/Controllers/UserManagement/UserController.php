@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use DataTables;
 
 /**
  * UserController
@@ -18,12 +19,35 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function index()
+    // public function index()
+    // {
+    //     $users = User::whereNotIn('name', [
+    //         'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'warek1', 'rektor', 'ypsdmit'
+    //     ])->get();
+    //     return view('admin.users.index', compact('users'));
+    // }
+    public function index(Request $request)
     {
-        $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'warek1', 'rektor', 'ypsdmit'
-        ])->get();
-        return view('admin.users.index', compact('users'));
+        if ($request->ajax()) {
+            $data = User::whereNotIn('name', [
+                'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'warek1', 'rektor', 'ypsdmit'
+            ])->get();
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = '<a href="' . route('users.show', $row->id) . '" class="btn btn-primary shadow btn-xs me-1">Roles</a>
+                    <a href="' . route('impersonate', $row->id) . '" class="btn btn-primary shadow btn-xs me-1">Impersonate</a>
+                    <a href="' . route('users.destroy', $row->id) . '" class="btn btn-danger shadow btn-xs me-1" onclick="return confirm("Apakah Anda Yakin Menghapus Data?");">Delete</a>
+                ';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.users.index');
     }
 
     /**
