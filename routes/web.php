@@ -98,7 +98,7 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
     Route::controller(UserController::class)->group(function () {
         Route::get('/users', 'index')->name('users.index');
         Route::get('/users/{user}', 'show')->name('users.show');
-        Route::delete('/users/{user}', 'destroy')->name('users.destroy');
+        Route::get('/users/destroy/{user}', 'destroy')->name('users.destroy');
         Route::post('/users/{user}/roles', 'assignRole')->name('users.roles');
         Route::delete('/users/{user}/roles/{role}', 'removeRole')->name('users.roles.remove');
         Route::post('/users/{user}/permissions', 'givePermission')->name('users.permissions');
