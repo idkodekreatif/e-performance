@@ -450,4 +450,34 @@ class KaBaakController extends Controller
 
         return view('itisar.WarekSatu.KaBaak.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.WarekSatu.KaBaak.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_ka_baak', 'users.id', '=', 'ikbis_ka_baak.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_ka_baak.user_id',
+                'ikbis_ka_baak.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_baak.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_ka_baak.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.WarekSatu.KaBaak.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

@@ -326,4 +326,33 @@ class StaffPemasaranController extends Controller
 
         return view('itisar.ka-upt.StaffPemasaran.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.ka-upt.StaffPemasaran.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_staff_pemasaran', 'users.id', '=', 'ikbis_staff_pemasaran.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_staff_pemasaran.user_id',
+                'ikbis_staff_pemasaran.output_total_sementara_kinerja_perilaku',
+                'ikbis_staff_pemasaran.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_staff_pemasaran.user_id', '=', $request->id)
+            ->first();
+
+        if (!empty($DataUser)) {
+            return view('itisar.ka-upt.StaffPemasaran.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

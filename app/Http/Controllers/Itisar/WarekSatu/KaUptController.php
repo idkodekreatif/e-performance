@@ -233,6 +233,41 @@ class KaUptController extends Controller
         }
     }
 
+    public function searchRaport()
+    {
+        $dataMenu = Menu::first();
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+
+        if (empty($dataMenu)) {
+            return redirect()->back();
+        }
+        return view('itisar.WarekSatu.KaUpt.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_ka_upt', 'users.id', '=', 'ikbis_ka_upt.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_ka_upt.user_id',
+                'ikbis_ka_upt.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_upt.output_total_sementara_kinerja_kompetensi'
+            )
+            ->where('ikbis_ka_upt.user_id', '=', $request->id)
+            ->first();
+
+        if (!empty($DataUser)) {
+            return view('itisar.WarekSatu.KaUpt.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
+
+
     public function raport($user_id)
     {
         $DataUser = DB::table('users')

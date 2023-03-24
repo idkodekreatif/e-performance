@@ -361,4 +361,34 @@ class KaUnitItController extends Controller
 
         return view('itisar.ka-upt.ka-unit-it.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.ka-upt.ka-unit-it.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_ka_unit_it', 'users.id', '=', 'ikbis_ka_unit_it.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_ka_unit_it.user_id',
+                'ikbis_ka_unit_it.output_total_sementara_kinerja_perilaku',
+                'ikbis_ka_unit_it.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_ka_unit_it.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.ka-upt.ka-unit-it.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

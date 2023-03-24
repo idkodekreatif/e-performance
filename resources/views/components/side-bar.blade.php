@@ -76,11 +76,12 @@
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     Rektor</a>
                                                 <ul aria-expanded="false">
-                                                    <li><a href="{{ route('edit.warekSatu') }}">Warek I</a></li>
-                                                    <li><a href="{{ route('edit.WarekDua') }}">Warek II</a></li>
+                                                    <li><a href="{{ route('searchRaport.rektor.warekSatu') }}">Warek I</a></li>
+                                                    <li><a href="{{ route('searchRaport.warekDua') }}">Warek II</a></li>
                                                     <li><a href="{{ route('edit.StaffSusBidKerjasama') }}">StaffSus Bidang
                                                             Kerjasama</a></li>
-                                                    <li><a href="{{ route('edit.KaLpm') }}">Ka. Lembaga Penjamin Mutu</a></li>
+                                                    <li><a href="{{ route('searchRaport.KaLpm') }}">Ka. Lembaga Penjamin
+                                                            Mutu</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -104,14 +105,20 @@
                                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka.
                                                             Sub. Warek I</a>
                                                         <ul aria-expanded="false">
-                                                            <li><a href="{{ route('edit.koorkemahasiswaanDanAlumni') }}">Koor.
+                                                            <li><a
+                                                                    href="{{ route('searchRaport.koorkemahasiswaanDanAlumni') }}">Koor.
                                                                     Kemahasiswaan & Alumni</a></li>
-                                                            <li><a href="{{ route('edit.WarekSatu.Ka.Upt') }}">Ka. UPT</a></li>
-                                                            <li><a href="{{ route('edit.WarekSatu.Ka.Risbang') }}">Ka. Lem.
+                                                            <li><a href="{{ route('searchRaport.WarekSatu.Ka.Upt') }}">Ka.
+                                                                    UPT</a></li>
+                                                            <li><a
+                                                                    href="{{ route('searchRaport.WarekSatu.WarekSatu.Ka.Risbang') }}">Ka.
+                                                                    Lem.
                                                                     Risbang</a></li>
-                                                            <li><a href="{{ route('edit.WarekSatu.Ka.Baak') }}">Ka. Baak</a>
+                                                            <li><a href="{{ route('searchRaport.WarekSatu.Ka.Baak') }}">Ka.
+                                                                    Baak</a>
                                                             </li>
-                                                            <li><a href="{{ route('edit.WarekSatu.Ka.Prodi') }}">Ka. Prodi</a>
+                                                            <li><a href="{{ route('searchRaport.WarekSatu.Ka.Prodi') }}">Ka.
+                                                                    Prodi</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -126,9 +133,11 @@
                                                             <li><a class="has-arrow" href="javascript:void()"
                                                                     aria-expanded="false">Ka. Sub. BAU</a>
                                                                 <ul aria-expanded="false">
-                                                                    <li><a href="{{ route('edit.kasubBiroKepegawaian') }}">Ka.
+                                                                    <li><a
+                                                                            href="{{ route('searchRaport.kasubBiroKepegawaian') }}">Ka.
                                                                             Sub Biro Kepegawaian</a></li>
-                                                                    <li><a href="{{ route('edit.KasubBiroKeuangan') }}">Ka.
+                                                                    <li><a
+                                                                            href="{{ route('searchRaport.KasubBiroKeuangan') }}">Ka.
                                                                             Sub. Biro Keuangan & Akuntant</a></li>
                                                                 </ul>
                                                             </li>
@@ -137,7 +146,8 @@
                                                 </ul>
                                             </li>
 
-                                            <li><a href="{{ route('StaffSusBidKerjasama') }}">Staffsus Bidang Kerjasama</a>
+                                            <li><a href="{{ route('StaffSusBidKerjasama') }}">Form Staffsus Bidang
+                                                    Kerjasama</a>
                                             </li>
 
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
@@ -147,7 +157,8 @@
                                                     <li><a class="has-arrow" href="javascript:void()"
                                                             aria-expanded="false">Ka. Sub. LPM</a>
                                                         <ul aria-expanded="false">
-                                                            <li><a href="{{ route('edit.Lpm') }}">Ka. Sub Lem. SPMI-SPME</a>
+                                                            <li><a href="{{ route('searchRaport.Lpm') }}">Ka. Sub Lem.
+                                                                    SPMI-SPME</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -186,17 +197,18 @@
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     UPT</a>
                                                 <ul aria-expanded="false">
-                                                    <li><a href="{{ route('edit.ka.perpustakaan') }}">Koordinator
+                                                    <li><a href="{{ route('searchRaport.ka.perpustakaan') }}">Koordinator
                                                             Perpustakaan</a></li>
-                                                    <li><a href="{{ route('edit.ka.laboran') }}">Koordinator Laboratorium</a>
+                                                    <li><a href="{{ route('searchRaport.kaLaboran') }}">Koordinator
+                                                            Laboratorium</a>
                                                     </li>
-                                                    <li><a href="{{ route('edit.ka.it') }}">Ka. Unit IT</a></li>
+                                                    <li><a href="{{ route('searchRaport.ka.it') }}">Ka. Unit IT</a></li>
                                                     <li><a class="has-arrow" href="javascript:void()"
                                                             aria-expanded="false">Unit Pemasaran</a>
                                                         <ul aria-expanded="false">
-                                                            <li><a href="{{ route('edit.ka.pemasaran') }}">Ka. Unit
+                                                            <li><a href="{{ route('searchRaport.pemasaran') }}">Ka. Unit
                                                                     Pemasaran</a></li>
-                                                            <li><a href="{{ route('edit.StaffPemasaran') }}">Staff
+                                                            <li><a href="{{ route('searchRaport.staffpemasaran') }}">Staff
                                                                     Pemasaran</a></li>
                                                         </ul>
                                                     </li>
@@ -205,27 +217,32 @@
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     Risbang</a>
                                                 <ul aria-expanded="false">
-                                                    <li><a href="{{ route('edit.KasubRisbang') }}">Ka. Sub. Lem. Penel &
+                                                    <li><a href="{{ route('searchRaport.KasubRisbang') }}">Ka. Sub. Lem. Penel
+                                                            &
                                                             Pengmas</a></li>
                                                 </ul>
                                             </li>
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     Baak</a>
                                                 <ul aria-expanded="false">
-                                                    <li><a href="{{ route('edit.ka.baak') }}">Ka. Sub. Biro Administrasi
+                                                    <li><a href="{{ route('searchRaport.ka.baak') }}">Ka. Sub. Biro
+                                                            Administrasi
                                                             Akademik</a></li>
-                                                    <li><a href="{{ route('edit.kemahasiswaan') }}">Staff Kemahasiswaan</a>
+                                                    <li><a href="{{ route('searchRaport.kemahasiswaan') }}">Staff
+                                                            Kemahasiswaan</a>
                                                     </li>
-                                                    <li><a href="{{ route('edit.baakFkBisnis') }}">Staff BAAK Fakultas
+                                                    <li><a href="{{ route('searchRaport.baakFkBisnis') }}">Staff BAAK Fakultas
                                                             Bisnis</a></li>
-                                                    <li><a href="{{ route('edit.staffbaaksatu') }}">Staff BAAK</a></li>
-                                                    <li><a href="{{ route('edit.staffbaakdua') }}">Staff BAAK</a></li>
+                                                    <li><a href="{{ route('searchRaport.staffbaaksatu') }}">Staff BAAK</a>
+                                                    </li>
+                                                    <li><a href="{{ route('searchRaport.staffbaakdua') }}">Staff BAAK</a></li>
                                                 </ul>
                                             </li>
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     Prodi</a>
                                                 <ul aria-expanded="false">
-                                                    <li><a href="{{ route('edit.sekKaprodi') }}">Sek Ka. Prodi</a></li>
+                                                    <li><a href="{{ route('searchRaport.sekKaprodi') }}">Sek Ka. Prodi</a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -256,9 +273,11 @@
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     Bau</a>
                                                 <ul aria-expanded="false">
-                                                    <li><a href="{{ route('edit.kasubBiroKepegawaian') }}">Ka. Sub Biro
+                                                    <li><a href="{{ route('searchRaport.kasubBiroKepegawaian') }}">Ka. Sub
+                                                            Biro
                                                             Kepegawaian</a></li>
-                                                    <li><a href="{{ route('edit.KasubBiroKeuangan') }}">Ka. Sub. Biro Keuangan
+                                                    <li><a href="{{ route('searchRaport.KasubBiroKeuangan') }}">Ka. Sub. Biro
+                                                            Keuangan
                                                             & Akuntant</a></li>
                                                 </ul>
                                             </li>

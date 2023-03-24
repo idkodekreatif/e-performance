@@ -469,4 +469,34 @@ class KasubBiroKepegawaianController extends Controller
 
         return view('itisar.bau.KasubBiroKepegawaian.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.bau.KasubBiroKepegawaian.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_kasub_biro_kepegawaian', 'users.id', '=', 'ikbis_kasub_biro_kepegawaian.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_kasub_biro_kepegawaian.user_id',
+                'ikbis_kasub_biro_kepegawaian.output_total_sementara_kinerja_perilaku',
+                'ikbis_kasub_biro_kepegawaian.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_kasub_biro_kepegawaian.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.bau.KasubBiroKepegawaian.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }
