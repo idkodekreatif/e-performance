@@ -469,4 +469,34 @@ class LpmController extends Controller
 
         return view('itisar.lpm.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.lpm.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_lpm', 'users.id', '=', 'ikbis_lpm.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_lpm.user_id',
+                'ikbis_lpm.output_total_sementara_kinerja_perilaku',
+                'ikbis_lpm.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_lpm.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.lpm.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

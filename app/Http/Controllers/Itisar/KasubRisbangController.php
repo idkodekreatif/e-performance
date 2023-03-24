@@ -394,4 +394,34 @@ class KasubRisbangController extends Controller
 
         return view('itisar.kasubRisbang.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.kasubRisbang.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_kasub_risbang', 'users.id', '=', 'ikbis_kasub_risbang.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_kasub_risbang.user_id',
+                'ikbis_kasub_risbang.output_total_sementara_kinerja_perilaku',
+                'ikbis_kasub_risbang.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_kasub_risbang.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.kasubRisbang.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

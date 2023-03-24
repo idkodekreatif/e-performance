@@ -1089,4 +1089,34 @@ class BaakFkBisnisController extends Controller
 
         return view('itisar.BiroAdministrasi.BaakFkBisnis.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.BiroAdministrasi.BaakFkBisnis.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_baak_bisnis', 'users.id', '=', 'ikbis_baak_bisnis.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_baak_bisnis.user_id',
+                'ikbis_baak_bisnis.output_total_sementara_kinerja_perilaku',
+                'ikbis_baak_bisnis.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_baak_bisnis.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.BiroAdministrasi.BaakFkBisnis.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

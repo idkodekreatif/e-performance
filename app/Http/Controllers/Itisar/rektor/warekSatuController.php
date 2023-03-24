@@ -317,4 +317,34 @@ class warekSatuController extends Controller
 
         return view('itisar.Rektor.WarekSatu.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.Rektor.WarekSatu.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_warek_1', 'users.id', '=', 'ikbis_warek_1.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_warek_1.user_id',
+                'ikbis_warek_1.output_total_sementara_kinerja_perilaku',
+                'ikbis_warek_1.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_warek_1.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.Rektor.WarekSatu.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

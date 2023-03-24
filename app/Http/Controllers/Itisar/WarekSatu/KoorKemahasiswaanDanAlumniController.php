@@ -507,4 +507,34 @@ class KoorKemahasiswaanDanAlumniController extends Controller
 
         return view('itisar.WarekSatu.KoorKemahasiswaanDanAlumni.detailPoin', ['data' => $data]);
     }
+
+    public function searchRaport()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('itisar.WarekSatu.KoorKemahasiswaanDanAlumni.searchRaport', compact('users'));
+    }
+
+    public function resultRaport(Request $request)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_koor_kemahasiswaan_dan_alumni', 'users.id', '=', 'ikbis_koor_kemahasiswaan_dan_alumni.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_koor_kemahasiswaan_dan_alumni.user_id',
+                'ikbis_koor_kemahasiswaan_dan_alumni.output_total_sementara_kinerja_perilaku',
+                'ikbis_koor_kemahasiswaan_dan_alumni.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_koor_kemahasiswaan_dan_alumni.user_id', '=', $request->id)
+            ->first();
+
+        // dd($DataUser);
+        if (!empty($DataUser)) {
+            return view('itisar.WarekSatu.KoorKemahasiswaanDanAlumni.raport', compact('DataUser'));
+        } else {
+            return view('menu.menu-empty');
+        }
+    }
 }

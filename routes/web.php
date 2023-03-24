@@ -219,7 +219,9 @@ Route::group(
             Route::get('/Ka-Pemasaran/edit/', 'edit')->name('edit.ka.pemasaran');
             Route::get('/Ka-Pemasaran/search/result', 'dataSearch')->name('pemasaran.data.search');
             Route::put('/Ka-Pemasaran/update/{pointId}', 'update')->name('update.ka.pemasaran');
-            Route::get('/Raport/KaPemasaran/{user_id}', 'raport')->name('ka.pemasaran.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/KaPemasaran/{user_id}', 'raport')->name('ka.pemasaran.raport');
+            Route::get('/Ka-Pemasaran/searchRaportResult/', 'searchRaport')->name('searchRaport.pemasaran');
+            Route::get('/Ka-Pemasaran/Result/', 'resultRaport')->name('resultRaport.pemasaran');
         });
 
         // ----------------------------- Controller Form Penilaian Staff Pemasaran ----------------------------------//
@@ -230,7 +232,9 @@ Route::group(
             Route::get('/StaffPemasaran/edit/', 'edit')->name('edit.StaffPemasaran');
             Route::get('/staffpemasaran/search/result', 'dataSearch')->name('staffpemasaran.data.search');
             Route::put('/StaffPemasaran/update/{pointId}', 'update')->name('update.StaffPemasaran');
-            Route::get('/Raport/StaffPemasaran/{user_id}', 'raport')->name('StaffPemasaran.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/StaffPemasaran/{user_id}', 'raport')->name('StaffPemasaran.raport');
+            Route::get('/StaffPemasaran/searchRaportResult/', 'searchRaport')->name('searchRaport.staffpemasaran');
+            Route::get('/StaffPemasaran/Result/', 'resultRaport')->name('resultRaport.staffpemasaran');
         });
 
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT PERPUSTAKAAN ----------------------------------//
@@ -241,7 +245,9 @@ Route::group(
             Route::get('/Ka-Perpustakaan/edit/', 'edit')->name('edit.ka.perpustakaan');
             Route::get('/kaPerpustakaan/search/result', 'dataSearch')->name('kaPerpustakaan.data.search');
             Route::put('/Ka-Perpustakaan/update/{pointId}', 'update')->name('update.ka.perpustakaan');
-            Route::get('/Raport/Ka-Perpustakaan/{user_id}', 'raport')->name('ka.perpustakaan.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/Ka-Perpustakaan/{user_id}', 'raport')->name('ka.perpustakaan.raport');
+            Route::get('/Ka-Perpustakaan/searchRaportResult/', 'searchRaport')->name('searchRaport.ka.perpustakaan');
+            Route::get('/Ka-Perpustakaan/Result/', 'resultRaport')->name('resultRaport.ka.perpustakaan');
         });
 
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT LABORAN ----------------------------------//
@@ -252,7 +258,9 @@ Route::group(
             Route::get('/Ka-Laboran/edit/', 'edit')->name('edit.ka.laboran');
             Route::get('/kaLaboran/search/result', 'dataSearch')->name('kaLaboran.data.search');
             Route::put('/Ka-Laboran/update/{pointId}', 'update')->name('update.ka.laboran');
-            Route::get('/Raport/Ka-Laboran/{user_id}', 'raport')->name('ka.laboran.raport')->middleware(['role:tendik']);
+            Route::get('/Raport/Ka-Laboran/{user_id}', 'raport')->name('ka.laboran.raport');
+            Route::get('/Ka-Laboran/searchRaportResult/', 'searchRaport')->name('searchRaport.kaLaboran');
+            Route::get('/Ka-Laboran/Result/', 'resultRaport')->name('resultRaport.kaLaboran');
         });
 
         // -----------------------------Ka. UPT Controller Form Penilaian Ka. UNIT IT ----------------------------------//
@@ -263,7 +271,9 @@ Route::group(
             Route::get('/Ka-Unit-IT/edit/', 'edit')->name('edit.ka.it');
             Route::get('/kaIt/search/result', 'dataSearch')->name('kaIt.data.search');
             Route::put('/Ka-Unit-IT/update/{pointId}', 'update')->name('update.ka.it');
-            Route::get('/Raport/Ka-Unit-IT/{user_id}', 'raport')->name('ka.it.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/Ka-Unit-IT/{user_id}', 'raport')->name('ka.it.raport');
+            Route::get('/Ka-Unit-IT/searchRaportResult/', 'searchRaport')->name('searchRaport.ka.it');
+            Route::get('/Ka-Unit-IT/Result/', 'resultRaport')->name('resultRaport.ka.it');
         });
 
         // ----------------------------- Controller Form Penilaian Ka. Sub. Biro Administrasi Akademik ----------------------------------//
@@ -274,7 +284,9 @@ Route::group(
             Route::get('/Baak/edit/', 'edit')->name('edit.ka.baak');
             Route::get('/Baak/search/result', 'dataSearch')->name('baak.data.search');
             Route::put('/Baak/update/{pointId}', 'update')->name('update.ka.baak');
-            Route::get('/Raport/Baak/{user_id}', 'raport')->name('ka.baak.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/Baak/{user_id}', 'raport')->name('ka.baak.raport');
+            Route::get('/Baak/searchRaportResult/', 'searchRaport')->name('searchRaport.ka.baak');
+            Route::get('/Baak/Result/', 'resultRaport')->name('resultRaport.ka.baak');
         });
 
         // -------------------------- Controller Form Penilaian Kemahasiswaan ------------------------------//
@@ -285,7 +297,9 @@ Route::group(
             Route::get('/kemahasiswaan/edit/', 'edit')->name('edit.kemahasiswaan');
             Route::get('/kemahasiswaan/search/result', 'dataSearch')->name('kemahasiswaan.data.search');
             Route::put('/kemahasiswaan/update/{pointId}', 'update')->name('update.kemahasiswaan');
-            Route::get('/Raport/kemahasiswaan/{user_id}', 'raport')->name('kemahasiswaan.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/kemahasiswaan/{user_id}', 'raport')->name('kemahasiswaan.raport');
+            Route::get('/kemahasiswaan/searchRaportResult/', 'searchRaport')->name('searchRaport.kemahasiswaan');
+            Route::get('/kemahasiswaan/Result/', 'resultRaport')->name('resultRaport.kemahasiswaan');
         });
 
         // -------------------------- Controller Form Penilaian Staff Baak Fakultas Bisnis ------------------------------//
@@ -296,7 +310,9 @@ Route::group(
             Route::get('/baakFkBisnis/edit/', 'edit')->name('edit.baakFkBisnis');
             Route::get('/baakFkBisnis/search/result', 'dataSearch')->name('baakFkBisnis.data.search');
             Route::put('/baakFkBisnis/update/{pointId}', 'update')->name('update.baakFkBisnis');
-            Route::get('/Raport/baakFkBisnis/{user_id}', 'raport')->name('baakFkBisnis.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/baakFkBisnis/{user_id}', 'raport')->name('baakFkBisnis.raport');
+            Route::get('/baakFkBisnis/searchRaportResult/', 'searchRaport')->name('searchRaport.baakFkBisnis');
+            Route::get('/baakFkBisnis/Result/', 'resultRaport')->name('resultRaport.baakFkBisnis');
         });
         // -------------------------- Controller Form Penilaian Staff Baak Satu ------------------------------//
         Route::controller(StaffBaakSatuController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
@@ -306,7 +322,9 @@ Route::group(
             Route::get('/staffbaaksatu/edit/', 'edit')->name('edit.staffbaaksatu');
             Route::get('/staffbaaksatu/search/result', 'dataSearch')->name('staffbaaksatu.data.search');
             Route::put('/staffbaaksatu/update/{pointId}', 'update')->name('update.staffbaaksatu');
-            Route::get('/Raport/staffbaaksatu/{user_id}', 'raport')->name('staffbaaksatu.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/staffbaaksatu/{user_id}', 'raport')->name('staffbaaksatu.raport');
+            Route::get('/staffbaaksatu/searchRaportResult/', 'searchRaport')->name('searchRaport.staffbaaksatu');
+            Route::get('/staffbaaksatu/Result/', 'resultRaport')->name('resultRaport.staffbaaksatu');
         });
         // -------------------------- Controller Form Penilaian Staff Baak Dua ------------------------------//
         Route::controller(StaffBaakDuaController::class)->middleware(['role:it|superuser|baak|warek1|tendik'])->group(function () {
@@ -316,7 +334,9 @@ Route::group(
             Route::get('/staffbaakdua/edit/', 'edit')->name('edit.staffbaakdua');
             Route::get('/staffbaakdua/search/result', 'dataSearch')->name('staffbaakdua.data.search');
             Route::put('/staffbaakdua/update/{pointId}', 'update')->name('update.staffbaakdua');
-            Route::get('/Raport/staffbaakdua/{user_id}', 'raport')->name('staffbaakdua.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/staffbaakdua/{user_id}', 'raport')->name('staffbaakdua.raport');
+            Route::get('/staffbaakdua/searchRaportResult/', 'searchRaport')->name('searchRaport.staffbaakdua');
+            Route::get('/staffbaakdua/Result/', 'resultRaport')->name('resultRaport.staffbaakdua');
         });
 
         // ----------------------------- Controller Form Penilaian Staff Keuangan ----------------------------------//
@@ -338,7 +358,9 @@ Route::group(
             Route::get('/Lpm/edit/', 'edit')->name('edit.Lpm');
             Route::get('/Lpm/search/result', 'dataSearch')->name('Lpm.data.search');
             Route::put('/Lpm/update/{pointId}', 'update')->name('update.Lpm');
-            Route::get('/Raport/Lpm/{user_id}', 'raport')->name('Lpm.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/Lpm/{user_id}', 'raport')->name('Lpm.raport');
+            Route::get('/Lpm/searchRaportResult/', 'searchRaport')->name('searchRaport.Lpm');
+            Route::get('/Lpm/Result/', 'resultRaport')->name('resultRaport.Lpm');
         });
 
         // ----------------------------- Controller Form Penilaian KasubRisbang ----------------------------------//
@@ -349,7 +371,9 @@ Route::group(
             Route::get('/KasubRisbang/edit/', 'edit')->name('edit.KasubRisbang');
             Route::get('/kasubrisbang/search/result', 'dataSearch')->name('kasubrisbang.data.search');
             Route::put('/KasubRisbang/update/{pointId}', 'update')->name('update.KasubRisbang');
-            Route::get('/Raport/KasubRisbang/{user_id}', 'raport')->name('KasubRisbang.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/KasubRisbang/{user_id}', 'raport')->name('KasubRisbang.raport');
+            Route::get('/KasubRisbang/searchRaportResult/', 'searchRaport')->name('searchRaport.KasubRisbang');
+            Route::get('/KasubRisbang/Result/', 'resultRaport')->name('resultRaport.KasubRisbang');
         });
 
         // ----------------------------- Controller Form Penilaian Sek Ka. Prodi ----------------------------------//
@@ -360,7 +384,9 @@ Route::group(
             Route::get('/sekKaprodi/edit/', 'edit')->name('edit.sekKaprodi');
             Route::get('/sekkaprodi/search/result', 'dataSearch')->name('sekkaprodi.data.search');
             Route::put('/sekKaprodi/update/{pointId}', 'update')->name('update.sekKaprodi');
-            Route::get('/Raport/sekKaprodi/{user_id}', 'raport')->name('sekKaprodi.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/sekKaprodi/{user_id}', 'raport')->name('sekKaprodi.raport');
+            Route::get('/sekKaprodi/searchRaportResult/', 'searchRaport')->name('searchRaport.sekKaprodi');
+            Route::get('/sekKaprodi/Result/', 'resultRaport')->name('resultRaport.sekKaprodi');
         });
 
         // ----------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Kepegawaian ----------------------------------//
@@ -371,7 +397,9 @@ Route::group(
             Route::get('/kasubBiroKepegawaian/edit/', 'edit')->name('edit.kasubBiroKepegawaian');
             Route::get('/kasubBiroKepegawaian/search/result', 'dataSearch')->name('kasubBiroKepegawaian.data.search');
             Route::put('/kasubBiroKepegawaian/update/{pointId}', 'update')->name('update.kasubBiroKepegawaian');
-            Route::get('/Raport/kasubBiroKepegawaian/{user_id}', 'raport')->name('kasubBiroKepegawaian.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/kasubBiroKepegawaian/{user_id}', 'raport')->name('kasubBiroKepegawaian.raport');
+            Route::get('/kasubBiroKepegawaian/searchRaportResult/', 'searchRaport')->name('searchRaport.kasubBiroKepegawaian');
+            Route::get('/kasubBiroKepegawaian/Result/', 'resultRaport')->name('resultRaport.kasubBiroKepegawaian');
         });
 
         // -------------------------- Controller Form Penilaian Sek Ka. Sub. Biro Keuangan dan Akuntansi ------------------------------//
@@ -382,7 +410,9 @@ Route::group(
             Route::get('/KasubBiroKeuangan/edit/', 'edit')->name('edit.KasubBiroKeuangan');
             Route::get('/KasubBiroKeuangan/search/result', 'dataSearch')->name('KasubBiroKeuangan.data.search');
             Route::put('/KasubBiroKeuangan/update/{pointId}', 'update')->name('update.KasubBiroKeuangan');
-            Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/KasubBiroKeuangan/{user_id}', 'raport')->name('KasubBiroKeuangan.raport');
+            Route::get('/KasubBiroKeuangan/searchRaportResult/', 'searchRaport')->name('searchRaport.KasubBiroKeuangan');
+            Route::get('/KasubBiroKeuangan/Result/', 'resultRaport')->name('resultRaport.KasubBiroKeuangan');
         });
 
         // -------------------------- Form Penilaian Rektor & ka. Sub. Rektor ------------------------------//
@@ -395,7 +425,9 @@ Route::group(
             Route::get('/koorkemahasiswaanDanAlumni/edit/', 'edit')->name('edit.koorkemahasiswaanDanAlumni');
             Route::get('/koorkemahasiswaanDanAlumni/search/result', 'dataSearch')->name('koorkemahasiswaanDanAlumni.data.search');
             Route::put('/koorkemahasiswaanDanAlumni/update/{pointId}', 'update')->name('update.koorkemahasiswaanDanAlumni');
-            Route::get('/Raport/koorkemahasiswaanDanAlumni/{user_id}', 'raport')->name('koorkemahasiswaanDanAlumni.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/koorkemahasiswaanDanAlumni/{user_id}', 'raport')->name('koorkemahasiswaanDanAlumni.raport');
+            Route::get('/koorkemahasiswaanDanAlumni/searchRaportResult/', 'searchRaport')->name('searchRaport.koorkemahasiswaanDanAlumni');
+            Route::get('/koorkemahasiswaanDanAlumni/Result/', 'resultRaport')->name('resultRaport.koorkemahasiswaanDanAlumni');
         });
 
         // -------------------------- Controller Form Penilaian Ka Upt ------------------------------//
@@ -406,7 +438,9 @@ Route::group(
             Route::get('/warek-satu/Ka-Upt/edit/', 'edit')->name('edit.WarekSatu.Ka.Upt');
             Route::get('/warek-satu/KaUpt/search/result', 'dataSearch')->name('warekSatu.data.search');
             Route::put('/warek-satu/Ka-Upt/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Upt');
-            Route::get('/Raport/warek-satu/Ka-Upt/{user_id}', 'raport')->name('WarekSatu.Ka.Upt.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/warek-satu/Ka-Upt/{user_id}', 'raport')->name('WarekSatu.Ka.Upt.raport');
+            Route::get('/warek-satu/Ka-Upt/searchRaportResult/', 'searchRaport')->name('searchRaport.WarekSatu.Ka.Upt');
+            Route::get('/warek-satu/Ka-Upt/Result/', 'resultRaport')->name('resultRaport.WarekSatu.Ka.Upt');
         });
 
         // -------------------------- Controller Form Penilaian Ka Risbang ------------------------------//
@@ -417,7 +451,9 @@ Route::group(
             Route::get('/warek-satu/Ka-Risbang/edit/', 'edit')->name('edit.WarekSatu.Ka.Risbang');
             Route::get('/warek-satu/KaRisbang/search/result', 'dataSearch')->name('warekSatu.kaRisbang.data.search');
             Route::put('/warek-satu/Ka-Risbang/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Risbang');
-            Route::get('/Raport/warek-satu/Ka-Risbang/{user_id}', 'raport')->name('WarekSatu.Ka.Risbang.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/warek-satu/Ka-Risbang/{user_id}', 'raport')->name('WarekSatu.Ka.Risbang.raport');
+            Route::get('/warek-satu/Ka-Risbang/searchRaportResult/', 'searchRaport')->name('searchRaport.WarekSatu.WarekSatu.Ka.Risbang');
+            Route::get('/warek-satu/Ka-Risbang/Result/', 'resultRaport')->name('resultRaport.WarekSatu.WarekSatu.Ka.Risbang');
         });
 
         // -------------------------- Controller Form Penilaian Ka Baak ------------------------------//
@@ -428,7 +464,9 @@ Route::group(
             Route::get('/warek-satu/Ka-Baak/edit/', 'edit')->name('edit.WarekSatu.Ka.Baak');
             Route::get('/warek1/KaBaak/search/result', 'dataSearch')->name('WarekSatu.baak.data.search');
             Route::put('/warek-satu/Ka-Baak/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Baak');
-            Route::get('/Raport/warek-satu/Ka-Baak/{user_id}', 'raport')->name('WarekSatu.Ka.Baak.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/warek-satu/Ka-Baak/{user_id}', 'raport')->name('WarekSatu.Ka.Baak.raport');
+            Route::get('/warek-satu/Ka-Baak/searchRaportResult/', 'searchRaport')->name('searchRaport.WarekSatu.Ka.Baak');
+            Route::get('/warek-satu/Ka-Baak/Result/', 'resultRaport')->name('resultRaport.WarekSatu.Ka.Baak');
         });
 
         // -------------------------- Controller Form Penilaian Ka Prodi ------------------------------//
@@ -439,7 +477,9 @@ Route::group(
             Route::get('/warek-satu/Ka-Prodi/edit/', 'edit')->name('edit.WarekSatu.Ka.Prodi');
             Route::get('/warek-satu/search/result', 'dataSearch')->name('WarekSatu.KaProdi.data.search');
             Route::put('/warek-satu/Ka-Prodi/update/{pointId}', 'update')->name('update.WarekSatu.Ka.Prodi');
-            Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/warek-satu/Ka-Prodi/{user_id}', 'raport')->name('WarekSatu.Ka.Prodi.raport');
+            Route::get('/warek-satu/Ka-Prodi/searchRaportResult/', 'searchRaport')->name('searchRaport.WarekSatu.Ka.Prodi');
+            Route::get('/warek-satu/Ka-Prodi/Result/', 'resultRaport')->name('resultRaport.WarekSatu.Ka.Prodi');
         });
 
 
@@ -453,7 +493,9 @@ Route::group(
             Route::get('/warekSatu/edit/', 'edit')->name('edit.warekSatu');
             Route::get('/rektor/warekSatu/search/result', 'dataSearch')->name('rektor.warekSatu.data.search');
             Route::put('/warekSatu/update/{pointId}', 'update')->name('update.warekSatu');
-            Route::get('/Raport/warekSatu/{user_id}', 'raport')->name('warekSatu.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/warekSatu/{user_id}', 'raport')->name('warekSatu.raport');
+            Route::get('/warekSatu/searchRaportResult/', 'searchRaport')->name('searchRaport.rektor.warekSatu');
+            Route::get('/warekSatu/Result/', 'resultRaport')->name('resultRaport.rektor.warekSatu');
         });
 
         // -------------------------- Controller Form Penilaian Warek Dua ------------------------------//
@@ -464,7 +506,9 @@ Route::group(
             Route::get('/WarekDua/edit/', 'edit')->name('edit.WarekDua');
             Route::get('/warekDua/search/result', 'dataSearch')->name('warekDua.data.search');
             Route::put('/WarekDua/update/{pointId}', 'update')->name('update.WarekDua');
-            Route::get('/Raport/WarekDua/{user_id}', 'raport')->name('WarekDua.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/WarekDua/{user_id}', 'raport')->name('WarekDua.raport');
+            Route::get('/WarekDua/searchRaportResult/', 'searchRaport')->name('searchRaport.warekDua');
+            Route::get('/WarekDua/Result/', 'resultRaport')->name('resultRaport.warekDua');
         });
 
         // -------------------------- Controller Form Penilaian Staff Sus Bidang Kerjasama ------------------------------//
@@ -475,7 +519,9 @@ Route::group(
             Route::get('/StaffSusBidKerjasama/edit/', 'edit')->name('edit.StaffSusBidKerjasama');
             Route::get('/StaffSusBidKerjasama/search/result', 'dataSearch')->name('StaffSusBidKerjasama.data.search');
             Route::put('/StaffSusBidKerjasama/update/{pointId}', 'update')->name('update.StaffSusBidKerjasama');
-            Route::get('/Raport/StaffSusBidKerjasama/{user_id}', 'raport')->name('StaffSusBidKerjasama.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/StaffSusBidKerjasama/{user_id}', 'raport')->name('StaffSusBidKerjasama.raport');
+            Route::get('/StaffSusBidKerjasama/searchRaportResult/', 'searchRaport')->name('searchRaport.StaffSusBidKerjasama');
+            Route::get('/StaffSusBidKerjasama/Result/', 'resultRaport')->name('resultRaport.StaffSusBidKerjasama');
         });
 
         // -------------------------- Controller Form Penilaian Ka. LPM ------------------------------//
@@ -486,7 +532,9 @@ Route::group(
             Route::get('/KaLpm/edit/', 'edit')->name('edit.KaLpm');
             Route::get('/KaLpm/search/result', 'dataSearch')->name('KaLpm.data.search');
             Route::put('/KaLpm/update/{pointId}', 'update')->name('update.KaLpm');
-            Route::get('/Raport/KaLpm/{user_id}', 'raport')->name('KaLpm.raport')->middleware(['role:it|superuser|tendik']);
+            Route::get('/Raport/KaLpm/{user_id}', 'raport')->name('KaLpm.raport');
+            Route::get('/KaLpm/searchRaportResult/', 'searchRaport')->name('searchRaport.KaLpm');
+            Route::get('/KaLpm/Result/', 'resultRaport')->name('resultRaport.KaLpm');
         });
         // -------------------------- End ka. Sub. Yayasan dan Form Penilaian Rektor ------------------------------//
 
