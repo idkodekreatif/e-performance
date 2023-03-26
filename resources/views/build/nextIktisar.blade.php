@@ -622,9 +622,10 @@
                                 </div>
                                 <div class="col-md-2">
                                     {{-- Btn Save --}}
-                                    <button class="btn btn-primary btn-sm"><i
-                                            class="fa-sharp fa-solid fa-floppy-disk">
-                                            Simpan</i></button>
+                                    <div class="warning-message text-danger"></div>
+                                    <button class="btn btn-primary btn-sm save">
+                                        <i class="fa-sharp fa-solid fa-floppy-disk">Simpan</i>
+                                    </button>
                                     {{-- end btn save --}}
                                 </div>
                                 <div class="col-md-1">
@@ -705,8 +706,35 @@
 
                 // Delete row
                 $('.parent-col').on('click', '.deleteRow', function() {
+                    // get the value of the deleted row's bobot input
+                    var deletedBobotValue = parseInt($(this).closest('.row').find('.bobot').val());
+
+                    // subtract the deletedBobotValue from the totalBobot
+                    var totalBobot = parseInt($('.jumlah-bobot').val()) - deletedBobotValue;
+
+                    // update the value of the jumlah-bobot input
+                    $('.jumlah-bobot').val(totalBobot);
+
+                    if (totalBobot < 100) {
+                        // disable the Save button
+                        $('button.save').prop('disabled', true);
+
+                        // show the warning message
+                        $('.warning-message').text(
+                            'Total Bobot must be equal or greater than 100 to save the data');
+                    } else {
+                        // enable the Save button
+                        $('button.save').prop('disabled', false);
+
+                        // clear the warning message
+                        $('.warning-message').text('');
+                    }
+
+                    // remove the deleted row
                     $(this).closest('.row').remove();
                 });
+
+
 
                 // Sum point
                 function sumQuestion() {
@@ -760,6 +788,19 @@
 
                 // $('.parent-col').on('keyup', '.bobot', sumBobot);
 
+                // function sumBobot() {
+                //     var totalBobot = 0;
+                //     $('.parent-col .bobot').each(function() {
+                //         var bobotValue = parseInt($(this).val());
+                //         if (!isNaN(bobotValue)) {
+                //             totalBobot += bobotValue;
+                //         }
+                //     });
+                //     $('.jumlah-bobot').val(totalBobot);
+                // }
+
+                // $('.parent-col').on('keyup', '.bobot', sumBobot);
+
                 function sumBobot() {
                     var totalBobot = 0;
                     $('.parent-col .bobot').each(function() {
@@ -768,10 +809,27 @@
                             totalBobot += bobotValue;
                         }
                     });
+
                     $('.jumlah-bobot').val(totalBobot);
+
+                    if (totalBobot < 100) {
+                        // disable the Save button
+                        $('button.save').prop('disabled', true);
+
+                        // show the warning message
+                        $('.warning-message').text('Total Bobot must be equal or greater than 100% to save the data');
+                    } else {
+                        // enable the Save button
+                        $('button.save').prop('disabled', false);
+
+                        // clear the warning message
+                        $('.warning-message').text('');
+                    }
                 }
 
+                // call the sumBobot function on keyup event of .bobot element
                 $('.parent-col').on('keyup', '.bobot', sumBobot);
+
 
 
             });
