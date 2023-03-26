@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function build()
+    {
+        return view('build.nextIktisar');
+    }
 }
