@@ -577,27 +577,32 @@
                                         <div class="col-md">
                                             <h6>Poin 1</h6>
                                             <input type="number" name="poin-1"
-                                                class="form-control form-control-sm poin-1" placeholder="Poin 1">
+                                                class="form-control form-control-sm poin-1" placeholder="Poin 1"
+                                                readonly>
                                         </div>
                                         <div class="col-md">
                                             <h6>Poin 2</h6>
                                             <input type="number" name="poin-2"
-                                                class="form-control form-control-sm poin-2" placeholder="Poin 2">
+                                                class="form-control form-control-sm poin-2" placeholder="Poin 2"
+                                                readonly>
                                         </div>
                                         <div class="col-md">
                                             <h6>Poin 3</h6>
                                             <input type="number" name="poin-3"
-                                                class="form-control form-control-sm poin-3" placeholder="Poin 3">
+                                                class="form-control form-control-sm poin-3" placeholder="Poin 3"
+                                                readonly>
                                         </div>
                                         <div class="col-md">
                                             <h6>Poin 4</h6>
                                             <input type="number" name="poin-4"
-                                                class="form-control form-control-sm poin-4" placeholder="Poin 4">
+                                                class="form-control form-control-sm poin-4" placeholder="Poin 4"
+                                                readonly>
                                         </div>
                                         <div class="col-md">
                                             <h6>Poin 5</h6>
                                             <input type="number" name="poin-5"
-                                                class="form-control form-control-sm poin-5" placeholder="Poin 5">
+                                                class="form-control form-control-sm poin-5" placeholder="Poin 5"
+                                                readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -607,7 +612,7 @@
                                             <h6>Total</h6>
                                             <input type="number" name="jumlah-bobot"
                                                 class="form-control form-control-sm jumlah-bobot"
-                                                placeholder="Total Poin">
+                                                placeholder="Total Poin" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -715,7 +720,9 @@
                     // update the value of the jumlah-bobot input
                     $('.jumlah-bobot').val(totalBobot);
 
-                    if (totalBobot < 100) {
+
+                    if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
+                        totalBobot < 100) {
                         // disable the Save button
                         $('button.save').prop('disabled', true);
 
@@ -812,7 +819,8 @@
 
                     $('.jumlah-bobot').val(totalBobot);
 
-                    if (totalBobot < 100) {
+                    if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
+                        totalBobot < 100) {
                         // disable the Save button
                         $('button.save').prop('disabled', true);
 
