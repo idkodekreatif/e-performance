@@ -19,7 +19,7 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Sub. Biro Administrasi Akademik</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Build Interfaces</a></li>
             </ol>
         </div>
         <div class="row">
@@ -518,48 +518,58 @@
                             </div>
 
                             {{-- Start Form clone --}}
-                            <div class="row" style="display:none">
-                                <div class="col-md-3">
+                            <div class="row mt-2" style="display:none">
+                                <div class="col-md-3 mt-2">
                                     <input type="text" name="jenis-pekerjaan[]"
                                         class="form-control input-default jenis-pekerjaan"
                                         placeholder="Keterangan Pekerjaan">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mt-2">
                                     <div class="row mt-3">
+                                        {{-- Insert Poin 1 --}}
                                         <div class="col-md">
-                                            <input type="radio" class="question" name="question[]" id="question_1"
+                                            <input type="radio" class="question" name="question[]" id="question1"
                                                 value="1" onclick="sumQuestion();">
                                         </div>
+                                        {{-- End insert poin 1 --}}
+                                        {{-- insert poin 2 --}}
                                         <div class="col-md">
-                                            <input type="radio" class="question" name="question[]" id="question_1"
+                                            <input type="radio" class="question" name="question[]" id="question2"
                                                 value="2" onclick="sumQuestion();">
                                         </div>
+                                        {{-- End insert poin 2 --}}
+                                        {{-- insert poin 3 --}}
                                         <div class="col-md">
-                                            <input type="radio" class="question" name="question[]" id="question_1"
+                                            <input type="radio" class="question" name="question[]" id="question3"
                                                 value="3" onclick="sumQuestion();">
                                         </div>
+                                        {{-- End insert poin 3 --}}
+                                        {{-- insert poin 4 --}}
                                         <div class="col-md">
-                                            <input type="radio" class="question" name="question[]" id="question_1"
+                                            <input type="radio" class="question" name="question[]" id="question4"
                                                 value="4" onclick="sumQuestion();">
                                         </div>
+                                        {{-- End insert poin 4 --}}
+                                        {{-- insert poin 5 --}}
                                         <div class="col-md">
-                                            <input type="radio" class="question" name="question[]" id="question_1"
+                                            <input type="radio" class="question" name="question[]" id="question5"
                                                 value="5" onclick="sumQuestion();">
                                         </div>
+                                        {{-- End insert poin 5 --}}
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 mt-2">
                                     <input type="number" name="jumlah-bobot[]" class="form-control input-default "
                                         placeholder="Jumlah Bobot (%)">
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-1 mt-2">
                                     <button class="btn btn-danger btn-sm" id="DeleteRow"><i
                                             class="fa-sharp fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                             {{-- End Form clone --}}
 
-                            <div class="parent-col"></div>
+                            <div class="parent-col mt-2"></div>
 
                             <div class="row mt-2">
                                 <div class="col-md-3 mt-4">
@@ -574,36 +584,50 @@
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <div class="row ">
+                                        {{-- Output Total Poin 1 --}}
                                         <div class="col-md">
                                             <h6>Poin 1</h6>
-                                            <input type="number" name="poin-1"
-                                                class="form-control form-control-sm poin-1" placeholder="Poin 1"
+                                            <input type="number" name="poin1"
+                                                class="form-control form-control-sm poin1" placeholder="Poin 1"
                                                 readonly>
                                         </div>
+                                        {{-- End Output Total Poin 1 --}}
+
+                                        {{-- Output Total Poin 2 --}}
                                         <div class="col-md">
                                             <h6>Poin 2</h6>
-                                            <input type="number" name="poin-2"
-                                                class="form-control form-control-sm poin-2" placeholder="Poin 2"
+                                            <input type="number" name="poin2"
+                                                class="form-control form-control-sm poin2" placeholder="Poin 2"
                                                 readonly>
                                         </div>
+                                        {{-- End Output Total Poin 2 --}}
+
+                                        {{-- Output Total Poin 3 --}}
                                         <div class="col-md">
                                             <h6>Poin 3</h6>
-                                            <input type="number" name="poin-3"
-                                                class="form-control form-control-sm poin-3" placeholder="Poin 3"
+                                            <input type="number" name="poin3"
+                                                class="form-control form-control-sm poin3" placeholder="Poin 3"
                                                 readonly>
                                         </div>
+                                        {{-- End Output Total Poin 3 --}}
+
+                                        {{-- Output Total Poin 4 --}}
                                         <div class="col-md">
                                             <h6>Poin 4</h6>
-                                            <input type="number" name="poin-4"
-                                                class="form-control form-control-sm poin-4" placeholder="Poin 4"
+                                            <input type="number" name="poin4"
+                                                class="form-control form-control-sm poin4" placeholder="Poin 4"
                                                 readonly>
                                         </div>
+                                        {{-- End Output Total Poin 4 --}}
+
+                                        {{-- Output Total Poin 5 --}}
                                         <div class="col-md">
                                             <h6>Poin 5</h6>
-                                            <input type="number" name="poin-5"
-                                                class="form-control form-control-sm poin-5" placeholder="Poin 5"
+                                            <input type="number" name="poin5"
+                                                class="form-control form-control-sm poin5" placeholder="Poin 5"
                                                 readonly>
                                         </div>
+                                        {{-- End Output Total Poin 5 --}}
                                     </div>
                                 </div>
                                 <div class="col-md-2 mt-3">
@@ -612,7 +636,7 @@
                                             <h6>Total</h6>
                                             <input type="number" name="jumlah-bobot"
                                                 class="form-control form-control-sm jumlah-bobot"
-                                                placeholder="Total Poin" readonly>
+                                                placeholder="Total Poin" readonly required>
                                         </div>
                                     </div>
                                 </div>
@@ -628,7 +652,8 @@
                                 <div class="col-md-2">
                                     {{-- Btn Save --}}
                                     <div class="warning-message text-danger"></div>
-                                    <button class="btn btn-primary btn-sm save">
+                                    <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
+                                        class="btn btn-primary btn-sm save">
                                         <i class="fa-sharp fa-solid fa-floppy-disk">Simpan</i>
                                     </button>
                                     {{-- end btn save --}}
@@ -640,8 +665,6 @@
                     </div>
                 </div>
             </div>
-
-
         </form>
     </div>
 
@@ -676,38 +699,83 @@
             $(document).ready(function() {
                 // Add new row
                 $('#rowAdder').on('click', function() {
-                    var newRow = '<div class="row">' +
-                        '<div class="col-md-3">' +
+                    var rowCount = $('.row').length +
+                        1; // menghitung jumlah baris yang sudah ada dan menambahkannya dengan 1
+                    var newRow = '<div class="row mt-2">' +
+                        '<div class="col-md-3 mt-2">' +
                         '<input type="text" name="jenis-pekerjaan[]" class="form-control input-default jenis-pekerjaan" placeholder="Keterangan Pekerjaan">' +
                         '</div>' +
-                        '<div class="col-md-6">' +
+                        '<div class="col-md-6 mt-2">' +
                         '<div class="row mt-3">' +
                         '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[]" value="1" onclick="sumQuestion();">' +
+                        '<input type="radio" class="question" name="question[' + rowCount +
+                        ']" id="question1" value="1" onclick="sumQuestion();">' +
                         '</div>' +
                         '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[]" value="2" onclick="sumQuestion();">' +
+                        '<input type="radio" class="question" name="question[' + rowCount +
+                        ']"  id="question2" value="2" onclick="sumQuestion();">' +
                         '</div>' +
                         '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[]" value="3" onclick="sumQuestion();">' +
+                        '<input type="radio" class="question" name="question[' + rowCount +
+                        ']"  id="question3" value="3" onclick="sumQuestion();">' +
                         '</div>' +
                         '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[]" value="4" onclick="sumQuestion();">' +
+                        '<input type="radio" class="question" name="question[' + rowCount +
+                        ']"  id="question4" value="4" onclick="sumQuestion();">' +
                         '</div>' +
                         '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[]" value="5" onclick="sumQuestion();">' +
+                        '<input type="radio" class="question" name="question[' + rowCount +
+                        ']"  id="question5" value="5" onclick="sumQuestion();">' +
                         '</div>' +
                         '</div>' +
                         '</div>' +
-                        '<div class="col-md-2">' +
+                        '<div class="col-md-2 mt-2">' +
                         '<input type="number" name="jumlah-bobot[]" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
                         '</div>' +
-                        '<div class="col-md-1">' +
+                        '<div class="col-md-1 mt-2">' +
                         '<button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
                         '</div>' +
                         '</div>';
                     $('.parent-col').append(newRow);
                 });
+
+                // Fungsi untuk menghitung jumlah poin
+                function sumQuestion() {
+                    var rowCount = $('.row').length;
+                    var poin1 = 0;
+                    var poin2 = 0;
+                    var poin3 = 0;
+                    var poin4 = 0;
+                    var poin5 = 0;
+
+                    for (var i = 1; i <= rowCount; i++) {
+                        var question = $('input[name="question[' + i + ']"]:checked');
+                        var value = question.val();
+                        if (typeof value === 'string' && !isNaN(parseInt(value))) {
+                            value = parseInt(value);
+                            if (question.attr('id') == 'question1') {
+                                poin1 += value;
+                            } else if (question.attr('id') == 'question2') {
+                                poin2 += value;
+                            } else if (question.attr('id') == 'question3') {
+                                poin3 += value;
+                            } else if (question.attr('id') == 'question4') {
+                                poin4 += value;
+                            } else if (question.attr('id') == 'question5') {
+                                poin5 += value;
+                            }
+                        }
+                    }
+
+                    $('.poin1').val(poin1);
+                    $('.poin2').val(poin2);
+                    $('.poin3').val(poin3);
+                    $('.poin4').val(poin4);
+                    $('.poin5').val(poin5);
+                }
+
+                $('.parent-col').on('click', '.question', sumQuestion);
+
 
                 // Delete row
                 $('.parent-col').on('click', '.deleteRow', function() {
@@ -741,73 +809,6 @@
                     $(this).closest('.row').remove();
                 });
 
-
-
-                // Sum point
-                function sumQuestion() {
-                    var total = 0;
-                    $('.question:checked').each(function() {
-                        total += parseInt($(this).val());
-                    });
-                    $('.poin-1').val(total);
-                }
-
-                $('.parent-col').on('click', '.question', sumQuestion);
-
-                // function sumQuestion() {
-                //     var points = [0, 0, 0, 0, 0];
-                //     var questions = document.getElementsByClassName('question');
-                //     for (var i = 0; i < questions.length; i++) {
-                //         var question = questions[i];
-                //         if (question.checked) {
-                //             var value = parseInt(question.value);
-                //             points[value - 1]++;
-                //         }
-                //     }
-
-                //     var poin1 = document.getElementsByName('poin-1')[0];
-                //     var poin2 = document.getElementsByName('poin-2')[0];
-                //     var poin3 = document.getElementsByName('poin-3')[0];
-                //     var poin4 = document.getElementsByName('poin-4')[0];
-                //     var poin5 = document.getElementsByName('poin-5')[0];
-
-                //     poin1.value = parseInt(poin1.value) + points[0];
-                //     poin2.value = parseInt(poin2.value) + points[1];
-                //     poin3.value = parseInt(poin3.value) + points[2];
-                //     poin4.value = parseInt(poin4.value) + points[3];
-                //     poin5.value = parseInt(poin5.value) + points[4];
-
-                // }
-
-                // Sum bobot ( nilai bobot / jumlah row parent * 8-% )
-                // function sumBobot() {
-                //     var totalBobot = 0;
-                //     var rowLength = $('.parent-col .row').length;
-                //     $('.parent-col .bobot').each(function() {
-                //         var bobotValue = parseInt($(this).val());
-                //         if (!isNaN(bobotValue)) {
-                //             totalBobot += bobotValue;
-                //         }
-                //     });
-                //     var bobotWeight = totalBobot / rowLength * 0.8;
-                //     $('.jumlah-bobot').val(bobotWeight.toFixed(2));
-                // }
-
-                // $('.parent-col').on('keyup', '.bobot', sumBobot);
-
-                // function sumBobot() {
-                //     var totalBobot = 0;
-                //     $('.parent-col .bobot').each(function() {
-                //         var bobotValue = parseInt($(this).val());
-                //         if (!isNaN(bobotValue)) {
-                //             totalBobot += bobotValue;
-                //         }
-                //     });
-                //     $('.jumlah-bobot').val(totalBobot);
-                // }
-
-                // $('.parent-col').on('keyup', '.bobot', sumBobot);
-
                 function sumBobot() {
                     var totalBobot = 0;
                     $('.parent-col .bobot').each(function() {
@@ -837,9 +838,6 @@
 
                 // call the sumBobot function on keyup event of .bobot element
                 $('.parent-col').on('keyup', '.bobot', sumBobot);
-
-
-
             });
         </script>
     @endpush
