@@ -10,7 +10,7 @@
 
     <style>
         body {
-            margin-top: 10%;
+            margin-top: 5%;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -70,6 +70,13 @@
 </head>
 
 <body>
+    <?php
+    $year2021 = date('Y') - 2;
+    $year2022 = date('Y') - 1;
+    ?>
+
+    <h3 style="text-align: center; font-weight:bold;">REKAP NILAI ITIKAD TA. <?php echo $year2021; ?> - <?php echo $year2022; ?>
+    </h3>
     <table style="text-align:center;">
         <?php
         $a = (float) ($users->NilaiTotalPendidikanDanPengajaran ?? 0);
@@ -287,29 +294,29 @@
 
     <div class="tanda-tangan">
         <div class="pihak kiri">
-            <p class="nama-dosen">Dosen</p>
+            <p class="nama-dosen">Validator,</p>
             <br>
             <br>
             <br>
-            <p class="nama-dosen">{{ Auth::user()->name }}</p>
+            <p class="nama-dosen">Emha Yuslifar, SE</p>
         </div>
         <div class="pihak kanan">
-            <p class="nama-warek">Wakil Rektor II</p>
+            <p class="nama-warek">Dosen,</p>
             <br>
             <br>
             <br>
-            <p class="nama-warek">Dr. M. Budi Widajanto, Drs.Ec., M.P.,</p>
+            <p class="nama-warek">{{ Auth::user()->name }}</p>
         </div>
     </div>
 
     <div class="signatures">
         <div class="center-signature">
-            <p>Mengetahui</p>
-            <p>Rektor</p>
+            <p>Mengetahui,</p>
+            <p>Wakil Rektor II</p>
             <br>
             <br>
             <br>
-            <p>Dr. Ahmad Hariyanto, M.Si.</p>
+            <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.,</p>
         </div>
     </div>
 
