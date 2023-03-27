@@ -210,6 +210,7 @@ Route::group(
             Route::get('/ka-bau/edit/', 'edit')->name('edit.warek2.ka.bau');
             Route::get('/ka-bau/search/result', 'dataSearch')->name('warek2.data.search');
             Route::put('/ka-bau/edit/update/{pointId}', 'update')->name('update.warek2.ka.bau');
+            Route::get('/ka-bau/raport/cetakPdf/{user_id}', 'raportPdf')->name('cetak.raport.pdf');
             Route::get('/Raport/Ka-Bau/{user_id}', 'raport')->name('warek2.ka.bau.raport')->middleware(['role:it|superuser|tendik']);
         });
 

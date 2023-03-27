@@ -8,7 +8,9 @@ use App\Models\Warek2;
 use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class warek2Controller extends Controller
 {
@@ -485,6 +487,31 @@ class warek2Controller extends Controller
         } else {
             return view('menu.menu-empty');
         }
+    }
+
+    public function raportPdf($user_id)
+    {
+        $DataUser = DB::table('users')
+            ->leftJoin('ikbis_bau', 'users.id', '=', 'ikbis_bau.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'ikbis_bau.user_id',
+                'ikbis_bau.output_total_sementara_kinerja_perilaku',
+                'ikbis_bau.output_total_sementara_kinerja_kompetensi',
+            )
+            ->where('ikbis_bau.user_id', $user_id)
+            ->first();
+
+        $pdf = PDF::loadView('itisar.warek2.raportPdf', compact('DataUser'))->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
+        return $pdf->download('raportIKTISAR-' . Auth::user()->name . '.pdf');
+
+        // dd($DataUser);
+        // if (!empty($DataUser->user_id)) {
+        //     return view('itisar.warek2.raportPdf', compact('DataUser'));
+        // } else {
+        //     return view('menu.menu-empty');
+        // }
     }
 
     public function detailPoin($userId)

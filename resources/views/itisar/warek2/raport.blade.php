@@ -13,6 +13,10 @@
             <div class="col">
                 <a href="{{ route('ka.bau.poin', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Point</a>
+                <a href="{{ route('cetak.raport.pdf', Auth::user()->id) }}"
+                    class="btn btn-primary btn-sm mb-2 float-end" target="_blank">
+                    <i class="fa-sharp fa-solid fa-print"></i>
+                    CETAK PDF</a>
             </div>
         </div>
         <div class="card shadow">
