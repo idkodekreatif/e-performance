@@ -70,14 +70,9 @@ class sumPointController extends Controller
             ->where('users.id', $user_id)
             ->first();
         // return view('input-point.raportPdf', compact('users'));
-        // $pdf = Pdf::loadView('input-point.raportPdf', compact($users))->output();
-        // return $pdf->download('invoice.pdf');
 
         $pdf = PDF::loadView('input-point.raportPdf', compact('users'))->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
         return $pdf->download('raportDosen-' . Auth::user()->name . '.pdf');
-        // return $pdf->download('raportDosen.pdf');
-
-        // return $pdf->stream();
     }
 
     /**

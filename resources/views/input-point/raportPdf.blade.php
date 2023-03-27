@@ -28,7 +28,7 @@
         .tanda-tangan {
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 5px;
         }
 
         .pihak {
@@ -49,7 +49,6 @@
         .nama-warek {
             font-size: 14px;
             font-weight: bold;
-            margin-bottom: 5px;
         }
 
         .signatures {
@@ -290,19 +289,17 @@
     </table>
 
 
-    <p style="text-align: right;">Surabaya, {{ date('d F Y') }}</p>
+    <p style="text-align: right; margin-bottom:0;">Surabaya, {{ date('d F Y') }}</p>
 
     <div class="tanda-tangan">
         <div class="pihak kiri">
             <p class="nama-dosen">Validator,</p>
             <br>
             <br>
-            <br>
             <p class="nama-dosen">Emha Yuslifar, SE</p>
         </div>
         <div class="pihak kanan">
             <p class="nama-warek">Dosen,</p>
-            <br>
             <br>
             <br>
             <p class="nama-warek">{{ Auth::user()->name }}</p>
@@ -313,7 +310,6 @@
         <div class="center-signature">
             <p>Mengetahui,</p>
             <p>Wakil Rektor II</p>
-            <br>
             <br>
             <br>
             <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.</p>
