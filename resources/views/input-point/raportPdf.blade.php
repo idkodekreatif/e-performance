@@ -18,7 +18,7 @@
         th,
         td {
             width: 100%;
-            border: 1px solid #b7b7b7;
+            border: 1px solid #000000;
             text-align: center;
             font-size: 12px;
             border-collapse: collapse;
