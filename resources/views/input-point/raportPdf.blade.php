@@ -10,7 +10,7 @@
 
     <style>
         body {
-            margin-top: 5%;
+            margin-top: 8%;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -316,7 +316,7 @@
             <br>
             <br>
             <br>
-            <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.,</p>
+            <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.</p>
         </div>
     </div>
 
