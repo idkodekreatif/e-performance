@@ -69,6 +69,8 @@ Route::get('/', function () {
 // -----------------------------Home----------------------------------------//
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth', 'verified', 'prevent-back-history');
 
+// -----------------------------Buil Interfaces----------------------------------------//
+Route::get('/buildInterfaces', [App\Http\Controllers\HomeController::class, 'build']);
 
 Route::resource('profile', profileController::class)->only(['index', 'update'])->middleware('auth', 'verified');
 

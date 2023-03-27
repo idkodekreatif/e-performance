@@ -10,7 +10,7 @@
 
     <style>
         body {
-            margin-top: 17%;
+            margin-top: 10%;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -298,7 +298,7 @@
             <br>
             <br>
             <br>
-            <p class="nama-warek">M. Budi Widajanto</p>
+            <p class="nama-warek">Dr. M. Budi Widajanto, Drs.Ec., M.P.,</p>
         </div>
     </div>
 
@@ -309,7 +309,7 @@
             <br>
             <br>
             <br>
-            <p>Ahmad Hariyanto</p>
+            <p>Dr. Ahmad Hariyanto, M.Si.</p>
         </div>
     </div>
 
