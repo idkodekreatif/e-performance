@@ -74,7 +74,8 @@ class sumPointController extends Controller
         // return $pdf->download('invoice.pdf');
 
         $pdf = PDF::loadView('input-point.raportPdf', compact('users'))->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
-        return $pdf->download('raportDosen.pdf');
+        return $pdf->download('raportDosen-' . Auth::user()->name . '.pdf');
+        // return $pdf->download('raportDosen.pdf');
 
         // return $pdf->stream();
     }
