@@ -10,7 +10,7 @@
 
     <style>
         body {
-            margin-top: 8%;
+            margin-top: 10%;
             font-family: Arial, Helvetica, sans-serif;
         }
 
