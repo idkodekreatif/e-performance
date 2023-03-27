@@ -316,7 +316,7 @@
             <br>
             <br>
             <br>
-            <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.,</p>
+            <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.</p>
         </div>
     </div>
 
