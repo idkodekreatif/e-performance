@@ -633,7 +633,7 @@
                                 <div class="col-md-2 mt-3">
                                     <div class="row">
                                         <div class="col-md">
-                                            <h6>Total</h6>
+                                            <h6>Total Bobot (%)</h6>
                                             <input type="number" name="jumlah-bobot"
                                                 class="form-control form-control-sm jumlah-bobot"
                                                 placeholder="Total Poin" readonly required>
