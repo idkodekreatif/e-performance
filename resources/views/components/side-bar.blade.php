@@ -142,16 +142,17 @@
                                                 </ul>
                                             </li>
 
-                                            <li><a href="{{ route('StaffSusBidKerjasama') }}">Form Staffsus Bidang
+                                            {{-- <li><a href="{{ route('StaffSusBidKerjasama') }}">Form Staffsus Bidang
                                                     Kerjasama</a>
-                                            </li>
+                                            </li> --}}
 
-                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
+                                            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('KaLpm') }}">Form Ka. Lembaga Penjaminan Mutu</a>
                                                     </li>
                                                     <li><a class="has-arrow" href="javascript:void()"
-                                                            aria-expanded="false">Ka. Sub. LPM</a>
+                                                            aria-expanded="false">Ka. Sub.
+                                                            LPM</a>
                                                         <ul aria-expanded="false">
                                                             <li><a href="{{ route('searchRaport.Lpm') }}">Ka. Sub Lem.
                                                                     SPMI-SPME</a>
@@ -159,7 +160,7 @@
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </li>
                                 @endrole
@@ -176,7 +177,9 @@
                                             <li><a href="{{ route('WarekSatu.Ka.Risbang') }}">Form Ka. Lem. Risbang</a></li>
                                             <li><a href="{{ route('WarekSatu.Ka.Baak') }}">Form Ka. Baak</a></li>
                                             <li><a href="{{ route('WarekSatu.Ka.Prodi') }}">Form Ka. Prodi</a></li>
-                                            {{-- Search data kasub --}}
+                                            <li><a href="{{ route('KaLpm') }}">Form Ka. Lembaga Penjaminan Mutu</a>
+
+                                                {{-- Search data kasub --}}
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     UPT</a>
                                                 <ul aria-expanded="false">
@@ -187,7 +190,8 @@
                                                     </li>
                                                     <li><a href="{{ route('searchRaport.ka.it') }}">Ka. Unit IT</a></li>
                                                     <li><a class="has-arrow" href="javascript:void()"
-                                                            aria-expanded="false">Unit Pemasaran</a>
+                                                            aria-expanded="false">Unit
+                                                            Pemasaran</a>
                                                         <ul aria-expanded="false">
                                                             <li><a href="{{ route('searchRaport.pemasaran') }}">Ka. Unit
                                                                     Pemasaran</a></li>
@@ -228,6 +232,14 @@
                                                     </li>
                                                 </ul>
                                             </li>
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
+                                                    LPM</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('searchRaport.Lpm') }}">Ka. Sub Lem.
+                                                            SPMI-SPME</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </li>
                                 @endrole
@@ -238,6 +250,8 @@
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
                                         <ul aria-expanded="false">
                                             <li><a href="{{ route('warek2.ka.bau') }}">Form Ka. Bau</a></li>
+                                            <li><a href="{{ route('StaffSusBidKerjasama') }}">Form Staffsus Bidang
+                                                    Kerjasama</a></li>
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     Bau</a>
                                                 <ul aria-expanded="false">
@@ -388,10 +402,10 @@
                                         <li><a href="{{ route('WarekDua.raport', Auth::user()->id) }}">Raport Warek
                                                 II</a>
                                         </li>
-                                        <li><a href="{{ route('StaffSusBidKerjasama.raport', Auth::user()->id) }}">Raport
-                                                Staffsus Bidang Kerjasama</a></li>
-                                        <li><a href="{{ route('KaLpm.raport', Auth::user()->id) }}">Raport Ka. Lembaga
-                                                Penjaminan Mutu</a></li>
+                                        {{-- <li><a href="{{ route('StaffSusBidKerjasama.raport', Auth::user()->id) }}">Raport
+                                                Staffsus Bidang Kerjasama</a></li> --}}
+                                        {{-- <li><a href="{{ route('KaLpm.raport', Auth::user()->id) }}">Raport Ka. Lembaga
+                                                Penjaminan Mutu</a></li> --}}
                                     </ul>
                                 </li>
                                 {{-- End Penilaian Rektor dan Ka. Sub. Rektor --}}
@@ -411,6 +425,8 @@
                                                 Baak</a></li>
                                         <li><a href="{{ route('WarekSatu.Ka.Prodi.raport', Auth::user()->id) }}">Raport
                                                 Ka. Prodi</a></li>
+                                        <li><a href="{{ route('KaLpm.raport', Auth::user()->id) }}">Raport Ka. Lembaga
+                                                Penjaminan Mutu</a></li>
                                     </ul>
                                 </li>
                                 {{-- End Penilaian Warek 1 dan Ka. Sub. Warek 1 --}}
@@ -421,6 +437,8 @@
                                     <ul aria-expanded="false">
                                         <li><a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}">Raport Ka.
                                                 Bau</a></li>
+                                        <li><a href="{{ route('StaffSusBidKerjasama.raport', Auth::user()->id) }}">Raport
+                                                Staffsus Bidang Kerjasama</a></li>
                                     </ul>
                                 </li>
                                 {{-- End Penilaian Warek 2 dan Ka. Sub. Warek 2 --}}

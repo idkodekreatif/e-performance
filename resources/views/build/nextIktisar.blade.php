@@ -70,7 +70,7 @@
                                 </thead>
                                 <tbody>
                                     {{-- Questuin 1 --}}
-                                    <tr>
+                                    <tr class="text-center">
                                         <td colspan="2">Deskripsi penilaian:</td>
                                         <td>Tidak pernah dapat menyelesaikan tugas pelayanan dengan baik dan sikap
                                             kurang sopan
@@ -790,7 +790,7 @@
 
 
                     if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
-                        totalBobot < 100) {
+                        totalBobot < 10 || totalBobot > 100) {
                         // disable the Save button
                         $('button.save').prop('disabled', true);
 
@@ -821,7 +821,7 @@
                     $('.jumlah-bobot').val(totalBobot);
 
                     if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
-                        totalBobot < 100) {
+                        totalBobot < 100 || totalBobot > 100) {
                         // disable the Save button
                         $('button.save').prop('disabled', true);
 
