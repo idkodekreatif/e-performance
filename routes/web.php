@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ControlUserController;
+use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
 use App\Http\Controllers\InputPoint\PointAController;
 use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
@@ -198,7 +200,24 @@ Route::group(
     }
 );
 
-// -----------------------------Prefix All Point IKTISAR----------------------------------------//
+Route::group(
+    ['prefix' => "/IKTISAR/bulanan", 'middleware' => ['auth', 'verified', 'prevent-back-history']],
+    function () {
+        // -----------------------------IKTISAR Bulanan Staff----------------------------------------//
+        Route::controller(iktisarBulananStaffController::class)->middleware(['role:it|superuser'])->group(function () {
+            Route::get('/input/staff', 'create')->name('iktisar.bulanan.staff.create');
+            Route::post('/input/staff/store', 'store')->name('iktisar.bulanan.staff.store');
+            Route::get('/staff/{id}/edit', 'edit')->name('iktisar.bulanan.staff.edit');
+        });
+
+        // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
+        Route::controller(iktisarBulananKaUnitController::class)->middleware(['role:it|superuser'])->group(function () {
+            Route::get('/input/ka-unit', 'create')->name('iktisar.bulanan.ka.unit.create');
+        });
+    }
+);
+
+// -----------------------------Prefix All Point IKTISAR Tahunan----------------------------------------//
 Route::group(
     ['prefix' => "/IKTISAR", 'middleware' => ['auth', 'verified', 'prevent-back-history']],
     function () {
