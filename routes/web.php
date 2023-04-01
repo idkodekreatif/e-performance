@@ -207,7 +207,8 @@ Route::group(
         Route::controller(iktisarBulananStaffController::class)->middleware(['role:it|superuser'])->group(function () {
             Route::get('/input/staff', 'create')->name('iktisar.bulanan.staff.create');
             Route::post('/input/staff/store', 'store')->name('iktisar.bulanan.staff.store');
-            Route::get('/staff/{id}/edit', 'edit')->name('iktisar.bulanan.staff.edit');
+            Route::get('/staff/searchData', 'searchDataEdit')->name('iktisar.bulanan.staff.DataEdit');
+            Route::get('/staff/edit', 'edit')->name('iktisar.bulanan.staff.edit');
         });
 
         // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//

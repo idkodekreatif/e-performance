@@ -26,7 +26,8 @@
             <div class="col">
                 {{-- <a href="{{ route('ka.baak.raport', Auth::user()->id) }}"
                     class="btn btn-primary btn-sm mb-2 float-end">Raport</a> --}}
-                {{-- <a href="{{ route('edit.ka.baak') }}" class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a> --}}
+                <a href="{{ route('iktisar.bulanan.staff.DataEdit') }}"
+                    class="btn btn-primary btn-sm mb-2 mr-2 float-end">Search Edit</a>
             </div>
         </div>
         <form action="{{ route('iktisar.bulanan.staff.store') }}" id="my-form" method="POST"

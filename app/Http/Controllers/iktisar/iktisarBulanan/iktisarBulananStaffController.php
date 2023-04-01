@@ -49,7 +49,7 @@ class iktisarBulananStaffController extends Controller
                 'total_bobot' => $request->totalBobot,
                 'total_poin_kali_bobot' => $request->totalSum,
                 'total_nilai_presentase' => $request->totalPresentase,
-                'created_insert' => Carbon::now(),
+                'created_insert' => Carbon::now()->format('Y-m-d'),
             ];
 
             // Insert the data into the iktisar_staff_bulanan_perilaku table and get the inserted row ID
@@ -85,12 +85,36 @@ class iktisarBulananStaffController extends Controller
         }
     }
 
-    public function edit($id)
+    public function searchDataEdit()
     {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('iktisar.iktisarBulananStaff.searchdata', compact('users'));
+    }
+
+    public function edit(Request $request)
+    {
+
+        // Check if the input date is valid and contains year and month data
+        if ($request->filled('tanggalInput')) {
+            $date = Carbon::createFromFormat('Y-m-d', $request->input('tanggalInput'));
+            $bulan = $date->month;
+            $tahun = $date->year;
+        } else {
+            // Provide default values for month and year
+            $bulan = date('m');
+            $tahun = date('Y');
+        }
+        $users = DB::table('users')
+            ->where('id', $request->id)
+            ->first();
+
         // Retrieve the row to be edited from the database
         $iktisarStaffBulananPerilaku = DB::table('iktisar_staff_bulanan_perilaku')
-            ->where('id', $id)
-            ->where('user_id', $id) // Only allow editing if user_id matches the currently authenticated user
+            ->where('user_id', $request->id) // Only allow editing if user_id matches the currently authenticated user
+            ->whereYear('created_insert', $tahun)
+            ->whereMonth('created_insert', $bulan)
             ->first();
 
         if ($iktisarStaffBulananPerilaku) {
@@ -103,9 +127,9 @@ class iktisarBulananStaffController extends Controller
             return view('menu.menu-empty');
         }
 
-        // dd($iktisarStaffBulananPerilaku, $iktisarStaffBulananKompetensi);
         // Display the data on a form
         return view('iktisar.iktisarBulananStaff.edit', [
+            'users' => $users,
             'iktisarStaffBulananPerilaku' => $iktisarStaffBulananPerilaku,
             'iktisarStaffBulananKompetensi' => $iktisarStaffBulananKompetensi
         ]);
