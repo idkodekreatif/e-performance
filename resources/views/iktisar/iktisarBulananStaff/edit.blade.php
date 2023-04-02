@@ -58,9 +58,10 @@
             </div>
         </div>
 
-        <form action="{{ route('iktisar.bulanan.staff.store') }}" id="my-form" method="POST"
-            enctype="multipart/form-iktisarStaffBulananPerilaku">
+        <form action="{{ route('iktisar.bulanan.staff.update', $iktisarStaffBulananPerilaku->id) }}" id="my-form"
+            method="POST" enctype="multipart/form-iktisarStaffBulananPerilaku">
             @csrf
+            @method('PUT')
 
             {{-- <div class="card shadow">
                 <div class="card-body">
@@ -632,14 +633,14 @@
                                         <div class="col-md">
                                             <Label>total SUM</Label>
                                             <input type="text" name="totalSum"
-                                                value="{{ $iktisarStaffBulananPerilaku->total_poin_kali_bobot }}"
+                                                value="{{ number_format($iktisarStaffBulananPerilaku->total_poin_kali_bobot, 2) }}"
                                                 class="form-control input-default total-sum"
                                                 placeholder="input-default" readonly>
                                         </div>
                                         <div class="col-md">
                                             <Label>total Nilai (*80%)</Label>
                                             <input type="text" name="totalPresentase"
-                                                value="{{ $iktisarStaffBulananPerilaku->total_nilai_presentase }}"
+                                                value="{{ number_format($iktisarStaffBulananPerilaku->total_nilai_presentase, 2) }}"
                                                 class="form-control input-default total-presentase"
                                                 placeholder="input-default" readonly>
                                         </div>
@@ -741,7 +742,7 @@
                             '<input type="number" name="jumlahBobot[]" value="{{ $data->nilai_bobot }}" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
                             "</div>" +
                             '<div class="col-md-1 mt-2">' +
-                            '<button type=button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
+                            '<button type="button" class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
                             "</div>" +
                             "</div>";
                         $(".parent-col").append(newRow);
@@ -789,7 +790,7 @@
                         '<input type="number" name="jumlahBobot[]" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
                         "</div>" +
                         '<div class="col-md-1 mt-2">' +
-                        '<button type=button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
+                        '<button type="button" class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
                         "</div>" +
                         "</div>";
                     $(".parent-col").append(newRow);

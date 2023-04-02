@@ -209,6 +209,7 @@ Route::group(
             Route::post('/input/staff/store', 'store')->name('iktisar.bulanan.staff.store');
             Route::get('/staff/searchData', 'searchDataEdit')->name('iktisar.bulanan.staff.DataEdit');
             Route::get('/staff/edit', 'edit')->name('iktisar.bulanan.staff.edit');
+            Route::put('/staff/edit/{id}', 'update')->name('iktisar.bulanan.staff.update');
         });
 
         // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//

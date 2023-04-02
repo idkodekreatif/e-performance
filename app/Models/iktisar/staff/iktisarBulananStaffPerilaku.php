@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models\iktisar;
+namespace App\Models\iktisar\staff;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class iktisarBulananStaff extends Model
+class iktisarBulananStaffPerilaku extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected static $logName = 'Iktisar Bulanan Staff';
+    protected static $logName = 'Iktisar Bulanan Staff Perilaku';
 
-    protected $table = "ikbis_iktisar_staff_bulanan";
+    protected $table = "iktisar_staff_bulanan_perilaku";
     protected $guarded = [];
 
     protected static $logUnguarded = true;

@@ -40,7 +40,7 @@ $(document).ready(function () {
             '<input type="number" name="jumlahBobot[]" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
             "</div>" +
             '<div class="col-md-1 mt-2">' +
-            '<button type=button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
+            '<button type="button" class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
             "</div>" +
             "</div>";
         $(".parent-col").append(newRow);
