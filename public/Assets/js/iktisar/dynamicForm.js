@@ -5,7 +5,7 @@ $(document).ready(function () {
         var newRow =
             '<div class="row mt-2 row-question row-hitung">' +
             '<div class="col-md-3 mt-2">' +
-            '<input type="text" name="jenisPekerjaan[]" class="form-control input-default jenis-pekerjaan" placeholder="Keterangan Pekerjaan">' +
+            '<input type="text" name="jenisPekerjaan[]" class="form-control input-default jenis-pekerjaan" placeholder="Keterangan Pekerjaan" required>' +
             "</div>" +
             '<div class="col-md-6 mt-2">' +
             '<div class="row mt-3">' +

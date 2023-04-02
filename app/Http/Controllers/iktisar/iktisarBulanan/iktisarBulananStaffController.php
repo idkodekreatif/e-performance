@@ -127,7 +127,8 @@ class iktisarBulananStaffController extends Controller
                 ->get();
         } else {
             // handle the case when $iktisarStaffBulananPerilaku is null
-            return view('menu.menu-empty');
+            toast('Data Empty', 'error');
+            return redirect()->back();
         }
 
         // Display the data on a form
@@ -140,72 +141,123 @@ class iktisarBulananStaffController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data1 = [
-            'q1' => $request->q1,
-            'q2' => $request->q2,
-            'q3' => $request->q3,
-            'q4' => $request->q4,
-            'q5' => $request->q5,
-            'output_point_1' => $request->output_point_1,
-            'output_point_2' => $request->output_point_2,
-            'output_point_3' => $request->output_point_3,
-            'output_point_4' => $request->output_point_4,
-            'output_point_5' => $request->output_point_5,
-            'output_total_point_kinerja_perilaku' => $request->output_total_point_kinerja_perilaku,
-            'output_total_nilai_rata_rata_kinerja_perilaku' => $request->output_total_nilai_rata_rata_kinerja_perilaku,
-            'output_total_sementara_kinerja_perilaku' => $request->output_total_sementara_kinerja_perilaku,
-            'total_poin1' => $request->poin1,
-            'total_poin2' => $request->poin2,
-            'total_poin3' => $request->poin3,
-            'total_poin4' => $request->poin4,
-            'total_poin5' => $request->poin5,
-            'total_bobot' => $request->totalBobot,
-            'total_poin_kali_bobot' => $request->totalSum,
-            'total_nilai_presentase' => $request->totalPresentase,
-        ];
+        DB::beginTransaction();
+        try {
+            $data1 = [
+                'q1' => $request->q1,
+                'q2' => $request->q2,
+                'q3' => $request->q3,
+                'q4' => $request->q4,
+                'q5' => $request->q5,
+                'output_point_1' => $request->output_point_1,
+                'output_point_2' => $request->output_point_2,
+                'output_point_3' => $request->output_point_3,
+                'output_point_4' => $request->output_point_4,
+                'output_point_5' => $request->output_point_5,
+                'output_total_point_kinerja_perilaku' => $request->output_total_point_kinerja_perilaku,
+                'output_total_nilai_rata_rata_kinerja_perilaku' => $request->output_total_nilai_rata_rata_kinerja_perilaku,
+                'output_total_sementara_kinerja_perilaku' => $request->output_total_sementara_kinerja_perilaku,
+                'total_poin1' => $request->poin1,
+                'total_poin2' => $request->poin2,
+                'total_poin3' => $request->poin3,
+                'total_poin4' => $request->poin4,
+                'total_poin5' => $request->poin5,
+                'total_bobot' => $request->totalBobot,
+                'total_poin_kali_bobot' => $request->totalSum,
+                'total_nilai_presentase' => $request->totalPresentase,
+            ];
 
-        $iktisarStaffBulananPerilaku = iktisarBulananStaffPerilaku::find($id);
-        $iktisarStaffBulananPerilaku->update($data1);
+            $iktisarStaffBulananPerilaku = iktisarBulananStaffPerilaku::find($id);
+            $iktisarStaffBulananPerilaku->update($data1);
 
-        // Table 2
-        $jenisPekerjaan = $request->jenisPekerjaan;
-        $jumlahBobot = $request->jumlahBobot;
-        $question = $request->question;
+            // Table 2
+            $jenisPekerjaan = $request->jenisPekerjaan;
+            $jumlahBobot = $request->jumlahBobot;
+            $question = $request->question;
 
-        // Ambil semua jenis pekerjaan untuk $id dari database dan ubah menjadi array
-        $existingJenisPekerjaan = iktisarBulananStaffKompetensi::where('id_staff_perilaku', $id)->pluck('jenis_pekerjaan')->toArray();
+            // Ambil semua jenis pekerjaan untuk $id dari database dan ubah menjadi array
+            $existingJenisPekerjaan = iktisarBulananStaffKompetensi::where('id_staff_perilaku', $id)->pluck('jenis_pekerjaan')->toArray();
 
-        // Loop melalui jenis pekerjaan yang diterima dari form
-        foreach ($jenisPekerjaan as $key => $value) {
-            $iktisarStaffBulananKompetensi = iktisarBulananStaffKompetensi::where('id_staff_perilaku', $id)
-                ->where('jenis_pekerjaan', $value)
-                ->first();
+            // Loop melalui jenis pekerjaan yang diterima dari form
+            foreach ($jenisPekerjaan as $key => $value) {
+                $iktisarStaffBulananKompetensi = iktisarBulananStaffKompetensi::where('id_staff_perilaku', $id)
+                    ->where('jenis_pekerjaan', $value)
+                    ->first();
 
-            if (!$iktisarStaffBulananKompetensi) {
-                // Jika tidak ada, tambahkan baris baru
-                $data = [
-                    'id_staff_perilaku' => $id,
-                    'jenis_pekerjaan' => $value,
-                    'nilai_bobot' => $jumlahBobot[$key],
-                    'question' => isset($question[$key + 1]) ? $question[$key + 1] : null
-                ];
-                iktisarBulananStaffKompetensi::create($data);
-            } else {
-                // Jika ada, perbarui baris yang ada
-                $data = [
-                    'nilai_bobot' => $jumlahBobot[$key],
-                    'question' => isset($question[$key + 1]) ? $question[$key + 1] : null
-                ];
-                iktisarBulananStaffKompetensi::where('id', $iktisarStaffBulananKompetensi->id)->update($data);
+                if (!$iktisarStaffBulananKompetensi) {
+                    // Jika tidak ada, tambahkan baris baru
+                    $data = [
+                        'id_staff_perilaku' => $id,
+                        'jenis_pekerjaan' => $value,
+                        'nilai_bobot' => $jumlahBobot[$key],
+                        'question' => isset($question[$key + 1]) ? $question[$key + 1] : null
+                    ];
+                    iktisarBulananStaffKompetensi::create($data);
+                } else {
+                    // Jika ada, perbarui baris yang ada
+                    $data = [
+                        'nilai_bobot' => $jumlahBobot[$key],
+                        'question' => isset($question[$key + 1]) ? $question[$key + 1] : null
+                    ];
+                    iktisarBulananStaffKompetensi::where('id', $iktisarStaffBulananKompetensi->id)->update($data);
+                }
             }
+
+            // Loop melalui jenis pekerjaan yang ada di database
+            foreach ($existingJenisPekerjaan as $existingJenis) {
+                // Jika jenis pekerjaan tidak ada dalam $jenisPekerjaan yang diterima dari form, hapus baris tersebut dari database
+                if (!in_array($existingJenis, $jenisPekerjaan)) {
+                    iktisarBulananStaffKompetensi::where('id_staff_perilaku', $id)->where('jenis_pekerjaan', $existingJenis)->delete();
+                }
+            }
+
+            DB::commit();
+            toast('Update Poin IKTISAR successfully :)', 'success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            toast('Update Point IKTISAR fail :)', 'error');
+            return redirect()->back();
+        }
+    }
+
+    public function raportStaff(Request $request, $user_id)
+    {
+        $dataUser = DB::table('users');
+
+        if ($request->filled('keyword')) {
+            $date = Carbon::createFromFormat('Y-m-d', $request->input('keyword'));
+            $users = $dataUser->whereExists(function ($query) use ($user_id, $date) {
+                $query->select(DB::raw(1))
+                    ->from('iktisar_staff_bulanan_perilaku')
+                    ->whereRaw('users.id = iktisar_staff_bulanan_perilaku.user_id')
+                    ->whereMonth('iktisar_staff_bulanan_perilaku.created_insert', $date->month)
+                    ->whereYear('iktisar_staff_bulanan_perilaku.created_insert', $date->year)
+                    ->where('iktisar_staff_bulanan_perilaku.user_id', $user_id);
+            });
+        } else {
+            $users = $dataUser;
         }
 
-        // Loop melalui jenis pekerjaan yang ada di database
-        foreach ($existingJenisPekerjaan as $existingJenis) {
-            // Jika jenis pekerjaan tidak ada dalam $jenisPekerjaan yang diterima dari form, hapus baris tersebut dari database
-            if (!in_array($existingJenis, $jenisPekerjaan)) {
-                iktisarBulananStaffKompetensi::where('id_staff_perilaku', $id)->where('jenis_pekerjaan', $existingJenis)->delete();
-            }
+        $data = $users
+            ->leftJoin('iktisar_staff_bulanan_perilaku', 'users.id', '=', 'iktisar_staff_bulanan_perilaku.user_id')
+            ->select(
+                'users.*',
+                'iktisar_staff_bulanan_perilaku.user_id',
+                'iktisar_staff_bulanan_perilaku.output_total_sementara_kinerja_perilaku',
+                'iktisar_staff_bulanan_perilaku.total_nilai_presentase',
+            )
+            ->where('iktisar_staff_bulanan_perilaku.user_id', $user_id)
+            ->whereMonth('iktisar_staff_bulanan_perilaku.created_insert', $date->month)
+            ->whereYear('iktisar_staff_bulanan_perilaku.created_insert', $date->year)
+            ->first();
+
+
+        if (!empty($data->user_id)) {
+            return view('iktisar.iktisarBulananStaff.raport', compact('data'));
+        } else {
+            toast('Data Empty', 'error');
+            return redirect()->back();
         }
     }
 }

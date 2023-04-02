@@ -1,4 +1,4 @@
-<x-app-layout title="Search Data Kasub Biro Kepegawaian">
+<x-app-layout title="Search Data Staff">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
