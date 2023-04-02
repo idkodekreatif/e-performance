@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ControlUserController;
+use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
 use App\Http\Controllers\InputPoint\PointAController;
 use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
@@ -198,7 +200,36 @@ Route::group(
     }
 );
 
-// -----------------------------Prefix All Point IKTISAR----------------------------------------//
+Route::group(
+    ['prefix' => "/IKTISAR/bulanan", 'middleware' => ['auth', 'verified', 'prevent-back-history']],
+    function () {
+        // -----------------------------IKTISAR Bulanan Staff----------------------------------------//
+        Route::middleware(['role:it|superuser|tendik|dosen'])->group(function () {
+            // penilai isi data
+            Route::get('/input/staff', [iktisarBulananStaffController::class, 'create'])->name('iktisar.bulanan.staff.create');
+            Route::post('/input/staff/store', [iktisarBulananStaffController::class, 'store'])->name('iktisar.bulanan.staff.store');
+            // search dan pembaruan data
+            Route::get('/staff/searchData', [iktisarBulananStaffController::class, 'searchDataEdit'])->name('iktisar.bulanan.staff.DataEdit');
+            Route::get('/staff/edit', [iktisarBulananStaffController::class, 'edit'])->name('iktisar.bulanan.staff.edit');
+            Route::put('/staff/edit/{id}', [iktisarBulananStaffController::class, 'update'])->name('iktisar.bulanan.staff.update');
+            // Raport tendik dan search detail poin
+            Route::get('/staff/raport/{user_id}', [iktisarBulananStaffController::class, 'raportStaff'])->name('iktisar.bulanan.staff.raport.staff');
+            Route::get('/staff/detail/data', [iktisarBulananStaffController::class, 'searchDataPoin'])->name('iktisar.bulanan.staff.detailData');
+            Route::get('/staff/detail/data/poin', [iktisarBulananStaffController::class, 'dataPoin'])->name('iktisar.bulanan.staff.poin');
+            // Detail Raport Tendik
+            Route::get('/staff/search-data/raport', [iktisarBulananStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.staff.data.raport');
+            Route::get('/staff/data/raport', [iktisarBulananStaffController::class, 'staffRaportIktisar'])->name('data.raport.staff');
+        });
+
+
+        // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
+        Route::controller(iktisarBulananKaUnitController::class)->middleware(['role:it|superuser|tendik|dosen'])->group(function () {
+            Route::get('/input/ka-unit', 'create')->name('iktisar.bulanan.ka.unit.create');
+        });
+    }
+);
+
+// -----------------------------Prefix All Point IKTISAR Tahunan----------------------------------------//
 Route::group(
     ['prefix' => "/IKTISAR", 'middleware' => ['auth', 'verified', 'prevent-back-history']],
     function () {

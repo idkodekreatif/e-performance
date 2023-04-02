@@ -987,7 +987,6 @@
 
                 $('.parent-col').on('keyup change', '.question, .bobot', function() {
                     var rowCount = $('.row-hitung').length;
-                    var totalPoinXBobot = 0; // inisialisasi variabel total
                     $('.row-hitung').each(function(index) {
                         var resultValuePoin = parseInt($('input[name="question[' + (index + 1) +
                             ']"]:checked').val()) || 0;
@@ -997,24 +996,34 @@
 
                         var totalValue = resultValuePoin * nilaiPersen;
                         var resultTotalValuePoinXBobot = parseFloat(totalValue.toFixed(2));
-                        console.log('Total Value Poin X Bobot ' + (index + 1) + ': ' +
-                            resultTotalValuePoinXBobot);
-
-                        totalPoinXBobot +=
-                            resultTotalValuePoinXBobot; // menambahkan nilai ke variabel total
-                        var resultSum = totalPoinXBobot.toFixed(2); // memformat angka hingga 2 desimal
-                        console.log('Total SUM: ' + resultSum); // output: Total SUM: 4.30
-
-                        var kaliDelapanPuluPersen = (resultSum * 80) / 100;
-                        var resultKaliDelapanPuluPersen = kaliDelapanPuluPersen.toFixed(
-                            2); // memformat angka hingga 2 desimal
-                        console.log('Total Persentase: ' +
-                            resultKaliDelapanPuluPersen); // output: Total Persentase: 3.44
+                        console.log('Total Value Poin X Bobot 1: ' + resultTotalValuePoinXBobot);
+                        console.log('Total Value Baris ' + (index + 1) + ': ' + totalValue);
                     });
+
+                    var resultValuePoin = 0;
+                    for (var i = 1; i <= rowCount; i++) {
+                        resultValuePoin += parseInt($('input[name="question[' + i + ']"]:checked').val()) || 0;
+                    }
+
+                    // var resultNilaiBobotValue = 0;
+                    // $('.parent-col .bobot').each(function() {
+                    //     var nilaiBobotValue = parseFloat($(this)
+                    //         .val()); // use parseFloat instead of parseInt
+                    //     if (!isNaN(nilaiBobotValue)) {
+                    //         resultNilaiBobotValue += nilaiBobotValue;
+                    //     }
+                    // });
+
+                    // var nilaiPersenTotal = resultNilaiBobotValue / (rowCount * 100); // convert to percentage
+
+                    // var totalValuePoinXBobot = resultValuePoin * nilaiPersenTotal;
+                    // var resultTotalValuePoinXBobot = parseFloat(totalValuePoinXBobot.toFixed(2));
+                    // console.log('Total Value Poin X Bobot 2: ' + resultTotalValuePoinXBobot);
 
                     sumQuestion();
                     sumBobot();
                 });
+
             });
         </script>
     @endpush

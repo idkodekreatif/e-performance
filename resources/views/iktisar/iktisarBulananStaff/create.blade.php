@@ -1,4 +1,4 @@
-<x-app-layout title="build">
+<x-app-layout title="IKTISAR Bulanan || Staff">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -19,17 +19,19 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Build Interfaces</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">IKTISAR Bulanan Staff</a></li>
             </ol>
         </div>
         <div class="row">
             <div class="col">
-                {{-- <a href="{{ route('ka.baak.raport', Auth::user()->id) }}"
-                    class="btn btn-primary btn-sm mb-2 float-end">Raport</a> --}}
-                <a href="{{ route('edit.ka.baak') }}" class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a>
+                <a href="{{ route('iktisar.bulanan.staff.data.raport') }}"
+                    class="btn btn-primary btn-sm mb-2 float-end">Search Raport</a>
+                <a href="{{ route('iktisar.bulanan.staff.DataEdit') }}"
+                    class="btn btn-primary btn-sm mb-2 mr-2 float-end">Search Edit</a>
             </div>
         </div>
-        <form action="javascript:void(0)" id="my-form" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('iktisar.bulanan.staff.store') }}" id="my-form" method="POST"
+            enctype="multipart/form-data">
             @csrf
 
             <div class="card shadow">
@@ -41,7 +43,9 @@
 
                     <select id="single-select" name="UserId">
                         <option value="">-- Select One --</option>
-                        <option value="">ini perlu di perbaiki</option>
+                        @foreach ($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -349,70 +353,6 @@
                                         @enderror
                                     </tr>
 
-                                    {{-- Questuin 6 --}}
-                                    <tr>
-                                        <td colspan="2">Deskripsi penilaian:</td>
-                                        <td>Tidak pernah bertindak tegas dan memihak, tidak memberikan teladan yang
-                                            baik, tidak
-                                            mampu 1 Buruk 12 menggerakkan tim kerja untuk mencapai kinerja yang tinggi,
-                                            tidak mampu
-                                            menggugah semangat dan menggerakkan bawahan dalam melaksanakan tugas serta
-                                            tidak mampu
-                                            mengambil keputusan dengan cepat dan tepat</td>
-                                        <td>Kurang bertindak tegas dan terkadang memihak, kurang mampu memberikan
-                                            teladan yang baik,
-                                            kurang mampu menggerakkan tim kerja untuk mencapai kinerja yang tinggi,
-                                            serta kurang
-                                            mampu menggugah semangat dan menggerakkan bawahan dalam melaksanakan tugas
-                                            serta kurang
-                                            mampu mengambil keputusan dengan cepat dan tepat</td>
-                                        <td>Adakalanya bertindak tegas dan tidak memihak, memberikan teladan, cukup
-                                            mampu
-                                            menggerakkan tim kerja untuk mencapai kinerja yang tinggi, serta cukup mampu
-                                            menggugah
-                                            semangat dan menggerakkan bawahan dalam melaksanakan tugas serta cukup mampu
-                                            mengambil
-                                            keputusan dengan cepat dan tepat</td>
-                                        <td>Pada umumnya bertindak tegas dan tidak memihak, memberikan teladan yang
-                                            baik, kemampuan
-                                            menggerakkan tim kerja untuk mencapai kinerja yang tinggi, mampu menggugah
-                                            semangat dan
-                                            menggerakkan bawahan dalam melaksanakan tugas serta mampu mengambil
-                                            keputusan dengan
-                                            cepat dan tepat</td>
-                                        <td>Selalu bertindak tegas dan tidak memihak, memberikan teladan yang baik,
-                                            kemampuan
-                                            menggerakkan tim kerja untuk mencapai kinerja yang tinggi, mampu menggugah
-                                            semangat dan
-                                            menggerakkan bawahan dalam melaksanakan tugas serta mampu mengambil
-                                            keputusan dengan
-                                            cepat dan tepat</td>
-                                    </tr>
-                                    <tr class="table-primary">
-                                        <td>Question 6</td>
-                                        <td>Kepemimpinan (Hanya yang menduduki Jabatan Struktural)</td>
-                                        <td><input type="radio" class="q6" name="q6" id="q6_1"
-                                                value="1" onclick="sumPoint();">
-                                        </td>
-                                        <td><input type="radio" class="q6" name="q6" id="q6_2"
-                                                value="2" onclick="sumPoint();">
-                                        </td>
-                                        <td><input type="radio" class="q6" name="q6" id="q6_3"
-                                                value="3" onclick="sumPoint();">
-                                        </td>
-                                        <td><input type="radio" class="q6" name="q6" id="q6_4"
-                                                value="4" onclick="sumPoint();">
-                                        </td>
-                                        <td><input type="radio" class="q6" name="q6" id="q6_5"
-                                                value="5" onclick="sumPoint();">
-                                        </td>
-                                        @error('q6')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </tr>
-
                                     <tr style="color:rgb(0, 0, 0); background-color:rgb(16, 215, 212)">
                                         <td colspan="8 text-center">TOTAL NILAI KINERJA PERILAKU</td>
                                     </tr>
@@ -520,7 +460,7 @@
                             {{-- Start Form clone --}}
                             <div class="row mt-2 row-question" style="display:none">
                                 <div class="col-md-3 mt-2">
-                                    <input type="text" name="jenis-pekerjaan[]"
+                                    <input type="text" name="jenisPekerjaan"
                                         class="form-control input-default jenis-pekerjaan"
                                         placeholder="Keterangan Pekerjaan">
                                 </div>
@@ -559,7 +499,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2 mt-2">
-                                    <input type="number" name="jumlah-bobot[]" class="form-control input-default "
+                                    <input type="number" name="jumlahBobot" class="form-control input-default "
                                         placeholder="Jumlah Bobot (%)">
                                 </div>
                                 <div class="col-md-1 mt-2">
@@ -576,8 +516,8 @@
                                     <div class="row">
                                         <div class="col-md">
                                             {{-- Btn Add Row --}}
-                                            <button class="btn btn-primary rounded-circle" id="rowAdder"><i
-                                                    class="fa-sharp fa-solid fa-plus"></i></button>
+                                            <button type=button class="btn btn-primary rounded-circle"
+                                                id="rowAdder"><i class="fa-sharp fa-solid fa-plus"></i></button>
                                             {{-- End btn add  Row --}}
                                         </div>
                                     </div>
@@ -634,13 +574,32 @@
                                     <div class="row">
                                         <div class="col-md">
                                             <h6>Total Bobot (%)</h6>
-                                            <input type="number" name="jumlah-bobot"
+                                            <input type="number" name="totalBobot"
                                                 class="form-control form-control-sm jumlah-bobot"
                                                 placeholder="Total Poin" readonly required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-1">
+                                </div>
+                            </div>
+
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <Label>total SUM</Label>
+                                            <input type="text" name="totalSum"
+                                                class="form-control input-default total-sum"
+                                                placeholder="input-default" readonly>
+                                        </div>
+                                        <div class="col-md">
+                                            <Label>total Nilai (*80%)</Label>
+                                            <input type="text" name="totalPresentase"
+                                                class="form-control input-default total-presentase"
+                                                placeholder="input-default" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -669,8 +628,8 @@
     </div>
 
     @push('JavaScript')
-        <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2x6.js') }}"></script>
-        <script src="{{ asset('Assets/js/itisar/Baak/PointKinerjaKompetensi.js') }}"></script>
+        <script src="{{ asset('Assets/js/itisar/kinerjaPerilaku/PointKinerjaPerilakuV2x5.js') }}"></script>
+        <script src="{{ asset('Assets/js/iktisar/dynamicForm.js') }}"></script>
         <script src="{{ asset('Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
         <script src="{{ asset('Assets/vendor/select2/js/select2.full.min.js') }}"></script>
         <script src="{{ asset('Assets/js/plugins-init/select2-init.js') }}"></script>
@@ -693,329 +652,6 @@
                     }
                 });
             }
-        </script>
-
-        {{-- <script>
-            $(document).ready(function() {
-                // Add new row
-                $('#rowAdder').on('click', function() {
-                    var rowCount = $('.row-question')
-                        .length; // menghitung jumlah baris yang sudah ada dan menambahkannya dengan 1
-                    var newRow = '<div class="row mt-2 row-question">' +
-                        '<div class="col-md-3 mt-2">' +
-                        '<input type="text" name="jenis-pekerjaan[]" class="form-control input-default jenis-pekerjaan" placeholder="Keterangan Pekerjaan">' +
-                        '</div>' +
-                        '<div class="col-md-6 mt-2">' +
-                        '<div class="row mt-3">' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']" id="question1" value="1" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question2" value="2" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question3" value="3" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question4" value="4" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question5" value="5" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="col-md-2 mt-2">' +
-                        '<input type="number" name="jumlah-bobot[]" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
-                        '</div>' +
-                        '<div class="col-md-1 mt-2">' +
-                        '<button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
-                        '</div>' +
-                        '</div>';
-                    $('.parent-col').append(newRow);
-                });
-
-                // Delete row
-                $('.parent-col').on('click', '.deleteRow', function() {
-                    // get the value of the deleted row's bobot input
-                    var deletedBobotValue = parseInt($(this).closest('.row-question').find('.bobot').val());
-
-                    // subtract the deletedBobotValue from the totalBobot
-                    var totalBobot = parseInt($('.jumlah-bobot').val()) - deletedBobotValue;
-
-                    // update the value of the jumlah-bobot input
-                    $('.jumlah-bobot').val(totalBobot);
-
-
-                    if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
-                        totalBobot < 10 || totalBobot > 100) {
-                        // disable the Save button
-                        $('button.save').prop('disabled', true);
-
-                        // show the warning message
-                        $('.warning-message').text(
-                            'Total Bobot must be equal or greater than 100 to save the data');
-                    } else {
-                        // enable the Save button
-                        $('button.save').prop('disabled', false);
-
-                        // clear the warning message
-                        $('.warning-message').text('');
-                    }
-
-                    // remove the deleted row
-                    $(this).closest('.row-question').remove();
-                });
-
-                // Fungsi untuk menghitung jumlah poin
-                function sumQuestion() {
-                    var rowCount = $('.row-question').length;
-                    var poin1 = 0;
-                    var poin2 = 0;
-                    var poin3 = 0;
-                    var poin4 = 0;
-                    var poin5 = 0;
-
-                    for (var i = 1; i <= rowCount; i++) {
-                        var question = $('input[name="question[' + i + ']"]:checked');
-                        var valuePoin = question.val();
-                        if (typeof valuePoin === 'string' && !isNaN(parseInt(valuePoin))) {
-                            valuePoin = parseInt(valuePoin);
-                            if (question.attr('id') == 'question1') {
-                                poin1 += valuePoin;
-                            } else if (question.attr('id') == 'question2') {
-                                poin2 += valuePoin;
-                            } else if (question.attr('id') == 'question3') {
-                                poin3 += valuePoin;
-                            } else if (question.attr('id') == 'question4') {
-                                poin4 += valuePoin;
-                            } else if (question.attr('id') == 'question5') {
-                                poin5 += valuePoin;
-                            }
-                        }
-                    }
-
-                    $('.poin1').val(poin1);
-                    $('.poin2').val(poin2);
-                    $('.poin3').val(poin3);
-                    $('.poin4').val(poin4);
-                    $('.poin5').val(poin5);
-                }
-
-                $('.parent-col').on('click', '.question', sumQuestion);
-
-                function sumBobot() {
-                    var totalBobot = 0;
-                    $('.parent-col .bobot').each(function() {
-                        var bobotValue = parseInt($(this).val());
-                        if (!isNaN(bobotValue)) {
-                            totalBobot += bobotValue;
-                        }
-                    });
-
-                    $('.jumlah-bobot').val(totalBobot);
-
-                    if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
-                        totalBobot < 100 || totalBobot > 100) {
-                        // disable the Save button
-                        $('button.save').prop('disabled', true);
-
-                        // show the warning message
-                        $('.warning-message').text('Total Bobot must be equal or greater than 100% to save the data');
-                    } else {
-                        // enable the Save button
-                        $('button.save').prop('disabled', false);
-
-                        // clear the warning message
-                        $('.warning-message').text('');
-                    }
-                }
-
-                // call the sumBobot function on keyup event of .bobot element
-                $('.parent-col').on('keyup', '.bobot', sumBobot);
-            });
-        </script> --}}
-
-        {{-- New Script Js belum Fiks --}}
-        <script>
-            $(document).ready(function() {
-                // Add new row
-                $('#rowAdder').on('click', function() {
-                    var rowCount = $('.row-question')
-                        .length; // menghitung jumlah baris yang sudah ada dan menambahkannya dengan 1
-                    var newRow = '<div class="row mt-2 row-question row-hitung">' +
-                        '<div class="col-md-3 mt-2">' +
-                        '<input type="text" name="jenis-pekerjaan[]" class="form-control input-default jenis-pekerjaan" placeholder="Keterangan Pekerjaan">' +
-                        '</div>' +
-                        '<div class="col-md-6 mt-2">' +
-                        '<div class="row mt-3">' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']" id="question1" value="1" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question2" value="2" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question3" value="3" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question4" value="4" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '<div class="col-md">' +
-                        '<input type="radio" class="question" name="question[' + rowCount +
-                        ']"  id="question5" value="5" onclick="sumQuestion();">' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="col-md-2 mt-2">' +
-                        '<input type="number" name="jumlah-bobot[]" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
-                        '</div>' +
-                        '<div class="col-md-1 mt-2">' +
-                        '<button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
-                        '</div>' +
-                        '</div>';
-                    $('.parent-col').append(newRow);
-                });
-
-                // Delete row
-                $('.parent-col').on('click', '.deleteRow', function() {
-                    // get the value of the deleted row's bobot input
-                    var deletedBobotValue = parseInt($(this).closest('.row-question').find('.bobot').val());
-
-                    // subtract the deletedBobotValue from the totalBobot
-                    var totalBobot = parseInt($('.jumlah-bobot').val()) - deletedBobotValue;
-
-                    // update the value of the jumlah-bobot input
-                    $('.jumlah-bobot').val(totalBobot);
-
-
-                    if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
-                        totalBobot < 10 || totalBobot > 100) {
-                        // disable the Save button
-                        $('button.save').prop('disabled', true);
-
-                        // show the warning message
-                        $('.warning-message').text(
-                            'Total Bobot must be equal or greater than 100 to save the data');
-                    } else {
-                        // enable the Save button
-                        $('button.save').prop('disabled', false);
-
-                        // clear the warning message
-                        $('.warning-message').text('');
-                    }
-
-                    // remove the deleted row
-                    $(this).closest('.row-question').remove();
-                });
-
-                // Fungsi untuk menghitung jumlah poin
-                function sumQuestion() {
-                    var rowCount = $('.row-question').length;
-                    var poin1 = 0;
-                    var poin2 = 0;
-                    var poin3 = 0;
-                    var poin4 = 0;
-                    var poin5 = 0;
-
-                    for (var i = 1; i <= rowCount; i++) {
-                        var question = $('input[name="question[' + i + ']"]:checked');
-                        var nilaiValuePoin = question.val();
-                        if (typeof nilaiValuePoin === 'string' && !isNaN(parseInt(nilaiValuePoin))) {
-                            nilaiValuePoin = parseInt(nilaiValuePoin);
-                            if (question.attr('id') == 'question1') {
-                                poin1 += nilaiValuePoin;
-                            } else if (question.attr('id') == 'question2') {
-                                poin2 += nilaiValuePoin;
-                            } else if (question.attr('id') == 'question3') {
-                                poin3 += nilaiValuePoin;
-                            } else if (question.attr('id') == 'question4') {
-                                poin4 += nilaiValuePoin;
-                            } else if (question.attr('id') == 'question5') {
-                                poin5 += nilaiValuePoin;
-                            }
-                        }
-                    }
-
-                    $('.poin1').val(poin1);
-                    $('.poin2').val(poin2);
-                    $('.poin3').val(poin3);
-                    $('.poin4').val(poin4);
-                    $('.poin5').val(poin5);
-                }
-
-                $('.parent-col').on('click', '.question', sumQuestion);
-
-                function sumBobot() {
-                    var totalBobot = 0;
-                    $('.parent-col .bobot').each(function() {
-                        var nilaiBobotValue = parseInt($(this).val());
-                        if (!isNaN(nilaiBobotValue)) {
-                            totalBobot += nilaiBobotValue;
-                        }
-                    });
-
-                    $('.jumlah-bobot').val(totalBobot);
-                    console.log('Total Bobot: ' + totalBobot);
-
-                    if ($('.parent-col').length === 0 || $('.jumlah-bobot').val() !== '' && totalBobot <= 0 ||
-                        totalBobot < 100 || totalBobot > 100) {
-                        // disable the Save button
-                        $('button.save').prop('disabled', true);
-
-                        // show the warning message
-                        $('.warning-message').text('Total Bobot must be equal or greater than 100% to save the data');
-                    } else {
-                        // enable the Save button
-                        $('button.save').prop('disabled', false);
-
-                        // clear the warning message
-                        $('.warning-message').text('');
-                    }
-                }
-
-                // call the sumBobot function on keyup event of .bobot element
-                $('.parent-col').on('keyup', '.bobot', sumBobot);
-
-                $('.parent-col').on('keyup change', '.question, .bobot', function() {
-                    var rowCount = $('.row-hitung').length;
-                    var totalPoinXBobot = 0; // inisialisasi variabel total
-                    $('.row-hitung').each(function(index) {
-                        var resultValuePoin = parseInt($('input[name="question[' + (index + 1) +
-                            ']"]:checked').val()) || 0;
-                        var resultNilaiBobotValue = parseFloat($(this).find('.bobot').val()) || 0;
-
-                        var nilaiPersen = resultNilaiBobotValue / 100; // convert to percentage
-
-                        var totalValue = resultValuePoin * nilaiPersen;
-                        var resultTotalValuePoinXBobot = parseFloat(totalValue.toFixed(2));
-                        console.log('Total Value Poin X Bobot ' + (index + 1) + ': ' +
-                            resultTotalValuePoinXBobot);
-
-                        totalPoinXBobot +=
-                            resultTotalValuePoinXBobot; // menambahkan nilai ke variabel total
-                        var resultSum = totalPoinXBobot.toFixed(2); // memformat angka hingga 2 desimal
-                        console.log('Total SUM: ' + resultSum); // output: Total SUM: 4.30
-
-                        var kaliDelapanPuluPersen = (resultSum * 80) / 100;
-                        var resultKaliDelapanPuluPersen = kaliDelapanPuluPersen.toFixed(
-                            2); // memformat angka hingga 2 desimal
-                        console.log('Total Persentase: ' +
-                            resultKaliDelapanPuluPersen); // output: Total Persentase: 3.44
-                    });
-
-                    sumQuestion();
-                    sumBobot();
-                });
-            });
         </script>
     @endpush
 </x-app-layout>

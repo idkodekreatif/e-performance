@@ -65,7 +65,32 @@
                 @endrole
                 {{-- End ITIKAD --}}
 
-                {{-- Start IKTISAR --}}
+                {{-- Start IKTISAR Bulanan --}}
+
+                @role('it|superuse|tendik|dosen')
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR BULANAN</a>
+                            <ul aria-expanded="false">
+                                <li><a href="{{ route('iktisar.bulanan.ka.unit.create') }}">Form Ka. Unit</a></li>
+                                <li><a href="{{ route('iktisar.bulanan.staff.create') }}">Form Staff</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR BULANAN Raport</a>
+                            <ul aria-expanded="false">
+                                <li><a href="javascript:void()">Raport Ka. Unit</a></li>
+                                <li><a href="{{ route('iktisar.bulanan.staff.raport.staff', Auth::user()->id) }}">Raport
+                                        Staff</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                @endrole
+
+                {{-- End IKTISAR Bulanan --}}
+
+
+                {{-- Start IKTISAR Tahunan --}}
                 @role('it|superuser|warek2|upt|baak|keuangan|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi|bau|warek1|rektor|ypsdmit|hrd')
                     <ul aria-expanded="false">
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR</a>
@@ -123,7 +148,8 @@
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('WarekDua') }}">Form Warek II</a></li>
-                                                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka.
+                                                    <li><a class="has-arrow" href="javascript:void()"
+                                                            aria-expanded="false">Ka.
                                                             Sub. Warek II</a>
                                                         <ul aria-expanded="false">
                                                             <li><a class="has-arrow" href="javascript:void()"
