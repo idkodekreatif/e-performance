@@ -10,10 +10,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 
 class iktisarBulananStaffController extends Controller
 {
+    // penilai
     public function create()
     {
         $users = User::whereNotIn('name', [
@@ -21,7 +22,7 @@ class iktisarBulananStaffController extends Controller
         ])->get();
         return view('iktisar.iktisarBulananStaff.create', compact('users'));
     }
-
+    // preses penilai
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -88,6 +89,7 @@ class iktisarBulananStaffController extends Controller
         }
     }
 
+    // proses penilai
     public function searchDataEdit()
     {
         $users = User::whereNotIn('name', [
@@ -95,7 +97,7 @@ class iktisarBulananStaffController extends Controller
         ])->get();
         return view('iktisar.iktisarBulananStaff.searchdata', compact('users'));
     }
-
+    // penilai
     public function edit(Request $request)
     {
 
@@ -138,7 +140,7 @@ class iktisarBulananStaffController extends Controller
             'iktisarStaffBulananKompetensi' => $iktisarStaffBulananKompetensi
         ]);
     }
-
+    // proses penilai
     public function update(Request $request, $id)
     {
         DB::beginTransaction();
@@ -221,9 +223,13 @@ class iktisarBulananStaffController extends Controller
         }
     }
 
+    // user melihat raport
     public function raportStaff(Request $request, $user_id)
     {
         $dataUser = DB::table('users');
+
+        // set nilai default untuk variabel $date
+        $date = Carbon::now();
 
         if ($request->filled('keyword')) {
             $date = Carbon::createFromFormat('Y-m-d', $request->input('keyword'));
@@ -255,6 +261,93 @@ class iktisarBulananStaffController extends Controller
 
         if (!empty($data->user_id)) {
             return view('iktisar.iktisarBulananStaff.raport', compact('data'));
+        } else {
+            toast('Data Empty :(', 'error');
+            return redirect()->back();
+        }
+    }
+
+    // user mencari poin
+    public function searchDataPoin()
+    {
+        return view('iktisar.iktisarBulananStaff.searchdatapoin');
+    }
+    // return user data poin
+    public function dataPoin(Request $request)
+    {
+        // Check if the input date is valid and contains year and month data
+        if ($request->filled('tanggalInput')) {
+            $date = Carbon::createFromFormat('Y-m-d', $request->input('tanggalInput'));
+            $bulan = $date->month;
+            $tahun = $date->year;
+        } else {
+            // Provide default values for month and year
+            $bulan = date('m');
+            $tahun = date('Y');
+        }
+        $users = DB::table('users')
+            ->where('id', Auth::user()->id)
+            ->first();
+
+        // Retrieve the row to be edited from the database
+        $iktisarStaffBulananPerilaku = DB::table('iktisar_staff_bulanan_perilaku')
+            ->where('user_id', Auth::user()->id) // Only allow editing if user_id matches the currently authenticated user
+            ->whereYear('created_insert', $tahun)
+            ->whereMonth('created_insert', $bulan)
+            ->first();
+
+        if ($iktisarStaffBulananPerilaku) {
+            // Retrieve the corresponding rows from the iktisar_staff_bulanan_kompetensi table
+            $iktisarStaffBulananKompetensi = DB::table('iktisar_staff_bulanan_kompetensi')
+                ->where('id_staff_perilaku', $iktisarStaffBulananPerilaku->id)
+                ->get();
+        } else {
+            // handle the case when $iktisarStaffBulananPerilaku is null
+            toast('Data Empty', 'error');
+            return redirect()->back();
+        }
+
+        // Display the data on a form
+        return view('iktisar.iktisarBulananStaff.detailPoin', [
+            'users' => $users,
+            'iktisarStaffBulananPerilaku' => $iktisarStaffBulananPerilaku,
+            'iktisarStaffBulananKompetensi' => $iktisarStaffBulananKompetensi
+        ]);
+    }
+
+    public function searchRaportIktisar()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
+        return view('iktisar.iktisarBulananStaff.searchdataraport', compact('users'));
+    }
+
+    public function staffRaportIktisar(Request $request)
+    {
+        $tanggalInput = $request->input('tanggalInput');
+        $id = $request->input('id');
+
+        // Konversi format tanggal
+        $tanggalInput = Carbon::createFromFormat('Y-m-d', $request->input('tanggalInput'));
+
+        $data = DB::table('users')
+            ->leftJoin('iktisar_staff_bulanan_perilaku', 'users.id', '=', 'iktisar_staff_bulanan_perilaku.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'iktisar_staff_bulanan_perilaku.user_id',
+                'iktisar_staff_bulanan_perilaku.output_total_sementara_kinerja_perilaku',
+                'iktisar_staff_bulanan_perilaku.total_nilai_presentase',
+            )
+            ->where('iktisar_staff_bulanan_perilaku.user_id', $id)
+            ->whereYear('iktisar_staff_bulanan_perilaku.created_insert', $tanggalInput)
+            ->whereMonth('iktisar_staff_bulanan_perilaku.created_insert', $tanggalInput)
+            ->first();
+
+        // dd($data);
+        if (!empty($data)) {
+            return view('iktisar.iktisarBulananStaff.cekraport', compact('data'));
         } else {
             toast('Data Empty', 'error');
             return redirect()->back();

@@ -24,8 +24,8 @@
         </div>
         <div class="row">
             <div class="col">
-                {{-- <a href="{{ route('ka.baak.raport', Auth::user()->id) }}"
-                    class="btn btn-primary btn-sm mb-2 float-end">Raport</a> --}}
+                <a href="{{ route('iktisar.bulanan.staff.data.raport') }}"
+                    class="btn btn-primary btn-sm mb-2 float-end">Search Raport</a>
                 <a href="{{ route('iktisar.bulanan.staff.DataEdit') }}"
                     class="btn btn-primary btn-sm mb-2 mr-2 float-end">Search Edit</a>
             </div>
