@@ -1,4 +1,4 @@
-<x-app-layout title="build">
+<x-app-layout title="Iktisar Bulanan || Ka. Unit">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -19,17 +19,19 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Build Interfaces</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Ka. Unit Bulanan</a></li>
             </ol>
         </div>
         <div class="row">
             <div class="col">
-                {{-- <a href="{{ route('ka.baak.raport', Auth::user()->id) }}"
-                    class="btn btn-primary btn-sm mb-2 float-end">Raport</a> --}}
-                <a href="{{ route('edit.ka.baak') }}" class="btn btn-primary btn-sm mb-2 mr-2 float-end">Edit</a>
+                <a href="{{ route('iktisar.bulanan.kaunit.data.raport') }}" class="btn btn-primary btn-sm mb-2">Search
+                    Raport</a>
+                <a href="{{ route('iktisar.bulanan.kaunit.DataEdit') }}"
+                    class="btn btn-primary btn-sm mb-2 mr-2 float-end">Search Edit</a>
             </div>
         </div>
-        <form action="javascript:void(0)" id="my-form" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('iktisar.bulanan.kaunit.store') }}" id="my-form" method="POST"
+            enctype="multipart/form-data">
             @csrf
 
             <div class="card shadow">
@@ -636,7 +638,7 @@
                                     <div class="row">
                                         <div class="col-md">
                                             <h6>Total Bobot (%)</h6>
-                                            <input type="number" name="jumlah-bobot"
+                                            <input type="number" name="totalBobot"
                                                 class="form-control form-control-sm jumlah-bobot"
                                                 placeholder="Total Poin" readonly required>
                                         </div>
@@ -652,12 +654,12 @@
                                         <div class="col-md">
                                             <Label>total SUM</Label>
                                             <input type="text" class="form-control input-default total-sum"
-                                                placeholder="input-default" readonly>
+                                                name="totalSum" placeholder="input-default" readonly>
                                         </div>
                                         <div class="col-md">
                                             <Label>total Nilai (*80%)</Label>
                                             <input type="text" class="form-control input-default total-presentase"
-                                                placeholder="input-default" readonly>
+                                                name="totalPresentase" placeholder="input-default" readonly>
                                         </div>
                                     </div>
                                 </div>

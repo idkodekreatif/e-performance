@@ -223,8 +223,21 @@ Route::group(
 
 
         // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
-        Route::controller(iktisarBulananKaUnitController::class)->middleware(['role:it|superuser|tendik|dosen'])->group(function () {
-            Route::get('/input/ka-unit', 'create')->name('iktisar.bulanan.ka.unit.create');
+        Route::middleware(['role:it|superuser|tendik|dosen'])->group(function () {
+            // penilai isi data
+            Route::get('/input/kaunit', [iktisarBulananKaUnitController::class, 'create'])->name('iktisar.bulanan.kaunit.create');
+            Route::post('/input/kaunit/store', [iktisarBulananKaUnitController::class, 'store'])->name('iktisar.bulanan.kaunit.store');
+            // search dan pembaruan data
+            Route::get('/kaunit/searchData', [iktisarBulananKaUnitController::class, 'searchDataEdit'])->name('iktisar.bulanan.kaunit.DataEdit');
+            Route::get('/kaunit/edit', [iktisarBulananKaUnitController::class, 'edit'])->name('iktisar.bulanan.kaunit.edit');
+            Route::put('/kaunit/edit/{id}', [iktisarBulananKaUnitController::class, 'update'])->name('iktisar.bulanan.kaunit.update');
+            // Raport tendik dan search detail poin
+            Route::get('/kaunit/raport/{user_id}', [iktisarBulananKaUnitController::class, 'raportStaff'])->name('iktisar.bulanan.kaunit.raport.kaunit');
+            Route::get('/kaunit/detail/data', [iktisarBulananKaUnitController::class, 'searchDataPoin'])->name('iktisar.bulanan.kaunit.detailData');
+            Route::get('/kaunit/detail/data/poin', [iktisarBulananKaUnitController::class, 'dataPoin'])->name('iktisar.bulanan.kaunit.poin');
+            // Detail Raport Tendik
+            Route::get('/kaunit/search-data/raport', [iktisarBulananKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.kaunit.data.raport');
+            Route::get('/kaunit/data/raport', [iktisarBulananKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit');
         });
     }
 );

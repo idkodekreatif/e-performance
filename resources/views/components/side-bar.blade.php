@@ -71,7 +71,7 @@
                     <ul aria-expanded="false">
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR BULANAN</a>
                             <ul aria-expanded="false">
-                                <li><a href="{{ route('iktisar.bulanan.ka.unit.create') }}">Form Ka. Unit</a></li>
+                                <li><a href="{{ route('iktisar.bulanan.kaunit.create') }}">Form Ka. Unit</a></li>
                                 <li><a href="{{ route('iktisar.bulanan.staff.create') }}">Form Staff</a></li>
                             </ul>
                         </li>
@@ -79,7 +79,8 @@
                     <ul aria-expanded="false">
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR BULANAN Raport</a>
                             <ul aria-expanded="false">
-                                <li><a href="javascript:void()">Raport Ka. Unit</a></li>
+                                <li><a href="{{ route('iktisar.bulanan.kaunit.raport.kaunit', Auth::user()->id) }}">Raport
+                                        Ka. Unit</a></li>
                                 <li><a href="{{ route('iktisar.bulanan.staff.raport.staff', Auth::user()->id) }}">Raport
                                         Staff</a></li>
                             </ul>
