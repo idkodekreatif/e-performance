@@ -628,7 +628,7 @@ function sum() {
         document.getElementById("TotalKelebihanSkor").value =
             resultTotalKelebihanSkor;
     }
-    // // nilai tambah pendidikan dan pengajaran
+    // nilai tambah pendidikan dan pengajaran
     if (!isNaN(resultTotalKelebihanSkor)) {
         // Tampilkan output pada input form
         document.getElementById("NilaiTambahPendidikanDanPengajaran").value =
@@ -690,13 +690,14 @@ function sum() {
 
     var NilaiPendidikanDanPengajar = parseFloat(sumResult);
     var resultNilaiPendidikanDanPengajar = NilaiPendidikanDanPengajar * 35;
-    var resultPerkalianPendidikanDanPengajar =
-        resultNilaiPendidikanDanPengajar.toFixed(2);
+    // old interfaces
+    // var resultPerkalianPendidikanDanPengajar =
+    //     resultNilaiPendidikanDanPengajar.toFixed(2);
 
     if (!isNaN(resultPerkalianPendidikanDanPengajar)) {
         // Tampilkan output pada input form
         document.getElementById("nilaiPendidikandanPengajaran").value =
-            resultPerkalianPendidikanDanPengajar;
+            resultNilaiPendidikanDanPengajar;
     }
 
     // SUM result nilai pendidikan dan pengajaran + nilai tambah pendidikan dan pengajaran
