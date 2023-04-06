@@ -272,6 +272,14 @@
                                 @role('it|superuser|warek2')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.warekDua.create') }}">Form Ka.
+                                                            Unit</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('warek2.ka.bau') }}">Form Ka. Bau</a></li>
                                             <li><a href="{{ route('StaffSusBidKerjasama') }}">Form Staffsus Bidang
                                                     Kerjasama</a></li>
@@ -491,6 +499,14 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK II</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.warekDua.raport.warekDua', Auth::user()->id) }}">Raport
+                                                        Ka. Unit</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('warek2.ka.bau.raport', Auth::user()->id) }}">Raport Ka.
                                                 Bau</a></li>
                                         <li><a href="{{ route('StaffSusBidKerjasama.raport', Auth::user()->id) }}">Raport
