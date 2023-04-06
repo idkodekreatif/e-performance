@@ -5,6 +5,7 @@ use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakKaUnitCon
 use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\keuangan\iktisarBulananKeuanganStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\rektor\iktisarBulananRektorController;
 use App\Http\Controllers\iktisar\iktisarBulanan\warek1\iktisarBulananWarekSatuController;
 use App\Http\Controllers\iktisar\iktisarBulanan\warek2\iktisarBulananWarek2Controller;
@@ -347,6 +348,23 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/baak/kaunit/search-data/raport', [iktisarBulananBaakKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.baak.kaunit.data.raport');
             Route::get('/baak/kaunit/data/raport', [iktisarBulananBaakKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit.baak');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|keuangan'])->group(function () {
+            // penilai isi data
+            Route::get('/input/keuangan', [iktisarBulananKeuanganStaffController::class, 'create'])->name('iktisar.bulanan.keuangan.create');
+            Route::post('/input/keuangan/store', [iktisarBulananKeuanganStaffController::class, 'store'])->name('iktisar.bulanan.keuangan.store');
+            // search dan pembaruan data
+            Route::get('/keuangan/searchData', [iktisarBulananKeuanganStaffController::class, 'searchDataEdit'])->name('iktisar.bulanan.keuangan.DataEdit');
+            Route::get('/keuangan/edit', [iktisarBulananKeuanganStaffController::class, 'edit'])->name('iktisar.bulanan.keuangan.edit');
+            Route::put('/keuangan/edit/{id}', [iktisarBulananKeuanganStaffController::class, 'update'])->name('iktisar.bulanan.keuangan.update');
+            // Raport tendik dan search detail poin
+            Route::get('/keuangan/raport/{user_id}', [iktisarBulananKeuanganStaffController::class, 'raportStaff'])->name('iktisar.bulanan.keuangan.raport.keuangan');
+            Route::get('/keuangan/detail/data', [iktisarBulananKeuanganStaffController::class, 'searchDataPoin'])->name('iktisar.bulanan.keuangan.detailData');
+            Route::get('/keuangan/detail/data/poin', [iktisarBulananKeuanganStaffController::class, 'dataPoin'])->name('iktisar.bulanan.keuangan.poin');
+            // Detail Raport Tendik
+            Route::get('/keuangan/search-data/raport', [iktisarBulananKeuanganStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.keuangan.data.raport');
+            Route::get('/keuangan/data/raport', [iktisarBulananKeuanganStaffController::class, 'staffRaportIktisar'])->name('data.raport.keuangan');
         });
     }
 );

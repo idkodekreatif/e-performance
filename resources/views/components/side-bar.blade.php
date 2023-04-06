@@ -360,6 +360,14 @@
                                 @role('it|superuser|keuangan')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KEUANGAN</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.keuangan.create') }}">Form Staff
+                                                            Keungan</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('StaffKeuangan') }}">Form Staff Keuangan</a></li>
                                         </ul>
                                     </li>
@@ -593,6 +601,14 @@
                                 {{-- Penilaian Staff Keuangan --}}
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KEUANGAN</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.keuangan.raport.keuangan', Auth::user()->id) }}">Raport
+                                                        Ka. Unit</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('StaffKeuangan.raport', Auth::user()->id) }}">Raport Staff
                                                 Keuangan</a></li>
                                     </ul>
