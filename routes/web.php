@@ -3,6 +3,7 @@
 use App\Http\Controllers\ControlUserController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\ypsdmit\iktisarBulananYpsdmitController;
 use App\Http\Controllers\InputPoint\PointAController;
 use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
@@ -238,6 +239,24 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/kaunit/search-data/raport', [iktisarBulananKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.kaunit.data.raport');
             Route::get('/kaunit/data/raport', [iktisarBulananKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit');
+        });
+
+        // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
+        Route::middleware(['role:it|superuser|tendik|ypsdmit'])->group(function () {
+            // penilai isi data
+            Route::get('/input/ypsdmit', [iktisarBulananYpsdmitController::class, 'create'])->name('iktisar.bulanan.ypsdmit.create');
+            Route::post('/input/ypsdmit/store', [iktisarBulananYpsdmitController::class, 'store'])->name('iktisar.bulanan.ypsdmit.store');
+            // search dan pembaruan data
+            Route::get('/ypsdmit/searchData', [iktisarBulananYpsdmitController::class, 'searchDataEdit'])->name('iktisar.bulanan.ypsdmit.DataEdit');
+            Route::get('/ypsdmit/edit', [iktisarBulananYpsdmitController::class, 'edit'])->name('iktisar.bulanan.ypsdmit.edit');
+            Route::put('/ypsdmit/edit/{id}', [iktisarBulananYpsdmitController::class, 'update'])->name('iktisar.bulanan.ypsdmit.update');
+            // Raport tendik dan search detail poin
+            Route::get('/ypsdmit/raport/{user_id}', [iktisarBulananYpsdmitController::class, 'raportStaff'])->name('iktisar.bulanan.ypsdmit.raport.ypsdmit');
+            Route::get('/ypsdmit/detail/data', [iktisarBulananYpsdmitController::class, 'searchDataPoin'])->name('iktisar.bulanan.ypsdmit.detailData');
+            Route::get('/ypsdmit/detail/data/poin', [iktisarBulananYpsdmitController::class, 'dataPoin'])->name('iktisar.bulanan.ypsdmit.poin');
+            // Detail Raport Tendik
+            Route::get('/ypsdmit/search-data/raport', [iktisarBulananYpsdmitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.ypsdmit.data.raport');
+            Route::get('/ypsdmit/data/raport', [iktisarBulananYpsdmitController::class, 'staffRaportIktisar'])->name('data.raport.ypsdmit');
         });
     }
 );

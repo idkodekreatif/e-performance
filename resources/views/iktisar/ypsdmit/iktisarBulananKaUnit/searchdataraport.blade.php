@@ -1,4 +1,4 @@
-<x-app-layout title="Search Data Staff raport">
+<x-app-layout title="Search Data Staff raport  || YPSDMIT">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
             </ol>
         </div>
 
-        <form action="{{ route('data.raport.staff') }}" method="GET">
+        <form action="{{ route('data.raport.ypsdmit') }}" method="GET">
             <div class="card shadow">
                 <div class="card-body">
                     <div class="mb-4">
