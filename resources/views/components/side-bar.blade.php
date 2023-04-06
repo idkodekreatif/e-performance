@@ -335,6 +335,16 @@
                                 @role('it|superuser|baak')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.baak.kaunit.create') }}">Form Ka.
+                                                            Unit</a></li>
+                                                    <li><a href="{{ route('iktisar.bulanan.baak.staff.create') }}">Form
+                                                            Staff</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('ka.baak') }}">Form Ka. Sub. Biro Administrasi Akademik</a>
                                             </li>
                                             <li><a href="{{ route('kemahasiswaan') }}">Form Staff Kemahasiswaan</a></li>
@@ -554,6 +564,17 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAAK</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.baak.kaunit.raport.baak', Auth::user()->id) }}">Raport
+                                                        Ka. Unit</a></li>
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.baak.staff.raport.baak', Auth::user()->id) }}">Raport
+                                                        Staff</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('ka.baak.raport', Auth::user()->id) }}">Raport Ka. Sub.
                                                 Biro
                                                 Administrasi Akademik</a></li>
