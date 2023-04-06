@@ -3,6 +3,7 @@
 use App\Http\Controllers\ControlUserController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\rektor\iktisarBulananRektorController;
 use App\Http\Controllers\iktisar\iktisarBulanan\ypsdmit\iktisarBulananYpsdmitController;
 use App\Http\Controllers\InputPoint\PointAController;
 use App\Http\Controllers\InputPoint\PointBController;
@@ -257,6 +258,23 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/ypsdmit/search-data/raport', [iktisarBulananYpsdmitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.ypsdmit.data.raport');
             Route::get('/ypsdmit/data/raport', [iktisarBulananYpsdmitController::class, 'staffRaportIktisar'])->name('data.raport.ypsdmit');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|rektor'])->group(function () {
+            // penilai isi data
+            Route::get('/input/rektor', [iktisarBulananRektorController::class, 'create'])->name('iktisar.bulanan.rektor.create');
+            Route::post('/input/rektor/store', [iktisarBulananRektorController::class, 'store'])->name('iktisar.bulanan.rektor.store');
+            // search dan pembaruan data
+            Route::get('/rektor/searchData', [iktisarBulananRektorController::class, 'searchDataEdit'])->name('iktisar.bulanan.rektor.DataEdit');
+            Route::get('/rektor/edit', [iktisarBulananRektorController::class, 'edit'])->name('iktisar.bulanan.rektor.edit');
+            Route::put('/rektor/edit/{id}', [iktisarBulananRektorController::class, 'update'])->name('iktisar.bulanan.rektor.update');
+            // Raport tendik dan search detail poin
+            Route::get('/rektor/raport/{user_id}', [iktisarBulananRektorController::class, 'raportStaff'])->name('iktisar.bulanan.rektor.raport.rektor');
+            Route::get('/rektor/detail/data', [iktisarBulananRektorController::class, 'searchDataPoin'])->name('iktisar.bulanan.rektor.detailData');
+            Route::get('/rektor/detail/data/poin', [iktisarBulananRektorController::class, 'dataPoin'])->name('iktisar.bulanan.rektor.poin');
+            // Detail Raport Tendik
+            Route::get('/rektor/search-data/raport', [iktisarBulananRektorController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.rektor.data.raport');
+            Route::get('/rektor/data/raport', [iktisarBulananRektorController::class, 'staffRaportIktisar'])->name('data.raport.rektor');
         });
     }
 );

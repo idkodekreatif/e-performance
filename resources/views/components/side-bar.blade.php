@@ -102,6 +102,14 @@
                                 @role('it|superuser|rektor')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">REKTOR</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.rektor.create') }}">Form Wakil
+                                                            Rektor</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('warekSatu') }}">Form Warek I</a></li>
@@ -421,6 +429,14 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">REKTOR</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.rektor.raport.rektor', Auth::user()->id) }}">Raport
+                                                        Rektor</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('warekSatu.raport', Auth::user()->id) }}"
                                                 aria-expanded="false">Raport Warek I</a></li>
                                         <li><a href="{{ route('WarekDua.raport', Auth::user()->id) }}">Raport Warek
