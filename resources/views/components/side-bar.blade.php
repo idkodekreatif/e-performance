@@ -185,6 +185,14 @@
                                 @role('it|superuser|warek1')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.warekSatu.create') }}">Form Ka.
+                                                            Unit</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             {{-- Input Form --}}
                                             <li><a href="{{ route('koorkemahasiswaanDanAlumni') }}">Form Koor. Kemahasiswaan &
                                                     Alumni</a></li>
@@ -434,7 +442,7 @@
                                             <ul aria-expanded="false">
                                                 <li><a
                                                         href="{{ route('iktisar.bulanan.rektor.raport.rektor', Auth::user()->id) }}">Raport
-                                                        Rektor</a></li>
+                                                        Ka. Unit</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="{{ route('warekSatu.raport', Auth::user()->id) }}"
@@ -454,6 +462,14 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.warekSatu.raport.warekSatu', Auth::user()->id) }}">Raport
+                                                        Ka. Unit</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('koorkemahasiswaanDanAlumni.raport', Auth::user()->id) }}"
                                                 aria-expanded="false">Raport Koor. Kemahasiswaan & Alumni</a></li>
                                         <li><a href="{{ route('WarekSatu.Ka.Upt.raport', Auth::user()->id) }}">Raport Ka.

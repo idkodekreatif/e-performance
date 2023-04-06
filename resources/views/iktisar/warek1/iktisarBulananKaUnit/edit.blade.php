@@ -1,4 +1,4 @@
-<x-app-layout title="IKTISAR Bulanan || Edit Poin Unit Rektor">
+<x-app-layout title="IKTISAR Bulanan || Warek I">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <form action="{{ route('iktisar.bulanan.rektor.update', $iktisarStaffBulananPerilaku->id) }}" id="my-form"
+        <form action="{{ route('iktisar.bulanan.warekSatu.update', $iktisarStaffBulananPerilaku->id) }}" id="my-form"
             method="POST" enctype="multipart/form-iktisarStaffBulananPerilaku">
             @csrf
             @method('PUT')

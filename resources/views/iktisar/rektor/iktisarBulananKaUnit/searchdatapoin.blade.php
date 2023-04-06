@@ -1,4 +1,4 @@
-<x-app-layout title="Search Data poin">
+<x-app-layout title="Search Data poin || Unit Rektor">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -18,7 +18,7 @@
     <div class="col-xl col-lg">
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Point Staff</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Poin</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Data Search IKTISAR Bulanan</a></li>
             </ol>
         </div>

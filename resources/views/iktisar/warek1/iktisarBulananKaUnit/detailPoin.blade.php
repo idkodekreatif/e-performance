@@ -1,4 +1,4 @@
-<x-app-layout title="IKTISAR Bulanan || Edit Poin Unit Rektor">
+<x-app-layout title="IKTISAR Bulanan || Staff detail Poin">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -58,26 +58,9 @@
             </div>
         </div>
 
-        <form action="{{ route('iktisar.bulanan.rektor.update', $iktisarStaffBulananPerilaku->id) }}" id="my-form"
-            method="POST" enctype="multipart/form-iktisarStaffBulananPerilaku">
+        <form action="javascript:void(0)" id="my-form" method="POST"
+            enctype="multipart/form-iktisarStaffBulananPerilaku">
             @csrf
-            @method('PUT')
-
-            {{-- <div class="card shadow">
-                <div class="card-body">
-                    <div class="mb-4">
-                        <h4 class="card-title">Nama</h4>
-                        <p class="text-danger">* Select One Name...</p>
-                    </div>
-
-                    <select id="single-select" name="UserId">
-                        <option value="">-- Select One --</option>
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div> --}}
 
             <div class="card shadow">
                 <div class="card-header">
@@ -614,8 +597,8 @@
                                     <div class="row">
                                         <div class="col-md">
                                             {{-- Btn Add Row --}}
-                                            <button type=button class="btn btn-primary rounded-circle"
-                                                id="rowAdder"><i class="fa-sharp fa-solid fa-plus"></i></button>
+                                            {{-- <button type=button class="btn btn-primary rounded-circle"
+                                                id="rowAdder"><i class="fa-sharp fa-solid fa-plus"></i></button> --}}
                                             {{-- End btn add  Row --}}
                                         </div>
                                     </div>
@@ -716,11 +699,11 @@
                                 </div>
                                 <div class="col-md-2">
                                     {{-- Btn Save --}}
-                                    <div class="warning-message text-danger"></div>
-                                    <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
+                                    {{-- <div class="warning-message text-danger"></div> --}}
+                                    {{-- <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
                                         class="btn btn-primary btn-sm save">
                                         <i class="fa-sharp fa-solid fa-floppy-disk">Simpan</i>
-                                    </button>
+                                    </button> --}}
                                     {{-- end btn save --}}
                                 </div>
                                 <div class="col-md-1">
@@ -768,7 +751,7 @@
                         var newRow =
                             '<div class="row mt-2 row-question row-hitung">' +
                             '<div class="col-md-3 mt-2">' +
-                            '<input type="text" name="jenisPekerjaan[]"  value="{{ $data->jenis_pekerjaan }}" class="form-control input-default jenis-pekerjaan" placeholder="Keterangan Pekerjaan">' +
+                            '<input type="text" name="jenisPekerjaan[]"  value="{{ $data->jenis_pekerjaan }}" class="form-control input-default jenis-pekerjaan" placeholder="Keterangan Pekerjaan" readonly>' +
                             "</div>" +
                             '<div class="col-md-6 mt-2">' +
                             '<div class="row mt-3">' +
@@ -802,9 +785,9 @@
                             '<div class="col-md-2 mt-2">' +
                             '<input type="number" name="jumlahBobot[]" value="{{ $data->nilai_bobot }}" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
                             "</div>" +
-                            '<div class="col-md-1 mt-2">' +
-                            '<button type="button" class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
-                            "</div>" +
+                            // '<div class="col-md-1 mt-2">' +
+                            // '<button type="button" class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
+                            // "</div>" +
                             "</div>";
                         $(".parent-col").append(newRow);
                     @endforeach

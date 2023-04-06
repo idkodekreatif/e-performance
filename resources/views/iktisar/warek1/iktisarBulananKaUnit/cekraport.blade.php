@@ -1,4 +1,4 @@
-<x-app-layout title="Raport || Ka. Unit Rektor">
+<x-app-layout title="Raport || Unit Warek I">
     @push('style')
     @endpush
 
