@@ -395,6 +395,14 @@
                                 @role('it|superuser|risbang')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">RISBANG</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.risbang.create') }}">Form Ka.
+                                                            unit</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('KasubRisbang') }}">Form Ka. Sub. Lem. Penel & Pengmas</a>
                                             </li>
                                         </ul>
@@ -406,6 +414,14 @@
                                 @role('it|superuser|gizi|perawat|bidan|manajemen|akuntansi')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.sekkaprodi.create') }}">Form Ka.
+                                                            unit</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('sekKaprodi') }}">Form Sek. Ka. Prodi</a></li>
                                         </ul>
                                     </li>
@@ -643,6 +659,14 @@
                                 {{-- Penilaian Staff Risbang --}}
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">RISBANG</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.risbang.raport.risbang', Auth::user()->id) }}">Raport
+                                                        Ka. Unit</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('KasubRisbang.raport', Auth::user()->id) }}">Raport Ka.
                                                 Sub.
                                                 Lem. Penel & Pengmas</a></li>
@@ -654,6 +678,14 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">KAPRODI</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.sekkaprodi.raport.sekkaprodi', Auth::user()->id) }}">Raport
+                                                        Sek. Kaprodi</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('sekKaprodi.raport', Auth::user()->id) }}">Raport Sek. Ka.
                                                 Prodi</a></li>
                                     </ul>
