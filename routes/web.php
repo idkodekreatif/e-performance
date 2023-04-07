@@ -6,6 +6,7 @@ use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakStaffCont
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\keuangan\iktisarBulananKeuanganStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\lpm\iktisarBulananLpmKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\rektor\iktisarBulananRektorController;
 use App\Http\Controllers\iktisar\iktisarBulanan\warek1\iktisarBulananWarekSatuController;
 use App\Http\Controllers\iktisar\iktisarBulanan\warek2\iktisarBulananWarek2Controller;
@@ -365,6 +366,23 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/keuangan/search-data/raport', [iktisarBulananKeuanganStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.keuangan.data.raport');
             Route::get('/keuangan/data/raport', [iktisarBulananKeuanganStaffController::class, 'staffRaportIktisar'])->name('data.raport.keuangan');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|lpm'])->group(function () {
+            // penilai isi data
+            Route::get('/input/lpm', [iktisarBulananLpmKaUnitController::class, 'create'])->name('iktisar.bulanan.lpm.create');
+            Route::post('/input/lpm/store', [iktisarBulananLpmKaUnitController::class, 'store'])->name('iktisar.bulanan.lpm.store');
+            // search dan pembaruan data
+            Route::get('/lpm/searchData', [iktisarBulananLpmKaUnitController::class, 'searchDataEdit'])->name('iktisar.bulanan.lpm.DataEdit');
+            Route::get('/lpm/edit', [iktisarBulananLpmKaUnitController::class, 'edit'])->name('iktisar.bulanan.lpm.edit');
+            Route::put('/lpm/edit/{id}', [iktisarBulananLpmKaUnitController::class, 'update'])->name('iktisar.bulanan.lpm.update');
+            // Raport tendik dan search detail poin
+            Route::get('/lpm/raport/{user_id}', [iktisarBulananLpmKaUnitController::class, 'raportStaff'])->name('iktisar.bulanan.lpm.raport.lpm');
+            Route::get('/lpm/detail/data', [iktisarBulananLpmKaUnitController::class, 'searchDataPoin'])->name('iktisar.bulanan.lpm.detailData');
+            Route::get('/lpm/detail/data/poin', [iktisarBulananLpmKaUnitController::class, 'dataPoin'])->name('iktisar.bulanan.lpm.poin');
+            // Detail Raport Tendik
+            Route::get('/lpm/search-data/raport', [iktisarBulananLpmKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.lpm.data.raport');
+            Route::get('/lpm/data/raport', [iktisarBulananLpmKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.lpm');
         });
     }
 );

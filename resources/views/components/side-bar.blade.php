@@ -378,6 +378,13 @@
                                 @role('it|superuser|lpm')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.lpm.create') }}">Form Ka. unit</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('Lpm') }}">Form ka. Sub. Lem. SPMI-SPME</a></li>
                                         </ul>
                                     </li>
@@ -619,6 +626,14 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">LPM</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.lpm.raport.lpm', Auth::user()->id) }}">Raport
+                                                        Ka. Unit</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('Lpm.raport', Auth::user()->id) }}">Raport Staff ka. Sub.
                                                 Lem. SPMI-SPME</a></li>
                                     </ul>
