@@ -3,6 +3,8 @@
 use App\Http\Controllers\ControlUserController;
 use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\bau\iktisarBulananBauKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\hrd\iktisarBulananHrdStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\kaprodi\iktisarBulananKaprodiController;
@@ -419,6 +421,40 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/sekkaprodi/search-data/raport', [iktisarBulananKaprodiController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.sekkaprodi.data.raport');
             Route::get('/sekkaprodi/data/raport', [iktisarBulananKaprodiController::class, 'staffRaportIktisar'])->name('data.raport.sekkaprodi');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|bau'])->group(function () {
+            // penilai isi data
+            Route::get('/input/bau', [iktisarBulananBauKaUnitController::class, 'create'])->name('iktisar.bulanan.bau.create');
+            Route::post('/input/bau/store', [iktisarBulananBauKaUnitController::class, 'store'])->name('iktisar.bulanan.bau.store');
+            // search dan pembaruan data
+            Route::get('/bau/searchData', [iktisarBulananBauKaUnitController::class, 'searchDataEdit'])->name('iktisar.bulanan.bau.DataEdit');
+            Route::get('/bau/edit', [iktisarBulananBauKaUnitController::class, 'edit'])->name('iktisar.bulanan.bau.edit');
+            Route::put('/bau/edit/{id}', [iktisarBulananBauKaUnitController::class, 'update'])->name('iktisar.bulanan.bau.update');
+            // Raport tendik dan search detail poin
+            Route::get('/bau/raport/{user_id}', [iktisarBulananBauKaUnitController::class, 'raportStaff'])->name('iktisar.bulanan.bau.raport.bau');
+            Route::get('/bau/detail/data', [iktisarBulananBauKaUnitController::class, 'searchDataPoin'])->name('iktisar.bulanan.bau.detailData');
+            Route::get('/bau/detail/data/poin', [iktisarBulananBauKaUnitController::class, 'dataPoin'])->name('iktisar.bulanan.bau.poin');
+            // Detail Raport Tendik
+            Route::get('/bau/search-data/raport', [iktisarBulananBauKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.bau.data.raport');
+            Route::get('/bau/data/raport', [iktisarBulananBauKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.bau');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|hrd'])->group(function () {
+            // penilai isi data
+            Route::get('/input/hrd', [iktisarBulananHrdStaffController::class, 'create'])->name('iktisar.bulanan.hrd.create');
+            Route::post('/input/hrd/store', [iktisarBulananHrdStaffController::class, 'store'])->name('iktisar.bulanan.hrd.store');
+            // search dan pembaruan data
+            Route::get('/hrd/searchData', [iktisarBulananHrdStaffController::class, 'searchDataEdit'])->name('iktisar.bulanan.hrd.DataEdit');
+            Route::get('/hrd/edit', [iktisarBulananHrdStaffController::class, 'edit'])->name('iktisar.bulanan.hrd.edit');
+            Route::put('/hrd/edit/{id}', [iktisarBulananHrdStaffController::class, 'update'])->name('iktisar.bulanan.hrd.update');
+            // Raport tendik dan search detail poin
+            Route::get('/hrd/raport/{user_id}', [iktisarBulananHrdStaffController::class, 'raportStaff'])->name('iktisar.bulanan.hrd.raport.hrd');
+            Route::get('/hrd/detail/data', [iktisarBulananHrdStaffController::class, 'searchDataPoin'])->name('iktisar.bulanan.hrd.detailData');
+            Route::get('/hrd/detail/data/poin', [iktisarBulananHrdStaffController::class, 'dataPoin'])->name('iktisar.bulanan.hrd.poin');
+            // Detail Raport Tendik
+            Route::get('/hrd/search-data/raport', [iktisarBulananHrdStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.hrd.data.raport');
+            Route::get('/hrd/data/raport', [iktisarBulananHrdStaffController::class, 'staffRaportIktisar'])->name('data.raport.hrd');
         });
     }
 );

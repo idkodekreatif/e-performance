@@ -1,4 +1,4 @@
-<x-app-layout title="Search Data Staff">
+<x-app-layout title="Search Data poin">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
         <link href="{{ asset('Assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
@@ -28,21 +28,9 @@
             </div>
         </div> --}}
 
-        <form action="{{ route('iktisar.bulanan.bau.edit') }}" method="GET">
+        <form action="{{ route('iktisar.bulanan.bau.poin') }}" method="GET">
             <div class="card shadow">
                 <div class="card-body">
-                    <div class="mb-4">
-                        <h4 class="card-title">Nama</h4>
-                        <p class="text-danger">* Select One Name...</p>
-                    </div>
-
-                    <select id="single-select" name="id">
-                        <option value="">-- Select One --</option>
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-
                     <div class="mt-3">
                         <input type="date" class="form-control input-rounded" name="tanggalInput">
                     </div>

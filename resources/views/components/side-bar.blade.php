@@ -432,6 +432,14 @@
                                 @role('it|superuser|bau')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.bau.create') }}">Form Ka.
+                                                            unit</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('kasubBiroKepegawaian') }}">Form Ka. Sub Biro
                                                     Kepegawaian</a></li>
                                             <li><a href="{{ route('KasubBiroKeuangan') }}">Form Ka. Sub. Biro Keuangan &
@@ -445,6 +453,13 @@
                                 @role('it|superuser|hrd')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">SUB BIRO UMUM</a>
                                         <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.hrd.create') }}">Form Staff</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ route('staffumum') }}">Form Staff Umum Dan Kepegawaian</a></li>
                                             <li><a href="{{ route('staffkebersihan') }}">Form Staff Kebersihan</a></li>
                                             <li><a href="{{ route('staffsecurity') }}">Form Staff Security</a></li>
@@ -696,6 +711,14 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">BAU</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.bau.raport.bau', Auth::user()->id) }}">Raport
+                                                        Ka. Unit</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('kasubBiroKepegawaian.raport', Auth::user()->id) }}">Raport
                                                 Ka. Sub Biro Kepegawaian</a></li>
                                         <li><a href="{{ route('KasubBiroKeuangan.raport', Auth::user()->id) }}">Raport
@@ -709,6 +732,14 @@
 
                                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">SUB BIRO UMUM</a>
                                     <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.hrd.raport.hrd', Auth::user()->id) }}">Raport
+                                                        Staff</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{ route('staffumum.raport', Auth::user()->id) }}">Raport Staff Umum
                                                 Dan Kepegawaian</a></li>
                                         <li><a href="{{ route('staffkebersihan.raport', Auth::user()->id) }}">Raport
