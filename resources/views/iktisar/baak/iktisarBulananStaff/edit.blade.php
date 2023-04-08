@@ -58,9 +58,10 @@
             </div>
         </div>
 
-        <form action="{{ route('iktisar.bulanan.staff.store') }}" id="my-form" method="POST"
-            enctype="multipart/form-iktisarStaffBulananPerilaku">
+        <form action="{{ route('iktisar.bulanan.baak.staff.update', $iktisarStaffBulananPerilaku->id) }}" id="my-form"
+            method="POST" enctype="multipart/form-iktisarStaffBulananPerilaku">
             @csrf
+            @method('PUT')
 
             {{-- <div class="card shadow">
                 <div class="card-body">
@@ -493,57 +494,56 @@
                                 </div>
                             </div>
 
-                            {{-- @foreach ($iktisarStaffBulananKompetensi as $key => $data)
-                                <div class="row mt-2 row-question">
-                                    <div class="col-md-3 mt-2">
-                                        <input type="text" name="jenisPekerjaan"
-                                            class="form-control input-default jenis-pekerjaan"
-                                            value="{{ $data->jenis_pekerjaan }}" placeholder="Keterangan Pekerjaan">
-                                    </div>
-                                    <div class="col-md-6 mt-2">
-                                        <div class="row mt-3">
-                                            <div class="col-md">
-                                                <input type="radio" class="question"
-                                                    {{ $data->question == '1' ? 'checked' : '' }}
-                                                    name="question[{{ $key }}]" id="question1"
-                                                    value="1" onclick="sumQuestion();">
-                                            </div>
-                                            <div class="col-md">
-                                                <input type="radio" class="question"
-                                                    {{ $data->question == '2' ? 'checked' : '' }}
-                                                    name="question[{{ $key }}]" id="question2"
-                                                    value="2" onclick="sumQuestion();">
-                                            </div>
-                                            <div class="col-md">
-                                                <input type="radio" class="question"
-                                                    {{ $data->question == '3' ? 'checked' : '' }}
-                                                    name="question[{{ $key }}]" id="question3"
-                                                    value="3" onclick="sumQuestion();">
-                                            </div>
-                                            <div class="col-md">
-                                                <input type="radio" class="question"
-                                                    {{ $data->question == '4' ? 'checked' : '' }}
-                                                    name="question[{{ $key }}]" id="question4"
-                                                    value="4" onclick="sumQuestion();">
-                                            </div>
-                                            <div class="col-md">
-                                                <input type="radio" class="question"
-                                                    {{ $data->question == '5' ? 'checked' : '' }}
-                                                    name="question[{{ $key }}]" id="question5"
-                                                    value="5" onclick="sumQuestion();">
-                                            </div>
+                            {{-- Start Form clone --}}
+                            <div class="row mt-2 row-question" style="display:none">
+                                <div class="col-md-3 mt-2">
+                                    <input type="text" name="jenisPekerjaan"
+                                        class="form-control input-default jenis-pekerjaan"
+                                        placeholder="Keterangan Pekerjaan">
+                                </div>
+                                <div class="col-md-6 mt-2">
+                                    <div class="row mt-3">
+                                        {{-- Insert Poin 1 --}}
+                                        <div class="col-md">
+                                            <input type="radio" class="question" name="question[]" id="question1"
+                                                value="1" onclick="sumQuestion();">
                                         </div>
-                                    </div>
-                                    <div class="col-md-2 mt-2">
-                                        <input type="number" name="jumlahBobot" class="form-control input-default"
-                                            value="{{ $data->nilai_bobot }}" placeholder="Jumlah Bobot (%)">
-                                    </div>
-                                    <div class="col-md-1 mt-2">
-                                        <button type="button" class="btn btn-danger btn-sm" id="DeleteRow"><i
-                                                class="fa-sharp fa-solid fa-trash"></i></button>
+                                        {{-- End insert poin 1 --}}
+                                        {{-- insert poin 2 --}}
+                                        <div class="col-md">
+                                            <input type="radio" class="question" name="question[]" id="question2"
+                                                value="2" onclick="sumQuestion();">
+                                        </div>
+                                        {{-- End insert poin 2 --}}
+                                        {{-- insert poin 3 --}}
+                                        <div class="col-md">
+                                            <input type="radio" class="question" name="question[]" id="question3"
+                                                value="3" onclick="sumQuestion();">
+                                        </div>
+                                        {{-- End insert poin 3 --}}
+                                        {{-- insert poin 4 --}}
+                                        <div class="col-md">
+                                            <input type="radio" class="question" name="question[]" id="question4"
+                                                value="4" onclick="sumQuestion();">
+                                        </div>
+                                        {{-- End insert poin 4 --}}
+                                        {{-- insert poin 5 --}}
+                                        <div class="col-md">
+                                            <input type="radio" class="question" name="question[]" id="question5"
+                                                value="5" onclick="sumQuestion();">
+                                        </div>
+                                        {{-- End insert poin 5 --}}
                                     </div>
                                 </div>
-                            @endforeach --}}
+                                <div class="col-md-2 mt-2">
+                                    <input type="number" name="jumlahBobot" class="form-control input-default "
+                                        placeholder="Jumlah Bobot (%)">
+                                </div>
+                                <div class="col-md-1 mt-2">
+                                    <button class="btn btn-danger btn-sm" id="DeleteRow"><i
+                                            class="fa-sharp fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
                             {{-- End Form clone --}}
 
                             <div class="parent-col mt-2"></div>
@@ -553,7 +553,7 @@
                                     <div class="row">
                                         <div class="col-md">
                                             {{-- Btn Add Row --}}
-                                            <button type="button" class="btn btn-primary rounded-circle"
+                                            <button type=button class="btn btn-primary rounded-circle"
                                                 id="rowAdder"><i class="fa-sharp fa-solid fa-plus"></i></button>
                                             {{-- End btn add  Row --}}
                                         </div>
@@ -565,8 +565,9 @@
                                         <div class="col-md">
                                             <h6>Poin 1</h6>
                                             <input type="number" name="poin1"
-                                                class="form-control form-control-sm poin1" placeholder="Poin 1"
-                                                value="{{ $iktisarStaffBulananPerilaku->total_poin1 }}" readonly>
+                                                class="form-control form-control-sm poin1"
+                                                value="{{ $iktisarStaffBulananPerilaku->total_poin1 }}"
+                                                placeholder="Poin 1" readonly>
                                         </div>
                                         {{-- End Output Total Poin 1 --}}
 
@@ -574,8 +575,9 @@
                                         <div class="col-md">
                                             <h6>Poin 2</h6>
                                             <input type="number" name="poin2"
-                                                class="form-control form-control-sm poin2" placeholder="Poin 2"
-                                                value="{{ $iktisarStaffBulananPerilaku->total_poin2 }}" readonly>
+                                                class="form-control form-control-sm poin2"
+                                                value="{{ $iktisarStaffBulananPerilaku->total_poin2 }}"
+                                                placeholder="Poin 2" readonly>
                                         </div>
                                         {{-- End Output Total Poin 2 --}}
 
@@ -583,8 +585,9 @@
                                         <div class="col-md">
                                             <h6>Poin 3</h6>
                                             <input type="number" name="poin3"
-                                                class="form-control form-control-sm poin3" placeholder="Poin 3"
-                                                value="{{ $iktisarStaffBulananPerilaku->total_poin3 }}" readonly>
+                                                class="form-control form-control-sm poin3"
+                                                value="{{ $iktisarStaffBulananPerilaku->total_poin3 }}"
+                                                placeholder="Poin 3" readonly>
                                         </div>
                                         {{-- End Output Total Poin 3 --}}
 
@@ -592,8 +595,9 @@
                                         <div class="col-md">
                                             <h6>Poin 4</h6>
                                             <input type="number" name="poin4"
-                                                class="form-control form-control-sm poin4" placeholder="Poin 4"
-                                                value="{{ $iktisarStaffBulananPerilaku->total_poin4 }}" readonly>
+                                                class="form-control form-control-sm poin4"
+                                                value="{{ $iktisarStaffBulananPerilaku->total_poin4 }}"
+                                                placeholder="Poin 4" readonly>
                                         </div>
                                         {{-- End Output Total Poin 4 --}}
 
@@ -601,8 +605,9 @@
                                         <div class="col-md">
                                             <h6>Poin 5</h6>
                                             <input type="number" name="poin5"
-                                                class="form-control form-control-sm poin5" placeholder="Poin 5"
-                                                value="{{ $iktisarStaffBulananPerilaku->total_poin5 }}" readonly>
+                                                class="form-control form-control-sm poin5"
+                                                value="{{ $iktisarStaffBulananPerilaku->total_poin5 }}"
+                                                placeholder="Poin 5" readonly>
                                         </div>
                                         {{-- End Output Total Poin 5 --}}
                                     </div>
@@ -612,8 +617,8 @@
                                         <div class="col-md">
                                             <h6>Total Bobot (%)</h6>
                                             <input type="number" name="totalBobot"
-                                                class="form-control form-control-sm jumlah-bobot"
                                                 value="{{ $iktisarStaffBulananPerilaku->total_bobot }}"
+                                                class="form-control form-control-sm jumlah-bobot"
                                                 placeholder="Total Poin" readonly required>
                                         </div>
                                     </div>
@@ -622,21 +627,21 @@
                                 </div>
                             </div>
 
-                            <div class="card shadow">
+                            <div class="card shadow" style="display:none">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md">
                                             <Label>total SUM</Label>
                                             <input type="text" name="totalSum"
-                                                class="form-control input-default total-sum"
                                                 value="{{ number_format($iktisarStaffBulananPerilaku->total_poin_kali_bobot, 2) }}"
+                                                class="form-control input-default total-sum"
                                                 placeholder="input-default" readonly>
                                         </div>
                                         <div class="col-md">
                                             <Label>total Nilai (*80%)</Label>
                                             <input type="text" name="totalPresentase"
-                                                class="form-control input-default total-presentase"
                                                 value="{{ number_format($iktisarStaffBulananPerilaku->total_nilai_presentase, 2) }}"
+                                                class="form-control input-default total-presentase"
                                                 placeholder="input-default" readonly>
                                         </div>
                                     </div>
@@ -737,7 +742,7 @@
                             '<input type="number" name="jumlahBobot[]" value="{{ $data->nilai_bobot }}" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
                             "</div>" +
                             '<div class="col-md-1 mt-2">' +
-                            '<button type=button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
+                            '<button type="button" class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
                             "</div>" +
                             "</div>";
                         $(".parent-col").append(newRow);
@@ -785,7 +790,7 @@
                         '<input type="number" name="jumlahBobot[]" class="form-control input-default bobot" placeholder="Jumlah Bobot (%)">' +
                         "</div>" +
                         '<div class="col-md-1 mt-2">' +
-                        '<button type=button class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
+                        '<button type="button" class="btn btn-danger btn-sm deleteRow"><i class="fa-sharp fa-solid fa-trash"></i></button>' +
                         "</div>" +
                         "</div>";
                     $(".parent-col").append(newRow);
@@ -880,7 +885,7 @@
                     });
 
                     $(".jumlah-bobot").val(totalBobot);
-                    // console.log("Total Bobot: " + totalBobot);
+                    console.log("Total Bobot: " + totalBobot);
 
                     if (
                         $(".parent-col").length === 0 ||
@@ -935,13 +940,14 @@
                             resultTotalValuePoinXBobot; // menambahkan nilai ke variabel total
                         var resultSum = totalPoinXBobot.toFixed(2); // memformat angka hingga 2 desimal
                         $(".total-sum").val(resultSum); // output interfaces: Total SUM: 4.30
-                        // console.log("Total SUM: " + resultSum); // output: Total SUM: 4.30
+                        console.log("Total SUM: " + resultSum); // output: Total SUM: 4.30
 
                         var kaliDelapanPuluPersen = (resultSum * 80) / 100;
                         var resultKaliDelapanPuluPersen = kaliDelapanPuluPersen.toFixed(
                             2); // memformat angka hingga 2 desimal
                         $(".total-presentase").val(resultKaliDelapanPuluPersen);
-                        // console.log("Total Persentase: " + resultKaliDelapanPuluPersen); // output: Total Persentase: 3.44
+                        console.log("Total Persentase: " +
+                            resultKaliDelapanPuluPersen); // output: Total Persentase: 3.44
                     });
 
                     sumQuestion();

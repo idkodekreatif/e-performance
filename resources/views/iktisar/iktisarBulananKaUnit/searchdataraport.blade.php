@@ -19,7 +19,7 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Raport Staff</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Search IKTISAR Bulanan tes</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Data Search IKTISAR Bulanan</a></li>
             </ol>
         </div>
 

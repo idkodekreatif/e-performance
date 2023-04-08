@@ -28,7 +28,7 @@
             </div>
         </div> --}}
 
-        <form action="{{ route('iktisar.bulanan.kaunit.edit') }}" method="GET">
+        <form action="{{ route('iktisar.bulanan.bau.edit') }}" method="GET">
             <div class="card shadow">
                 <div class="card-body">
                     <div class="mb-4">

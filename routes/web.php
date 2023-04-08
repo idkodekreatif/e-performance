@@ -1,8 +1,20 @@
 <?php
 
 use App\Http\Controllers\ControlUserController;
+use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\bau\iktisarBulananBauKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\hrd\iktisarBulananHrdStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\kaprodi\iktisarBulananKaprodiController;
+use App\Http\Controllers\iktisar\iktisarBulanan\keuangan\iktisarBulananKeuanganStaffController;
+use App\Http\Controllers\iktisar\iktisarBulanan\lpm\iktisarBulananLpmKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\rektor\iktisarBulananRektorController;
+use App\Http\Controllers\iktisar\iktisarBulanan\risbang\iktisarBulananRisbangKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\warek1\iktisarBulananWarekSatuController;
+use App\Http\Controllers\iktisar\iktisarBulanan\warek2\iktisarBulananWarek2Controller;
+use App\Http\Controllers\iktisar\iktisarBulanan\ypsdmit\iktisarBulananYpsdmitController;
 use App\Http\Controllers\InputPoint\PointAController;
 use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
@@ -238,6 +250,211 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/kaunit/search-data/raport', [iktisarBulananKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.kaunit.data.raport');
             Route::get('/kaunit/data/raport', [iktisarBulananKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit');
+        });
+
+        // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
+        Route::middleware(['role:it|superuser|tendik|ypsdmit'])->group(function () {
+            // penilai isi data
+            Route::get('/input/ypsdmit', [iktisarBulananYpsdmitController::class, 'create'])->name('iktisar.bulanan.ypsdmit.create');
+            Route::post('/input/ypsdmit/store', [iktisarBulananYpsdmitController::class, 'store'])->name('iktisar.bulanan.ypsdmit.store');
+            // search dan pembaruan data
+            Route::get('/ypsdmit/searchData', [iktisarBulananYpsdmitController::class, 'searchDataEdit'])->name('iktisar.bulanan.ypsdmit.DataEdit');
+            Route::get('/ypsdmit/edit', [iktisarBulananYpsdmitController::class, 'edit'])->name('iktisar.bulanan.ypsdmit.edit');
+            Route::put('/ypsdmit/edit/{id}', [iktisarBulananYpsdmitController::class, 'update'])->name('iktisar.bulanan.ypsdmit.update');
+            // Raport tendik dan search detail poin
+            Route::get('/ypsdmit/raport/{user_id}', [iktisarBulananYpsdmitController::class, 'raportStaff'])->name('iktisar.bulanan.ypsdmit.raport.ypsdmit');
+            Route::get('/ypsdmit/detail/data', [iktisarBulananYpsdmitController::class, 'searchDataPoin'])->name('iktisar.bulanan.ypsdmit.detailData');
+            Route::get('/ypsdmit/detail/data/poin', [iktisarBulananYpsdmitController::class, 'dataPoin'])->name('iktisar.bulanan.ypsdmit.poin');
+            // Detail Raport Tendik
+            Route::get('/ypsdmit/search-data/raport', [iktisarBulananYpsdmitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.ypsdmit.data.raport');
+            Route::get('/ypsdmit/data/raport', [iktisarBulananYpsdmitController::class, 'staffRaportIktisar'])->name('data.raport.ypsdmit');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|rektor'])->group(function () {
+            // penilai isi data
+            Route::get('/input/rektor', [iktisarBulananRektorController::class, 'create'])->name('iktisar.bulanan.rektor.create');
+            Route::post('/input/rektor/store', [iktisarBulananRektorController::class, 'store'])->name('iktisar.bulanan.rektor.store');
+            // search dan pembaruan data
+            Route::get('/rektor/searchData', [iktisarBulananRektorController::class, 'searchDataEdit'])->name('iktisar.bulanan.rektor.DataEdit');
+            Route::get('/rektor/edit', [iktisarBulananRektorController::class, 'edit'])->name('iktisar.bulanan.rektor.edit');
+            Route::put('/rektor/edit/{id}', [iktisarBulananRektorController::class, 'update'])->name('iktisar.bulanan.rektor.update');
+            // Raport tendik dan search detail poin
+            Route::get('/rektor/raport/{user_id}', [iktisarBulananRektorController::class, 'raportStaff'])->name('iktisar.bulanan.rektor.raport.rektor');
+            Route::get('/rektor/detail/data', [iktisarBulananRektorController::class, 'searchDataPoin'])->name('iktisar.bulanan.rektor.detailData');
+            Route::get('/rektor/detail/data/poin', [iktisarBulananRektorController::class, 'dataPoin'])->name('iktisar.bulanan.rektor.poin');
+            // Detail Raport Tendik
+            Route::get('/rektor/search-data/raport', [iktisarBulananRektorController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.rektor.data.raport');
+            Route::get('/rektor/data/raport', [iktisarBulananRektorController::class, 'staffRaportIktisar'])->name('data.raport.rektor');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|warek1'])->group(function () {
+            // penilai isi data
+            Route::get('/input/warekSatu', [iktisarBulananWarekSatuController::class, 'create'])->name('iktisar.bulanan.warekSatu.create');
+            Route::post('/input/warekSatu/store', [iktisarBulananWarekSatuController::class, 'store'])->name('iktisar.bulanan.warekSatu.store');
+            // search dan pembaruan data
+            Route::get('/warekSatu/searchData', [iktisarBulananWarekSatuController::class, 'searchDataEdit'])->name('iktisar.bulanan.warekSatu.DataEdit');
+            Route::get('/warekSatu/edit', [iktisarBulananWarekSatuController::class, 'edit'])->name('iktisar.bulanan.warekSatu.edit');
+            Route::put('/warekSatu/edit/{id}', [iktisarBulananWarekSatuController::class, 'update'])->name('iktisar.bulanan.warekSatu.update');
+            // Raport tendik dan search detail poin
+            Route::get('/warekSatu/raport/{user_id}', [iktisarBulananWarekSatuController::class, 'raportStaff'])->name('iktisar.bulanan.warekSatu.raport.warekSatu');
+            Route::get('/warekSatu/detail/data', [iktisarBulananWarekSatuController::class, 'searchDataPoin'])->name('iktisar.bulanan.warekSatu.detailData');
+            Route::get('/warekSatu/detail/data/poin', [iktisarBulananWarekSatuController::class, 'dataPoin'])->name('iktisar.bulanan.warekSatu.poin');
+            // Detail Raport Tendik
+            Route::get('/warekSatu/search-data/raport', [iktisarBulananWarekSatuController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.warekSatu.data.raport');
+            Route::get('/warekSatu/data/raport', [iktisarBulananWarekSatuController::class, 'staffRaportIktisar'])->name('data.raport.warekSatu');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|warek2'])->group(function () {
+            // penilai isi data
+            Route::get('/input/warekDua', [iktisarBulananWarek2Controller::class, 'create'])->name('iktisar.bulanan.warekDua.create');
+            Route::post('/input/warekDua/store', [iktisarBulananWarek2Controller::class, 'store'])->name('iktisar.bulanan.warekDua.store');
+            // search dan pembaruan data
+            Route::get('/warekDua/searchData', [iktisarBulananWarek2Controller::class, 'searchDataEdit'])->name('iktisar.bulanan.warekDua.DataEdit');
+            Route::get('/warekDua/edit', [iktisarBulananWarek2Controller::class, 'edit'])->name('iktisar.bulanan.warekDua.edit');
+            Route::put('/warekDua/edit/{id}', [iktisarBulananWarek2Controller::class, 'update'])->name('iktisar.bulanan.warekDua.update');
+            // Raport tendik dan search detail poin
+            Route::get('/warekDua/raport/{user_id}', [iktisarBulananWarek2Controller::class, 'raportStaff'])->name('iktisar.bulanan.warekDua.raport.warekDua');
+            Route::get('/warekDua/detail/data', [iktisarBulananWarek2Controller::class, 'searchDataPoin'])->name('iktisar.bulanan.warekDua.detailData');
+            Route::get('/warekDua/detail/data/poin', [iktisarBulananWarek2Controller::class, 'dataPoin'])->name('iktisar.bulanan.warekDua.poin');
+            // Detail Raport Tendik
+            Route::get('/warekDua/search-data/raport', [iktisarBulananWarek2Controller::class, 'searchRaportIktisar'])->name('iktisar.bulanan.warekDua.data.raport');
+            Route::get('/warekDua/data/raport', [iktisarBulananWarek2Controller::class, 'staffRaportIktisar'])->name('data.raport.warekDua');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|baak'])->group(function () {
+            // penilai isi data
+            Route::get('/input/baak/staff', [iktisarBulananBaakStaffController::class, 'create'])->name('iktisar.bulanan.baak.staff.create');
+            Route::post('/input/baak/staff/store', [iktisarBulananBaakStaffController::class, 'store'])->name('iktisar.bulanan.baak.staff.store');
+            // search dan pembaruan data
+            Route::get('/baak/staff/searchData', [iktisarBulananBaakStaffController::class, 'searchDataEdit'])->name('iktisar.bulanan.baak.staff.DataEdit');
+            Route::get('/baak/edit/staff', [iktisarBulananBaakStaffController::class, 'edit'])->name('iktisar.bulanan.baak.staff.edit');
+            Route::put('/baak/edit/staff/{id}', [iktisarBulananBaakStaffController::class, 'update'])->name('iktisar.bulanan.baak.staff.update');
+            // Raport tendik dan search detail poin
+            Route::get('/baak/raport/staff/{user_id}', [iktisarBulananBaakStaffController::class, 'raportStaff'])->name('iktisar.bulanan.baak.staff.raport.baak');
+            Route::get('/baak/staff/detail/data', [iktisarBulananBaakStaffController::class, 'searchDataPoin'])->name('iktisar.bulanan.baak.staff.detailData');
+            Route::get('/baak/staff/detail/data/poin', [iktisarBulananBaakStaffController::class, 'dataPoin'])->name('iktisar.bulanan.baak.staff.poin');
+            // Detail Raport Tendik
+            Route::get('/baak/staff/search-data/raport', [iktisarBulananBaakStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.baak.staff.data.raport');
+            Route::get('/baak/staff/data/raport', [iktisarBulananBaakStaffController::class, 'staffRaportIktisar'])->name('data.raport.staff.baak');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|baak'])->group(function () {
+            // penilai isi data
+            Route::get('/input/baak/kaunit', [iktisarBulananBaakKaUnitController::class, 'create'])->name('iktisar.bulanan.baak.kaunit.create');
+            Route::post('/input/baak/kaunit/store', [iktisarBulananBaakKaUnitController::class, 'store'])->name('iktisar.bulanan.baak.kaunit.store');
+            // search dan pembaruan data
+            Route::get('/baak/kaunit/searchData', [iktisarBulananBaakKaUnitController::class, 'searchDataEdit'])->name('iktisar.bulanan.baak.kaunit.DataEdit');
+            Route::get('/baak/edit/kaunit', [iktisarBulananBaakKaUnitController::class, 'edit'])->name('iktisar.bulanan.baak.kaunit.edit');
+            Route::put('/baak/edit/kaunit/{id}', [iktisarBulananBaakKaUnitController::class, 'update'])->name('iktisar.bulanan.baak.kaunit.update');
+            // Raport tendik dan search detail poin
+            Route::get('/baak/raport/kaunit/{user_id}', [iktisarBulananBaakKaUnitController::class, 'raportStaff'])->name('iktisar.bulanan.baak.kaunit.raport.baak');
+            Route::get('/baak/kaunit/detail/data', [iktisarBulananBaakKaUnitController::class, 'searchDataPoin'])->name('iktisar.bulanan.baak.kaunit.detailData');
+            Route::get('/baak/kaunit/detail/data/poin', [iktisarBulananBaakKaUnitController::class, 'dataPoin'])->name('iktisar.bulanan.baak.kaunit.poin');
+            // Detail Raport Tendik
+            Route::get('/baak/kaunit/search-data/raport', [iktisarBulananBaakKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.baak.kaunit.data.raport');
+            Route::get('/baak/kaunit/data/raport', [iktisarBulananBaakKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit.baak');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|keuangan'])->group(function () {
+            // penilai isi data
+            Route::get('/input/keuangan', [iktisarBulananKeuanganStaffController::class, 'create'])->name('iktisar.bulanan.keuangan.create');
+            Route::post('/input/keuangan/store', [iktisarBulananKeuanganStaffController::class, 'store'])->name('iktisar.bulanan.keuangan.store');
+            // search dan pembaruan data
+            Route::get('/keuangan/searchData', [iktisarBulananKeuanganStaffController::class, 'searchDataEdit'])->name('iktisar.bulanan.keuangan.DataEdit');
+            Route::get('/keuangan/edit', [iktisarBulananKeuanganStaffController::class, 'edit'])->name('iktisar.bulanan.keuangan.edit');
+            Route::put('/keuangan/edit/{id}', [iktisarBulananKeuanganStaffController::class, 'update'])->name('iktisar.bulanan.keuangan.update');
+            // Raport tendik dan search detail poin
+            Route::get('/keuangan/raport/{user_id}', [iktisarBulananKeuanganStaffController::class, 'raportStaff'])->name('iktisar.bulanan.keuangan.raport.keuangan');
+            Route::get('/keuangan/detail/data', [iktisarBulananKeuanganStaffController::class, 'searchDataPoin'])->name('iktisar.bulanan.keuangan.detailData');
+            Route::get('/keuangan/detail/data/poin', [iktisarBulananKeuanganStaffController::class, 'dataPoin'])->name('iktisar.bulanan.keuangan.poin');
+            // Detail Raport Tendik
+            Route::get('/keuangan/search-data/raport', [iktisarBulananKeuanganStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.keuangan.data.raport');
+            Route::get('/keuangan/data/raport', [iktisarBulananKeuanganStaffController::class, 'staffRaportIktisar'])->name('data.raport.keuangan');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|lpm'])->group(function () {
+            // penilai isi data
+            Route::get('/input/lpm', [iktisarBulananLpmKaUnitController::class, 'create'])->name('iktisar.bulanan.lpm.create');
+            Route::post('/input/lpm/store', [iktisarBulananLpmKaUnitController::class, 'store'])->name('iktisar.bulanan.lpm.store');
+            // search dan pembaruan data
+            Route::get('/lpm/searchData', [iktisarBulananLpmKaUnitController::class, 'searchDataEdit'])->name('iktisar.bulanan.lpm.DataEdit');
+            Route::get('/lpm/edit', [iktisarBulananLpmKaUnitController::class, 'edit'])->name('iktisar.bulanan.lpm.edit');
+            Route::put('/lpm/edit/{id}', [iktisarBulananLpmKaUnitController::class, 'update'])->name('iktisar.bulanan.lpm.update');
+            // Raport tendik dan search detail poin
+            Route::get('/lpm/raport/{user_id}', [iktisarBulananLpmKaUnitController::class, 'raportStaff'])->name('iktisar.bulanan.lpm.raport.lpm');
+            Route::get('/lpm/detail/data', [iktisarBulananLpmKaUnitController::class, 'searchDataPoin'])->name('iktisar.bulanan.lpm.detailData');
+            Route::get('/lpm/detail/data/poin', [iktisarBulananLpmKaUnitController::class, 'dataPoin'])->name('iktisar.bulanan.lpm.poin');
+            // Detail Raport Tendik
+            Route::get('/lpm/search-data/raport', [iktisarBulananLpmKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.lpm.data.raport');
+            Route::get('/lpm/data/raport', [iktisarBulananLpmKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.lpm');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|risbang'])->group(function () {
+            // penilai isi data
+            Route::get('/input/risbang', [iktisarBulananRisbangKaUnitController::class, 'create'])->name('iktisar.bulanan.risbang.create');
+            Route::post('/input/risbang/store', [iktisarBulananRisbangKaUnitController::class, 'store'])->name('iktisar.bulanan.risbang.store');
+            // search dan pembaruan data
+            Route::get('/risbang/searchData', [iktisarBulananRisbangKaUnitController::class, 'searchDataEdit'])->name('iktisar.bulanan.risbang.DataEdit');
+            Route::get('/risbang/edit', [iktisarBulananRisbangKaUnitController::class, 'edit'])->name('iktisar.bulanan.risbang.edit');
+            Route::put('/risbang/edit/{id}', [iktisarBulananRisbangKaUnitController::class, 'update'])->name('iktisar.bulanan.risbang.update');
+            // Raport tendik dan search detail poin
+            Route::get('/risbang/raport/{user_id}', [iktisarBulananRisbangKaUnitController::class, 'raportStaff'])->name('iktisar.bulanan.risbang.raport.risbang');
+            Route::get('/risbang/detail/data', [iktisarBulananRisbangKaUnitController::class, 'searchDataPoin'])->name('iktisar.bulanan.risbang.detailData');
+            Route::get('/risbang/detail/data/poin', [iktisarBulananRisbangKaUnitController::class, 'dataPoin'])->name('iktisar.bulanan.risbang.poin');
+            // Detail Raport Tendik
+            Route::get('/risbang/search-data/raport', [iktisarBulananRisbangKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.risbang.data.raport');
+            Route::get('/risbang/data/raport', [iktisarBulananRisbangKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.risbang');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|gizi|perawat|bidan|manajemen|akuntansi'])->group(function () {
+            // penilai isi data
+            Route::get('/input/sekkaprodi', [iktisarBulananKaprodiController::class, 'create'])->name('iktisar.bulanan.sekkaprodi.create');
+            Route::post('/input/sekkaprodi/store', [iktisarBulananKaprodiController::class, 'store'])->name('iktisar.bulanan.sekkaprodi.store');
+            // search dan pembaruan data
+            Route::get('/sekkaprodi/searchData', [iktisarBulananKaprodiController::class, 'searchDataEdit'])->name('iktisar.bulanan.sekkaprodi.DataEdit');
+            Route::get('/sekkaprodi/edit', [iktisarBulananKaprodiController::class, 'edit'])->name('iktisar.bulanan.sekkaprodi.edit');
+            Route::put('/sekkaprodi/edit/{id}', [iktisarBulananKaprodiController::class, 'update'])->name('iktisar.bulanan.sekkaprodi.update');
+            // Raport tendik dan search detail poin
+            Route::get('/sekkaprodi/raport/{user_id}', [iktisarBulananKaprodiController::class, 'raportStaff'])->name('iktisar.bulanan.sekkaprodi.raport.sekkaprodi');
+            Route::get('/sekkaprodi/detail/data', [iktisarBulananKaprodiController::class, 'searchDataPoin'])->name('iktisar.bulanan.sekkaprodi.detailData');
+            Route::get('/sekkaprodi/detail/data/poin', [iktisarBulananKaprodiController::class, 'dataPoin'])->name('iktisar.bulanan.sekkaprodi.poin');
+            // Detail Raport Tendik
+            Route::get('/sekkaprodi/search-data/raport', [iktisarBulananKaprodiController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.sekkaprodi.data.raport');
+            Route::get('/sekkaprodi/data/raport', [iktisarBulananKaprodiController::class, 'staffRaportIktisar'])->name('data.raport.sekkaprodi');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|bau'])->group(function () {
+            // penilai isi data
+            Route::get('/input/bau', [iktisarBulananBauKaUnitController::class, 'create'])->name('iktisar.bulanan.bau.create');
+            Route::post('/input/bau/store', [iktisarBulananBauKaUnitController::class, 'store'])->name('iktisar.bulanan.bau.store');
+            // search dan pembaruan data
+            Route::get('/bau/searchData', [iktisarBulananBauKaUnitController::class, 'searchDataEdit'])->name('iktisar.bulanan.bau.DataEdit');
+            Route::get('/bau/edit', [iktisarBulananBauKaUnitController::class, 'edit'])->name('iktisar.bulanan.bau.edit');
+            Route::put('/bau/edit/{id}', [iktisarBulananBauKaUnitController::class, 'update'])->name('iktisar.bulanan.bau.update');
+            // Raport tendik dan search detail poin
+            Route::get('/bau/raport/{user_id}', [iktisarBulananBauKaUnitController::class, 'raportStaff'])->name('iktisar.bulanan.bau.raport.bau');
+            Route::get('/bau/detail/data', [iktisarBulananBauKaUnitController::class, 'searchDataPoin'])->name('iktisar.bulanan.bau.detailData');
+            Route::get('/bau/detail/data/poin', [iktisarBulananBauKaUnitController::class, 'dataPoin'])->name('iktisar.bulanan.bau.poin');
+            // Detail Raport Tendik
+            Route::get('/bau/search-data/raport', [iktisarBulananBauKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.bau.data.raport');
+            Route::get('/bau/data/raport', [iktisarBulananBauKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.bau');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|hrd'])->group(function () {
+            // penilai isi data
+            Route::get('/input/hrd', [iktisarBulananHrdStaffController::class, 'create'])->name('iktisar.bulanan.hrd.create');
+            Route::post('/input/hrd/store', [iktisarBulananHrdStaffController::class, 'store'])->name('iktisar.bulanan.hrd.store');
+            // search dan pembaruan data
+            Route::get('/hrd/searchData', [iktisarBulananHrdStaffController::class, 'searchDataEdit'])->name('iktisar.bulanan.hrd.DataEdit');
+            Route::get('/hrd/edit', [iktisarBulananHrdStaffController::class, 'edit'])->name('iktisar.bulanan.hrd.edit');
+            Route::put('/hrd/edit/{id}', [iktisarBulananHrdStaffController::class, 'update'])->name('iktisar.bulanan.hrd.update');
+            // Raport tendik dan search detail poin
+            Route::get('/hrd/raport/{user_id}', [iktisarBulananHrdStaffController::class, 'raportStaff'])->name('iktisar.bulanan.hrd.raport.hrd');
+            Route::get('/hrd/detail/data', [iktisarBulananHrdStaffController::class, 'searchDataPoin'])->name('iktisar.bulanan.hrd.detailData');
+            Route::get('/hrd/detail/data/poin', [iktisarBulananHrdStaffController::class, 'dataPoin'])->name('iktisar.bulanan.hrd.poin');
+            // Detail Raport Tendik
+            Route::get('/hrd/search-data/raport', [iktisarBulananHrdStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.hrd.data.raport');
+            Route::get('/hrd/data/raport', [iktisarBulananHrdStaffController::class, 'staffRaportIktisar'])->name('data.raport.hrd');
         });
     }
 );
