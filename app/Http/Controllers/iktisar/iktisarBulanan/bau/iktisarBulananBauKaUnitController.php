@@ -94,7 +94,7 @@ class iktisarBulananBauKaUnitController extends Controller
         $users = User::whereNotIn('name', [
             'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
-        return view('iktisar.iktisarBulananKaUnit.searchdata', compact('users'));
+        return view('iktisar.bau.iktisarBulananKaUnit.searchdata', compact('users'));
     }
     // penilai
     public function edit(Request $request)
