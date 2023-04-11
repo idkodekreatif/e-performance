@@ -127,10 +127,10 @@
             <p class="nama-dosen">Penilai,</p>
             <br>
             <br>
-            <p class="nama-dosen">Teguh Wijaya mahdi</p>
+            <p class="nama-dosen">Teguh Wijaya Mahdy, SE</p>
         </div>
         <div class="pihak kanan">
-            <p class="nama-warek">Tendik,</p>
+            <p class="nama-warek">Yang dinilai,</p>
             <br>
             <br>
             <p class="nama-warek">{{$data->name}}</p>
@@ -139,11 +139,11 @@
 
     <div class="signatures">
         <div class="center-signature">
-            <p>Mengetahui,</p>
-            <p>Wakil Rektor II</p>
+            <p>Menyetujui/Mengesahkan,</p>
+            <p>Rektor,</p>
             <br>
             <br>
-            <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.</p>
+            <p>Dr. Ahmad Hariyanto, M.Si.</p>
         </div>
     </div>
 
