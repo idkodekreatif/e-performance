@@ -454,7 +454,7 @@ Route::group(
             Route::get('/hrd/detail/data/poin', [iktisarBulananHrdStaffController::class, 'dataPoin'])->name('iktisar.bulanan.hrd.poin');
             // Detail Raport Tendik
             Route::get('/hrd/search-data/raport', [iktisarBulananHrdStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.hrd.data.raport');
-            Route::get('/hrd/data/raport', [iktisarBulananHrdStaffController::class, 'staffRaportIktisar'])->name('data.raport.hrd');
+            Route::get('/hrd/data/raport/', [iktisarBulananHrdStaffController::class, 'staffRaportIktisar'])->name('data.raport.hrd');
         });
     }
 );

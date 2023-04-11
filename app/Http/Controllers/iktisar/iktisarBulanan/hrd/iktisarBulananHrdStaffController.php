@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\iktisar\staff\hrd\iktisarHrdBulananStaffKompetensi;
 use App\Models\iktisar\staff\hrd\iktisarHrdBulananStaffPerilaku;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -324,10 +325,7 @@ class iktisarBulananHrdStaffController extends Controller
 
     public function staffRaportIktisar(Request $request)
     {
-        $tanggalInput = $request->input('tanggalInput');
         $id = $request->input('id');
-
-        // Konversi format tanggal
         $tanggalInput = Carbon::createFromFormat('Y-m-d', $request->input('tanggalInput'));
 
         $data = DB::table('users')
@@ -344,9 +342,13 @@ class iktisarBulananHrdStaffController extends Controller
             ->whereMonth('iktisar_staff_hrd_bulanan_perilaku.created_insert', $tanggalInput)
             ->first();
 
-        // dd($data);
         if (!empty($data)) {
-            return view('iktisar.hrd.iktisarBulananStaff.cekraport', compact('data'));
+            if ($request->input('type') === 'pdf') {
+                $pdf = PDF::loadView('iktisar.hrd.iktisarBulananStaff.raportPdf', compact('data', 'tanggalInput'))->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
+                return $pdf->download('raport_' . $data->name . '_' . $tanggalInput->format('Y-m-d') . '.pdf');
+            } else {
+                return view('iktisar.hrd.iktisarBulananStaff.cekraport', compact('data', 'tanggalInput'));
+            }
         } else {
             toast('Data Empty', 'error');
             return redirect()->back();

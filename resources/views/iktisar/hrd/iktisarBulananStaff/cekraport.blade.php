@@ -10,10 +10,21 @@
             </ol>
         </div>
 
+        <div class="row">
+            <div class="col-md">
+                <a href="{{ route('data.raport.hrd', ['id' => $data->user_id, 'tanggalInput' => $tanggalInput->format('Y-m-d'), 'type' => 'pdf']) }}" class="btn btn-primary btn-xs mb-2 float-end">
+                    <i class="fa-solid fa-print"></i>
+                    Download PDF
+                </a>
+            </div>
+        </div>
         <div class="card shadow">
             <div class="card-header">
                 <h4 class="card-title">Raport</h4>
             </div>
+
+
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
@@ -42,20 +53,20 @@
                         <?php
                         $DataUserKinerjaPerilaku = (float) $data->output_total_sementara_kinerja_perilaku;
                         $DataUserKinerjaKompetensi = (float) $data->total_nilai_presentase;
-                        
+
                         // SUM Nilai Perilaku dan Kompetensi
                         $resultSumPerilakuKompetensi = $DataUserKinerjaPerilaku + $DataUserKinerjaKompetensi;
-                        
+
                         // Predikat Perilaku dan Kompetensi
                         if ($resultSumPerilakuKompetensi >= 5) {
                             $OutPutPredikatKompetensi = 'ISTIMEWA';
-                        } elseif ($resultSumPerilakuKompetensi >= 4.01) {
+                        } elseif ($resultSumPerilakuKompetensi >= 4) {
                             # code...
                             $OutPutPredikatKompetensi = 'SANGAT BAIK';
-                        } elseif ($resultSumPerilakuKompetensi >= 3.01) {
+                        } elseif ($resultSumPerilakuKompetensi >= 3) {
                             # code...
                             $OutPutPredikatKompetensi = 'BAIK';
-                        } elseif ($resultSumPerilakuKompetensi >= 2.01) {
+                        } elseif ($resultSumPerilakuKompetensi >= 2) {
                             # code...
                             $OutPutPredikatKompetensi = 'CUKUP';
                         } else {
