@@ -10,10 +10,21 @@
             </ol>
         </div>
 
+        <div class="row">
+            <div class="col-md">
+                <a href="{{ route('data.raport.hrd', ['id' => $data->user_id, 'tanggalInput' => $tanggalInput->format('Y-m-d'), 'type' => 'pdf']) }}" class="btn btn-primary btn-xs mb-2 float-end">
+                    <i class="fa-solid fa-print"></i>
+                    Download PDF
+                </a>
+            </div>
+        </div>
         <div class="card shadow">
             <div class="card-header">
                 <h4 class="card-title">Raport</h4>
             </div>
+
+
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
