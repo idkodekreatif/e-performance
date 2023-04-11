@@ -42,20 +42,20 @@
                         <?php
                         $DataUserKinerjaPerilaku = (float) $data->output_total_sementara_kinerja_perilaku;
                         $DataUserKinerjaKompetensi = (float) $data->total_nilai_presentase;
-                        
+
                         // SUM Nilai Perilaku dan Kompetensi
                         $resultSumPerilakuKompetensi = $DataUserKinerjaPerilaku + $DataUserKinerjaKompetensi;
-                        
+
                         // Predikat Perilaku dan Kompetensi
                         if ($resultSumPerilakuKompetensi >= 5) {
                             $OutPutPredikatKompetensi = 'ISTIMEWA';
-                        } elseif ($resultSumPerilakuKompetensi >= 4.01) {
+                        } elseif ($resultSumPerilakuKompetensi >= 4) {
                             # code...
                             $OutPutPredikatKompetensi = 'SANGAT BAIK';
-                        } elseif ($resultSumPerilakuKompetensi >= 3.01) {
+                        } elseif ($resultSumPerilakuKompetensi >= 3) {
                             # code...
                             $OutPutPredikatKompetensi = 'BAIK';
-                        } elseif ($resultSumPerilakuKompetensi >= 2.01) {
+                        } elseif ($resultSumPerilakuKompetensi >= 2) {
                             # code...
                             $OutPutPredikatKompetensi = 'CUKUP';
                         } else {
