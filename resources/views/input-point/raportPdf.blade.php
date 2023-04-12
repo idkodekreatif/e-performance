@@ -308,11 +308,11 @@
 
     <div class="signatures">
         <div class="center-signature">
-            <p>Mengetahui,</p>
-            <p>Wakil Rektor II</p>
+            <p>Menyetujui/Mengesahkan</p>
+            <p>Rektor,</p>
             <br>
             <br>
-            <p>Dr. M. Budi Widajanto, Drs. Ec., M.P.</p>
+            <p>Dr. Ahmad Hariyanto, M.Si.</p>
         </div>
     </div>
 
