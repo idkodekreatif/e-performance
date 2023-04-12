@@ -321,7 +321,7 @@ Route::group(
             Route::get('/warekDua/data/raport', [iktisarBulananWarek2Controller::class, 'staffRaportIktisar'])->name('data.raport.warekDua');
         });
 
-        Route::middleware(['role:it|superuser|tendik|baak'])->group(function () {
+        Route::middleware(['role:it|superuser|tendik|kasubbaak'])->group(function () {
             // penilai isi data
             Route::get('/input/baak/staff', [iktisarBulananBaakStaffController::class, 'create'])->name('iktisar.bulanan.baak.staff.create');
             Route::post('/input/baak/staff/store', [iktisarBulananBaakStaffController::class, 'store'])->name('iktisar.bulanan.baak.staff.store');
