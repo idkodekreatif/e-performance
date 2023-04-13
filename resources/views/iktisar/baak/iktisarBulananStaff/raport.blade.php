@@ -13,7 +13,7 @@
         <div class="mb-2">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('iktisar.bulanan.staff.detailData') }}"
+                    <a href="{{ route('iktisar.bulanan.baak.staff.detailData') }}"
                         class="btn btn-primary btn-sm mb-2">Poin</a>
                 </div>
                 <div class="col">
