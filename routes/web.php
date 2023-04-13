@@ -216,7 +216,7 @@ Route::group(
     ['prefix' => "/IKTISAR/bulanan", 'middleware' => ['auth', 'verified', 'prevent-back-history']],
     function () {
         // -----------------------------IKTISAR Bulanan Staff----------------------------------------//
-        Route::middleware(['role:it|superuser|tendik|dosen'])->group(function () {
+        Route::middleware(['role:it|superuser|tendik|upt'])->group(function () {
             // penilai isi data
             Route::get('/input/staff', [iktisarBulananStaffController::class, 'create'])->name('iktisar.bulanan.staff.create');
             Route::post('/input/staff/store', [iktisarBulananStaffController::class, 'store'])->name('iktisar.bulanan.staff.store');
@@ -235,7 +235,7 @@ Route::group(
 
 
         // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
-        Route::middleware(['role:it|superuser|tendik|dosen'])->group(function () {
+        Route::middleware(['role:it|superuser|tendik|upt'])->group(function () {
             // penilai isi data
             Route::get('/input/kaunit', [iktisarBulananKaUnitController::class, 'create'])->name('iktisar.bulanan.kaunit.create');
             Route::post('/input/kaunit/store', [iktisarBulananKaUnitController::class, 'store'])->name('iktisar.bulanan.kaunit.store');
