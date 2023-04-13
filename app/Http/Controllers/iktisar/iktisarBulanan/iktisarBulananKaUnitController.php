@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class iktisarBulananKaUnitController extends Controller
 {
@@ -325,12 +326,40 @@ class iktisarBulananKaUnitController extends Controller
         return view('iktisar.iktisarBulananKaUnit.searchdataraport', compact('users'));
     }
 
+    // public function staffRaportIktisar(Request $request)
+    // {
+    //     $tanggalInput = $request->input('tanggalInput');
+    //     $id = $request->input('id');
+
+    //     // Konversi format tanggal
+    //     $tanggalInput = Carbon::createFromFormat('Y-m-d', $request->input('tanggalInput'));
+
+    //     $data = DB::table('users')
+    //         ->leftJoin('iktisar_kaunit_bulanan_perilaku', 'users.id', '=', 'iktisar_kaunit_bulanan_perilaku.user_id')
+    //         ->select(
+    //             'users.name',
+    //             'users.email',
+    //             'iktisar_kaunit_bulanan_perilaku.user_id',
+    //             'iktisar_kaunit_bulanan_perilaku.output_total_sementara_kinerja_perilaku',
+    //             'iktisar_kaunit_bulanan_perilaku.total_nilai_presentase',
+    //         )
+    //         ->where('iktisar_kaunit_bulanan_perilaku.user_id', $id)
+    //         ->whereYear('iktisar_kaunit_bulanan_perilaku.created_insert', $tanggalInput)
+    //         ->whereMonth('iktisar_kaunit_bulanan_perilaku.created_insert', $tanggalInput)
+    //         ->first();
+
+    //     // dd($data);
+    //     if (!empty($data)) {
+    //         return view('iktisar.iktisarBulananKaUnit.cekraport', compact('data'));
+    //     } else {
+    //         toast('Data Empty', 'error');
+    //         return redirect()->back();
+    //     }
+    // }
+
     public function staffRaportIktisar(Request $request)
     {
-        $tanggalInput = $request->input('tanggalInput');
         $id = $request->input('id');
-
-        // Konversi format tanggal
         $tanggalInput = Carbon::createFromFormat('Y-m-d', $request->input('tanggalInput'));
 
         $data = DB::table('users')
@@ -347,9 +376,13 @@ class iktisarBulananKaUnitController extends Controller
             ->whereMonth('iktisar_kaunit_bulanan_perilaku.created_insert', $tanggalInput)
             ->first();
 
-        // dd($data);
         if (!empty($data)) {
-            return view('iktisar.iktisarBulananKaUnit.cekraport', compact('data'));
+            if ($request->input('type') === 'pdf') {
+                $pdf = PDF::loadView('iktisar.iktisarBulananKaUnit.raportPdf', compact('data', 'tanggalInput'))->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
+                return $pdf->download('raport_' . $data->name . '_' . $tanggalInput->format('Y-m-d') . '.pdf');
+            } else {
+                return view('iktisar.iktisarBulananKaUnit.cekraport', compact('data', 'tanggalInput'));
+            }
         } else {
             toast('Data Empty', 'error');
             return redirect()->back();
