@@ -69,6 +69,8 @@
 </head>
 
 <body>
+    <h3 style="text-align: center; font-weight:bold;">REKAP NILAI IKTISAR BULAN <?php echo strtoupper(date('F')); ?> - <?php echo date('Y'); ?>
+    </h3>
     <table style="text-align:center;">
         <?php
         $DataUserKinerjaPerilaku = (float) $data->output_total_sementara_kinerja_perilaku;
@@ -127,7 +129,7 @@
             <p class="nama-dosen">Penilai,</p>
             <br>
             <br>
-            <p class="nama-dosen">Moch. Yudi, S.Pd</p>
+            <p class="nama-dosen">Muchamad Yudi, S.Pd</p>
         </div>
         <div class="pihak kanan">
             <p class="nama-warek">Yang dinilai,</p>
