@@ -69,6 +69,9 @@
 </head>
 
 <body>
+
+    <h3 style="text-align: center; font-weight:bold;">REKAP NILAI IKTISAR BULAN <?php echo strtoupper(date('F')); ?> - <?php echo date('Y'); ?>
+    </h3>
     <table style="text-align:center;">
         <?php
         $DataUserKinerjaPerilaku = (float) $data->output_total_sementara_kinerja_perilaku;
