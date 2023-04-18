@@ -129,25 +129,13 @@
             <p class="nama-dosen">Penilai,</p>
             <br>
             <br>
-            @if (Auth::user()->hasRole('perawat'))
-                <p class="nama-dosen">Ariska Putri Hidayathillah, S.Kep.,Ns., M. Epid</p>
-            @elseif (Auth::user()->hasRole('gizi'))
-                <p class="nama-dosen">Ir. RR. Nurul Hidayati, M. Si</p>
-            @elseif (Auth::user()->hasRole('bidan'))
-                <p class="nama-dosen">Fidatul Jamila, S.ST., M.Si.</p>
-            @elseif (Auth::user()->hasRole('manajement'))
-                <p class="nama-dosen">Drs. Setiawan SA, S.E., MM</p>
-            @elseif (Auth::user()->hasRole('akuntansi'))
-                <p class="nama-dosen">Pinky Pininta Dewi, S. Ak., MM</p>
-            @endif
-
-
+            <p class="nama-dosen">Agus Prasetya, S.Pd., M.Pd</p>
         </div>
         <div class="pihak kanan">
             <p class="nama-warek">Yang dinilai,</p>
             <br>
             <br>
-            <p class="nama-warek">{{ $data->name }}</p>
+            <p class="nama-warek">{{$data->name}}</p>
         </div>
     </div>
 
