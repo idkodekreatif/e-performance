@@ -4,6 +4,7 @@ use App\Http\Controllers\ControlUserController;
 use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\baak\iktisarBulananBaakStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\bau\iktisarBulananBauKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\Dekan\iktisarBulananDekanController;
 use App\Http\Controllers\iktisar\iktisarBulanan\hrd\iktisarBulananHrdStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
@@ -455,6 +456,23 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/hrd/search-data/raport', [iktisarBulananHrdStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.hrd.data.raport');
             Route::get('/hrd/data/raport/', [iktisarBulananHrdStaffController::class, 'staffRaportIktisar'])->name('data.raport.hrd');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|dekan'])->group(function () {
+            // penilai isi data
+            Route::get('/input/dekan', [iktisarBulananDekanController::class, 'create'])->name('iktisar.bulanan.dekan.create');
+            Route::post('/input/dekan/store', [iktisarBulananDekanController::class, 'store'])->name('iktisar.bulanan.dekan.store');
+            // search dan pembaruan data
+            Route::get('/dekan/searchData', [iktisarBulananDekanController::class, 'searchDataEdit'])->name('iktisar.bulanan.dekan.DataEdit');
+            Route::get('/dekan/edit', [iktisarBulananDekanController::class, 'edit'])->name('iktisar.bulanan.dekan.edit');
+            Route::put('/dekan/edit/{id}', [iktisarBulananDekanController::class, 'update'])->name('iktisar.bulanan.dekan.update');
+            // Raport tendik dan search detail poin
+            Route::get('/dekan/raport/{user_id}', [iktisarBulananDekanController::class, 'raportStaff'])->name('iktisar.bulanan.dekan.raport.dekan');
+            Route::get('/dekan/detail/data', [iktisarBulananDekanController::class, 'searchDataPoin'])->name('iktisar.bulanan.dekan.detailData');
+            Route::get('/dekan/detail/data/poin', [iktisarBulananDekanController::class, 'dataPoin'])->name('iktisar.bulanan.dekan.poin');
+            // Detail Raport Tendik
+            Route::get('/dekan/search-data/raport', [iktisarBulananDekanController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.dekan.data.raport');
+            Route::get('/dekan/data/raport/', [iktisarBulananDekanController::class, 'staffRaportIktisar'])->name('data.raport.dekan');
         });
     }
 );

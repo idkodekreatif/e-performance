@@ -326,37 +326,6 @@ class iktisarBulananLpmKaUnitController extends Controller
         return view('iktisar.lpm.iktisarBulananKaUnit.searchdataraport', compact('users'));
     }
 
-    // public function staffRaportIktisar(Request $request)
-    // {
-    //     $tanggalInput = $request->input('tanggalInput');
-    //     $id = $request->input('id');
-
-    //     // Konversi format tanggal
-    //     $tanggalInput = Carbon::createFromFormat('Y-m-d', $request->input('tanggalInput'));
-
-    //     $data = DB::table('users')
-    //         ->leftJoin('iktisar_lpm_bulanan_perilaku', 'users.id', '=', 'iktisar_lpm_bulanan_perilaku.user_id')
-    //         ->select(
-    //             'users.name',
-    //             'users.email',
-    //             'iktisar_lpm_bulanan_perilaku.user_id',
-    //             'iktisar_lpm_bulanan_perilaku.output_total_sementara_kinerja_perilaku',
-    //             'iktisar_lpm_bulanan_perilaku.total_nilai_presentase',
-    //         )
-    //         ->where('iktisar_lpm_bulanan_perilaku.user_id', $id)
-    //         ->whereYear('iktisar_lpm_bulanan_perilaku.created_insert', $tanggalInput)
-    //         ->whereMonth('iktisar_lpm_bulanan_perilaku.created_insert', $tanggalInput)
-    //         ->first();
-
-    //     // dd($data);
-    //     if (!empty($data)) {
-    //         return view('iktisar.lpm.iktisarBulananKaUnit.cekraport', compact('data'));
-    //     } else {
-    //         toast('Data Empty', 'error');
-    //         return redirect()->back();
-    //     }
-    // }
-
     public function staffRaportIktisar(Request $request)
     {
         $id = $request->input('id');
