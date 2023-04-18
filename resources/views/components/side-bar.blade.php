@@ -309,6 +309,19 @@
                                 @endrole
                                 {{-- End Penilaian Warek 2 dan Ka. Sub. Warek 2 --}}
 
+                                @role('it|superuser|dekan')
+                                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">DEKAN</a>
+                                        <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.dekan.create') }}">Form Ka.
+                                                            Unit</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endrole
                                 {{-- Penilaian UPT --}}
                                 @role('it|superuser|upt')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">UPT</a>
@@ -594,6 +607,18 @@
                                     </ul>
                                 </li>
                                 {{-- End Penilaian Warek 2 dan Ka. Sub. Warek 2 --}}
+
+                                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">DEKAN</a>
+                                    <ul aria-expanded="false">
+                                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                Bulanan</a>
+                                            <ul aria-expanded="false">
+                                                <li><a href="{{ route('iktisar.bulanan.dekan.raport.dekan', Auth::user()->id) }}">Raport Ka.
+                                                        Unit</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
 
                                 {{-- Penilaian UPT --}}
 
