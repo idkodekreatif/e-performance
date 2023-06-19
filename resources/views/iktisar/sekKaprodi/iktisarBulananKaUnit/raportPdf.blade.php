@@ -144,7 +144,7 @@
 
         </div>
         <div class="pihak kanan">
-            <p class="nama-warek">Yang dinilai,</p>
+            <p class="nama-warek">Personel yang dinilai,</p>
             <br>
             <br>
             <p class="nama-warek">{{ $data->name }}</p>

@@ -31,7 +31,12 @@
             margin-top: 5px;
         }
 
-        .pihak {
+        .pihak1 {
+            text-align: center;
+        }
+
+        .pihak2 {
+            margin-top: 20%;
             text-align: center;
         }
 
@@ -52,7 +57,6 @@
         }
 
         .signatures {
-            /* display: flex; */
             justify-content: space-between;
             align-items: center;
             text-align: center;
@@ -124,22 +128,34 @@
 
     <p style="text-align: right; margin-bottom:0;">Surabaya, {{ date('d F Y') }}</p>
 
-    <div class="tanda-tangan">
+    <div class="pihak1">
         <div class="pihak kiri">
-            <p class="nama-dosen">Penilai,</p>
-            <br>
+            <p class="nama-dosen">Pejabat Penilai,</p>
             <br>
             <p class="nama-dosen">Muchamad Yudi, S.Pd</p>
         </div>
         <div class="pihak kanan">
-            <p class="nama-warek">Yang dinilai,</p>
+            <p class="nama-warek">Personel yang dinilai,</p>
             <br>
-            <br>
-            <p class="nama-warek">{{$data->name}}</p>
+            <p class="nama-warek">{{ $data->name }}</p>
         </div>
     </div>
 
-    <div class="signatures">
+    <div class="pihak2">
+        <div class="pihak kiri">
+            <p class="nama-dosen">Atasan Pejabat Penilai,</p>
+            <br>
+            <br>
+            <p class="nama-dosen">Annas Vijaya, S.Si., M.T.I</p>
+        </div>
+        <div class="pihak kanan">
+            <p class="nama-warek">Pejabat yang <br> Menyetujui/Mengesahkan,</p>
+            <br>
+            <p class="nama-warek">Dr. Ahmad Hariyanto, M.Si.</p>
+        </div>
+    </div>
+
+    {{-- <div class="signatures">
         <div class="center-signature">
             <p>Menyetujui/Mengesahkan,</p>
             <p>Rektor,</p>
@@ -147,7 +163,7 @@
             <br>
             <p>Dr. Ahmad Hariyanto, M.Si.</p>
         </div>
-    </div>
+    </div> --}}
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

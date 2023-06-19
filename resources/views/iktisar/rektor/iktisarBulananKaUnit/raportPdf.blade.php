@@ -35,6 +35,15 @@
             text-align: center;
         }
 
+        .pihak1 {
+            text-align: center;
+        }
+
+        .pihak2 {
+            margin-top: 20%;
+            text-align: center;
+        }
+
         .kiri {
             margin-right: auto;
             float: left;
@@ -124,30 +133,61 @@
 
     <p style="text-align: right; margin-bottom:0;">Surabaya, {{ date('d F Y') }}</p>
 
-    <div class="tanda-tangan">
-        <div class="pihak kiri">
-            <p class="nama-dosen">Penilai,</p>
-            <br>
-            <br>
-            <p class="nama-dosen">Dr. Ahmad Hariyanto, M.Si.</p>
+    @if ($data->name == 'Sri Mekar, SST,M.Mkes')
+        <div class="pihak1">
+            <div class="pihak kiri">
+                <p class="nama-dosen">Pejabat Penilai,</p>
+                <br>
+                <p class="nama-dosen">Dr. M. Budi Widajanto, Drs. Ec., M.P. </p>
+            </div>
+            <div class="pihak kanan">
+                <p class="nama-warek">Personel yang dinilai,</p>
+                <br>
+                <p class="nama-warek">{{ $data->name }}</p>
+            </div>
         </div>
-        <div class="pihak kanan">
-            <p class="nama-warek">Yang dinilai,</p>
-            <br>
-            <br>
-            <p class="nama-warek">{{$data->name}}</p>
-        </div>
-    </div>
 
-    <div class="signatures">
-        <div class="center-signature">
-            <p>Menyetujui/Mengesahkan,</p>
-            <p>Rektor,</p>
-            <br>
-            <br>
-            <p>Dr. Ahmad Hariyanto, M.Si.</p>
+        <div class="pihak2">
+            <div class="pihak kiri">
+                <p class="nama-dosen">Atasan Pejabat Penilai,</p>
+                <br>
+                <br>
+                <p class="nama-dosen">Dr. Ahmad Hariyanto, M.Si.</p>
+            </div>
+            <div class="pihak kanan">
+                <p class="nama-warek">Pejabat yang <br> Menyetujui/Mengesahkan,</p>
+                <br>
+                <p class="nama-warek">Uswatun Hasanah, M.Ked,. Trop</p>
+            </div>
         </div>
-    </div>
+    @else
+        <div class="tanda-tangan">
+            <div class="pihak kiri">
+                <p class="nama-dosen">Pejabat penilai,</p>
+                <br>
+                <br>
+                <p class="nama-dosen">Dr. Ahmad Hariyanto, M.Si.</p>
+            </div>
+            <div class="pihak kanan">
+                <p class="nama-warek">Personel yang dinilai,</p>
+                <br>
+                <br>
+                <p class="nama-warek">{{ $data->name }}</p>
+            </div>
+        </div>
+
+        <div class="signatures">
+            <div class="center-signature">
+                <p>Atasan Pejabat Penilai,</p>
+                <p>Ketua YPSDMIT,</p>
+                <br>
+                <br>
+                <p>Uswatun Hasanah, M.Ked,. Trop</p>
+            </div>
+        </div>
+    @endif
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
