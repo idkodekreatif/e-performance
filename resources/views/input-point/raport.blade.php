@@ -129,7 +129,7 @@
                             <tr style="font-weight:bold">
                                 <td>PREDIKAT</td>
                                 <td colspan="4">
-                                    {{ $resultArray['Result_predikat'] }}
+                                    {{ $resultArray['predikat'] }}
                                 </td>
                             </tr>
                         </tbody>
