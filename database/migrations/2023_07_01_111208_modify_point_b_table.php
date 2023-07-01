@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyPointETable extends Migration
+class ModifyPointBTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class ModifyPointETable extends Migration
      */
     public function up()
     {
-        Schema::table('point_e', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropColumn('user_id');
+        Schema::table('point_b', function (Blueprint $table) {
             $table->unsignedBigInteger('new_user_id')->after('id');
         });
     }
@@ -27,9 +25,7 @@ class ModifyPointETable extends Migration
      */
     public function down()
     {
-        Schema::table('point_e', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::table('point_b', function (Blueprint $table) {
             $table->dropColumn('new_user_id');
         });
     }
