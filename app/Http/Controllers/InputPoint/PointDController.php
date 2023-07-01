@@ -18,28 +18,28 @@ class PointDController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function create()
-     {
-         $dataMenu = Menu::first();
+    public function create()
+    {
+        $dataMenu = Menu::first();
 
-         if (empty($dataMenu)) {
-             return redirect()->back();
-         } elseif ($dataMenu->control_menu == 0) {
-             return view('menu.disabled');
-         } else {
-             $currentYear = Carbon::now()->year;
-             $resultData = PointD::where('new_user_id', '=', Auth::user()->id)
-                 ->whereYear('created_at', $currentYear)
-                 ->first();
+        if (empty($dataMenu)) {
+            return redirect()->back();
+        } elseif ($dataMenu->control_menu == 0) {
+            return view('menu.disabled');
+        } else {
+            $currentYear = Carbon::now()->year;
+            $resultData = PointD::where('new_user_id', '=', Auth::user()->id)
+                ->whereYear('created_at', $currentYear)
+                ->first();
 
-             if ($resultData == null) {
-                 return view('input-point.point-D');
-             } else {
-                 $pointId = $resultData->new_user_id;
-                 return redirect()->route('edit.Point-D', ['PointId' => $pointId]);
-             }
-         }
-     }
+            if ($resultData == null) {
+                return view('input-point.point-D');
+            } else {
+                $pointId = $resultData->new_user_id;
+                return redirect()->route('edit.Point-D', ['PointId' => $pointId]);
+            }
+        }
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -855,17 +855,19 @@ class PointDController extends Controller
         return view('edit-point.hrd.search.searchDataPoinD', compact('users'));
     }
 
-                // return view ke edit
+    // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $resultData = DB::table('users')
-                ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
-                ->select('users.name', 'users.email', 'point_d.*')
-                ->where('new_user_id', '=', $request->id)
-                ->first();
+        $tahun = $request->input('tahun');
 
-        if($resultData == "")
-        {
+        $resultData = DB::table('users')
+            ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'point_d.*')
+            ->where('new_user_id', '=', $request->id)
+            ->whereYear('point_d.created_at', $tahun)
+            ->first();
+
+        if ($resultData == "") {
             return view('menu.menu-empty');
         }
 

@@ -454,14 +454,16 @@ class PointEController extends Controller
     // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $resultData = DB::table('users')
-                ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
-                ->select('users.name', 'users.email', 'point_e.*')
-                ->where('new_user_id', '=', $request->id)
-                ->first();
+        $tahun = $request->input('tahun');
 
-        if($resultData == "")
-        {
+        $resultData = DB::table('users')
+            ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'point_e.*')
+            ->where('new_user_id', '=', $request->id)
+            ->whereYear('point_e.created_at', $tahun)
+            ->first();
+
+        if ($resultData == "") {
             return view('menu.menu-empty');
         }
 

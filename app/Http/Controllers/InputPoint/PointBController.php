@@ -1133,27 +1133,29 @@ class PointBController extends Controller
         }
     }
 
-     // functuin mencari data page search
-     public function searchPoin()
-     {
-         $users = User::whereNotIn('name', [
-             'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
-         ])->get();
+    // functuin mencari data page search
+    public function searchPoin()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
 
-         return view('edit-point.hrd.search.searchDataPoinB', compact('users'));
-     }
+        return view('edit-point.hrd.search.searchDataPoinB', compact('users'));
+    }
 
-         // return view ke edit
+    // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $resultData = DB::table('users')
-                ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
-                ->select('users.name', 'users.email', 'point_b.*')
-                ->where('new_user_id', '=', $request->id)
-                ->first();
+        $tahun = $request->input('tahun');
 
-        if($resultData == "")
-        {
+        $resultData = DB::table('users')
+            ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'point_b.*')
+            ->where('new_user_id', '=', $request->id)
+            ->whereYear('point_b.created_at', $tahun)
+            ->first();
+
+        if ($resultData == "") {
             return view('menu.menu-empty');
         }
 

@@ -789,10 +789,13 @@ class PointCController extends Controller
     // return view ke edit
     public function resultSearchPoin(Request $request)
     {
+        $tahun = $request->input('tahun');
+
         $resultData = DB::table('users')
             ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
             ->select('users.name', 'users.email', 'point_c.*')
             ->where('new_user_id', '=', $request->id)
+            ->whereYear('point_c.created_at', $tahun)
             ->first();
 
         if ($resultData == "") {
