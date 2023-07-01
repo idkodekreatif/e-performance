@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\PointD;
 use App\Models\PointE;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,11 +27,18 @@ class PointEController extends Controller
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (PointE::where('user_id', '=', Auth::user()->id)->first() == "") {
-            return view('input-point.point-E');
         } else {
-            $resultData = PointE::where('user_id', '=', Auth::user()->id)->first();
-            return view('edit-point.EditPointE', ['data' => $resultData]);
+            $currentYear = Carbon::now()->year;
+            $resultData = PointE::where('new_user_id', '=', Auth::user()->id)
+                ->whereYear('created_at', $currentYear)
+                ->first();
+
+            if ($resultData == null) {
+                return view('input-point.point-E');
+            } else {
+                $pointId = $resultData->new_user_id;
+                return redirect()->route('edit.Point-E', ['PointId' => $pointId]);
+            }
         }
     }
 
@@ -58,6 +66,8 @@ class PointEController extends Controller
         DB::beginTransaction();
         try {
             $pointE = new PointE();
+            $pointE->new_user_id = Auth()->id();
+
             $pointE->E1_1 = $request->get('E1_1');
             $pointE->scorE1_1 = $request->get('scorE1_1');
             $pointE->scorMaxE1_1 = $request->get('scorMaxE1_1');
@@ -160,12 +170,12 @@ class PointEController extends Controller
 
             $pointE->SumSkor = $request->get('SumSkor');
             $pointE->NilaiUnsurPengabdian = $request->get('NilaiUnsurPengabdian');
-            $pointE->user_id = Auth()->id();
+
             $pointE->save();
 
             DB::commit();
             toast('Create new Point E successfully :)', 'success');
-            return redirect()->route('preview.point', ['user_id' => Auth::user()->id]);
+            return redirect()->route('preview.point', ['new_user_id' => Auth::user()->id]);
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Add Point E fail :)', 'error');
@@ -181,17 +191,7 @@ class PointEController extends Controller
      */
     public function edit(PointE $pointE, $PointId)
     {
-        $dataMenu = Menu::first();
-
-        if (empty($dataMenu)) {
-            return redirect()->back();
-        } elseif ($dataMenu->control_menu == 0)
-            return view('menu.disabled');
-        elseif (PointE::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = PointE::where('user_id', '=', $PointId)->first();
-        }
+        $data = PointE::where('new_user_id', '=', $PointId)->first();
 
         return view('edit-point.EditPointE', ['data' => $data]);
     }
@@ -220,7 +220,7 @@ class PointEController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointE::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointE::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $E1_1 = $request->E1_1;
             $scorE1_1 = $request->scorE1_1;
@@ -433,7 +433,7 @@ class PointEController extends Controller
             $RecordData->update($update);
             DB::commit();
             toast('Update Point E successfully :)', 'success');
-            return redirect()->route('preview.point', ['user_id' => Auth::user()->id]);
+            return redirect()->route('preview.point', ['new_user_id' => Auth::user()->id]);
         } catch (\Throwable $th) {
             DB::rollBack();
             toast('Update Point E fail :)', 'error');
@@ -455,9 +455,9 @@ class PointEController extends Controller
     public function resultSearchPoin(Request $request)
     {
         $resultData = DB::table('users')
-                ->leftJoin('point_e', 'point_e.user_id', '=', 'users.id')
+                ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
                 ->select('users.name', 'users.email', 'point_e.*')
-                ->where('user_id', '=', $request->id)
+                ->where('new_user_id', '=', $request->id)
                 ->first();
 
         if($resultData == "")
@@ -485,7 +485,7 @@ class PointEController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointE::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointE::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $E1_1 = $request->E1_1;
             $scorE1_1 = $request->scorE1_1;
