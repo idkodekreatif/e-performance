@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 /**
  * sumPointController
@@ -22,6 +23,7 @@ class sumPointController extends Controller
      */
     public function raportView($user_id)
     {
+        // old
         $users = DB::table('users')
             ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
             ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
@@ -43,7 +45,6 @@ class sumPointController extends Controller
             })
             ->where('users.id', $user_id)
             ->first();
-
 
         $resultArray = [];
 
@@ -199,6 +200,7 @@ class sumPointController extends Controller
 
     public function raportPdf($user_id)
     {
+        // old
         $users = DB::table('users')
             ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
             ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
@@ -220,6 +222,8 @@ class sumPointController extends Controller
             })
             ->where('users.id', $user_id)
             ->first();
+
+
 
         $resultArray = [];
 

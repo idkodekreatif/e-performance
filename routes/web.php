@@ -62,6 +62,7 @@ use App\Http\Controllers\UserManagement\PermissionController;
 use App\Http\Controllers\UserManagement\profileController;
 use App\Http\Controllers\UserManagement\RoleController;
 use App\Http\Controllers\UserManagement\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,7 +76,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['verify' => true]);
+Auth::routes([
+    'verify' => true,
+    'register' => false
+]);
 
 Route::get('/', function () {
     return view('auth.login');
@@ -114,6 +118,7 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
     // ----------------------------- User Management ----------------------------------------//
     Route::controller(UserController::class)->group(function () {
         Route::get('/users', 'index')->name('users.index');
+        Route::post('/users/register', 'store')->name('users.store');
         Route::get('/users/{user}', 'show')->name('users.show');
         Route::get('/users/destroy/{user}', 'destroy')->name('users.destroy');
         Route::post('/users/{user}/roles', 'assignRole')->name('users.roles');
