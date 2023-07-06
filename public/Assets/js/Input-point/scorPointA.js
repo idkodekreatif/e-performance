@@ -694,7 +694,7 @@ function sum() {
     // var resultPerkalianPendidikanDanPengajar =
     //     resultNilaiPendidikanDanPengajar.toFixed(2);
 
-    if (!isNaN(resultPerkalianPendidikanDanPengajar)) {
+    if (!isNaN(resultNilaiPendidikanDanPengajar)) {
         // Tampilkan output pada input form
         document.getElementById("nilaiPendidikandanPengajaran").value =
             resultNilaiPendidikanDanPengajar;

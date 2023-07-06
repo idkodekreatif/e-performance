@@ -37,7 +37,7 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <form id="my-form" action="{{ route('update.Point-D', [$data->user_id]) }}" method="POST"
+                        <form id="my-form" action="{{ route('update.Point-D', [$data->new_user_id]) }}" method="POST"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
