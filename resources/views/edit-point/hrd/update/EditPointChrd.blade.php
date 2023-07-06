@@ -1,34 +1,34 @@
 <x-app-layout title="Form Point C">
     @push('style')
-    <style>
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+        <style>
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
 
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-    </style>
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+        </style>
     @endpush
 
     <div class="col-xl col-lg">
-        @role('it'|'superuser')
-        <div class="row page-titles shadow">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Update Forms </a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Point C</a></li>
-            </ol>
-        </div>
+        @role('it' | 'superuser')
+            <div class="row page-titles shadow">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Update Forms </a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Point C</a></li>
+                </ol>
+            </div>
         @endrole
         @role('dosen|hrd')
-        <div class="row page-titles shadow">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms </a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Point C</a></li>
-            </ol>
-        </div>
+            <div class="row page-titles shadow">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms </a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Point C</a></li>
+                </ol>
+            </div>
         @endrole
 
         <div class="card shadow">
@@ -66,8 +66,8 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <form id="my-form" action="{{ route('update.hrd.Point-C', [$data->user_id]) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form id="my-form" action="{{ route('update.hrd.Point-C', [$data->new_user_id]) }}"
+                            method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <table class="table table-bordered border-2 text-center">
@@ -110,21 +110,22 @@
                                             <input class="@error('fileC1') is-invalid @enderror" name="fileC1"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC1)
-                                            <a href="{{ asset('storage/'.$data->fileC1) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC1)
+                                                <a href="{{ asset('storage/' . $data->fileC1) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC1"
-                                                value="{{ $data->scorC1 }}" name="scorC1" type="number" aria-label="C1"
-                                                readonly></td>
+                                                value="{{ $data->scorC1 }}" name="scorC1" type="number"
+                                                aria-label="C1" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC1" value="{{ $data->scorMaxC1 }}"
                                                 name="scorMaxC1" type="number" aria-label="C1" readonly>
                                         </td>
@@ -137,20 +138,23 @@
                                             kemasyarakatan (termasuk RT, RW, parpol, organisasi
                                             keagamaan, dll)
                                         </td>
-                                        <td><input type="radio" {{$data->C1 == "1" ? "checked" : ""}} class="C1"
-                                            name="C1" id="C1" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C1 == '1' ? 'checked' : '' }} class="C1"
+                                                name="C1" id="C1" value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C1 == "2" ? "checked" : ""}} class="C1"
-                                            name="C1" id="C1" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C1 == '2' ? 'checked' : '' }} class="C1"
+                                                name="C1" id="C1" value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C1 == "3" ? "checked" : ""}} class="C1"
-                                            name="C1" id="C1" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C1 == '3' ? 'checked' : '' }}
+                                                class="C1" name="C1" id="C1" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C1 == "4" ? "checked" : ""}} class="C1"
-                                            name="C1" id="C1" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C1 == '4' ? 'checked' : '' }}
+                                                class="C1" name="C1" id="C1" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C1 == "5" ? "checked" : ""}} class="C1"
-                                            name="C1" id="C1" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C1 == '5' ? 'checked' : '' }}
+                                                class="C1" name="C1" id="C1" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -176,7 +180,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC1 }}"
-                                                name="SkorTambahanJumlahSkorC1" id="SkorTambahanJumlahSkorC1" readonly>
+                                                name="SkorTambahanJumlahSkorC1" id="SkorTambahanJumlahSkorC1"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -198,7 +203,8 @@
                                                 name="SkorTambahanJumlahC1" id="SkorTambahanJumlahC1" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC1 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC1 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC1"
                                                 id="SkorTambahanJumlahBobotSubItemC1" readonly></td>
                                     </tr>
@@ -219,45 +225,52 @@
                                             <input class="@error('fileC2') is-invalid @enderror" name="fileC2"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC2)
-                                            <a href="{{ asset('storage/'.$data->fileC2) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC2)
+                                                <a href="{{ asset('storage/' . $data->fileC2) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC2')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC2"
-                                                value="{{ $data->scorC2 }}" name="scorC2" type="number" aria-label="C2"
-                                                readonly></td>
+                                                value="{{ $data->scorC2 }}" name="scorC2" type="number"
+                                                aria-label="C2" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC2" value="{{ $data->scorMaxC2 }}"
                                                 name="scorMaxC2" type="number" aria-label="C2" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC2" value="{{ $data->scorSubItemC2 }}"
-                                                name="scorSubItemC2" type="number" aria-label="C2" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC2"
+                                                value="{{ $data->scorSubItemC2 }}" name="scorSubItemC2"
+                                                type="number" aria-label="C2" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.2</td>
                                         <td>Peranan dosen dalam organisasi sosial kemasyarakatan
                                         </td>
-                                        <td><input type="radio" {{$data->C2 == "1" ? "checked" : ""}} class="C2"
-                                            name="C2" id="C2" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C2 == '1' ? 'checked' : '' }}
+                                                class="C2" name="C2" id="C2" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C2 == "2" ? "checked" : ""}} class="C2"
-                                            name="C2" id="C2" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C2 == '2' ? 'checked' : '' }}
+                                                class="C2" name="C2" id="C2" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C2 == "3" ? "checked" : ""}} class="C2"
-                                            name="C2" id="C2" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C2 == '3' ? 'checked' : '' }}
+                                                class="C2" name="C2" id="C2" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C2 == "4" ? "checked" : ""}} class="C2"
-                                            name="C2" id="C2" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C2 == '4' ? 'checked' : '' }}
+                                                class="C2" name="C2" id="C2" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C2 == "5" ? "checked" : ""}} class="C2"
-                                            name="C2" id="C2" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C2 == '5' ? 'checked' : '' }}
+                                                class="C2" name="C2" id="C2" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -283,7 +296,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC2 }}"
-                                                name="SkorTambahanJumlahSkorC2" id="SkorTambahanJumlahSkorC2" readonly>
+                                                name="SkorTambahanJumlahSkorC2" id="SkorTambahanJumlahSkorC2"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -305,7 +319,8 @@
                                                 name="SkorTambahanJumlahC2" id="SkorTambahanJumlahC2" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC2 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC2 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC2"
                                                 id="SkorTambahanJumlahBobotSubItemC2" readonly></td>
                                     </tr>
@@ -320,32 +335,35 @@
                                         <td>Pernah menyampaikan orasi ilmiah lebih dari 1 kali di luar IKBIS sendiri
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti
+                                                fisik
                                                 undangan/surat keterangan telah melakukan orasi
                                                 ilmiah, dan makalah yang disampaikan</label>
                                             <input class="@error('fileC3') is-invalid @enderror" name="fileC3"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC3)
-                                            <a href="{{ asset('storage/'.$data->fileC3) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC3)
+                                                <a href="{{ asset('storage/' . $data->fileC3) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC3')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC3"
-                                                value="{{ $data->scorC3 }}" name="scorC3" type="number" aria-label="C3"
-                                                readonly></td>
+                                                value="{{ $data->scorC3 }}" name="scorC3" type="number"
+                                                aria-label="C3" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC3" value="{{ $data->scorMaxC3 }}"
                                                 name="scorMaxC3" type="number" aria-label="C3" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC3" value="{{ $data->scorSubItemC3 }}"
-                                                name="scorSubItemC3" type="number" aria-label="C3" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC3"
+                                                value="{{ $data->scorSubItemC3 }}" name="scorSubItemC3"
+                                                type="number" aria-label="C3" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.3</td>
@@ -353,20 +371,25 @@
                                             seperti dies natalis, wisuda, simposium
                                             nasional, dll
                                         </td>
-                                        <td><input type="radio" {{$data->C3 == "1" ? "checked" : ""}} class="C3"
-                                            name="C3" id="C3" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C3 == '1' ? 'checked' : '' }}
+                                                class="C3" name="C3" id="C3" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C3 == "2" ? "checked" : ""}} class="C3"
-                                            name="C3" id="C3" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C3 == '2' ? 'checked' : '' }}
+                                                class="C3" name="C3" id="C3" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C3 == "3" ? "checked" : ""}} class="C3"
-                                            name="C3" id="C3" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C3 == '3' ? 'checked' : '' }}
+                                                class="C3" name="C3" id="C3" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C3 == "4" ? "checked" : ""}} class="C3"
-                                            name="C3" id="C3" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C3 == '4' ? 'checked' : '' }}
+                                                class="C3" name="C3" id="C3" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C3 == "5" ? "checked" : ""}} class="C3"
-                                            name="C3" id="C3" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C3 == '5' ? 'checked' : '' }}
+                                                class="C3" name="C3" id="C3" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -387,7 +410,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC3 }}"
-                                                name="SkorTambahanJumlahSkorC3" id="SkorTambahanJumlahSkorC3" readonly>
+                                                name="SkorTambahanJumlahSkorC3" id="SkorTambahanJumlahSkorC3"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -405,7 +429,8 @@
                                                 name="SkorTambahanJumlahC3" id="SkorTambahanJumlahC3" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC3 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC3 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC3"
                                                 id="SkorTambahanJumlahBobotSubItemC3" readonly></td>
                                     </tr>
@@ -421,33 +446,36 @@
                                         <td>menjadi pembicara/instruktur/pengaja/juri dalam kegiatan tingkat nasional
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat Tugas
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat
+                                                Tugas
                                                 atau SK atau sertifikat yang menandakan dosen telah
                                                 berperan serta dalam kegiatan pengabdian kepada
                                                 masyarakat</label>
                                             <input class="@error('fileC4') is-invalid @enderror" name="fileC4"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC4)
-                                            <a href="{{ asset('storage/'.$data->fileC4) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC4)
+                                                <a href="{{ asset('storage/' . $data->fileC4) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC4')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC4"
-                                                value="{{ $data->scorC4 }}" name="scorC4" type="number" aria-label="C4"
-                                                readonly></td>
+                                                value="{{ $data->scorC4 }}" name="scorC4" type="number"
+                                                aria-label="C4" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC4" value="{{ $data->scorMaxC4 }}"
                                                 name="scorMaxC4" type="number" aria-label="C4" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC4" value="{{ $data->scorSubItemC4 }}"
-                                                name="scorSubItemC4" type="number" aria-label="C4" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC4"
+                                                value="{{ $data->scorSubItemC4 }}" name="scorSubItemC4"
+                                                type="number" aria-label="C4" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.4</td>
@@ -457,20 +485,25 @@
                                             suatu lembaga sosial kemasyarakatan di dalam/luar IKBIS, baik masyarakat
                                             umum maupun masyarakat kampus
                                         </td>
-                                        <td><input type="radio" {{$data->C4 == "1" ? "checked" : ""}} class="C4"
-                                            name="C4" id="C4" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C4 == '1' ? 'checked' : '' }}
+                                                class="C4" name="C4" id="C4" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C4 == "2" ? "checked" : ""}} class="C4"
-                                            name="C4" id="C4" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C4 == '2' ? 'checked' : '' }}
+                                                class="C4" name="C4" id="C4" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C4 == "3" ? "checked" : ""}} class="C4"
-                                            name="C4" id="C4" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C4 == '3' ? 'checked' : '' }}
+                                                class="C4" name="C4" id="C4" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C4 == "4" ? "checked" : ""}} class="C4"
-                                            name="C4" id="C4" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C4 == '4' ? 'checked' : '' }}
+                                                class="C4" name="C4" id="C4" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C4 == "5" ? "checked" : ""}} class="C4"
-                                            name="C4" id="C4" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C4 == '5' ? 'checked' : '' }}
+                                                class="C4" name="C4" id="C4" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -496,7 +529,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC4 }}"
-                                                name="SkorTambahanJumlahSkorC4" id="SkorTambahanJumlahSkorC4" readonly>
+                                                name="SkorTambahanJumlahSkorC4" id="SkorTambahanJumlahSkorC4"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -518,7 +552,8 @@
                                                 name="SkorTambahanJumlahC4" id="SkorTambahanJumlahC4" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC4 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC4 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC4"
                                                 id="SkorTambahanJumlahBobotSubItemC4" readonly></td>
                                     </tr>
@@ -535,33 +570,36 @@
                                         <td>Menjadi pembicara utama dalam suatu seminar/diskusi panel yang dilaksanakan
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat Tugas
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Surat
+                                                Tugas
                                                 atau SK atau sertifikat yang menandakan dosen telah
                                                 berperan serta dalam kegiatan pengabdian kepada
                                                 masyarakat</label>
                                             <input class="@error('fileC5') is-invalid @enderror" name="fileC5"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC5)
-                                            <a href="{{ asset('storage/'.$data->fileC5) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC5)
+                                                <a href="{{ asset('storage/' . $data->fileC5) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC5')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC5"
-                                                value="{{ $data->scorC5 }}" name="scorC5" type="number" aria-label="C5"
-                                                readonly></td>
+                                                value="{{ $data->scorC5 }}" name="scorC5" type="number"
+                                                aria-label="C5" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC5" value="{{ $data->scorMaxC5 }}"
                                                 name="scorMaxC5" type="number" aria-label="C5" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC5" value="{{ $data->scorSubItemC5 }}"
-                                                name="scorSubItemC5" type="number" aria-label="C5" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC5"
+                                                value="{{ $data->scorSubItemC5 }}" name="scorSubItemC5"
+                                                type="number" aria-label="C5" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.5</td>
@@ -570,20 +608,25 @@
                                             kemasyarakatan di dalam/luar IKBIS, baik masyarakat umum maupun masyarakat
                                             kampus
                                         </td>
-                                        <td><input type="radio" {{$data->C5 == "1" ? "checked" : ""}} class="C5"
-                                            name="C5" id="C5" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C5 == '1' ? 'checked' : '' }}
+                                                class="C5" name="C5" id="C5" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C5 == "2" ? "checked" : ""}} class="C5"
-                                            name="C5" id="C5" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C5 == '2' ? 'checked' : '' }}
+                                                class="C5" name="C5" id="C5" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C5 == "3" ? "checked" : ""}} class="C5"
-                                            name="C5" id="C5" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C5 == '3' ? 'checked' : '' }}
+                                                class="C5" name="C5" id="C5" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C5 == "4" ? "checked" : ""}} class="C5"
-                                            name="C5" id="C5" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C5 == '4' ? 'checked' : '' }}
+                                                class="C5" name="C5" id="C5" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C5 == "5" ? "checked" : ""}} class="C5"
-                                            name="C5" id="C5" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C5 == '5' ? 'checked' : '' }}
+                                                class="C5" name="C5" id="C5" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -609,7 +652,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC5 }}"
-                                                name="SkorTambahanJumlahSkorC5" id="SkorTambahanJumlahSkorC5" readonly>
+                                                name="SkorTambahanJumlahSkorC5" id="SkorTambahanJumlahSkorC5"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -631,7 +675,8 @@
                                                 name="SkorTambahanJumlahC5" id="SkorTambahanJumlahC5" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC5 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC5 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC5"
                                                 id="SkorTambahanJumlahBobotSubItemC5" readonly></td>
                                     </tr>
@@ -653,46 +698,53 @@
                                             <input class="@error('fileC6') is-invalid @enderror" name="fileC6"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC6)
-                                            <a href="{{ asset('storage/'.$data->fileC6) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC6)
+                                                <a href="{{ asset('storage/' . $data->fileC6) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC6')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC6"
-                                                value="{{ $data->scorC6 }}" name="scorC6" type="number" aria-label="C6"
-                                                readonly></td>
+                                                value="{{ $data->scorC6 }}" name="scorC6" type="number"
+                                                aria-label="C6" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC6" value="{{ $data->scorMaxC6 }}"
                                                 name="scorMaxC6" type="number" aria-label="C6" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC6" value="{{ $data->scorSubItemC6 }}"
-                                                name="scorSubItemC6" type="number" aria-label="C6" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC6"
+                                                value="{{ $data->scorSubItemC6 }}" name="scorSubItemC6"
+                                                type="number" aria-label="C6" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.6</td>
                                         <td>Dosen memberikan pelayanan konsultasi untuk meningkatkan kesejahteraan
                                             masyarakat (sifatnya nirlaba)
                                         </td>
-                                        <td><input type="radio" {{$data->C6 == "1" ? "checked" : ""}} class="C6"
-                                            name="C6" id="C6" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C6 == '1' ? 'checked' : '' }}
+                                                class="C6" name="C6" id="C6" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C6 == "2" ? "checked" : ""}} class="C6"
-                                            name="C6" id="C6" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C6 == '2' ? 'checked' : '' }}
+                                                class="C6" name="C6" id="C6" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C6 == "3" ? "checked" : ""}} class="C6"
-                                            name="C6" id="C6" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C6 == '3' ? 'checked' : '' }}
+                                                class="C6" name="C6" id="C6" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C6 == "4" ? "checked" : ""}} class="C6"
-                                            name="C6" id="C6" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C6 == '4' ? 'checked' : '' }}
+                                                class="C6" name="C6" id="C6" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C6 == "5" ? "checked" : ""}} class="C6"
-                                            name="C6" id="C6" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C6 == '5' ? 'checked' : '' }}
+                                                class="C6" name="C6" id="C6" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -718,7 +770,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC6 }}"
-                                                name="SkorTambahanJumlahSkorC6" id="SkorTambahanJumlahSkorC6" readonly>
+                                                name="SkorTambahanJumlahSkorC6" id="SkorTambahanJumlahSkorC6"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -740,7 +793,8 @@
                                                 name="SkorTambahanJumlahC6" id="SkorTambahanJumlahC6" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC6 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC6 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC6"
                                                 id="SkorTambahanJumlahBobotSubItemC6" readonly></td>
                                     </tr>
@@ -757,31 +811,34 @@
                                         <td>Menyusun panduan dan disebarluaskan pada masyarakat nasional
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti
+                                                fisik
                                                 panduan praktis</label>
                                             <input class="@error('fileC7') is-invalid @enderror" name="fileC7"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC7)
-                                            <a href="{{ asset('storage/'.$data->fileC7) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC7)
+                                                <a href="{{ asset('storage/' . $data->fileC7) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC7')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC7"
-                                                value="{{ $data->scorC7 }}" name="scorC7" type="number" aria-label="C7"
-                                                readonly></td>
+                                                value="{{ $data->scorC7 }}" name="scorC7" type="number"
+                                                aria-label="C7" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC7" value="{{ $data->scorMaxC7 }}"
                                                 name="scorMaxC7" type="number" aria-label="C7" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC7" value="{{ $data->scorSubItemC7 }}"
-                                                name="scorSubItemC7" type="number" aria-label="C7" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC7"
+                                                value="{{ $data->scorSubItemC7 }}" name="scorSubItemC7"
+                                                type="number" aria-label="C7" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.7</td>
@@ -789,20 +846,25 @@
                                             praktis/terapan untuk dapat dimanfaatkan oleh
                                             masyarakat dan tidak dipublikasikan
                                         </td>
-                                        <td><input type="radio" {{$data->C7 == "1" ? "checked" : ""}} class="C7"
-                                            name="C7" id="C7" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C7 == '1' ? 'checked' : '' }}
+                                                class="C7" name="C7" id="C7" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C7 == "2" ? "checked" : ""}} class="C7"
-                                            name="C7" id="C7" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C7 == '2' ? 'checked' : '' }}
+                                                class="C7" name="C7" id="C7" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C7 == "3" ? "checked" : ""}} class="C7"
-                                            name="C7" id="C7" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C7 == '3' ? 'checked' : '' }}
+                                                class="C7" name="C7" id="C7" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C7 == "4" ? "checked" : ""}} class="C7"
-                                            name="C7" id="C7" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C7 == '4' ? 'checked' : '' }}
+                                                class="C7" name="C7" id="C7" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C7 == "5" ? "checked" : ""}} class="C7"
-                                            name="C7" id="C7" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C7 == '5' ? 'checked' : '' }}
+                                                class="C7" name="C7" id="C7" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -828,7 +890,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC7 }}"
-                                                name="SkorTambahanJumlahSkorC7" id="SkorTambahanJumlahSkorC7" readonly>
+                                                name="SkorTambahanJumlahSkorC7" id="SkorTambahanJumlahSkorC7"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -850,7 +913,8 @@
                                                 name="SkorTambahanJumlahC7" id="SkorTambahanJumlahC7" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC7 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC7 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC7"
                                                 id="SkorTambahanJumlahBobotSubItemC7" readonly></td>
                                     </tr>
@@ -868,31 +932,34 @@
                                             jurnal/buku/prosiding
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti
+                                                fisik
                                                 buku/makalah/artikel yang dipublikasikan</label>
                                             <input class="@error('fileC8') is-invalid @enderror" name="fileC8"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC8)
-                                            <a href="{{ asset('storage/'.$data->fileC8) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC8)
+                                                <a href="{{ asset('storage/' . $data->fileC8) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC8')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC8"
-                                                value="{{ $data->scorC8 }}" name="scorC8" type="number" aria-label="C8"
-                                                readonly></td>
+                                                value="{{ $data->scorC8 }}" name="scorC8" type="number"
+                                                aria-label="C8" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC8" value="{{ $data->scorMaxC8 }}"
                                                 name="scorMaxC8" type="number" aria-label="C8" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC8" value="{{ $data->scorSubItemC8 }}"
-                                                name="scorSubItemC8" type="number" aria-label="C8" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC8"
+                                                value="{{ $data->scorSubItemC8 }}" name="scorSubItemC8"
+                                                type="number" aria-label="C8" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.8</td>
@@ -900,20 +967,25 @@
                                             praktis/terapan untuk dapat dimanfaatkan oleh
                                             masyarakat dan tidak dipublikasikan
                                         </td>
-                                        <td><input type="radio" {{$data->C8 == "1" ? "checked" : ""}} class="C8"
-                                            name="C8" id="C8" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C8 == '1' ? 'checked' : '' }}
+                                                class="C8" name="C8" id="C8" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C8 == "2" ? "checked" : ""}} class="C8"
-                                            name="C8" id="C8" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C8 == '2' ? 'checked' : '' }}
+                                                class="C8" name="C8" id="C8" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C8 == "3" ? "checked" : ""}} class="C8"
-                                            name="C8" id="C8" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C8 == '3' ? 'checked' : '' }}
+                                                class="C8" name="C8" id="C8" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C8 == "4" ? "checked" : ""}} class="C8"
-                                            name="C8" id="C8" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C8 == '4' ? 'checked' : '' }}
+                                                class="C8" name="C8" id="C8" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C8 == "5" ? "checked" : ""}} class="C8"
-                                            name="C8" id="C8" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C8 == '5' ? 'checked' : '' }}
+                                                class="C8" name="C8" id="C8" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -939,7 +1011,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC8 }}"
-                                                name="SkorTambahanJumlahSkorC8" id="SkorTambahanJumlahSkorC8" readonly>
+                                                name="SkorTambahanJumlahSkorC8" id="SkorTambahanJumlahSkorC8"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -961,7 +1034,8 @@
                                                 name="SkorTambahanJumlahC8" id="SkorTambahanJumlahC8" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC8 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC8 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC8"
                                                 id="SkorTambahanJumlahBobotSubItemC8" readonly></td>
                                     </tr>
@@ -983,26 +1057,28 @@
                                             <input class="@error('fileC9') is-invalid @enderror" name="fileC9"
                                                 id="formFileSm" type="file">
 
-                                            @if($data->fileC9)
-                                            <a href="{{ asset('storage/'.$data->fileC9) }}" target="_blank">Preview</a>
+                                            @if ($data->fileC9)
+                                                <a href="{{ asset('storage/' . $data->fileC9) }}"
+                                                    target="_blank">Preview</a>
                                             @else
-                                            N/A
+                                                N/A
                                             @endif
 
                                             @error('fileC9')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorC9"
-                                                value="{{ $data->scorC9 }}" name="scorC9" type="number" aria-label="C9"
-                                                readonly></td>
+                                                value="{{ $data->scorC9 }}" name="scorC9" type="number"
+                                                aria-label="C9" readonly></td>
                                         <td rowspan="2"><input id="scorMaxC9" value="{{ $data->scorMaxC9 }}"
                                                 name="scorMaxC9" type="number" aria-label="C9" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemC9" value="{{ $data->scorSubItemC9 }}"
-                                                name="scorSubItemC9" type="number" aria-label="C9" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemC9"
+                                                value="{{ $data->scorSubItemC9 }}" name="scorSubItemC9"
+                                                type="number" aria-label="C9" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>C.9</td>
@@ -1010,20 +1086,25 @@
                                             nyata di lapangan untuk dimanfaatkan kepada
                                             masyarakat
                                         </td>
-                                        <td><input type="radio" {{$data->C9 == "1" ? "checked" : ""}} class="C9"
-                                            name="C9" id="C9" value="1" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C9 == '1' ? 'checked' : '' }}
+                                                class="C9" name="C9" id="C9" value="1"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C9 == "2" ? "checked" : ""}} class="C9"
-                                            name="C9" id="C9" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C9 == '2' ? 'checked' : '' }}
+                                                class="C9" name="C9" id="C9" value="2"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C9 == "3" ? "checked" : ""}} class="C9"
-                                            name="C9" id="C9" value="3" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C9 == '3' ? 'checked' : '' }}
+                                                class="C9" name="C9" id="C9" value="3"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C9 == "4" ? "checked" : ""}} class="C9"
-                                            name="C9" id="C9" value="4" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C9 == '4' ? 'checked' : '' }}
+                                                class="C9" name="C9" id="C9" value="4"
+                                                onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{$data->C9 == "5" ? "checked" : ""}} class="C9"
-                                            name="C9" id="C9" value="5" onclick="sum();">
+                                        <td><input type="radio" {{ $data->C9 == '5' ? 'checked' : '' }}
+                                                class="C9" name="C9" id="C9" value="5"
+                                                onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -1048,7 +1129,8 @@
                                                 readonly></td>
                                         <td></td>
                                         <td><input type="number" value="{{ $data->SkorTambahanJumlahSkorC9 }}"
-                                                name="SkorTambahanJumlahSkorC9" id="SkorTambahanJumlahSkorC9" readonly>
+                                                name="SkorTambahanJumlahSkorC9" id="SkorTambahanJumlahSkorC9"
+                                                readonly>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1070,7 +1152,8 @@
                                                 name="SkorTambahanJumlahC9" id="SkorTambahanJumlahC9" readonly></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input type="number" value="{{ $data->SkorTambahanJumlahBobotSubItemC9 }}"
+                                        <td><input type="number"
+                                                value="{{ $data->SkorTambahanJumlahBobotSubItemC9 }}"
                                                 name="SkorTambahanJumlahBobotSubItemC9"
                                                 id="SkorTambahanJumlahBobotSubItemC9" readonly></td>
                                     </tr>
@@ -1123,9 +1206,12 @@
                                         <td><input type="number" value="{{ $data->TotalKelebihaC5 }}"
                                                 name="TotalKelebihaC5" id="TotalKelebihaC5" readonly>
                                         </td>
-                                        <td colspan="3" rowspan="6">Nilai Tambah Pengabdian kepada Masyarakat</td>
-                                        <td rowspan="6"><input type="number" value="{{ $data->NilaiTambahPengabdianKepadaMasyarakat }}"
-                                                name="NilaiTambahPengabdianKepadaMasyarakat" id="NilaiTambahPengabdianKepadaMasyarakat" readonly></td>
+                                        <td colspan="3" rowspan="6">Nilai Tambah Pengabdian kepada Masyarakat
+                                        </td>
+                                        <td rowspan="6"><input type="number"
+                                                value="{{ $data->NilaiTambahPengabdianKepadaMasyarakat }}"
+                                                name="NilaiTambahPengabdianKepadaMasyarakat"
+                                                id="NilaiTambahPengabdianKepadaMasyarakat" readonly></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4"></td>
@@ -1178,7 +1264,8 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();" class="btn btn-primary btn-sm mb-2">Simpan</button>
+                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
+                                            class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -1190,27 +1277,26 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/Input-point/ScorPointC.js') }}"></script>
+        <script src="{{ asset('Assets/js/Input-point/ScorPointC.js') }}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function confirmSubmit() {
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Anda akan menyimpan data tersebut.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Simpan',
-                cancelButtonText: 'Batal',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('my-form').submit();
-                } else {
-                    Swal.fire('Data batal disimpan');
-                }
-            });
-        }
-    </script>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function confirmSubmit() {
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Anda akan menyimpan data tersebut.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Simpan',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('my-form').submit();
+                    } else {
+                        Swal.fire('Data batal disimpan');
+                    }
+                });
+            }
+        </script>
     @endpush
 </x-app-layout>

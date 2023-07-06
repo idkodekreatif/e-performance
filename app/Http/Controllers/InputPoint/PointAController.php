@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\InputPoint;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 use App\Models\PointA;
 use Illuminate\Http\Request;
 use Alert;
 use App\Models\Menu;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -30,11 +32,18 @@ class PointAController extends Controller
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (PointA::where('user_id', '=', Auth::user()->id)->first() == "") {
-            return view('input-point.point-A');
         } else {
-            $resultData = PointA::where('user_id', '=', Auth::user()->id)->first();
-            return view('edit-point.EditPointA', ['data' => $resultData]);
+            $currentYear = Carbon::now()->year;
+            $resultData = PointA::where('new_user_id', '=', Auth::user()->id)
+                ->whereYear('created_at', $currentYear)
+                ->first();
+
+            if ($resultData == null) {
+                return view('input-point.point-A');
+            } else {
+                $pointId = $resultData->new_user_id;
+                return redirect()->route('edit.Point-A', ['PointId' => $pointId]);
+            }
         }
     }
 
@@ -65,6 +74,8 @@ class PointAController extends Controller
         DB::beginTransaction();
         try {
             $pointA = new PointA();
+            $pointA->new_user_id = Auth()->id();
+
             $pointA->A1 = $request->get('A1');
             $pointA->scorA1 = $request->get('scorA1');
             $pointA->scorMaxA1 = $request->get('scorMaxA1');
@@ -221,7 +232,7 @@ class PointAController extends Controller
             $pointA->nilaiPendidikandanPengajaran = $request->get('nilaiPendidikandanPengajaran');
             $pointA->NilaiTambahPendidikanDanPengajaran = $request->get('NilaiTambahPendidikanDanPengajaran');
             $pointA->NilaiTotalPendidikanDanPengajaran = $request->get('NilaiTotalPendidikanDanPengajaran');
-            $pointA->user_id = Auth()->id();
+
             $pointA->save();
 
 
@@ -243,17 +254,7 @@ class PointAController extends Controller
      */
     public function edit(PointA $pointA, $PointId)
     {
-        $dataMenu = Menu::first();
-
-        if (empty($dataMenu)) {
-            return redirect()->back();
-        } elseif ($dataMenu->control_menu == 0) {
-            return view('menu.disabled');
-        } elseif (PointA::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = PointA::where('user_id', '=', $PointId)->first();
-        }
+        $data = PointA::where('new_user_id', '=', $PointId)->first();
 
         return view('edit-point.EditPointA', ['data' => $data]);
     }
@@ -286,7 +287,7 @@ class PointAController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointA::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointA::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $A1 = $request->A1;
             $scorA1 = $request->scorA1;
@@ -624,19 +625,22 @@ class PointAController extends Controller
     // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $resultData = DB::table('users')
-                    ->leftJoin('point_a', 'point_a.user_id', '=', 'users.id')
-                    ->select('users.name', 'users.email', 'point_a.*')
-                    ->where('user_id', '=', $request->id)
-                    ->first();
+        $tahun = $request->input('tahun'); // Mendapatkan tahun dari input form
 
-        if($resultData == "")
-        {
+        $resultData = DB::table('users')
+            ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'point_a.*')
+            ->where('new_user_id', '=', $request->id)
+            ->whereYear('point_a.created_at', $tahun)
+            ->first();
+
+        if ($resultData == null) {
             return view('menu.menu-empty');
         }
 
         return view('edit-point.hrd.update.EditPointA', ['data' => $resultData]);
     }
+
 
     public function updateHrd(Request $request, PointA $pointA, $PointId)
     {
@@ -659,7 +663,7 @@ class PointAController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointA::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointA::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $A1 = $request->A1;
             $scorA1 = $request->scorA1;

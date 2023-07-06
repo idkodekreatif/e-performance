@@ -31,14 +31,4 @@ class PointA extends Model
     }
 
     protected static $logOnlyDirty = true;
-
-    /**
-     * UserId
-     *
-     * @return void
-     */
-    public function UserId()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
 }

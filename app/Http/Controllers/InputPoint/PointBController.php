@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PointB;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,11 +26,18 @@ class PointBController extends Controller
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (PointB::where('user_id', '=', Auth::user()->id)->first() == "") {
-            return view('input-point.point-B');
         } else {
-            $resultData = PointB::where('user_id', '=', Auth::user()->id)->first();
-            return view('edit-point.EditPointB', ['data' => $resultData]);
+            $currentYear = Carbon::now()->year;
+            $resultData = PointB::where('new_user_id', '=', Auth::user()->id)
+                ->whereYear('created_at', $currentYear)
+                ->first();
+
+            if ($resultData == null) {
+                return view('input-point.point-B');
+            } else {
+                $pointId = $resultData->new_user_id;
+                return redirect()->route('edit.Point-B', ['PointId' => $pointId]);
+            }
         }
     }
 
@@ -66,6 +74,8 @@ class PointBController extends Controller
         DB::beginTransaction();
         try {
             $pointB = new PointB();
+            $pointB->new_user_id = Auth()->id();
+
             $pointB->B1 = $request->get('B1');
             $pointB->scorB1 = $request->get('scorB1');
             $pointB->scorMaxB1 = $request->get('scorMaxB1');
@@ -397,7 +407,7 @@ class PointBController extends Controller
             $pointB->NilaiPenelitian = $request->get('NilaiPenelitian');
             $pointB->NilaiTambahPenelitian = $request->get('NilaiTambahPenelitian');
             $pointB->NilaiTotalPenelitiandanKaryaIlmiah = $request->get('NilaiTotalPenelitiandanKaryaIlmiah');
-            $pointB->user_id = Auth()->id();
+
             $pointB->save();
 
             DB::commit();
@@ -418,17 +428,7 @@ class PointBController extends Controller
      */
     public function edit(PointB $pointB, $PointId)
     {
-        $dataMenu = Menu::first();
-
-        if (empty($dataMenu)) {
-            return redirect()->back();
-        } elseif ($dataMenu->control_menu == 0)
-            return view('menu.disabled');
-        elseif (PointB::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = PointB::where('user_id', '=', $PointId)->first();
-        }
+        $data = PointB::where('new_user_id', '=', $PointId)->first();
 
         return view('edit-point.EditPointB', ['data' => $data]);
     }
@@ -465,7 +465,7 @@ class PointBController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointB::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointB::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $B1 = $request->B1;
             $scorB1 = $request->scorB1;
@@ -1133,27 +1133,29 @@ class PointBController extends Controller
         }
     }
 
-     // functuin mencari data page search
-     public function searchPoin()
-     {
-         $users = User::whereNotIn('name', [
-             'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
-         ])->get();
+    // functuin mencari data page search
+    public function searchPoin()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
 
-         return view('edit-point.hrd.search.searchDataPoinB', compact('users'));
-     }
+        return view('edit-point.hrd.search.searchDataPoinB', compact('users'));
+    }
 
-         // return view ke edit
+    // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $resultData = DB::table('users')
-                ->leftJoin('point_b', 'point_b.user_id', '=', 'users.id')
-                ->select('users.name', 'users.email', 'point_b.*')
-                ->where('user_id', '=', $request->id)
-                ->first();
+        $tahun = $request->input('tahun');
 
-        if($resultData == "")
-        {
+        $resultData = DB::table('users')
+            ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'point_b.*')
+            ->where('new_user_id', '=', $request->id)
+            ->whereYear('point_b.created_at', $tahun)
+            ->first();
+
+        if ($resultData == "") {
             return view('menu.menu-empty');
         }
 
@@ -1185,7 +1187,7 @@ class PointBController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointB::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointB::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $B1 = $request->B1;
             $scorB1 = $request->scorB1;

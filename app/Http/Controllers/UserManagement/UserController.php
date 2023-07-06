@@ -7,7 +7,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Validator;
 use DataTables;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 /**
  * UserController
@@ -49,6 +52,46 @@ class UserController extends Controller
 
         return view('admin.users.index');
     }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'max:255',
+                'unique:users',
+                'email',
+                function ($attribute, $value, $fail) {
+                    if (!str_ends_with($value, '@ikbis.ac.id')) {
+                        $fail('The email must end with @ikbis.ac.id.');
+                    }
+                },
+            ],
+            'password' => 'required|min:12|string|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        // Validasi input jika diperlukan
+
+        $user = User::create(
+            [
+                'name' => $request->name,
+                'email' => $request->email,
+                'fakultas' => $request->fakultas,
+                'prodi' => $request->prodi,
+                'password' => Hash::make($request->password),
+            ]
+        );
+        $user->assignRole($request->role);
+
+        toast('User created. :)', 'success');
+        return redirect()->back();
+    }
+
 
     /**
      * show

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PointC;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ class PointCController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         $dataMenu = Menu::first();
@@ -25,11 +27,18 @@ class PointCController extends Controller
             return redirect()->back();
         } elseif ($dataMenu->control_menu == 0) {
             return view('menu.disabled');
-        } elseif (PointC::where('user_id', '=', Auth::user()->id)->first() == "") {
-            return view('input-point.point-C');
         } else {
-            $resultData = PointC::where('user_id', '=', Auth::user()->id)->first();
-            return view('edit-point.EditPointC', ['data' => $resultData]);
+            $currentYear = Carbon::now()->year;
+            $resultData = PointC::where('new_user_id', '=', Auth::user()->id)
+                ->whereYear('created_at', $currentYear)
+                ->first();
+
+            if ($resultData == null) {
+                return view('input-point.point-C');
+            } else {
+                $pointId = $resultData->new_user_id;
+                return redirect()->route('edit.Point-C', ['PointId' => $pointId]);
+            }
         }
     }
 
@@ -56,6 +65,8 @@ class PointCController extends Controller
         DB::beginTransaction();
         try {
             $pointC = new PointC();
+            $pointC->new_user_id = Auth()->id();
+
             $pointC->C1 = $request->get('C1');
             $pointC->scorC1 = $request->get('scorC1');
             $pointC->scorMaxC1 = $request->get('scorMaxC1');
@@ -273,7 +284,7 @@ class PointCController extends Controller
             $pointC->NilaiPengabdianKepadaMasyarakat = $request->get('NilaiPengabdianKepadaMasyarakat');
             $pointC->NilaiTambahPengabdianKepadaMasyarakat = $request->get('NilaiTambahPengabdianKepadaMasyarakat');
             $pointC->NilaiTotalPengabdianKepadaMasyarakat = $request->get('NilaiTotalPengabdianKepadaMasyarakat');
-            $pointC->user_id = Auth()->id();
+
             $pointC->save();
 
             DB::commit();
@@ -294,17 +305,7 @@ class PointCController extends Controller
      */
     public function edit(PointC $pointC, $PointId)
     {
-        $dataMenu = Menu::first();
-
-        if (empty($dataMenu)) {
-            return redirect()->back();
-        } elseif ($dataMenu->control_menu == 0)
-            return view('menu.disabled');
-        elseif (PointC::where('user_id', '=', $PointId)->first() == "") {
-            return view('menu.menu-empty');
-        } else {
-            $data = PointC::where('user_id', '=', $PointId)->first();
-        }
+        $data = PointC::where('new_user_id', '=', $PointId)->first();
 
         return view('edit-point.EditPointC', ['data' => $data]);
     }
@@ -332,7 +333,7 @@ class PointCController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointC::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointC::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $C1 = $request->C1;
             $scorC1 = $request->scorC1;
@@ -775,27 +776,29 @@ class PointCController extends Controller
         }
     }
 
-       // functuin mencari data page search
-       public function searchPoin()
-       {
-           $users = User::whereNotIn('name', [
-               'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
-           ])->get();
+    // functuin mencari data page search
+    public function searchPoin()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+        ])->get();
 
-           return view('edit-point.hrd.search.searchDataPoinC', compact('users'));
-       }
+        return view('edit-point.hrd.search.searchDataPoinC', compact('users'));
+    }
 
-            // return view ke edit
+    // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $resultData = DB::table('users')
-                ->leftJoin('point_c', 'point_c.user_id', '=', 'users.id')
-                ->select('users.name', 'users.email', 'point_c.*')
-                ->where('user_id', '=', $request->id)
-                ->first();
+        $tahun = $request->input('tahun');
 
-        if($resultData == "")
-        {
+        $resultData = DB::table('users')
+            ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'point_c.*')
+            ->where('new_user_id', '=', $request->id)
+            ->whereYear('point_c.created_at', $tahun)
+            ->first();
+
+        if ($resultData == "") {
             return view('menu.menu-empty');
         }
 
@@ -818,7 +821,7 @@ class PointCController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointC::where('user_id', $PointId)->firstOrFail();
+            $RecordData =  PointC::where('new_user_id', $PointId)->firstOrFail();
             // Request put data update
             $C1 = $request->C1;
             $scorC1 = $request->scorC1;
