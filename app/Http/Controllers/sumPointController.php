@@ -24,25 +24,52 @@ class sumPointController extends Controller
     public function raportView($user_id)
     {
         // old
+        // $users = DB::table('users')
+        //     ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
+        //     ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+        //     ->where(function ($query) use ($user_id) {
+        //         $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+        //             ->orWhere('point_a.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+        //             ->orWhere('point_b.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+        //             ->orWhere('point_c.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+        //             ->orWhere('point_d.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
+        //             ->orWhere('point_e.new_user_id', '=', $user_id);
+        //     })
+        //     ->where('users.id', $user_id)
+        //     ->first();
+
+        $currentYear = Carbon::now()->year;
+
         $users = DB::table('users')
-            ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
-            ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
-            ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
-            ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
-            ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
-            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-            ->where(function ($query) use ($user_id) {
-                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-                    ->orWhere('point_a.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-                    ->orWhere('point_b.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-                    ->orWhere('point_c.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-                    ->orWhere('point_d.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
-                    ->orWhere('point_e.new_user_id', '=', $user_id);
+            ->leftJoin('point_a', function ($join) use ($currentYear) {
+                $join->on('point_a.new_user_id', '=', 'users.id')
+                    ->whereYear('point_a.created_at', $currentYear);
             })
+            ->leftJoin('point_b', function ($join) use ($currentYear) {
+                $join->on('point_b.new_user_id', '=', 'users.id')
+                    ->whereYear('point_b.created_at', $currentYear);
+            })
+            ->leftJoin('point_c', function ($join) use ($currentYear) {
+                $join->on('point_c.new_user_id', '=', 'users.id')
+                    ->whereYear('point_c.created_at', $currentYear);
+            })
+            ->leftJoin('point_d', function ($join) use ($currentYear) {
+                $join->on('point_d.new_user_id', '=', 'users.id')
+                    ->whereYear('point_d.created_at', $currentYear);
+            })
+            ->leftJoin('point_e', function ($join) use ($currentYear) {
+                $join->on('point_e.new_user_id', '=', 'users.id')
+                    ->whereYear('point_e.created_at', $currentYear);
+            })
+            ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
             ->where('users.id', $user_id)
             ->first();
 
@@ -201,25 +228,55 @@ class sumPointController extends Controller
     public function raportPdf($user_id)
     {
         // old
+        // $users = DB::table('users')
+        //     ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
+        //     ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
+        //     ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+        //     ->where(function ($query) use ($user_id) {
+        //         $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
+        //             ->orWhere('point_a.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
+        //             ->orWhere('point_b.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
+        //             ->orWhere('point_c.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
+        //             ->orWhere('point_d.new_user_id', '=', $user_id)
+        //             ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
+        //             ->orWhere('point_e.new_user_id', '=', $user_id);
+        //     })
+        //     ->where('users.id', $user_id)
+        //     ->first();
+
+        $currentYear = Carbon::now()->year;
+
         $users = DB::table('users')
-            ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
-            ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
-            ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
-            ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
-            ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
-            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-            ->where(function ($query) use ($user_id) {
-                $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-                    ->orWhere('point_a.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-                    ->orWhere('point_b.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-                    ->orWhere('point_c.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-                    ->orWhere('point_d.new_user_id', '=', $user_id)
-                    ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
-                    ->orWhere('point_e.new_user_id', '=', $user_id);
+            ->leftJoin('point_a', function ($join) use ($currentYear) {
+                $join->on('point_a.new_user_id', '=', 'users.id')
+                    ->whereYear('point_a.created_at', $currentYear);
             })
+            ->leftJoin('point_b', function ($join) use ($currentYear) {
+                $join->on('point_b.new_user_id', '=', 'users.id')
+                    ->whereYear('point_b.created_at', $currentYear);
+            })
+            ->leftJoin('point_c', function ($join) use ($currentYear) {
+                $join->on('point_c.new_user_id', '=', 'users.id')
+                    ->whereYear('point_c.created_at', $currentYear);
+            })
+            ->leftJoin('point_d', function ($join) use ($currentYear) {
+                $join->on('point_d.new_user_id', '=', 'users.id')
+                    ->whereYear('point_d.created_at', $currentYear);
+            })
+            ->leftJoin('point_e', function ($join) use ($currentYear) {
+                $join->on('point_e.new_user_id', '=', 'users.id')
+                    ->whereYear(
+                        'point_e.created_at',
+                        $currentYear
+                    );
+            })
+            ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
             ->where('users.id', $user_id)
             ->first();
 
