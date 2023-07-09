@@ -29,6 +29,14 @@ class UserController extends Controller
     //     ])->get();
     //     return view('admin.users.index', compact('users'));
     // }
+
+
+    /**
+     * index
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -53,6 +61,12 @@ class UserController extends Controller
         return view('admin.users.index');
     }
 
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
