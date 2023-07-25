@@ -8,6 +8,7 @@ use App\Models\PointA;
 use Illuminate\Http\Request;
 use Alert;
 use App\Models\Menu;
+use App\Models\Setting\Period;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -24,28 +25,35 @@ class PointAController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
+
     public function create()
     {
-        $dataMenu = Menu::first();
+        // Cek apakah ada periode yang sedang aktif dan belum ditutup
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
 
-        if (empty($dataMenu)) {
-            return redirect()->back();
-        } elseif ($dataMenu->control_menu == 0) {
+        if (!$activePeriod) {
+            // Tidak ada periode aktif yang belum ditutup, redirect ke halaman menu.disabled
             return view('menu.disabled');
-        } else {
-            $currentYear = Carbon::now()->year;
-            $resultData = PointA::where('new_user_id', '=', Auth::user()->id)
-                ->whereYear('created_at', $currentYear)
-                ->first();
+        }
 
-            if ($resultData == null) {
-                return view('input-point.point-A');
-            } else {
-                $pointId = $resultData->new_user_id;
-                return redirect()->route('edit.Point-A', ['PointId' => $pointId]);
-            }
+        // Periode aktif ditemukan, cek apakah data PointA untuk periode aktif dan user saat ini sudah ada
+        $resultData = PointA::where('new_user_id', Auth::user()->id)
+            ->where('period_id', $activePeriod->id)
+            ->first();
+
+        if (!$resultData) {
+            // Data PointA belum ada, tampilkan halaman input
+            return view('input-point.point-A');
+        } else {
+            // Data PointA sudah ada, redirect ke halaman edit
+            $userId = $resultData->new_user_id;
+            return redirect()->route('edit.Point-A', ['PointId' => $userId]);
         }
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -71,10 +79,21 @@ class PointAController extends Controller
             'fileA13' => 'mimes:pdf',
         ]);
 
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
+
+        if (!$activePeriod) {
+            throw new \Exception('Periode aktif tidak ditemukan.');
+        }
+
         DB::beginTransaction();
         try {
+
             $pointA = new PointA();
             $pointA->new_user_id = Auth()->id();
+            $pointA->period_id = $activePeriod->id;
 
             $pointA->A1 = $request->get('A1');
             $pointA->scorA1 = $request->get('scorA1');
@@ -254,10 +273,22 @@ class PointAController extends Controller
      */
     public function edit(PointA $pointA, $PointId)
     {
-        $data = PointA::where('new_user_id', '=', $PointId)->first();
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
+
+        if (!$activePeriod) {
+            return view('menu.disabled');
+        }
+
+        $data = PointA::where('new_user_id', '=', $PointId)
+            ->where('period_id', $activePeriod->id)
+            ->first();
 
         return view('edit-point.EditPointA', ['data' => $data]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -285,9 +316,21 @@ class PointAController extends Controller
             'fileA13' => 'mimes:pdf',
         ]);
 
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
+
+        if (!$activePeriod) {
+            return view('menu.disabled');
+        }
+
         DB::beginTransaction();
         try {
-            $RecordData =  PointA::where('new_user_id', $PointId)->firstOrFail();
+            $RecordData = PointA::where('new_user_id', $PointId)
+                ->where('period_id', $activePeriod->id)
+                ->firstOrFail();
+
             // Request put data update
             $A1 = $request->A1;
             $scorA1 = $request->scorA1;

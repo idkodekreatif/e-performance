@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\PointD;
 use App\Models\PointE;
+use App\Models\Setting\Period;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,24 +22,29 @@ class PointEController extends Controller
      */
     public function create()
     {
-        $dataMenu = Menu::first();
+        // Cek apakah ada periode yang sedang aktif dan belum ditutup
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
 
-        if (empty($dataMenu)) {
-            return redirect()->back();
-        } elseif ($dataMenu->control_menu == 0) {
+        if (!$activePeriod) {
+            // Tidak ada periode aktif yang belum ditutup, redirect ke halaman menu.disabled
             return view('menu.disabled');
-        } else {
-            $currentYear = Carbon::now()->year;
-            $resultData = PointE::where('new_user_id', '=', Auth::user()->id)
-                ->whereYear('created_at', $currentYear)
-                ->first();
+        }
 
-            if ($resultData == null) {
-                return view('input-point.point-E');
-            } else {
-                $pointId = $resultData->new_user_id;
-                return redirect()->route('edit.Point-E', ['PointId' => $pointId]);
-            }
+        // Periode aktif ditemukan, cek apakah data PointA untuk periode aktif dan user saat ini sudah ada
+        $resultData = PointE::where('new_user_id', Auth::user()->id)
+            ->where('period_id', $activePeriod->id)
+            ->first();
+
+        if (!$resultData) {
+            // Data PointB belum ada, tampilkan halaman input
+            return view('input-point.point-E');
+        } else {
+            // Data PointB sudah ada, redirect ke halaman edit
+            $userId = $resultData->new_user_id;
+            return redirect()->route('edit.Point-E', ['PointId' => $userId]);
         }
     }
 
@@ -63,10 +69,20 @@ class PointEController extends Controller
             'fileE2_4' => 'mimes:pdf',
         ]);
 
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
+
+        if (!$activePeriod) {
+            throw new \Exception('Periode aktif tidak ditemukan.');
+        }
+
         DB::beginTransaction();
         try {
             $pointE = new PointE();
             $pointE->new_user_id = Auth()->id();
+            $pointE->period_id = $activePeriod->id;
 
             $pointE->E1_1 = $request->get('E1_1');
             $pointE->scorE1_1 = $request->get('scorE1_1');
@@ -191,7 +207,18 @@ class PointEController extends Controller
      */
     public function edit(PointE $pointE, $PointId)
     {
-        $data = PointE::where('new_user_id', '=', $PointId)->first();
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
+
+        if (!$activePeriod) {
+            return view('menu.disabled');
+        }
+
+        $data = PointE::where('new_user_id', '=', $PointId)
+            ->where('period_id', $activePeriod->id)
+            ->first();
 
         return view('edit-point.EditPointE', ['data' => $data]);
     }
@@ -218,9 +245,21 @@ class PointEController extends Controller
             'fileE2_4' => 'mimes:pdf',
         ]);
 
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
+
+        if (!$activePeriod) {
+            return view('menu.disabled');
+        }
+
         DB::beginTransaction();
         try {
-            $RecordData =  PointE::where('new_user_id', $PointId)->firstOrFail();
+            $RecordData = PointE::where('new_user_id', $PointId)
+                ->where('period_id', $activePeriod->id)
+                ->firstOrFail();
+
             // Request put data update
             $E1_1 = $request->E1_1;
             $scorE1_1 = $request->scorE1_1;
@@ -436,7 +475,7 @@ class PointEController extends Controller
             return redirect()->route('preview.point', ['new_user_id' => Auth::user()->id]);
         } catch (\Throwable $th) {
             DB::rollBack();
-            toast('Update Point E fail :)', 'error');
+            toast('Update Point E fail :(', 'error');
             return redirect()->back();
         }
     }

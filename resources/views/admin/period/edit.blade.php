@@ -62,6 +62,11 @@
                         </span>
                     @enderror
 
+                    <input type="checkbox" name="is_closed" id="is_closed" value="1"
+                        @if ($period->is_closed) checked @endif>
+                    <label for="is_closed">Aktif Periode</label>
+
+
                     <div class="row">
                         <div class="col">
                             <div class="text-end">

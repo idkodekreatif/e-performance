@@ -55,10 +55,10 @@
                                     <div class="d-flex align-items-center">
                                         @if ($period->is_closed == 0)
                                             <div class="d-flex align-items-center"><i
-                                                    class="fa fa-circle text-success me-1"></i> Aktif</div>
+                                                    class="fa fa-circle text-danger me-1"></i> Tidak Aktif</div>
                                         @else
                                             <div class="d-flex align-items-center"><i
-                                                    class="fa fa-circle text-danger me-1"></i> Tidak Aktif</div>
+                                                    class="fa fa-circle text-success me-1"></i> Aktif</div>
                                         @endif
                                     </div>
                                 </td>
