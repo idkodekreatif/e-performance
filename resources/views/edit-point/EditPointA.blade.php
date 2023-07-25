@@ -68,12 +68,11 @@
 
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
-                                        <td>Nilai rerata < 2.00 (KURANG)</td>
-                                        <td>Nilai rerata>=2.00 - < 3.00 (CUKUP) </td>
-                                        <td>Nilai rerata >=3.00 - < 3.60 (BAIK)</td>
-                                        <td>Nilai rerata >=3.60 - < 3.80 (SANGAT BAIK)</td>
-                                        <td>Nilai rerata >=3.80 - 4.00
-                                            (ISTIMEWA)</td>
+                                        <td>Nilai rerata < 3.00 (KURANG)</td>
+                                        <td>Nilai rerata>=3.00 - < 4.00 (CUKUP)</td>
+                                        <td> Nilai rerata >=4.00 - < 4.60 (BAIK)</td>
+                                        <td>Nilai rerata >=4.60 - < 4.80 (SANGAT BAIK)</td>
+                                        <td>Nilai rerata >=4.80 - 5.00 (ISTIMEWA)</td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload Hasil
                                                 evaluasi perkuliahan</label>
@@ -192,15 +191,16 @@
 
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
-                                        <td>Kurang dari 2 sks</td>
-                                        <td>Mengampu mata kuliah dengan total 3 - 5 sks</td>
-                                        <td>Mengampu mata kuliah dengan total 6 - 8 sks</td>
-                                        <td>Mengampu mata kuliah dengan total 9 - 11 sks</td>
-                                        <td>Mengampu mata kuliah dengan rata-rata 12-13 sks atau lebih, per semester
+                                        <td>Kurang dari 8 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu total 8 - 16 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu total 17 - 22 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu total 23 - 30 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu rata-rata 31 sks atau lebih, per Tahun Ajaran (semester Gasal dan
+                                            Genap)
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Jumlah
-                                                SKS</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Jumlah SKS
+                                                (termasuk SKS Mengajar, Jabatan Struktural, dll)</label>
                                             <input class="@error('fileA3') is-invalid @enderror" id="formFileSm"
                                                 name="fileA3" type="file">
                                             @if ($data->fileA3)
@@ -316,10 +316,14 @@
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
                                         <td>Tidak membimbing mahasiswa PKL/ PPM/KKM</td>
-                                        <td>Membimbing mahasiswa PKL/ PPM/KKM (1 kelompok PPM/ 1 mahasiswa PKL)</td>
-                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (2 - 4 mahasiswa)</td>
-                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (5 - 7 mahasiswa)</td>
-                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (8 - 10 mahasiswa, atau lebih)
+                                        <td>Membimbing mahasiswa PKL/ PPM/KKM (0.5 Kelompok ATAU 4 - 7 mahasiswa PKL)
+                                        </td>
+                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (1 Kelompok ATAU 8 - 10
+                                            mahasiswa)</td>
+                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (1.5 Kelompok ATAU 11 - 15
+                                            mahasiswa)</td>
+                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (2 Kelompok ATAU 16 - 20
+                                            mahasiswa, atau lebih)
                                         </td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload SK
@@ -499,11 +503,11 @@
 
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
-                                        <td>Tidak sedang menjadi pembimbing akademik (dosen PA/dosen wali)</td>
-                                        <td>Menjadi pembimbing akademik (1 - 8 mahasiswa)</td>
-                                        <td>Menjadi pembimbing akademik (9 - 10 mahasiswa)</td>
-                                        <td>Menjadi pembimbing akademik (11 - 12 mahasiswa)</td>
-                                        <td>Menjadi pembimbing akademik (>12 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik kurang dari 10 Mahasiswa</td>
+                                        <td>Menjadi pembimbing akademik (10 - 17 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik (18 - 24 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik (25 - 30 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik (>30 mahasiswa)</td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload SK Dosen
                                                 Pembimbing Akademik
@@ -917,12 +921,9 @@
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
                                         <td>Tidak sedang menduduki jabatan struktural</td>
-                                        <td>Sedang menjabat sebagai Kepala Program Studi / Sekretaris Program Studi /
-                                            Kepala Laboratorium Program Studi</td>
-                                        <td>Sedang menjabat sebagai Wakil Dekan / Kepala Pusat Penelitian tingkat
-                                            Institusi</td>
-                                        <td>Sedang menjabat sebagai Wakil Rektor/Direktur Pascasarjana/Dekan
-                                            Fakultas/Ketua Lembaga</td>
+                                        <td>Sedang menjabat sebagai Kepala Program Studi, Ka. Sub. Lembaga </td>
+                                        <td>Sedang menjabat sebagai Dekan, Ka. Lembaga, Ka. UPT</td>
+                                        <td>Sedang menjabat sebagai Wakil Rektor</td>
                                         <td>Sedang menjabat sebagai Rektor</td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload SK

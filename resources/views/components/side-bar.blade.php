@@ -840,9 +840,9 @@
                                 @endrole
                             </ul>
                         </li>
-                        @role('it|superuser|hrd')
+                        {{-- @role('it|superuser|hrd')
                             <li><a href="{{ route('Menu.Controller') }}">Pembaruan Data</a></li>
-                        @endrole
+                        @endrole --}}
                         @role('it|superuser')
                             <li><a href="{{ route('logactivity') }}">Activity Log</a></li>
                         @endrole

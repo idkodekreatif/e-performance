@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Predikat\Raport;
+use App\Models\Setting\Period;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,55 +24,44 @@ class sumPointController extends Controller
      */
     public function raportView($user_id)
     {
-        // old
-        // $users = DB::table('users')
-        //     ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
-        //     ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-        //     ->where(function ($query) use ($user_id) {
-        //         $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-        //             ->orWhere('point_a.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-        //             ->orWhere('point_b.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-        //             ->orWhere('point_c.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-        //             ->orWhere('point_d.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
-        //             ->orWhere('point_e.new_user_id', '=', $user_id);
-        //     })
-        //     ->where('users.id', $user_id)
-        //     ->first();
+        $activePeriod = Period::where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
 
-        $currentYear = Carbon::now()->year;
+        if (!$activePeriod) {
+            // Return empty data or handle the case when there is no active period.
+            return view('input-point.raport', ['users' => null, 'resultArray' => null]);
+        }
 
         $users = DB::table('users')
-            ->leftJoin('point_a', function ($join) use ($currentYear) {
+            ->leftJoin('point_a', function ($join) use ($activePeriod) {
                 $join->on('point_a.new_user_id', '=', 'users.id')
-                    ->whereYear('point_a.created_at', $currentYear);
+                    ->where('point_a.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_b', function ($join) use ($currentYear) {
+            ->leftJoin('point_b', function ($join) use ($activePeriod) {
                 $join->on('point_b.new_user_id', '=', 'users.id')
-                    ->whereYear('point_b.created_at', $currentYear);
+                    ->where('point_b.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_c', function ($join) use ($currentYear) {
+            ->leftJoin('point_c', function ($join) use ($activePeriod) {
                 $join->on('point_c.new_user_id', '=', 'users.id')
-                    ->whereYear('point_c.created_at', $currentYear);
+                    ->where('point_c.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_d', function ($join) use ($currentYear) {
+            ->leftJoin('point_d', function ($join) use ($activePeriod) {
                 $join->on('point_d.new_user_id', '=', 'users.id')
-                    ->whereYear('point_d.created_at', $currentYear);
+                    ->where('point_d.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_e', function ($join) use ($currentYear) {
+            ->leftJoin('point_e', function ($join) use ($activePeriod) {
                 $join->on('point_e.new_user_id', '=', 'users.id')
-                    ->whereYear('point_e.created_at', $currentYear);
+                    ->where('point_e.period_id', '=', $activePeriod->id);
             })
             ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
             ->where('users.id', $user_id)
             ->first();
+
+        if (!$users) {
+            // Return empty data or handle the case when there are no users with the given ID.
+            return view('input-point.raport', ['users' => null, 'resultArray' => null]);
+        }
 
         $resultArray = [];
 
@@ -227,58 +217,44 @@ class sumPointController extends Controller
 
     public function raportPdf($user_id)
     {
-        // old
-        // $users = DB::table('users')
-        //     ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
-        //     ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
-        //     ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
-        //     ->where(function ($query) use ($user_id) {
-        //         $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
-        //             ->orWhere('point_a.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
-        //             ->orWhere('point_b.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
-        //             ->orWhere('point_c.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
-        //             ->orWhere('point_d.new_user_id', '=', $user_id)
-        //             ->orWhereNotNull('point_e.NilaiUnsurPengabdian')
-        //             ->orWhere('point_e.new_user_id', '=', $user_id);
-        //     })
-        //     ->where('users.id', $user_id)
-        //     ->first();
+        $activePeriod = Period::where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
 
-        $currentYear = Carbon::now()->year;
+        if (!$activePeriod) {
+            // Return empty data or handle the case when there is no active period.
+            return view('input-point.raport', ['users' => null, 'resultArray' => null]);
+        }
 
         $users = DB::table('users')
-            ->leftJoin('point_a', function ($join) use ($currentYear) {
+            ->leftJoin('point_a', function ($join) use ($activePeriod) {
                 $join->on('point_a.new_user_id', '=', 'users.id')
-                    ->whereYear('point_a.created_at', $currentYear);
+                    ->where('point_a.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_b', function ($join) use ($currentYear) {
+            ->leftJoin('point_b', function ($join) use ($activePeriod) {
                 $join->on('point_b.new_user_id', '=', 'users.id')
-                    ->whereYear('point_b.created_at', $currentYear);
+                    ->where('point_b.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_c', function ($join) use ($currentYear) {
+            ->leftJoin('point_c', function ($join) use ($activePeriod) {
                 $join->on('point_c.new_user_id', '=', 'users.id')
-                    ->whereYear('point_c.created_at', $currentYear);
+                    ->where('point_c.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_d', function ($join) use ($currentYear) {
+            ->leftJoin('point_d', function ($join) use ($activePeriod) {
                 $join->on('point_d.new_user_id', '=', 'users.id')
-                    ->whereYear('point_d.created_at', $currentYear);
+                    ->where('point_d.period_id', '=', $activePeriod->id);
             })
-            ->leftJoin('point_e', function ($join) use ($currentYear) {
+            ->leftJoin('point_e', function ($join) use ($activePeriod) {
                 $join->on('point_e.new_user_id', '=', 'users.id')
-                    ->whereYear(
-                        'point_e.created_at',
-                        $currentYear
-                    );
+                    ->where('point_e.period_id', '=', $activePeriod->id);
             })
             ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
             ->where('users.id', $user_id)
             ->first();
+
+        if (!$users) {
+            // Return empty data or handle the case when there are no users with the given ID.
+            return view('input-point.raport', ['users' => null, 'resultArray' => null]);
+        }
 
 
 
@@ -445,6 +421,11 @@ class sumPointController extends Controller
      */
     public function RaportChartView(Request $request)
     {
+        // Mendapatkan periode aktif
+        $activePeriod = Period::where('start_date', '<=', Carbon::now())
+            ->where('end_date', '>=', Carbon::now())
+            ->first();
+
         $users = DB::table('users');
 
         $resultGetUsersName = User::whereNotIn('name', [
@@ -478,6 +459,11 @@ class sumPointController extends Controller
                     ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
                     ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
             })
+            ->where('point_a.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_a
+            ->where('point_b.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_b
+            ->where('point_c.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_c
+            ->where('point_d.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_d
+            ->where('point_e.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_e
             ->get();
 
         $messagesArray = [];
@@ -548,7 +534,6 @@ class sumPointController extends Controller
             // Result Array
             $messagesArray[] = $result_data;
         }
-        // dd($messagesArray);
 
         return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName'));
     }
