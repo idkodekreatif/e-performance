@@ -817,26 +817,29 @@ class PointCController extends Controller
     // functuin mencari data page search
     public function searchPoin()
     {
+        // Mendapatkan semua periode dari database
+        $allPeriods = Period::all();
+
         $users = User::whereNotIn('name', [
             'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
-        return view('edit-point.hrd.search.searchDataPoinC', compact('users'));
+        return view('edit-point.hrd.search.searchDataPoinC', compact('users', 'allPeriods'));
     }
 
     // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $tahun = $request->input('tahun');
+        $period_id = $request->input('period_id'); // Mendapatkan period_id dari input form
 
         $resultData = DB::table('users')
             ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
             ->select('users.name', 'users.email', 'point_c.*')
             ->where('new_user_id', '=', $request->id)
-            ->whereYear('point_c.created_at', $tahun)
+            ->where('point_c.period_id', '=', $period_id) // Filter berdasarkan period_id
             ->first();
 
-        if ($resultData == "") {
+        if ($resultData == null) {
             return view('menu.menu-empty');
         }
 
@@ -859,7 +862,12 @@ class PointCController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointC::where('new_user_id', $PointId)->firstOrFail();
+            $period_id = $request->input('period_id'); // Mendapatkan period_id dari input form
+            // Menggunakan findOrFail untuk mencari data PointA berdasarkan new_user_id dan period_id
+            $RecordData = PointC::where('new_user_id', $PointId)
+                ->where('period_id', $period_id)
+                ->firstOrFail();
+
             // Request put data update
             $C1 = $request->C1;
             $scorC1 = $request->scorC1;

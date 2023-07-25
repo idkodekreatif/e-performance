@@ -70,6 +70,7 @@
                             method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
+                            <input type="hidden" name="period_id" value="{{ $data->period_id }}">
                             <table class="table table-bordered border-2 table-sm text-center table-sm">
                                 <thead>
                                     <tr>

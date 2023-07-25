@@ -658,23 +658,26 @@ class PointAController extends Controller
     // functuin mencari data page search
     public function searchPoin()
     {
+        // Mendapatkan semua periode dari database
+        $allPeriods = Period::all();
+
         $users = User::whereNotIn('name', [
             'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
         ])->get();
 
-        return view('edit-point.hrd.search.searchDataPoinA', compact('users'));
+        return view('edit-point.hrd.search.searchDataPoinA', compact('users', 'allPeriods'));
     }
 
     // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $tahun = $request->input('tahun'); // Mendapatkan tahun dari input form
+        $period_id = $request->input('period_id'); // Mendapatkan period_id dari input form
 
         $resultData = DB::table('users')
             ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
             ->select('users.name', 'users.email', 'point_a.*')
             ->where('new_user_id', '=', $request->id)
-            ->whereYear('point_a.created_at', $tahun)
+            ->where('point_a.period_id', '=', $period_id) // Filter berdasarkan period_id
             ->first();
 
         if ($resultData == null) {
@@ -683,6 +686,7 @@ class PointAController extends Controller
 
         return view('edit-point.hrd.update.EditPointA', ['data' => $resultData]);
     }
+
 
 
     public function updateHrd(Request $request, PointA $pointA, $PointId)
@@ -706,7 +710,12 @@ class PointAController extends Controller
 
         DB::beginTransaction();
         try {
-            $RecordData =  PointA::where('new_user_id', $PointId)->firstOrFail();
+            $period_id = $request->input('period_id'); // Mendapatkan period_id dari input form
+            // Menggunakan findOrFail untuk mencari data PointA berdasarkan new_user_id dan period_id
+            $RecordData = PointA::where('new_user_id', $PointId)
+                ->where('period_id', $period_id)
+                ->firstOrFail();
+
             // Request put data update
             $A1 = $request->A1;
             $scorA1 = $request->scorA1;

@@ -25,20 +25,26 @@
         <form action="{{ route('Point-E.data.search.result') }}" method="GET">
             <div class="card shadow">
                 <div class="card-body">
-                    <div class="mb-4">
-                        <h4 class="card-title">Nama</h4>
-                        <p class="text-danger">* Select One Name...</p>
-                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Name</label>
+                            <select id="single-select" name="id" class="form-select">
+                                <option value="">-- Select Name --</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    <select id="single-select" name="id">
-                        <option value="">-- Select One --</option>
-                        @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-
-                    <div class="mt-3">
-                        <input type="date" class="form-control input-rounded" name="tahun">
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label">Periode</label>
+                            <select id="single-select" name="period_id" class="form-select">
+                                <option value="">-- Select Periode --</option>
+                                @foreach ($allPeriods as $perode)
+                                    <option value="{{ $perode->id }}">{{ $perode->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-sm mt-2">Search</button>
