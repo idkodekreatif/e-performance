@@ -55,9 +55,9 @@
                                 <li><a href="{{ route('Point-C.data.search') }}">Search Poin C</a></li>
                                 <li><a href="{{ route('Point-D.data.search') }}">Search Poin D</a></li>
                                 <li><a href="{{ route('Point-E.data.search') }}">Search Poin E</a></li>
+                                <li><a href="{{ route('raport.data.search') }}">Search Raport</a></li>
                                 @role('it|superuse')
                                     <li><a href="javascript:void()">Search Rincian Poin</a></li>
-                                    <li><a href="{{ route('raport.data.search') }}">Search Raport</a></li>
                                 @endrole
                             </ul>
                         </li>

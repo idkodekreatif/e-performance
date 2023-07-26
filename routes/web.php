@@ -225,7 +225,8 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::get('/preview/{user_id}', 'Preview')->name('preview.point');
         // -----------------------------Search raport hrd HRD----------------------------------------//
         Route::get('/raport/search/', 'searchRaport')->name('raport.data.search');
-        Route::get('/raport/search/result', 'resultSearchRaport')->name('raport.data.search.result');
+        Route::get('/raport/search/result/', 'resultSearchRaport')->name('raport.data.search.result');
+        Route::get('/generate-pdf/{id}/{period_id}', 'generatePDF')->name('generate.pdf');
     });
 });
 
