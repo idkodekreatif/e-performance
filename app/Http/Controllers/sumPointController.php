@@ -426,6 +426,20 @@ class sumPointController extends Controller
             ->where('end_date', '>=', Carbon::now())
             ->first();
 
+        // Get the selected period ID from the request
+        $selectedPeriodId = $request->input('period');
+        // If no period is selected, get the active period
+        if (!$selectedPeriodId) {
+            $activePeriod = Period::where('start_date', '<=', Carbon::now())
+                ->where('end_date', '>=', Carbon::now())
+                ->first();
+
+            // Set the selected period ID to the active period ID
+            $selectedPeriodId = $activePeriod->id;
+        }
+
+        $allPeriods = Period::all();
+
         $users = DB::table('users');
 
         $resultGetUsersName = User::whereNotIn('name', [
@@ -459,12 +473,13 @@ class sumPointController extends Controller
                     ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
                     ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
             })
-            ->where('point_a.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_a
-            ->where('point_b.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_b
-            ->where('point_c.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_c
-            ->where('point_d.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_d
-            ->where('point_e.period_id', '=', $activePeriod->id) // Filter berdasarkan periode aktif pada tabel point_e
+            ->where('point_a.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_a
+            ->where('point_b.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_b
+            ->where('point_c.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_c
+            ->where('point_d.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_d
+            ->where('point_e.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_e
             ->get();
+
 
         $messagesArray = [];
         foreach ($data as $data) {
@@ -535,7 +550,7 @@ class sumPointController extends Controller
             $messagesArray[] = $result_data;
         }
 
-        return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName'));
+        return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName', 'allPeriods', 'activePeriod'));
     }
 
     public function Preview($user_id)

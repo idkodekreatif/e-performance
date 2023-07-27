@@ -16,13 +16,23 @@
                         placeholder="Enter a Keyword">
                 </div>
                 <div class="col-auto">
+                    <select name="period" id="period"
+                        class="form-control form-nice-select me-sm-2 default-select wide">
+                        <option value="">All Periods</option>
+                        @foreach ($allPeriods as $period)
+                            <option value="{{ $period->id }}" @if ($activePeriod && $activePeriod->id == $period->id) selected @endif>
+                                {{ $period->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-auto">
                     <select name="User_Name" id="User_Name"
                         class="form-nice-select me-sm-2 default-select form-control wide">
                         <option value="">-- Select Nama --</option>
                         @if (!empty($resultGetUsersName))
-                        @foreach ($resultGetUsersName as $User_Name)
-                        <option value="{{ $User_Name->id }}">{{ $User_Name->name }}</option>
-                        @endforeach
+                            @foreach ($resultGetUsersName as $User_Name)
+                                <option value="{{ $User_Name->id }}">{{ $User_Name->name }}</option>
+                            @endforeach
                         @endif
                     </select>
                 </div>
@@ -35,7 +45,8 @@
                     </select>
                 </div>
                 <div class="col-auto">
-                    <select name="prodi" id="prodi" class="form-nice-select me-sm-2 default-select form-control wide">
+                    <select name="prodi" id="prodi"
+                        class="form-nice-select me-sm-2 default-select form-control wide">
                         <option value="">-- Select Prodi --</option>
                         <option value="GZ">S1 Gizi</option>
                         <option value="PR">S1 Keperawatan</option>
@@ -68,31 +79,31 @@
     </div>
 
     @push('JavaScript')
-    <script>
-        // var arr = @json($messagesArray);
-        var arr = {!! json_encode($messagesArray) !!}
-        var arrStringName = arr.map(obj => obj.name);
-        var arrStringPendidikanDanPengajaran = arr.map(obj => obj.PendidikanDanPengajaran);
-        var arrStringPenelitianDanKaryaIlmiah = arr.map(obj => obj.PenelitianDanKaryaIlmiah);
-        var arrStringPengabdianMasyarakat = arr.map(obj => obj.PengabdianMasyarakat);
-        var arrStringPengabdianInstitusiDanPengembanganDiri = arr.map(obj => obj.PengabdianInstitusiDanPengembanganDiri);
-        var arrStringresult_capaian_total = arr.map(obj => obj.result_capaian_total);
-        var arrStringPredikat = arr.map(obj => obj.predikat);
+        <script>
+            // var arr = @json($messagesArray);
+            var arr = {!! json_encode($messagesArray) !!}
+            var arrStringName = arr.map(obj => obj.name);
+            var arrStringPendidikanDanPengajaran = arr.map(obj => obj.PendidikanDanPengajaran);
+            var arrStringPenelitianDanKaryaIlmiah = arr.map(obj => obj.PenelitianDanKaryaIlmiah);
+            var arrStringPengabdianMasyarakat = arr.map(obj => obj.PengabdianMasyarakat);
+            var arrStringPengabdianInstitusiDanPengembanganDiri = arr.map(obj => obj.PengabdianInstitusiDanPengembanganDiri);
+            var arrStringresult_capaian_total = arr.map(obj => obj.result_capaian_total);
+            var arrStringPredikat = arr.map(obj => obj.predikat);
 
-        // console.log(arr);
-        // console.log(arrStringName);
-        // console.log(arrStringNilaiKinerjaTotal);
-        // console.log(arrStringPendidikanDanPengajaran);
-        // console.log(arrStringPenelitianDanKaryaIlmiah);
-        // console.log(arrStringPengabdianMasyarakat);
-        // console.log(arrStringPengabdianInstitusiDanPengembanganDiri);
-        // console.log(arrStringStandartKinerjaTotal);
-        // console.log(arrStringresult_capaian_total);
-        // console.log(arrStringPredikat);
-    </script>
+            // console.log(arr);
+            // console.log(arrStringName);
+            // console.log(arrStringNilaiKinerjaTotal);
+            // console.log(arrStringPendidikanDanPengajaran);
+            // console.log(arrStringPenelitianDanKaryaIlmiah);
+            // console.log(arrStringPengabdianMasyarakat);
+            // console.log(arrStringPengabdianInstitusiDanPengembanganDiri);
+            // console.log(arrStringStandartKinerjaTotal);
+            // console.log(arrStringresult_capaian_total);
+            // console.log(arrStringPredikat);
+        </script>
 
-    <!-- Chart ChartJS plugin files -->
-    <script src="{{ asset('Assets/vendor/chart.js/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('Assets/js/plugins-init/chartjs-aggregat.js') }}"></script>
+        <!-- Chart ChartJS plugin files -->
+        <script src="{{ asset('Assets/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+        <script src="{{ asset('Assets/js/plugins-init/chartjs-aggregat.js') }}"></script>
     @endpush
 </x-app-layout>
