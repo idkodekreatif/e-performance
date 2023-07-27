@@ -70,6 +70,7 @@
                             method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
+                            <input type="hidden" name="period_id" value="{{ $data->period_id }}">
                             <table class="table table-bordered border-2 table-sm text-center table-sm">
                                 <thead>
                                     <tr>
@@ -136,8 +137,9 @@
                                         <td><input type="radio" {{ $data->D1 == '1' ? 'checked' : '' }} class="D1"
                                                 name="D1" id="D1" value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" {{ $data->D1 == '2' ? 'checked' : '' }} class="D1"
-                                                name="D1" id="D1" value="2" onclick="sum();">
+                                        <td><input type="radio" {{ $data->D1 == '2' ? 'checked' : '' }}
+                                                class="D1" name="D1" id="D1" value="2"
+                                                onclick="sum();">
                                         </td>
                                         <td><input type="radio" {{ $data->D1 == '3' ? 'checked' : '' }}
                                                 class="D1" name="D1" id="D1" value="3"

@@ -1,16 +1,16 @@
 <x-app-layout title="Form Input Point A">
     @push('style')
-    <style>
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+        <style>
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
 
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-    </style>
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+        </style>
     @endpush
 
     <div class="col-xl col-lg">
@@ -27,7 +27,8 @@
             <div class="card-body">
                 <div class="basic-form">
                     <div class="table-responsive">
-                        <form id="my-form" action="{{ route('store.pointa') }}" method="POST" enctype="multipart/form-data">
+                        <form id="my-form" action="{{ route('store.pointa') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <table class="table table-responsive table-bordered border-2 text-center">
                                 <thead>
@@ -56,12 +57,11 @@
 
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
-                                        <td>Nilai rerata < 2.00 (KURANG)</td>
-                                        <td>Nilai rerata>=2.00 - < 3.00 (CUKUP) </td>
-                                        <td>Nilai rerata >=3.00 - < 3.60 (BAIK)</td>
-                                        <td>Nilai rerata >=3.60 - < 3.80 (SANGAT BAIK)</td>
-                                        <td>Nilai rerata >=3.80 - 4.00
-                                            (ISTIMEWA)</td>
+                                        <td>Nilai rerata < 3.00 (KURANG)</td>
+                                        <td>Nilai rerata>=3.00 - < 4.00 (CUKUP)</td>
+                                        <td> Nilai rerata >=4.00 - < 4.60 (BAIK)</td>
+                                        <td>Nilai rerata >=4.60 - < 4.80 (SANGAT BAIK)</td>
+                                        <td>Nilai rerata >=4.80 - 5.00 (ISTIMEWA)</td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload Hasil
                                                 evaluasi perkuliahan</label>
@@ -69,9 +69,9 @@
                                                 name="fileA1" type="file">
 
                                             @error('fileA1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA1" name="scorA1"
@@ -85,20 +85,25 @@
                                     <tr>
                                         <td>A.1</td>
                                         <td>Nilai rerata evaluasi perkuliahan untuk sem. Gasal - sem. Genap</td>
-                                        <td><input type="radio" class="A1" name="A1" id="A1" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A1" name="A1" id="A1"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A1" name="A1" id="A1" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A1" name="A1" id="A1"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A1" name="A1" id="A1" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A1" name="A1" id="A1"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A1" name="A1" id="A1" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A1" name="A1" id="A1"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A1" name="A1" id="A1" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A1" name="A1" id="A1"
+                                                value="5" onclick="sum();">
                                         </td>
                                         @error('A1')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </tr>
 
@@ -116,9 +121,9 @@
                                                 name="fileA2" type="file">
 
                                             @error('fileA2')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA2" name="scorA2"
@@ -126,43 +131,49 @@
                                         <td rowspan="2"><input id="scorMaxA2" name="scorMaxA2" type="number"
                                                 aria-label="A2" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA2" name="scorSubItemA2" type="number"
-                                                aria-label="A2" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA2" name="scorSubItemA2"
+                                                type="number" aria-label="A2" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.2</td>
                                         <td>Dosen menyusun RPS dari setiap mata kuliah yang diasuhnya dalam satu tahun
                                             akademik</td>
-                                        <td><input type="radio" class="A2" name="A2" id="A2" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A2" name="A2" id="A2"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A2" name="A2" id="A2" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A2" name="A2" id="A2"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A2" name="A2" id="A2" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A2" name="A2" id="A2"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A2" name="A2" id="A2" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A2" name="A2" id="A2"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A2" name="A2" id="A2" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A2" name="A2" id="A2"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
-                                        <td>Kurang dari 2 sks</td>
-                                        <td>Mengampu mata kuliah dengan total 3 - 5 sks</td>
-                                        <td>Mengampu mata kuliah dengan total 6 - 8 sks</td>
-                                        <td>Mengampu mata kuliah dengan total 9 - 11 sks</td>
-                                        <td>Mengampu mata kuliah dengan rata-rata 12-13 sks atau lebih, per semester
+                                        <td>Kurang dari 8 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu total 8 - 16 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu total 17 - 22 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu total 23 - 30 sks per Tahun Ajaran (semester Gasal dan Genap)</td>
+                                        <td>Mengampu rata-rata 31 sks atau lebih, per Tahun Ajaran (semester Gasal dan
+                                            Genap)
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Jumlah
-                                                SKS</label>
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Jumlah SKS
+                                                (termasuk SKS Mengajar, Jabatan Struktural, dll)</label>
                                             <input class="@error('fileA3') is-invalid @enderror" id="formFileSm"
                                                 name="fileA3" type="file">
 
                                             @error('fileA3')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA3" name="scorA3"
@@ -170,21 +181,26 @@
                                         <td rowspan="2"><input id="scorMaxA3" name="scorMaxA3" type="number"
                                                 aria-label="A3" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA3" name="scorSubItemA3" type="number"
-                                                aria-label="A3" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA3" name="scorSubItemA3"
+                                                type="number" aria-label="A3" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.3</td>
                                         <td>Dosen menjadi pengampu mata kuliah</td>
-                                        <td><input type="radio" class="A3" name="A3" id="A3" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A3" name="A3" id="A3"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A3" name="A3" id="A3" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A3" name="A3" id="A3"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A3" name="A3" id="A3" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A3" name="A3" id="A3"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A3" name="A3" id="A3" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A3" name="A3" id="A3"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A3" name="A3" id="A3" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A3" name="A3" id="A3"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
@@ -202,9 +218,9 @@
                                                 name="fileA4" type="file">
 
                                             @error('fileA4')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA4" name="scorA4"
@@ -212,33 +228,42 @@
                                         <td rowspan="2"><input id="scorMaxA4" name="scorMaxA4" type="number"
                                                 aria-label="A4" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA4" name="scorSubItemA4" type="number"
-                                                aria-label="A4" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA4" name="scorSubItemA4"
+                                                type="number" aria-label="A4" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.4</td>
                                         <td>Dosen menjadi pembimbing seminar akhir mahasiswa dalam suatu mata kuliah
                                             yang mensyaratkan seminar dan pembuatan karya
                                             ilmiah tertentu untuk kelulusannya</td>
-                                        <td><input type="radio" class="A4" name="A4" id="A4" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A4" name="A4" id="A4"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A4" name="A4" id="A4" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A4" name="A4" id="A4"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A4" name="A4" id="A4" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A4" name="A4" id="A4"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A4" name="A4" id="A4" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A4" name="A4" id="A4"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A4" name="A4" id="A4" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A4" name="A4" id="A4"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
                                         <td>Tidak membimbing mahasiswa PKL/ PPM/KKM</td>
-                                        <td>Membimbing mahasiswa PKL/ PPM/KKM (1 kelompok PPM/ 1 mahasiswa PKL)</td>
-                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (2 - 4 mahasiswa)</td>
-                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (5 - 7 mahasiswa)</td>
-                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (8 - 10 mahasiswa, atau lebih)
+                                        <td>Membimbing mahasiswa PKL/ PPM/KKM (0.5 Kelompok ATAU 4 - 7 mahasiswa PKL)
+                                        </td>
+                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (1 Kelompok ATAU 8 - 10
+                                            mahasiswa)</td>
+                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (1.5 Kelompok ATAU 11 - 15
+                                            mahasiswa)</td>
+                                        <td>Membimbing mahasiswa PKL dan/ atau PPM/KKM (2 Kelompok ATAU 16 - 20
+                                            mahasiswa, atau lebih)
                                         </td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload SK
@@ -247,9 +272,9 @@
                                                 name="fileA5" type="file">
 
                                             @error('fileA5')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA5" name="scorA5"
@@ -257,23 +282,28 @@
                                         <td rowspan="2"><input id="scorMaxA5" name="scorMaxA5" type="number"
                                                 aria-label="A5" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA5" name="scorSubItemA5" type="number"
-                                                aria-label="A5" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA5" name="scorSubItemA5"
+                                                type="number" aria-label="A5" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.5</td>
                                         <td>Dosen membimbing Praktik Kerja Lapangan atau Program Pemberdayaan Masyarakat
                                             atau Kuliah Kerja Mahasiswa (1 kelompok PPM
                                             dihitung 2 mahasiswa)</td>
-                                        <td><input type="radio" class="A5" name="A5" id="A5" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A5" name="A5" id="A5"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A5" name="A5" id="A5" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A5" name="A5" id="A5"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A5" name="A5" id="A5" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A5" name="A5" id="A5"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A5" name="A5" id="A5" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A5" name="A5" id="A5"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A5" name="A5" id="A5" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A5" name="A5" id="A5"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
@@ -291,9 +321,9 @@
                                                 name="fileA6" type="file">
 
                                             @error('fileA6')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA6" name="scorA6"
@@ -301,22 +331,27 @@
                                         <td rowspan="2"><input id="scorMaxA6" name="scorMaxA6" type="number"
                                                 aria-label="A6" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA6" name="scorSubItemA6" type="number"
-                                                aria-label="A6" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA6" name="scorSubItemA6"
+                                                type="number" aria-label="A6" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.6</td>
                                         <td>Dosen membimbing dalam menghasilkan Skripsi bagi mahasiswa strata 1 atau
                                             Tugas Akhir bagi mahasiswa diploma 3</td>
-                                        <td><input type="radio" class="A6" name="A6" id="A6" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A6" name="A6" id="A6"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A6" name="A6" id="A6" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A6" name="A6" id="A6"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A6" name="A6" id="A6" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A6" name="A6" id="A6"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A6" name="A6" id="A6" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A6" name="A6" id="A6"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A6" name="A6" id="A6" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A6" name="A6" id="A6"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
@@ -334,9 +369,9 @@
                                                 name="fileA7" type="file">
 
                                             @error('fileA7')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA7" name="scorA7"
@@ -344,31 +379,36 @@
                                         <td rowspan="2"><input id="scorMaxA7" name="scorMaxA7" type="number"
                                                 aria-label="A7" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA7" name="scorSubItemA7" type="number"
-                                                aria-label="A7" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA7" name="scorSubItemA7"
+                                                type="number" aria-label="A7" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.7</td>
                                         <td>Dosen bertugas sebagai penguji pada ujian akhir mahasiswa</td>
-                                        <td><input type="radio" class="A7" name="A7" id="A7" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A7" name="A7" id="A7"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A7" name="A7" id="A7" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A7" name="A7" id="A7"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A7" name="A7" id="A7" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A7" name="A7" id="A7"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A7" name="A7" id="A7" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A7" name="A7" id="A7"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A7" name="A7" id="A7" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A7" name="A7" id="A7"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
-                                        <td>Tidak sedang menjadi pembimbing akademik (dosen PA/dosen wali)</td>
-                                        <td>Menjadi pembimbing akademik (1 - 8 mahasiswa)</td>
-                                        <td>Menjadi pembimbing akademik (9 - 10 mahasiswa)</td>
-                                        <td>Menjadi pembimbing akademik (11 - 12 mahasiswa)</td>
-                                        <td>Menjadi pembimbing akademik (>12 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik kurang dari 10 Mahasiswa</td>
+                                        <td>Menjadi pembimbing akademik (10 - 17 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik (18 - 24 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik (25 - 30 mahasiswa)</td>
+                                        <td>Menjadi pembimbing akademik (>30 mahasiswa)</td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload SK Dosen
                                                 Pembimbing Akademik
@@ -377,9 +417,9 @@
                                                 name="fileA8" type="file">
 
                                             @error('fileA8')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA8" name="scorA8"
@@ -387,22 +427,27 @@
                                         <td rowspan="2"><input id="scorMaxA8" name="scorMaxA8" type="number"
                                                 aria-label="A8" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA8" name="scorSubItemA8" type="number"
-                                                aria-label="A8" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA8" name="scorSubItemA8"
+                                                type="number" aria-label="A8" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.8</td>
                                         <td>Dosen membimbing akademik /dosen pembimbing akademik (dosen PA/dosen wali)
                                         </td>
-                                        <td><input type="radio" class="A8" name="A8" id="A8" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A8" name="A8" id="A8"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A8" name="A8" id="A8" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A8" name="A8" id="A8"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A8" name="A8" id="A8" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A8" name="A8" id="A8"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A8" name="A8" id="A8" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A8" name="A8" id="A8"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A8" name="A8" id="A8" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A8" name="A8" id="A8"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
@@ -412,7 +457,7 @@
                                             (Jumlah mahasiswa melanjutkan studi/lulus < 80% )</td>
                                         <td>Tidak diperhitungkan</td>
                                         <td>80% s.d. < 100% Jumlah mahasiswa yang dibimbingnya lancar (Jumlah mahasiswa
-                                                melanjutkan studi/lulus=80% s.d. <100%)</td>
+                                                melanjutkan studi/lulus=80% s.d. < 100%)</td>
                                         <td>Tidak diperhitungkan</td>
                                         <td>100% jumlah mahasiswa yang dibimbingnya lancar
                                             (Jumlah mahasiswa melanjutkan studi/lulus = 100%)</td>
@@ -423,9 +468,9 @@
                                                 name="fileA9" type="file">
 
                                             @error('fileA9')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA9" name="scorA9"
@@ -433,22 +478,27 @@
                                         <td rowspan="2"><input id="scorMaxA9" name="scorMaxA9" type="number"
                                                 aria-label="A9" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA9" name="scorSubItemA9" type="number"
-                                                aria-label="A9" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA9" name="scorSubItemA9"
+                                                type="number" aria-label="A9" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.9</td>
                                         <td>Dosen PA/Dosen Wali membimbing kelancaran studi mahasiswa yang dibimbingnya
                                         </td>
-                                        <td><input type="radio" class="A9" name="A9" id="A9" value="1" onclick="sum();">
+                                        <td><input type="radio" class="A9" name="A9" id="A9"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A9" name="A9" id="A9" value="2" onclick="sum();">
+                                        <td><input type="radio" class="A9" name="A9" id="A9"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A9" name="A9" id="A9" value="3" onclick="sum();">
+                                        <td><input type="radio" class="A9" name="A9" id="A9"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A9" name="A9" id="A9" value="4" onclick="sum();">
+                                        <td><input type="radio" class="A9" name="A9" id="A9"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A9" name="A9" id="A9" value="5" onclick="sum();">
+                                        <td><input type="radio" class="A9" name="A9" id="A9"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
@@ -467,9 +517,9 @@
                                                 name="fileA10" type="file">
 
                                             @error('fileA10')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA10" name="scorA10"
@@ -477,28 +527,28 @@
                                         <td rowspan="2"><input id="scorMaxA10" name="scorMaxA10" type="number"
                                                 aria-label="A10" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA10" name="scorSubItemA10" type="number"
-                                                aria-label="A10" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA10" name="scorSubItemA10"
+                                                type="number" aria-label="A10" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.10</td>
                                         <td>Dosen menjadi pembina dalam kegiatan mahasiswa dalam bidang akademik dan
                                             kemahasiswaan
                                         </td>
-                                        <td><input type="radio" class="A10" name="A10" id="A10" value="1"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A10" name="A10" id="A10"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A10" name="A10" id="A10" value="2"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A10" name="A10" id="A10"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A10" name="A10" id="A10" value="3"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A10" name="A10" id="A10"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A10" name="A10" id="A10" value="4"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A10" name="A10" id="A10"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A10" name="A10" id="A10" value="5"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A10" name="A10" id="A10"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
 
@@ -521,9 +571,9 @@
                                                 name="fileA11" type="file">
 
                                             @error('fileA11')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA11" name="scorA11"
@@ -531,8 +581,8 @@
                                         <td rowspan="2"><input id="scorMaxA11" name="scorMaxA11" type="number"
                                                 aria-label="A11" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA11" name="scorSubItemA11" type="number"
-                                                aria-label="A11" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA11" name="scorSubItemA11"
+                                                type="number" aria-label="A11" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.11</td>
@@ -540,20 +590,20 @@
                                             dengan media pembelajaran dan evaluasi
                                             pembelajaran yang tertulis dan tersimpan dalam perpustakaan IKBIS.
                                         </td>
-                                        <td><input type="radio" class="A11" name="A11" id="A11" value="1"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A11" name="A11" id="A11"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A11" name="A11" id="A11" value="2"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A11" name="A11" id="A11"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A11" name="A11" id="A11" value="3"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A11" name="A11" id="A11"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A11" name="A11" id="A11" value="4"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A11" name="A11" id="A11"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A11" name="A11" id="A11" value="5"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A11" name="A11" id="A11"
+                                                value="5" onclick="sum();">
                                         </td>
                                     </tr>
                                     <tr>
@@ -607,16 +657,17 @@
                                             disebarluaskan
                                         </td>
                                         <td rowspan="2">
-                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti fisik
+                                            <label for="formFileSm" class="form-label text-danger">* Upload Bukti
+                                                fisik
                                                 bahan pengajaran yang dihasilkan, dan jumlah mata
                                                 kuliah diperhitungkan</label>
                                             <input class="@error('fileA12') is-invalid @enderror" id="formFileSm"
                                                 name="fileA12" type="file">
 
                                             @error('fileA12')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA12" name="scorA12"
@@ -624,28 +675,28 @@
                                         <td rowspan="2"><input id="scorMaxA12" name="scorMaxA12" type="number"
                                                 aria-label="A12" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA12" name="scorSubItemA12" type="number"
-                                                aria-label="A12" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA12" name="scorSubItemA12"
+                                                type="number" aria-label="A12" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.12</td>
                                         <td>Dosen mengembangkan bahan pengajaran sebagai hasil pengembangan inovatif
                                             materi substansi pengajaran
                                         </td>
-                                        <td><input type="radio" class="A12" name="A12" id="A12" value="1"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A12" name="A12" id="A12"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A12" name="A12" id="A12" value="2"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A12" name="A12" id="A12"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A12" name="A12" id="A12" value="3"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A12" name="A12" id="A12"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A12" name="A12" id="A12" value="4"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A12" name="A12" id="A12"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A12" name="A12" id="A12" value="5"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A12" name="A12" id="A12"
+                                                value="5" onclick="sum();">
                                     </tr>
                                     <tr>
                                         <td rowspan="2"></td>
@@ -681,8 +732,8 @@
                                         <td><input type="number" name="SkorTambahanA12_5" id="SkorTambahanA12_5"
                                                 readonly>
                                         </td>
-                                        <td><input type="number" name="SkorTambahanJumlahA12" id="SkorTambahanJumlahA12"
-                                                readonly></td>
+                                        <td><input type="number" name="SkorTambahanJumlahA12"
+                                                id="SkorTambahanJumlahA12" readonly></td>
                                         <td></td>
                                         <td></td>
                                         <td><input type="number" name="SkorTambahanJumlahBobotSubItemA12"
@@ -692,12 +743,9 @@
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
                                         <td>Tidak sedang menduduki jabatan struktural</td>
-                                        <td>Sedang menjabat sebagai Kepala Program Studi / Sekretaris Program Studi /
-                                            Kepala Laboratorium Program Studi</td>
-                                        <td>Sedang menjabat sebagai Wakil Dekan / Kepala Pusat Penelitian tingkat
-                                            Institusi</td>
-                                        <td>Sedang menjabat sebagai Wakil Rektor/Direktur Pascasarjana/Dekan
-                                            Fakultas/Ketua Lembaga</td>
+                                        <td>Sedang menjabat sebagai Kepala Program Studi, Ka. Sub. Lembaga </td>
+                                        <td>Sedang menjabat sebagai Dekan, Ka. Lembaga, Ka. UPT</td>
+                                        <td>Sedang menjabat sebagai Wakil Rektor</td>
                                         <td>Sedang menjabat sebagai Rektor</td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload SK
@@ -706,9 +754,9 @@
                                                 name="fileA13" type="file">
 
                                             @error('fileA13')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </td>
                                         <td rowspan="2" class="bg-warning"><input id="scorA13" name="scorA13"
@@ -716,27 +764,27 @@
                                         <td rowspan="2"><input id="scorMaxA13" name="scorMaxA13" type="number"
                                                 aria-label="A13" readonly>
                                         </td>
-                                        <td rowspan="2"><input id="scorSubItemA13" name="scorSubItemA13" type="number"
-                                                aria-label="A13" readonly></td>
+                                        <td rowspan="2"><input id="scorSubItemA13" name="scorSubItemA13"
+                                                type="number" aria-label="A13" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>A.13</td>
                                         <td>Dosen menduduki jabatan struktural Akademik di perguruan tinggi
                                         </td>
-                                        <td><input type="radio" class="A13" name="A13" id="A13" value="1"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A13" name="A13" id="A13"
+                                                value="1" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A13" name="A13" id="A13" value="2"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A13" name="A13" id="A13"
+                                                value="2" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A13" name="A13" id="A13" value="3"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A13" name="A13" id="A13"
+                                                value="3" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A13" name="A13" id="A13" value="4"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A13" name="A13" id="A13"
+                                                value="4" onclick="sum();">
                                         </td>
-                                        <td><input type="radio" class="A13" name="A13" id="A13" value="5"
-                                                onclick="sum();">
+                                        <td><input type="radio" class="A13" name="A13" id="A13"
+                                                value="5" onclick="sum();">
                                     </tr>
 
                                     <tr>
@@ -762,7 +810,8 @@
                                                 readonly>
                                         </td>
                                         <td colspan="3" rowspan="2">Nilai Tambah Pendidikan dan Pengajaran</td>
-                                        <td rowspan="2"><input type="number" name="NilaiTambahPendidikanDanPengajaran"
+                                        <td rowspan="2"><input type="number"
+                                                name="NilaiTambahPendidikanDanPengajaran"
                                                 id="NilaiTambahPendidikanDanPengajaran" readonly></td>
                                     </tr>
                                     <tr>
@@ -783,7 +832,8 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="text-end">
-                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();" class="btn btn-primary btn-sm mb-2">Simpan</button>
+                                        <button type="submit" onclick="event.preventDefault(); confirmSubmit();"
+                                            class="btn btn-primary btn-sm mb-2">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -795,27 +845,27 @@
     </div>
 
     @push('JavaScript')
-    <script src="{{ asset('Assets/js/Input-point/scorPointA.js') }}"></script>
-    {{-- <script src="{{ asset('Assets/js/Input-point/scorPointAForm.js') }}"></script> --}}
+        <script src="{{ asset('Assets/js/Input-point/scorPointA.js') }}"></script>
+        {{-- <script src="{{ asset('Assets/js/Input-point/scorPointAForm.js') }}"></script> --}}
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function confirmSubmit() {
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Anda akan menyimpan data tersebut.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Simpan',
-                cancelButtonText: 'Batal',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('my-form').submit();
-                } else {
-                    Swal.fire('Data batal disimpan');
-                }
-            });
-        }
-    </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function confirmSubmit() {
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Anda akan menyimpan data tersebut.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Simpan',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('my-form').submit();
+                    } else {
+                        Swal.fire('Data batal disimpan');
+                    }
+                });
+            }
+        </script>
     @endpush
 </x-app-layout>

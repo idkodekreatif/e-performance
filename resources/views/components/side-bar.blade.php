@@ -55,9 +55,9 @@
                                 <li><a href="{{ route('Point-C.data.search') }}">Search Poin C</a></li>
                                 <li><a href="{{ route('Point-D.data.search') }}">Search Poin D</a></li>
                                 <li><a href="{{ route('Point-E.data.search') }}">Search Poin E</a></li>
+                                <li><a href="{{ route('raport.data.search') }}">Search Raport</a></li>
                                 @role('it|superuse')
                                     <li><a href="javascript:void()">Search Rincian Poin</a></li>
-                                    <li><a href="{{ route('raport.data.search') }}">Search Raport</a></li>
                                 @endrole
                             </ul>
                         </li>
@@ -212,7 +212,7 @@
                                             <li><a href="{{ route('WarekSatu.Ka.Prodi') }}">Form Ka. Prodi</a></li>
                                             <li><a href="{{ route('KaLpm') }}">Form Ka. Lembaga Penjaminan Mutu</a> --}}
 
-                                                {{-- Search data kasub --}}
+                                            {{-- Search data kasub --}}
                                             {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub.
                                                     UPT</a>
                                                 <ul aria-expanded="false">
@@ -613,7 +613,9 @@
                                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
                                                 Bulanan</a>
                                             <ul aria-expanded="false">
-                                                <li><a href="{{ route('iktisar.bulanan.dekan.raport.dekan', Auth::user()->id) }}">Raport Ka.
+                                                <li><a
+                                                        href="{{ route('iktisar.bulanan.dekan.raport.dekan', Auth::user()->id) }}">Raport
+                                                        Ka.
                                                         Unit</a></li>
                                             </ul>
                                         </li>
@@ -816,10 +818,21 @@
                         <span class="nav-text">Maintenain</span>
                     </a>
                     <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Control Periode</a>
+                            <ul aria-expanded="false">
+                                @role('it|superuser|hrd')
+                                    <li><a href="{{ route('period.index') }}">Periode</a></li>
+                                    <li><a href="{{ route('closure.index') }}">Periode Penutupan</a></li>
+                                @endrole
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul aria-expanded="false">
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">User Control</a>
                             <ul aria-expanded="false">
                                 @role('it|superuser|hrd')
                                     <li><a href="{{ route('users.index') }}">User Management</a></li>
+                                    <li><a href="{{ route('period.index') }}">Periode</a></li>
                                 @endrole
                                 @role('it|superuser')
                                     <li><a href="{{ route('role.index') }}">User Role</a></li>
@@ -827,9 +840,9 @@
                                 @endrole
                             </ul>
                         </li>
-                        @role('it|superuser|hrd')
+                        {{-- @role('it|superuser|hrd')
                             <li><a href="{{ route('Menu.Controller') }}">Pembaruan Data</a></li>
-                        @endrole
+                        @endrole --}}
                         @role('it|superuser')
                             <li><a href="{{ route('logactivity') }}">Activity Log</a></li>
                         @endrole

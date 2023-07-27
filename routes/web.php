@@ -54,6 +54,8 @@ use App\Http\Controllers\Itisar\WarekSatu\KoorKemahasiswaanDanAlumniController;
 use App\Http\Controllers\Itisar\Yayasan\RektorController;
 use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\Setting\ClosureController;
+use App\Http\Controllers\Setting\PeriodController;
 use App\Http\Controllers\SumItisarChartController;
 use App\Http\Controllers\sumPointController;
 use App\Http\Controllers\UserManagement\ImpersonateController;
@@ -133,6 +135,24 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::post('/Menu/Point/Store', 'MenuPointSore')->name('Menu.Store');
         Route::put('/Menu/Point/{id_menu}', 'MenuPointUpdate')->name('Menu.Update');
     });
+
+    // Rute untuk "periode"
+    Route::controller(PeriodController::class)->group(function () {
+        Route::get('/admin/period', 'index')->name('period.index');
+        Route::get('/admin/period/create', 'create')->name('period.create');
+        Route::post('/admin/period', 'store')->name('period.store');
+        Route::get('/admin/period/{period}/edit', 'edit')->name('period.edit');
+        Route::put('/admin/period/{period}', 'update')->name('period.update');
+        Route::delete('/admin/period/{period}', 'destroy')->name('period.destroy');
+    });
+
+    // Rute untuk "closures"
+    Route::controller(ClosureController::class)->group(function () {
+        Route::get('/admin/closure', 'index')->name('closure.index');
+        Route::get('/admin/closure/create', 'create')->name('closure.create');
+        Route::post('/admin/closure', 'store')->name('closure.store');
+        Route::delete('/admin/closure/{closure}', 'destroy')->name('closure.destroy');
+    });
 });
 
 // -----------------------------Prefix All Point ITIKAD----------------------------------------//
@@ -205,7 +225,8 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::get('/preview/{user_id}', 'Preview')->name('preview.point');
         // -----------------------------Search raport hrd HRD----------------------------------------//
         Route::get('/raport/search/', 'searchRaport')->name('raport.data.search');
-        Route::get('/raport/search/result', 'resultSearchRaport')->name('raport.data.search.result');
+        Route::get('/raport/search/result/', 'resultSearchRaport')->name('raport.data.search.result');
+        Route::get('/generate-pdf/{id}/{period_id}', 'generatePDF')->name('generate.pdf');
     });
 });
 
