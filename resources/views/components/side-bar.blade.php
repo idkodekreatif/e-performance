@@ -832,7 +832,6 @@
                             <ul aria-expanded="false">
                                 @role('it|superuser|hrd')
                                     <li><a href="{{ route('users.index') }}">User Management</a></li>
-                                    <li><a href="{{ route('period.index') }}">Periode</a></li>
                                 @endrole
                                 @role('it|superuser')
                                     <li><a href="{{ route('role.index') }}">User Role</a></li>
