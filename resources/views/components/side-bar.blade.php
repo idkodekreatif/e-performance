@@ -76,7 +76,7 @@
                 {{-- End ITIKAD --}}
 
                 {{-- Start IKTISAR Tahunan --}}
-                @role('it|superuser|warek2|upt|baak|keuangan|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi|bau|warek1|rektor|ypsdmit|hrd|kasubbaak|dekan')
+                @role('it|superuser|warek2|upt|baak|keuangan|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi|bau|warek1|rektor|ypsdmit|hrd|kasubbaak|dekan|marketing')
                     <ul aria-expanded="false">
                         <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">IKTISAR</a>
                             <ul aria-expanded="false">
@@ -316,6 +316,19 @@
                                                     Bulanan</a>
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.dekan.create') }}">Form Ka.
+                                                            Unit</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endrole
+                                @role('it|superuser|marketing')
+                                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">MARKETING</a>
+                                        <ul aria-expanded="false">
+                                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
+                                                    Bulanan</a>
+                                                <ul aria-expanded="false">
+                                                    <li><a href="{{ route('iktisar.bulanan.marketing.create') }}">Form Ka.
                                                             Unit</a></li>
                                                 </ul>
                                             </li>

@@ -11,6 +11,7 @@ use App\Http\Controllers\iktisar\iktisarBulanan\iktisarBulananStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\kaprodi\iktisarBulananKaprodiController;
 use App\Http\Controllers\iktisar\iktisarBulanan\keuangan\iktisarBulananKeuanganStaffController;
 use App\Http\Controllers\iktisar\iktisarBulanan\lpm\iktisarBulananLpmKaUnitController;
+use App\Http\Controllers\iktisar\iktisarBulanan\Marketing\iktisarBulananMarketingController;
 use App\Http\Controllers\iktisar\iktisarBulanan\rektor\iktisarBulananRektorController;
 use App\Http\Controllers\iktisar\iktisarBulanan\risbang\iktisarBulananRisbangKaUnitController;
 use App\Http\Controllers\iktisar\iktisarBulanan\warek1\iktisarBulananWarekSatuController;
@@ -499,6 +500,23 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/dekan/search-data/raport', [iktisarBulananDekanController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.dekan.data.raport');
             Route::get('/dekan/data/raport/', [iktisarBulananDekanController::class, 'staffRaportIktisar'])->name('data.raport.dekan');
+        });
+
+        Route::middleware(['role:it|superuser|tendik|marketing'])->group(function () {
+            // penilai isi data
+            Route::get('/input/marketing', [iktisarBulananMarketingController::class, 'create'])->name('iktisar.bulanan.marketing.create');
+            Route::post('/input/marketing/store', [iktisarBulananMarketingController::class, 'store'])->name('iktisar.bulanan.marketing.store');
+            // search dan pembaruan data
+            Route::get('/marketing/searchData', [iktisarBulananMarketingController::class, 'searchDataEdit'])->name('iktisar.bulanan.marketing.DataEdit');
+            Route::get('/marketing/edit', [iktisarBulananMarketingController::class, 'edit'])->name('iktisar.bulanan.marketing.edit');
+            Route::put('/marketing/edit/{id}', [iktisarBulananMarketingController::class, 'update'])->name('iktisar.bulanan.marketing.update');
+            // Raport tendik dan search detail poin
+            Route::get('/marketing/raport/{user_id}', [iktisarBulananMarketingController::class, 'raportStaff'])->name('iktisar.bulanan.marketing.raport.marketing');
+            Route::get('/marketing/detail/data', [iktisarBulananMarketingController::class, 'searchDataPoin'])->name('iktisar.bulanan.marketing.detailData');
+            Route::get('/marketing/detail/data/poin', [iktisarBulananMarketingController::class, 'dataPoin'])->name('iktisar.bulanan.marketing.poin');
+            // Detail Raport Tendik
+            Route::get('/marketing/search-data/raport', [iktisarBulananMarketingController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.marketing.data.raport');
+            Route::get('/marketing/data/raport/', [iktisarBulananMarketingController::class, 'staffRaportIktisar'])->name('data.raport.marketing');
         });
     }
 );
