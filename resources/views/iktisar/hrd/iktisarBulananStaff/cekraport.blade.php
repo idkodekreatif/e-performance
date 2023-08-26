@@ -12,7 +12,8 @@
 
         <div class="row">
             <div class="col-md">
-                <a href="{{ route('data.raport.hrd', ['id' => $data->user_id, 'tanggalInput' => $tanggalInput->format('Y-m-d'), 'type' => 'pdf']) }}" class="btn btn-primary btn-xs mb-2 float-end">
+                <a href="{{ route('data.raport.hrd', ['id' => $data->user_id, 'tanggalInput' => $tanggalInput->format('Y-m-d'), 'type' => 'pdf']) }}"
+                    class="btn btn-primary btn-xs mb-2 float-end">
                     <i class="fa-solid fa-print"></i>
                     Download PDF
                 </a>
@@ -53,10 +54,10 @@
                         <?php
                         $DataUserKinerjaPerilaku = (float) $data->output_total_sementara_kinerja_perilaku;
                         $DataUserKinerjaKompetensi = (float) $data->total_nilai_presentase;
-
+                        
                         // SUM Nilai Perilaku dan Kompetensi
                         $resultSumPerilakuKompetensi = $DataUserKinerjaPerilaku + $DataUserKinerjaKompetensi;
-
+                        
                         // Predikat Perilaku dan Kompetensi
                         if ($resultSumPerilakuKompetensi >= 5) {
                             $OutPutPredikatKompetensi = 'ISTIMEWA';
@@ -66,7 +67,7 @@
                         } elseif ($resultSumPerilakuKompetensi >= 3) {
                             # code...
                             $OutPutPredikatKompetensi = 'BAIK';
-                        } elseif ($resultSumPerilakuKompetensi >= 2) {
+                        } elseif ($resultSumPerilakuKompetensi >= 2.01) {
                             # code...
                             $OutPutPredikatKompetensi = 'CUKUP';
                         } else {
