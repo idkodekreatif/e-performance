@@ -8,67 +8,68 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-        <style>
-            body {
-                margin-top: 13%;
-                font-family: Arial, Helvetica, sans-serif;
-            }
+    <style>
+        body {
+            margin-top: 13%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-            table,
-            th,
-            td {
-                width: 100%;
-                border: 1px solid #000000;
-                text-align: center;
-                font-size: 12px;
-                border-collapse: collapse;
-                padding: 5px;
-            }
+        table,
+        th,
+        td {
+            width: 100%;
+            border: 1px solid #000000;
+            text-align: center;
+            font-size: 12px;
+            border-collapse: collapse;
+            padding: 5px;
+        }
 
-            .tanda-tangan {
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 5px;
-            }
+        .tanda-tangan {
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+        }
 
-            .pihak1 {
-                text-align: center;
-            }
-            .pihak2 {
-                margin-top: 20%;
-                text-align: center;
-            }
+        .pihak1 {
+            text-align: center;
+        }
 
-            .kiri {
-                margin-right: auto;
-                float: left;
-            }
+        .pihak2 {
+            margin-top: 20%;
+            text-align: center;
+        }
 
-            .kanan {
-                margin-left: auto;
-                float: right;
-            }
+        .kiri {
+            margin-right: auto;
+            float: left;
+        }
 
-            .nama-dosen,
-            .nama-warek {
-                font-size: 14px;
-                font-weight: bold;
-            }
+        .kanan {
+            margin-left: auto;
+            float: right;
+        }
 
-            .signatures {
-                justify-content: space-between;
-                align-items: center;
-                text-align: center;
-            }
+        .nama-dosen,
+        .nama-warek {
+            font-size: 14px;
+            font-weight: bold;
+        }
 
-            .center-signature {
-                margin-top: 20%;
-                width: 100%;
-                font-size: 14px;
-                font-weight: bold;
-                margin-bottom: 5px;
-            }
-        </style>
+        .signatures {
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .center-signature {
+            margin-top: 20%;
+            width: 100%;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -78,10 +79,10 @@
         <?php
         $DataUserKinerjaPerilaku = (float) $data->output_total_sementara_kinerja_perilaku;
         $DataUserKinerjaKompetensi = (float) $data->total_nilai_presentase;
-
+        
         // SUM Nilai Perilaku dan Kompetensi
         $resultSumPerilakuKompetensi = $DataUserKinerjaPerilaku + $DataUserKinerjaKompetensi;
-
+        
         // Predikat Perilaku dan Kompetensi
         if ($resultSumPerilakuKompetensi >= 5) {
             $OutPutPredikatKompetensi = 'ISTIMEWA';
@@ -91,7 +92,7 @@
         } elseif ($resultSumPerilakuKompetensi >= 3) {
             # code...
             $OutPutPredikatKompetensi = 'BAIK';
-        } elseif ($resultSumPerilakuKompetensi >= 2) {
+        } elseif ($resultSumPerilakuKompetensi >= 2.01) {
             # code...
             $OutPutPredikatKompetensi = 'CUKUP';
         } else {
