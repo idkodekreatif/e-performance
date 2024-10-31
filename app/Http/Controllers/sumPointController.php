@@ -26,7 +26,9 @@ class sumPointController extends Controller
      */
     public function raportView($user_id)
     {
-        $activePeriod = Period::where('start_date', '<=', Carbon::now())
+        // Retrieve the active period
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
             ->where('end_date', '>=', Carbon::now())
             ->first();
 
@@ -219,7 +221,8 @@ class sumPointController extends Controller
 
     public function raportPdf($user_id)
     {
-        $activePeriod = Period::where('start_date', '<=', Carbon::now())
+        $activePeriod = Period::where('is_closed', 1)
+            ->where('start_date', '<=', Carbon::now())
             ->where('end_date', '>=', Carbon::now())
             ->first();
 
@@ -443,7 +446,26 @@ class sumPointController extends Controller
         $users = DB::table('users');
 
         $resultGetUsersName = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+            'superuser',
+            'manajer',
+            'it',
+            'hrd',
+            'lppm',
+            'warek2',
+            'upt',
+            'baak',
+            'keuangan',
+            'lpm',
+            'risbang',
+            'gizi',
+            'perawat',
+            'bidan',
+            'manajemen',
+            'akuntansi',
+            'bau',
+            'warek1',
+            'rektor',
+            'ypsdmit'
         ])->get();
 
         if ($request->keyword != null) {
@@ -582,7 +604,26 @@ class sumPointController extends Controller
         $allPeriods = Period::all();
 
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+            'superuser',
+            'manajer',
+            'it',
+            'hrd',
+            'lppm',
+            'warek2',
+            'upt',
+            'baak',
+            'keuangan',
+            'lpm',
+            'risbang',
+            'gizi',
+            'perawat',
+            'bidan',
+            'manajemen',
+            'akuntansi',
+            'bau',
+            'warek1',
+            'rektor',
+            'ypsdmit'
         ])->get();
 
         return view('edit-point.hrd.search.searchDataRaport', compact('users', 'allPeriods'));
