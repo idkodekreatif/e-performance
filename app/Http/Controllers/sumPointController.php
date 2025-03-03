@@ -437,9 +437,13 @@ class sumPointController extends Controller
                 ->where('end_date', '>=', Carbon::now())
                 ->first();
 
-            // Set the selected period ID to the active period ID
-            $selectedPeriodId = $activePeriod->id;
+            if ($activePeriod) {
+                $selectedPeriodId = $activePeriod->id;
+            } else {
+                $selectedPeriodId = null; // Atur default jika tidak ada periode aktif
+            }
         }
+
 
         $allPeriods = Period::all();
 
