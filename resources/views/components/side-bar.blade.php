@@ -56,6 +56,7 @@
                                 <li><a href="{{ route('Point-D.data.search') }}">Search Poin D</a></li>
                                 <li><a href="{{ route('Point-E.data.search') }}">Search Poin E</a></li>
                                 <li><a href="{{ route('raport.data.search') }}">Search Raport</a></li>
+                                <li><a href="{{ route('rekap.index') }}">Search Rekap</a></li>
                                 @role('it|superuse')
                                     <li><a href="javascript:void()">Search Rincian Poin</a></li>
                                 @endrole
@@ -345,6 +346,8 @@
                                                     <li><a href="{{ route('iktisar.bulanan.kaunit.create') }}">Form Ka.
                                                             Unit</a></li>
                                                     <li><a href="{{ route('iktisar.bulanan.staff.create') }}">Form Staff</a>
+                                                    </li>
+                                                    <li><a href="{{ route('data.rekap') }}">Rekap</a>
                                                     </li>
                                                 </ul>
                                             </li>

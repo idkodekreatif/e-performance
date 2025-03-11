@@ -142,12 +142,6 @@
                                     {{ $resultArray['sum_Skt'] }}
                                 </td>
                             </tr>
-                            {{-- <tr style="font-weight:bold">
-                                <td>PERSENTASE CAPAIAN TOTAL (%)</td>
-                                <td colspan="4">
-                                    {{ $resultArray['result_PCT'] }}
-                                </td>
-                            </tr> --}}
                             <tr style="font-weight:bold">
                                 <td>PREDIKAT</td>
                                 <td colspan="4">
