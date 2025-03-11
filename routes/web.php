@@ -22,6 +22,7 @@ use App\Http\Controllers\InputPoint\PointBController;
 use App\Http\Controllers\InputPoint\PointCController;
 use App\Http\Controllers\InputPoint\PointDController;
 use App\Http\Controllers\InputPoint\PointEController;
+use App\Http\Controllers\Itikad\RekapDataController;
 use App\Http\Controllers\Itisar\Baak\BaakController;
 use App\Http\Controllers\Itisar\Bau\KasubBiroKepegawaianController;
 use App\Http\Controllers\Itisar\Bau\KasubBiroKeuanganController;
@@ -229,6 +230,18 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
         Route::get('/raport/search/result/', 'resultSearchRaport')->name('raport.data.search.result');
         Route::get('/generate-pdf/{id}/{period_id}', 'generatePDF')->name('generate.pdf');
     });
+
+    // Route::get('/rekap/search/', [RekapDataController::class, 'index'])->name('rekap.index');
+    // Route::get('/rekap/search/', [RekapDataController::class, 'searchData'])->name('rekap.search');
+    Route::prefix('rekap')->group(function () {
+        Route::get('/data', [RekapDataController::class, 'index'])->name('rekap.index');
+        Route::post('/search/data', [RekapDataController::class, 'searchData'])->name('rekap.search');
+        Route::get('/raport/{user_id}', [RekapDataController::class, 'raportView'])->name('rekap.raport');
+    });
+
+    // Route::controller(RekapDataController::class)->group(function () {
+    //     Route::get('/rekap/search/', 'index')->name('rekap.index');
+    // });
 });
 
 // -----------------------------Aggregat Itikad----------------------------------------//
@@ -278,6 +291,8 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/kaunit/search-data/raport', [iktisarBulananKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.kaunit.data.raport');
             Route::get('/kaunit/data/raport', [iktisarBulananKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit');
+            Route::get('/kaunit/data/rekap', [iktisarBulananKaUnitController::class, 'rekap'])->name('data.rekap');
+            Route::get('/kaunit/data/report', [iktisarBulananKaUnitController::class, 'reportRaport'])->name('data.kaunit.report');
         });
 
         // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
