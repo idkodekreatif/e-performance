@@ -119,6 +119,7 @@
                                                     <li><a href="{{ route('iktisar.bulanan.rektor.create') }}">Form Wakil
                                                             Rektor</a>
                                                     </li>
+                                                    <li><a href="{{ route('rektor.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">WAREK I</a>
@@ -290,6 +291,8 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.warekDua.create') }}">Form Ka.
                                                             Unit</a>
+                                                    </li>
+                                                    <li><a href="{{ route('warek-dua.data.rekap') }}">Rekap</a>
                                                     </li>
                                                 </ul>
                                             </li>
