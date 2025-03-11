@@ -436,6 +436,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/keuangan/search-data/raport', [iktisarBulananKeuanganStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.keuangan.data.raport');
             Route::get('/keuangan/data/raport', [iktisarBulananKeuanganStaffController::class, 'staffRaportIktisar'])->name('data.raport.keuangan');
+
+            // Rekap
+            Route::get('/keuangan/data/rekap', [iktisarBulananKeuanganStaffController::class, 'rekap'])->name('keuangan.data.rekap');
+            Route::get('/keuangan/data/report', [iktisarBulananKeuanganStaffController::class, 'reportRaport'])->name('keuangan.data.kaunit.report');
+            Route::get('/keuangan/data/report/detail/{user_id}/{created_insert}', [iktisarBulananKeuanganStaffController::class, 'showDetail'])->name('keuangan.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|lpm'])->group(function () {

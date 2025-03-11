@@ -397,7 +397,7 @@
                                 {{-- End Penilaian Staff Baak --}}
 
                                 {{-- Penilaian Staff Baak --}}
-                                @role('it|superuser|kasubbaak')
+                                {{-- @role('it|superuser|kasubbaak')
                                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Ka. Sub. BAAK</a>
                                         <ul aria-expanded="false">
                                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Periode
@@ -408,13 +408,13 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            {{-- <li><a href="{{ route('kemahasiswaan') }}">Form Staff Kemahasiswaan</a></li>
+                                            <li><a href="{{ route('kemahasiswaan') }}">Form Staff Kemahasiswaan</a></li>
                                             <li><a href="{{ route('baakFkBisnis') }}">Form Staff Baak Fakultas Bisnis</a></li>
                                             <li><a href="{{ route('staffbaaksatu') }}">Form Staff BAAK</a></li>
-                                            <li><a href="{{ route('staffbaakdua') }}">Form Staff BAAK</a></li> --}}
+                                            <li><a href="{{ route('staffbaakdua') }}">Form Staff BAAK</a></li>
                                         </ul>
                                     </li>
-                                @endrole
+                                @endrole --}}
                                 {{-- End Penilaian Staff Baak --}}
 
                                 {{-- Penilaian Staff Keuangan --}}
@@ -427,6 +427,7 @@
                                                     <li><a href="{{ route('iktisar.bulanan.keuangan.create') }}">Form Staff
                                                             Keungan</a>
                                                     </li>
+                                                    <li><a href="{{ route('keuangan.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('StaffKeuangan') }}">Form Staff Keuangan</a></li> --}}

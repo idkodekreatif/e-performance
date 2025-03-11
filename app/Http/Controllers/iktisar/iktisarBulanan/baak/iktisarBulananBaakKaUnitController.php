@@ -494,7 +494,7 @@ class iktisarBulananBaakKaUnitController extends Controller
         // dd($data);
 
         if ($data->isNotEmpty()) {
-            return view('iktisar.warek1.iktisarBulananKaUnit.rekap.report', compact('data'));
+            return view('iktisar.baak.iktisarBulananKaUnit.rekap.report', compact('data'));
         } else {
             toast('Data Empty', 'error');
             return redirect()->back();
@@ -520,6 +520,6 @@ class iktisarBulananBaakKaUnitController extends Controller
             ->get();
 
         // Kirim data ke view
-        return view('iktisar.warek1.iktisarBulananKaUnit.rekap.show', compact('iktisarStaffBulananPerilaku', 'iktisarStaffBulananKompetensi'));
+        return view('iktisar.baak.iktisarBulananKaUnit.rekap.show', compact('iktisarStaffBulananPerilaku', 'iktisarStaffBulananKompetensi'));
     }
 }
