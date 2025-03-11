@@ -323,6 +323,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.dekan.create') }}">Form Ka.
                                                             Unit</a></li>
+                                                            <li><a href="{{ route('dekan.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -336,6 +337,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.marketing.create') }}">Form Ka.
                                                             Unit</a></li>
+                                                            <li><a href="{{ route('marketing.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -384,6 +386,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.baak.kaunit.create') }}">Form Ka.
                                                             Unit</a></li>
+                                                            <li><a href="{{ route('baak.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('ka.baak') }}">Form Ka. Sub. Biro Administrasi Akademik</a>
