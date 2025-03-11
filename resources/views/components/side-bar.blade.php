@@ -202,6 +202,8 @@
                                                     <li><a href="{{ route('iktisar.bulanan.warekSatu.create') }}">Form Ka.
                                                             Unit</a>
                                                     </li>
+                                                    <li><a href="{{ route('wareksatu.data.rekap') }}">Rekap</a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                             {{-- Input Form --}}

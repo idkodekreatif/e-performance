@@ -519,8 +519,6 @@ class iktisarBulananKaUnitController extends Controller
             ->where('id_staff_perilaku', $iktisarStaffBulananPerilaku->id)
             ->get();
 
-        // dd($iktisarStaffBulananPerilaku, $iktisarStaffBulananKompetensi);
-
         // Kirim data ke view
         return view('iktisar.iktisarbulanankaunit.rekap.show', compact('iktisarStaffBulananPerilaku', 'iktisarStaffBulananKompetensi'));
     }
