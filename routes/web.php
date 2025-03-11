@@ -293,6 +293,7 @@ Route::group(
             Route::get('/kaunit/data/raport', [iktisarBulananKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit');
             Route::get('/kaunit/data/rekap', [iktisarBulananKaUnitController::class, 'rekap'])->name('data.rekap');
             Route::get('/kaunit/data/report', [iktisarBulananKaUnitController::class, 'reportRaport'])->name('data.kaunit.report');
+            Route::get('/kaunit/data/report/detail/{user_id}/{created_insert}', [iktisarBulananKaUnitController::class, 'showDetail'])->name('report.detail');
         });
 
         // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//

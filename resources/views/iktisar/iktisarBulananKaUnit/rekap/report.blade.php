@@ -51,7 +51,9 @@
                             <td>{{ $OutPutPredikatKompetensi }}</td>
                             <td>{{ $item->created_insert }}</td>
                             <td>
-                                <button class="btn btn-danger btn-sm">Show</button>
+                                <a href="{{ route('report.detail', ['user_id' => $item->user_id, 'created_insert' => $item->created_insert]) }}" class="btn btn-danger btn-sm">
+                                    Show
+                                </a>
                             </td>
                         </tr>
                         @endforeach

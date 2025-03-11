@@ -489,6 +489,7 @@ class iktisarBulananKaUnitController extends Controller
                 'iktisar_kaunit_bulanan_perilaku.created_insert'
             )
             ->where('iktisar_kaunit_bulanan_perilaku.user_id', $id)
+            ->orderBy('iktisar_kaunit_bulanan_perilaku.created_insert', 'desc') // Urutkan dari terbaru ke lama
             ->get(); // Menggunakan get() agar mendapatkan semua data
         // dd($data);
 
@@ -498,5 +499,29 @@ class iktisarBulananKaUnitController extends Controller
             toast('Data Empty', 'error');
             return redirect()->back();
         }
+    }
+
+    public function showDetail($user_id, $created_insert)
+    {
+        // Ambil data dari tabel iktisar_kaunit_bulanan_perilaku
+        $iktisarStaffBulananPerilaku = DB::table('iktisar_kaunit_bulanan_perilaku')
+            ->where('user_id', $user_id)
+            ->where('created_insert', $created_insert)
+            ->first(); // Ambil satu data saja
+
+        // Jika data tidak ditemukan, kembalikan dengan pesan error
+        if (!$iktisarStaffBulananPerilaku) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        // Ambil data dari tabel iktisar_kaunit_bulanan_kompetensi berdasarkan id_staff_perilaku
+        $iktisarStaffBulananKompetensi = DB::table('iktisar_kaunit_bulanan_kompetensi')
+            ->where('id_staff_perilaku', $iktisarStaffBulananPerilaku->id)
+            ->get();
+
+        // dd($iktisarStaffBulananPerilaku, $iktisarStaffBulananKompetensi);
+
+        // Kirim data ke view
+        return view('iktisar.iktisarbulanankaunit.rekap.show', compact('iktisarStaffBulananPerilaku', 'iktisarStaffBulananKompetensi'));
     }
 }
