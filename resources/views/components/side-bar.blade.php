@@ -445,6 +445,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.lpm.create') }}">Form Ka. unit</a>
                                                     </li>
+                                                    <li><a href="{{ route('lpm.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('Lpm') }}">Form ka. Sub. Lem. SPMI-SPME</a></li> --}}
@@ -463,6 +464,7 @@
                                                     <li><a href="{{ route('iktisar.bulanan.risbang.create') }}">Form Ka.
                                                             unit</a>
                                                     </li>
+                                                    <li><a href="{{ route('risbang.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('KasubRisbang') }}">Form Ka. Sub. Lem. Penel & Pengmas</a>
@@ -482,6 +484,7 @@
                                                     <li><a href="{{ route('iktisar.bulanan.sekkaprodi.create') }}">Form Ka.
                                                             unit</a>
                                                     </li>
+                                                    <li><a href="{{ route('sekkaprodi.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('sekKaprodi') }}">Form Sek. Ka. Prodi</a></li> --}}
@@ -500,6 +503,7 @@
                                                     <li><a href="{{ route('iktisar.bulanan.bau.create') }}">Form Ka.
                                                             unit</a>
                                                     </li>
+                                                    <li><a href="{{ route('bau.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('kasubBiroKepegawaian') }}">Form Ka. Sub Biro
@@ -520,6 +524,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.hrd.create') }}">Form Staff</a>
                                                     </li>
+                                                    <li><a href="{{ route('hrd.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('staffumum') }}">Form Staff Umum Dan Kepegawaian</a></li>
