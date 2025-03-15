@@ -291,8 +291,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/kaunit/search-data/raport', [iktisarBulananKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.kaunit.data.raport');
             Route::get('/kaunit/data/raport', [iktisarBulananKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit');
+
+            // Rekap
             Route::get('/kaunit/data/rekap', [iktisarBulananKaUnitController::class, 'rekap'])->name('data.rekap');
             Route::get('/kaunit/data/report', [iktisarBulananKaUnitController::class, 'reportRaport'])->name('data.kaunit.report');
+            Route::get('/kaunit/data/report/detail/{user_id}/{created_insert}', [iktisarBulananKaUnitController::class, 'showDetail'])->name('report.detail');
         });
 
         // -----------------------------IKTISAR Bulanan Ka. Unit----------------------------------------//
@@ -328,6 +331,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/rektor/search-data/raport', [iktisarBulananRektorController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.rektor.data.raport');
             Route::get('/rektor/data/raport', [iktisarBulananRektorController::class, 'staffRaportIktisar'])->name('data.raport.rektor');
+
+            // Rekap
+            Route::get('/rektor/data/rekap', [iktisarBulananRektorController::class, 'rekap'])->name('rektor.data.rekap');
+            Route::get('/rektor/data/report', [iktisarBulananRektorController::class, 'reportRaport'])->name('rektor.data.kaunit.report');
+            Route::get('/rektor/data/report/detail/{user_id}/{created_insert}', [iktisarBulananRektorController::class, 'showDetail'])->name('rektor.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|warek1'])->group(function () {
@@ -345,6 +353,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/warekSatu/search-data/raport', [iktisarBulananWarekSatuController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.warekSatu.data.raport');
             Route::get('/warekSatu/data/raport', [iktisarBulananWarekSatuController::class, 'staffRaportIktisar'])->name('data.raport.warekSatu');
+
+            // Rekap
+            Route::get('/warekSatu/data/rekap', [iktisarBulananWarekSatuController::class, 'rekap'])->name('wareksatu.data.rekap');
+            Route::get('/warekSatu/data/report', [iktisarBulananWarekSatuController::class, 'reportRaport'])->name('wareksatu.data.kaunit.report');
+            Route::get('/warekSatu/data/report/detail/{user_id}/{created_insert}', [iktisarBulananWarekSatuController::class, 'showDetail'])->name('wareksatu.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|warek2'])->group(function () {
@@ -362,6 +375,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/warekDua/search-data/raport', [iktisarBulananWarek2Controller::class, 'searchRaportIktisar'])->name('iktisar.bulanan.warekDua.data.raport');
             Route::get('/warekDua/data/raport', [iktisarBulananWarek2Controller::class, 'staffRaportIktisar'])->name('data.raport.warekDua');
+
+            // Rekap
+            Route::get('/warek-dua/data/rekap', [iktisarBulananWarek2Controller::class, 'rekap'])->name('warek-dua.data.rekap');
+            Route::get('/warek-dua/data/report', [iktisarBulananWarek2Controller::class, 'reportRaport'])->name('warek-dua.data.kaunit.report');
+            Route::get('/warek-dua/data/report/detail/{user_id}/{created_insert}', [iktisarBulananWarek2Controller::class, 'showDetail'])->name('warek-dua.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|kasubbaak'])->group(function () {
@@ -396,6 +414,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/baak/kaunit/search-data/raport', [iktisarBulananBaakKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.baak.kaunit.data.raport');
             Route::get('/baak/kaunit/data/raport', [iktisarBulananBaakKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.kaunit.baak');
+
+            // Rekap
+            Route::get('/baak/data/rekap', [iktisarBulananBaakKaUnitController::class, 'rekap'])->name('baak.data.rekap');
+            Route::get('/baak/data/report', [iktisarBulananBaakKaUnitController::class, 'reportRaport'])->name('baak.data.kaunit.report');
+            Route::get('/baak/data/report/detail/{user_id}/{created_insert}', [iktisarBulananBaakKaUnitController::class, 'showDetail'])->name('baak.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|keuangan'])->group(function () {
@@ -413,6 +436,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/keuangan/search-data/raport', [iktisarBulananKeuanganStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.keuangan.data.raport');
             Route::get('/keuangan/data/raport', [iktisarBulananKeuanganStaffController::class, 'staffRaportIktisar'])->name('data.raport.keuangan');
+
+            // Rekap
+            Route::get('/keuangan/data/rekap', [iktisarBulananKeuanganStaffController::class, 'rekap'])->name('keuangan.data.rekap');
+            Route::get('/keuangan/data/report', [iktisarBulananKeuanganStaffController::class, 'reportRaport'])->name('keuangan.data.kaunit.report');
+            Route::get('/keuangan/data/report/detail/{user_id}/{created_insert}', [iktisarBulananKeuanganStaffController::class, 'showDetail'])->name('keuangan.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|lpm'])->group(function () {
@@ -430,6 +458,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/lpm/search-data/raport', [iktisarBulananLpmKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.lpm.data.raport');
             Route::get('/lpm/data/raport', [iktisarBulananLpmKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.lpm');
+
+            // Rekap
+            Route::get('/lpm/data/rekap', [iktisarBulananLpmKaUnitController::class, 'rekap'])->name('lpm.data.rekap');
+            Route::get('/lpm/data/report', [iktisarBulananLpmKaUnitController::class, 'reportRaport'])->name('data.lpm.report');
+            Route::get('/lpm/data/report/detail/{user_id}/{created_insert}', [iktisarBulananLpmKaUnitController::class, 'showDetail'])->name('lpm.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|risbang'])->group(function () {
@@ -447,6 +480,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/risbang/search-data/raport', [iktisarBulananRisbangKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.risbang.data.raport');
             Route::get('/risbang/data/raport', [iktisarBulananRisbangKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.risbang');
+
+            // Rekap
+            Route::get('/risbang/data/rekap', [iktisarBulananRisbangKaUnitController::class, 'rekap'])->name('risbang.data.rekap');
+            Route::get('/risbang/data/report', [iktisarBulananRisbangKaUnitController::class, 'reportRaport'])->name('data.risbang.report');
+            Route::get('/risbang/data/report/detail/{user_id}/{created_insert}', [iktisarBulananRisbangKaUnitController::class, 'showDetail'])->name('risbang.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|gizi|perawat|bidan|manajemen|akuntansi'])->group(function () {
@@ -464,6 +502,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/sekkaprodi/search-data/raport', [iktisarBulananKaprodiController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.sekkaprodi.data.raport');
             Route::get('/sekkaprodi/data/raport', [iktisarBulananKaprodiController::class, 'staffRaportIktisar'])->name('data.raport.sekkaprodi');
+
+            // Rekap
+            Route::get('/sekkaprodi/data/rekap', [iktisarBulananKaprodiController::class, 'rekap'])->name('sekkaprodi.data.rekap');
+            Route::get('/sekkaprodi/data/report', [iktisarBulananKaprodiController::class, 'reportRaport'])->name('data.sekkaprodi.report');
+            Route::get('/sekkaprodi/data/report/detail/{user_id}/{created_insert}', [iktisarBulananKaprodiController::class, 'showDetail'])->name('sekkaprodi.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|bau'])->group(function () {
@@ -481,6 +524,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/bau/search-data/raport', [iktisarBulananBauKaUnitController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.bau.data.raport');
             Route::get('/bau/data/raport', [iktisarBulananBauKaUnitController::class, 'staffRaportIktisar'])->name('data.raport.bau');
+
+            // Rekap
+            Route::get('/bau/data/rekap', [iktisarBulananBauKaUnitController::class, 'rekap'])->name('bau.data.rekap');
+            Route::get('/bau/data/report', [iktisarBulananBauKaUnitController::class, 'reportRaport'])->name('data.bau.report');
+            Route::get('/bau/data/report/detail/{user_id}/{created_insert}', [iktisarBulananBauKaUnitController::class, 'showDetail'])->name('bau.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|hrd'])->group(function () {
@@ -498,6 +546,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/hrd/search-data/raport', [iktisarBulananHrdStaffController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.hrd.data.raport');
             Route::get('/hrd/data/raport/', [iktisarBulananHrdStaffController::class, 'staffRaportIktisar'])->name('data.raport.hrd');
+
+            // Rekap
+            Route::get('/hrd/data/rekap', [iktisarBulananHrdStaffController::class, 'rekap'])->name('hrd.data.rekap');
+            Route::get('/hrd/data/report', [iktisarBulananHrdStaffController::class, 'reportRaport'])->name('data.hrd.report');
+            Route::get('/hrd/data/report/detail/{user_id}/{created_insert}', [iktisarBulananHrdStaffController::class, 'showDetail'])->name('hrd.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|dekan'])->group(function () {
@@ -515,6 +568,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/dekan/search-data/raport', [iktisarBulananDekanController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.dekan.data.raport');
             Route::get('/dekan/data/raport/', [iktisarBulananDekanController::class, 'staffRaportIktisar'])->name('data.raport.dekan');
+
+            // Rekap
+            Route::get('/dekan/data/rekap', [iktisarBulananDekanController::class, 'rekap'])->name('dekan.data.rekap');
+            Route::get('/dekan/data/report', [iktisarBulananDekanController::class, 'reportRaport'])->name('dekan.data.kaunit.report');
+            Route::get('/dekan/data/report/detail/{user_id}/{created_insert}', [iktisarBulananDekanController::class, 'showDetail'])->name('dekan.report.detail');
         });
 
         Route::middleware(['role:it|superuser|tendik|marketing'])->group(function () {
@@ -532,6 +590,11 @@ Route::group(
             // Detail Raport Tendik
             Route::get('/marketing/search-data/raport', [iktisarBulananMarketingController::class, 'searchRaportIktisar'])->name('iktisar.bulanan.marketing.data.raport');
             Route::get('/marketing/data/raport/', [iktisarBulananMarketingController::class, 'staffRaportIktisar'])->name('data.raport.marketing');
+
+            // Rekap
+            Route::get('/marketing/data/rekap', [iktisarBulananMarketingController::class, 'rekap'])->name('marketing.data.rekap');
+            Route::get('/marketing/data/report', [iktisarBulananMarketingController::class, 'reportRaport'])->name('marketing.data.kaunit.report');
+            Route::get('/marketing/data/report/detail/{user_id}/{created_insert}', [iktisarBulananMarketingController::class, 'showDetail'])->name('marketing.report.detail');
         });
     }
 );

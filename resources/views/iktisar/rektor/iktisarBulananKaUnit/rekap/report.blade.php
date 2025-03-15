@@ -51,7 +51,7 @@
                             <td>{{ $OutPutPredikatKompetensi }}</td>
                             <td>{{ $item->created_insert }}</td>
                             <td>
-                                <a href="{{ route('report.detail', ['user_id' => $item->user_id, 'created_insert' => $item->created_insert]) }}" class="btn btn-danger btn-sm">
+                                <a href="{{ route('rektor.report.detail', ['user_id' => $item->user_id, 'created_insert' => $item->created_insert]) }}" class="btn btn-danger btn-sm">
                                     Show
                                 </a>
                             </td>

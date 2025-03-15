@@ -18,7 +18,26 @@ class iktisarBulananRektorController extends Controller
     public function create()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+            'superuser',
+            'manajer',
+            'it',
+            'hrd',
+            'lppm',
+            'warek2',
+            'upt',
+            'baak',
+            'keuangan',
+            'lpm',
+            'risbang',
+            'gizi',
+            'perawat',
+            'bidan',
+            'manajemen',
+            'akuntansi',
+            'bau',
+            'warek1',
+            'rektor',
+            'ypsdmit'
         ])->get();
         return view('iktisar.rektor.iktisarBulananKaUnit.create', compact('users'));
     }
@@ -94,7 +113,26 @@ class iktisarBulananRektorController extends Controller
     public function searchDataEdit()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+            'superuser',
+            'manajer',
+            'it',
+            'hrd',
+            'lppm',
+            'warek2',
+            'upt',
+            'baak',
+            'keuangan',
+            'lpm',
+            'risbang',
+            'gizi',
+            'perawat',
+            'bidan',
+            'manajemen',
+            'akuntansi',
+            'bau',
+            'warek1',
+            'rektor',
+            'ypsdmit'
         ])->get();
         return view('iktisar.rektor.iktisarBulananKaUnit.searchdata', compact('users'));
     }
@@ -321,7 +359,26 @@ class iktisarBulananRektorController extends Controller
     public function searchRaportIktisar()
     {
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+            'superuser',
+            'manajer',
+            'it',
+            'hrd',
+            'lppm',
+            'warek2',
+            'upt',
+            'baak',
+            'keuangan',
+            'lpm',
+            'risbang',
+            'gizi',
+            'perawat',
+            'bidan',
+            'manajemen',
+            'akuntansi',
+            'bau',
+            'warek1',
+            'rektor',
+            'ypsdmit'
         ])->get();
         return view('iktisar.rektor.iktisarBulananKaUnit.searchdataraport', compact('users'));
     }
@@ -387,5 +444,82 @@ class iktisarBulananRektorController extends Controller
             toast('Data Empty', 'error');
             return redirect()->back();
         }
+    }
+
+    public function rekap()
+    {
+        $users = User::whereNotIn('name', [
+            'superuser',
+            'manajer',
+            'it',
+            'hrd',
+            'lppm',
+            'warek2',
+            'upt',
+            'baak',
+            'keuangan',
+            'lpm',
+            'risbang',
+            'gizi',
+            'perawat',
+            'bidan',
+            'manajemen',
+            'akuntansi',
+            'bau',
+            'warek1',
+            'rektor',
+            'ypsdmit'
+        ])->get();
+        return view('iktisar.rektor.iktisarBulananKaUnit.rekap.index', compact('users'));
+    }
+
+    public function reportRaport(Request $request)
+    {
+        $id = $request->input('id');
+
+        // Ambil semua data yang sesuai dengan user_id
+        $data = DB::table('users')
+            ->leftJoin('iktisar_rektor_bulanan_perilaku', 'users.id', '=', 'iktisar_rektor_bulanan_perilaku.user_id')
+            ->select(
+                'users.name',
+                'users.email',
+                'iktisar_rektor_bulanan_perilaku.user_id',
+                'iktisar_rektor_bulanan_perilaku.output_total_sementara_kinerja_perilaku',
+                'iktisar_rektor_bulanan_perilaku.total_nilai_presentase',
+                'iktisar_rektor_bulanan_perilaku.created_insert'
+            )
+            ->where('iktisar_rektor_bulanan_perilaku.user_id', $id)
+            ->orderBy('iktisar_rektor_bulanan_perilaku.created_insert', 'desc') // Urutkan dari terbaru ke lama
+            ->get(); // Menggunakan get() agar mendapatkan semua data
+        // dd($data);
+
+        if ($data->isNotEmpty()) {
+            return view('iktisar.rektor.iktisarBulananKaUnit.rekap.report', compact('data'));
+        } else {
+            toast('Data Empty', 'error');
+            return redirect()->back();
+        }
+    }
+
+    public function showDetail($user_id, $created_insert)
+    {
+        // Ambil data dari tabel iktisar_rektor_bulanan_perilaku
+        $iktisarStaffBulananPerilaku = DB::table('iktisar_rektor_bulanan_perilaku')
+            ->where('user_id', $user_id)
+            ->where('created_insert', $created_insert)
+            ->first(); // Ambil satu data saja
+
+        // Jika data tidak ditemukan, kembalikan dengan pesan error
+        if (!$iktisarStaffBulananPerilaku) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        }
+
+        // Ambil data dari tabel iktisar_rektor_bulanan_kompetensi berdasarkan id_staff_perilaku
+        $iktisarStaffBulananKompetensi = DB::table('iktisar_rektor_bulanan_kompetensi')
+            ->where('id_staff_perilaku', $iktisarStaffBulananPerilaku->id)
+            ->get();
+
+        // Kirim data ke view
+        return view('iktisar.rektor.iktisarBulananKaUnit.rekap.show', compact('iktisarStaffBulananPerilaku', 'iktisarStaffBulananKompetensi'));
     }
 }
