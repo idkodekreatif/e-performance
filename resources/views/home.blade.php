@@ -1,128 +1,153 @@
-<x-app-layout title="Dashboard">
+<x-app-layout title="Welcome Dashboard">
     @push('style')
+    <style>
+        .dashboard-welcome {
+            padding: 2rem;
+        }
 
+        .greeting-box {
+            background: linear-gradient(135deg, #4e73df, #1cc88a);
+            color: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .greeting-box .time {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .profile-info {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .profile-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info .name {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .summary-card {
+            border-radius: 10px;
+            background-color: #f8f9fc;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .summary-card h4 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .quick-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .quick-links a:hover {
+            background-color: #e2e6ea;
+        }
+
+        .quote-box {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-left: 5px solid #1cc88a;
+            font-style: italic;
+            margin-top: 2rem;
+            border-radius: 8px;
+        }
+    </style>
     @endpush
-    @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-    @endif
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card tryal-gradient">
-                                <div class="card-body tryal row">
-                                    <div class="col-xl-7 col-sm-6">
-                                        <h2>Manage your performance ikbis.</h2>
-                                        <span>Let Follow manage your Progress automatically with our best systems
-                                            performance
-                                        </span>
-                                        <a href="javascript:void(0);"
-                                            class="btn btn-rounded  fs-18 font-w500">IKBIS.AC.ID</a>
-                                    </div>
-                                    <div class="col-xl-5 col-sm-6">
-                                        <img src="{{ asset('Assets/images/chart.png') }}" alt="" class="sd-shape">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="col-xl-6">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="row">
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body d-flex px-4 pb-0 justify-content-between">
-                                            <div>
-                                                <h4 class="fs-18 font-w600 mb-4 text-nowrap">Total Users
-                                                </h4>
-                                                <div class="d-flex align-items-center">
-                                                    <h2 class="fs-32 font-w700 mb-0">68</h2>
-                                                    <span class="d-block ms-4">
-                                                        <svg width="21" height="11" viewbox="0 0 21 11" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M1.49217 11C0.590508 11 0.149368 9.9006 0.800944 9.27736L9.80878 0.66117C10.1954 0.29136 10.8046 0.291359 11.1912 0.661169L20.1991 9.27736C20.8506 9.9006 20.4095 11 19.5078 11H1.49217Z"
-                                                                fill="#09BD3C"></path>
-                                                        </svg>
-                                                        <small
-                                                            class="d-block fs-16 font-w400 text-success">+0,5%</small>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div id="columnChart"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body px-4 pb-0">
-                                            <h4 class="fs-18 font-w600 mb-5 text-nowrap">Total Users</h4>
-                                            <div class="progress default-progress">
-                                                <div class="progress-bar bg-gradient1 progress-animated"
-                                                    style="width: 40%; height:10px;" role="progressbar">
-                                                    <span class="sr-only">45% Complete</span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-end mt-2 pb-3 justify-content-between">
-                                                <span>76 left from target</span>
-                                                <h4 class="mb-0">42</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body d-flex px-4  justify-content-between">
-                                            <div>
-                                                <div class="">
-                                                    <h2 class="fs-32 font-w700">562</h2>
-                                                    <span class="fs-18 font-w500 d-block">Total
-                                                        Users</span>
-                                                    {{-- <span class="d-block fs-16 font-w400"><small
-                                                            class="text-danger">-2%</small> than last
-                                                        month</span> --}}
-                                                </div>
-                                            </div>
-                                            <div id="NewCustomers"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-sm-6">
-                                    <div class="card">
-                                        <div class="card-body d-flex px-4  justify-content-between">
-                                            <div>
-                                                <div class="">
-                                                    <h2 class="fs-32 font-w700">892</h2>
-                                                    <span class="fs-18 font-w500 d-block">New
-                                                        Performance</span>
-                                                    {{-- <span class="d-block fs-16 font-w400"><small
-                                                            class="text-success">-2%</small> than last
-                                                        month</span> --}}
-                                                </div>
-                                            </div>
-                                            <div id="NewCustomers1"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="dashboard-welcome container-fluid">
+        {{-- Greeting & Clock --}}
+        <div class="greeting-box">
+            <h2>Good Morning, {{ Auth::user()->name }} 👋</h2>
+            <div class="time" id="clock">--:--:--</div>
 
-                        </div>
-                    </div>
+            <div class="profile-info">
+                <img src="{{ Auth::user()->profile_photo_url ?? asset('Assets/images/profile/profile.png') }}" alt="User Photo">
+                <div>
+                    <div class="name">{{ Auth::user()->name }}</div>
+                    <div class="text-light">{{ Auth::user()->email }}</div>
                 </div>
             </div>
         </div>
+
+        {{-- Summary Cards --}}
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="summary-card">
+                    <h2>120</h2>
+                    <h4>Total Employees</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="summary-card">
+                    <h2>95%</h2>
+                    <h4>Attendance Today</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="summary-card">
+                    <h2>14</h2>
+                    <h4>Active Evaluations</h4>
+                </div>
+            </div>
+        </div>
+
+        {{-- Quick Links --}}
+        <div class="row quick-links mb-4">
+            <div class="col-md-4 mb-2">
+                <a href="{{ route('profile.index') }}">👤 My Profile</a>
+            </div>
+            <div class="col-md-4 mb-2">
+                <a href="">🕒 Attendance</a>
+            </div>
+            <div class="col-md-4 mb-2">
+                <a href="{{ route('raport.chart') }}">📊 Performance Review</a>
+            </div>
+        </div>
+
+        {{-- Motivational Quote --}}
+        <div class="quote-box">
+            “The only way to do great work is to love what you do.” – Steve Jobs
+        </div>
     </div>
+
     @push('JavaScript')
     <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
 
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
-
     @endpush
 </x-app-layout>
