@@ -323,7 +323,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.dekan.create') }}">Form Ka.
                                                             Unit</a></li>
-                                                            <li><a href="{{ route('dekan.data.rekap') }}">Rekap</a> </li>
+                                                    <li><a href="{{ route('dekan.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -337,7 +337,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.marketing.create') }}">Form Ka.
                                                             Unit</a></li>
-                                                            <li><a href="{{ route('marketing.data.rekap') }}">Rekap</a> </li>
+                                                    <li><a href="{{ route('marketing.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -386,7 +386,7 @@
                                                 <ul aria-expanded="false">
                                                     <li><a href="{{ route('iktisar.bulanan.baak.kaunit.create') }}">Form Ka.
                                                             Unit</a></li>
-                                                            <li><a href="{{ route('baak.data.rekap') }}">Rekap</a> </li>
+                                                    <li><a href="{{ route('baak.data.rekap') }}">Rekap</a> </li>
                                                 </ul>
                                             </li>
                                             {{-- <li><a href="{{ route('ka.baak') }}">Form Ka. Sub. Biro Administrasi Akademik</a>
@@ -886,10 +886,11 @@
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="side-bar-profile-img">
                     @if (Auth::user()->avatar)
-                        <img src="{{ asset('/storage/photos/' . Auth::user()->avatar) }}" alt="">
+                    <img src="{{ asset('/storage/photos/' . Auth::user()->avatar) }}" alt="">
                     @else
-                        <img src="{{ asset('Assets/images/profile/profile.png') }}" width="56" alt="">
+                    <img src="{{ asset('Assets/images/undraw_profile.svg') }}" width="56" alt="">
                     @endif
+
                 </div>
                 <div class="profile-info1">
                     <h4 class="fs-18 font-w500">{{ Auth::user()->name }}</h4>
