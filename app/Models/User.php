@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Setting\Jabatan;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -74,5 +75,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function Warek2Id()
     {
         return $this->hasOne(Warek2::class, 'user_id', 'id');
+    }
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'jabatan_id', 'id');
     }
 }

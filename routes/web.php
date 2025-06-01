@@ -66,6 +66,7 @@ use App\Http\Controllers\UserManagement\PermissionController;
 use App\Http\Controllers\UserManagement\profileController;
 use App\Http\Controllers\UserManagement\RoleController;
 use App\Http\Controllers\UserManagement\UserController;
+use App\Http\Controllers\Setting\JabatanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -129,6 +130,16 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::delete('/users/{user}/roles/{role}', 'removeRole')->name('users.roles.remove');
         Route::post('/users/{user}/permissions', 'givePermission')->name('users.permissions');
         Route::delete('/users/{user}/permissions/{permission}', 'revokePermission')->name('users.permissions.revoke');
+    });
+
+
+    // ----------------------------- User Jabatan Management ----------------------------------------//
+    Route::resource('jabatan', JabatanController::class);
+
+    Route::controller(JabatanController::class)->group(function () {
+        Route::get('/users-jabatan', 'indexRoleJabatan')->name('user-jabatan.indexRoleJabatan');
+        Route::get('/user-jabatan/{id}/edit', 'editRoleJabatan')->name('user-jabatan.editRoleJabatan');
+        Route::put('/user-jabatan/{id}', 'updateRoleJabatan')->name('user-jabatan.updateRoleJabatan');
     });
 
     // -----------------------------Menu Controller Edit Point----------------------------------------//
