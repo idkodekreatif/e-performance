@@ -1,3 +1,4 @@
+{{-- Rekap --}}
 <x-app-layout title="IKTISAR Bulanan || Staff">
     @push('style')
         <link rel="stylesheet" href="{{ asset('Assets/vendor/select2/css/select2.min.css') }}">
