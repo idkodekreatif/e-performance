@@ -3,7 +3,6 @@
     @endpush
 
     <div class="col-xl col-lg">
-        {{-- Breadcrumb --}}
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="#">Point</a></li>
@@ -12,31 +11,26 @@
         </div>
 
         {{-- Form Pilih Periode --}}
-        <div class="card shadow mb-3">
-            <div class="card-body">
-                <form action="{{ route('raport', ['user_id' => request('user_id') ?? $user_id]) }}" method="GET" class="row g-2 align-items-end">
-                    <div class="col-md-6">
-                        <label for="period_id" class="form-label">Pilih Periode:</label>
-                        <select name="period_id" id="period_id" class="form-control" required>
-                            @foreach ($periods as $period)
-                                <option value="{{ $period->id }}" {{ request('period_id') == $period->id ? 'selected' : '' }}>
-                                    {{ $period->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <input type="hidden" name="user_id" value="{{ request('user_id') ?? $user_id }}">
-                    <div class="col-md-4">
-                        <button type="submit" class="btn btn-info w-100">
-                            <i class="fa fa-search"></i> Lihat Raport
-                        </button>
-                    </div>
-                    <div class="col-md-2 text-end">
-                        <a href="{{ route('raport.pdf', auth()->id()) }}" class="btn btn-primary w-100" target="_blank">
-                            <i class="fa fa-print"></i> Cetak PDF
-                        </a>
-                    </div>
-                </form>
+       <form action="{{ route('raport', ['user_id' => request('user_id') ?? $user_id]) }}" method="GET">
+
+            <label for="period_id">Pilih Periode:</label>
+            <select name="period_id" id="period_id" class="form-control mb-2" required>
+                @foreach ($periods as $period)
+                    <option value="{{ $period->id }}" {{ request('period_id') == $period->id ? 'selected' : '' }}>
+                        {{ $period->name }}
+                    </option>
+                @endforeach
+            </select>
+            <input type="hidden" name="user_id" value="{{ request('user_id') ?? $user_id }}">
+            <button type="submit" class="btn btn-info">Lihat Raport</button>
+        </form>
+
+        {{-- Tombol Cetak PDF --}}
+        <div class="row mb-2">
+            <div class="col">
+                <a href="{{ route('raport.pdf', auth()->id()) }}" class="btn btn-primary btn-sm float-end" target="_blank">
+                    <i class="fa fa-print"></i> CETAK PDF
+                </a>
             </div>
         </div>
 
@@ -113,6 +107,10 @@
                                     <td>STANDAR KINERJA TOTAL</td>
                                     <td colspan="4">{{ $resultArray['sum_Skt'] ?? '-' }}</td>
                                 </tr>
+                                {{-- <tr class="fw-bold">
+                                    <td>PERSENTASE CAPAIAN TOTAL (%)</td>
+                                    <td colspan="4">{{ $resultArray['result_PCT'] ?? '-' }}</td>
+                                </tr> --}}
                                 <tr class="fw-bold">
                                     <td>PREDIKAT</td>
                                     <td colspan="4">{{ $resultArray['predikat'] ?? '-' }}</td>

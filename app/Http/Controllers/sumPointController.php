@@ -24,17 +24,28 @@ class sumPointController extends Controller
      * @param  mixed $user_id
      * @return void
      */
-    public function raportView($user_id)
-    {
-        // Retrieve the active period
-        $activePeriod = Period::where('is_closed', 1)
-            ->where('start_date', '<=', Carbon::now())
-            ->where('end_date', '>=', Carbon::now())
-            ->first();
 
-        if (!$activePeriod) {
-            // Return empty data or handle the case when there is no active period.
-            return view('input-point.raport', ['users' => null, 'resultArray' => null]);
+    public function raportView($user_id, Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $period_id = $request->input('period_id');
+
+        // Ambil semua periode terlebih dahulu
+        $periods = Period::orderBy('start_date', 'desc')->get();
+
+        if (!$period_id) {
+            $activePeriod = Period::where('is_closed', 1)
+                ->where('start_date', '<=', Carbon::now())
+                ->where('end_date', '>=', Carbon::now())
+                ->first();
+
+            if (!$activePeriod) {
+                return view('input-point.raport', ['users' => null, 'resultArray' => null, 'periods' => $periods]);
+            }
+
+            $period_id = $activePeriod->id;
+        } else {
+            $activePeriod = Period::find($period_id);
         }
 
         $users = DB::table('users')
@@ -63,9 +74,9 @@ class sumPointController extends Controller
             ->first();
 
         if (!$users) {
-            // Return empty data or handle the case when there are no users with the given ID.
-            return view('input-point.raport', ['users' => null, 'resultArray' => null]);
+            return view('input-point.raport', ['users' => null, 'resultArray' => null, 'periods' => $periods]);
         }
+
 
         $resultArray = [];
 
@@ -216,8 +227,43 @@ class sumPointController extends Controller
         } else {
             $resultArray['predikat'] = 'Predikat tidak ditemukan';
         }
-        return view('input-point.raport', compact('users', 'resultArray'));
+
+        return view('input-point.raport', compact('users', 'resultArray', 'periods'));
     }
+
+
+    // public function raportView($user_id, Request $request)
+    // {
+    //     $user_id = $request->input('user_id');
+    //     $period_id = $request->input('period_id');
+
+    //     $periods = Period::orderBy('start_date', 'desc')->get();
+
+    //     if (!$period_id) {
+    //         $activePeriod = Period::where('is_closed', 1)
+    //             ->where('start_date', '<=', Carbon::now())
+    //             ->where('end_date', '>=', Carbon::now())
+    //             ->first();
+
+    //         if (!$activePeriod) {
+    //             return view('input-point.raport', ['users' => null, 'resultArray' => null, 'periods' => $periods]);
+    //         }
+
+    //         $period_id = $activePeriod->id;
+    //     }
+
+    //     // Ambil data periode (semua untuk dropdown)
+    //     $periods = Period::orderBy('start_date', 'desc')->get();
+
+
+
+    //     if (!$users) {
+    //         // Return empty data or handle the case when there are no users with the given ID.
+    //         return view('input-point.raport', ['users' => null, 'resultArray' => null]);
+    //     }
+
+    //     return view('input-point.raport', compact('users', 'resultArray', 'periods'));
+    // }
 
     public function raportPdf($user_id)
     {
