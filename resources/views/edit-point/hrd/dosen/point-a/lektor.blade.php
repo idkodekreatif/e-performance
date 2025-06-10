@@ -840,7 +840,8 @@
                                             mengikuti kaidah tulisan ilmiah</td>
                                         <td>Membuat alat bantu dalam bentuk audio visual, atau model yang memudahkan
                                             proses pengajaran</td>
-                                        <td>1 Karya Ilmiah Lektor</td>
+                                        <td>Membuat alat bantu dalam bentuk audio visual, atau model yang memudahkan
+                                            proses pengajaran</td>
                                         <td>Menyusun buku ajar/buku number untuk suatu mata kuliah, mengikuti kaidah
                                             buku
                                             number serta diterbitkan secara resmi dan

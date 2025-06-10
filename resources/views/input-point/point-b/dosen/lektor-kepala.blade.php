@@ -380,7 +380,7 @@
                                             <td>telah dikirimkan dan belum mendapat balasan / telah dikirimkan namun
                                                 ditolak
                                             </td>
-                                            <td>1 Karya</td>
+                                            <td>sedang dalam proses review redaksi</td>
                                             <td>sudah ada konfirmasi untuk dimuat / sedang dalam revisi</td>
                                             <td>telah dimuat dalam jurnal ilmiah internasional
                                             </td>

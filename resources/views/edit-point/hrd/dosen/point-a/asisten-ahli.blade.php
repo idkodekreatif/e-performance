@@ -838,7 +838,8 @@
                                         <td>Tidak pernah menyusun bahan pengajaran sendiri</td>
                                         <td>Menyusun bahan pengajaran dalam bentuk naskah tutorial yang ditulis
                                             mengikuti kaidah tulisan ilmiah</td>
-                                        <td>1 Karya Ilmiah Asisten Ahli</td>
+                                        <td>Membuat alat bantu dalam bentuk audio visual, atau model yang memudahkan
+                                            proses pengajaran</td>
                                         <td>Menyusun diktat, modul, model, dan petunjuk praktikum untuk membantu proses
                                             pengajaran</td>
                                         <td>Menyusun buku ajar/buku number untuk suatu mata kuliah, mengikuti kaidah

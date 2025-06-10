@@ -782,7 +782,7 @@
                                                                                                 dikirimkan namun
                                                                                                 ditolak
                                                                                         </td>
-                                                                                        <td>1 Karya </td>
+                                                                                        <td>sedang dalam proses review redaksi </td>
                                                                                         <td>sudah ada konfirmasi untuk
                                                                                                 dimuat / sedang dalam
                                                                                                 revisi</td>
