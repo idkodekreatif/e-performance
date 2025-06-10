@@ -9,16 +9,21 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Raport</a></li>
             </ol>
         </div>
-        <a href="{{ route('generate.pdf', ['id' => $users->new_user_id, 'period_id' => $period_id]) }}"
-            class="btn btn-primary">Generate PDF</a>
 
+        {{-- Tombol Generate PDF hanya jika parameter tersedia --}}
+        @if (isset($users->id) && isset($period_id))
+            <a href="{{ route('generate.pdf', ['id' => $users->id, 'period_id' => $period_id]) }}"
+                class="btn btn-primary mb-3">Generate PDF</a>
+        @endif
+
+        {{-- Profile User --}}
         <div class="card shadow">
             <div class="card-header">
                 <h4 class="card-title">Profile</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                    <table class="table table-bordered border-2 table-sm text-center table-hover">
                         <thead>
                             <tr style="font-weight:bold">
                                 <td>NAMA</td>
@@ -27,12 +32,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    {{ $users->name }}
-                                </td>
-                                <td>
-                                    {{ $users->email }}
-                                </td>
+                                <td>{{ $users->name }}</td>
+                                <td>{{ $users->email }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -40,34 +41,32 @@
             </div>
         </div>
 
-        <div class="card shadow">
+        {{-- Nilai Raport --}}
+        <div class="card shadow mt-4">
             <div class="card-header">
                 <h4 class="card-title">Raport User</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+
+                    {{-- Nilai Total --}}
+                    <table class="table table-bordered border-2 table-sm text-center table-hover">
                         <tr>
                             <td>Nilai Total UNSUR UTAMA</td>
-                            <td>
-                                {{ $resultArray['total_Ntu'] }}
-                            </td>
+                            <td>{{ $resultArray['total_Ntu'] }}</td>
                         </tr>
                         <tr>
                             <td>Nilai Total Unsur Non-Tri Dharma</td>
-                            <td>
-                                {{ $resultArray['total_Ntd'] }}
-                            </td>
+                            <td>{{ $resultArray['total_Ntd'] }}</td>
                         </tr>
                         <tr>
                             <td>Nilai Kinerja Dosen</td>
-                            <td>
-                                {{ $resultArray['total_Nkd'] }}
-                            </td>
+                            <td>{{ $resultArray['total_Nkd'] }}</td>
                         </tr>
                     </table>
 
-                    <table class="table table-bordered border-2 table-sm text-center table-sm table-hover">
+                    {{-- Detail Komponen --}}
+                    <table class="table table-bordered border-2 table-sm text-center table-hover">
                         <thead>
                             <tr>
                                 <td>Komponen</td>
@@ -80,78 +79,48 @@
                         <tbody>
                             <tr>
                                 <td>PENDIDIKAN DAN PENGAJARAN</td>
-                                <td>
-                                    {{ $resultArray['a'] }}
-                                </td>
+                                <td>{{ $resultArray['a'] }}</td>
                                 <td>11.69</td>
-                                <td>
-                                    {{ $resultArray['NtAFinalSum'] }}
-                                </td>
-                                <td>
-                                    {{ $resultArray['outputHasilPDP'] }}
-                                </td>
+                                <td>{{ $resultArray['NtAFinalSum'] }}</td>
+                                <td>{{ $resultArray['outputHasilPDP'] }}</td>
                             </tr>
                             <tr>
                                 <td>PENELITIAN DAN KARYA ILMIAH</td>
-                                <td>
-                                    {{ $resultArray['b'] }}
-                                </td>
+                                <td>{{ $resultArray['b'] }}</td>
                                 <td>4.26</td>
-                                <td>
-                                    {{ $resultArray['NTiFinalSum'] }}
-                                </td>
-                                <td>
-                                    {{ $resultArray['OutputHasilPki'] }}
-                                </td>
+                                <td>{{ $resultArray['NTiFinalSum'] }}</td>
+                                <td>{{ $resultArray['OutputHasilPki'] }}</td>
                             </tr>
                             <tr>
                                 <td>PENGABDIAN KEPADA MASYARAKAT</td>
-                                <td>
-                                    {{ $resultArray['c'] }}
-                                </td>
+                                <td>{{ $resultArray['c'] }}</td>
                                 <td>1.20</td>
-                                <td>
-                                    {{ $resultArray['NTiFinalSumPkm'] }}
-                                </td>
-                                <td>
-                                    {{ $resultArray['OutputHasilPkm'] }}
-                                </td>
+                                <td>{{ $resultArray['NTiFinalSumPkm'] }}</td>
+                                <td>{{ $resultArray['OutputHasilPkm'] }}</td>
                             </tr>
                             <tr>
                                 <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
-                                <td>
-                                    {{ $resultArray['total_Ntd'] }}
-                                </td>
+                                <td>{{ $resultArray['total_Ntd'] }}</td>
                                 <td>2.17</td>
-                                <td>
-                                    {{ $resultArray['SUMUnsurPenungjang'] }}
-                                </td>
-                                <td>
-                                    {{ $resultArray['OutputHasilUnsurPenunjang'] }}
-                                </td>
+                                <td>{{ $resultArray['SUMUnsurPenungjang'] }}</td>
+                                <td>{{ $resultArray['OutputHasilUnsurPenunjang'] }}</td>
                             </tr>
                             <tr style="font-weight:bold">
                                 <td>NILAI KINERJA TOTAL</td>
-                                <td colspan="4">
-                                    {{ $resultArray['SumNkt'] }}
-                                </td>
+                                <td colspan="4">{{ $resultArray['SumNkt'] }}</td>
                             </tr>
                             <tr style="font-weight:bold">
                                 <td>STANDAR KINERJA TOTAL</td>
-                                <td colspan="4">
-                                    {{ $resultArray['sum_Skt'] }}
-                                </td>
+                                <td colspan="4">{{ $resultArray['sum_Skt'] }}</td>
                             </tr>
                             <tr style="font-weight:bold">
                                 <td>PREDIKAT</td>
-                                <td colspan="4">
-                                    {{ $resultArray['predikat'] }}
-                                </td>
+                                <td colspan="4">{{ $resultArray['predikat'] }}</td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>

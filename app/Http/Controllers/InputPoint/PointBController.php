@@ -21,31 +21,54 @@ class PointBController extends Controller
      */
     public function create()
     {
-        // Cek apakah ada periode yang sedang aktif dan belum ditutup
+        $user = Auth::user();
+
+        // Cek apakah ada periode aktif
         $activePeriod = Period::where('is_closed', 1)
             ->where('start_date', '<=', Carbon::now())
             ->where('end_date', '>=', Carbon::now())
             ->first();
 
         if (!$activePeriod) {
-            // Tidak ada periode aktif yang belum ditutup, redirect ke halaman menu.disabled
             return view('menu.disabled');
         }
 
-        // Periode aktif ditemukan, cek apakah data PointA untuk periode aktif dan user saat ini sudah ada
-        $resultData = PointB::where('new_user_id', Auth::user()->id)
+        // Cek apakah user punya jabatan dan termasuk golongan dosen
+        if ($user->jabatan) {
+            $jabatanName = strtolower($user->jabatan->name);
+            $dosenJabatan = ['asisten ahli', 'lektor', 'lektor kepala', 'guru besar', 'profesor'];
+
+            if (in_array($jabatanName, $dosenJabatan)) {
+                $viewName = str_replace(' ', '-', $jabatanName);
+
+                // Cek apakah data PointB sudah ada untuk periode aktif
+                $resultData = PointB::where('new_user_id', $user->id)
+                    ->where('period_id', $activePeriod->id)
+                    ->first();
+
+                if ($resultData) {
+                    return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
+                }
+
+                // Tampilkan form input khusus jabatan dosen
+                return view("input-point.point-b.dosen.$viewName", ['user' => $user]);
+            }
+        }
+
+        // Jika bukan dosen, cek juga data PointB
+        $resultData = PointB::where('new_user_id', $user->id)
             ->where('period_id', $activePeriod->id)
             ->first();
 
-        if (!$resultData) {
-            // Data PointB belum ada, tampilkan halaman input
-            return view('input-point.point-B');
-        } else {
-            // Data PointB sudah ada, redirect ke halaman edit
-            $userId = $resultData->new_user_id;
-            return redirect()->route('edit.Point-B', ['PointId' => $userId]);
+        if ($resultData) {
+            return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
         }
+
+        // Form default (non-dosen)
+        return view('input-point.point-B');
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -442,8 +465,11 @@ class PointBController extends Controller
      * @param  \App\Models\PointB  $pointB
      * @return \Illuminate\Http\Response
      */
-    public function edit(PointB $pointB, $PointId)
+    public function edit($PointId)
     {
+        $user = Auth::user();
+
+        // Cek apakah periode aktif
         $activePeriod = Period::where('is_closed', 1)
             ->where('start_date', '<=', Carbon::now())
             ->where('end_date', '>=', Carbon::now())
@@ -453,12 +479,39 @@ class PointBController extends Controller
             return view('menu.disabled');
         }
 
-        $data = PointB::where('new_user_id', '=', $PointId)
+        // Ambil data PointB untuk user dan periode aktif
+        $pointBData = PointB::where('new_user_id', $PointId)
             ->where('period_id', $activePeriod->id)
             ->first();
 
-        return view('edit-point.EditPointB', ['data' => $data]);
+        if (!$pointBData) {
+            // Jika data tidak ditemukan, redirect ke create
+            return redirect()->route('create.Point-B');
+        }
+
+        // Cek jabatan user (untuk menampilkan view sesuai jabatan dosen)
+        if ($user->jabatan) {
+            $jabatanName = strtolower($user->jabatan->name);
+            $dosenJabatan = ['asisten ahli', 'lektor', 'lektor kepala', 'guru besar', 'profesor'];
+
+            if (in_array($jabatanName, $dosenJabatan)) {
+                $viewName = str_replace(' ', '-', $jabatanName);
+                return view("edit-point.point-b.dosen.$viewName", [
+                    'user' => $user,
+                    'data' => $pointBData,
+                    'editMode' => true, // bisa untuk membedakan mode edit di view
+                ]);
+            }
+        }
+
+        // View default untuk non-dosen
+        return view('input-point.point-B', [
+            'user' => $user,
+            'data' => $pointBData,
+            'editMode' => true
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -1177,7 +1230,26 @@ class PointBController extends Controller
         $allPeriods = Period::all();
 
         $users = User::whereNotIn('name', [
-            'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'bau', 'warek1', 'rektor', 'ypsdmit'
+            'superuser',
+            'manajer',
+            'it',
+            'hrd',
+            'lppm',
+            'warek2',
+            'upt',
+            'baak',
+            'keuangan',
+            'lpm',
+            'risbang',
+            'gizi',
+            'perawat',
+            'bidan',
+            'manajemen',
+            'akuntansi',
+            'bau',
+            'warek1',
+            'rektor',
+            'ypsdmit'
         ])->get();
 
         return view('edit-point.hrd.search.searchDataPoinB', compact('users', 'allPeriods'));
@@ -1186,21 +1258,52 @@ class PointBController extends Controller
     // return view ke edit
     public function resultSearchPoin(Request $request)
     {
-        $period_id = $request->input('period_id'); // Mendapatkan period_id dari input form
+        $period_id = $request->input('period_id');
+        $user_id = $request->input('id');
 
-        $resultData = DB::table('users')
-            ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
-            ->select('users.name', 'users.email', 'point_b.*')
-            ->where('new_user_id', '=', $request->id)
-            ->where('point_b.period_id', '=', $period_id) // Filter berdasarkan period_id
-            ->first();
+        // Cek user dan relasi jabatan
+        $user = User::with('jabatan')->find($user_id);
 
-        if ($resultData == null) {
+        if (!$user) {
             return view('menu.menu-empty');
         }
 
-        return view('edit-point.hrd.update.EditPointBhrd', ['data' => $resultData]);
+        // Ambil data point_b dari tabel
+        $resultData = DB::table('users')
+            ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
+            ->select('users.name', 'users.email', 'point_b.*')
+            ->where('users.id', '=', $user_id)
+            ->where('point_b.period_id', '=', $period_id)
+            ->first();
+
+        if (!$resultData) {
+            return view('menu.menu-empty');
+        }
+
+        // Cek apakah user adalah dosen dan sesuai jabatan
+        if ($user->jabatan) {
+            $jabatanName = strtolower($user->jabatan->name);
+            $dosenJabatan = ['asisten ahli', 'lektor', 'lektor kepala', 'guru besar', 'profesor'];
+
+            if (in_array($jabatanName, $dosenJabatan)) {
+                $viewName = str_replace(' ', '-', $jabatanName);
+
+                return view("edit-point.hrd.dosen.point-b.$viewName", [
+                    'user' => $user,
+                    'data' => $resultData,
+                    'editMode' => true,
+                ]);
+            }
+        }
+
+        // View default untuk non-dosen
+        return view('edit-point.hrd.update.EditPointBhrd', [
+            'user' => $user,
+            'data' => $resultData,
+            'editMode' => true,
+        ]);
     }
+
 
     public function updateHrd(Request $request, PointB $pointB, $PointId)
     {
