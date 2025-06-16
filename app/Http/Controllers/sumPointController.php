@@ -231,40 +231,6 @@ class sumPointController extends Controller
         return view('input-point.raport', compact('users', 'resultArray', 'periods'));
     }
 
-
-    // public function raportView($user_id, Request $request)
-    // {
-    //     $user_id = $request->input('user_id');
-    //     $period_id = $request->input('period_id');
-
-    //     $periods = Period::orderBy('start_date', 'desc')->get();
-
-    //     if (!$period_id) {
-    //         $activePeriod = Period::where('is_closed', 1)
-    //             ->where('start_date', '<=', Carbon::now())
-    //             ->where('end_date', '>=', Carbon::now())
-    //             ->first();
-
-    //         if (!$activePeriod) {
-    //             return view('input-point.raport', ['users' => null, 'resultArray' => null, 'periods' => $periods]);
-    //         }
-
-    //         $period_id = $activePeriod->id;
-    //     }
-
-    //     // Ambil data periode (semua untuk dropdown)
-    //     $periods = Period::orderBy('start_date', 'desc')->get();
-
-
-
-    //     if (!$users) {
-    //         // Return empty data or handle the case when there are no users with the given ID.
-    //         return view('input-point.raport', ['users' => null, 'resultArray' => null]);
-    //     }
-
-    //     return view('input-point.raport', compact('users', 'resultArray', 'periods'));
-    // }
-
     public function raportPdf($user_id)
     {
         $activePeriod = Period::where('is_closed', 1)

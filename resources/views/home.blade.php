@@ -130,6 +130,70 @@
             </div>
         </div>
 
+   <div class="container mt-5">
+    <h4 class="mb-4">Persentase Penilaian Per Periode</h4>
+
+    <table class="table table-bordered text-center align-middle">
+        <thead class="table-light">
+            <tr>
+                <th rowspan="2" style="vertical-align: middle;">#</th>
+                <th rowspan="2" style="vertical-align: middle;">Komponen ITIKAD</th>
+                <th colspan="{{ count($periods) }}">Persentase Penilaian</th>
+            </tr>
+            <tr>
+                @foreach($periods as $period)
+                    <th>{{ $period->name ?? 'Periode ' . $period->id }}</th>
+                @endforeach
+            </tr>
+        </thead>
+        <tbody>
+            {{-- Komponen A --}}
+            <tr>
+                <td><strong>A.</strong></td>
+                <td class="text-start">PENDIDIKAN DAN PENGAJARAN</td>
+                @foreach($periods as $period)
+                    <td>{{ number_format($resultArray[$period->id]['NtAFinalSum'] ?? 0, 2, ',', '.') }}%</td>
+                @endforeach
+            </tr>
+
+            {{-- Komponen B --}}
+            <tr>
+                <td><strong>B.</strong></td>
+                <td class="text-start">PENELITIAN DAN KARYA ILMIAH</td>
+                @foreach($periods as $period)
+                    <td>{{ number_format($resultArray[$period->id]['NTiFinalSum'] ?? 0, 2, ',', '.') }}%</td>
+                @endforeach
+            </tr>
+
+            {{-- Komponen C --}}
+            <tr>
+                <td><strong>C.</strong></td>
+                <td class="text-start">PENGABDIAN KEPADA MASYARAKAT</td>
+                @foreach($periods as $period)
+                    <td>{{ number_format($resultArray[$period->id]['NTiFinalSumPkm'] ?? 0, 2, ',', '.') }}%</td>
+                @endforeach
+            </tr>
+
+            {{-- Komponen D dan E --}}
+            <tr>
+                <td><strong>D dan E</strong></td>
+                <td class="text-start">UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
+                @foreach($periods as $period)
+                    <td>{{ number_format($resultArray[$period->id]['SUMUnsurPenungjang'] ?? 0, 2, ',', '.') }}%</td>
+                @endforeach
+            </tr>
+
+            {{-- TOTAL --}}
+            <tr class="table-secondary fw-bold">
+                <td colspan="2" class="text-start">PERSENTASE CAPAIAN TOTAL</td>
+                 @foreach($periods as $period)
+        <td>{{ number_format($resultArray[$period->id]['averageFinalScore'] ?? 0, 2, ',', '.') }}%</td>
+    @endforeach
+            </tr>
+        </tbody>
+    </table>
+</div>
+
         {{-- Motivational Quote --}}
         <div class="quote-box">
             “The only way to do great work is to love what you do.” – Steve Jobs
