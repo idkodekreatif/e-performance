@@ -10,27 +10,35 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * Show the application dashboard view.
      */
     public function index()
     {
-        $user = auth()->user(); // Ambil user yang sedang login
+        $user = auth()->user();
         $user_id = $user->id;
 
-        // Ambil 5 periode terakhir berdasarkan data point_a yang dimiliki user
+        // Ambil data dan kalkulasi dari metode terpisah
+        [$allUsersData, $resultArray, $periods] = $this->calculateUserPerformanceDataItikad($user_id);
+
+        return view('home', [
+            'allUsersData' => $allUsersData,
+            'resultArray' => $resultArray,
+            'periods' => $periods,
+            'user_id' => $user_id
+        ]);
+    }
+
+    /**
+     * Pisahkan logika perhitungan dalam satu fungsi
+     */
+    private function calculateUserPerformanceDataItikad($user_id)
+    {
         $periods = Period::whereIn('id', function ($query) use ($user_id) {
             $query->select('period_id')
                 ->from('point_a')
@@ -46,26 +54,16 @@ class HomeController extends Controller
 
         foreach ($periods as $period) {
             $userData = DB::table('users')
-                ->leftJoin('point_a', function ($join) use ($period) {
-                    $join->on('point_a.new_user_id', '=', 'users.id')
-                        ->where('point_a.period_id', '=', $period->id);
-                })
-                ->leftJoin('point_b', function ($join) use ($period) {
-                    $join->on('point_b.new_user_id', '=', 'users.id')
-                        ->where('point_b.period_id', '=', $period->id);
-                })
-                ->leftJoin('point_c', function ($join) use ($period) {
-                    $join->on('point_c.new_user_id', '=', 'users.id')
-                        ->where('point_c.period_id', '=', $period->id);
-                })
-                ->leftJoin('point_d', function ($join) use ($period) {
-                    $join->on('point_d.new_user_id', '=', 'users.id')
-                        ->where('point_d.period_id', '=', $period->id);
-                })
-                ->leftJoin('point_e', function ($join) use ($period) {
-                    $join->on('point_e.new_user_id', '=', 'users.id')
-                        ->where('point_e.period_id', '=', $period->id);
-                })
+                ->leftJoin('point_a', fn($join) => $join->on('point_a.new_user_id', '=', 'users.id')
+                    ->where('point_a.period_id', '=', $period->id))
+                ->leftJoin('point_b', fn($join) => $join->on('point_b.new_user_id', '=', 'users.id')
+                    ->where('point_b.period_id', '=', $period->id))
+                ->leftJoin('point_c', fn($join) => $join->on('point_c.new_user_id', '=', 'users.id')
+                    ->where('point_c.period_id', '=', $period->id))
+                ->leftJoin('point_d', fn($join) => $join->on('point_d.new_user_id', '=', 'users.id')
+                    ->where('point_d.period_id', '=', $period->id))
+                ->leftJoin('point_e', fn($join) => $join->on('point_e.new_user_id', '=', 'users.id')
+                    ->where('point_e.period_id', '=', $period->id))
                 ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
                 ->where('users.id', $user_id)
                 ->first();
@@ -86,14 +84,13 @@ class HomeController extends Controller
                 $NTiFinalSumPkm = ($c / 1.2) * 100;
                 $SUMUnsurPenungjang = ($total_Ntd / 2.17) * 100;
 
-                // Rata-rata dari 4 komponen utama
                 $averageFinalScore = ($NtAFinalSum + $NTiFinalSum + $NTiFinalSumPkm + $SUMUnsurPenungjang) / 4;
 
                 $SumNkt = $a + $b + $c + $total_Ntd;
                 $sum_Skt = 11.69 + 4.26 + 1.2 + 2.17;
                 $result_PCT = ($SumNkt / $sum_Skt) * 100;
 
-                // Predikat PDP
+                // Grade Penilaian
                 $outputHasilPDP = $this->getGrade($NtAFinalSum);
                 $OutputHasilPki = $this->getGrade($NTiFinalSum);
                 $OutputHasilPkm = $this->getGrade($NTiFinalSumPkm);
@@ -138,33 +135,24 @@ class HomeController extends Controller
             }
         }
 
-        return view('home', [
-            'allUsersData' => $allUsersData,
-            'resultArray' => $resultArray,
-            'periods' => $periods,
-            'user_id' => $user_id
-        ]);
+        return [$allUsersData, $resultArray, $periods];
     }
 
     /**
-     * Utility function to determine grade from score
+     * Konversi nilai ke grade
      */
     private function getGrade($value)
     {
-        if ($value >= 120) {
-            return 'ISTIMEWA';
-        } elseif ($value >= 110) {
-            return 'SANGAT BAIK';
-        } elseif ($value >= 100) {
-            return 'BAIK';
-        } elseif ($value >= 80) {
-            return 'CUKUP';
-        } else {
-            return 'KURANG';
-        }
+        if ($value >= 120) return 'ISTIMEWA';
+        if ($value >= 110) return 'SANGAT BAIK';
+        if ($value >= 100) return 'BAIK';
+        if ($value >= 80) return 'CUKUP';
+        return 'KURANG';
     }
 
-
+    /**
+     * Halaman builder view (optional, jika digunakan)
+     */
     public function build()
     {
         return view('build.nextIktisar');
