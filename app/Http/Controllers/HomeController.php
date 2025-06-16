@@ -41,10 +41,6 @@ class HomeController extends Controller
             ->take(5)
             ->get();
 
-        if ($periods->isEmpty()) {
-            return view('input-point.raport', ['users' => null, 'resultArray' => null, 'periods' => []]);
-        }
-
         $allUsersData = [];
         $resultArray = [];
 
@@ -145,7 +141,8 @@ class HomeController extends Controller
         return view('home', [
             'allUsersData' => $allUsersData,
             'resultArray' => $resultArray,
-            'periods' => $periods
+            'periods' => $periods,
+            'user_id' => $user_id
         ]);
     }
 
