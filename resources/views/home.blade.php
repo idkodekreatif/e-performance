@@ -97,10 +97,10 @@
         </div>
         {{-- Komponen Nilai ITIKAD Rekap --}}
         @role('it|dosen')
-<div class="card p-4 shadow-sm mb-5">
-    <h5 class="mb-3">Grafik Persentase Penilaian Per Periode</h5>
-    <canvas id="itikadChart" style="max-height: 400px;"></canvas>
-</div>
+            <div class="card p-4 shadow-sm mb-5">
+                <h5 class="mb-3">Grafik Persentase Penilaian Per Periode</h5>
+                <canvas id="itikadChart" style="max-height: 400px;"></canvas>
+            </div>
 
 
             <div class="container my-5">
@@ -176,6 +176,47 @@
             </div>
         @endrole
 
+        @role('it|tendik')
+            <div class="card p-4 shadow-sm my-5">
+                <h5 class="mb-3">Grafik Nilai IKTISAR Per Periode</h5>
+                <canvas id="iktisarChart" style="max-height: 400px;"></canvas>
+            </div>
+
+            <table class="table table-bordered text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th rowspan="2">Komponen IKTISAR</th>
+                        @foreach ($rekapEmpatBulan as $rekap)
+                            <th> Periode
+                                {{ \Carbon\Carbon::create($rekap->tahun, $rekap->bulan)->translatedFormat('F Y') }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Perilaku</td>
+                        @foreach ($rekapEmpatBulan as $rekap)
+                            <td>{{ number_format($rekap->rata_kinerja ?? 0, 2, ',', '.') }}</td>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        <td>Kompetensi</td>
+                        @foreach ($rekapEmpatBulan as $rekap)
+                            <td>{{ number_format($rekap->rata_presentase ?? 0, 2, ',', '.') }}</td>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        <td><strong>Nilai Kinerja Total</strong></td>
+                        @foreach ($rekapEmpatBulan as $rekap)
+                            <td>
+                                {{ number_format($rekap->rata_kinerja + $rekap->rata_presentase, 2, ',', '.') }}
+                            </td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        @endrole
+
         {{-- Summary Cards --}}
         <div class="row mb-4">
             <div class="col-md-4">
@@ -218,129 +259,268 @@
     </div>
 
     @push('JavaScript')
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('itikadChart').getContext('2d');
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('itikadChart').getContext('2d');
 
-    const labels = [
-        @foreach ($periods as $period)
-            "{{ $period->name ?? 'Periode ' . $period->id }}",
-        @endforeach
-    ];
+            const labels = [
+                @foreach ($periods as $period)
+                    "{{ $period->name ?? 'Periode ' . $period->id }}",
+                @endforeach
+            ];
 
-    const datasets = [
-        {
-            label: 'Pendidikan dan Pengajaran',
-            data: [@foreach ($periods as $p) {{ $resultArray[$p->id]['NtAFinalSum'] ?? 0 }}, @endforeach],
-            borderColor: '#4e73df',
-            backgroundColor: 'rgba(78, 115, 223, 0.1)',
-            pointBackgroundColor: '#4e73df',
-            tension: 0.4,
-        },
-        {
-            label: 'Penelitian dan Karya Ilmiah',
-            data: [@foreach ($periods as $p) {{ $resultArray[$p->id]['NTiFinalSum'] ?? 0 }}, @endforeach],
-            borderColor: '#1cc88a',
-            backgroundColor: 'rgba(28, 200, 138, 0.1)',
-            pointBackgroundColor: '#1cc88a',
-            tension: 0.4,
-        },
-        {
-            label: 'Pengabdian Kepada Masyarakat',
-            data: [@foreach ($periods as $p) {{ $resultArray[$p->id]['NTiFinalSumPkm'] ?? 0 }}, @endforeach],
-            borderColor: '#36b9cc',
-            backgroundColor: 'rgba(54, 185, 204, 0.1)',
-            pointBackgroundColor: '#36b9cc',
-            tension: 0.4,
-        },
-        {
-            label: 'Unsur Penunjang & Pengembangan Diri',
-            data: [@foreach ($periods as $p) {{ $resultArray[$p->id]['SUMUnsurPenungjang'] ?? 0 }}, @endforeach],
-            borderColor: '#f6c23e',
-            backgroundColor: 'rgba(246, 194, 62, 0.1)',
-            pointBackgroundColor: '#f6c23e',
-            tension: 0.4,
-        },
-        {
-            label: 'Persentase Capaian Total',
-            data: [@foreach ($periods as $p) {{ $resultArray[$p->id]['averageFinalScore'] ?? 0 }}, @endforeach],
-            borderColor: '#e74a3b',
-            backgroundColor: 'rgba(231, 74, 59, 0.1)',
-            pointBackgroundColor: '#e74a3b',
-            borderDash: [5, 5],
-            tension: 0.4,
-        }
-    ];
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: datasets
-        },
-        options: {
-            responsive: true,
-            interaction: {
-                mode: 'nearest',
-                axis: 'x',
-                intersect: false
-            },
-            plugins: {
-                title: {
-                    display: false,
+            const datasets = [{
+                    label: 'Pendidikan dan Pengajaran',
+                    data: [
+                        @foreach ($periods as $p)
+                            {{ $resultArray[$p->id]['NtAFinalSum'] ?? 0 }},
+                        @endforeach
+                    ],
+                    borderColor: '#4e73df',
+                    backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                    pointBackgroundColor: '#4e73df',
+                    tension: 0.4,
                 },
-                tooltip: {
-                    backgroundColor: '#fff',
-                    titleColor: '#333',
-                    bodyColor: '#555',
-                    borderColor: '#ccc',
-                    borderWidth: 1,
-                    titleFont: { weight: 'bold' },
-                    padding: 10,
-                    callbacks: {
-                        label: function(context) {
-                            return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
-                        }
-                    }
+                {
+                    label: 'Penelitian dan Karya Ilmiah',
+                    data: [
+                        @foreach ($periods as $p)
+                            {{ $resultArray[$p->id]['NTiFinalSum'] ?? 0 }},
+                        @endforeach
+                    ],
+                    borderColor: '#1cc88a',
+                    backgroundColor: 'rgba(28, 200, 138, 0.1)',
+                    pointBackgroundColor: '#1cc88a',
+                    tension: 0.4,
                 },
-                legend: {
-                    position: 'top',
-                    labels: {
-                        boxWidth: 20,
-                        usePointStyle: true,
-                        color: '#333',
-                        font: {
-                            size: 13
-                        }
-                    }
+                {
+                    label: 'Pengabdian Kepada Masyarakat',
+                    data: [
+                        @foreach ($periods as $p)
+                            {{ $resultArray[$p->id]['NTiFinalSumPkm'] ?? 0 }},
+                        @endforeach
+                    ],
+                    borderColor: '#36b9cc',
+                    backgroundColor: 'rgba(54, 185, 204, 0.1)',
+                    pointBackgroundColor: '#36b9cc',
+                    tension: 0.4,
+                },
+                {
+                    label: 'Unsur Penunjang & Pengembangan Diri',
+                    data: [
+                        @foreach ($periods as $p)
+                            {{ $resultArray[$p->id]['SUMUnsurPenungjang'] ?? 0 }},
+                        @endforeach
+                    ],
+                    borderColor: '#f6c23e',
+                    backgroundColor: 'rgba(246, 194, 62, 0.1)',
+                    pointBackgroundColor: '#f6c23e',
+                    tension: 0.4,
+                },
+                {
+                    label: 'Persentase Capaian Total',
+                    data: [
+                        @foreach ($periods as $p)
+                            {{ $resultArray[$p->id]['averageFinalScore'] ?? 0 }},
+                        @endforeach
+                    ],
+                    borderColor: '#e74a3b',
+                    backgroundColor: 'rgba(231, 74, 59, 0.1)',
+                    pointBackgroundColor: '#e74a3b',
+                    borderDash: [5, 5],
+                    tension: 0.4,
                 }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return value + '%';
+            ];
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    },
+                    plugins: {
+                        title: {
+                            display: false,
                         },
-                        color: '#666'
+                        tooltip: {
+                            backgroundColor: '#fff',
+                            titleColor: '#333',
+                            bodyColor: '#555',
+                            borderColor: '#ccc',
+                            borderWidth: 1,
+                            titleFont: {
+                                weight: 'bold'
+                            },
+                            padding: 10,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
+                                }
+                            }
+                        },
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 20,
+                                usePointStyle: true,
+                                color: '#333',
+                                font: {
+                                    size: 13
+                                }
+                            }
+                        }
                     },
-                    grid: {
-                        color: '#eee'
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: '#666'
-                    },
-                    grid: {
-                        display: false
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                color: '#666'
+                            },
+                            grid: {
+                                color: '#eee'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#666'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
                     }
                 }
-            }
-        }
-    });
-</script>
+            });
+        </script>
 
+        <script>
+            const iktisarCtx = document.getElementById('iktisarChart').getContext('2d');
+
+            const iktisarLabels = [
+                @foreach ($rekapEmpatBulan as $rekap)
+                    "{{ \Carbon\Carbon::create($rekap->tahun, $rekap->bulan)->translatedFormat('F Y') }}",
+                @endforeach
+            ];
+
+            const iktisarDatasets = [{
+                    label: 'Perilaku',
+                    data: [
+                        @foreach ($rekapEmpatBulan as $rekap)
+                            {{ $rekap->rata_kinerja ?? 0 }},
+                        @endforeach
+                    ],
+                    borderColor: '#36b9cc',
+                    backgroundColor: 'rgba(54, 185, 204, 0.1)',
+                    pointBackgroundColor: '#36b9cc',
+                    tension: 0.4,
+                },
+                {
+                    label: 'Kompetensi',
+                    data: [
+                        @foreach ($rekapEmpatBulan as $rekap)
+                            {{ $rekap->rata_presentase ?? 0 }},
+                        @endforeach
+                    ],
+                    borderColor: '#4e73df',
+                    backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                    pointBackgroundColor: '#4e73df',
+                    tension: 0.4,
+                },
+                {
+                    label: 'Nilai Kinerja Total',
+                    data: [
+                        @foreach ($rekapEmpatBulan as $rekap)
+                            {{ $rekap->rata_kinerja + $rekap->rata_presentase }},
+                        @endforeach
+                    ],
+                    borderColor: '#e74a3b',
+                    backgroundColor: 'rgba(231, 74, 59, 0.1)',
+                    pointBackgroundColor: '#e74a3b',
+                    borderDash: [5, 5],
+                    tension: 0.4,
+                }
+            ];
+
+           new Chart(iktisarCtx, {
+                type: 'line',
+                data: {
+                    labels: iktisarLabels,
+                    datasets: iktisarDatasets
+                },
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    },
+                    plugins: {
+                        title: {
+                            display: false,
+                        },
+                        tooltip: {
+                            backgroundColor: '#fff',
+                            titleColor: '#333',
+                            bodyColor: '#555',
+                            borderColor: '#ccc',
+                            borderWidth: 1,
+                            titleFont: {
+                                weight: 'bold'
+                            },
+                            padding: 10,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
+                                }
+                            }
+                        },
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 20,
+                                usePointStyle: true,
+                                color: '#333',
+                                font: {
+                                    size: 13
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                color: '#666'
+                            },
+                            grid: {
+                                color: '#eee'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#666'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
 
 
         <script>

@@ -7,6 +7,7 @@ use App\Models\Setting\Period;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class HomeController extends Controller
 {
@@ -23,19 +24,103 @@ class HomeController extends Controller
         $user = auth()->user();
         $user_id = $user->id;
 
-        // Ambil data dan kalkulasi dari metode terpisah
         [$allUsersData, $resultArray, $periods] = $this->calculateUserPerformanceDataItikad($user_id);
+        $rekapEmpatBulan = $this->getRekapEmpatBulanTerakhirItisar($user);
 
         return view('home', [
             'allUsersData' => $allUsersData,
             'resultArray' => $resultArray,
             'periods' => $periods,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'rekapEmpatBulan' => $rekapEmpatBulan
         ]);
     }
 
     /**
-     * Pisahkan logika perhitungan dalam satu fungsi
+     * Cek apakah tabel tersedia
+     */
+    private function tableExists($table)
+    {
+        return Schema::hasTable($table);
+    }
+
+    /**
+     * Ambil rekap 4 bulan terakhir berdasarkan role user
+     */
+    private function getRekapEmpatBulanTerakhirItisar($user)
+    {
+        $jabatanName = strtolower(optional($user->jabatan)->name);
+
+        $jabatanToTable = [
+            'kaupt'            => 'iktisar_kaunit_bulanan_perilaku',
+            'baak'             => 'iktisar_kaunit_baak_bulanan_perilaku',
+            'dosen'            => 'iktisar_dosen_bulanan',
+            'bau'              => 'iktisar_bau_bulanan_perilaku',
+            'dekan'            => 'iktisar_dekan_bulanan_perilaku',
+            'staff_hrd'        => 'iktisar_staff_hrd_bulanan_perilaku',
+            'kaprodi'          => 'iktisar_kaprodi_bulanan_perilaku',
+            'keuangan'         => 'iktisar_keuangan_bulanan_perilaku',
+            'lpm'              => 'iktisar_lpm_bulanan_perilaku',
+            'staff_marketing'  => 'iktisar_staff_marketing_perilaku',
+            'rektor'           => 'iktisar_rektor_bulanan_perilaku',
+            'risbang'          => 'iktisar_risbang_bulanan_perilaku',
+            'warek1'           => 'iktisar_warek1_bulanan_perilaku',
+            'warek2'           => 'iktisar_warek2_bulanan_perilaku',
+            'kaunit_ypsdmit'   => 'kaunit_ypsdmit_bulanan_perilaku',
+            'staffupt'         => 'iktisar_staff_bulanan_perilaku',
+        ];
+
+        if (!array_key_exists($jabatanName, $jabatanToTable)) {
+            return collect();
+        }
+
+        $table = $jabatanToTable[$jabatanName];
+
+        if (!$this->tableExists($table)) {
+            return collect();
+        }
+
+        $userId = $user->id;
+        $now = Carbon::now();
+
+        // Buat array dari 4 bulan terakhir (bulan + tahun)
+        $bulanTahunTerakhir = collect();
+
+        for ($i = 0; $i < 4; $i++) {
+            $bulanTahun = $now->copy()->subMonths($i);
+            $bulanTahunTerakhir->push([
+                'bulan' => $bulanTahun->month,
+                'tahun' => $bulanTahun->year,
+            ]);
+        }
+
+        // Ambil data yang cocok dari 4 bulan tersebut
+        return DB::table($table)
+            ->select(
+                DB::raw('MONTH(created_insert) as bulan'),
+                DB::raw('YEAR(created_insert) as tahun'),
+                DB::raw('AVG(output_total_sementara_kinerja_perilaku) as rata_kinerja'),
+                DB::raw('AVG(total_nilai_presentase) as rata_presentase')
+            )
+            ->where('user_id', $userId)
+            ->where(function ($query) use ($bulanTahunTerakhir) {
+                foreach ($bulanTahunTerakhir as $bt) {
+                    $query->orWhere(function ($subQuery) use ($bt) {
+                        $subQuery->whereRaw('MONTH(created_insert) = ?', [$bt['bulan']])
+                            ->whereRaw('YEAR(created_insert) = ?', [$bt['tahun']]);
+                    });
+                }
+            })
+            ->groupBy(DB::raw('YEAR(created_insert)'), DB::raw('MONTH(created_insert)'))
+            ->orderBy('tahun', 'desc')
+            ->orderBy('bulan', 'desc')
+            ->get();
+    }
+
+
+
+    /**
+     * Hitung data performa pengguna
      */
     private function calculateUserPerformanceDataItikad($user_id)
     {
@@ -90,7 +175,6 @@ class HomeController extends Controller
                 $sum_Skt = 11.69 + 4.26 + 1.2 + 2.17;
                 $result_PCT = ($SumNkt / $sum_Skt) * 100;
 
-                // Grade Penilaian
                 $outputHasilPDP = $this->getGrade($NtAFinalSum);
                 $OutputHasilPki = $this->getGrade($NTiFinalSum);
                 $OutputHasilPkm = $this->getGrade($NTiFinalSumPkm);
@@ -151,7 +235,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Halaman builder view (optional, jika digunakan)
+     * Halaman builder view
      */
     public function build()
     {
