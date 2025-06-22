@@ -52,7 +52,6 @@
         }
 
         .signatures {
-            /* display: flex; */
             justify-content: space-between;
             align-items: center;
             text-align: center;
@@ -69,37 +68,34 @@
 </head>
 
 <body>
-    <?php
-    $year2021 = date('Y') - 2;
-    $year2022 = date('Y') - 1;
-    ?>
+    @php
+        $selectedPeriod = $periods->firstWhere('id', $selectedPeriodId);
+        $academicYear = $selectedPeriod ? $selectedPeriod->name : 'Tahun Akademik Tidak Diketahui';
+    @endphp
 
-    <h3 style="text-align: center; font-weight:bold;">REKAP NILAI ITIKAD TA. <?php echo $year2021; ?> - <?php echo $year2022; ?>
+    <h3 style="text-align: center; font-weight:bold;">
+        REKAP NILAI ITIKAD TA. {{ $academicYear }}
     </h3>
+
     <table style="text-align:center;">
         <tr>
             <td>Nilai Total UNSUR UTAMA</td>
-            <td>
-                {{ $resultArray['total_Ntu'] }}
-            </td>
+            <td>{{ $resultArray['total_Ntu'] }}</td>
         </tr>
         <tr>
             <td>Nilai Total Unsur Non-Tri Dharma</td>
-            <td>
-                {{ $resultArray['total_Ntd'] }}
-            </td>
+            <td>{{ $resultArray['total_Ntd'] }}</td>
         </tr>
         <tr>
             <td>Nilai Kinerja Dosen</td>
-            <td>
-                {{ $resultArray['total_Nkd'] }}
-            </td>
+            <td>{{ $resultArray['total_Nkd'] }}</td>
         </tr>
     </table>
 
     <table>
         <thead>
             <tr>
+                <td>Poin Penilaian</td>
                 <td>Komponen</td>
                 <td>Nilai Total</td>
                 <td>Standar</td>
@@ -109,98 +105,63 @@
         </thead>
         <tbody>
             <tr>
+                <td>A.</td>
                 <td>PENDIDIKAN DAN PENGAJARAN</td>
-                <td>
-                    {{ $resultArray['a'] }}
-                </td>
+                <td>{{ $resultArray['a'] }}</td>
                 <td>11.69</td>
-                <td>
-                    {{ $resultArray['NtAFinalSum'] }}
-                </td>
-                <td>
-                    {{ $resultArray['outputHasilPDP'] }}
-                </td>
+                <td>{{ $resultArray['NtAFinalSum'] }}</td>
+                <td>{{ $resultArray['outputHasilPDP'] }}</td>
             </tr>
             <tr>
+                <td>B.</td>
                 <td>PENELITIAN DAN KARYA ILMIAH</td>
-                <td>
-                    {{ $resultArray['b'] }}
-                </td>
+                <td>{{ $resultArray['b'] }}</td>
                 <td>4.26</td>
-                <td>
-                    {{ $resultArray['NTiFinalSum'] }}
-                </td>
-                <td>
-                    {{ $resultArray['OutputHasilPki'] }}
-                </td>
+                <td>{{ $resultArray['NTiFinalSum'] }}</td>
+                <td>{{ $resultArray['OutputHasilPki'] }}</td>
             </tr>
             <tr>
+                <td>C.</td>
                 <td>PENGABDIAN KEPADA MASYARAKAT</td>
-                <td>
-                    {{ $resultArray['c'] }}
-                </td>
+                <td>{{ $resultArray['c'] }}</td>
                 <td>1.20</td>
-                <td>
-                    {{ $resultArray['NTiFinalSumPkm'] }}
-                </td>
-                <td>
-                    {{ $resultArray['OutputHasilPkm'] }}
-                </td>
+                <td>{{ $resultArray['NTiFinalSumPkm'] }}</td>
+                <td>{{ $resultArray['OutputHasilPkm'] }}</td>
             </tr>
             <tr>
+                <td>D dan E</td>
                 <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
-                <td>
-                    {{ $resultArray['total_Ntd'] }}
-                </td>
+                <td>{{ $resultArray['total_Ntd'] }}</td>
                 <td>2.17</td>
-                <td>
-                    {{ $resultArray['SUMUnsurPenungjang'] }}
-                </td>
-                <td>
-                    {{ $resultArray['OutputHasilUnsurPenunjang'] }}
-                </td>
+                <td>{{ $resultArray['SUMUnsurPenungjang'] }}</td>
+                <td>{{ $resultArray['OutputHasilUnsurPenunjang'] }}</td>
             </tr>
             <tr style="font-weight:bold;">
-                <td>NILAI KINERJA TOTAL</td>
-                <td colspan="4">
-                    {{ $resultArray['SumNkt'] }}
-                </td>
+                <td colspan="2">NILAI KINERJA TOTAL</td>
+                <td colspan="4">{{ $resultArray['SumNkt'] }}</td>
             </tr>
             <tr style="font-weight:bold;">
-                <td>STANDAR KINERJA TOTAL</td>
-                <td colspan="4">
-                    {{ $resultArray['sum_Skt'] }}
-                </td>
+                <td colspan="2">STANDAR KINERJA TOTAL</td>
+                <td colspan="4">{{ $resultArray['sum_Skt'] }}</td>
             </tr>
-            {{-- <tr style="font-weight:bold;">
-                <td>PERSENTASE CAPAIAN TOTAL (%)</td>
-                <td colspan="4">
-                    {{ $resultArray['result_PCT'] }}
-                </td>
-            </tr> --}}
             <tr style="font-weight:bold;">
-                <td>PREDIKAT</td>
-                <td colspan="4">
-                    {{ $resultArray['predikat'] }}
-                </td>
+                <td colspan="2">PREDIKAT</td>
+                <td colspan="4">{{ $resultArray['predikat'] }}</td>
             </tr>
         </tbody>
     </table>
-
 
     <p style="text-align: right; margin-bottom:0;">Surabaya, {{ date('d F Y') }}</p>
 
     <div class="tanda-tangan">
         <div class="pihak kiri">
             <p class="nama-dosen">Validator,</p>
-            <br>
-            <br>
+            <br><br>
             <p class="nama-dosen">Emha Yuslifar, SE</p>
         </div>
         <div class="pihak kanan">
             <p class="nama-warek">Dosen,</p>
-            <br>
-            <br>
+            <br><br>
             <p class="nama-warek">{{ Auth::user()->name }}</p>
         </div>
     </div>
@@ -209,12 +170,10 @@
         <div class="center-signature">
             <p>Menyetujui/Mengesahkan</p>
             <p>Rektor,</p>
-            <br>
-            <br>
+            <br><br>
             <p>Dr. Ahmad Hariyanto, M.Si.</p>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">

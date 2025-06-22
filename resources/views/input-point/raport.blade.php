@@ -1,4 +1,4 @@
-<x-app-layout title="Raport">
+<x-app-layout title="Raport Dosen">
     @push('style')
     @endpush
 
@@ -32,9 +32,16 @@
                         </button>
                     </div>
                     <div class="col-md-2 text-end">
-                        <a href="{{ route('raport.pdf', auth()->id()) }}" class="btn btn-primary w-100" target="_blank">
-                            <i class="fa fa-print"></i> Cetak PDF
-                        </a>
+         <a href="{{ route('raport', [
+    'user_id' => auth()->id(),
+    'period_id' => $selectedPeriodId,
+    'download' => 'pdf'
+]) }}" class="btn btn-primary w-100" target="_blank">
+    <i class="fa fa-print"></i> Cetak PDF
+</a>
+
+
+
                     </div>
                 </form>
             </div>
@@ -69,6 +76,7 @@
                         <table class="table table-bordered text-center table-sm">
                             <thead class="table-light">
                                 <tr>
+                                    <th>Poin Penilaian</th>
                                     <th>Komponen</th>
                                     <th>Nilai Total</th>
                                     <th>Standar</th>
@@ -78,6 +86,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>A.</td>
                                     <td>PENDIDIKAN DAN PENGAJARAN</td>
                                     <td>{{ $resultArray['a'] ?? '-' }}</td>
                                     <td>11.69</td>
@@ -85,6 +94,7 @@
                                     <td>{{ $resultArray['outputHasilPDP'] ?? '-' }}</td>
                                 </tr>
                                 <tr>
+                                    <td>B.</td>
                                     <td>PENELITIAN DAN KARYA ILMIAH</td>
                                     <td>{{ $resultArray['b'] ?? '-' }}</td>
                                     <td>4.26</td>
@@ -92,6 +102,7 @@
                                     <td>{{ $resultArray['OutputHasilPki'] ?? '-' }}</td>
                                 </tr>
                                 <tr>
+                                    <td>C.</td>
                                     <td>PENGABDIAN KEPADA MASYARAKAT</td>
                                     <td>{{ $resultArray['c'] ?? '-' }}</td>
                                     <td>1.20</td>
@@ -99,6 +110,7 @@
                                     <td>{{ $resultArray['OutputHasilPkm'] ?? '-' }}</td>
                                 </tr>
                                 <tr>
+                                    <td>D dan E</td>
                                     <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
                                     <td>{{ $resultArray['total_Ntd'] ?? '-' }}</td>
                                     <td>2.17</td>
@@ -106,15 +118,15 @@
                                     <td>{{ $resultArray['OutputHasilUnsurPenunjang'] ?? '-' }}</td>
                                 </tr>
                                 <tr class="fw-bold">
-                                    <td>NILAI KINERJA TOTAL</td>
+                                    <td colspan="2">NILAI KINERJA TOTAL</td>
                                     <td colspan="4">{{ $resultArray['SumNkt'] ?? '-' }}</td>
                                 </tr>
                                 <tr class="fw-bold">
-                                    <td>STANDAR KINERJA TOTAL</td>
+                                    <td colspan="2">STANDAR KINERJA TOTAL</td>
                                     <td colspan="4">{{ $resultArray['sum_Skt'] ?? '-' }}</td>
                                 </tr>
                                 <tr class="fw-bold">
-                                    <td>PREDIKAT</td>
+                                    <td colspan="2">PREDIKAT</td>
                                     <td colspan="4">{{ $resultArray['predikat'] ?? '-' }}</td>
                                 </tr>
                             </tbody>
