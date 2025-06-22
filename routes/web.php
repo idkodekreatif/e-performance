@@ -234,7 +234,7 @@ Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|h
     // -----------------------------Raport User----------------------------------------//
     Route::controller(sumPointController::class)->group(function () {
         Route::get('/raport/view/{user_id}', 'raportView')->name('raport');
-        Route::get('/raport/cetakPdf/{user_id}', 'raportPdf')->name('raport.pdf');
+        // Route::get('/raport/cetakPdf/{user_id}', 'raportPdf')->name('raport.pdf');
         Route::get('/preview/{user_id}', 'Preview')->name('preview.point');
         // -----------------------------Search raport hrd HRD----------------------------------------//
         Route::get('/raport/search/', 'searchRaport')->name('raport.data.search');

@@ -520,6 +520,6 @@ class iktisarBulananKaUnitController extends Controller
             ->get();
 
         // Kirim data ke view
-        return view('iktisar.iktisarbulanankaunit.rekap.show', compact('iktisarStaffBulananPerilaku', 'iktisarStaffBulananKompetensi'));
+        return view('iktisar.iktisarBulananKaUnit.rekap.show', compact('iktisarStaffBulananPerilaku', 'iktisarStaffBulananKompetensi'));
     }
 }

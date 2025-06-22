@@ -96,6 +96,7 @@
     <table>
         <thead>
             <tr>
+                <td>Poin Penilaian</td>
                 <td>Komponen</td>
                 <td>Nilai Total</td>
                 <td>Standar</td>
@@ -105,6 +106,7 @@
         </thead>
         <tbody>
             <tr>
+                <td>A.</td>
                 <td>PENDIDIKAN DAN PENGAJARAN</td>
                 <td>
                     {{ $resultArray['a'] }}
@@ -118,6 +120,7 @@
                 </td>
             </tr>
             <tr>
+                <td>B.</td>
                 <td>PENELITIAN DAN KARYA ILMIAH</td>
                 <td>
                     {{ $resultArray['b'] }}
@@ -131,6 +134,7 @@
                 </td>
             </tr>
             <tr>
+                <td>C.</td>
                 <td>PENGABDIAN KEPADA MASYARAKAT</td>
                 <td>
                     {{ $resultArray['c'] }}
@@ -144,6 +148,7 @@
                 </td>
             </tr>
             <tr>
+                <td>D dan E</td>
                 <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
                 <td>
                     {{ $resultArray['total_Ntd'] }}
@@ -157,13 +162,13 @@
                 </td>
             </tr>
             <tr style="font-weight:bold;">
-                <td>NILAI KINERJA TOTAL</td>
+                <td  colspan="2">NILAI KINERJA TOTAL</td>
                 <td colspan="4">
                     {{ $resultArray['SumNkt'] }}
                 </td>
             </tr>
             <tr style="font-weight:bold;">
-                <td>STANDAR KINERJA TOTAL</td>
+                <td  colspan="2">STANDAR KINERJA TOTAL</td>
                 <td colspan="4">
                     {{ $resultArray['sum_Skt'] }}
                 </td>
@@ -175,7 +180,7 @@
                 </td>
             </tr> --}}
             <tr style="font-weight:bold;">
-                <td>PREDIKAT</td>
+                <td  colspan="2">PREDIKAT</td>
                 <td colspan="4">
                     {{ $resultArray['predikat'] }}
                 </td>

@@ -69,6 +69,7 @@
                     <table class="table table-bordered border-2 table-sm text-center table-hover">
                         <thead>
                             <tr>
+                                <td>Poin Penilaian</td>
                                 <td>Komponen</td>
                                 <td>Nilai Total</td>
                                 <td>Standar</td>
@@ -78,6 +79,7 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td>A.</td>
                                 <td>PENDIDIKAN DAN PENGAJARAN</td>
                                 <td>{{ $resultArray['a'] }}</td>
                                 <td>11.69</td>
@@ -85,6 +87,7 @@
                                 <td>{{ $resultArray['outputHasilPDP'] }}</td>
                             </tr>
                             <tr>
+                                <td>B.</td>
                                 <td>PENELITIAN DAN KARYA ILMIAH</td>
                                 <td>{{ $resultArray['b'] }}</td>
                                 <td>4.26</td>
@@ -92,6 +95,7 @@
                                 <td>{{ $resultArray['OutputHasilPki'] }}</td>
                             </tr>
                             <tr>
+                                <td>C.</td>
                                 <td>PENGABDIAN KEPADA MASYARAKAT</td>
                                 <td>{{ $resultArray['c'] }}</td>
                                 <td>1.20</td>
@@ -99,6 +103,7 @@
                                 <td>{{ $resultArray['OutputHasilPkm'] }}</td>
                             </tr>
                             <tr>
+                                <td>D dan E</td>
                                 <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
                                 <td>{{ $resultArray['total_Ntd'] }}</td>
                                 <td>2.17</td>
@@ -106,15 +111,15 @@
                                 <td>{{ $resultArray['OutputHasilUnsurPenunjang'] }}</td>
                             </tr>
                             <tr style="font-weight:bold">
-                                <td>NILAI KINERJA TOTAL</td>
+                                <td  colspan="2">NILAI KINERJA TOTAL</td>
                                 <td colspan="4">{{ $resultArray['SumNkt'] }}</td>
                             </tr>
                             <tr style="font-weight:bold">
-                                <td>STANDAR KINERJA TOTAL</td>
+                                <td  colspan="2">STANDAR KINERJA TOTAL</td>
                                 <td colspan="4">{{ $resultArray['sum_Skt'] }}</td>
                             </tr>
                             <tr style="font-weight:bold">
-                                <td>PREDIKAT</td>
+                                <td  colspan="2">PREDIKAT</td>
                                 <td colspan="4">{{ $resultArray['predikat'] }}</td>
                             </tr>
                         </tbody>
