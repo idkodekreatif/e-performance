@@ -25,6 +25,8 @@ class HomeController extends Controller
         $user_id = $user->id;
 
         [$allUsersData, $resultArray, $periods] = $this->calculateUserPerformanceDataItikad($user_id);
+        // Debug hasil rekap 4 bulan terakhir
+        // dd($this->getRekapEmpatBulanTerakhirItisar($user));
         $rekapEmpatBulan = $this->getRekapEmpatBulanTerakhirItisar($user);
 
         return view('home', [
@@ -81,20 +83,11 @@ class HomeController extends Controller
         }
 
         $userId = $user->id;
-        $now = Carbon::now();
 
-        // Buat array dari 4 bulan terakhir (bulan + tahun)
-        $bulanTahunTerakhir = collect();
+        // Format tanggal untuk field DATE
+        $startDate = Carbon::now()->subMonths(3)->startOfMonth()->format('Y-m-d');
+        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d');
 
-        for ($i = 0; $i < 4; $i++) {
-            $bulanTahun = $now->copy()->subMonths($i);
-            $bulanTahunTerakhir->push([
-                'bulan' => $bulanTahun->month,
-                'tahun' => $bulanTahun->year,
-            ]);
-        }
-
-        // Ambil data yang cocok dari 4 bulan tersebut
         return DB::table($table)
             ->select(
                 DB::raw('MONTH(created_insert) as bulan'),
@@ -103,21 +96,12 @@ class HomeController extends Controller
                 DB::raw('AVG(total_nilai_presentase) as rata_presentase')
             )
             ->where('user_id', $userId)
-            ->where(function ($query) use ($bulanTahunTerakhir) {
-                foreach ($bulanTahunTerakhir as $bt) {
-                    $query->orWhere(function ($subQuery) use ($bt) {
-                        $subQuery->whereRaw('MONTH(created_insert) = ?', [$bt['bulan']])
-                            ->whereRaw('YEAR(created_insert) = ?', [$bt['tahun']]);
-                    });
-                }
-            })
+            ->whereBetween('created_insert', [$startDate, $endDate])
             ->groupBy(DB::raw('YEAR(created_insert)'), DB::raw('MONTH(created_insert)'))
-            ->orderBy('tahun', 'desc')
-            ->orderBy('bulan', 'desc')
+            ->orderBy('tahun', 'ASC')
+            ->orderBy('bulan', 'ASC')
             ->get();
     }
-
-
 
     /**
      * Hitung data performa pengguna
@@ -130,7 +114,7 @@ class HomeController extends Controller
                 ->where('new_user_id', $user_id);
         })
             ->whereDate('start_date', '>=', now()->subYears(4))
-            ->orderBy('start_date', 'desc')
+            ->orderBy('start_date', 'ASC')
             ->take(5)
             ->get();
 

@@ -163,8 +163,8 @@
                             </tr>
 
                             {{-- TOTAL --}}
-                            <tr class="table-secondary fw-bold">
-                                <td colspan="2" class="text-start">PERSENTASE CAPAIAN TOTAL</td>
+                            <tr class="table-light fw-bold">
+                                <td colspan="2" class="text-start">PERSENTASE CAPAIAN</td>
                                 @foreach ($periods as $period)
                                     <td>{{ number_format($resultArray[$period->id]['averageFinalScore'] ?? 0, 2, ',', '.') }}%
                                     </td>
@@ -205,7 +205,7 @@
                             <td>{{ number_format($rekap->rata_presentase ?? 0, 2, ',', '.') }}</td>
                         @endforeach
                     </tr>
-                    <tr>
+                    <tr tr class="table-light fw-bold">
                         <td><strong>Nilai Kinerja Total</strong></td>
                         @foreach ($rekapEmpatBulan as $rekap)
                             <td>
@@ -218,7 +218,7 @@
         @endrole
 
         {{-- Summary Cards --}}
-        <div class="row mb-4">
+        {{-- <div class="row mb-4">
             <div class="col-md-4">
                 <div class="summary-card">
                     <h2>120</h2>
@@ -237,10 +237,10 @@
                     <h4>Active Evaluations</h4>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Quick Links --}}
-        <div class="row quick-links mb-4">
+        {{-- <div class="row quick-links mb-4">
             <div class="col-md-4 mb-2">
                 <a href="{{ route('profile.index') }}">👤 My Profile</a>
             </div>
@@ -250,7 +250,7 @@
             <div class="col-md-4 mb-2">
                 <a href="{{ route('raport.chart') }}">📊 Performance Review</a>
             </div>
-        </div>
+        </div> --}}
 
         {{-- Motivational Quote --}}
         <div class="quote-box">
