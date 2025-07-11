@@ -85,8 +85,10 @@ class HomeController extends Controller
         $userId = $user->id;
 
         // Format tanggal untuk field DATE
-        $startDate = Carbon::now()->subMonths(3)->startOfMonth()->format('Y-m-d');
-        $endDate = Carbon::now()->endOfMonth()->format('Y-m-d');
+        $endRef = Carbon::now()->subMonth();
+        $startDate = $endRef->copy()->subMonths(3)->startOfMonth()->format('Y-m-d'); // mulai dari 3 bulan sebelum bulan sebelumnya
+        $endDate = $endRef->copy()->endOfMonth()->format('Y-m-d'); // akhir bulan sebelumnya
+
 
         return DB::table($table)
             ->select(
