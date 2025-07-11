@@ -8,7 +8,7 @@
     <div class="row page-titles shadow">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">User Control</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Jabatan</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Jabatan / Penilai</a></li>
         </ol>
     </div>
 
@@ -20,7 +20,7 @@
                         <tr>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Jabatan</th>
+                            <th>Jabatan / Penilai</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
