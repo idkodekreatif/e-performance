@@ -111,7 +111,7 @@
                 <td>
                     {{ $resultArray['a'] }}
                 </td>
-                <td>11.69</td>
+                <td>{{ $resultArray['standar_a'] ?? '0.00' }}</td>
                 <td>
                     {{ $resultArray['NtAFinalSum'] }}
                 </td>
@@ -125,7 +125,7 @@
                 <td>
                     {{ $resultArray['b'] }}
                 </td>
-                <td>4.26</td>
+                <td>{{ $resultArray['standar_b'] ?? '0.00' }}</td>
                 <td>
                     {{ $resultArray['NTiFinalSum'] }}
                 </td>
@@ -139,7 +139,7 @@
                 <td>
                     {{ $resultArray['c'] }}
                 </td>
-                <td>1.20</td>
+                <td>{{ $resultArray['standar_c'] ?? '0.00' }}</td>
                 <td>
                     {{ $resultArray['NTiFinalSumPkm'] }}
                 </td>
@@ -153,7 +153,7 @@
                 <td>
                     {{ $resultArray['total_Ntd'] }}
                 </td>
-                <td>2.17</td>
+                <td>{{ $resultArray['standar_d'] ?? '0.00' }}</td>
                 <td>
                     {{ $resultArray['SUMUnsurPenungjang'] }}
                 </td>
