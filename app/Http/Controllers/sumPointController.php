@@ -29,7 +29,6 @@ class sumPointController extends Controller
 
         $jabatanName = strtolower(trim($user->jabatan->name));
 
-        // Mapping berdasarkan versi lowercase
         switch ($jabatanName) {
             case 'asisten ahli':
                 $kolomJabatan = 'AA';
@@ -194,7 +193,6 @@ class sumPointController extends Controller
             ->with('selectedPeriodId', $period_id);
     }
 
-    // ... (method lain seperti RaportChartView, Preview, searchRaport, resultSearchRaport tetap ada)
     public function RaportChartView(Request $request)
     {
         $selectedPeriodId = $request->input('period');
@@ -390,7 +388,7 @@ class sumPointController extends Controller
         return view('edit-point.hrd.search.searchDataRaport', compact('users', 'allPeriods'));
     }
 
-    // 🔁 Perbarui method resultSearchRaport juga
+    // Perbarui method resultSearchRaport
     public function resultSearchRaport(Request $request)
     {
         $request->validate([
@@ -512,7 +510,7 @@ class sumPointController extends Controller
         return view('edit-point.hrd.raport.raport', compact('users', 'resultArray', 'period_id'));
     }
 
-    // 🔁 Perbarui juga method generatePDF
+    // Perbarui juga method generatePDF
     public function generatePDF(Request $request, $id, $period_id)
     {
         $user_id = $id;
@@ -573,7 +571,6 @@ class sumPointController extends Controller
         $totalStandar = $standarA + $standarB + $standarC + $standarD;
         $result_PCT = $totalStandar > 0 ? (($a + $b + $c + $total_Ntd) / $totalStandar) * 100 : 0;
 
-        // ... (lanjutkan seperti sebelumnya untuk format dan predikat)
 
         // Format semua nilai
         $resultArray = [
@@ -641,6 +638,4 @@ class sumPointController extends Controller
         if ($nilai >= 80) return 'CUKUP';
         return 'KURANG';
     }
-
-    // ... (method lain seperti RaportChartView bisa diupdate serupa jika perlu)
 }

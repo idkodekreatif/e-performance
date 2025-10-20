@@ -8,12 +8,48 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Models\Predikat\KomponenPoin;
 
 class HomeController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Ambil nilai standar komponen berdasarkan jabatan user
+     */
+    private function getStandarKomponen($user_id, $komponen_nama)
+    {
+        $user = User::with('jabatan')->find($user_id);
+        if (!$user || !$user->jabatan) {
+            return KomponenPoin::where('nama_komponen', $komponen_nama)->value('Non-JAD') ?? 0;
+        }
+
+        $jabatanName = strtolower(trim($user->jabatan->name));
+
+        switch ($jabatanName) {
+            case 'asisten ahli':
+                $kolomJabatan = 'AA';
+                break;
+            case 'lektor':
+                $kolomJabatan = 'Lektor';
+                break;
+            case 'lektor kepala':
+                $kolomJabatan = 'LK';
+                break;
+            case 'guru besar':
+            case 'profesor':
+                $kolomJabatan = 'GB';
+                break;
+            default:
+                $kolomJabatan = 'Non-JAD';
+                break;
+        }
+
+        return KomponenPoin::where('nama_komponen', $komponen_nama)->value($kolomJabatan) ?? 0;
     }
 
     /**
@@ -25,8 +61,6 @@ class HomeController extends Controller
         $user_id = $user->id;
 
         [$allUsersData, $resultArray, $periods] = $this->calculateUserPerformanceDataItikad($user_id);
-        // Debug hasil rekap 4 bulan terakhir
-        // dd($this->getRekapEmpatBulanTerakhirItisar($user));
         $rekapEmpatBulan = $this->getRekapEmpatBulanTerakhirItisar($user);
 
         return view('home', [
@@ -150,16 +184,22 @@ class HomeController extends Controller
                 $total_Ntd = $d + $e;
                 $total_Nkd = $total_Ntu + $total_Ntd;
 
-                $NtAFinalSum = ($a / 11.69) * 100;
-                $NTiFinalSum = ($b / 4.26) * 100;
-                $NTiFinalSumPkm = ($c / 1.2) * 100;
-                $SUMUnsurPenungjang = ($total_Ntd / 2.17) * 100;
+                // Ambil standar dinamis berdasarkan user_id
+                $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');
+                $standarB = $this->getStandarKomponen($user_id, 'Penelitian');
+                $standarC = $this->getStandarKomponen($user_id, 'Pengabdian');
+                $standarD = $this->getStandarKomponen($user_id, 'Penunjang');
+
+                // Hitung persentase dinamis
+                $NtAFinalSum = $standarA > 0 ? ($a / $standarA) * 100 : 0;
+                $NTiFinalSum = $standarB > 0 ? ($b / $standarB) * 100 : 0;
+                $NTiFinalSumPkm = $standarC > 0 ? ($c / $standarC) * 100 : 0;
+                $SUMUnsurPenungjang = $standarD > 0 ? ($total_Ntd / $standarD) * 100 : 0;
 
                 $averageFinalScore = ($NtAFinalSum + $NTiFinalSum + $NTiFinalSumPkm + $SUMUnsurPenungjang) / 4;
 
-                $SumNkt = $a + $b + $c + $total_Ntd;
-                $sum_Skt = 11.69 + 4.26 + 1.2 + 2.17;
-                $result_PCT = ($SumNkt / $sum_Skt) * 100;
+                $totalStandar = $standarA + $standarB + $standarC + $standarD;
+                $result_PCT = $totalStandar > 0 ? (($a + $b + $c + $total_Ntd) / $totalStandar) * 100 : 0;
 
                 $outputHasilPDP = $this->getGrade($NtAFinalSum);
                 $OutputHasilPki = $this->getGrade($NTiFinalSum);
@@ -187,8 +227,8 @@ class HomeController extends Controller
                     'NTiFinalSumPkm' => number_format($NTiFinalSumPkm, 2),
                     'SUMUnsurPenungjang' => number_format($SUMUnsurPenungjang, 2),
                     'averageFinalScore' => number_format($averageFinalScore, 2),
-                    'SumNkt' => number_format($SumNkt, 2),
-                    'sum_Skt' => number_format($sum_Skt, 2),
+                    'SumNkt' => number_format($a + $b + $c + $total_Ntd, 2),
+                    'sum_Skt' => number_format($totalStandar, 2),
                     'result_PCT' => number_format($result_PCT, 2),
                     'outputHasilPDP' => $outputHasilPDP,
                     'OutputHasilPki' => $OutputHasilPki,
