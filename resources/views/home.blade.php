@@ -205,7 +205,7 @@
                             <td>{{ number_format($rekap->rata_presentase ?? 0, 2, ',', '.') }}</td>
                         @endforeach
                     </tr>
-                    <tr tr class="table-light fw-bold">
+                    <tr tr class="fw-bold">
                         <td><strong>Nilai Kinerja Total</strong></td>
                         @foreach ($rekapEmpatBulan as $rekap)
                             <td>
@@ -480,7 +480,7 @@
                             padding: 10,
                             callbacks: {
                                 label: function(context) {
-                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '';
                                 }
                             }
                         },
@@ -501,7 +501,7 @@
                             beginAtZero: true,
                             ticks: {
                                 callback: function(value) {
-                                    return value + '%';
+                                    return value + '';
                                 },
                                 color: '#666'
                             },
