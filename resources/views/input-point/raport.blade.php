@@ -19,9 +19,9 @@
                         <label for="period_id" class="form-label">Pilih Periode:</label>
                         <select name="period_id" id="period_id" class="form-control" required>
                             @foreach ($periods as $period)
-                                <option value="{{ $period->id }}" {{ request('period_id') == $period->id ? 'selected' : '' }}>
-                                    {{ $period->name }}
-                                </option>
+                            <option value="{{ $period->id }}" {{ request('period_id')==$period->id ? 'selected' : '' }}>
+                                {{ $period->name }}
+                            </option>
                             @endforeach
                         </select>
                     </div>
@@ -32,16 +32,13 @@
                         </button>
                     </div>
                     <div class="col-md-2 text-end">
-         <a href="{{ route('raport', [
-    'user_id' => auth()->id(),
-    'period_id' => $selectedPeriodId,
-    'download' => 'pdf'
-]) }}" class="btn btn-primary w-100" target="_blank">
-    <i class="fa fa-print"></i> Cetak PDF
-</a>
-
-
-
+                        <a href="{{ route('raport', [
+                                    'user_id' => auth()->id(),
+                                    'period_id' => $selectedPeriodId,
+                                    'download' => 'pdf'
+                                ]) }}" class="btn btn-primary w-100" target="_blank">
+                            <i class="fa fa-print"></i> Cetak PDF
+                        </a>
                     </div>
                 </form>
             </div>
@@ -54,86 +51,86 @@
             </div>
             <div class="card-body">
                 @if (!empty($resultArray))
-                    <div class="table-responsive">
+                <div class="table-responsive">
 
-                        {{-- Tabel Ringkasan --}}
-                        <table class="table table-bordered text-center table-sm mb-4">
+                    {{-- Tabel Ringkasan --}}
+                    <table class="table table-bordered text-center table-sm mb-4">
+                        <tr>
+                            <td>Nilai Total UNSUR UTAMA</td>
+                            <td>{{ $resultArray['total_Ntu'] ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nilai Total Unsur Non-Tri Dharma</td>
+                            <td>{{ $resultArray['total_Ntd'] ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nilai Kinerja Dosen</td>
+                            <td>{{ $resultArray['total_Nkd'] ?? '-' }}</td>
+                        </tr>
+                    </table>
+
+                    {{-- Tabel Detail --}}
+                    <table class="table table-bordered text-center table-sm">
+                        <thead class="table-light">
                             <tr>
-                                <td>Nilai Total UNSUR UTAMA</td>
-                                <td>{{ $resultArray['total_Ntu'] ?? '-' }}</td>
+                                <th>Poin Penilaian</th>
+                                <th>Komponen</th>
+                                <th>Nilai Total</th>
+                                <th>Standar</th>
+                                <th>Persentase Capaian</th>
+                                <th>Predikat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A.</td>
+                                <td>PENDIDIKAN DAN PENGAJARAN</td>
+                                <td>{{ $resultArray['a'] ?? '-' }}</td>
+                                <td>{{ $resultArray['standar_a'] ?? '0.00' }}</td>
+                                <td>{{ $resultArray['NtAFinalSum'] ?? '-' }}%</td>
+                                <td>{{ $resultArray['outputHasilPDP'] ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <td>Nilai Total Unsur Non-Tri Dharma</td>
+                                <td>B.</td>
+                                <td>PENELITIAN DAN KARYA ILMIAH</td>
+                                <td>{{ $resultArray['b'] ?? '-' }}</td>
+                                <td>{{ $resultArray['standar_b'] ?? '0.00' }}</td>
+                                <td>{{ $resultArray['NTiFinalSum'] ?? '-' }}%</td>
+                                <td>{{ $resultArray['OutputHasilPki'] ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>C.</td>
+                                <td>PENGABDIAN KEPADA MASYARAKAT</td>
+                                <td>{{ $resultArray['c'] ?? '-' }}</td>
+                                <td>{{ $resultArray['standar_c'] ?? '0.00' }}</td>
+                                <td>{{ $resultArray['NTiFinalSumPkm'] ?? '-' }}%</td>
+                                <td>{{ $resultArray['OutputHasilPkm'] ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>D dan E</td>
+                                <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
                                 <td>{{ $resultArray['total_Ntd'] ?? '-' }}</td>
+                                <td>{{ $resultArray['standar_d'] ?? '0.00' }}</td>
+                                <td>{{ $resultArray['SUMUnsurPenungjang'] ?? '-' }}%</td>
+                                <td>{{ $resultArray['OutputHasilUnsurPenunjang'] ?? '-' }}</td>
                             </tr>
-                            <tr>
-                                <td>Nilai Kinerja Dosen</td>
-                                <td>{{ $resultArray['total_Nkd'] ?? '-' }}</td>
+                            <tr class="fw-bold">
+                                <td colspan="2">NILAI KINERJA TOTAL</td>
+                                <td colspan="4">{{ $resultArray['SumNkt'] ?? '-' }}</td>
                             </tr>
-                        </table>
-
-                        {{-- Tabel Detail --}}
-                        <table class="table table-bordered text-center table-sm">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Poin Penilaian</th>
-                                    <th>Komponen</th>
-                                    <th>Nilai Total</th>
-                                    <th>Standar</th>
-                                    <th>Persentase Capaian</th>
-                                    <th>Predikat</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>A.</td>
-                                    <td>PENDIDIKAN DAN PENGAJARAN</td>
-                                    <td>{{ $resultArray['a'] ?? '-' }}</td>
-                                    <td>11.69</td>
-                                    <td>{{ $resultArray['NtAFinalSum'] ?? '-' }}</td>
-                                    <td>{{ $resultArray['outputHasilPDP'] ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>B.</td>
-                                    <td>PENELITIAN DAN KARYA ILMIAH</td>
-                                    <td>{{ $resultArray['b'] ?? '-' }}</td>
-                                    <td>4.26</td>
-                                    <td>{{ $resultArray['NTiFinalSum'] ?? '-' }}</td>
-                                    <td>{{ $resultArray['OutputHasilPki'] ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>C.</td>
-                                    <td>PENGABDIAN KEPADA MASYARAKAT</td>
-                                    <td>{{ $resultArray['c'] ?? '-' }}</td>
-                                    <td>1.20</td>
-                                    <td>{{ $resultArray['NTiFinalSumPkm'] ?? '-' }}</td>
-                                    <td>{{ $resultArray['OutputHasilPkm'] ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>D dan E</td>
-                                    <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
-                                    <td>{{ $resultArray['total_Ntd'] ?? '-' }}</td>
-                                    <td>2.17</td>
-                                    <td>{{ $resultArray['SUMUnsurPenungjang'] ?? '-' }}</td>
-                                    <td>{{ $resultArray['OutputHasilUnsurPenunjang'] ?? '-' }}</td>
-                                </tr>
-                                <tr class="fw-bold">
-                                    <td colspan="2">NILAI KINERJA TOTAL</td>
-                                    <td colspan="4">{{ $resultArray['SumNkt'] ?? '-' }}</td>
-                                </tr>
-                                <tr class="fw-bold">
-                                    <td colspan="2">STANDAR KINERJA TOTAL</td>
-                                    <td colspan="4">{{ $resultArray['sum_Skt'] ?? '-' }}</td>
-                                </tr>
-                                <tr class="fw-bold">
-                                    <td colspan="2">PREDIKAT</td>
-                                    <td colspan="4">{{ $resultArray['predikat'] ?? '-' }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <tr class="fw-bold">
+                                <td colspan="2">STANDAR KINERJA TOTAL</td>
+                                <td colspan="4">{{ $resultArray['sum_Skt'] ?? '-' }}</td>
+                            </tr>
+                            <tr class="fw-bold">
+                                <td colspan="2">PREDIKAT</td>
+                                <td colspan="4">{{ $resultArray['predikat'] ?? '-' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 @else
-                    <p class="text-center text-muted">Belum ada data raport untuk periode yang dipilih.</p>
+                <p class="text-center text-muted">Belum ada data raport untuk periode yang dipilih.</p>
                 @endif
             </div>
         </div>

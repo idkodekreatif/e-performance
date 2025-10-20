@@ -18,11 +18,10 @@ class JabatanSeeder extends Seeder
             ['name' => 'Manager', 'description' => 'Bertanggung jawab atas operasional'],
             ['name' => 'HR', 'description' => 'Mengelola sumber daya manusia'],
             ['name' => 'Staff', 'description' => 'Melaksanakan tugas harian'],
-            ['name' => 'asisten ahli', 'description' => 'asisten ahli'],
-            ['name' => 'lektor', 'description' => 'lektor'],
-            ['name' => 'lektor kepala', 'description' => 'lektor kepala'],
-            ['name' => 'guru besar', 'description' => 'lektor kepala'],
-            ['name' => 'profesor', 'description' => 'profesor'],
+            ['name' => 'Asisten Ahli', 'description' => 'Jabatan akademik dosen tingkat awal'],
+            ['name' => 'Lektor', 'description' => 'Jabatan akademik dosen tingkat menengah'],
+            ['name' => 'Lektor Kepala', 'description' => 'Jabatan akademik dosen tingkat atas'],
+            ['name' => 'Guru Besar', 'description' => 'Jabatan akademik tertinggi'],
         ];
 
         foreach ($jabatan as $pos) {

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Predikat\Raport;
+use App\Models\Predikat\KomponenPoin;
 use App\Models\Setting\Period;
+use App\Models\Setting\Jabatan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,326 +15,198 @@ use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Illuminate\Http\Response;
 
-/**
- * sumPointController
- */
 class sumPointController extends Controller
 {
     /**
-     * raportView
-     *
-     * @param  mixed $user_id
-     * @return void
+     * Ambil nilai standar komponen berdasarkan jabatan user
      */
+    private function getStandarKomponen($user_id, $komponen_nama)
+    {
+        $user = User::with('jabatan')->find($user_id);
+        if (!$user || !$user->jabatan) {
+            return KomponenPoin::where('nama_komponen', $komponen_nama)->value('Non-JAD') ?? 0;
+        }
 
+        $jabatanName = strtolower(trim($user->jabatan->name));
 
-   public function raportView($user_id, Request $request)
-{
-    $user_id = $request->input('user_id', $user_id);
-    $period_id = $request->input('period_id');
-    $downloadPdf = $request->input('download') === 'pdf';
+        // Mapping berdasarkan versi lowercase
+        switch ($jabatanName) {
+            case 'asisten ahli':
+                $kolomJabatan = 'AA';
+                break;
+            case 'lektor':
+                $kolomJabatan = 'Lektor';
+                break;
+            case 'lektor kepala':
+                $kolomJabatan = 'LK';
+                break;
+            case 'guru besar':
+            case 'profesor': // opsional
+                $kolomJabatan = 'GB';
+                break;
+            default:
+                $kolomJabatan = 'Non-JAD';
+                break;
+        }
 
-    $periods = Period::orderBy('start_date', 'desc')->get();
+        return KomponenPoin::where('nama_komponen', $komponen_nama)->value($kolomJabatan) ?? 0;
+    }
 
-    if (!$period_id) {
-        $activePeriod = Period::where('is_closed', 1)
-            ->where('start_date', '<=', Carbon::now())
-            ->where('end_date', '>=', Carbon::now())
+    /**
+     * raportView
+     */
+    public function raportView($user_id, Request $request)
+    {
+        $user_id = $request->input('user_id', $user_id);
+        $period_id = $request->input('period_id');
+        $downloadPdf = $request->input('download') === 'pdf';
+
+        $periods = Period::orderBy('start_date', 'desc')->get();
+
+        if (!$period_id) {
+            $activePeriod = Period::where('is_closed', 1)
+                ->where('start_date', '<=', Carbon::now())
+                ->where('end_date', '>=', Carbon::now())
+                ->first();
+
+            if (!$activePeriod) {
+                return view('input-point.raport', [
+                    'users' => null,
+                    'resultArray' => null,
+                    'periods' => $periods,
+                    'selectedPeriodId' => null
+                ]);
+            }
+
+            $period_id = $activePeriod->id;
+        } else {
+            $activePeriod = Period::find($period_id);
+        }
+
+        $users = DB::table('users')
+            ->leftJoin('point_a', function ($join) use ($activePeriod) {
+                $join->on('point_a.new_user_id', '=', 'users.id')
+                    ->where('point_a.period_id', '=', $activePeriod->id);
+            })
+            ->leftJoin('point_b', function ($join) use ($activePeriod) {
+                $join->on('point_b.new_user_id', '=', 'users.id')
+                    ->where('point_b.period_id', '=', $activePeriod->id);
+            })
+            ->leftJoin('point_c', function ($join) use ($activePeriod) {
+                $join->on('point_c.new_user_id', '=', 'users.id')
+                    ->where('point_c.period_id', '=', $activePeriod->id);
+            })
+            ->leftJoin('point_d', function ($join) use ($activePeriod) {
+                $join->on('point_d.new_user_id', '=', 'users.id')
+                    ->where('point_d.period_id', '=', $activePeriod->id);
+            })
+            ->leftJoin('point_e', function ($join) use ($activePeriod) {
+                $join->on('point_e.new_user_id', '=', 'users.id')
+                    ->where('point_e.period_id', '=', $activePeriod->id);
+            })
+            ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
+            ->where('users.id', $user_id)
             ->first();
 
-        if (!$activePeriod) {
+        if (!$users) {
             return view('input-point.raport', [
                 'users' => null,
                 'resultArray' => null,
                 'periods' => $periods,
-                'selectedPeriodId' => null
+                'selectedPeriodId' => $period_id
             ]);
         }
 
-        $period_id = $activePeriod->id;
-    } else {
-        $activePeriod = Period::find($period_id);
-    }
+        // Ambil standar komponen berdasarkan jabatan user
+        $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');
+        $standarB = $this->getStandarKomponen($user_id, 'Penelitian');
+        $standarC = $this->getStandarKomponen($user_id, 'Pengabdian');
+        $standarD = $this->getStandarKomponen($user_id, 'Penunjang');
 
-    $users = DB::table('users')
-        ->leftJoin('point_a', function ($join) use ($activePeriod) {
-            $join->on('point_a.new_user_id', '=', 'users.id')
-                ->where('point_a.period_id', '=', $activePeriod->id);
-        })
-        ->leftJoin('point_b', function ($join) use ($activePeriod) {
-            $join->on('point_b.new_user_id', '=', 'users.id')
-                ->where('point_b.period_id', '=', $activePeriod->id);
-        })
-        ->leftJoin('point_c', function ($join) use ($activePeriod) {
-            $join->on('point_c.new_user_id', '=', 'users.id')
-                ->where('point_c.period_id', '=', $activePeriod->id);
-        })
-        ->leftJoin('point_d', function ($join) use ($activePeriod) {
-            $join->on('point_d.new_user_id', '=', 'users.id')
-                ->where('point_d.period_id', '=', $activePeriod->id);
-        })
-        ->leftJoin('point_e', function ($join) use ($activePeriod) {
-            $join->on('point_e.new_user_id', '=', 'users.id')
-                ->where('point_e.period_id', '=', $activePeriod->id);
-        })
-        ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
-        ->where('users.id', $user_id)
-        ->first();
+        // Nilai mentah
+        $a = (float) ($users->NilaiTotalPendidikanDanPengajaran ?? 0);
+        $b = (float) ($users->NilaiTotalPenelitiandanKaryaIlmiah ?? 0);
+        $c = (float) ($users->NilaiTotalPengabdianKepadaMasyarakat ?? 0);
+        $d = (float) ($users->ResultSumNilaiTotalUnsurPenunjang ?? 0);
+        $e = (float) ($users->NilaiUnsurPengabdian ?? 0);
 
-    if (!$users) {
-        return view('input-point.raport', [
-            'users' => null,
-            'resultArray' => null,
-            'periods' => $periods,
-            'selectedPeriodId' => $period_id
-        ]);
-    }
+        $total_Ntu = $a + $b + $c;
+        $total_Ntd = $d + $e;
+        $total_Nkd = $total_Ntu + $total_Ntd;
 
-    // Hitung nilai
-    $a = (float) ($users->NilaiTotalPendidikanDanPengajaran ?? 0);
-    $b = (float) ($users->NilaiTotalPenelitiandanKaryaIlmiah ?? 0);
-    $c = (float) ($users->NilaiTotalPengabdianKepadaMasyarakat ?? 0);
-    $d = (float) ($users->ResultSumNilaiTotalUnsurPenunjang ?? 0);
-    $e = (float) ($users->NilaiUnsurPengabdian ?? 0);
+        // Hitung persentase dinamis
+        $NtAFinalSum = $standarA > 0 ? ($a / $standarA) * 100 : 0;
+        $NTiFinalSum = $standarB > 0 ? ($b / $standarB) * 100 : 0;
+        $NTiFinalSumPkm = $standarC > 0 ? ($c / $standarC) * 100 : 0;
+        $SUMUnsurPenungjang = $standarD > 0 ? ($total_Ntd / $standarD) * 100 : 0;
 
-    $total_Ntu = $a + $b + $c;
-    $total_Ntd = $d + $e;
-    $total_Nkd = $total_Ntu + $total_Ntd;
+        $totalStandar = $standarA + $standarB + $standarC + $standarD;
+        $result_PCT = $totalStandar > 0 ? (($a + $b + $c + $total_Ntd) / $totalStandar) * 100 : 0;
 
-    $NtAFinalSum = ($a / 11.69) * 100;
-    $NTiFinalSum = ($b / 4.26) * 100;
-    $NTiFinalSumPkm = ($c / 1.2) * 100;
-    $SUMUnsurPenungjang = ($total_Ntd / 2.17) * 100;
-    $result_PCT = (($a + $b + $c + $total_Ntd) / (11.69 + 4.26 + 1.2 + 2.17)) * 100;
+        $resultArray = [
+            'a' => number_format($a, 2, '.', ''),
+            'b' => number_format($b, 2, '.', ''),
+            'c' => number_format($c, 2, '.', ''),
+            'total_Ntu' => number_format($total_Ntu, 2, '.', ''),
+            'total_Ntd' => number_format($total_Ntd, 2, '.', ''),
+            'total_Nkd' => number_format($total_Nkd, 2, '.', ''),
+            'SumNkt' => number_format($total_Nkd, 2, '.', ''),
+            'standar_a' => number_format($standarA, 2, '.', ''),
+            'standar_b' => number_format($standarB, 2, '.', ''),
+            'standar_c' => number_format($standarC, 2, '.', ''),
+            'standar_d' => number_format($standarD, 2, '.', ''),
+            'sum_Skt' => number_format($totalStandar, 2, '.', ''),
+            'result_PCT' => number_format($result_PCT, 2, '.', ''),
+            'NtAFinalSum' => number_format($NtAFinalSum, 2, '.', ''),
+            'NTiFinalSum' => number_format($NTiFinalSum, 2, '.', ''),
+            'NTiFinalSumPkm' => number_format($NTiFinalSumPkm, 2, '.', ''),
+            'SUMUnsurPenungjang' => number_format($SUMUnsurPenungjang, 2, '.', ''),
+            'outputHasilPDP' => $this->getPredikat($NtAFinalSum),
+            'OutputHasilPki' => $this->getPredikat($NTiFinalSum),
+            'OutputHasilPkm' => $this->getPredikat($NTiFinalSumPkm),
+            'OutputHasilUnsurPenunjang' => $this->getPredikat($SUMUnsurPenungjang),
+        ];
 
-    $resultArray = [
-        'a' => number_format($a, 2, '.', ''),
-        'b' => number_format($b, 2, '.', ''),
-        'c' => number_format($c, 2, '.', ''),
-        'total_Ntu' => number_format($total_Ntu, 2, '.', ''),
-        'total_Ntd' => number_format($total_Ntd, 2, '.', ''),
-        'total_Nkd' => number_format($total_Nkd, 2, '.', ''),
-        'SumNkt' => number_format($total_Nkd, 2, '.', ''),
-        'sum_Skt' => number_format(11.69 + 4.26 + 1.2 + 2.17, 2, '.', ''),
-        'result_PCT' => number_format($result_PCT, 2, '.', ''),
-        'NtAFinalSum' => number_format($NtAFinalSum, 2, '.', ''),
-        'NTiFinalSum' => number_format($NTiFinalSum, 2, '.', ''),
-        'NTiFinalSumPkm' => number_format($NTiFinalSumPkm, 2, '.', ''),
-        'SUMUnsurPenungjang' => number_format($SUMUnsurPenungjang, 2, '.', ''),
-        'outputHasilPDP' => $this->getPredikat($NtAFinalSum),
-        'OutputHasilPki' => $this->getPredikat($NTiFinalSum),
-        'OutputHasilPkm' => $this->getPredikat($NTiFinalSumPkm),
-        'OutputHasilUnsurPenunjang' => $this->getPredikat($SUMUnsurPenungjang),
-    ];
-
-    $testPredikat = Raport::where('a_poin', $resultArray['outputHasilPDP'])
-        ->where('b_poin', 'LIKE', '%' . $resultArray['OutputHasilPki'] . '%')
-        ->where('c_poin', 'LIKE', '%' . $resultArray['OutputHasilPkm'] . '%')
-        ->where('d_poin', 'LIKE', '%' . $resultArray['OutputHasilUnsurPenunjang'] . '%')
-        ->first();
-
-    $resultArray['predikat'] = $testPredikat ? $testPredikat->predikat : 'Predikat tidak ditemukan';
-
- if ($downloadPdf) {
-    $pdfView = view('input-point.raportPdf', [
-        'users' => $users,
-        'resultArray' => $resultArray,
-        'periods' => $periods,
-        'selectedPeriodId' => $period_id, // ini yang penting!
-    ]);
-
-    $pdf = Pdf::loadHtml($pdfView->render())
-        ->setPaper('A4', 'portrait')
-        ->setOptions(['defaultFont' => 'sans-serif']);
-
-    return $pdf->download('raportDosen-' . ($users->name ?? 'user') . '.pdf');
-}
-
-    return view('input-point.raport', compact('users', 'resultArray', 'periods'))
-        ->with('selectedPeriodId', $period_id);
-}
-
-
-
-    // public function raportPdf($user_id)
-    // {
-    //     $periods = Period::orderBy('start_date', 'desc')->get();
-
-    //     $activePeriod = Period::where('is_closed', 1)
-    //         ->where('start_date', '<=', Carbon::now())
-    //         ->where('end_date', '>=', Carbon::now())
-    //         ->first();
-
-    //     if (!$activePeriod) {
-    //         return view('input-point.raport', [
-    //             'users' => null,
-    //             'resultArray' => null,
-    //             'periods' => $periods
-    //         ]);
-    //     }
-
-    //     $users = DB::table('users')
-    //         ->leftJoin('point_a', function ($join) use ($activePeriod) {
-    //             $join->on('point_a.new_user_id', '=', 'users.id')
-    //                 ->where('point_a.period_id', '=', $activePeriod->id);
-    //         })
-    //         ->leftJoin('point_b', function ($join) use ($activePeriod) {
-    //             $join->on('point_b.new_user_id', '=', 'users.id')
-    //                 ->where('point_b.period_id', '=', $activePeriod->id);
-    //         })
-    //         ->leftJoin('point_c', function ($join) use ($activePeriod) {
-    //             $join->on('point_c.new_user_id', '=', 'users.id')
-    //                 ->where('point_c.period_id', '=', $activePeriod->id);
-    //         })
-    //         ->leftJoin('point_d', function ($join) use ($activePeriod) {
-    //             $join->on('point_d.new_user_id', '=', 'users.id')
-    //                 ->where('point_d.period_id', '=', $activePeriod->id);
-    //         })
-    //         ->leftJoin('point_e', function ($join) use ($activePeriod) {
-    //             $join->on('point_e.new_user_id', '=', 'users.id')
-    //                 ->where('point_e.period_id', '=', $activePeriod->id);
-    //         })
-    //         ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
-    //         ->where('users.id', $user_id)
-    //         ->first();
-
-    //     if (!$users) {
-    //         return view('input-point.raport', [
-    //             'users' => null,
-    //             'resultArray' => null,
-    //             'periods' => $periods
-    //         ]);
-    //     }
-
-    //     $resultArray = [];
-
-    //     $a = (float) ($users->NilaiTotalPendidikanDanPengajaran ?? 0);
-    //     $aFormatted = number_format($a, 2, '.', '');
-
-    //     $b = (float) ($users->NilaiTotalPenelitiandanKaryaIlmiah ?? 0);
-    //     $bFormatted = number_format($b, 2, '.', '');
-
-    //     $c = (float) ($users->NilaiTotalPengabdianKepadaMasyarakat ?? 0);
-    //     $cFormatted = number_format($c, 2, '.', '');
-
-    //     $total_Ntu = $a + $b + $c;
-    //     $total_NtuFormatted = number_format($total_Ntu, 2, '.', '');
-
-    //     $d = (float) ($users->ResultSumNilaiTotalUnsurPenunjang ?? 0);
-    //     $e = (float) ($users->NilaiUnsurPengabdian ?? 0);
-    //     $total_Ntd = $d + $e;
-    //     $total_NtdFormatted = number_format($total_Ntd, 2, '.', '');
-
-    //     $total_Nkd = $total_Ntu + $total_Ntd;
-    //     $total_NkdFormatted = number_format($total_Nkd, 2, '.', '');
-
-    //     $NtAFinalSum = ($a / 11.69) * 100;
-    //     $NtAFinalSumFormatted = number_format($NtAFinalSum, 2, '.', '');
-    //     $outputHasilPDP = $this->getPredikat($NtAFinalSum);
-
-    //     $NTiFinalSum = ($b / 4.26) * 100;
-    //     $NTiFinalSumFormatted = number_format($NTiFinalSum, 2, '.', '');
-    //     $OutputHasilPki = $this->getPredikat($NTiFinalSum);
-
-    //     $NTiFinalSumPkm = ($c / 1.2) * 100;
-    //     $NTiFinalSumPkmFormatted = number_format($NTiFinalSumPkm, 2, '.', '');
-    //     $OutputHasilPkm = $this->getPredikat($NTiFinalSumPkm);
-
-    //     $SUMUnsurPenungjang = ($total_Ntd / 2.17) * 100;
-    //     $SUMUnsurPenungjangFormatted = number_format($SUMUnsurPenungjang, 2, '.', '');
-    //     $OutputHasilUnsurPenunjang = $this->getPredikat($SUMUnsurPenungjang);
-
-    //     $SumNkt = $a + $b + $c + $total_Ntd;
-    //     $SumNktFormatted = number_format($SumNkt, 2, '.', '');
-
-    //     $sum_Skt = 11.69 + 4.26 + 1.2 + 2.17;
-    //     $sum_SktFormatted = number_format($sum_Skt, 2, '.', '');
-
-    //     $result_PCT = ($SumNkt / $sum_Skt) * 100;
-    //     $result_PCTFormatted = number_format($result_PCT, 2, '.', '');
-    //     $Result_predikat = $this->getPredikat($result_PCT);
-
-    //     $resultArray = [
-    //         'total_Ntu' => $total_NtuFormatted,
-    //         'total_Ntd' => $total_NtdFormatted,
-    //         'total_Nkd' => $total_NkdFormatted,
-    //         'a' => $aFormatted,
-    //         'NtAFinalSum' => $NtAFinalSumFormatted,
-    //         'outputHasilPDP' => $outputHasilPDP,
-    //         'b' => $bFormatted,
-    //         'NTiFinalSum' => $NTiFinalSumFormatted,
-    //         'OutputHasilPki' => $OutputHasilPki,
-    //         'c' => $cFormatted,
-    //         'NTiFinalSumPkm' => $NTiFinalSumPkmFormatted,
-    //         'OutputHasilPkm' => $OutputHasilPkm,
-    //         'SUMUnsurPenungjang' => $SUMUnsurPenungjangFormatted,
-    //         'OutputHasilUnsurPenunjang' => $OutputHasilUnsurPenunjang,
-    //         'SumNkt' => $SumNktFormatted,
-    //         'sum_Skt' => $sum_SktFormatted,
-    //         'result_PCT' => $result_PCTFormatted,
-    //         'Result_predikat' => $Result_predikat,
-    //     ];
-
-    //     $testPredikat = Raport::where('a_poin', $outputHasilPDP)
-    //         ->where('b_poin', 'LIKE', '%' . $OutputHasilPki . '%')
-    //         ->where('c_poin', 'LIKE', '%' . $OutputHasilPkm . '%')
-    //         ->where('d_poin', 'LIKE', '%' . $OutputHasilUnsurPenunjang . '%')
-    //         ->first();
-
-    //     $resultArray['predikat'] = $testPredikat ? $testPredikat->predikat : 'Predikat tidak ditemukan';
-
-    //     $pdf = Pdf::loadView('input-point.raportPdf', compact('users', 'resultArray', 'periods'))
-    //         ->setOptions(['defaultFont' => 'sans-serif'])
-    //         ->setPaper('A4', 'portrait');
-
-    //     return $pdf->download('raportDosen-' . Auth::user()->name . '.pdf');
-    // }
-
-    /**
-     * Helper untuk mendapatkan predikat dari nilai presentasi
-     */
-    private function getPredikat($nilai)
-    {
-        if ($nilai >= 120) return 'ISTIMEWA';
-        if ($nilai >= 110) return 'SANGAT BAIK';
-        if ($nilai >= 100) return 'BAIK';
-        if ($nilai >= 80) return 'CUKUP';
-        return 'KURANG';
-    }
-
-
-    /**
-     * RaportChartView
-     *
-     * @param  mixed $request
-     * @return void
-     */
-    public function RaportChartView(Request $request)
-    {
-        // Mendapatkan periode aktif
-        $activePeriod = Period::where('start_date', '<=', Carbon::now())
-            ->where('end_date', '>=', Carbon::now())
+        $testPredikat = Raport::where('a_poin', $resultArray['outputHasilPDP'])
+            ->where('b_poin', 'LIKE', '%' . $resultArray['OutputHasilPki'] . '%')
+            ->where('c_poin', 'LIKE', '%' . $resultArray['OutputHasilPkm'] . '%')
+            ->where('d_poin', 'LIKE', '%' . $resultArray['OutputHasilUnsurPenunjang'] . '%')
             ->first();
 
-        // Get the selected period ID from the request
+        $resultArray['predikat'] = $testPredikat ? $testPredikat->predikat : 'Predikat tidak ditemukan';
+
+        if ($downloadPdf) {
+            $pdfView = view('input-point.raportPdf', [
+                'users' => $users,
+                'resultArray' => $resultArray,
+                'periods' => $periods,
+                'selectedPeriodId' => $period_id,
+            ]);
+
+            $pdf = Pdf::loadHtml($pdfView->render())
+                ->setPaper('A4', 'portrait')
+                ->setOptions(['defaultFont' => 'sans-serif']);
+
+            return $pdf->download('raportDosen-' . ($users->name ?? 'user') . '.pdf');
+        }
+
+        return view('input-point.raport', compact('users', 'resultArray', 'periods'))
+            ->with('selectedPeriodId', $period_id);
+    }
+
+    // ... (method lain seperti RaportChartView, Preview, searchRaport, resultSearchRaport tetap ada)
+    public function RaportChartView(Request $request)
+    {
         $selectedPeriodId = $request->input('period');
-        // If no period is selected, get the active period
+
         if (!$selectedPeriodId) {
             $activePeriod = Period::where('start_date', '<=', Carbon::now())
                 ->where('end_date', '>=', Carbon::now())
                 ->first();
-
-            if ($activePeriod) {
-                $selectedPeriodId = $activePeriod->id;
-            } else {
-                $selectedPeriodId = null; // Atur default jika tidak ada periode aktif
-            }
+            $selectedPeriodId = $activePeriod ? $activePeriod->id : null;
         }
 
-
         $allPeriods = Period::all();
-
-        $users = DB::table('users');
 
         $resultGetUsersName = User::whereNotIn('name', [
             'superuser',
@@ -357,111 +231,108 @@ class sumPointController extends Controller
             'ypsdmit'
         ])->get();
 
-        if ($request->keyword != null) {
-            $users = $users->orWhere('users.name', 'LIKE', '%' . $request->keyword . '%');
-        }
-        if ($request->User_Name != null) {
-            $users = $users->where('users.id', $request->User_Name);
-        }
-        if ($request->fakultas != null) {
-            $users = $users->where('users.fakultas', $request->fakultas);
-        }
-        if ($request->prodi != null) {
-            $users = $users->where('users.prodi', $request->prodi);
-        }
-
-        $data = $users
+        $usersQuery = DB::table('users')
             ->leftJoin('point_a', 'point_a.new_user_id', '=', 'users.id')
             ->leftJoin('point_b', 'point_b.new_user_id', '=', 'users.id')
             ->leftJoin('point_c', 'point_c.new_user_id', '=', 'users.id')
             ->leftJoin('point_d', 'point_d.new_user_id', '=', 'users.id')
             ->leftJoin('point_e', 'point_e.new_user_id', '=', 'users.id')
-            ->select('users.name', 'point_a.NilaiTotalPendidikanDanPengajaran', 'point_b.NilaiTotalPenelitiandanKaryaIlmiah', 'point_c.NilaiTotalPengabdianKepadaMasyarakat', 'point_d.ResultSumNilaiTotalUnsurPenunjang', 'point_e.NilaiUnsurPengabdian')
+            ->select(
+                'users.id',
+                'users.name',
+                'point_a.NilaiTotalPendidikanDanPengajaran',
+                'point_b.NilaiTotalPenelitiandanKaryaIlmiah',
+                'point_c.NilaiTotalPengabdianKepadaMasyarakat',
+                'point_d.ResultSumNilaiTotalUnsurPenunjang',
+                'point_e.NilaiUnsurPengabdian'
+            )
             ->where(function ($query) {
                 $query->whereNotNull('point_a.NilaiTotalPendidikanDanPengajaran')
                     ->orWhereNotNull('point_b.NilaiTotalPenelitiandanKaryaIlmiah')
                     ->orWhereNotNull('point_c.NilaiTotalPengabdianKepadaMasyarakat')
                     ->orWhereNotNull('point_d.ResultSumNilaiTotalUnsurPenunjang')
                     ->orWhereNotNull('point_e.NilaiUnsurPengabdian');
-            })
-            ->where('point_a.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_a
-            ->where('point_b.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_b
-            ->where('point_c.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_c
-            ->where('point_d.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_d
-            ->where('point_e.period_id', '=', $selectedPeriodId) // Filter berdasarkan periode aktif pada tabel point_e
-            ->get();
+            });
 
+        // Filter berdasarkan periode
+        if ($selectedPeriodId) {
+            $usersQuery->where('point_a.period_id', '=', $selectedPeriodId)
+                ->where('point_b.period_id', '=', $selectedPeriodId)
+                ->where('point_c.period_id', '=', $selectedPeriodId)
+                ->where('point_d.period_id', '=', $selectedPeriodId)
+                ->where('point_e.period_id', '=', $selectedPeriodId);
+        }
+
+        // Filter tambahan (opsional)
+        if ($request->filled('keyword')) {
+            $usersQuery->where('users.name', 'LIKE', '%' . $request->keyword . '%');
+        }
+        if ($request->filled('User_Name')) {
+            $usersQuery->where('users.id', $request->User_Name);
+        }
+        if ($request->filled('fakultas')) {
+            $usersQuery->where('users.fakultas', $request->fakultas);
+        }
+        if ($request->filled('prodi')) {
+            $usersQuery->where('users.prodi', $request->prodi);
+        }
+
+        $data = $usersQuery->get();
 
         $messagesArray = [];
-        foreach ($data as $data) {
-            // GET Nilai dari database Join
-            $result_data["name"] = $data->name;
-            $a = (float)$data->NilaiTotalPendidikanDanPengajaran;
-            $b = (float)$data->NilaiTotalPenelitiandanKaryaIlmiah;
-            $c = (float)$data->NilaiTotalPengabdianKepadaMasyarakat;
+        foreach ($data as $user) {
+            // Ambil standar berdasarkan jabatan user
+            $standarA = $this->getStandarKomponen($user->id, 'Pendidikan');
+            $standarB = $this->getStandarKomponen($user->id, 'Penelitian');
+            $standarC = $this->getStandarKomponen($user->id, 'Pengabdian');
+            $standarD = $this->getStandarKomponen($user->id, 'Penunjang');
 
-            $d = (float)$data->ResultSumNilaiTotalUnsurPenunjang;
-            $e = (float)$data->NilaiUnsurPengabdian;
-
-            // Result nilai Pendidikan dan Pengajaran
-            $resultSumPendidikanDanPengajaran = ($a / 11.69) * 100;
-            $result_data["PendidikanDanPengajaran"] = number_format((float)$resultSumPendidikanDanPengajaran, 2, '.', '');
-            // Result Nilai Penelitian & karya Ilmiah
-            $resultSumPenelitian = ($b / 4.26) * 100;
-            $result_data["PenelitianDanKaryaIlmiah"] = number_format((float)$resultSumPenelitian, 2, '.', '');
-            // Result Nilai Pengabdian Masyarakat
-            $resultSumPengabdian = ($c / 1.20) * 100;
-            $result_data["PengabdianMasyarakat"] = number_format((float)$resultSumPengabdian, 2, '.', '');
-
+            $a = (float) ($user->NilaiTotalPendidikanDanPengajaran ?? 0);
+            $b = (float) ($user->NilaiTotalPenelitiandanKaryaIlmiah ?? 0);
+            $c = (float) ($user->NilaiTotalPengabdianKepadaMasyarakat ?? 0);
+            $d = (float) ($user->ResultSumNilaiTotalUnsurPenunjang ?? 0);
+            $e = (float) ($user->NilaiUnsurPengabdian ?? 0);
 
             $sum_d_e = $d + $e;
-            // Result Nilai Penunjang, Pengabdian Intitus dan Pengembangan Diri
-            $resultSumPenunjangPengabdian = ($sum_d_e / 2.17) * 100;
-            $result_data["PengabdianInstitusiDanPengembanganDiri"] = number_format((float)$resultSumPenunjangPengabdian, 2, '.', '');
-
-            // Result SUM Nilai Akhir Nilai Kinerja total
             $sum_Kinerja_total = $a + $b + $c + $sum_d_e;
-            $result_sum_Kinerja_total = number_format((float)$sum_Kinerja_total, 2, '.', '');
-            $result_data['NilaiKinerjaTotal'] = $result_sum_Kinerja_total;
+            $totalStandar = $standarA + $standarB + $standarC + $standarD;
 
-            // Result SUM Nilai Akhir Standart Kinerja Total
-            if ($sum_Kinerja_total == 0.0) {
-                $standart_Kinerja_Total = 0;
-            } else {
-                $standart_Kinerja_Total = 11.69 + 4.26 + 1.20 + 2.17;
-            }
-            $result_data["StandartKinerjaTotal"] = $standart_Kinerja_Total;
+            // Hitung persentase dinamis
+            $resultSumPendidikanDanPengajaran = $standarA > 0 ? ($a / $standarA) * 100 : 0;
+            $resultSumPenelitian = $standarB > 0 ? ($b / $standarB) * 100 : 0;
+            $resultSumPengabdian = $standarC > 0 ? ($c / $standarC) * 100 : 0;
+            $resultSumPenunjangPengabdian = $standarD > 0 ? ($sum_d_e / $standarD) * 100 : 0;
+            $presentase_capaian_total = $totalStandar > 0 ? ($sum_Kinerja_total / $totalStandar) * 100 : 0;
 
-            // Result Nilai Presentase Capaian Total (%)
-            if ($standart_Kinerja_Total == 0) {
-                $presentase_capaian_tatal = 0;
-            } else {
-                $presentase_capaian_tatal = $sum_Kinerja_total / $standart_Kinerja_Total * 100;
-            }
-            $result_capaian_total = number_format((float)$presentase_capaian_tatal, 2, '.', '');
-            $result_data["result_capaian_total"] = $result_capaian_total;
-
-            // Predikat
-            if ($result_capaian_total >= 120) {
+            // Predikat akhir
+            if ($presentase_capaian_total >= 120) {
                 $predikat = "ISTIMEWA";
-            } elseif ($result_capaian_total >= 110) {
+            } elseif ($presentase_capaian_total >= 110) {
                 $predikat = "SANGAT BAIK";
-            } elseif ($result_capaian_total >= 100) {
+            } elseif ($presentase_capaian_total >= 100) {
                 $predikat = "BAIK";
-            } elseif ($result_capaian_total >= 80) {
+            } elseif ($presentase_capaian_total >= 80) {
                 $predikat = "CUKUP";
-            } elseif ($result_capaian_total == 0) {
+            } elseif ($presentase_capaian_total == 0) {
                 $predikat = "-";
             } else {
                 $predikat = "KURANG";
             }
-            $result_data["predikat"] = $predikat;
 
-            // Result Array
-            $messagesArray[] = $result_data;
+            $messagesArray[] = [
+                "name" => $user->name,
+                "PendidikanDanPengajaran" => number_format($resultSumPendidikanDanPengajaran, 2, '.', ''),
+                "PenelitianDanKaryaIlmiah" => number_format($resultSumPenelitian, 2, '.', ''),
+                "PengabdianMasyarakat" => number_format($resultSumPengabdian, 2, '.', ''),
+                "PengabdianInstitusiDanPengembanganDiri" => number_format($resultSumPenunjangPengabdian, 2, '.', ''),
+                "NilaiKinerjaTotal" => number_format($sum_Kinerja_total, 2, '.', ''),
+                "StandartKinerjaTotal" => number_format($totalStandar, 2, '.', ''),
+                "result_capaian_total" => number_format($presentase_capaian_total, 2, '.', ''),
+                "predikat" => $predikat,
+            ];
         }
 
-        return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName', 'allPeriods', 'activePeriod'));
+        return view('input-point.chart_raport', compact('messagesArray', 'resultGetUsersName', 'allPeriods', 'selectedPeriodId'));
     }
 
     public function Preview($user_id)
@@ -519,9 +390,9 @@ class sumPointController extends Controller
         return view('edit-point.hrd.search.searchDataRaport', compact('users', 'allPeriods'));
     }
 
+    // 🔁 Perbarui method resultSearchRaport juga
     public function resultSearchRaport(Request $request)
     {
-        // Validasi input
         $request->validate([
             'period_id' => 'required|integer|exists:periods,id',
             'id' => 'required|integer|exists:users,id',
@@ -530,7 +401,6 @@ class sumPointController extends Controller
         $period_id = $request->input('period_id');
         $user_id = $request->input('id');
 
-        // Ambil data user beserta point A-E
         $users = DB::table('users')
             ->leftJoin('point_a', function ($join) use ($period_id) {
                 $join->on('point_a.new_user_id', '=', 'users.id')
@@ -567,7 +437,30 @@ class sumPointController extends Controller
             return back()->with('error', 'Data dosen tidak ditemukan.');
         }
 
-        // Helper fungsi predikat
+        // Ambil standar dinamis
+        $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');
+        $standarB = $this->getStandarKomponen($user_id, 'Penelitian');
+        $standarC = $this->getStandarKomponen($user_id, 'Pengabdian');
+        $standarD = $this->getStandarKomponen($user_id, 'Penunjang');
+
+        $a = (float) ($users->nilai_a ?? 0);
+        $b = (float) ($users->nilai_b ?? 0);
+        $c = (float) ($users->nilai_c ?? 0);
+        $d = (float) ($users->nilai_d ?? 0);
+        $e = (float) ($users->nilai_e ?? 0);
+
+        $total_Ntu = $a + $b + $c;
+        $total_Ntd = $d + $e;
+        $total_Nkd = $total_Ntu + $total_Ntd;
+
+        $NtAFinalSum = $standarA > 0 ? ($a / $standarA) * 100 : 0;
+        $NTiFinalSum = $standarB > 0 ? ($b / $standarB) * 100 : 0;
+        $NTiFinalSumPkm = $standarC > 0 ? ($c / $standarC) * 100 : 0;
+        $SUMUnsurPenungjang = $standarD > 0 ? ($total_Ntd / $standarD) * 100 : 0;
+
+        $totalStandar = $standarA + $standarB + $standarC + $standarD;
+        $result_PCT = $totalStandar > 0 ? (($a + $b + $c + $total_Ntd) / $totalStandar) * 100 : 0;
+
         $getPredikat = function ($nilai) {
             if ($nilai >= 120) return 'ISTIMEWA';
             if ($nilai >= 110) return 'SANGAT BAIK';
@@ -576,41 +469,12 @@ class sumPointController extends Controller
             return 'KURANG';
         };
 
-        // Nilai mentah
-        $a = (float) ($users->nilai_a ?? 0);
-        $b = (float) ($users->nilai_b ?? 0);
-        $c = (float) ($users->nilai_c ?? 0);
-        $d = (float) ($users->nilai_d ?? 0);
-        $e = (float) ($users->nilai_e ?? 0);
-
-        // NTU = A + B + C
-        $total_Ntu = $a + $b + $c;
-
-        // NTD = D + E
-        $total_Ntd = $d + $e;
-
-        // NKD = NTU + NTD
-        $total_Nkd = $total_Ntu + $total_Ntd;
-
-        // Persentase nilai standar
-        $NtAFinalSum = ($a / 11.69) * 100;
-        $NTiFinalSum = ($b / 4.26) * 100;
-        $NTiFinalSumPkm = ($c / 1.2) * 100;
-        $SUMUnsurPenungjang = ($total_Ntd / 2.17) * 100;
-
-        // Nilai total & standar
-        $SumNkt = $a + $b + $c + $total_Ntd;
-        $sum_Skt = 11.69 + 4.26 + 1.2 + 2.17;
-        $result_PCT = ($SumNkt / $sum_Skt) * 100;
-
-        // Predikat tiap unsur
         $outputHasilPDP = $getPredikat($NtAFinalSum);
         $OutputHasilPki = $getPredikat($NTiFinalSum);
         $OutputHasilPkm = $getPredikat($NTiFinalSumPkm);
         $OutputHasilUnsurPenunjang = $getPredikat($SUMUnsurPenungjang);
         $Result_predikat = $getPredikat($result_PCT);
 
-        // Ambil predikat akhir dari tabel Raport jika ada
         $testPredikat = Raport::where('a_poin', $outputHasilPDP)
             ->where('b_poin', 'LIKE', '%' . $OutputHasilPki . '%')
             ->where('c_poin', 'LIKE', '%' . $OutputHasilPkm . '%')
@@ -623,246 +487,127 @@ class sumPointController extends Controller
             'c' => number_format($c, 2),
             'd' => number_format($d, 2),
             'e' => number_format($e, 2),
-
             'total_Ntu' => number_format($total_Ntu, 2),
             'total_Ntd' => number_format($total_Ntd, 2),
             'total_Nkd' => number_format($total_Nkd, 2),
-
             'NtAFinalSum' => number_format($NtAFinalSum, 2),
             'NTiFinalSum' => number_format($NTiFinalSum, 2),
             'NTiFinalSumPkm' => number_format($NTiFinalSumPkm, 2),
             'SUMUnsurPenungjang' => number_format($SUMUnsurPenungjang, 2),
-
-            'SumNkt' => number_format($SumNkt, 2),
-            'sum_Skt' => number_format($sum_Skt, 2),
+            'SumNkt' => number_format($a + $b + $c + $total_Ntd, 2),
+            'standar_a' => number_format($standarA, 2, '.', ''),
+            'standar_b' => number_format($standarB, 2, '.', ''),
+            'standar_c' => number_format($standarC, 2, '.', ''),
+            'standar_d' => number_format($standarD, 2, '.', ''),
+            'sum_Skt' => number_format($totalStandar, 2),
             'result_PCT' => number_format($result_PCT, 2),
-
             'outputHasilPDP' => $outputHasilPDP,
             'OutputHasilPki' => $OutputHasilPki,
             'OutputHasilPkm' => $OutputHasilPkm,
             'OutputHasilUnsurPenunjang' => $OutputHasilUnsurPenunjang,
             'Result_predikat' => $Result_predikat,
-
-            'predikat' => $testPredikat->predikat ?? 'Predikat tidak ditemukan',
+            'predikat' => $testPredikat ? $testPredikat->predikat : 'Predikat tidak ditemukan',
         ];
 
         return view('edit-point.hrd.raport.raport', compact('users', 'resultArray', 'period_id'));
     }
 
-
-
+    // 🔁 Perbarui juga method generatePDF
     public function generatePDF(Request $request, $id, $period_id)
     {
-        // Your existing code here, with some modifications:
-        // Replace the $user_id variable with $id
         $user_id = $id;
-        $period_id = $period_id;
-
-        // Fetch the period name based on $period_id
         $period = Period::find($period_id);
         $periodName = $period ? $period->name : 'Unknown Period';
 
-        // Your query remains the same
         $users = DB::table('users')
             ->leftJoin('point_a', function ($join) use ($user_id, $period_id) {
                 $join->on('point_a.new_user_id', '=', 'users.id')
-                    ->where(
-                        'point_a.period_id',
-                        '=',
-                        $period_id
-                    );
+                    ->where('point_a.period_id', '=', $period_id);
             })
+            // ... (sama seperti sebelumnya untuk point_b sampai point_e)
             ->leftJoin('point_b', function ($join) use ($user_id, $period_id) {
                 $join->on('point_b.new_user_id', '=', 'users.id')
-                    ->where(
-                        'point_b.period_id',
-                        '=',
-                        $period_id
-                    );
+                    ->where('point_b.period_id', '=', $period_id);
             })
             ->leftJoin('point_c', function ($join) use ($user_id, $period_id) {
                 $join->on('point_c.new_user_id', '=', 'users.id')
-                    ->where(
-                        'point_c.period_id',
-                        '=',
-                        $period_id
-                    );
+                    ->where('point_c.period_id', '=', $period_id);
             })
             ->leftJoin('point_d', function ($join) use ($user_id, $period_id) {
                 $join->on('point_d.new_user_id', '=', 'users.id')
-                    ->where(
-                        'point_d.period_id',
-                        '=',
-                        $period_id
-                    );
+                    ->where('point_d.period_id', '=', $period_id);
             })
             ->leftJoin('point_e', function ($join) use ($user_id, $period_id) {
                 $join->on('point_e.new_user_id', '=', 'users.id')
-                    ->where(
-                        'point_e.period_id',
-                        '=',
-                        $period_id
-                    );
+                    ->where('point_e.period_id', '=', $period_id);
             })
             ->select('users.*', 'point_a.*', 'point_b.*', 'point_c.*', 'point_d.*', 'point_e.*')
             ->where('users.id', $user_id)
             ->first();
-        $resultArray = [];
+
+        if (!$users) {
+            abort(404, 'User not found');
+        }
+
+        // Ambil standar dinamis
+        $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');
+        $standarB = $this->getStandarKomponen($user_id, 'Penelitian');
+        $standarC = $this->getStandarKomponen($user_id, 'Pengabdian');
+        $standarD = $this->getStandarKomponen($user_id, 'Penunjang');
 
         $a = (float) ($users->NilaiTotalPendidikanDanPengajaran ?? 0);
-        $aFormatted = number_format(
-            (float) $a,
-            2,
-            '.',
-            ''
-        );
-
         $b = (float) ($users->NilaiTotalPenelitiandanKaryaIlmiah ?? 0);
-        $bFormatted = number_format(
-            (float) $b,
-            2,
-            '.',
-            ''
-        );
-
         $c = (float) ($users->NilaiTotalPengabdianKepadaMasyarakat ?? 0);
-        $cFormatted = number_format((float) $c, 2, '.', '');
-
-        // SUM Point (A, B, C)
-        $total_Ntu = $a + $b + $c;
-        $total_NtuFormatted = number_format((float) $total_Ntu, 2, '.', '');
-
         $d = (float) ($users->ResultSumNilaiTotalUnsurPenunjang ?? 0);
         $e = (float) ($users->NilaiUnsurPengabdian ?? 0);
 
-        // SUM Point (D, E)
+        $total_Ntu = $a + $b + $c;
         $total_Ntd = $d + $e;
-        $total_NtdFormatted = number_format((float) $total_Ntd, 2, '.', '');
-
-        // SUM Point Nilai Kinerja Dosen
         $total_Nkd = $total_Ntu + $total_Ntd;
-        $total_NkdFormatted = number_format((float) $total_Nkd, 2, '.', '');
 
-        $NtAFinalSum = ($a / 11.69) * 100;
-        $NtAFinalSumFormatted = number_format(
-            (float) $NtAFinalSum,
-            2,
-            '.',
-            ''
-        );
-        if ($NtAFinalSum >= 120) {
-            $outputHasilPDP = 'ISTIMEWA';
-        } elseif ($NtAFinalSum >= 110) {
-            $outputHasilPDP = 'SANGAT BAIK';
-        } elseif (
-            $NtAFinalSum >= 100
-        ) {
-            $outputHasilPDP = 'BAIK';
-        } elseif ($NtAFinalSum >= 80) {
-            $outputHasilPDP = 'CUKUP';
-        } else {
-            $outputHasilPDP = 'KURANG';
-        }
+        $NtAFinalSum = $standarA > 0 ? ($a / $standarA) * 100 : 0;
+        $NTiFinalSum = $standarB > 0 ? ($b / $standarB) * 100 : 0;
+        $NTiFinalSumPkm = $standarC > 0 ? ($c / $standarC) * 100 : 0;
+        $SUMUnsurPenungjang = $standarD > 0 ? ($total_Ntd / $standarD) * 100 : 0;
 
-        $NTiFinalSum = ($b / 4.26) * 100;
-        $NTiFinalSumFormatted = number_format((float) $NTiFinalSum, 2, '.', '');
-        if ($NTiFinalSum >= 120) {
-            $OutputHasilPki = 'ISTIMEWA';
-        } elseif ($NTiFinalSum >= 110) {
-            $OutputHasilPki = 'SANGAT BAIK';
-        } elseif (
-            $NTiFinalSum >= 100
-        ) {
-            $OutputHasilPki = 'BAIK';
-        } elseif ($NTiFinalSum >= 80) {
-            $OutputHasilPki = 'CUKUP';
-        } else {
-            $OutputHasilPki = 'KURANG';
-        }
+        $totalStandar = $standarA + $standarB + $standarC + $standarD;
+        $result_PCT = $totalStandar > 0 ? (($a + $b + $c + $total_Ntd) / $totalStandar) * 100 : 0;
 
-        $NTiFinalSumPkm = ($c / 1.2) * 100;
-        $NTiFinalSumPkmFormatted = number_format((float) $NTiFinalSumPkm, 2, '.', '');
-        if ($NTiFinalSumPkm >= 120) {
-            $OutputHasilPkm = 'ISTIMEWA';
-        } elseif ($NTiFinalSumPkm >= 110) {
-            $OutputHasilPkm = 'SANGAT BAIK';
-        } elseif ($NTiFinalSumPkm >= 100) {
-            $OutputHasilPkm = 'BAIK';
-        } elseif ($NTiFinalSumPkm >= 80) {
-            $OutputHasilPkm = 'CUKUP';
-        } else {
-            $OutputHasilPkm = 'KURANG';
-        }
+        // ... (lanjutkan seperti sebelumnya untuk format dan predikat)
 
-        // Persentase Capaian terhadap standar (%) Point UNSUR PENUNJANG, Pengabdian institusi, dan pengembangan diri
-        $SUMUnsurPenungjang = ($total_Ntd / 2.17) * 100;
-        $SUMUnsurPenungjangFormatted = number_format((float) $SUMUnsurPenungjang, 2, '.', '');
+        // Format semua nilai
+        $resultArray = [
+            'a' => number_format($a, 2, '.', ''),
+            'b' => number_format($b, 2, '.', ''),
+            'c' => number_format($c, 2, '.', ''),
+            'total_Ntu' => number_format($total_Ntu, 2, '.', ''),
+            'total_Ntd' => number_format($total_Ntd, 2, '.', ''),
+            'total_Nkd' => number_format($total_Nkd, 2, '.', ''),
+            'NtAFinalSum' => number_format($NtAFinalSum, 2, '.', ''),
+            'NTiFinalSum' => number_format($NTiFinalSum, 2, '.', ''),
+            'NTiFinalSumPkm' => number_format($NTiFinalSumPkm, 2, '.', ''),
+            'SUMUnsurPenungjang' => number_format($SUMUnsurPenungjang, 2, '.', ''),
+            'SumNkt' => number_format($total_Nkd, 2, '.', ''),
+            'standar_a' => number_format($standarA, 2, '.', ''),
+            'standar_b' => number_format($standarB, 2, '.', ''),
+            'standar_c' => number_format($standarC, 2, '.', ''),
+            'standar_d' => number_format($standarD, 2, '.', ''),
+            'sum_Skt' => number_format($totalStandar, 2, '.', ''),
+            'result_PCT' => number_format($result_PCT, 2, '.', ''),
+        ];
 
         // Predikat
-        if ($SUMUnsurPenungjang >= 120) {
-            $OutputHasilUnsurPenunjang = 'ISTIMEWA';
-        } elseif ($SUMUnsurPenungjang >= 110) {
-            $OutputHasilUnsurPenunjang = 'SANGAT BAIK';
-        } elseif ($SUMUnsurPenungjang >= 100) {
-            $OutputHasilUnsurPenunjang = 'BAIK';
-        } elseif ($SUMUnsurPenungjang >= 80) {
-            $OutputHasilUnsurPenunjang = 'CUKUP';
-        } else {
-            $OutputHasilUnsurPenunjang = 'KURANG';
-        }
+        $outputHasilPDP = $this->getPredikat($NtAFinalSum);
+        $OutputHasilPki = $this->getPredikat($NTiFinalSum);
+        $OutputHasilPkm = $this->getPredikat($NTiFinalSumPkm);
+        $OutputHasilUnsurPenunjang = $this->getPredikat($SUMUnsurPenungjang);
+        $Result_predikat = $this->getPredikat($result_PCT);
 
-        // SUM Nilai kinerja total
-        $SumNkt = $a + $b + $c + $total_Ntd;
-        $SumNktFormatted = number_format((float) $SumNkt, 2, '.', '');
-
-        // SUM Nilai standar
-        $sum_Skt = 11.69 + 4.26 + 1.2 + 2.17;
-        $sum_SktFormatted = number_format((float) $sum_Skt, 2, '.', '');
-
-        // Result nilai presentasi Capaian total (%)
-        $result_PCT = ($SumNkt / $sum_Skt) * 100;
-        $result_PCTFormatted = number_format((float) $result_PCT, 2, '.', '');
-
-        // Predikat akhir
-        if ($result_PCT >= 120) {
-            $Result_predikat = 'ISTIMEWA';
-        } elseif ($result_PCT >= 110) {
-            $Result_predikat = 'SANGAT BAIK';
-        } elseif ($result_PCT >= 100) {
-            $Result_predikat = 'BAIK';
-        } elseif ($result_PCT >= 80) {
-            $Result_predikat = 'CUKUP';
-        } else {
-            $Result_predikat = 'KURANG';
-        }
-
-        $resultArray['total_Ntu'] = $total_NtuFormatted;
-        $resultArray['total_Ntd'] = $total_NtdFormatted;
-        $resultArray['total_Nkd'] = $total_NkdFormatted;
-
-        $resultArray['a'] = $aFormatted;
-        $resultArray['NtAFinalSum'] = $NtAFinalSumFormatted;
-        // predikat 1
         $resultArray['outputHasilPDP'] = $outputHasilPDP;
-
-        // predikat 2
         $resultArray['OutputHasilPki'] = $OutputHasilPki;
-        // predikat 3
         $resultArray['OutputHasilPkm'] = $OutputHasilPkm;
-        // predikat 4
         $resultArray['OutputHasilUnsurPenunjang'] = $OutputHasilUnsurPenunjang;
-        // predikat akhir
         $resultArray['Result_predikat'] = $Result_predikat;
-
-        $resultArray['b'] = $bFormatted;
-        $resultArray['NTiFinalSum'] = $NTiFinalSumFormatted;
-        $resultArray['c'] = $cFormatted;
-        $resultArray['NTiFinalSumPkm'] = $NTiFinalSumPkmFormatted;
-        $resultArray['total_Ntd'] = $total_NtdFormatted;
-        $resultArray['SUMUnsurPenungjang'] = $SUMUnsurPenungjangFormatted;
-        $resultArray['SumNkt'] = $SumNktFormatted;
-        $resultArray['sum_Skt'] = $sum_SktFormatted;
-        $resultArray['result_PCT'] = $result_PCTFormatted;
 
         $testPredikat = Raport::where('a_poin', $outputHasilPDP)
             ->where('b_poin', 'LIKE', '%' . $OutputHasilPki . '%')
@@ -870,28 +615,32 @@ class sumPointController extends Controller
             ->where('d_poin', 'LIKE', '%' . $OutputHasilUnsurPenunjang . '%')
             ->first();
 
-        if ($testPredikat) {
-            $resultArray['predikat'] = $testPredikat->predikat;
-        } else {
-            $resultArray['predikat'] = 'Predikat tidak ditemukan';
-        }
-        // The PDF generation code should be the same as before
+        $resultArray['predikat'] = $testPredikat ? $testPredikat->predikat : 'Predikat tidak ditemukan';
+
         $html = view('edit-point.hrd.raport.raportPDF', compact('users', 'resultArray', 'user_id', 'period_id', 'periodName'))->render();
 
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait'); // Set the paper size and orientation
-
-        // (Optional) You can set additional PDF options here if needed
+        $dompdf->setPaper('A4', 'portrait');
         $dompdf->getOptions()->setIsHtml5ParserEnabled(true);
-
         $dompdf->render();
 
-        // Generate and return the PDF as a response
-        $pdfName = 'raport_' . $user_id . '.pdf'; // Change the filename as needed
+        $pdfName = 'raport_' . $user_id . '.pdf';
         return new Response($dompdf->output(), 200, [
             'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="' . $pdfName . '"'
         ]);
     }
+
+    // Helper predikat tetap sama
+    private function getPredikat($nilai)
+    {
+        if ($nilai >= 120) return 'ISTIMEWA';
+        if ($nilai >= 110) return 'SANGAT BAIK';
+        if ($nilai >= 100) return 'BAIK';
+        if ($nilai >= 80) return 'CUKUP';
+        return 'KURANG';
+    }
+
+    // ... (method lain seperti RaportChartView bisa diupdate serupa jika perlu)
 }

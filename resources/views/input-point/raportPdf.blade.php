@@ -108,7 +108,7 @@
                 <td>A.</td>
                 <td>PENDIDIKAN DAN PENGAJARAN</td>
                 <td>{{ $resultArray['a'] }}</td>
-                <td>11.69</td>
+                <td>{{ $resultArray['standar_a'] ?? '0.00' }}</td>
                 <td>{{ $resultArray['NtAFinalSum'] }}</td>
                 <td>{{ $resultArray['outputHasilPDP'] }}</td>
             </tr>
@@ -116,7 +116,7 @@
                 <td>B.</td>
                 <td>PENELITIAN DAN KARYA ILMIAH</td>
                 <td>{{ $resultArray['b'] }}</td>
-                <td>4.26</td>
+                <td>{{ $resultArray['standar_b'] ?? '0.00' }}</td>
                 <td>{{ $resultArray['NTiFinalSum'] }}</td>
                 <td>{{ $resultArray['OutputHasilPki'] }}</td>
             </tr>
@@ -124,7 +124,7 @@
                 <td>C.</td>
                 <td>PENGABDIAN KEPADA MASYARAKAT</td>
                 <td>{{ $resultArray['c'] }}</td>
-                <td>1.20</td>
+                <td>{{ $resultArray['standar_c'] ?? '0.00' }}</td>
                 <td>{{ $resultArray['NTiFinalSumPkm'] }}</td>
                 <td>{{ $resultArray['OutputHasilPkm'] }}</td>
             </tr>
@@ -132,7 +132,7 @@
                 <td>D dan E</td>
                 <td>UNSUR PENUNJANG, PENGABDIAN INSTITUSI, DAN PENGEMBANGAN DIRI</td>
                 <td>{{ $resultArray['total_Ntd'] }}</td>
-                <td>2.17</td>
+                <td>{{ $resultArray['standar_d'] ?? '0.00' }}</td>
                 <td>{{ $resultArray['SUMUnsurPenungjang'] }}</td>
                 <td>{{ $resultArray['OutputHasilUnsurPenunjang'] }}</td>
             </tr>
