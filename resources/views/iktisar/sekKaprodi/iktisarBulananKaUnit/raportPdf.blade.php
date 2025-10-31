@@ -134,11 +134,11 @@
             @elseif (Auth::user()->hasRole('gizi'))
                 <p class="nama-dosen">Ir. RR. Nurul Hidayati, M. Si</p>
             @elseif (Auth::user()->hasRole('bidan'))
-                <p class="nama-dosen">Fidatul Jamila, S.ST., M.Si.</p>
+                <p class="nama-dosen">Setiya Hartiningtiyaswati, M. Keb</p>
             @elseif (Auth::user()->hasRole('manajement'))
-                <p class="nama-dosen">Drs. Setiawan SA, S.E., MM</p>
+                <p class="nama-dosen">Bambang Gunawan, Ir., M.Kes.</p>
             @elseif (Auth::user()->hasRole('akuntansi'))
-                <p class="nama-dosen">Pinky Pininta Dewi, S. Ak., MM</p>
+                <p class="nama-dosen">Agda Laily Ahadiya, S.Ak., M.M.</p>
             @endif
 
 
