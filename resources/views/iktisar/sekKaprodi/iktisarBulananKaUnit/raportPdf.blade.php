@@ -124,7 +124,45 @@
 
     <p style="text-align: right; margin-bottom:0;">Surabaya, {{ date('d F Y') }}</p>
 
-    <div class="tanda-tangan">
+    <div class="pihak1">
+        <div class="pihak kiri">
+            <p class="nama-dosen">Pejabat Penilai,</p>
+            <br>
+             @if (Auth::user()->hasRole('perawat'))
+                <p class="nama-dosen">Ariska Putri Hidayathillah, S.Kep.,Ns., M. Epid</p>
+            @elseif (Auth::user()->hasRole('gizi'))
+                <p class="nama-dosen">Ir. RR. Nurul Hidayati, M. Si</p>
+            @elseif (Auth::user()->hasRole('bidan'))
+                <p class="nama-dosen">Setiya Hartiningtiyaswati, M. Keb</p>
+            @elseif (Auth::user()->hasRole('manajement'))
+                <p class="nama-dosen">Bambang Gunawan, Ir., M.Kes.</p>
+            @elseif (Auth::user()->hasRole('akuntansi'))
+                <p class="nama-dosen">Agda Laily Ahadiya, S.Ak., M.M.</p>
+            @endif
+        </div>
+        <div class="pihak kanan">
+            <p class="nama-warek">Personel yang dinilai,</p>
+            <br>
+            <p class="nama-warek">{{ $data->name }}</p>
+        </div>
+    </div>
+
+    <div class="pihak2">
+        <div class="pihak kiri">
+            <p class="nama-dosen">Atasan Pejabat Penilai,</p>
+            <br>
+            <br>
+            <p class="nama-dosen">Annas Vijaya, S.Si., M.T.I.</p>
+        </div>
+        <div class="pihak kanan">
+            <p class="nama-warek">Pejabat yang <br> Menyetujui/Mengesahkan,</p>
+            <br>
+            <p class="nama-warek">Dr. Ahmad Hariyanto, M.Si.</p>
+        </div>
+    </div>
+
+    {{-- OLD --}}
+    {{-- <div class="tanda-tangan">
         <div class="pihak kiri">
             <p class="nama-dosen">Penilai,</p>
             <br>
@@ -159,7 +197,7 @@
             <br>
             <p>Dr. Ahmad Hariyanto, M.Si.</p>
         </div>
-    </div>
+    </div> --}}
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
