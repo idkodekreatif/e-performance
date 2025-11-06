@@ -70,6 +70,7 @@ use App\Http\Controllers\Setting\JabatanController;
 use App\Http\Controllers\Setting\Jabatan\JabatanFungsionalController;
 use App\Http\Controllers\Setting\Jabatan\JabatanStrukturalController;
 use App\Http\Controllers\Setting\Jabatan\UnitKerjaController;
+use App\Http\Controllers\Setting\Jabatan\UserJabatanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -137,7 +138,7 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
 
 
     // ----------------------------- User Jabatan Management ----------------------------------------//
-    Route::resource('jabatan', JabatanController::class);
+    // Route::resource('jabatan', JabatanController::class);
 
     Route::controller(JabatanController::class)->group(function () {
         Route::get('/users-jabatan', 'indexRoleJabatan')->name('user-jabatan.indexRoleJabatan');
@@ -175,7 +176,13 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::delete('/unit-kerja/delete/{id}', 'destroy')->name('unit-kerja.delete');
     });
 
-    // Route::get('/unit-kerja', [UnitKerjaController::class, 'index'])->name('unit_kerja.index');
+    Route::controller(UserJabatanController::class)->group(function () {
+        Route::get('/jabatan/pegawai', 'index')->name('jabatan.pegawai.index');
+        Route::get('/jabatan/pegawai/data', 'data')->name('jabatan.pegawai.data');
+        Route::get('/jabatan/pegawai/edit/{id}', 'edit')->name('jabatan.pegawai.edit');
+        Route::put('/jabatan/pegawai/update/{id}', 'update')->name('jabatan.pegawai.update');
+    });
+
 
 
     // -----------------------------Menu Controller Edit Point----------------------------------------//

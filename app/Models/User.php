@@ -6,6 +6,9 @@ use App\Models\Setting\Jabatan;
 use App\Models\Setting\Jabatan\DosenJabatanFungsional;
 use App\Models\Setting\Jabatan\DosenJabatanStruktural;
 use App\Models\Setting\Jabatan\DosenUnitKerja;
+use App\Models\Setting\Jabatan\JabatanFungsional;
+use App\Models\Setting\Jabatan\JabatanStruktural;
+use App\Models\Setting\Jabatan\UnitKerja;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -86,18 +89,33 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function jabatanFungsional()
+    public function jabfung()
     {
-        return $this->hasMany(DosenJabatanFungsional::class);
+        return $this->belongsToMany(
+            JabatanFungsional::class,
+            'dosen_jabatan_fungsional',
+            'user_id',
+            'jabatan_fungsional_id'
+        );
     }
 
-    public function jabatanStruktural()
+    public function jabstruk()
     {
-        return $this->hasMany(DosenJabatanStruktural::class);
+        return $this->belongsToMany(
+            JabatanStruktural::class,
+            'dosen_jabatan_struktural',
+            'user_id',
+            'jabatan_struktural_id'
+        );
     }
 
     public function unitKerja()
     {
-        return $this->hasMany(DosenUnitKerja::class);
+        return $this->belongsToMany(
+            UnitKerja::class,
+            'dosen_unit_kerja',
+            'user_id',
+            'unit_kerja_id'
+        );
     }
 }

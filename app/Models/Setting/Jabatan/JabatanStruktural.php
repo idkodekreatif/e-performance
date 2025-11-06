@@ -2,6 +2,7 @@
 
 namespace App\Models\Setting\Jabatan;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,8 +18,8 @@ class JabatanStruktural extends Model
         'description'
     ];
 
-    public function dosen()
+    public function users()
     {
-        return $this->hasMany(DosenJabatanStruktural::class);
+        return $this->belongsToMany(User::class, 'user_jabatan_struktural');
     }
 }

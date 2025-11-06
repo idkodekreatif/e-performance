@@ -2,6 +2,7 @@
 
 namespace App\Models\Setting\Jabatan;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,8 +22,8 @@ class JabatanFungsional extends Model
     ];
 
     // Relasi ke tabel pivot dosen_jabatan_fungsional
-    public function dosen()
+    public function users()
     {
-        return $this->hasMany(DosenJabatanFungsional::class);
+        return $this->belongsToMany(User::class, 'dosen_jabatan_fungsional');
     }
 }
