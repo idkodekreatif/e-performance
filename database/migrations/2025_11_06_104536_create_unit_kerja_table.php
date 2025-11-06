@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJabatanTable extends Migration
+class CreateUnitKerjaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateJabatanTable extends Migration
      */
     public function up()
     {
-        Schema::create('jabatan', function (Blueprint $table) {
+        Schema::create('unit_kerja', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('level')->nullable();
+            $table->string('name')->unique(); // IT, HRD, Keuangan, dll.
+            $table->string('type')->nullable(); // Akademik / Non-akademik
             $table->text('description')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateJabatanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jabatan');
+        Schema::dropIfExists('unit_kerja');
     }
 }

@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(MarketingTableSeeder::class);
         $this->call(JabatanSeeder::class);
         $this->call(KomponenPoinSeeder::class);
+        $this->call(JabatanFungsionalSeeder::class);
+        $this->call(JabatanStrukturalSeeder::class);
+        $this->call(UnitKerjaSeeder::class,);
     }
 }
