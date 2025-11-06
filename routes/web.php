@@ -165,8 +165,17 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::delete('/jabatan-struktural/delete/{id}', 'destroy')->name('jabatan-struktural.delete');
     });
 
-    // Route::get('/jabatan-struktural', [JabatanStrukturalController::class, 'index'])->name('jabatan_struktural.index');
-    Route::get('/unit-kerja', [UnitKerjaController::class, 'index'])->name('unit_kerja.index');
+    Route::controller(UnitKerjaController::class)->group(function () {
+        Route::get('/unit-kerja', 'index')->name('unit-kerja.index');
+        Route::get('/unit-kerja/data', 'data')->name('unit-kerja.data');
+        Route::get('/unit-kerja/create', 'create')->name('unit-kerja.create');
+        Route::post('/unit-kerja/store', 'store')->name('unit-kerja.store');
+        Route::get('/unit-kerja/edit/{id}', 'edit')->name('unit-kerja.edit');
+        Route::put('/unit-kerja/update/{id}', 'update')->name('unit-kerja.update');
+        Route::delete('/unit-kerja/delete/{id}', 'destroy')->name('unit-kerja.delete');
+    });
+
+    // Route::get('/unit-kerja', [UnitKerjaController::class, 'index'])->name('unit_kerja.index');
 
 
     // -----------------------------Menu Controller Edit Point----------------------------------------//

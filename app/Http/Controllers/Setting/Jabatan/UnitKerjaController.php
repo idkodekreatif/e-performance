@@ -10,13 +10,28 @@ class UnitKerjaController extends Controller
 {
     public function index()
     {
-        $data = UnitKerja::orderBy('name')->get();
-        return view('unit_kerja.index', compact('data'));
+        return view('admin.jabatan.UnitKerja.index');
+    }
+
+    // DataTables AJAX
+    public function data()
+    {
+        $query = UnitKerja::select(['id', 'name', 'type', 'description']);
+        return datatables()->of($query)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                return '
+                    <a href="/admin/unit-kerja/edit/' . $row->id . '" class="btn btn-warning btn-sm">Edit</a>
+                    <button onclick="deleteUnitKerja(' . $row->id . ')" class="btn btn-danger btn-sm">Delete</button>
+                ';
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     public function create()
     {
-        return view('unit_kerja.create');
+        return view('admin.jabatan.UnitKerja.create');
     }
 
     public function store(Request $request)
@@ -27,7 +42,7 @@ class UnitKerjaController extends Controller
             'description' => 'nullable|string'
         ]);
 
-        UnitKerja::create($request->all());
+        UnitKerja::create($request->only(['name', 'type', 'description']));
 
         return redirect()->route('unit-kerja.index')
             ->with('success', 'Unit kerja berhasil ditambahkan');
@@ -36,7 +51,7 @@ class UnitKerjaController extends Controller
     public function edit($id)
     {
         $item = UnitKerja::findOrFail($id);
-        return view('unit_kerja.edit', compact('item'));
+        return view('admin.jabatan.UnitKerja.edit', compact('item'));
     }
 
     public function update(Request $request, $id)
@@ -49,7 +64,7 @@ class UnitKerjaController extends Controller
             'description' => 'nullable|string'
         ]);
 
-        $item->update($request->all());
+        $item->update($request->only(['name', 'type', 'description']));
 
         return redirect()->route('unit-kerja.index')
             ->with('success', 'Unit kerja berhasil diperbarui');
@@ -59,7 +74,9 @@ class UnitKerjaController extends Controller
     {
         UnitKerja::findOrFail($id)->delete();
 
-        return redirect()->route('unit-kerja.index')
-            ->with('success', 'Unit kerja berhasil dihapus');
+        return response()->json([
+            'success' => true,
+            'message' => 'Unit kerja berhasil dihapus'
+        ]);
     }
 }
