@@ -287,6 +287,7 @@
                                 <li><a href="{{ route('users.index') }}">User Management</a></li>
                                 <li><a href="{{ route('jabatan.index') }}">Jabatan</a></li>
                                 <li><a href="{{ route('user-jabatan.indexRoleJabatan') }}">Jabatan Pegawai</a></li>
+                                <li><a href="{{ route('jabfung.index') }}">Jabatan Fungsional</a></li>
                                 @role('it|superuser')
                                     <li><a href="{{ route('role.index') }}">User Role</a></li>
                                     <li><a href="{{ route('permission.index') }}">User Permission</a></li>

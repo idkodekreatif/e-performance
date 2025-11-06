@@ -67,6 +67,9 @@ use App\Http\Controllers\UserManagement\profileController;
 use App\Http\Controllers\UserManagement\RoleController;
 use App\Http\Controllers\UserManagement\UserController;
 use App\Http\Controllers\Setting\JabatanController;
+use App\Http\Controllers\Setting\Jabatan\JabatanFungsionalController;
+use App\Http\Controllers\Setting\Jabatan\JabatanStrukturalController;
+use App\Http\Controllers\Setting\Jabatan\UnitKerjaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -141,6 +144,21 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::get('/user-jabatan/{id}/edit', 'editRoleJabatan')->name('user-jabatan.editRoleJabatan');
         Route::put('/user-jabatan/{id}', 'updateRoleJabatan')->name('user-jabatan.updateRoleJabatan');
     });
+
+    Route::controller(JabatanFungsionalController::class)->group(function () {
+        Route::get('/jabfung', 'index')->name('jabfung.index');
+        Route::get('/jabfung/data', 'data')->name('jabfung.data');
+        Route::get('/jabfung/create', 'create')->name('jabfung.create');
+        Route::get('/jabfung/edit/{id}', 'edit')->name('jabfung.edit');
+        Route::post('/jabfung/store', 'store')->name('jabfung.store');
+        Route::put('/jabfung/update/{id}', 'update')->name('jabfung.update');
+        Route::delete('/jabfung/delete/{id}', 'destroy')->name('jabfung.delete');
+    });
+
+    // Route::get('/jabatan-fungsional', [JabatanFungsionalController::class, 'index'])->name('jabatan_fungsional.index');
+    Route::get('/jabatan-struktural', [JabatanStrukturalController::class, 'index'])->name('jabatan_struktural.index');
+    Route::get('/unit-kerja', [UnitKerjaController::class, 'index'])->name('unit_kerja.index');
+
 
     // -----------------------------Menu Controller Edit Point----------------------------------------//
     Route::controller(MenuController::class)->group(function () {
