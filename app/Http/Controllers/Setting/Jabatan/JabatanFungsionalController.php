@@ -31,12 +31,16 @@ class JabatanFungsionalController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:jabatan_fungsional,name',
+            'golongan_min' => 'nullable|string',
+            'golongan_max' => 'nullable|string',
+            'angka_kredit_min' => 'required|numeric',
+            'angka_kredit_next' => 'required|numeric',
             'description' => 'nullable|string'
         ]);
 
-        JabatanFungsional::create($request->only(['name', 'description']));
+        JabatanFungsional::create($request->all());
 
-        return redirect()->route('jabfung.index')->with('success', 'Jabatan fungsional berhasil ditambahkan.');
+        return redirect()->route('jabfung.index')->with('success', 'Jabatan Fungsional berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -51,18 +55,22 @@ class JabatanFungsionalController extends Controller
 
         $request->validate([
             'name' => 'required|unique:jabatan_fungsional,name,' . $id,
+            'golongan_min' => 'nullable|string',
+            'golongan_max' => 'nullable|string',
+            'angka_kredit_min' => 'required|numeric',
+            'angka_kredit_next' => 'required|numeric',
             'description' => 'nullable|string'
         ]);
 
-        $item->update($request->only(['name', 'description']));
+        $item->update($request->all());
 
-        return redirect()->route('jabfung.index')->with('success', 'Jabatan fungsional berhasil diperbarui.');
+        return redirect()->route('jabfung.index')->with('success', 'Jabatan Fungsional berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
         JabatanFungsional::findOrFail($id)->delete();
 
-        return response()->json(['success' => true, 'message' => 'Jabatan fungsional berhasil dihapus']);
+        return response()->json(['success' => true, 'message' => 'Jabatan Fungsional berhasil dihapus']);
     }
 }

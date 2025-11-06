@@ -15,11 +15,13 @@
                 <thead>
                     <tr>
                         <th>Nama Jabatan</th>
+                        <th>Golongan</th>
+                        <th>Angka Kredit</th>
                         <th>Deskripsi</th>
                         <th width="130px">Aksi</th>
                     </tr>
                 </thead>
-                <tbody></tbody> <!-- DataTables via AJAX -->
+                <tbody></tbody>
             </table>
         </div>
     </div>
@@ -31,40 +33,31 @@
         <script>
             $(document).ready(function () {
                 $('#jabfungTable').DataTable({
-                    processing: true,
-                    serverSide: false, // karena data sedikit, tidak perlu serverSide true
-                    ajax: {
-                        url: "{{ route('jabfung.data') }}",
-                        type: "GET"
-                    },
+                    ajax: "{{ route('jabfung.data') }}",
                     columns: [
                         { data: 'name' },
-                        { data: 'description' },
+                        {
+                            data: null,
+                            render: row => `${row.golongan_min ?? '-'} - ${row.golongan_max ?? '-'}`
+                        },
+                        {
+                            data: null,
+                            render: row => `${row.angka_kredit_min} → ${row.angka_kredit_next}`
+                        },
+                        { data: 'description', defaultContent: '-' },
                         {
                             data: 'id',
-                            render: function (data) {
-                                return `
-                                    <a href="/admin/jabfung/edit/${data}" class="btn btn-warning btn-sm">Edit</a>
-                                    <button onclick="deleteJabfung(${data})" class="btn btn-danger btn-sm">Delete</button>
-                                `;
-                            }
+                            render: id => `
+                                <a href="/admin/jabfung/edit/${id}" class="btn btn-warning btn-sm">Edit</a>
+                                <button onclick="deleteJabfung(${id})" class="btn btn-danger btn-sm">Delete</button>
+                            `
                         }
-                    ],
-                    language: {
-                        search: "Cari:",
-                        lengthMenu: "Tampilkan _MENU_ data",
-                        zeroRecords: "Data tidak ditemukan",
-                        info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-                        paginate: {
-                            next: "›",
-                            previous: "‹"
-                        }
-                    }
+                    ]
                 });
             });
 
             function deleteJabfung(id) {
-                if (confirm("Yakin ingin menghapus jabatan fungsional ini?")) {
+                if (confirm("Yakin ingin menghapus?")) {
                     fetch(`/admin/jabfung/delete/${id}`, {
                         method: 'DELETE',
                         headers: {
@@ -75,9 +68,8 @@
                         .then(res => res.json())
                         .then(data => {
                             alert(data.message);
-                            $('#jabfungTable').DataTable().ajax.reload(); // refresh tanpa reload page
-                        })
-                        .catch(() => alert('Terjadi kesalahan!'));
+                            $('#jabfungTable').DataTable().ajax.reload();
+                        });
                 }
             }
         </script>
