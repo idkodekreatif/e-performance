@@ -41,7 +41,33 @@ class UserController extends Controller
     {
         if ($request->ajax()) {
             $data = User::whereNotIn('name', [
-                'superuser', 'manajer', 'it', 'hrd', 'lppm', 'warek2', 'upt', 'baak', 'keuangan', 'lpm', 'risbang', 'gizi', 'perawat', 'bidan', 'manajemen', 'akuntansi', 'warek1', 'rektor', 'ypsdmit'
+                'superuser',
+                'manajer',
+                'it',
+                'hrd',
+                'lppm',
+                'warek2',
+                'upt',
+                'baak',
+                'keuangan',
+                'lpm',
+                'risbang',
+                'gizi',
+                'perawat',
+                'bidan',
+                'manajemen',
+                'akuntansi',
+                'warek1',
+                'rektor',
+                'ypsdmit',
+                'dosen',
+                'tendik',
+                'ka. Sub. Baak',
+                'non JAD',
+                'Asisten Ahli',
+                'Lektor',
+                'Lektor Kepala',
+                'Guru Besar',
             ])->get();
 
             return Datatables::of($data)
