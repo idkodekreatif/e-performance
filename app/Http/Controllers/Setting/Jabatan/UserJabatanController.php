@@ -28,15 +28,22 @@ class UserJabatanController extends Controller
         $users = User::with(['jabfung', 'jabstruk', 'unitKerja'])->orderBy('name');
 
         return DataTables::of($users)
-            ->addColumn('jabfung', fn($row) => $row->jabfung ?? [])
-            ->addColumn('jabstruk', fn($row) => $row->jabstruk ?? [])
-            ->addColumn('unitKerja', fn($row) => $row->unitKerja ?? [])
+            ->addColumn('jabfung', function ($row) {
+                return $row->jabfung->map(fn($j) => ['name' => $j->name])->toArray();
+            })
+            ->addColumn('jabstruk', function ($row) {
+                return $row->jabstruk->map(fn($j) => ['name' => $j->name])->toArray();
+            })
+            ->addColumn('unitKerja', function ($row) {
+                return $row->unitKerja->map(fn($u) => ['name' => $u->name])->toArray();
+            })
             ->addColumn('action', function ($row) {
                 return '<a href="' . route('jabatan.pegawai.edit', $row->id) . '" class="btn btn-warning btn-sm">Edit</a>';
             })
             ->rawColumns(['action'])
             ->make(true);
     }
+
 
     /**
      * Halaman edit jabatan / unit kerja untuk user tertentu
