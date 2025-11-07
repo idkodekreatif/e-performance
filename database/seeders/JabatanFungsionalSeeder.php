@@ -17,7 +17,7 @@ class JabatanFungsionalSeeder extends Seeder
     {
         DB::table('jabatan_fungsional')->insert([
             [
-                'name' => 'Non-Jab',
+                'name' => 'Non-JAD',
                 'description' => 'Belum memiliki jabatan fungsional atau bukan jabatan fungsional dosen.',
                 'created_at' => now(),
                 'updated_at' => now()

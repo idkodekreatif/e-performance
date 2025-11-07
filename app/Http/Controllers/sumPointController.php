@@ -22,34 +22,41 @@ class sumPointController extends Controller
      */
     private function getStandarKomponen($user_id, $komponen_nama)
     {
-        $user = User::with('jabatan')->find($user_id);
-        if (!$user || !$user->jabatan) {
-            return KomponenPoin::where('nama_komponen', $komponen_nama)->value('Non-JAD') ?? 0;
+        $user = User::with('jabfung')->find($user_id);
+
+        // Jika user tidak punya jabfung, gunakan Non-JAD
+        if (!$user || $user->jabfung->isEmpty()) {
+            return KomponenPoin::where('nama_komponen', $komponen_nama)
+                ->value('Non-JAD') ?? 0;
         }
 
-        $jabatanName = strtolower(trim($user->jabatan->name));
+        // Ambil semua nama jabfung milik user
+        $jabfungList = $user->jabfung->pluck('name')->toArray();
+        $jabfungLower = array_map('strtolower', $jabfungList);
 
-        switch ($jabatanName) {
-            case 'asisten ahli':
-                $kolomJabatan = 'AA';
+        // Daftar jabfung dosen valid
+        $jabatanDosen = [
+            'non-jad'       => 'Non-JAD',
+            'asisten ahli'  => 'AA',
+            'lektor'        => 'Lektor',
+            'lektor kepala' => 'LK',
+            'guru besar'    => 'GB',
+        ];
+
+        // Tentukan kolom jabfung yang sesuai
+        $kolomJabatan = 'Non-JAD'; // default
+
+        foreach ($jabfungLower as $jf) {
+            if (array_key_exists($jf, $jabatanDosen)) {
+                $kolomJabatan = $jabatanDosen[$jf];
                 break;
-            case 'lektor':
-                $kolomJabatan = 'Lektor';
-                break;
-            case 'lektor kepala':
-                $kolomJabatan = 'LK';
-                break;
-            case 'guru besar':
-            case 'profesor': // opsional
-                $kolomJabatan = 'GB';
-                break;
-            default:
-                $kolomJabatan = 'Non-JAD';
-                break;
+            }
         }
 
-        return KomponenPoin::where('nama_komponen', $komponen_nama)->value($kolomJabatan) ?? 0;
+        return KomponenPoin::where('nama_komponen', $komponen_nama)
+            ->value($kolomJabatan) ?? 0;
     }
+
 
     /**
      * raportView

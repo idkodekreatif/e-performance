@@ -23,51 +23,77 @@ class PointBController extends Controller
     {
         $user = Auth::user();
 
-        // Cek apakah ada periode aktif
+        // 1. Cek periode aktif
         $activePeriod = Period::where('is_closed', 1)
-            ->where('start_date', '<=', Carbon::now())
-            ->where('end_date', '>=', Carbon::now())
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
             ->first();
 
         if (!$activePeriod) {
             return view('menu.disabled');
         }
 
-        // Cek apakah user punya jabatan dan termasuk golongan dosen
-        if ($user->jabatan) {
-            $jabatanName = strtolower($user->jabatan->name);
-            $dosenJabatan = ['asisten ahli', 'lektor', 'lektor kepala', 'guru besar', 'profesor'];
+        // 2. Ambil semua jabatan fungsional user dari pivot (many-to-many)
+        $jabfungList = $user->jabfung()->pluck('name')->toArray();
 
-            if (in_array($jabatanName, $dosenJabatan)) {
-                $viewName = str_replace(' ', '-', $jabatanName);
+        // 3. Daftar jabfung yang masuk kategori dosen
+        $jabatanDosen = ['Non-JAD', 'Asisten Ahli', 'Lektor', 'Lektor Kepala', 'Guru Besar'];
 
-                // Cek apakah data PointB sudah ada untuk periode aktif
-                $resultData = PointB::where('new_user_id', $user->id)
-                    ->where('period_id', $activePeriod->id)
-                    ->first();
-
-                if ($resultData) {
-                    return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
-                }
-
-                // Tampilkan form input khusus jabatan dosen
-                return view("input-point.point-b.dosen.$viewName", ['user' => $user]);
+        // 4. Cek apakah salah satu jabfung user adalah dosen
+        $selectedJabfung = null;
+        foreach ($jabfungList as $jf) {
+            if (in_array($jf, $jabatanDosen)) {   // tanpa strtolower, harus match persis
+                $selectedJabfung = $jf;
+                break;
             }
         }
 
-        // Jika bukan dosen, cek juga data PointB
-        $resultData = PointB::where('new_user_id', $user->id)
+        // 5. Jika user termasuk kategori dosen berdasarkan jabfung
+        if ($selectedJabfung) {
+
+            // ubah ke format nama file view
+            $viewName = str_replace(' ', '-', $selectedJabfung);
+            // ex: Lektor Kepala → Lektor-Kepala.blade.php
+
+            // 6. Cek apakah sudah pernah input Point B
+            $existingData = PointB::where('new_user_id', $user->id)
+                ->where('period_id', $activePeriod->id)
+                ->first();
+
+            if ($existingData) {
+                return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
+            }
+
+            // 7. Tentukan view path
+            $viewPath = "input-point.point-b.dosen.$viewName";
+
+            // 8. Safe fallback: jika view tidak ditemukan, arahkan ke default dosen
+            if (!view()->exists($viewPath)) {
+                $viewPath = "input-point.point-b.dosen.default";
+            }
+
+            return view($viewPath, [
+                'user' => $user,
+                'jabfungList' => $jabfungList,
+                'editMode' => false,
+            ]);
+        }
+
+        // 9. Jika bukan dosen (Tendik / Staff)
+        $existingData = PointB::where('new_user_id', $user->id)
             ->where('period_id', $activePeriod->id)
             ->first();
 
-        if ($resultData) {
+        if ($existingData) {
             return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
         }
 
-        // Form default (non-dosen)
-        return view('input-point.point-B');
+        return view('input-point.point-B', [
+            'user' => $user,
+            'jabfungList' => $jabfungList,
+            'editMode' => false,
+        ]);
     }
-
 
 
     /**
@@ -469,7 +495,7 @@ class PointBController extends Controller
     {
         $user = Auth::user();
 
-        // Cek apakah periode aktif
+        // 1. Cek periode aktif
         $activePeriod = Period::where('is_closed', 1)
             ->where('start_date', '<=', Carbon::now())
             ->where('end_date', '>=', Carbon::now())
@@ -479,38 +505,58 @@ class PointBController extends Controller
             return view('menu.disabled');
         }
 
-        // Ambil data PointB untuk user dan periode aktif
-        $pointBData = PointB::where('new_user_id', $PointId)
+        // 2. Ambil data Point B berdasarkan user & periode
+        $data = PointB::where('new_user_id', $PointId)
             ->where('period_id', $activePeriod->id)
             ->first();
 
-        if (!$pointBData) {
-            // Jika data tidak ditemukan, redirect ke create
+        if (!$data) {
             return redirect()->route('create.Point-B');
         }
 
-        // Cek jabatan user (untuk menampilkan view sesuai jabatan dosen)
-        if ($user->jabatan) {
-            $jabatanName = strtolower($user->jabatan->name);
-            $dosenJabatan = ['asisten ahli', 'lektor', 'lektor kepala', 'guru besar', 'profesor'];
+        // 3. Ambil seluruh jabatan fungsional user
+        $jabfungList = $user->jabfung()->pluck('name')->toArray();
 
-            if (in_array($jabatanName, $dosenJabatan)) {
-                $viewName = str_replace(' ', '-', $jabatanName);
-                return view("edit-point.point-b.dosen.$viewName", [
-                    'user' => $user,
-                    'data' => $pointBData,
-                    'editMode' => true, // bisa untuk membedakan mode edit di view
-                ]);
+        // 4. Daftar jabatan fungsional dosen (HARUS lowercase agar match)
+        $jabatanDosen = ['non-jad', 'asisten ahli', 'lektor', 'lektor kepala', 'guru besar'];
+
+        // 5. Tentukan jabfung dosen yang dimiliki user
+        $selectedJabfung = null;
+        foreach ($jabfungList as $jf) {
+            $jfLower = strtolower($jf);
+            if (in_array($jfLower, $jabatanDosen)) {
+                $selectedJabfung = $jfLower;
+                break;
             }
         }
 
-        // View default untuk non-dosen
-        return view('input-point.point-B', [
+        // 6. Jika user adalah dosen → arahkan ke view sesuai jabfung
+        if ($selectedJabfung) {
+            $viewName = str_replace(' ', '-', $selectedJabfung); // contoh: "guru besar" → "guru-besar"
+            $viewPath = "edit-point.point-b.dosen.$viewName";
+
+            // 7. Safe fallback jika view belum tersedia
+            if (!view()->exists($viewPath)) {
+                $viewPath = "edit-point.point-b.dosen.default";
+            }
+
+            return view($viewPath, [
+                'user' => $user,
+                'data' => $data,
+                'jabfungList' => $jabfungList,
+                'editMode' => true,
+            ]);
+        }
+
+        // 8. Jika bukan dosen → arahkan ke view umum
+        return view('edit-point.EditPointB', [
             'user' => $user,
-            'data' => $pointBData,
-            'editMode' => true
+            'data' => $data,
+            'jabfungList' => $jabfungList,
+            'editMode' => true,
         ]);
     }
+
 
 
     /**
