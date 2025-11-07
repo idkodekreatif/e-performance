@@ -123,6 +123,15 @@ class sumPointController extends Controller
             ]);
         }
 
+        // === Tambahkan ini ===
+        $jabfung = User::find($user_id)?->jabfung()->get() ?? collect();
+        $jabfungName = $jabfung->isNotEmpty()
+            ? $jabfung->pluck('name')->join(', ')
+            : '-';
+        // $jabstruk = User::find($user_id)?->jabstruk()->get() ?? collect();
+        // $unitKerja = User::find($user_id)?->unitKerja()->get() ?? collect();
+
+
         // Ambil standar komponen berdasarkan jabatan user
         $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');
         $standarB = $this->getStandarKomponen($user_id, 'Penelitian');
@@ -187,6 +196,7 @@ class sumPointController extends Controller
                 'resultArray' => $resultArray,
                 'periods' => $periods,
                 'selectedPeriodId' => $period_id,
+                'jabfungName' => $jabfungName,
             ]);
 
             $pdf = Pdf::loadHtml($pdfView->render())
@@ -196,7 +206,7 @@ class sumPointController extends Controller
             return $pdf->download('raportDosen-' . ($users->name ?? 'user') . '.pdf');
         }
 
-        return view('input-point.raport', compact('users', 'resultArray', 'periods'))
+        return view('input-point.raport', compact('users', 'resultArray', 'periods', 'jabfung', 'jabfungName'))
             ->with('selectedPeriodId', $period_id);
     }
 
@@ -442,6 +452,11 @@ class sumPointController extends Controller
             return back()->with('error', 'Data dosen tidak ditemukan.');
         }
 
+        $userModel = User::with('jabfung')->find($user_id);
+        $jabfungName = ($userModel && $userModel->jabfung->isNotEmpty())
+            ? $userModel->jabfung->pluck('name')->join(', ')
+            : 'NON-JAD';
+
         // Ambil standar dinamis
         $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');
         $standarB = $this->getStandarKomponen($user_id, 'Penelitian');
@@ -487,6 +502,7 @@ class sumPointController extends Controller
             ->first();
 
         $resultArray = [
+            'jabfung' => $jabfungName,
             'a' => number_format($a, 2),
             'b' => number_format($b, 2),
             'c' => number_format($c, 2),
@@ -554,6 +570,11 @@ class sumPointController extends Controller
             abort(404, 'User not found');
         }
 
+        $userModel = User::with('jabfung')->find($user_id);
+        $jabfungName = ($userModel && $userModel->jabfung->isNotEmpty())
+            ? $userModel->jabfung->pluck('name')->join(', ')
+            : 'Non-JAD';
+
         // Ambil standar dinamis
         $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');
         $standarB = $this->getStandarKomponen($user_id, 'Penelitian');
@@ -581,6 +602,7 @@ class sumPointController extends Controller
 
         // Format semua nilai
         $resultArray = [
+            'jabfung' => $jabfungName,
             'a' => number_format($a, 2, '.', ''),
             'b' => number_format($b, 2, '.', ''),
             'c' => number_format($c, 2, '.', ''),

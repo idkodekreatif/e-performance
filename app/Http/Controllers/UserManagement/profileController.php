@@ -21,10 +21,14 @@ class profileController extends Controller
      */
     public function index()
     {
-        $data = Profile::findOrFail(Auth::id());
+        $user = User::with(['jabfung', 'jabstruk', 'unitKerja'])->findOrFail(Auth::id());
 
-        // dd($data);
-        return view('users.profile.index', compact('data'));
+        return view('users.profile.index', [
+            'user'      => $user,
+            'jabfung'   => $user->jabfung,
+            'jabstruk'  => $user->jabstruk,
+            'unitKerja' => $user->unitKerja,
+        ]);
     }
 
     /**

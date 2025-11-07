@@ -55,6 +55,16 @@
 
                     {{-- Tabel Ringkasan --}}
                     <table class="table table-bordered text-center table-sm mb-4">
+                            <tr>
+        <td>Jabatan Fungsional</td>
+        <td>
+            @forelse ($jabfung as $jf)
+                {{ $jf->name }}@if (!$loop->last), @endif
+            @empty
+                -
+            @endforelse
+        </td>
+    </tr>
                         <tr>
                             <td>Nilai Total UNSUR UTAMA</td>
                             <td>{{ $resultArray['total_Ntu'] ?? '-' }}</td>

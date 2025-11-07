@@ -52,6 +52,10 @@
                     {{-- Nilai Total --}}
                     <table class="table table-bordered border-2 table-sm text-center table-hover">
                         <tr>
+                            <td>JABATAN FUNGSIONAL</td>
+                            <td>{{ $resultArray['jabfung'] }}</td>
+                        </tr>
+                        <tr>
                             <td>Nilai Total UNSUR UTAMA</td>
                             <td>{{ $resultArray['total_Ntu'] }}</td>
                         </tr>
