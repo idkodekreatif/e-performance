@@ -71,6 +71,7 @@ use App\Http\Controllers\Setting\Jabatan\JabatanFungsionalController;
 use App\Http\Controllers\Setting\Jabatan\JabatanStrukturalController;
 use App\Http\Controllers\Setting\Jabatan\UnitKerjaController;
 use App\Http\Controllers\Setting\Jabatan\UserJabatanController;
+use App\Http\Controllers\Setting\Jabatan\UserJabatanHistoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -183,7 +184,29 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::put('/jabatan/pegawai/update/{id}', 'update')->name('jabatan.pegawai.update');
     });
 
+    // History CRUD endpoints (AJAX) per user
+    Route::controller(UserJabatanHistoryController::class)->prefix('jabatan/pegawai')->name('jabatan.pegawai.')->group(function () {
+        // Fungsional
+        Route::get('/{user}/fungsional/data', 'fungsionalData')->name('fungsional.data');
+        Route::post('/{user}/fungsional/store', 'fungsionalStore')->name('fungsional.store');
+        Route::get('/{user}/fungsional/{id}/edit', 'fungsionalEdit')->name('fungsional.edit');
+        Route::put('/{user}/fungsional/{id}', 'fungsionalUpdate')->name('fungsional.update');
+        Route::delete('/{user}/fungsional/{id}', 'fungsionalDestroy')->name('fungsional.delete');
 
+        // Struktural
+        Route::get('/{user}/struktural/data', 'strukturalData')->name('struktural.data');
+        Route::post('/{user}/struktural/store', 'strukturalStore')->name('struktural.store');
+        Route::get('/{user}/struktural/{id}/edit', 'strukturalEdit')->name('struktural.edit');
+        Route::put('/{user}/struktural/{id}', 'strukturalUpdate')->name('struktural.update');
+        Route::delete('/{user}/struktural/{id}', 'strukturalDestroy')->name('struktural.delete');
+
+        // Unit Kerja
+        Route::get('/{user}/unit/data', 'unitData')->name('unit.data');
+        Route::post('/{user}/unit/store', 'unitStore')->name('unit.store');
+        Route::get('/{user}/unit/{id}/edit', 'unitEdit')->name('unit.edit');
+        Route::put('/{user}/unit/{id}', 'unitUpdate')->name('unit.update');
+        Route::delete('/{user}/unit/{id}', 'unitDestroy')->name('unit.delete');
+    });
 
     // -----------------------------Menu Controller Edit Point----------------------------------------//
     Route::controller(MenuController::class)->group(function () {
