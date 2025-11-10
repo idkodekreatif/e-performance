@@ -455,7 +455,7 @@ class sumPointController extends Controller
         $userModel = User::with('jabfung')->find($user_id);
         $jabfungName = ($userModel && $userModel->jabfung->isNotEmpty())
             ? $userModel->jabfung->pluck('name')->join(', ')
-            : 'NON-JAD';
+            : 'Non-JAD';
 
         // Ambil standar dinamis
         $standarA = $this->getStandarKomponen($user_id, 'Pendidikan');

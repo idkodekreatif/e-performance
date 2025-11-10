@@ -61,7 +61,7 @@
             @forelse ($jabfung as $jf)
                 {{ $jf->name }}@if (!$loop->last), @endif
             @empty
-                -
+                Non-JAD
             @endforelse
         </td>
     </tr>
