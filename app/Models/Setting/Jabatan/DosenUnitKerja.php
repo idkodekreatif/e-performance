@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models\Setting\Jabatan;
+
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class DosenUnitKerja extends Model
+{
+    use HasFactory;
+
+    protected $table = 'dosen_unit_kerja';
+
+    protected $fillable = [
+        'user_id',
+        'unit_kerja_id',
+        'tmt_mulai',
+        'tmt_selesai'
+    ];
+
+    public function dosen()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function unitKerja()
+    {
+        return $this->belongsTo(UnitKerja::class);
+    }
+}

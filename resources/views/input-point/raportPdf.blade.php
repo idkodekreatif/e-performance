@@ -79,6 +79,10 @@
 
     <table style="text-align:center;">
         <tr>
+            <td>JABATAN FUNGSIONAL</td>
+            <td>{{ $jabfungName }}</td>
+        </tr>
+        <tr>
             <td>Nilai Total UNSUR UTAMA</td>
             <td>{{ $resultArray['total_Ntu'] }}</td>
         </tr>

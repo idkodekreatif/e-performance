@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJabatanTable extends Migration
+class CreateJabatanStrukturalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateJabatanTable extends Migration
      */
     public function up()
     {
-        Schema::create('jabatan', function (Blueprint $table) {
+        Schema::create('jabatan_struktural', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('level')->nullable();
+            $table->string('name')->unique();
+            $table->string('level')->nullable(); // universitas / fakultas / prodi / unit
             $table->text('description')->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateJabatanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jabatan');
+        Schema::dropIfExists('jabatan_struktural');
     }
 }
