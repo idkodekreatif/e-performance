@@ -69,7 +69,7 @@ class PointBController extends Controller
 
             // 8. Safe fallback: jika view tidak ditemukan, arahkan ke default dosen
             if (!view()->exists($viewPath)) {
-                $viewPath = "input-point.point-b.dosen.default";
+                $viewPath = "input-point.Point-B";
             }
 
             return view($viewPath, [
