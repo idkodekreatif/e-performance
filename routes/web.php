@@ -157,15 +157,35 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::delete('/jabfung/delete/{id}', 'destroy')->name('jabfung.delete');
     });
 
-    Route::controller(JabatanStrukturalController::class)->group(function () {
-        Route::get('/jabatan-struktural', 'index')->name('jabatan-struktural.index');
-        Route::get('/jabatan-struktural/data', 'data')->name('jabatan-struktural.data');
-        Route::get('/jabatan-struktural/create', 'create')->name('jabatan-struktural.create');
-        Route::post('/jabatan-struktural/store', 'store')->name('jabatan-struktural.store');
-        Route::get('/jabatan-struktural/edit/{id}', 'edit')->name('jabatan-struktural.edit');
-        Route::put('/jabatan-struktural/update/{id}', 'update')->name('jabatan-struktural.update');
-        Route::delete('/jabatan-struktural/delete/{id}', 'destroy')->name('jabatan-struktural.delete');
-    });
+    // Route::controller(JabatanStrukturalController::class)->group(function () {
+    //     Route::get('/jabatan-struktural', 'index')->name('jabatan-struktural.index');
+    //     Route::get('/jabatan-struktural/data', 'data')->name('jabatan-struktural.data');
+    //     Route::get('/jabatan-struktural/create', 'create')->name('jabatan-struktural.create');
+    //     Route::post('/jabatan-struktural/store', 'store')->name('jabatan-struktural.store');
+    //     Route::get('/jabatan-struktural/edit/{id}', 'edit')->name('jabatan-struktural.edit');
+    //     Route::put('/jabatan-struktural/update/{id}', 'update')->name('jabatan-struktural.update');
+    //     Route::delete('/jabatan-struktural/delete/{id}', 'destroy')->name('jabatan-struktural.delete');
+    // });
+    Route::get('jabatan-struktural', [JabatanStrukturalController::class, 'index'])
+        ->name('jabatan-struktural.index');
+
+    Route::get('jabatan-struktural/data', [JabatanStrukturalController::class, 'data'])
+        ->name('jabatan-struktural.data');
+
+    Route::get('jabatan-struktural/create', [JabatanStrukturalController::class, 'create'])
+        ->name('jabatan-struktural.create');
+
+    Route::post('jabatan-struktural/store', [JabatanStrukturalController::class, 'store'])
+        ->name('jabatan-struktural.store');
+
+    Route::get('jabatan-struktural/edit/{id}', [JabatanStrukturalController::class, 'edit'])
+        ->name('jabatan-struktural.edit');
+
+    Route::put('jabatan-struktural/update/{id}', [JabatanStrukturalController::class, 'update'])
+        ->name('jabatan-struktural.update');
+
+    Route::delete('jabatan-struktural/delete/{id}', [JabatanStrukturalController::class, 'delete'])
+        ->name('jabatan-struktural.delete');
 
     Route::controller(UnitKerjaController::class)->group(function () {
         Route::get('/unit-kerja', 'index')->name('unit-kerja.index');
