@@ -15,11 +15,13 @@ class JabatanStruktural extends Model
     protected $fillable = [
         'name',
         'level',
-        'description'
+        'description',
     ];
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_jabatan_struktural');
+        return $this->belongsToMany(User::class, 'user_jabatan_struktural')
+            ->withPivot(['tmt_mulai', 'tmt_selesai', 'status'])
+            ->withTimestamps();
     }
 }

@@ -6,26 +6,33 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DosenUnitKerja extends Model
+class UserJabatanFungsional extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_unit_kerja';
+    protected $table = 'user_jabatan_fungsional';
 
     protected $fillable = [
         'user_id',
+        'jabatan_fungsional_id',
         'unit_kerja_id',
         'tmt_mulai',
-        'tmt_selesai'
+        'tmt_selesai',
+        'status',
     ];
 
-    public function dosen()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function jabatanFungsional()
+    {
+        return $this->belongsTo(JabatanFungsional::class, 'jabatan_fungsional_id');
+    }
+
     public function unitKerja()
     {
-        return $this->belongsTo(UnitKerja::class);
+        return $this->belongsTo(UnitKerja::class, 'unit_kerja_id');
     }
 }

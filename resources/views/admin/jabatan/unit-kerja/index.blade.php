@@ -20,7 +20,7 @@
                         <th width="130px">Aksi</th>
                     </tr>
                 </thead>
-                <tbody></tbody> <!-- DataTables via AJAX -->
+                <tbody></tbody>
             </table>
         </div>
     </div>
@@ -42,14 +42,12 @@
                         { data: 'name' },
                         { data: 'type', defaultContent: '-' },
                         { data: 'description', defaultContent: '-' },
+
+                        // ✔ Kolom Aksi lebih fleksibel (pakai Blade Component dari controller)
                         {
-                            data: 'id',
-                            render: function (data) {
-                                return `
-                                    <a href="/admin/unit-kerja/edit/${data}" class="btn btn-warning btn-sm">Edit</a>
-                                    <button onclick="deleteUnitKerja(${data})" class="btn btn-danger btn-sm">Delete</button>
-                                `;
-                            }
+                            data: 'action',
+                            orderable: false,
+                            searchable: false
                         }
                     ],
                     language: {
@@ -57,27 +55,31 @@
                         lengthMenu: "Tampilkan _MENU_ data",
                         zeroRecords: "Data tidak ditemukan",
                         info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-                        paginate: { next: "›", previous: "‹" }
+                        paginate: {
+                            next: "›",
+                            previous: "‹"
+                        }
                     }
                 });
             });
 
+            // ✔ fungsi delete yang sudah disesuaikan dengan controller
             function deleteUnitKerja(id) {
-                if (confirm("Yakin ingin menghapus unit kerja ini?")) {
-                    fetch(`/admin/unit-kerja/delete/${id}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                            'Accept': 'application/json'
-                        }
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            alert(data.message || 'Unit kerja berhasil dihapus');
-                            $('#unitKerjaTable').DataTable().ajax.reload();
-                        })
-                        .catch(() => alert('Terjadi kesalahan!'));
-                }
+                if (!confirm("Yakin ingin menghapus unit kerja ini?")) return;
+
+                fetch("{{ url('/admin/unit-kerja/delete') }}/" + id, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message || 'Unit kerja berhasil dihapus');
+                    $('#unitKerjaTable').DataTable().ajax.reload();
+                })
+                .catch(() => alert('Terjadi kesalahan saat menghapus data'));
             }
         </script>
     @endpush
