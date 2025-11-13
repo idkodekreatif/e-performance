@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDosenJabatanStrukturalTable extends Migration
+class CreateUserJabatanStrukturalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDosenJabatanStrukturalTable extends Migration
      */
     public function up()
     {
-        Schema::create('dosen_jabatan_struktural', function (Blueprint $table) {
+        Schema::create('user_jabatan_struktural', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('jabatan_struktural_id')->constrained('jabatan_struktural')->onDelete('cascade');
@@ -31,6 +31,6 @@ class CreateDosenJabatanStrukturalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosen_jabatan_struktural');
+        Schema::dropIfExists('user_jabatan_struktural');
     }
 }

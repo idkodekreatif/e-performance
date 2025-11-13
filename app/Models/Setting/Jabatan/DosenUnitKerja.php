@@ -10,7 +10,7 @@ class DosenUnitKerja extends Model
 {
     use HasFactory;
 
-    protected $table = 'dosen_unit_kerja';
+    protected $table = 'user_unit_kerja';
 
     protected $fillable = [
         'user_id',

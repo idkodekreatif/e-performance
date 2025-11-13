@@ -93,7 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(
             JabatanFungsional::class,
-            'dosen_jabatan_fungsional',
+            'user_jabatan_fungsional',
             'user_id',
             'jabatan_fungsional_id'
         );
@@ -103,7 +103,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(
             JabatanStruktural::class,
-            'dosen_jabatan_struktural',
+            'user_jabatan_struktural',
             'user_id',
             'jabatan_struktural_id'
         );
@@ -113,7 +113,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(
             UnitKerja::class,
-            'dosen_unit_kerja',
+            'user_unit_kerja',
             'user_id',
             'unit_kerja_id'
         );

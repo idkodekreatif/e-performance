@@ -10,7 +10,7 @@ class DosenJabatanStruktural extends Model
 {
     use HasFactory;
 
-    protected $table = 'dosen_jabatan_struktural';
+    protected $table = 'user_jabatan_struktural';
 
     protected $fillable = [
         'user_id',

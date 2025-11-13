@@ -10,7 +10,7 @@ class DosenJabatanFungsional extends Model
 {
     use HasFactory;
 
-    protected $table = 'dosen_jabatan_fungsional';
+    protected $table = 'user_jabatan_fungsional';
 
     protected $fillable = [
         'user_id',

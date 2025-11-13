@@ -24,6 +24,6 @@ class JabatanFungsional extends Model
     // Relasi ke tabel pivot dosen_jabatan_fungsional
     public function users()
     {
-        return $this->belongsToMany(User::class, 'dosen_jabatan_fungsional');
+        return $this->belongsToMany(User::class, 'user_jabatan_fungsional');
     }
 }
