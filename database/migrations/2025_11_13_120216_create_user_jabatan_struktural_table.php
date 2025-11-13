@@ -17,6 +17,7 @@ class CreateUserJabatanStrukturalTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('jabatan_struktural_id')->constrained('jabatan_struktural')->onDelete('cascade');
+
             $table->date('tmt_mulai');
             $table->date('tmt_selesai')->nullable();
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');

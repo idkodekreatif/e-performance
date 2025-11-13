@@ -17,6 +17,8 @@ class CreateUserJabatanFungsionalTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('jabatan_fungsional_id')->constrained('jabatan_fungsional')->onDelete('cascade');
+            $table->foreignId('unit_kerja_id')->constrained('unit_kerja')->onDelete('cascade');
+
             $table->date('tmt_mulai');
             $table->date('tmt_selesai')->nullable();
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
