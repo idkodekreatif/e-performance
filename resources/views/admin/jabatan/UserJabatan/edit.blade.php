@@ -153,17 +153,18 @@
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
         <script>
-            const base = "{{ url('admin/jabatan-pegawai') }}";
+            const base = "{{ url('admin/jabatan/pegawai') }}";
+
             const userId = "{{ $user->id }}";
             const modal = new bootstrap.Modal(document.getElementById('modalEntry'));
 
-            // LOAD AKTIF
+            // LOAD DATA AKTIF
             function loadAktif() {
                 $("#aktifContent").load(`${base}/${userId}/aktif`);
             }
             loadAktif();
-
             $("#refreshAktif").click(loadAktif);
+
 
             // DATATABLES
             const tblF = $('#tblFungsional').DataTable({
@@ -201,14 +202,32 @@
                 ]
             });
 
-            // BUKA MODAL - TAMBAH
+            const tblU = $('#tblUnit').DataTable({
+                ajax: `${base}/${userId}/unit/data`,
+                columns: [
+                    { data: 'unit_kerja.name' },
+                    { data: 'tmt_mulai' },
+                    { data: 'tmt_selesai', defaultContent: '-' },
+                    {
+                        data: 'id',
+                        render: id => `
+                            <button class="btn btn-warning btn-sm" onclick="editEntry('u', ${id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem(${id}, 'unit')">Hapus</button>
+                        `
+                    }
+                ]
+            });
+
+
+
+            // TAMBAH
             $('#btnAddFungsional').click(() => openModal('f'));
             $('#btnAddStruktural').click(() => openModal('s'));
 
             function openModal(type, item = null) {
-
                 $('#entry_type').val(type);
                 $('#entry_id').val(item ? item.id : '');
+
                 $('#tmt_mulai').val(item ? item.tmt_mulai : '');
                 $('#tmt_selesai').val(item ? item.tmt_selesai : '');
                 $('#status').val(item ? item.status : 'aktif');
@@ -232,6 +251,7 @@
                         </select>
                     `;
                 }
+
                 else if (type === 's') {
                     html = `
                         <label class="form-label">Pilih Jabatan Struktural</label>
@@ -243,22 +263,32 @@
                     `;
                 }
 
+                else if (type === 'u') {
+                    html = `
+                        <label class="form-label">Pilih Unit Kerja</label>
+                        <select id="selectItem" class="form-select">
+                            @foreach($unitList as $u)
+                                <option value="{{ $u->id }}">{{ $u->name }}</option>
+                            @endforeach
+                        </select>
+                    `;
+                }
+
                 $('#selectContainer').html(html);
 
                 if (item) {
                     $('#selectItem').val(
-                        item.jabatan_fungsional_id ?? item.jabatan_struktural_id
+                        item.jabatan_fungsional_id ??
+                        item.jabatan_struktural_id ??
+                        item.unit_kerja_id
                     );
-
-                    if (type === 'f') {
-                        $('#selectUnit').val(item.unit_kerja_id);
-                    }
                 }
 
                 $('.modal-title').text(item ? 'Edit Riwayat' : 'Tambah Riwayat');
 
                 modal.show();
             }
+
 
             // SIMPAN / UPDATE
             $('#formEntry').submit(function(e){
@@ -277,13 +307,17 @@
                 if (type === 'f') {
                     data.jabatan_fungsional_id = $('#selectItem').val();
                     data.unit_kerja_id = $('#selectUnit').val();
-                } else {
+                }
+                else if (type === 's') {
                     data.jabatan_struktural_id = $('#selectItem').val();
+                }
+                else if (type === 'u') {
+                    data.unit_kerja_id = $('#selectItem').val();
                 }
 
                 const url = id
-                    ? `${base}/${userId}/${type === 'f' ? 'fungsional' : 'struktural'}/${id}`
-                    : `${base}/${userId}/${type === 'f' ? 'fungsional' : 'struktural'}/store`;
+                    ? `${base}/${userId}/${routeName(type)}/${id}`
+                    : `${base}/${userId}/${routeName(type)}/store`;
 
                 const method = id ? 'PUT' : 'POST';
 
@@ -293,11 +327,19 @@
                         alert(res.message);
                         tblF.ajax.reload();
                         tblS.ajax.reload();
+                        tblU.ajax.reload();
                         loadAktif();
                         modal.hide();
                     }
                 });
             });
+
+            function routeName(t){
+                if(t === 'f') return 'fungsional';
+                if(t === 's') return 'struktural';
+                return 'unit';
+            }
+
 
             // DELETE
             function deleteItem(id, type){
@@ -311,10 +353,12 @@
                         alert(res.message);
                         tblF.ajax.reload();
                         tblS.ajax.reload();
+                        tblU.ajax.reload();
                         loadAktif();
                     }
                 });
             }
+
         </script>
     @endpush
 </x-app-layout>

@@ -221,21 +221,18 @@ Route::group([
     Route::prefix('jabatan/pegawai')->name('jabatan.pegawai.')
         ->controller(UserJabatanHistoryController::class)->group(function () {
 
-            // Unit Kerja
             Route::get('/{user}/unit/data', 'unitData')->name('unit.data');
             Route::post('/{user}/unit/store', 'unitStore')->name('unit.store');
             Route::get('/{user}/unit/{id}/edit', 'unitEdit')->name('unit.edit');
             Route::put('/{user}/unit/{id}', 'unitUpdate')->name('unit.update');
             Route::delete('/{user}/unit/{id}', 'unitDestroy')->name('unit.delete');
 
-            // Fungsional
             Route::get('/{user}/fungsional/data', 'fungsionalData')->name('fungsional.data');
             Route::post('/{user}/fungsional/store', 'fungsionalStore')->name('fungsional.store');
             Route::get('/{user}/fungsional/{id}/edit', 'fungsionalEdit')->name('fungsional.edit');
             Route::put('/{user}/fungsional/{id}', 'fungsionalUpdate')->name('fungsional.update');
             Route::delete('/{user}/fungsional/{id}', 'fungsionalDestroy')->name('fungsional.delete');
 
-            // Struktural
             Route::get('/{user}/struktural/data', 'strukturalData')->name('struktural.data');
             Route::post('/{user}/struktural/store', 'strukturalStore')->name('struktural.store');
             Route::get('/{user}/struktural/{id}/edit', 'strukturalEdit')->name('struktural.edit');
