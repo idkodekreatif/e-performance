@@ -153,12 +153,14 @@
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
         <script>
-            const base = "{{ url('admin/jabatan/pegawai') }}";
 
+            const base = "{{ url('admin/jabatan/pegawai') }}";
             const userId = "{{ $user->id }}";
             const modal = new bootstrap.Modal(document.getElementById('modalEntry'));
 
-            // LOAD DATA AKTIF
+            /* -------------------------
+               LOAD DATA AKTIF
+            ---------------------------*/
             function loadAktif() {
                 $("#aktifContent").load(`${base}/${userId}/aktif`);
             }
@@ -166,7 +168,9 @@
             $("#refreshAktif").click(loadAktif);
 
 
-            // DATATABLES
+            /* -------------------------
+               DATATABLES
+            ---------------------------*/
             const tblF = $('#tblFungsional').DataTable({
                 ajax: `${base}/${userId}/fungsional/data`,
                 columns: [
@@ -218,13 +222,18 @@
                 ]
             });
 
-
-
-            // TAMBAH
+            /* -------------------------
+               BUTTON: TAMBAH
+            ---------------------------*/
             $('#btnAddFungsional').click(() => openModal('f'));
             $('#btnAddStruktural').click(() => openModal('s'));
 
+
+            /* -------------------------
+               OPEN MODAL (ADD/EDIT)
+            ---------------------------*/
             function openModal(type, item = null) {
+
                 $('#entry_type').val(type);
                 $('#entry_id').val(item ? item.id : '');
 
@@ -276,12 +285,14 @@
 
                 $('#selectContainer').html(html);
 
+                // Set selected value saat edit
                 if (item) {
                     $('#selectItem').val(
                         item.jabatan_fungsional_id ??
                         item.jabatan_struktural_id ??
                         item.unit_kerja_id
                     );
+                    if (type === 'f') $('#selectUnit').val(item.unit_kerja_id);
                 }
 
                 $('.modal-title').text(item ? 'Edit Riwayat' : 'Tambah Riwayat');
@@ -290,7 +301,21 @@
             }
 
 
-            // SIMPAN / UPDATE
+            /* -------------------------
+               EDIT ENTRY
+            ---------------------------*/
+            function editEntry(type, id) {
+                const url = `${base}/${userId}/${routeName(type)}/${id}/edit`;
+
+                $.get(url, function (res){
+                    openModal(type, res.data);
+                });
+            }
+
+
+            /* -------------------------
+               SIMPAN / UPDATE
+            ---------------------------*/
             $('#formEntry').submit(function(e){
                 e.preventDefault();
 
@@ -341,7 +366,9 @@
             }
 
 
-            // DELETE
+            /* -------------------------
+               DELETE ITEM
+            ---------------------------*/
             function deleteItem(id, type){
                 if(!confirm('Yakin ingin menghapus data ini?')) return;
 

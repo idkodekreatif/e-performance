@@ -142,7 +142,7 @@ class UserJabatanHistoryController extends Controller
     public function fungsionalDestroy(User $user, $id)
     {
         UserJabatanFungsional::findOrFail($id)->delete();
-        return response()->json(['message' => 'Jabatan Fungsional berhasil dihapus']);
+        return response()->json(['message' => 'Jabatan Fungsional dihapus']);
     }
 
     /* ===========================================================
@@ -211,6 +211,12 @@ class UserJabatanHistoryController extends Controller
         ]);
 
         return response()->json(['message' => 'Jabatan Struktural berhasil diperbarui']);
+    }
+
+    public function strukturalDestroy(User $user, $id)
+    {
+        UserJabatanStruktural::findOrFail($id)->delete();
+        return response()->json(['message' => 'Jabatan Struktural dihapus']);
     }
 
 
