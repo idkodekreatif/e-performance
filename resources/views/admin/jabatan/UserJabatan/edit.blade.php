@@ -1,4 +1,5 @@
 <x-app-layout title="Profil Pegawai - Jabatan & Unit Kerja">
+
     @push('style')
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     @endpush
@@ -9,346 +10,311 @@
         </div>
 
         <div class="card-body">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" id="jabTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="aktif-tab" data-bs-toggle="tab" data-bs-target="#aktif" type="button">Aktif Saat Ini</button>
+
+            {{-- TAB MENU --}}
+            <ul class="nav nav-tabs" id="jabTab">
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#aktif">Aktif Saat Ini</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="fungsional-tab" data-bs-toggle="tab" data-bs-target="#fungsional" type="button">Jabatan Fungsional</button>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#fungsional">Jabatan Fungsional</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="struktural-tab" data-bs-toggle="tab" data-bs-target="#struktural" type="button">Jabatan Struktural</button>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#struktural">Jabatan Struktural</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="unit-tab" data-bs-toggle="tab" data-bs-target="#unit" type="button">Unit Kerja</button>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#unit">Unit Kerja</button>
                 </li>
             </ul>
 
             <div class="tab-content mt-3">
-                <!-- Aktif -->
+
+                {{-- TAB AKTIF --}}
                 <div class="tab-pane fade show active" id="aktif">
-                    <div class="mb-3">
-                        <button class="btn btn-success btn-sm" id="refreshAktif">Refresh</button>
-                    </div>
-                    <div id="aktifContent">
-                        {{-- will be filled by AJAX: current active entries --}}
-                    </div>
+                    <button class="btn btn-success btn-sm mb-2" id="refreshAktif">Refresh</button>
+                    <div id="aktifContent"></div>
                 </div>
 
-                <!-- Fungsional -->
+                {{-- TAB FUNGSIONAL --}}
                 <div class="tab-pane fade" id="fungsional">
-                    <div class="mb-2 d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-2">
                         <h6>Riwayat Jabatan Fungsional</h6>
                         <button class="btn btn-primary btn-sm" id="btnAddFungsional">Tambah</button>
                     </div>
+
                     <table id="tblFungsional" class="table table-bordered w-100">
-                        <thead><tr><th>Jabatan</th><th>TMT Mulai</th><th>TMT Selesai</th><th>Status</th><th>Aksi</th></tr></thead>
+                        <thead>
+                        <tr>
+                            <th>Jabatan</th>
+                            <th>Unit</th>
+                            <th>TMT Mulai</th>
+                            <th>TMT Selesai</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                        </thead>
                         <tbody></tbody>
                     </table>
                 </div>
 
-                <!-- Struktural -->
+                {{-- TAB STRUKTURAL --}}
                 <div class="tab-pane fade" id="struktural">
-                    <div class="mb-2 d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-2">
                         <h6>Riwayat Jabatan Struktural</h6>
                         <button class="btn btn-primary btn-sm" id="btnAddStruktural">Tambah</button>
                     </div>
+
                     <table id="tblStruktural" class="table table-bordered w-100">
-                        <thead><tr><th>Jabatan</th><th>TMT Mulai</th><th>TMT Selesai</th><th>Status</th><th>Aksi</th></tr></thead>
+                        <thead>
+                        <tr>
+                            <th>Jabatan</th>
+                            <th>TMT Mulai</th>
+                            <th>TMT Selesai</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                        </thead>
                         <tbody></tbody>
                     </table>
                 </div>
 
-                <!-- Unit -->
+                {{-- TAB UNIT --}}
                 <div class="tab-pane fade" id="unit">
-                    <div class="mb-2 d-flex justify-content-between">
-                        <h6>Riwayat Unit Kerja</h6>
-                        <button class="btn btn-primary btn-sm" id="btnAddUnit">Tambah</button>
-                    </div>
+                    <h6>Unit Kerja Aktif</h6>
                     <table id="tblUnit" class="table table-bordered w-100">
-                        <thead><tr><th>Unit</th><th>TMT Mulai</th><th>TMT Selesai</th><th>Aksi</th></tr></thead>
+                        <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>TMT Mulai</th>
+                            <th>TMT Selesai</th>
+                            <th>Aksi</th>
+                        </tr>
+                        </thead>
                         <tbody></tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>
 
-    {{-- Modal (single modal reused) --}}
+    {{-- UNIVERSAL MODAL ENTRY --}}
     <div class="modal fade" id="modalEntry" tabindex="-1">
-      <div class="modal-dialog">
-        <form id="formEntry">
-          @csrf
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalTitle">Tambah</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" id="entry_type"> <!-- fungsional/struktural/unit -->
-                <input type="hidden" id="entry_id">
-                <div class="mb-3" id="selectContainer">
-                    <!-- dynamic select will be injected -->
+        <div class="modal-dialog">
+            <form id="formEntry">
+                @csrf
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <input type="hidden" id="entry_type">
+                        <input type="hidden" id="entry_id">
+
+                        <div id="selectContainer"></div>
+
+                        <div class="mb-3">
+                            <label class="form-label">TMT Mulai</label>
+                            <input type="date" id="tmt_mulai" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">TMT Selesai</label>
+                            <input type="date" id="tmt_selesai" class="form-control">
+                        </div>
+
+                        <div class="mb-3" id="statusContainer">
+                            <label class="form-label">Status</label>
+                            <select id="status" class="form-select">
+                                <option value="aktif">Aktif</option>
+                                <option value="nonaktif">Nonaktif</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary" id="btnSaveEntry">Simpan</button>
+                    </div>
+
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">TMT Mulai</label>
-                    <input type="date" id="tmt_mulai" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">TMT Selesai</label>
-                    <input type="date" id="tmt_selesai" class="form-control">
-                </div>
-                <div class="mb-3" id="statusContainer">
-                    <label class="form-label">Status</label>
-                    <select id="status" class="form-select">
-                        <option value="aktif">Aktif</option>
-                        <option value="nonaktif">Nonaktif</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-              <button type="submit" class="btn btn-primary" id="btnSaveEntry">Simpan</button>
-            </div>
-          </div>
-        </form>
-      </div>
+            </form>
+        </div>
     </div>
 
+    {{-- SCRIPT --}}
     @push('JavaScript')
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-    <script>
-    $(function() {
-        const userId = {{ $user->id }};
-        const base = '/admin/jabatan/pegawai';
+        <script>
+            const base = "{{ url('admin/jabatan-pegawai') }}";
+            const userId = "{{ $user->id }}";
+            const modal = new bootstrap.Modal(document.getElementById('modalEntry'));
 
-        // Datatables
-        const tblF = $('#tblFungsional').DataTable({
-            ajax: `${base}/${userId}/fungsional/data`,
-            columns: [
-                { data: 'jabatan_fungsional.name', defaultContent: '-' },
-                { data: 'tmt_mulai' },
-                { data: 'tmt_selesai', defaultContent: '-' },
-                { data: 'status' },
-                { data: 'id', render: id => actionButtons('f', id) }
-            ]
-        });
-
-        const tblS = $('#tblStruktural').DataTable({
-            ajax: `${base}/${userId}/struktural/data`,
-            columns: [
-                { data: 'jabatan_struktural.name', defaultContent: '-' },
-                { data: 'tmt_mulai' },
-                { data: 'tmt_selesai', defaultContent: '-' },
-                { data: 'status' },
-                { data: 'id', render: id => actionButtons('s', id) }
-            ]
-        });
-
-        const tblU = $('#tblUnit').DataTable({
-            ajax: `${base}/${userId}/unit/data`,
-            columns: [
-                { data: 'unit_kerja.name', defaultContent: '-' },
-                { data: 'tmt_mulai' },
-                { data: 'tmt_selesai', defaultContent: '-' },
-                { data: 'id', render: id => actionButtons('u', id) }
-            ]
-        });
-
-        function actionButtons(type, id) {
-            return `
-                <button class="btn btn-sm btn-warning me-1" onclick="editEntry('${type}', ${id})">Edit</button>
-                <button class="btn btn-sm btn-danger" onclick="deleteEntry('${type}', ${id})">Hapus</button>
-            `;
-        }
-
-        // Aktif content loader
-        function loadAktif() {
-            $.get(`${base}/${userId}/fungsional/data`, res => {
-                const fActive = res.data.filter(r => r.status === 'aktif').map(r => r.jabatan_fungsional.name).join(', ') || '-';
-                $('#aktifContent').html(`
-                    <p><strong>Jabatan Fungsional Aktif:</strong> ${fActive}</p>
-                `);
-            });
-            $.get(`${base}/${userId}/struktural/data`, res => {
-                const sActive = res.data.filter(r => r.status === 'aktif').map(r => r.jabatan_struktural.name).join(', ') || '-';
-                $('#aktifContent').append(`<p><strong>Jabatan Struktural Aktif:</strong> ${sActive}</p>`);
-            });
-            $.get(`${base}/${userId}/unit/data`, res => {
-                const uActive = res.data.map(r => r.unit_kerja.name).join(', ') || '-';
-                $('#aktifContent').append(`<p><strong>Unit Kerja:</strong> ${uActive}</p>`);
-            });
-        }
-
-        $('#refreshAktif').click(loadAktif);
-        loadAktif();
-
-        // Modal handling
-        const modal = new bootstrap.Modal(document.getElementById('modalEntry'));
-
-        $('#btnAddFungsional').click(() => openModalCreate('f'));
-        $('#btnAddStruktural').click(() => openModalCreate('s'));
-        $('#btnAddUnit').click(() => openModalCreate('u'));
-
-        function openModalCreate(type) {
-            $('#entry_type').val(type);
-            $('#entry_id').val('');
-            $('#tmt_mulai').val('');
-            $('#tmt_selesai').val('');
-            $('#status').val('aktif');
-
-            // inject select
-            if (type === 'f') {
-                let html = `<label class="form-label">Pilih Jabatan Fungsional</label>
-                    <select id="selectItem" class="form-select">
-                        @foreach($jabfungList as $j)
-                            <option value="{{ $j->id }}">{{ $j->name }}</option>
-                        @endforeach
-                    </select>`;
-                $('#selectContainer').html(html);
-                $('#statusContainer').show();
-            } else if (type === 's') {
-                let html = `<label class="form-label">Pilih Jabatan Struktural</label>
-                    <select id="selectItem" class="form-select">
-                        @foreach($jabstrukList as $j)
-                            <option value="{{ $j->id }}">{{ $j->name }}</option>
-                        @endforeach
-                    </select>`;
-                $('#selectContainer').html(html);
-                $('#statusContainer').show();
-            } else {
-                let html = `<label class="form-label">Pilih Unit Kerja</label>
-                    <select id="selectItem" class="form-select">
-                        @foreach($unitList as $u)
-                            <option value="{{ $u->id }}">{{ $u->name }}</option>
-                        @endforeach
-                    </select>`;
-                $('#selectContainer').html(html);
-                $('#statusContainer').hide(); // unit has no status in migration
+            // LOAD AKTIF
+            function loadAktif() {
+                $("#aktifContent").load(`${base}/${userId}/aktif`);
             }
+            loadAktif();
 
-            $('#modalTitle').text('Tambah');
-            modal.show();
-        }
+            $("#refreshAktif").click(loadAktif);
 
-        // Submit modal (create/update)
-        $('#formEntry').submit(function(e){
-            e.preventDefault();
-            const type = $('#entry_type').val();
-            const id = $('#entry_id').val();
-            const payload = {
-                _token: '{{ csrf_token() }}',
-                tmt_mulai: $('#tmt_mulai').val(),
-                tmt_selesai: $('#tmt_selesai').val(),
-            };
-            if (type === 'f') {
-                payload.jabatan_fungsional_id = $('#selectItem').val();
-                payload.status = $('#status').val();
-                const url = id ? `${base}/${userId}/fungsional/${id}` : `${base}/${userId}/fungsional/store`;
-                const method = id ? 'PUT' : 'POST';
-                ajaxSave(url, method, payload, function(){ tblF.ajax.reload(); loadAktif(); modal.hide(); });
-            } else if (type === 's') {
-                payload.jabatan_struktural_id = $('#selectItem').val();
-                payload.status = $('#status').val();
-                const url = id ? `${base}/${userId}/struktural/${id}` : `${base}/${userId}/struktural/store`;
-                const method = id ? 'PUT' : 'POST';
-                ajaxSave(url, method, payload, function(){ tblS.ajax.reload(); loadAktif(); modal.hide(); });
-            } else {
-                payload.unit_kerja_id = $('#selectItem').val();
-                const url = id ? `${base}/${userId}/unit/${id}` : `${base}/${userId}/unit/store`;
-                const method = id ? 'PUT' : 'POST';
-                ajaxSave(url, method, payload, function(){ tblU.ajax.reload(); loadAktif(); modal.hide(); });
-            }
-        });
+            // DATATABLES
+            const tblF = $('#tblFungsional').DataTable({
+                ajax: `${base}/${userId}/fungsional/data`,
+                columns: [
+                    { data: 'jabatan_fungsional.name' },
+                    { data: 'unit_kerja.name' },
+                    { data: 'tmt_mulai' },
+                    { data: 'tmt_selesai', defaultContent: '-' },
+                    { data: 'status' },
+                    {
+                        data: 'id',
+                        render: id => `
+                            <button class="btn btn-warning btn-sm" onclick="editEntry('f', ${id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem(${id}, 'fungsional')">Hapus</button>
+                        `
+                    }
+                ]
+            });
 
-        function ajaxSave(url, method, data, cb) {
-            $.ajax({
-                url: url,
-                method: method,
-                data: data,
-                success: function(res){
-                    alert(res.message || 'Sukses');
-                    if (cb) cb();
-                },
-                error: function(xhr){
-                    const msg = xhr.responseJSON?.message || 'Terjadi kesalahan';
-                    alert(msg);
+            const tblS = $('#tblStruktural').DataTable({
+                ajax: `${base}/${userId}/struktural/data`,
+                columns: [
+                    { data: 'jabatan_struktural.name' },
+                    { data: 'tmt_mulai' },
+                    { data: 'tmt_selesai', defaultContent: '-' },
+                    { data: 'status' },
+                    {
+                        data: 'id',
+                        render: id => `
+                            <button class="btn btn-warning btn-sm" onclick="editEntry('s', ${id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem(${id}, 'struktural')">Hapus</button>
+                        `
+                    }
+                ]
+            });
+
+            // BUKA MODAL - TAMBAH
+            $('#btnAddFungsional').click(() => openModal('f'));
+            $('#btnAddStruktural').click(() => openModal('s'));
+
+            function openModal(type, item = null) {
+
+                $('#entry_type').val(type);
+                $('#entry_id').val(item ? item.id : '');
+                $('#tmt_mulai').val(item ? item.tmt_mulai : '');
+                $('#tmt_selesai').val(item ? item.tmt_selesai : '');
+                $('#status').val(item ? item.status : 'aktif');
+
+                let html = '';
+
+                if (type === 'f') {
+                    html = `
+                        <label class="form-label">Pilih Jabatan Fungsional</label>
+                        <select id="selectItem" class="form-select mb-3">
+                            @foreach($jabfungList as $j)
+                                <option value="{{ $j->id }}">{{ $j->name }}</option>
+                            @endforeach
+                        </select>
+
+                        <label class="form-label">Pilih Unit Kerja</label>
+                        <select id="selectUnit" class="form-select">
+                            @foreach($unitList as $u)
+                                <option value="{{ $u->id }}">{{ $u->name }}</option>
+                            @endforeach
+                        </select>
+                    `;
                 }
-            });
-        }
+                else if (type === 's') {
+                    html = `
+                        <label class="form-label">Pilih Jabatan Struktural</label>
+                        <select id="selectItem" class="form-select">
+                            @foreach($jabstrukList as $j)
+                                <option value="{{ $j->id }}">{{ $j->name }}</option>
+                            @endforeach
+                        </select>
+                    `;
+                }
 
-        window.editEntry = function(type, id) {
-            $('#entry_type').val(type);
-            $('#entry_id').val(id);
-            if (type === 'f') {
-                $.get(`${base}/${userId}/fungsional/${id}/edit`, function(res){
-                    // inject select with current selected
-                    let html = `<label class="form-label">Pilih Jabatan Fungsional</label>
-                        <select id="selectItem" class="form-select">`;
-                    @foreach($jabfungList as $j)
-                        html += `<option value="{{ $j->id }}" ${res.jabatan_fungsional_id == {{ $j->id }} ? 'selected' : ''}>{{ $j->name }}</option>`;
-                    @endforeach
-                    html += `</select>`;
-                    $('#selectContainer').html(html);
-                    $('#tmt_mulai').val(res.tmt_mulai);
-                    $('#tmt_selesai').val(res.tmt_selesai);
-                    $('#status').val(res.status);
-                    $('#modalTitle').text('Edit Riwayat Fungsional');
-                    $('#statusContainer').show();
-                    modal.show();
+                $('#selectContainer').html(html);
+
+                if (item) {
+                    $('#selectItem').val(
+                        item.jabatan_fungsional_id ?? item.jabatan_struktural_id
+                    );
+
+                    if (type === 'f') {
+                        $('#selectUnit').val(item.unit_kerja_id);
+                    }
+                }
+
+                $('.modal-title').text(item ? 'Edit Riwayat' : 'Tambah Riwayat');
+
+                modal.show();
+            }
+
+            // SIMPAN / UPDATE
+            $('#formEntry').submit(function(e){
+                e.preventDefault();
+
+                const type = $('#entry_type').val();
+                const id   = $('#entry_id').val();
+
+                let data = {
+                    _token: '{{ csrf_token() }}',
+                    tmt_mulai: $('#tmt_mulai').val(),
+                    tmt_selesai: $('#tmt_selesai').val(),
+                    status: $('#status').val()
+                };
+
+                if (type === 'f') {
+                    data.jabatan_fungsional_id = $('#selectItem').val();
+                    data.unit_kerja_id = $('#selectUnit').val();
+                } else {
+                    data.jabatan_struktural_id = $('#selectItem').val();
+                }
+
+                const url = id
+                    ? `${base}/${userId}/${type === 'f' ? 'fungsional' : 'struktural'}/${id}`
+                    : `${base}/${userId}/${type === 'f' ? 'fungsional' : 'struktural'}/store`;
+
+                const method = id ? 'PUT' : 'POST';
+
+                $.ajax({
+                    url, method, data,
+                    success(res){
+                        alert(res.message);
+                        tblF.ajax.reload();
+                        tblS.ajax.reload();
+                        loadAktif();
+                        modal.hide();
+                    }
                 });
-            } else if (type === 's') {
-                $.get(`${base}/${userId}/struktural/${id}/edit`, function(res){
-                    let html = `<label class="form-label">Pilih Jabatan Struktural</label>
-                        <select id="selectItem" class="form-select">`;
-                    @foreach($jabstrukList as $j)
-                        html += `<option value="{{ $j->id }}" ${res.jabatan_struktural_id == {{ $j->id }} ? 'selected' : ''}>{{ $j->name }}</option>`;
-                    @endforeach
-                    html += `</select>`;
-                    $('#selectContainer').html(html);
-                    $('#tmt_mulai').val(res.tmt_mulai);
-                    $('#tmt_selesai').val(res.tmt_selesai);
-                    $('#status').val(res.status);
-                    $('#modalTitle').text('Edit Riwayat Struktural');
-                    $('#statusContainer').show();
-                    modal.show();
-                });
-            } else {
-                $.get(`${base}/${userId}/unit/${id}/edit`, function(res){
-                    let html = `<label class="form-label">Pilih Unit Kerja</label>
-                        <select id="selectItem" class="form-select">`;
-                    @foreach($unitList as $u)
-                        html += `<option value="{{ $u->id }}" ${res.unit_kerja_id == {{ $u->id }} ? 'selected' : ''}>{{ $u->name }}</option>`;
-                    @endforeach
-                    html += `</select>`;
-                    $('#selectContainer').html(html);
-                    $('#tmt_mulai').val(res.tmt_mulai);
-                    $('#tmt_selesai').val(res.tmt_selesai);
-                    $('#statusContainer').hide();
-                    $('#modalTitle').text('Edit Riwayat Unit');
-                    modal.show();
+            });
+
+            // DELETE
+            function deleteItem(id, type){
+                if(!confirm('Yakin ingin menghapus data ini?')) return;
+
+                $.ajax({
+                    url: `${base}/${userId}/${type}/${id}`,
+                    method: 'DELETE',
+                    data: { _token: '{{ csrf_token() }}' },
+                    success: function(res){
+                        alert(res.message);
+                        tblF.ajax.reload();
+                        tblS.ajax.reload();
+                        loadAktif();
+                    }
                 });
             }
-        }
-
-        window.deleteEntry = function(type, id) {
-            if (!confirm('Konfirmasi hapus?')) return;
-            let url;
-            if (type === 'f') url = `${base}/${userId}/fungsional/${id}`;
-            if (type === 's') url = `${base}/${userId}/struktural/${id}`;
-            if (type === 'u') url = `${base}/${userId}/unit/${id}`;
-            $.ajax({ url: url, method: 'DELETE', data: {_token: '{{ csrf_token() }}' } })
-                .done(function(res){
-                    alert(res.message);
-                    tblF.ajax.reload(); tblS.ajax.reload(); tblU.ajax.reload(); loadAktif();
-                })
-                .fail(function(){ alert('Gagal menghapus'); });
-        }
-
-    });
-    </script>
+        </script>
     @endpush
 </x-app-layout>

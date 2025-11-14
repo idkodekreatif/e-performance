@@ -104,99 +104,113 @@ Route::get('/buildInterfaces', [App\Http\Controllers\HomeController::class, 'bui
 Route::resource('profile', profileController::class)->only(['index', 'update'])->middleware('auth', 'verified');
 
 // ----------------------------- Maintenain ----------------------------------------//
-Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'auth', 'verified', 'prevent-back-history']], function () {
-    // -----------------------------Users Management Spatie----------------------------------------//
-    Route::controller(IndexController::class)->group(function () {
-        Route::get('/', 'index')->name('index');
-    });
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['role:superuser|it|hrd', 'auth', 'verified', 'prevent-back-history']
+], function () {
 
-    // ----------------------------- User Role Controller ----------------------------------------//
-    Route::resource('/role', RoleController::class);
-    Route::controller(RoleController::class)->group(function () {
-        Route::post('/roles/{role}/permissions', 'givePermission')->name('role.permissions');
-        Route::delete('/roles/{role}/permissions/{permission}', 'revokePermission')->name('role.permission.revoke');
-    });
+    // Dashboard
+    Route::get('/', [IndexController::class, 'index'])->name('index');
 
-    // ----------------------------- User Permissions Controller ----------------------------------------//
-    Route::resource('/permission', PermissionController::class);
-    Route::controller(PermissionController::class)->group(function () {
-        Route::post('/permissions/{permission}/roles', 'assignRole')->name('permissions.roles');
-        Route::delete('/permissions/{permission}/roles/{role}', 'removeRole')->name('permission.role.remove');
-    });
+    /**
+     * ==========================================
+     * ROLE MANAGEMENT
+     * ==========================================
+     */
+    Route::resource('role', RoleController::class);
+    Route::post('roles/{role}/permissions', [RoleController::class, 'givePermission'])
+        ->name('role.permissions');
+    Route::delete('roles/{role}/permissions/{permission}', [RoleController::class, 'revokePermission'])
+        ->name('role.permission.revoke');
+
+    /**
+     * ==========================================
+     * PERMISSION MANAGEMENT
+     * ==========================================
+     */
+    Route::resource('permission', PermissionController::class);
+    Route::post('permissions/{permission}/roles', [PermissionController::class, 'assignRole'])
+        ->name('permissions.roles');
+    Route::delete('permissions/{permission}/roles/{role}', [PermissionController::class, 'removeRole'])
+        ->name('permission.role.remove');
 
 
-    // ----------------------------- User Management ----------------------------------------//
+    /**
+     * ==========================================
+     * USERS MANAGEMENT
+     * ==========================================
+     */
     Route::controller(UserController::class)->group(function () {
         Route::get('/users', 'index')->name('users.index');
         Route::post('/users/register', 'store')->name('users.store');
         Route::get('/users/{user}', 'show')->name('users.show');
         Route::get('/users/destroy/{user}', 'destroy')->name('users.destroy');
+
         Route::post('/users/{user}/roles', 'assignRole')->name('users.roles');
         Route::delete('/users/{user}/roles/{role}', 'removeRole')->name('users.roles.remove');
+
         Route::post('/users/{user}/permissions', 'givePermission')->name('users.permissions');
         Route::delete('/users/{user}/permissions/{permission}', 'revokePermission')->name('users.permissions.revoke');
     });
 
 
-    // ----------------------------- User Jabatan Management ----------------------------------------//
-    // Route::resource('jabatan', JabatanController::class);
-
-    Route::controller(JabatanController::class)->group(function () {
-        Route::get('/users-jabatan', 'indexRoleJabatan')->name('user-jabatan.indexRoleJabatan');
-        Route::get('/user-jabatan/{id}/edit', 'editRoleJabatan')->name('user-jabatan.editRoleJabatan');
-        Route::put('/user-jabatan/{id}', 'updateRoleJabatan')->name('user-jabatan.updateRoleJabatan');
+    /**
+     * ==========================================
+     * JABATAN FUNGSIONAL
+     * ==========================================
+     */
+    Route::prefix('jabfung')->name('jabfung.')->controller(JabatanFungsionalController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/data', 'data')->name('data');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete/{id}', 'destroy')->name('delete');
     });
 
-    Route::controller(JabatanFungsionalController::class)->group(function () {
-        Route::get('/jabfung', 'index')->name('jabfung.index');
-        Route::get('/jabfung/data', 'data')->name('jabfung.data');
-        Route::get('/jabfung/create', 'create')->name('jabfung.create');
-        Route::post('/jabfung/store', 'store')->name('jabfung.store');
-        Route::get('/jabfung/edit/{id}', 'edit')->name('jabfung.edit');
-        Route::put('/jabfung/update/{id}', 'update')->name('jabfung.update');
-        Route::delete('/jabfung/delete/{id}', 'destroy')->name('jabfung.delete');
-    });
 
-    // Route::controller(JabatanStrukturalController::class)->group(function () {
-    //     Route::get('/jabatan-struktural', 'index')->name('jabatan-struktural.index');
-    //     Route::get('/jabatan-struktural/data', 'data')->name('jabatan-struktural.data');
-    //     Route::get('/jabatan-struktural/create', 'create')->name('jabatan-struktural.create');
-    //     Route::post('/jabatan-struktural/store', 'store')->name('jabatan-struktural.store');
-    //     Route::get('/jabatan-struktural/edit/{id}', 'edit')->name('jabatan-struktural.edit');
-    //     Route::put('/jabatan-struktural/update/{id}', 'update')->name('jabatan-struktural.update');
-    //     Route::delete('/jabatan-struktural/delete/{id}', 'destroy')->name('jabatan-struktural.delete');
-    // });
-    Route::get('jabatan-struktural', [JabatanStrukturalController::class, 'index'])
-        ->name('jabatan-struktural.index');
+    /**
+     * ==========================================
+     * JABATAN STRUKTURAL
+     * ==========================================
+     */
+    Route::prefix('jabatan-struktural')->name('jabatan-struktural.')
+        ->controller(JabatanStrukturalController::class)->group(function () {
 
-    Route::get('jabatan-struktural/data', [JabatanStrukturalController::class, 'data'])
-        ->name('jabatan-struktural.data');
+            Route::get('/', 'index')->name('index');
+            Route::get('/data', 'data')->name('data');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::put('/update/{id}', 'update')->name('update');
+            Route::delete('/delete/{id}', 'destroy')->name('delete');
+        });
 
-    Route::get('jabatan-struktural/create', [JabatanStrukturalController::class, 'create'])
-        ->name('jabatan-struktural.create');
 
-    Route::post('jabatan-struktural/store', [JabatanStrukturalController::class, 'store'])
-        ->name('jabatan-struktural.store');
+    /**
+     * ==========================================
+     * UNIT KERJA
+     * ==========================================
+     */
+    Route::prefix('unit-kerja')->name('unit-kerja.')
+        ->controller(UnitKerjaController::class)->group(function () {
 
-    Route::get('jabatan-struktural/edit/{id}', [JabatanStrukturalController::class, 'edit'])
-        ->name('jabatan-struktural.edit');
+            Route::get('/', 'index')->name('index');
+            Route::get('/data', 'data')->name('data');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::put('/update/{id}', 'update')->name('update');
+            Route::delete('/delete/{id}', 'destroy')->name('delete');
+        });
 
-    Route::put('jabatan-struktural/update/{id}', [JabatanStrukturalController::class, 'update'])
-        ->name('jabatan-struktural.update');
 
-    Route::delete('jabatan-struktural/delete/{id}', [JabatanStrukturalController::class, 'delete'])
-        ->name('jabatan-struktural.delete');
-
-    Route::controller(UnitKerjaController::class)->group(function () {
-        Route::get('/unit-kerja', 'index')->name('unit-kerja.index');
-        Route::get('/unit-kerja/data', 'data')->name('unit-kerja.data');
-        Route::get('/unit-kerja/create', 'create')->name('unit-kerja.create');
-        Route::post('/unit-kerja/store', 'store')->name('unit-kerja.store');
-        Route::get('/unit-kerja/edit/{id}', 'edit')->name('unit-kerja.edit');
-        Route::put('/unit-kerja/update/{id}', 'update')->name('unit-kerja.update');
-        Route::delete('/unit-kerja/delete/{id}', 'destroy')->name('unit-kerja.delete');
-    });
-
+    /**
+     * ==========================================
+     * USER JABATAN (Fungsional, Struktural, Unit Kerja)
+     * ==========================================
+     */
     Route::controller(UserJabatanController::class)->group(function () {
         Route::get('/jabatan/pegawai', 'index')->name('jabatan.pegawai.index');
         Route::get('/jabatan/pegawai/data', 'data')->name('jabatan.pegawai.data');
@@ -204,55 +218,60 @@ Route::group(['prefix' => "/admin", 'middleware' => ['role:superuser|it|hrd', 'a
         Route::put('/jabatan/pegawai/update/{id}', 'update')->name('jabatan.pegawai.update');
     });
 
-    // History CRUD endpoints (AJAX) per user
-    Route::controller(UserJabatanHistoryController::class)->prefix('jabatan/pegawai')->name('jabatan.pegawai.')->group(function () {
-        // Fungsional
-        Route::get('/{user}/fungsional/data', 'fungsionalData')->name('fungsional.data');
-        Route::post('/{user}/fungsional/store', 'fungsionalStore')->name('fungsional.store');
-        Route::get('/{user}/fungsional/{id}/edit', 'fungsionalEdit')->name('fungsional.edit');
-        Route::put('/{user}/fungsional/{id}', 'fungsionalUpdate')->name('fungsional.update');
-        Route::delete('/{user}/fungsional/{id}', 'fungsionalDestroy')->name('fungsional.delete');
+    Route::prefix('jabatan/pegawai')->name('jabatan.pegawai.')
+        ->controller(UserJabatanHistoryController::class)->group(function () {
 
-        // Struktural
-        Route::get('/{user}/struktural/data', 'strukturalData')->name('struktural.data');
-        Route::post('/{user}/struktural/store', 'strukturalStore')->name('struktural.store');
-        Route::get('/{user}/struktural/{id}/edit', 'strukturalEdit')->name('struktural.edit');
-        Route::put('/{user}/struktural/{id}', 'strukturalUpdate')->name('struktural.update');
-        Route::delete('/{user}/struktural/{id}', 'strukturalDestroy')->name('struktural.delete');
+            // Unit Kerja
+            Route::get('/{user}/unit/data', 'unitData')->name('unit.data');
+            Route::post('/{user}/unit/store', 'unitStore')->name('unit.store');
+            Route::get('/{user}/unit/{id}/edit', 'unitEdit')->name('unit.edit');
+            Route::put('/{user}/unit/{id}', 'unitUpdate')->name('unit.update');
+            Route::delete('/{user}/unit/{id}', 'unitDestroy')->name('unit.delete');
 
-        // Unit Kerja
-        Route::get('/{user}/unit/data', 'unitData')->name('unit.data');
-        Route::post('/{user}/unit/store', 'unitStore')->name('unit.store');
-        Route::get('/{user}/unit/{id}/edit', 'unitEdit')->name('unit.edit');
-        Route::put('/{user}/unit/{id}', 'unitUpdate')->name('unit.update');
-        Route::delete('/{user}/unit/{id}', 'unitDestroy')->name('unit.delete');
-    });
+            // Fungsional
+            Route::get('/{user}/fungsional/data', 'fungsionalData')->name('fungsional.data');
+            Route::post('/{user}/fungsional/store', 'fungsionalStore')->name('fungsional.store');
+            Route::get('/{user}/fungsional/{id}/edit', 'fungsionalEdit')->name('fungsional.edit');
+            Route::put('/{user}/fungsional/{id}', 'fungsionalUpdate')->name('fungsional.update');
+            Route::delete('/{user}/fungsional/{id}', 'fungsionalDestroy')->name('fungsional.delete');
 
-    // -----------------------------Menu Controller Edit Point----------------------------------------//
+            // Struktural
+            Route::get('/{user}/struktural/data', 'strukturalData')->name('struktural.data');
+            Route::post('/{user}/struktural/store', 'strukturalStore')->name('struktural.store');
+            Route::get('/{user}/struktural/{id}/edit', 'strukturalEdit')->name('struktural.edit');
+            Route::put('/{user}/struktural/{id}', 'strukturalUpdate')->name('struktural.update');
+            Route::delete('/{user}/struktural/{id}', 'strukturalDestroy')->name('struktural.delete');
+
+            Route::get('/{user}/aktif', 'aktifData')->name('aktif.data');
+        });
+
+
+    /**
+     * ==========================================
+     * MENU
+     * ==========================================
+     */
     Route::controller(MenuController::class)->group(function () {
-        Route::get('/Menu/Point', 'IndexMenuPoint')->name('Menu.Controller');
-        Route::post('/Menu/Point/Store', 'MenuPointSore')->name('Menu.Store');
-        Route::put('/Menu/Point/{id_menu}', 'MenuPointUpdate')->name('Menu.Update');
+        Route::get('/menu/point', 'IndexMenuPoint')->name('Menu.Controller');
+        Route::post('/menu/point/store', 'MenuPointSore')->name('Menu.Store');
+        Route::put('/menu/point/{id_menu}', 'MenuPointUpdate')->name('Menu.Update');
     });
 
-    // Rute untuk "periode"
-    Route::controller(PeriodController::class)->group(function () {
-        Route::get('/admin/period', 'index')->name('period.index');
-        Route::get('/admin/period/create', 'create')->name('period.create');
-        Route::post('/admin/period', 'store')->name('period.store');
-        Route::get('/admin/period/{period}/edit', 'edit')->name('period.edit');
-        Route::put('/admin/period/{period}', 'update')->name('period.update');
-        Route::delete('/admin/period/{period}', 'destroy')->name('period.destroy');
-    });
+    /**
+     * ==========================================
+     * PERIOD
+     * ==========================================
+     */
+    Route::resource('period', PeriodController::class);
 
-    // Rute untuk "closures"
-    Route::controller(ClosureController::class)->group(function () {
-        Route::get('/admin/closure', 'index')->name('closure.index');
-        Route::get('/admin/closure/create', 'create')->name('closure.create');
-        Route::post('/admin/closure', 'store')->name('closure.store');
-        Route::delete('/admin/closure/{closure}', 'destroy')->name('closure.destroy');
-    });
+    /**
+     * ==========================================
+     * CLOSURE
+     * ==========================================
+     */
+    Route::resource('closure', ClosureController::class)->only(['index', 'create', 'store', 'destroy']);
 });
+
 
 // -----------------------------Prefix All Point ITIKAD----------------------------------------//
 Route::group(['prefix' => "/Point/ITIKAD", 'middleware' => ['role:superuser|it|hrd|lppm|dosen', 'auth', 'verified', 'prevent-back-history']], function () {

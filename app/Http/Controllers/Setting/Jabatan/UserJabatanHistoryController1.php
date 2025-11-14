@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Setting\Jabatan;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Setting\Jabatan\JabatanStruktural;
+use App\Models\User;
+use App\Models\Setting\Jabatan\UnitKerja;
+use App\Models\Setting\Jabatan\UserUnitKerja;
 use App\Models\Setting\Jabatan\UserJabatanFungsional;
 use App\Models\Setting\Jabatan\UserJabatanStruktural;
-use App\Models\Setting\Jabatan\UserUnitKerja;
-use App\Models\User;
+use App\Models\Setting\Jabatan\JabatanStruktural;
 use Illuminate\Http\Request;
 
 class UserJabatanHistoryController extends Controller
