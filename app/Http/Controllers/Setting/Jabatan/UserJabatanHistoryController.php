@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Setting\Jabatan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting\Jabatan\JabatanFungsional;
 use App\Models\Setting\Jabatan\JabatanStruktural;
 use App\Models\Setting\Jabatan\UserJabatanFungsional;
 use App\Models\Setting\Jabatan\UserJabatanStruktural;
 use App\Models\Setting\Jabatan\UserUnitKerja;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserJabatanHistoryController extends Controller
 {
@@ -28,30 +31,43 @@ class UserJabatanHistoryController extends Controller
     public function unitStore(Request $request, User $user)
     {
         $request->validate([
-            'unit_kerja_id' => 'required',
+            'unit_kerja_id' => 'required|exists:unit_kerja,id',
             'tmt_mulai' => 'required|date',
+            'tmt_selesai' => 'nullable|date|after_or_equal:tmt_mulai',
         ]);
 
-        UserUnitKerja::create([
-            'user_id'  => $user->id,
-            'unit_kerja_id' => $request->unit_kerja_id,
-            'tmt_mulai' => $request->tmt_mulai,
-            'tmt_selesai' => $request->tmt_selesai,
-            'status' => 'manual'
-        ]);
+        DB::transaction(function () use ($request, $user) {
+            // akhiri semua unit aktif sebelumnya (set tmt_selesai = tmt_mulai new)
+            UserUnitKerja::where('user_id', $user->id)
+                ->whereNull('tmt_selesai')
+                ->update(['tmt_selesai' => $request->tmt_mulai]);
+
+            UserUnitKerja::create([
+                'user_id' => $user->id,
+                'unit_kerja_id' => $request->unit_kerja_id,
+                'tmt_mulai' => $request->tmt_mulai,
+                'tmt_selesai' => $request->tmt_selesai,
+                'status' => $request->status ?? 'manual'
+            ]);
+        });
 
         return response()->json(['message' => 'Unit Kerja berhasil ditambahkan']);
     }
 
     public function unitEdit(User $user, $id)
     {
-        return response()->json([
-            'data' => UserUnitKerja::findOrFail($id)
-        ]);
+        $data = UserUnitKerja::findOrFail($id);
+        return response()->json(['data' => $data]);
     }
 
     public function unitUpdate(Request $request, User $user, $id)
     {
+        $request->validate([
+            'unit_kerja_id' => 'required|exists:unit_kerja,id',
+            'tmt_mulai' => 'required|date',
+            'tmt_selesai' => 'nullable|date|after_or_equal:tmt_mulai'
+        ]);
+
         $record = UserUnitKerja::findOrFail($id);
 
         $record->update([
@@ -65,7 +81,9 @@ class UserJabatanHistoryController extends Controller
 
     public function unitDestroy(User $user, $id)
     {
-        UserUnitKerja::findOrFail($id)->delete();
+        $record = UserUnitKerja::findOrFail($id);
+        $record->delete();
+
         return response()->json(['message' => 'Unit Kerja berhasil dihapus']);
     }
 
@@ -85,72 +103,113 @@ class UserJabatanHistoryController extends Controller
     public function fungsionalStore(Request $request, User $user)
     {
         $request->validate([
-            'jabatan_fungsional_id' => 'required',
-            'unit_kerja_id' => 'required',
+            'jabatan_fungsional_id' => 'required|exists:jabatan_fungsional,id',
+            'unit_kerja_id' => 'nullable|exists:unit_kerja,id',
             'tmt_mulai' => 'required|date',
+            'tmt_selesai' => 'nullable|date|after_or_equal:tmt_mulai',
+            'status' => 'nullable|in:aktif,nonaktif'
         ]);
 
-        $record = UserJabatanFungsional::create([
-            'user_id' => $user->id,
-            'jabatan_fungsional_id' => $request->jabatan_fungsional_id,
-            'unit_kerja_id' => $request->unit_kerja_id,
-            'status' => 'aktif',
-            'tmt_mulai' => $request->tmt_mulai,
-            'tmt_selesai' => $request->tmt_selesai
-        ]);
+        // jika unit_kerja_id tidak diberikan, coba ambil default dari jabatan_fungsional (jika ada)
+        $unitId = $request->unit_kerja_id;
+        if (!$unitId) {
+            $jf = JabatanFungsional::find($request->jabatan_fungsional_id);
+            $unitId = $jf?->unit_kerja_id ?? null;
+        }
 
-        // AUTO UPDATE UNIT
-        UserUnitKerja::create([
-            'user_id' => $user->id,
-            'unit_kerja_id' => $request->unit_kerja_id,
-            'tmt_mulai' => $request->tmt_mulai,
-            'status' => 'jabfung'
-        ]);
+        DB::transaction(function () use ($request, $user, $unitId) {
+            // create jabfung
+            $record = UserJabatanFungsional::create([
+                'user_id' => $user->id,
+                'jabatan_fungsional_id' => $request->jabatan_fungsional_id,
+                'unit_kerja_id' => $unitId,
+                'tmt_mulai' => $request->tmt_mulai,
+                'tmt_selesai' => $request->tmt_selesai,
+                'status' => $request->status ?? 'aktif'
+            ]);
 
-        return response()->json(['message' => 'Jabatan Fungsional berhasil ditambahkan']);
+            // sinkron unit kerja (akhiri unit aktif sebelumnya & buat unit baru)
+            if ($unitId) {
+                $this->syncUnitKerja($user->id, $unitId, $request->tmt_mulai, $request->tmt_selesai, 'jabfung');
+            }
+        });
+
+        return response()->json(['message' => 'Jabatan fungsional berhasil ditambahkan']);
     }
 
     public function fungsionalEdit(User $user, $id)
     {
-        $data = UserJabatanFungsional::with(['jabatanFungsional', 'unitKerja'])
-            ->findOrFail($id);
-
+        $data = UserJabatanFungsional::with(['jabatanFungsional', 'unitKerja'])->findOrFail($id);
         return response()->json(['data' => $data]);
     }
 
     public function fungsionalUpdate(Request $request, User $user, $id)
     {
         $request->validate([
-            'jabatan_fungsional_id' => 'required',
-            'unit_kerja_id' => 'required',
-            'tmt_mulai' => 'required|date'
+            'jabatan_fungsional_id' => 'required|exists:jabatan_fungsional,id',
+            'unit_kerja_id' => 'nullable|exists:unit_kerja,id',
+            'tmt_mulai' => 'required|date',
+            'tmt_selesai' => 'nullable|date|after_or_equal:tmt_mulai',
+            'status' => 'nullable|in:aktif,nonaktif'
         ]);
 
-        $data = UserJabatanFungsional::findOrFail($id);
+        $unitId = $request->unit_kerja_id;
+        if (!$unitId) {
+            $jf = JabatanFungsional::find($request->jabatan_fungsional_id);
+            $unitId = $jf?->unit_kerja_id ?? null;
+        }
 
-        $data->update([
-            'jabatan_fungsional_id' => $request->jabatan_fungsional_id,
-            'unit_kerja_id' => $request->unit_kerja_id,
-            'tmt_mulai' => $request->tmt_mulai,
-            'tmt_selesai' => $request->tmt_selesai,
-            'status' => $request->status
-        ]);
+        DB::transaction(function () use ($request, $user, $id, $unitId) {
+            $item = UserJabatanFungsional::findOrFail($id);
 
-        return response()->json(['message' => 'Jabatan Fungsional berhasil diperbarui']);
+            // jika unit diganti atau tgl mulai diupdate -> akhiri unit lama sebelum membuat unit baru
+            if ($unitId) {
+                // akhiri semua unit aktif terlebih dahulu (set tmt_selesai = tmt_mulai baru)
+                UserUnitKerja::where('user_id', $user->id)
+                    ->whereNull('tmt_selesai')
+                    ->update(['tmt_selesai' => $request->tmt_mulai]);
+            }
+
+            $item->update([
+                'jabatan_fungsional_id' => $request->jabatan_fungsional_id,
+                'unit_kerja_id' => $unitId,
+                'tmt_mulai' => $request->tmt_mulai,
+                'tmt_selesai' => $request->tmt_selesai,
+                'status' => $request->status ?? $item->status
+            ]);
+
+            if ($unitId) {
+                $this->syncUnitKerja($user->id, $unitId, $request->tmt_mulai, $request->tmt_selesai, 'jabfung');
+            }
+        });
+
+        return response()->json(['message' => 'Jabatan fungsional berhasil diperbarui']);
     }
 
     public function fungsionalDestroy(User $user, $id)
     {
-        UserJabatanFungsional::findOrFail($id)->delete();
-        return response()->json(['message' => 'Jabatan Fungsional dihapus']);
+        $item = UserJabatanFungsional::findOrFail($id);
+
+        // akhiri unit aktif yang terkait dengan jabfung ini (jika ada)
+        if ($item->unit_kerja_id) {
+            UserUnitKerja::where('user_id', $user->id)
+                ->where('unit_kerja_id', $item->unit_kerja_id)
+                ->whereNull('tmt_selesai')
+                ->update(['tmt_selesai' => Carbon::now()->toDateString()]);
+        }
+
+        $item->delete();
+
+        return response()->json(['message' => 'Jabatan fungsional berhasil dihapus']);
     }
+
 
     /* ===========================================================
      *  JABATAN STRUKTURAL
      * =========================================================== */
     public function strukturalData(User $user)
     {
-        $data = UserJabatanStruktural::with('jabatanStruktural')
+        $data = UserJabatanStruktural::with(['jabatanStruktural', 'jabatanStruktural.unitKerja'])
             ->where('user_id', $user->id)
             ->orderBy('tmt_mulai', 'desc')
             ->get();
@@ -161,63 +220,89 @@ class UserJabatanHistoryController extends Controller
     public function strukturalStore(Request $request, User $user)
     {
         $request->validate([
-            'jabatan_struktural_id' => 'required',
-            'tmt_mulai' => 'required|date'
+            'jabatan_struktural_id' => 'required|exists:jabatan_struktural,id',
+            'tmt_mulai' => 'required|date',
+            'tmt_selesai' => 'nullable|date|after_or_equal:tmt_mulai',
+            'status' => 'nullable|in:aktif,nonaktif'
         ]);
 
-        $record = UserJabatanStruktural::create([
-            'user_id' => $user->id,
-            'jabatan_struktural_id' => $request->jabatan_struktural_id,
-            'status' => 'aktif',
-            'tmt_mulai' => $request->tmt_mulai,
-            'tmt_selesai' => $request->tmt_selesai
-        ]);
+        DB::transaction(function () use ($request, $user) {
+            $record = UserJabatanStruktural::create([
+                'user_id' => $user->id,
+                'jabatan_struktural_id' => $request->jabatan_struktural_id,
+                'status' => $request->status ?? 'aktif',
+                'tmt_mulai' => $request->tmt_mulai,
+                'tmt_selesai' => $request->tmt_selesai
+            ]);
 
-        // Ambil unit kerja default jabatan struktural
-        $unitId = JabatanStruktural::find($request->jabatan_struktural_id)->unit_kerja_id;
+            // Ambil unit kerja default dari jabatan struktural (jika ada)
+            $jab = JabatanStruktural::find($request->jabatan_struktural_id);
+            $unitId = $jab?->unit_kerja_id ?? null;
 
-        UserUnitKerja::create([
-            'user_id' => $user->id,
-            'unit_kerja_id' => $unitId,
-            'tmt_mulai' => $request->tmt_mulai,
-            'status' => 'jabstruk'
-        ]);
+            if ($unitId) {
+                $this->syncUnitKerja($user->id, $unitId, $request->tmt_mulai, $request->tmt_selesai, 'jabstruk');
+            }
+        });
 
-        return response()->json(['message' => 'Jabatan Struktural berhasil ditambahkan']);
+        return response()->json(['message' => 'Jabatan struktural berhasil ditambahkan']);
     }
 
     public function strukturalEdit(User $user, $id)
     {
-        $data = UserJabatanStruktural::with('jabatanStruktural')
-            ->findOrFail($id);
-
+        $data = UserJabatanStruktural::with('jabatanStruktural')->findOrFail($id);
         return response()->json(['data' => $data]);
     }
 
     public function strukturalUpdate(Request $request, User $user, $id)
     {
         $request->validate([
-            'jabatan_struktural_id' => 'required',
-            'tmt_mulai' => 'required|date'
+            'jabatan_struktural_id' => 'required|exists:jabatan_struktural,id',
+            'tmt_mulai' => 'required|date',
+            'tmt_selesai' => 'nullable|date|after_or_equal:tmt_mulai',
+            'status' => 'nullable|in:aktif,nonaktif'
         ]);
 
-        $data = UserJabatanStruktural::findOrFail($id);
+        DB::transaction(function () use ($request, $user, $id) {
+            $data = UserJabatanStruktural::findOrFail($id);
 
-        $data->update([
-            'jabatan_struktural_id' => $request->jabatan_struktural_id,
-            'tmt_mulai' => $request->tmt_mulai,
-            'tmt_selesai' => $request->tmt_selesai,
-            'status' => $request->status
-        ]);
+            $data->update([
+                'jabatan_struktural_id' => $request->jabatan_struktural_id,
+                'tmt_mulai' => $request->tmt_mulai,
+                'tmt_selesai' => $request->tmt_selesai,
+                'status' => $request->status ?? $data->status
+            ]);
 
-        return response()->json(['message' => 'Jabatan Struktural berhasil diperbarui']);
+            // Ambil unit kerja default dari jabatan struktural (jika ada)
+            $jab = JabatanStruktural::find($request->jabatan_struktural_id);
+            $unitId = $jab?->unit_kerja_id ?? null;
+
+            if ($unitId) {
+                // akhiri unit aktif sebelumnya then create new
+                $this->syncUnitKerja($user->id, $unitId, $request->tmt_mulai, $request->tmt_selesai, 'jabstruk');
+            }
+        });
+
+        return response()->json(['message' => 'Jabatan struktural berhasil diperbarui']);
     }
 
     public function strukturalDestroy(User $user, $id)
     {
-        UserJabatanStruktural::findOrFail($id)->delete();
-        return response()->json(['message' => 'Jabatan Struktural dihapus']);
+        $item = UserJabatanStruktural::findOrFail($id);
+
+        // jika unit terkait ada, akhiri unit aktifnya (jaga histori)
+        $unitId = $item->jabatanStruktural?->unit_kerja_id ?? $item->unit_kerja_id ?? null;
+        if ($unitId) {
+            UserUnitKerja::where('user_id', $user->id)
+                ->where('unit_kerja_id', $unitId)
+                ->whereNull('tmt_selesai')
+                ->update(['tmt_selesai' => Carbon::now()->toDateString()]);
+        }
+
+        $item->delete();
+
+        return response()->json(['message' => 'Jabatan struktural berhasil dihapus']);
     }
+
 
 
     /* ===========================================================
@@ -225,21 +310,19 @@ class UserJabatanHistoryController extends Controller
      * =========================================================== */
     public function aktifData(User $user)
     {
-        // Fungsional aktif
         $fungsional = UserJabatanFungsional::with(['jabatanFungsional', 'unitKerja'])
             ->where('user_id', $user->id)
             ->where('status', 'aktif')
             ->latest('tmt_mulai')
             ->first();
 
-        // Struktural aktif
-        $struktural = UserJabatanStruktural::with('jabatanStruktural')
+        $struktural = UserJabatanStruktural::with(['jabatanStruktural', 'jabatanStruktural.unitKerja'])
             ->where('user_id', $user->id)
             ->where('status', 'aktif')
             ->latest('tmt_mulai')
             ->first();
 
-        // Unit aktif
+        // unit aktif terakhir (tmt_selesai = null)
         // $unit = UserUnitKerja::with('unitKerja')
         //     ->where('user_id', $user->id)
         //     ->whereNull('tmt_selesai')
@@ -250,6 +333,35 @@ class UserJabatanHistoryController extends Controller
             'fungsional' => $fungsional,
             'struktural' => $struktural,
             // 'unit' => $unit
+        ]);
+    }
+
+    /**
+     * Sync unit kerja:
+     * - tutup semua unit aktif (set tmt_selesai = $mulai)
+     * - tambahkan user_unit_kerja baru
+     *
+     * @param int $user_id
+     * @param int $unit_id
+     * @param string $mulai (YYYY-MM-DD)
+     * @param string|null $selesai
+     * @param string|null $statusTag (jabfung|jabstruk|manual)
+     * @return void
+     */
+    private function syncUnitKerja($user_id, $unit_id, $mulai, $selesai = null, $statusTag = null)
+    {
+        // tutup unit aktif sebelumnya (agar tidak ada lebih dari 1 active)
+        UserUnitKerja::where('user_id', $user_id)
+            ->whereNull('tmt_selesai')
+            ->update(['tmt_selesai' => $mulai]);
+
+        // buat record unit baru
+        UserUnitKerja::create([
+            'user_id' => $user_id,
+            'unit_kerja_id' => $unit_id,
+            'tmt_mulai' => $mulai,
+            'tmt_selesai' => $selesai,
+            'status' => $statusTag ?? 'system'
         ]);
     }
 }

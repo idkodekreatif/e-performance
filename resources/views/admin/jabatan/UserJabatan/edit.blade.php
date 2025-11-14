@@ -46,7 +46,7 @@
                         <thead>
                         <tr>
                             <th>Jabatan</th>
-                            <th>Unit</th>
+                            <th>Program Studi</th>
                             <th>TMT Mulai</th>
                             <th>TMT Selesai</th>
                             <th>Status</th>
@@ -292,7 +292,7 @@
                             @endforeach
                         </select>
 
-                        <label class="form-label">Pilih Unit Kerja</label>
+                        <label class="form-label">Pilih Program Studi</label>
                         <select id="selectUnit" class="form-select">
                             @foreach($unitList as $u)
                                 <option value="{{ $u->id }}">{{ $u->name }}</option>
