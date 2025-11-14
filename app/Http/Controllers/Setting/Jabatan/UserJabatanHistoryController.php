@@ -153,55 +153,68 @@ class UserJabatanHistoryController extends Controller
             'status' => 'nullable|in:aktif,nonaktif'
         ]);
 
-        $unitId = $request->unit_kerja_id;
-        if (!$unitId) {
-            $jf = JabatanFungsional::find($request->jabatan_fungsional_id);
-            $unitId = $jf?->unit_kerja_id ?? null;
-        }
+        DB::transaction(function () use ($request, $user, $id) {
 
-        DB::transaction(function () use ($request, $user, $id, $unitId) {
             $item = UserJabatanFungsional::findOrFail($id);
 
-            // jika unit diganti atau tgl mulai diupdate -> akhiri unit lama sebelum membuat unit baru
-            if ($unitId) {
-                // akhiri semua unit aktif terlebih dahulu (set tmt_selesai = tmt_mulai baru)
+            // Cari unit lama (dari data lama)
+            $oldUnitId = $item->unit_kerja_id;
+
+            // HAPUS SEMUA UNIT LAMA
+            if ($oldUnitId) {
                 UserUnitKerja::where('user_id', $user->id)
-                    ->whereNull('tmt_selesai')
-                    ->update(['tmt_selesai' => $request->tmt_mulai]);
+                    ->where('unit_kerja_id', $oldUnitId)
+                    ->delete();
             }
 
+            // Tentukan unit baru
+            $newUnitId = $request->unit_kerja_id;
+
+            if (!$newUnitId) {
+                $newUnitId = JabatanFungsional::find($request->jabatan_fungsional_id)?->unit_kerja_id;
+            }
+
+            // Update jabfung
             $item->update([
                 'jabatan_fungsional_id' => $request->jabatan_fungsional_id,
-                'unit_kerja_id' => $unitId,
+                'unit_kerja_id' => $newUnitId,
                 'tmt_mulai' => $request->tmt_mulai,
                 'tmt_selesai' => $request->tmt_selesai,
                 'status' => $request->status ?? $item->status
             ]);
 
-            if ($unitId) {
-                $this->syncUnitKerja($user->id, $unitId, $request->tmt_mulai, $request->tmt_selesai, 'jabfung');
+            // BUAT UNIT BARU
+            if ($newUnitId) {
+                UserUnitKerja::create([
+                    'user_id' => $user->id,
+                    'unit_kerja_id' => $newUnitId,
+                    'tmt_mulai' => $request->tmt_mulai,
+                    'tmt_selesai' => $request->tmt_selesai,
+                    'sumber' => 'jabfung'
+                ]);
             }
         });
 
         return response()->json(['message' => 'Jabatan fungsional berhasil diperbarui']);
     }
 
+
     public function fungsionalDestroy(User $user, $id)
     {
         $item = UserJabatanFungsional::findOrFail($id);
 
-        // akhiri unit aktif yang terkait dengan jabfung ini (jika ada)
+        // Jika jabfung punya unit kerja → hapus SEMUA unit kerja yang cocok
         if ($item->unit_kerja_id) {
             UserUnitKerja::where('user_id', $user->id)
                 ->where('unit_kerja_id', $item->unit_kerja_id)
-                ->whereNull('tmt_selesai')
-                ->update(['tmt_selesai' => Carbon::now()->toDateString()]);
+                ->delete();
         }
 
         $item->delete();
 
         return response()->json(['message' => 'Jabatan fungsional berhasil dihapus']);
     }
+
 
 
     /* ===========================================================
@@ -263,45 +276,63 @@ class UserJabatanHistoryController extends Controller
         ]);
 
         DB::transaction(function () use ($request, $user, $id) {
-            $data = UserJabatanStruktural::findOrFail($id);
 
-            $data->update([
+            $item = UserJabatanStruktural::findOrFail($id);
+            $oldUnitId = $item->jabatanStruktural?->unit_kerja_id;
+
+            // HAPUS SEMUA UNIT LAMA
+            if ($oldUnitId) {
+                UserUnitKerja::where('user_id', $user->id)
+                    ->where('unit_kerja_id', $oldUnitId)
+                    ->delete();
+            }
+
+            // Update jabatan
+            $item->update([
                 'jabatan_struktural_id' => $request->jabatan_struktural_id,
                 'tmt_mulai' => $request->tmt_mulai,
                 'tmt_selesai' => $request->tmt_selesai,
-                'status' => $request->status ?? $data->status
+                'status' => $request->status ?? $item->status
             ]);
 
-            // Ambil unit kerja default dari jabatan struktural (jika ada)
-            $jab = JabatanStruktural::find($request->jabatan_struktural_id);
-            $unitId = $jab?->unit_kerja_id ?? null;
+            // Ambil unit baru dari jabstruk baru
+            $newUnitId = JabatanStruktural::find($request->jabatan_struktural_id)?->unit_kerja_id;
 
-            if ($unitId) {
-                // akhiri unit aktif sebelumnya then create new
-                $this->syncUnitKerja($user->id, $unitId, $request->tmt_mulai, $request->tmt_selesai, 'jabstruk');
+            // BUAT UNIT BARU
+            if ($newUnitId) {
+                UserUnitKerja::create([
+                    'user_id' => $user->id,
+                    'unit_kerja_id' => $newUnitId,
+                    'tmt_mulai' => $request->tmt_mulai,
+                    'tmt_selesai' => $request->tmt_selesai,
+                    'sumber' => 'jabstruk'
+                ]);
             }
         });
 
         return response()->json(['message' => 'Jabatan struktural berhasil diperbarui']);
     }
 
+
     public function strukturalDestroy(User $user, $id)
     {
         $item = UserJabatanStruktural::findOrFail($id);
 
-        // jika unit terkait ada, akhiri unit aktifnya (jaga histori)
-        $unitId = $item->jabatanStruktural?->unit_kerja_id ?? $item->unit_kerja_id ?? null;
+        // Ambil unit dari jabatan struktural
+        $unitId = $item->jabatanStruktural?->unit_kerja_id;
+
+        // Jika jabstruk punya unit kerja → hapus SEMUA yang cocok
         if ($unitId) {
             UserUnitKerja::where('user_id', $user->id)
                 ->where('unit_kerja_id', $unitId)
-                ->whereNull('tmt_selesai')
-                ->update(['tmt_selesai' => Carbon::now()->toDateString()]);
+                ->delete();
         }
 
         $item->delete();
 
         return response()->json(['message' => 'Jabatan struktural berhasil dihapus']);
     }
+
 
 
 
