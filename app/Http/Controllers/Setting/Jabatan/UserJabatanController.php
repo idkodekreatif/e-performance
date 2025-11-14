@@ -8,6 +8,7 @@ use App\Models\Setting\Jabatan\JabatanStruktural;
 use App\Models\Setting\Jabatan\UnitKerja;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class UserJabatanController extends Controller
 {
@@ -17,15 +18,37 @@ class UserJabatanController extends Controller
         return view('admin.jabatan.UserJabatan.index', compact('users'));
     }
 
-    public function data()
+    public function data(Request $request)
     {
-        $users = User::select('id', 'name', 'email')->get();
+        $users = User::with(['jabfung', 'jabstruk', 'unitKerja'])->orderBy('name');
+
         return datatables()->of($users)
-            ->addColumn('action', function ($user) {
-                return '<a href="' . route('jabatan.pegawai.edit', $user->id) . '" class="btn btn-sm btn-primary">Edit</a>';
+
+            // Jabatan Fungsional → array of string
+            ->addColumn('jabfung', function ($row) {
+                return $row->jabfung->pluck('name')->toArray();
             })
+
+            // Jabatan Struktural → array of string
+            ->addColumn('jabstruk', function ($row) {
+                return $row->jabstruk->pluck('name')->toArray();
+            })
+
+            // Unit Kerja → array of string
+            ->addColumn('unitKerja', function ($row) {
+                return $row->unitKerja->pluck('name')->toArray();
+            })
+
+            // Tombol aksi
+            ->addColumn('action', function ($row) {
+                return '<a href="' . route('jabatan.pegawai.edit', $row->id) . '"
+                        class="btn btn-warning btn-sm">Edit</a>';
+            })
+
+            ->rawColumns(['action'])
             ->make(true);
     }
+
 
     public function edit($id)
     {
