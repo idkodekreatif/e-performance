@@ -158,19 +158,58 @@
             const userId = "{{ $user->id }}";
             const modal = new bootstrap.Modal(document.getElementById('modalEntry'));
 
-            /* -------------------------
-               LOAD DATA AKTIF
-            ---------------------------*/
+            /* ===========================================================
+                LOAD DATA AKTIF (JSON → HTML MANUAL)
+            ============================================================*/
             function loadAktif() {
-                $("#aktifContent").load(`${base}/${userId}/aktif`);
+                $.get(`${base}/${userId}/aktif`, function(res){
+
+                    let f = res.fungsional ?
+                        `
+                        <div class='p-2 border rounded mb-2'>
+                            <h6>Jabatan Fungsional Aktif</h6>
+                            <p><strong>${res.fungsional.jabatan_fungsional.name}</strong></p>
+                            <p>Unit: ${res.fungsional.unit_kerja.name}</p>
+                            <p>TMT: ${res.fungsional.tmt_mulai}</p>
+                        </div>
+                        `
+                        :
+                        `<div class='p-2 border rounded mb-2 text-muted'>Tidak ada jabatan fungsional aktif.</div>`;
+
+                    let s = res.struktural ?
+                        `
+                        <div class='p-2 border rounded mb-2'>
+                            <h6>Jabatan Struktural Aktif</h6>
+                            <p><strong>${res.struktural.jabatan_struktural.name}</strong></p>
+                            <p>TMT: ${res.struktural.tmt_mulai}</p>
+                        </div>
+                        `
+                        :
+                        `<div class='p-2 border rounded mb-2 text-muted'>Tidak ada jabatan struktural aktif.</div>`;
+
+                    // let u = res.unit ?
+                    //     `
+                    //     <div class='p-2 border rounded mb-2'>
+                    //         <h6>Unit Kerja Aktif</h6>
+                    //         <p><strong>${res.unit.unit_kerja.name}</strong></p>
+                    //         <p>TMT: ${res.unit.tmt_mulai}</p>
+                    //     </div>
+                    //     `
+                    //     :
+                    //     `<div class='p-2 border rounded mb-2 text-muted'>Tidak ada unit kerja aktif.</div>`;
+
+                    // $("#aktifContent").html(f + s + u);
+                    $("#aktifContent").html(f + s);
+
+                });
             }
             loadAktif();
             $("#refreshAktif").click(loadAktif);
 
 
-            /* -------------------------
-               DATATABLES
-            ---------------------------*/
+            /* ===========================================================
+                DATATABLES
+            ============================================================*/
             const tblF = $('#tblFungsional').DataTable({
                 ajax: `${base}/${userId}/fungsional/data`,
                 columns: [
@@ -222,16 +261,17 @@
                 ]
             });
 
-            /* -------------------------
-               BUTTON: TAMBAH
-            ---------------------------*/
+
+            /* ===========================================================
+                BUTTON TAMBAH
+            ============================================================*/
             $('#btnAddFungsional').click(() => openModal('f'));
             $('#btnAddStruktural').click(() => openModal('s'));
 
 
-            /* -------------------------
-               OPEN MODAL (ADD/EDIT)
-            ---------------------------*/
+            /* ===========================================================
+                OPEN MODAL
+            ============================================================*/
             function openModal(type, item = null) {
 
                 $('#entry_type').val(type);
@@ -285,7 +325,6 @@
 
                 $('#selectContainer').html(html);
 
-                // Set selected value saat edit
                 if (item) {
                     $('#selectItem').val(
                         item.jabatan_fungsional_id ??
@@ -301,9 +340,9 @@
             }
 
 
-            /* -------------------------
-               EDIT ENTRY
-            ---------------------------*/
+            /* ===========================================================
+                EDIT ENTRY
+            ============================================================*/
             function editEntry(type, id) {
                 const url = `${base}/${userId}/${routeName(type)}/${id}/edit`;
 
@@ -313,9 +352,9 @@
             }
 
 
-            /* -------------------------
-               SIMPAN / UPDATE
-            ---------------------------*/
+            /* ===========================================================
+                SIMPAN / UPDATE
+            ============================================================*/
             $('#formEntry').submit(function(e){
                 e.preventDefault();
 
@@ -366,9 +405,9 @@
             }
 
 
-            /* -------------------------
-               DELETE ITEM
-            ---------------------------*/
+            /* ===========================================================
+                DELETE ITEM
+            ============================================================*/
             function deleteItem(id, type){
                 if(!confirm('Yakin ingin menghapus data ini?')) return;
 

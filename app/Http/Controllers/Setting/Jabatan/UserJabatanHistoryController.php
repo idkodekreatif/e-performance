@@ -225,11 +225,31 @@ class UserJabatanHistoryController extends Controller
      * =========================================================== */
     public function aktifData(User $user)
     {
-        $data = UserUnitKerja::with('unitKerja')
+        // Fungsional aktif
+        $fungsional = UserJabatanFungsional::with(['jabatanFungsional', 'unitKerja'])
             ->where('user_id', $user->id)
-            ->orderBy('tmt_mulai', 'desc')
-            ->get();
+            ->where('status', 'aktif')
+            ->latest('tmt_mulai')
+            ->first();
 
-        return response()->json(['data' => $data]);
+        // Struktural aktif
+        $struktural = UserJabatanStruktural::with('jabatanStruktural')
+            ->where('user_id', $user->id)
+            ->where('status', 'aktif')
+            ->latest('tmt_mulai')
+            ->first();
+
+        // Unit aktif
+        // $unit = UserUnitKerja::with('unitKerja')
+        //     ->where('user_id', $user->id)
+        //     ->whereNull('tmt_selesai')
+        //     ->latest('tmt_mulai')
+        //     ->first();
+
+        return response()->json([
+            'fungsional' => $fungsional,
+            'struktural' => $struktural,
+            // 'unit' => $unit
+        ]);
     }
 }
