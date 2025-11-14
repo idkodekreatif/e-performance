@@ -17,10 +17,12 @@
                     <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#aktif">Aktif Saat Ini</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#fungsional">Jabatan Fungsional</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#fungsional">Jabatan
+                        Fungsional</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#struktural">Jabatan Struktural</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#struktural">Jabatan
+                        Struktural</button>
                 </li>
                 <li class="nav-item">
                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#unit">Unit Kerja</button>
@@ -44,14 +46,14 @@
 
                     <table id="tblFungsional" class="table table-bordered w-100">
                         <thead>
-                        <tr>
-                            <th>Jabatan</th>
-                            <th>Program Studi</th>
-                            <th>TMT Mulai</th>
-                            <th>TMT Selesai</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
+                            <tr>
+                                <th>Jabatan</th>
+                                <th>Program Studi</th>
+                                <th>TMT Mulai</th>
+                                <th>TMT Selesai</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
@@ -66,13 +68,13 @@
 
                     <table id="tblStruktural" class="table table-bordered w-100">
                         <thead>
-                        <tr>
-                            <th>Jabatan</th>
-                            <th>TMT Mulai</th>
-                            <th>TMT Selesai</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
+                            <tr>
+                                <th>Jabatan</th>
+                                <th>TMT Mulai</th>
+                                <th>TMT Selesai</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
@@ -83,12 +85,12 @@
                     <h6>Unit Kerja Aktif</h6>
                     <table id="tblUnit" class="table table-bordered w-100">
                         <thead>
-                        <tr>
-                            <th>Unit</th>
-                            <th>TMT Mulai</th>
-                            <th>TMT Selesai</th>
-                            <th>Aksi</th>
-                        </tr>
+                            <tr>
+                                <th>Unit</th>
+                                <th>TMT Mulai</th>
+                                <th>TMT Selesai</th>
+                                {{-- <th>Aksi</th> --}}
+                            </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
@@ -153,7 +155,6 @@
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
         <script>
-
             const base = "{{ url('admin/jabatan/pegawai') }}";
             const userId = "{{ $user->id }}";
             const modal = new bootstrap.Modal(document.getElementById('modalEntry'));
@@ -162,7 +163,7 @@
                 LOAD DATA AKTIF
             ============================================================*/
             function loadAktif() {
-                $.get(`${base}/${userId}/aktif`, function(res){
+                $.get(`${base}/${userId}/aktif`, function(res) {
 
                     let f = res.fungsional ?
                         `
@@ -172,8 +173,7 @@
                             <p>Unit: ${res.fungsional.unit_kerja.name}</p>
                             <p>TMT: ${res.fungsional.tmt_mulai}</p>
                         </div>
-                        `
-                        :
+                        ` :
                         `<div class='p-2 border rounded mb-2 text-muted'>Tidak ada jabatan fungsional aktif.</div>`;
 
                     let s = res.struktural ?
@@ -183,8 +183,7 @@
                             <p><strong>${res.struktural.jabatan_struktural.name}</strong></p>
                             <p>TMT: ${res.struktural.tmt_mulai}</p>
                         </div>
-                        `
-                        :
+                        ` :
                         `<div class='p-2 border rounded mb-2 text-muted'>Tidak ada jabatan struktural aktif.</div>`;
 
                     $("#aktifContent").html(f + s);
@@ -200,12 +199,22 @@
             ============================================================*/
             const tblF = $('#tblFungsional').DataTable({
                 ajax: `${base}/${userId}/fungsional/data`,
-                columns: [
-                    { data: 'jabatan_fungsional.name' },
-                    { data: 'unit_kerja.name' },
-                    { data: 'tmt_mulai' },
-                    { data: 'tmt_selesai', defaultContent: '-' },
-                    { data: 'status' },
+                columns: [{
+                        data: 'jabatan_fungsional.name'
+                    },
+                    {
+                        data: 'unit_kerja.name'
+                    },
+                    {
+                        data: 'tmt_mulai'
+                    },
+                    {
+                        data: 'tmt_selesai',
+                        defaultContent: '-'
+                    },
+                    {
+                        data: 'status'
+                    },
                     {
                         data: 'id',
                         render: id => `
@@ -219,7 +228,7 @@
             /* ===========================================================
                 🚫 DISABLE TOMBOL TAMBAH JIKA SUDAH ADA 1 JABFUNG
             ============================================================*/
-            tblF.on('xhr', function () {
+            tblF.on('xhr', function() {
                 const data = tblF.ajax.json().data;
 
                 if (data.length >= 1) {
@@ -237,11 +246,19 @@
 
             const tblS = $('#tblStruktural').DataTable({
                 ajax: `${base}/${userId}/struktural/data`,
-                columns: [
-                    { data: 'jabatan_struktural.name' },
-                    { data: 'tmt_mulai' },
-                    { data: 'tmt_selesai', defaultContent: '-' },
-                    { data: 'status' },
+                columns: [{
+                        data: 'jabatan_struktural.name'
+                    },
+                    {
+                        data: 'tmt_mulai'
+                    },
+                    {
+                        data: 'tmt_selesai',
+                        defaultContent: '-'
+                    },
+                    {
+                        data: 'status'
+                    },
                     {
                         data: 'id',
                         render: id => `
@@ -254,19 +271,28 @@
 
             const tblU = $('#tblUnit').DataTable({
                 ajax: `${base}/${userId}/unit/data`,
-                columns: [
-                    { data: 'unit_kerja.name' },
-                    { data: 'tmt_mulai' },
-                    { data: 'tmt_selesai', defaultContent: '-' },
+                columns: [{
+                        data: 'unit_kerja.name'
+                    },
                     {
-                        data: 'id',
-                        render: id => `
-                            <button class="btn btn-warning btn-sm" onclick="editEntry('u', ${id})">Edit</button>
-                            <button class="btn btn-danger btn-sm" onclick="deleteItem(${id}, 'unit')">Hapus</button>
-                        `
-                    }
+                        data: 'tmt_mulai'
+                    },
+                    {
+                        data: 'tmt_selesai',
+                        defaultContent: '-'
+                    },
                 ]
             });
+//             {
+//                 data: 'id',
+//                 render: () => `
+//     <div class="text-muted small mb-1">
+//         Unit kerja otomatis dari jabatan — tidak dapat diedit
+//     </div>
+//     <button class="btn btn-secondary btn-sm" disabled>Edit</button>
+//     <button class="btn btn-secondary btn-sm" disabled>Hapus</button>
+// `
+//             }
 
 
             /* ===========================================================
@@ -294,36 +320,32 @@
                     html = `
                         <label class="form-label">Pilih Jabatan Fungsional</label>
                         <select id="selectItem" class="form-select mb-3">
-                            @foreach($jabfungList as $j)
+                            @foreach ($jabfungList as $j)
                                 <option value="{{ $j->id }}">{{ $j->name }}</option>
                             @endforeach
                         </select>
 
                         <label class="form-label">Pilih Program Studi</label>
                         <select id="selectUnit" class="form-select">
-                            @foreach($unitList as $u)
+                            @foreach ($unitList as $u)
                                 <option value="{{ $u->id }}">{{ $u->name }}</option>
                             @endforeach
                         </select>
                     `;
-                }
-
-                else if (type === 's') {
+                } else if (type === 's') {
                     html = `
                         <label class="form-label">Pilih Jabatan Struktural</label>
                         <select id="selectItem" class="form-select">
-                            @foreach($jabstrukList as $j)
+                            @foreach ($jabstrukList as $j)
                                 <option value="{{ $j->id }}">{{ $j->name }}</option>
                             @endforeach
                         </select>
                     `;
-                }
-
-                else if (type === 'u') {
+                } else if (type === 'u') {
                     html = `
                         <label class="form-label">Pilih Unit Kerja</label>
                         <select id="selectItem" class="form-select">
-                            @foreach($unitList as $u)
+                            @foreach ($unitList as $u)
                                 <option value="{{ $u->id }}">{{ $u->name }}</option>
                             @endforeach
                         </select>
@@ -353,7 +375,7 @@
             function editEntry(type, id) {
                 const url = `${base}/${userId}/${routeName(type)}/${id}/edit`;
 
-                $.get(url, function (res){
+                $.get(url, function(res) {
                     openModal(type, res.data);
                 });
             }
@@ -362,11 +384,11 @@
             /* ===========================================================
                 SIMPAN / UPDATE
             ============================================================*/
-            $('#formEntry').submit(function(e){
+            $('#formEntry').submit(function(e) {
                 e.preventDefault();
 
                 const type = $('#entry_type').val();
-                const id   = $('#entry_id').val();
+                const id = $('#entry_id').val();
 
                 let data = {
                     _token: '{{ csrf_token() }}',
@@ -378,23 +400,23 @@
                 if (type === 'f') {
                     data.jabatan_fungsional_id = $('#selectItem').val();
                     data.unit_kerja_id = $('#selectUnit').val();
-                }
-                else if (type === 's') {
+                } else if (type === 's') {
                     data.jabatan_struktural_id = $('#selectItem').val();
-                }
-                else if (type === 'u') {
+                } else if (type === 'u') {
                     data.unit_kerja_id = $('#selectItem').val();
                 }
 
-                const url = id
-                    ? `${base}/${userId}/${routeName(type)}/${id}`
-                    : `${base}/${userId}/${routeName(type)}/store`;
+                const url = id ?
+                    `${base}/${userId}/${routeName(type)}/${id}` :
+                    `${base}/${userId}/${routeName(type)}/store`;
 
                 const method = id ? 'PUT' : 'POST';
 
                 $.ajax({
-                    url, method, data,
-                    success(res){
+                    url,
+                    method,
+                    data,
+                    success(res) {
                         alert(res.message);
                         tblF.ajax.reload();
                         tblS.ajax.reload();
@@ -405,9 +427,9 @@
                 });
             });
 
-            function routeName(t){
-                if(t === 'f') return 'fungsional';
-                if(t === 's') return 'struktural';
+            function routeName(t) {
+                if (t === 'f') return 'fungsional';
+                if (t === 's') return 'struktural';
                 return 'unit';
             }
 
@@ -415,14 +437,16 @@
             /* ===========================================================
                 DELETE ITEM
             ============================================================*/
-            function deleteItem(id, type){
-                if(!confirm('Yakin ingin menghapus data ini?')) return;
+            function deleteItem(id, type) {
+                if (!confirm('Yakin ingin menghapus data ini?')) return;
 
                 $.ajax({
                     url: `${base}/${userId}/${type}/${id}`,
                     method: 'DELETE',
-                    data: { _token: '{{ csrf_token() }}' },
-                    success: function(res){
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(res) {
                         alert(res.message);
                         tblF.ajax.reload();
                         tblS.ajax.reload();
@@ -431,7 +455,6 @@
                     }
                 });
             }
-
         </script>
     @endpush
 </x-app-layout>
