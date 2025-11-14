@@ -39,10 +39,10 @@ class UserJabatanController extends Controller
         return view('admin.jabatan.UserJabatan.edit', compact('user', 'jabfungList', 'jabstrukList', 'unitList'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-        $user->update($request->only(['name', 'email']));
-        return redirect()->route('jabatan.pegawai.index')->with('success', 'Data berhasil diupdate');
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     $user = User::findOrFail($id);
+    //     $user->update($request->only(['name', 'email']));
+    //     return redirect()->route('jabatan.pegawai.index')->with('success', 'Data berhasil diupdate');
+    // }
 }

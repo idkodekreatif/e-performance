@@ -159,7 +159,7 @@
             const modal = new bootstrap.Modal(document.getElementById('modalEntry'));
 
             /* ===========================================================
-                LOAD DATA AKTIF (JSON → HTML MANUAL)
+                LOAD DATA AKTIF
             ============================================================*/
             function loadAktif() {
                 $.get(`${base}/${userId}/aktif`, function(res){
@@ -187,18 +187,6 @@
                         :
                         `<div class='p-2 border rounded mb-2 text-muted'>Tidak ada jabatan struktural aktif.</div>`;
 
-                    // let u = res.unit ?
-                    //     `
-                    //     <div class='p-2 border rounded mb-2'>
-                    //         <h6>Unit Kerja Aktif</h6>
-                    //         <p><strong>${res.unit.unit_kerja.name}</strong></p>
-                    //         <p>TMT: ${res.unit.tmt_mulai}</p>
-                    //     </div>
-                    //     `
-                    //     :
-                    //     `<div class='p-2 border rounded mb-2 text-muted'>Tidak ada unit kerja aktif.</div>`;
-
-                    // $("#aktifContent").html(f + s + u);
                     $("#aktifContent").html(f + s);
 
                 });
@@ -226,6 +214,25 @@
                         `
                     }
                 ]
+            });
+
+            /* ===========================================================
+                🚫 DISABLE TOMBOL TAMBAH JIKA SUDAH ADA 1 JABFUNG
+            ============================================================*/
+            tblF.on('xhr', function () {
+                const data = tblF.ajax.json().data;
+
+                if (data.length >= 1) {
+                    $('#btnAddFungsional').prop('disabled', true)
+                        .addClass('btn-secondary')
+                        .removeClass('btn-primary')
+                        .text('Sudah Ada Jabatan Fungsional');
+                } else {
+                    $('#btnAddFungsional').prop('disabled', false)
+                        .addClass('btn-primary')
+                        .removeClass('btn-secondary')
+                        .text('Tambah');
+                }
             });
 
             const tblS = $('#tblStruktural').DataTable({
