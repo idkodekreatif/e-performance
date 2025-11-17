@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDosenJabatanStrukturalTable extends Migration
+class CreateUserUnitKerjaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateDosenJabatanStrukturalTable extends Migration
      */
     public function up()
     {
-        Schema::create('dosen_jabatan_struktural', function (Blueprint $table) {
+        Schema::create('user_unit_kerja', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('jabatan_struktural_id')->constrained('jabatan_struktural')->onDelete('cascade');
+            $table->foreignId('unit_kerja_id')->constrained('unit_kerja')->onDelete('cascade');
             $table->date('tmt_mulai');
             $table->date('tmt_selesai')->nullable();
-            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateDosenJabatanStrukturalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosen_jabatan_struktural');
+        Schema::dropIfExists('user_unit_kerja');
     }
 }

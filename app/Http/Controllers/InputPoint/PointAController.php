@@ -76,7 +76,7 @@ class PointAController extends Controller
 
             // 8. Safe fallback: jika view tidak ditemukan, arahkan ke default dosen
             if (!view()->exists($viewPath)) {
-                $viewPath = "input-point.point-a.dosen.default";
+                $viewPath = "input-point.point-A";
             }
 
             return view($viewPath, [
@@ -380,11 +380,6 @@ class PointAController extends Controller
             'editMode' => true,
         ]);
     }
-
-
-
-
-
 
     /**
      * Update the specified resource in storage.

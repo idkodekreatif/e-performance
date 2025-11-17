@@ -6,27 +6,27 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DosenJabatanStruktural extends Model
+class UserJabatanStruktural extends Model
 {
     use HasFactory;
 
-    protected $table = 'dosen_jabatan_struktural';
+    protected $table = 'user_jabatan_struktural';
 
     protected $fillable = [
         'user_id',
         'jabatan_struktural_id',
         'tmt_mulai',
         'tmt_selesai',
-        'status'
+        'status',
     ];
 
-    public function dosen()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
     public function jabatanStruktural()
     {
-        return $this->belongsTo(JabatanStruktural::class);
+        return $this->belongsTo(JabatanStruktural::class, 'jabatan_struktural_id');
     }
 }

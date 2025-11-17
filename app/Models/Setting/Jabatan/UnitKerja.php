@@ -15,11 +15,13 @@ class UnitKerja extends Model
     protected $fillable = [
         'name',
         'type',
-        'description'
+        'description',
     ];
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_unit_kerja');
+        return $this->belongsToMany(User::class, 'user_unit_kerja')
+            ->withPivot(['tmt_mulai', 'tmt_selesai'])
+            ->withTimestamps();
     }
 }

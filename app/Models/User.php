@@ -82,40 +82,45 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Warek2::class, 'user_id', 'id');
     }
-
+    // Relasi ke tabel master jabatan umum (jika ada)
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class, 'jabatan_id', 'id');
     }
 
-
+    // Relasi Many-to-Many ke Jabatan Fungsional
     public function jabfung()
     {
         return $this->belongsToMany(
-            JabatanFungsional::class,
-            'dosen_jabatan_fungsional',
+            \App\Models\Setting\Jabatan\JabatanFungsional::class,
+            'user_jabatan_fungsional',
             'user_id',
             'jabatan_fungsional_id'
-        );
+        )->withPivot(['tmt_mulai', 'tmt_selesai', 'status'])
+            ->withTimestamps();
     }
 
+    // Relasi Many-to-Many ke Jabatan Struktural
     public function jabstruk()
     {
         return $this->belongsToMany(
-            JabatanStruktural::class,
-            'dosen_jabatan_struktural',
+            \App\Models\Setting\Jabatan\JabatanStruktural::class,
+            'user_jabatan_struktural',
             'user_id',
             'jabatan_struktural_id'
-        );
+        )->withPivot(['tmt_mulai', 'tmt_selesai', 'status'])
+            ->withTimestamps();
     }
 
+    // Relasi Many-to-Many ke Unit Kerja
     public function unitKerja()
     {
         return $this->belongsToMany(
-            UnitKerja::class,
-            'dosen_unit_kerja',
+            \App\Models\Setting\Jabatan\UnitKerja::class,
+            'user_unit_kerja',
             'user_id',
             'unit_kerja_id'
-        );
+        )->withPivot(['tmt_mulai', 'tmt_selesai'])
+            ->withTimestamps();
     }
 }

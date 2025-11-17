@@ -15,8 +15,9 @@ class CreateJabatanStrukturalTable extends Migration
     {
         Schema::create('jabatan_struktural', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('level')->nullable(); // universitas / fakultas / prodi / unit
+            $table->string('name')->unique(); // contoh: Kepala Prodi, Sekretaris, Staf TU
+            $table->string('level')->nullable(); // Universitas / Fakultas / Prodi / Unit
+            $table->foreignId('unit_kerja_id')->nullable()->constrained('unit_kerja')->onDelete('cascade');
             $table->text('description')->nullable();
             $table->timestamps();
         });

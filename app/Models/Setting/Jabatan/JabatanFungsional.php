@@ -18,12 +18,13 @@ class JabatanFungsional extends Model
         'golongan_max',
         'angka_kredit_min',
         'angka_kredit_next',
-        'description'
+        'description',
     ];
 
-    // Relasi ke tabel pivot dosen_jabatan_fungsional
     public function users()
     {
-        return $this->belongsToMany(User::class, 'dosen_jabatan_fungsional');
+        return $this->belongsToMany(User::class, 'user_jabatan_fungsional')
+            ->withPivot(['tmt_mulai', 'tmt_selesai', 'status'])
+            ->withTimestamps();
     }
 }
