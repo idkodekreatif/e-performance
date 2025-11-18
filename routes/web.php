@@ -278,7 +278,7 @@ Route::group([
         'verified',
         'prevent-back-history',
         // 'role:superuser|it|hrd|lppm|dosen',
-        'jabatan:fungsional' // <— middleware jabatan fungsional diterapkan di sini
+        'jabatan:fungsional,biro_umum,sekprodi,kaprodi,dekan,warek1,warek2,rektor'
     ]
 ], function () {
 

@@ -45,55 +45,47 @@
                 <ul aria-expanded="false">
 
                     {{-- ITIKAD App --}}
-                     {{-- TAMPILKAN MENU ITIKAD JIKA USER PUNYA JABATAN FUNGSIONAL --}}
-                    @if(auth()->user()->jabfung()->exists() || auth()->user()->jabstruk()->exists())
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">ITIKAD</a>
-                        <ul aria-expanded="false">
 
-                            {{-- =====================================================
-                 1. AKSES UNTUK JABATAN FUNGSIONAL (GURU BESAR, DLL)
-               ===================================================== --}}
-                            @if(auth()->user()->jabfung()->exists())
-                            <li><a href="{{ route('point-A') }}">Poin A</a></li>
-                            <li><a href="{{ route('point-B') }}">Poin B</a></li>
-                            <li><a href="{{ route('point-C') }}">Poin C</a></li>
-                            <li><a href="{{ route('point-D') }}">Poin D</a></li>
-                            <li><a href="{{ route('point-E') }}">Poin E</a></li>
-                            <li><a href="{{ route('raport', Auth::user()->id) }}">Raport</a></li>
-                            @endif
+@php
+    $user = auth()->user();
+    $jabstruk = $user->jabstruk()->first();
+@endphp
 
-                            {{-- =====================================================
-                 2. AKSES KHUSUS STRUKTURAL
-               ===================================================== --}}
-                            @php
-                            $jabstruk = auth()->user()->jabstruk()->first();
-                            @endphp
+@if($user->jabfung()->exists() || $jabstruk)
+<li>
+    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">ITIKAD</a>
+    <ul aria-expanded="false">
 
-                            {{-- Kepala Biro AA --}}
-                            @if($jabstruk && $jabstruk->nama_jabatan === 'Kepala Biro Administrasi Akademik')
-                            <li><a href="{{ route('Point-A.data.search') }}">Search Poin A</a></li>
-                            <li><a href="{{ route('Point-B.data.search') }}">Search Poin B</a></li>
-                            <li><a href="{{ route('Point-C.data.search') }}">Search Poin C</a></li>
-                            <li><a href="{{ route('Point-D.data.search') }}">Search Poin D</a></li>
-                            <li><a href="{{ route('Point-E.data.search') }}">Search Poin E</a></li>
-                            <li><a href="{{ route('raport.data.search') }}">Search Raport</a></li>
-                            <li><a href="{{ route('rekap.index') }}">Search Rekap</a></li>
-                            @endif
+        {{-- =====================================================
+            1. AKSES JABATAN FUNGSIONAL (SEMUA POIN A–E)
+        ===================================================== --}}
+        @if($user->jabfung()->exists())
+            <li><a href="{{ route('point-A') }}">Poin A</a></li>
+            <li><a href="{{ route('point-B') }}">Poin B</a></li>
+            <li><a href="{{ route('point-C') }}">Poin C</a></li>
+            <li><a href="{{ route('point-D') }}">Poin D</a></li>
+            <li><a href="{{ route('point-E') }}">Poin E</a></li>
+            <li><a href="{{ route('raport', $user->id) }}">Raport</a></li>
+        @endif
 
-                            {{-- Kepala Bagian Keuangan --}}
-                            @if($jabstruk && $jabstruk->nama_jabatan === 'Kepala Bagian Keuangan')
-                            <li><a href="{{ route('Point-D.data.search') }}">Search Poin D</a></li>
-                            @endif
+        {{-- =====================================================
+            2. AKSES STRUKTURAL SPESIFIK
+        ===================================================== --}}
+        @if($jabstruk && $jabstruk->name === 'Kepala Subbagian Protokoler, Umum, dan Kepegawaian')
+            <li><a href="{{ route('Point-A.data.search') }}">Search Poin A</a></li>
+            <li><a href="{{ route('Point-B.data.search') }}">Search Poin B</a></li>
+            <li><a href="{{ route('Point-C.data.search') }}">Search Poin C</a></li>
+            <li><a href="{{ route('Point-D.data.search') }}">Search Poin D</a></li>
+            <li><a href="{{ route('Point-E.data.search') }}">Search Poin E</a></li>
+            <li><a href="{{ route('raport.data.search') }}">Search Raport</a></li>
+            <li><a href="{{ route('rekap.index') }}">Search Rekap</a></li>
+        @endif
 
-                            {{-- Kepala Bagian Kemahasiswaan --}}
-                            @if($jabstruk && $jabstruk->nama_jabatan === 'Kepala Bagian Kemahasiswaan')
-                            <li><a href="{{ route('Point-B.data.search') }}">Search Poin B</a></li>
-                            @endif
+    </ul>
+</li>
+@endif
 
-                        </ul>
-                    </li>
-                    @endif
+
 
                     {{-- IKTISAR App --}}
                     @role('it|superuser|warek2|upt|baak|keuangan|lpm|risbang|gizi|perawat|bidan|manajemen|akuntansi|bau|warek1|rektor|ypsdmit|hrd|kasubbaak|dekan|marketing|tendik')
