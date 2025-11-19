@@ -47,10 +47,12 @@
                     {{-- ITIKAD App --}}
                     @php
                         $user = auth()->user();
-                        $jabstruk = $user->jabstruk()->first();
+                        $jabstrukList = $user->jabstruk()->get();
+                        $jabstrukNames = $jabstrukList->pluck('name')->toArray();
                     @endphp
 
-                    @if ($user->jabfung()->exists() || $jabstruk)
+
+                    @if ($user->jabfung()->exists() || $jabstrukList->isNotEmpty())
                         <li>
                             <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">ITIKAD</a>
                             <ul aria-expanded="false">
@@ -70,12 +72,8 @@
                                 {{-- =====================================================
             2. AKSES STRUKTURAL SPESIFIK
         ===================================================== --}}
-                                @if (
-                                    $jabstruk &&
-                                        in_array($jabstruk->name, [
-                                            'Kepala Subbagian Protokoler, Umum, dan Kepegawaian',
-                                            'Kepala Biro Administrasi Umum',
-                                        ]))
+                               @if (in_array('Kepala Subbagian Protokoler, Umum, dan Kepegawaian', $jabstrukNames)
+                || in_array('Kepala Biro Administrasi Umum', $jabstrukNames))
                                     <li><a href="{{ route('Point-A.data.search') }}">Search Poin A</a></li>
                                     <li><a href="{{ route('Point-B.data.search') }}">Search Poin B</a></li>
                                     <li><a href="{{ route('Point-C.data.search') }}">Search Poin C</a></li>
@@ -91,12 +89,7 @@
 
 
                     {{-- IKTISAR App --}}
-                    @php
-                        $user = auth()->user();
-                        $jabstruk = $user->jabstruk()->first();
-                    @endphp
-
-                    @if ($jabstruk)
+                    @if ($jabstrukNames)
                         <li>
                             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                                 {{-- <i class="fas fa-copy"></i> --}}
@@ -108,7 +101,7 @@
                                 {{-- ================================
              1. YAYASAN
         ================================= --}}
-                                @if ($jabstruk->name === 'Yayasan PSDMIT')
+        @if (in_array('Yayasan PSDMIT', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">YAYASAN</a>
                                         <ul>
                                             <li><a href="{{ route('iktisar.bulanan.ypsdmit.create') }}">Form Rektor</a>
@@ -121,7 +114,7 @@
                                 {{-- ================================
              2. REKTOR
         ================================= --}}
-                                @if ($jabstruk->name === 'Rektor')
+        @if (in_array('Rektor', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">REKTOR</a>
                                         <ul>
                                             <li><a href="{{ route('iktisar.bulanan.rektor.create') }}">Form Wakil
@@ -135,7 +128,7 @@
                                 {{-- ================================
              3. WAREK I
         ================================= --}}
-                                @if ($jabstruk->name === 'Wakil Rektor I')
+        @if (in_array('Wakil Rektor I', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">WAREK I</a>
                                         <ul>
                                             <li><a href="{{ route('iktisar.bulanan.warekSatu.create') }}">Form Ka.
@@ -149,7 +142,7 @@
                                 {{-- ================================
              4. WAREK II
         ================================= --}}
-                                @if ($jabstruk->name === 'Wakil Rektor II')
+        @if (in_array('Wakil Rektor II', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">WAREK II</a>
                                         <ul>
                                             <li><a href="{{ route('iktisar.bulanan.warekDua.create') }}">Form Ka.
@@ -163,7 +156,8 @@
                                 {{-- ================================
              5. DEKAN & STAFF DEKAN
         ================================= --}}
-                                @if (in_array($jabstruk->name, ['Dekan Fakultas Kesehatan', 'Dekan Fakultas Bisnis']))
+        @if (in_array('Dekan Fakultas Kesehatan', $jabstrukNames)
+    || in_array('Dekan Fakultas Bisnis', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">DEKAN</a>
                                         <ul>
                                             <li><a href="{{ route('iktisar.bulanan.dekan.create') }}">Form Ka. Unit</a>
@@ -177,23 +171,27 @@
                                 {{-- ================================
              5. SEKERTARIS PROGRAM STUDI
         ================================= --}}
-                                @if (in_array($jabstruk->name, ['Kepala Program Studi S1 Akuntansi', 'Kepala Program Studi S1 Manajemen', 'Kepala Program Studi S1 Ilmu Gizi', 'Kepala Program Studi S1 Keperawatan dan Ners', 'Kepala Program Studi D3 Kebidanan']))
+        @if (in_array('Kepala Program Studi S1 Manajemen', $jabstrukNames)
+    || in_array('Kepala Program Studi S1 Akuntansi', $jabstrukNames)|| in_array( 'Kepala Program Studi S1 Ilmu Gizi', $jabstrukNames)|| in_array('Kepala Program Studi S1 Keperawatan dan Ners', $jabstrukNames)|| in_array('Kepala Program Studi D3 Kebidanan', $jabstrukNames))
+
                                     <li><a class="has-arrow" href="javascript:void()">PROGRAM STUDI</a>
                                         <ul>
-                                            <li><a href="{{ route('iktisar.bulanan.sekkaprodi.create') }}">Form Penilaian Sekretaris Prodi</a>
+                                            <li><a href="{{ route('iktisar.bulanan.sekkaprodi.create') }}">Form
+                                                    Penilaian Sekretaris Prodi</a>
                                             </li>
                                             <li><a href="{{ route('sekkaprodi.data.rekap') }}">Rekap</a></li>
                                         </ul>
                                     </li>
                                 @endif
 
-                                   {{-- ================================
+                                {{-- ================================
              9. BAU
         ================================= --}}
-                                @if ($jabstruk->name === 'Kepala Riset dan Pengembangan')
+        @if (in_array('Kepala Riset dan Pengembangan', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">RISBANG</a>
                                         <ul>
-                                                <li><a href="{{ route('iktisar.bulanan.risbang.create') }}">Form Penilaian Lp2m</a></li>
+                                            <li><a href="{{ route('iktisar.bulanan.risbang.create') }}">Form Penilaian
+                                                    Lp2m</a></li>
                                             <li><a href="{{ route('risbang.data.rekap') }}">Rekap</a></li>
                                         </ul>
                                     </li>
@@ -204,16 +202,17 @@
                                 {{-- ================================
              6. MARKETING
         ================================= --}}
-                                @if ($jabstruk->name === 'Kepala Marketing')
+        @if (in_array('Kepala Marketing', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">MARKETING</a>
                                         <ul>
-                                            @if ($jabstruk->is_kepala)
-                                                <li><a href="{{ route('iktisar.bulanan.marketing.create') }}">Form Ka.
-                                                        Unit</a></li>
+                                            <a href="{{ route('iktisar.bulanan.marketing.create') }}">Form Ka.
+                                                Unit</a></li>
+                                            {{-- @if ($jabstruk->is_kepala)
+                                                <li>
                                             @else
                                                 <li><a href="{{ route('iktisar.bulanan.marketing.staff.create') }}">Form
                                                         Staff</a></li>
-                                            @endif
+                                            @endif --}}
                                             <li><a href="{{ route('marketing.data.rekap') }}">Rekap</a></li>
                                         </ul>
                                     </li>
@@ -223,11 +222,11 @@
                                 {{-- ================================
              7. UPT — Kepala & Staff
         ================================= --}}
-                                @if ($jabstruk->name === 'Kepala Unit Pelaksana Teknis')
+        @if (in_array('Kepala Unit Pelaksana Teknis', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">UPT</a>
                                         <ul>
-                                                <li><a href="{{ route('iktisar.bulanan.kaunit.create') }}">Form Ka.
-                                                        Unit</a></li>
+                                            <li><a href="{{ route('iktisar.bulanan.kaunit.create') }}">Form Ka.
+                                                    Unit</a></li>
                                             <li><a href="{{ route('iktisar.bulanan.staff.create') }}">Form Staff</a>
                                             </li>
                                             <li><a href="{{ route('data.rekap') }}">Rekap</a></li>
@@ -239,7 +238,7 @@
                                 {{-- ================================
              8. BAAK — Kepala & Staff
         ================================= --}}
-                                @if ($jabstruk->name === 'Kepala Biro Administrasi Akademik')
+        @if (in_array('Kepala Biro Administrasi Akademik', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">BAAK</a>
                                         <ul>
                                             <li><a href="{{ route('iktisar.bulanan.baak.staff.create') }}">Form
@@ -259,11 +258,11 @@
                                 {{-- ================================
              9. BAU
         ================================= --}}
-                                @if ($jabstruk->name === 'Kepala Biro Administrasi Umum')
+        @if (in_array('Kepala Biro Administrasi Umum', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">BAU</a>
                                         <ul>
-                                                <li><a href="{{ route('iktisar.bulanan.bau.create') }}">Form Ka.
-                                                        Unit</a></li>
+                                            <li><a href="{{ route('iktisar.bulanan.bau.create') }}">Form Ka.
+                                                    Unit</a></li>
                                             <li><a href="{{ route('bau.data.rekap') }}">Rekap</a></li>
                                         </ul>
                                     </li>
@@ -273,11 +272,11 @@
                                 {{-- ================================
              10. SUB BIRO UMUM — Kepala & Staff
         ================================= --}}
-                                @if ($jabstruk->name === 'Kepala Subbagian Protokoler, Umum, dan Kepegawaian')
+        @if (in_array('Kepala Subbagian Protokoler, Umum, dan Kepegawaian', $jabstrukNames))
                                     <li><a class="has-arrow" href="javascript:void()">SUB BIRO UMUM</a>
                                         <ul>
-                                                <li><a href="{{ route('iktisar.bulanan.hrd.create') }}">Form Staff</a>
-                                                </li>
+                                            <li><a href="{{ route('iktisar.bulanan.hrd.create') }}">Form Staff</a>
+                                            </li>
                                             <li><a href="{{ route('hrd.data.rekap') }}">Rekap</a></li>
                                         </ul>
                                     </li>
