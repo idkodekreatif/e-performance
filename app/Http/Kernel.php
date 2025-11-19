@@ -69,8 +69,9 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
 
-
         // Logout cache
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
+
+        'jabatan' => \App\Http\Middleware\CheckJabatan::class,
     ];
 }

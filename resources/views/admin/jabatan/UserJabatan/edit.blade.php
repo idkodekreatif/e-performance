@@ -70,6 +70,7 @@
                         <thead>
                             <tr>
                                 <th>Jabatan</th>
+                                <th>Sub. Koordinator</th>
                                 <th>TMT Mulai</th>
                                 <th>TMT Selesai</th>
                                 <th>Status</th>
@@ -248,6 +249,9 @@
                 ajax: `${base}/${userId}/struktural/data`,
                 columns: [{
                         data: 'jabatan_struktural.name'
+                    },
+                    {
+                        data: 'jabatan_struktural.level'
                     },
                     {
                         data: 'tmt_mulai'

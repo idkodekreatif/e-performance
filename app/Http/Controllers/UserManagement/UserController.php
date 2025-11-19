@@ -67,7 +67,7 @@ class UserController extends Controller
                 'Asisten Ahli',
                 'Lektor',
                 'Lektor Kepala',
-                'Guru Besar',
+                // 'Guru Besar',
             ])->get();
 
             return Datatables::of($data)
