@@ -1,4 +1,4 @@
-<x-app-layout title="Form Point B Profesor">
+<x-app-layout title="Form Point B Non-JAD">
     @push('style')
     <style>
         input::-webkit-outer-spin-button,
@@ -18,7 +18,7 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Update Forms </a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Point B Profesor</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Point B Non-JAD</a></li>
             </ol>
         </div>
         @endrole

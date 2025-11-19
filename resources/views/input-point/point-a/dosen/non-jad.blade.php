@@ -1,4 +1,4 @@
-<x-app-layout title="Form Input Point A Profesor">
+<x-app-layout title="Form Input Point A Non-JAD">
     @push('style')
         <style>
             input::-webkit-outer-spin-button,
@@ -17,7 +17,7 @@
         <div class="row page-titles shadow">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Forms</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Point A Profesor</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Point A Non-JAD</a></li>
             </ol>
         </div>
         <div class="card shadow">

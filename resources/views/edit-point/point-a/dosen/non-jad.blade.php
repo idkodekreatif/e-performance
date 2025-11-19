@@ -1,4 +1,4 @@
-<x-app-layout title="Edit Point A Profesor">
+<x-app-layout title="Edit Point A Non-JAD">
     @push('style')
         <style>
             input::-webkit-outer-spin-button,
@@ -17,7 +17,7 @@
         @role('it' | 'superuser')
             <div class="row page-titles shadow">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Update Forms Profesor </a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Update Forms Non-JAD </a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Point A</a></li>
                 </ol>
             </div>
