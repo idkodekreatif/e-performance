@@ -33,29 +33,30 @@ class PointBController extends Controller
             return view('menu.disabled');
         }
 
-        // 2. Ambil semua jabatan fungsional user dari pivot (many-to-many)
+        // 2. Ambil semua jabatan fungsional user
         $jabfungList = $user->jabfung()->pluck('name')->toArray();
 
-        // 3. Daftar jabfung yang masuk kategori dosen
+        // 3. Daftar jabfung dosen
         $jabatanDosen = ['Non-JAD', 'Asisten Ahli', 'Lektor', 'Lektor Kepala', 'Guru Besar'];
 
-        // 4. Cek apakah salah satu jabfung user adalah dosen
+        // 4. Deteksi apakah user salah satu jabfungnya kategori dosen
         $selectedJabfung = null;
         foreach ($jabfungList as $jf) {
-            if (in_array($jf, $jabatanDosen)) {   // tanpa strtolower, harus match persis
+            if (in_array($jf, $jabatanDosen)) {
                 $selectedJabfung = $jf;
                 break;
             }
         }
 
-        // 5. Jika user termasuk kategori dosen berdasarkan jabfung
+        // ---------------------------
+        // 5. Jika user adalah DOSEN
+        // ---------------------------
         if ($selectedJabfung) {
 
-            // ubah ke format nama file view
+            // Format view name → spasi diganti "-"
             $viewName = str_replace(' ', '-', $selectedJabfung);
-            // ex: Lektor Kepala → Lektor-Kepala.blade.php
 
-            // 6. Cek apakah sudah pernah input Point B
+            // 6. Cek apakah sudah pernah input point B
             $existingData = PointB::where('new_user_id', $user->id)
                 ->where('period_id', $activePeriod->id)
                 ->first();
@@ -64,22 +65,25 @@ class PointBController extends Controller
                 return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
             }
 
-            // 7. Tentukan view path
+            // 7. Path view untuk dosen
             $viewPath = "input-point.point-b.dosen.$viewName";
 
-            // 8. Safe fallback: jika view tidak ditemukan, arahkan ke default dosen
+            // 8. Fallback ke default view jika view jabatan belum dibuat
             if (!view()->exists($viewPath)) {
-                $viewPath = "input-point.Point-B";
+                $viewPath = "input-point.point-b";
             }
 
             return view($viewPath, [
-                'user' => $user,
-                'jabfungList' => $jabfungList,
-                'editMode' => false,
+                'user'          => $user,
+                'jabfungList'   => $jabfungList,
+                'editMode'      => false,
             ]);
         }
 
-        // 9. Jika bukan dosen (Tendik / Staff)
+        // ------------------------------
+        // 9. Jika user BUKAN dosen
+        // ------------------------------
+
         $existingData = PointB::where('new_user_id', $user->id)
             ->where('period_id', $activePeriod->id)
             ->first();
@@ -88,12 +92,13 @@ class PointBController extends Controller
             return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
         }
 
-        return view('input-point.point-B', [
-            'user' => $user,
-            'jabfungList' => $jabfungList,
-            'editMode' => false,
+        return view('input-point.point-b', [
+            'user'          => $user,
+            'jabfungList'   => $jabfungList,
+            'editMode'      => false,
         ]);
     }
+
 
 
     /**
@@ -517,10 +522,10 @@ class PointBController extends Controller
         // 3. Ambil seluruh jabatan fungsional user
         $jabfungList = $user->jabfung()->pluck('name')->toArray();
 
-        // 4. Daftar jabatan fungsional dosen (HARUS lowercase agar match)
+        // 4. Daftar jabatan dosen (lowercase supaya mudah match)
         $jabatanDosen = ['non-jad', 'asisten ahli', 'lektor', 'lektor kepala', 'guru besar'];
 
-        // 5. Tentukan jabfung dosen yang dimiliki user
+        // 5. Deteksi jabfung dosen user
         $selectedJabfung = null;
         foreach ($jabfungList as $jf) {
             $jfLower = strtolower($jf);
@@ -530,32 +535,39 @@ class PointBController extends Controller
             }
         }
 
-        // 6. Jika user adalah dosen → arahkan ke view sesuai jabfung
+        // -----------------------------------------------------
+        // 6. Jika DOSEN → arahkan ke view sesuai jabfung
+        // -----------------------------------------------------
         if ($selectedJabfung) {
-            $viewName = str_replace(' ', '-', $selectedJabfung); // contoh: "guru besar" → "guru-besar"
+            // Format nama view: "guru besar" → "guru-besar"
+            $viewName = str_replace(' ', '-', $selectedJabfung);
+
             $viewPath = "edit-point.point-b.dosen.$viewName";
 
-            // 7. Safe fallback jika view belum tersedia
+            // 7. Jika view jabfung belum tersedia, fallback ke default
             if (!view()->exists($viewPath)) {
-                $viewPath = "edit-point.point-b.dosen.default";
+                $viewPath = "edit-point.EditPointB";
             }
 
             return view($viewPath, [
-                'user' => $user,
-                'data' => $data,
+                'user'        => $user,
+                'data'        => $data,
                 'jabfungList' => $jabfungList,
-                'editMode' => true,
+                'editMode'    => true,
             ]);
         }
 
-        // 8. Jika bukan dosen → arahkan ke view umum
+        // -----------------------------------------------------
+        // 8. Jika BUKAN dosen → view umum
+        // -----------------------------------------------------
         return view('edit-point.EditPointB', [
-            'user' => $user,
-            'data' => $data,
+            'user'        => $user,
+            'data'        => $data,
             'jabfungList' => $jabfungList,
-            'editMode' => true,
+            'editMode'    => true,
         ]);
     }
+
 
 
 
