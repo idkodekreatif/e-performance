@@ -23,7 +23,7 @@ class PointBController extends Controller
     {
         $user = Auth::user();
 
-        // 1. Cek periode aktif
+        // 1. Periode aktif
         $activePeriod = Period::where('is_closed', 1)
             ->where('start_date', '<=', now())
             ->where('end_date', '>=', now())
@@ -33,30 +33,39 @@ class PointBController extends Controller
             return view('menu.disabled');
         }
 
-        // 2. Ambil semua jabatan fungsional user
+        // 2. List jabfung user
         $jabfungList = $user->jabfung()->pluck('name')->toArray();
 
-        // 3. Daftar jabfung dosen
-        $jabatanDosen = ['Non-JAD', 'Asisten Ahli', 'Lektor', 'Lektor Kepala', 'Guru Besar'];
+        // 3. Daftar jabfung dosen → semua lowercase
+        $jabatanDosen = [
+            'non jad',
+            'asisten ahli',
+            'lektor',
+            'lektor kepala',
+            'guru besar',
+        ];
 
-        // 4. Deteksi apakah user salah satu jabfungnya kategori dosen
+        // 4. Normalisasi jabfung user
         $selectedJabfung = null;
         foreach ($jabfungList as $jf) {
-            if (in_array($jf, $jabatanDosen)) {
-                $selectedJabfung = $jf;
+            // normalisasi: lowercase + hilangkan "-" dan "_"
+            $normalized = strtolower(trim(str_replace(['-', '_'], ' ', $jf)));
+
+            if (in_array($normalized, $jabatanDosen)) {
+                $selectedJabfung = $normalized;
                 break;
             }
         }
 
-        // ---------------------------
+        // ===========================
         // 5. Jika user adalah DOSEN
-        // ---------------------------
+        // ===========================
         if ($selectedJabfung) {
 
-            // Format view name → spasi diganti "-"
+            // Format nama view: "guru besar" → "guru-besar"
             $viewName = str_replace(' ', '-', $selectedJabfung);
 
-            // 6. Cek apakah sudah pernah input point B
+            // Cek existing data
             $existingData = PointB::where('new_user_id', $user->id)
                 ->where('period_id', $activePeriod->id)
                 ->first();
@@ -65,25 +74,24 @@ class PointBController extends Controller
                 return redirect()->route('edit.Point-B', ['PointId' => $user->id]);
             }
 
-            // 7. Path view untuk dosen
+            // Path view
             $viewPath = "input-point.point-b.dosen.$viewName";
 
-            // 8. Fallback ke default view jika view jabatan belum dibuat
+            // fallback jika belum ada view spesifik
             if (!view()->exists($viewPath)) {
                 $viewPath = "input-point.point-b";
             }
 
             return view($viewPath, [
-                'user'          => $user,
-                'jabfungList'   => $jabfungList,
-                'editMode'      => false,
+                'user'        => $user,
+                'jabfungList' => $jabfungList,
+                'editMode'    => false,
             ]);
         }
 
-        // ------------------------------
-        // 9. Jika user BUKAN dosen
-        // ------------------------------
-
+        // ==============================
+        // 6. Jika user BUKAN dosen
+        // ==============================
         $existingData = PointB::where('new_user_id', $user->id)
             ->where('period_id', $activePeriod->id)
             ->first();
@@ -93,11 +101,12 @@ class PointBController extends Controller
         }
 
         return view('input-point.point-b', [
-            'user'          => $user,
-            'jabfungList'   => $jabfungList,
-            'editMode'      => false,
+            'user'        => $user,
+            'jabfungList' => $jabfungList,
+            'editMode'    => false,
         ]);
     }
+
 
 
 
@@ -502,15 +511,15 @@ class PointBController extends Controller
 
         // 1. Cek periode aktif
         $activePeriod = Period::where('is_closed', 1)
-            ->where('start_date', '<=', Carbon::now())
-            ->where('end_date', '>=', Carbon::now())
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
             ->first();
 
         if (!$activePeriod) {
             return view('menu.disabled');
         }
 
-        // 2. Ambil data Point B berdasarkan user & periode
+        // 2. Ambil data Point B
         $data = PointB::where('new_user_id', $PointId)
             ->where('period_id', $activePeriod->id)
             ->first();
@@ -519,34 +528,41 @@ class PointBController extends Controller
             return redirect()->route('create.Point-B');
         }
 
-        // 3. Ambil seluruh jabatan fungsional user
+        // 3. Ambil semua jabfung user
         $jabfungList = $user->jabfung()->pluck('name')->toArray();
 
-        // 4. Daftar jabatan dosen (lowercase supaya mudah match)
-        $jabatanDosen = ['non-jad', 'asisten ahli', 'lektor', 'lektor kepala', 'guru besar'];
+        // 4. Daftar dosen yang sudah distandarisasi
+        $jabatanDosen = [
+            'non jad',
+            'asisten ahli',
+            'lektor',
+            'lektor kepala',
+            'guru besar',
+        ];
 
-        // 5. Deteksi jabfung dosen user
+        // 5. Normalisasi jabfung user
         $selectedJabfung = null;
         foreach ($jabfungList as $jf) {
-            $jfLower = strtolower($jf);
-            if (in_array($jfLower, $jabatanDosen)) {
-                $selectedJabfung = $jfLower;
+            $normalized = strtolower(trim(str_replace(['-', '_'], ' ', $jf)));
+
+            if (in_array($normalized, $jabatanDosen)) {
+                $selectedJabfung = $normalized;
                 break;
             }
         }
 
-        // -----------------------------------------------------
-        // 6. Jika DOSEN → arahkan ke view sesuai jabfung
-        // -----------------------------------------------------
+        // ===========================
+        // 6. Jika DOSEN → view jabfung
+        // ===========================
         if ($selectedJabfung) {
+
             // Format nama view: "guru besar" → "guru-besar"
             $viewName = str_replace(' ', '-', $selectedJabfung);
 
             $viewPath = "edit-point.point-b.dosen.$viewName";
 
-            // 7. Jika view jabfung belum tersedia, fallback ke default
             if (!view()->exists($viewPath)) {
-                $viewPath = "edit-point.EditPointB";
+                $viewPath = "edit-point.EditPointB"; // fallback
             }
 
             return view($viewPath, [
@@ -557,9 +573,9 @@ class PointBController extends Controller
             ]);
         }
 
-        // -----------------------------------------------------
-        // 8. Jika BUKAN dosen → view umum
-        // -----------------------------------------------------
+        // ===========================
+        // 7. Jika BUKAN dosen
+        // ===========================
         return view('edit-point.EditPointB', [
             'user'        => $user,
             'data'        => $data,
@@ -567,7 +583,6 @@ class PointBController extends Controller
             'editMode'    => true,
         ]);
     }
-
 
 
 
