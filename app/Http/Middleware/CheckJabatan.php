@@ -31,11 +31,11 @@ class CheckJabatan
             'Dekan Fakultas Kesehatan' => 'dekan',
             'Dekan Fakultas Bisnis' => 'dekan',
 
-            'Kepala Program Studi S1 Akuntansi' => 'kaprodi',
-            'Kepala Program Studi S1 Manajemen' => 'kaprodi',
-            'Kepala Program Studi S1 Ilmu Gizi' => 'kaprodi',
-            'Kepala Program Studi S1 Keperawatan dan Ners' => 'kaprodi',
-            'Kepala Program Studi D3 Kebidanan' => 'kaprodi',
+            'Ketua Program Studi S1 Akuntansi' => 'kaprodi',
+            'Ketua Program Studi S1 Manajemen' => 'kaprodi',
+            'Ketua Program Studi S1 Ilmu Gizi' => 'kaprodi',
+            'Ketua Program Studi S1 Keperawatan dan Ners' => 'kaprodi',
+            'Ketua Program Studi D3 Kebidanan' => 'kaprodi',
 
             'Sekretaris Program Studi S1 Akuntansi' => 'sekprodi',
             'Sekretaris Program Studi S1 Manajemen' => 'sekprodi',
