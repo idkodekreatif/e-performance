@@ -69,10 +69,10 @@
                                     <tr>
                                         <td colspan="2">Deskripsi penilaian:</td>
                                         <td>Nilai rerata < 3.00 (KURANG)</td>
-                                        <td>Nilai rerata>=3.00 - < 4.00 (CUKUP)</td>
-                                        <td> Nilai rerata >=4.00 - < 4.60 (BAIK)</td>
-                                        <td>Nilai rerata >=4.60 - < 4.80 (SANGAT BAIK)</td>
-                                        <td>Nilai rerata >=4.80 - 5.00 (ISTIMEWA)</td>
+                                        <td>Nilai rerata >= 3.00 - < 3.60 (CUKUP)</td>
+                                        <td>Nilai rerata >= 3.60 - < 4.60 (BAIK)</td>
+                                        <td>Nilai rerata >= 4.60 - < 4.80 (SANGAT BAIK)</td>
+                                        <td>Nilai rerata >= 4.80 - 5.00 (ISTIMEWA)</td>
                                         <td rowspan="2">
                                             <label for="formFileSm" class="form-label text-danger">* Upload Hasil
                                                 evaluasi perkuliahan</label>
